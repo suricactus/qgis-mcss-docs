@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsInterpolator" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsInterpolator</compoundname>
+    <derivedcompoundref refid="classQgsIDWInterpolator" prot="public" virt="non-virtual">QgsIDWInterpolator</derivedcompoundref>
+    <derivedcompoundref refid="classQgsTinInterpolator" prot="public" virt="non-virtual">QgsTinInterpolator</derivedcompoundref>
+    <includes refid="qgsinterpolator_8h" local="no">qgsinterpolator.h</includes>
+    <innerclass refid="structQgsInterpolator_1_1LayerData" prot="public">QgsInterpolator::LayerData</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551fa" prot="public" static="no">
+        <name>Result</name>
+        <enumvalue id="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa8c784e7ce64e090777d53ba05426e497" prot="public">
+          <name>Success</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Operation was successful. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa324afd5a619df8958bfff3f2e3289758" prot="public">
+          <name>Canceled</name>
+          <briefdescription>
+<para>Operation was manually canceled. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa7b162519a18fa2dd61b0d5af099365bd" prot="public">
+          <name>InvalidSource</name>
+          <briefdescription>
+<para>Operation failed due to invalid source. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa7d85115db62d2cbcfc768fabf79a87c0" prot="public">
+          <name>FeatureGeometryError</name>
+          <briefdescription>
+<para>Operation failed due to invalid feature geometry. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Result of an interpolation operation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="85" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="84" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2f" prot="public" static="no">
+        <name>SourceType</name>
+        <enumvalue id="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa0c6b723179740b22324d2621da3b229f" prot="public">
+          <name>SourcePoints</name>
+          <briefdescription>
+<para>Point source. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa1fce0ff37a48abdc35379e3eef0bd8e7" prot="public">
+          <name>SourceStructureLines</name>
+          <briefdescription>
+<para>Structure lines. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa94cd195b74c463cd188f613bc7a496d4" prot="public">
+          <name>SourceBreakLines</name>
+          <briefdescription>
+<para>Break lines. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Describes the type of input data. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="69" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="68" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435" prot="public" static="no">
+        <name>ValueSource</name>
+        <enumvalue id="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435a49f995262573144295a46328ef8157ce" prot="public">
+          <name>ValueAttribute</name>
+          <briefdescription>
+<para>Take value from feature&apos;s attribute. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435aafd5f05a706024c82dfc82782becc5bb" prot="public">
+          <name>ValueZ</name>
+          <briefdescription>
+<para>Use feature&apos;s geometry Z values for interpolation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435a03d7a5a246b14b6847699ca4bc428edc" prot="public">
+          <name>ValueM</name>
+          <briefdescription>
+<para>Use feature&apos;s geometry M values for interpolation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Source for interpolated values from features. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="76" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsInterpolator_1a411f9dc053ae1bc59ce5ca9c037603eb" prot="protected" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="structQgsInterpolatorVertexData" kindref="compound">QgsInterpolatorVertexData</ref> &gt;</type>
+        <definition>QVector&lt;QgsInterpolatorVertexData&gt; QgsInterpolator::mCachedBaseData</definition>
+        <argsstring></argsstring>
+        <name>mCachedBaseData</name>
+        <briefdescription>
+<para>Cached vertex data for input sources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="136" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsInterpolator_1a941255f6794f230b7d291704a75e6736" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsInterpolator::mDataIsCached</definition>
+        <argsstring></argsstring>
+        <name>mDataIsCached</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Flag that tells if the cache already has been filled. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="139" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsInterpolator_1aa7e64d65a55b618efb1ec28dde21bb4a" prot="protected" static="no" mutable="no">
+        <type>QList&lt; <ref refid="structQgsInterpolator_1_1LayerData" kindref="compound">LayerData</ref> &gt;</type>
+        <definition>QList&lt;LayerData&gt; QgsInterpolator::mLayerData</definition>
+        <argsstring></argsstring>
+        <name>mLayerData</name>
+        <briefdescription>
+<para>Information about the input vector layers and the attributes (or z-values) that are used for interpolation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="142" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsInterpolator_1a6b3f437af483abfbb35034732459b879" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsInterpolator::QgsInterpolator</definition>
+        <argsstring>(const QList&lt; QgsInterpolator::LayerData &gt; &amp;layerData)</argsstring>
+        <name>QgsInterpolator</name>
+        <param>
+          <type>const QList&lt; <ref refid="structQgsInterpolator_1_1LayerData" kindref="compound">QgsInterpolator::LayerData</ref> &gt; &amp;</type>
+          <declname>layerData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.cpp" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInterpolator_1aaa9ca49fc1a21fa212817df8a7ab2550" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsInterpolator::~QgsInterpolator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsInterpolator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInterpolator_1a47e25bc2a4c807f453b84e49c6e2efa5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsInterpolator::interpolatePoint</definition>
+        <argsstring>(double x, double y, double &amp;result, QgsFeedback *feedback=nullptr)=0</argsstring>
+        <name>interpolatePoint</name>
+        <reimplementedby refid="classQgsIDWInterpolator_1a03e1196cb938301d83585cea7d2d0487">interpolatePoint</reimplementedby>
+        <reimplementedby refid="classQgsTinInterpolator_1a6375e76dd0cd72fdd4b65a6af5ecd068">interpolatePoint</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Calculates interpolation value for map coordinates x, y. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x-coordinate (in map units) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y-coordinate (in map units) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interpolation result </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>feedback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional feedback object for progress and cancelation support </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInterpolator_1af0ee867d9dc40805134bde9765ed6385" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QList&lt; <ref refid="structQgsInterpolator_1_1LayerData" kindref="compound">LayerData</ref> &gt;</type>
+        <definition>QList&lt;LayerData&gt; QgsInterpolator::layerData</definition>
+        <argsstring>() const</argsstring>
+        <name>layerData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="120" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsInterpolator_1adef2f968df30d8e85a5bb0be5f45ac6e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551fa" kindref="member">Result</ref></type>
+        <definition>QgsInterpolator::Result QgsInterpolator::cacheBaseData</definition>
+        <argsstring>(QgsFeedback *feedback=nullptr)</argsstring>
+        <name>cacheBaseData</name>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Caches the vertex and value data from the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>All the vertex data will be held in virtual memory.</para><para>An optional <emphasis>feedback</emphasis> argument may be specified to allow cancelation and progress reports from the cache operation.</para><para><simplesect kind="return"><para>Success in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="133" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.cpp" bodystart="31" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsInterpolator_1a7775de615194dfccde4a3247d0301f47" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsInterpolator::QgsInterpolator</definition>
+        <argsstring>()=delete</argsstring>
+        <name>QgsInterpolator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="145" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInterpolator_1ae60ffbcd06efca445706092da194e61b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsInterpolator::addVerticesToCache</definition>
+        <argsstring>(const QgsGeometry &amp;geom, ValueSource source, double attributeValue)</argsstring>
+        <name>addVerticesToCache</name>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>geom</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435" kindref="member">ValueSource</ref></type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>attributeValue</declname>
+        </param>
+        <briefdescription>
+<para>Helper method that adds the vertices of a geometry to the mCachedBaseData. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>geom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the geometry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source for values to interpolate from the feature </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attributeValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the attribute value for interpolation (if interpolating from attribute value) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="154" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.cpp" bodystart="115" bodyend="158"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interface class for interpolations. </para>    </briefdescription>
+    <detaileddescription>
+<para>Interpolators take the vertices of a vector layer as base data. The z-Value can be an attribute or the z-coordinates in case of 3D types. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="4089">
+        <label>QgsIDWInterpolator</label>
+        <link refid="classQgsIDWInterpolator"/>
+        <childnode refid="4088" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4088">
+        <label>QgsInterpolator</label>
+        <link refid="classQgsInterpolator"/>
+      </node>
+      <node id="4090">
+        <label>QgsTinInterpolator</label>
+        <link refid="classQgsTinInterpolator"/>
+        <childnode refid="4088" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" line="64" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsinterpolator.h" bodystart="63" bodyend="155"/>
+    <listofallmembers>
+      <member refid="classQgsInterpolator_1ae60ffbcd06efca445706092da194e61b" prot="private" virt="non-virtual"><scope>QgsInterpolator</scope><name>addVerticesToCache</name></member>
+      <member refid="classQgsInterpolator_1adef2f968df30d8e85a5bb0be5f45ac6e" prot="protected" virt="non-virtual"><scope>QgsInterpolator</scope><name>cacheBaseData</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa324afd5a619df8958bfff3f2e3289758" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>Canceled</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa7d85115db62d2cbcfc768fabf79a87c0" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>FeatureGeometryError</name></member>
+      <member refid="classQgsInterpolator_1a47e25bc2a4c807f453b84e49c6e2efa5" prot="public" virt="pure-virtual"><scope>QgsInterpolator</scope><name>interpolatePoint</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa7b162519a18fa2dd61b0d5af099365bd" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>InvalidSource</name></member>
+      <member refid="classQgsInterpolator_1af0ee867d9dc40805134bde9765ed6385" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>layerData</name></member>
+      <member refid="classQgsInterpolator_1a411f9dc053ae1bc59ce5ca9c037603eb" prot="protected" virt="non-virtual"><scope>QgsInterpolator</scope><name>mCachedBaseData</name></member>
+      <member refid="classQgsInterpolator_1a941255f6794f230b7d291704a75e6736" prot="protected" virt="non-virtual"><scope>QgsInterpolator</scope><name>mDataIsCached</name></member>
+      <member refid="classQgsInterpolator_1aa7e64d65a55b618efb1ec28dde21bb4a" prot="protected" virt="non-virtual"><scope>QgsInterpolator</scope><name>mLayerData</name></member>
+      <member refid="classQgsInterpolator_1a6b3f437af483abfbb35034732459b879" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>QgsInterpolator</name></member>
+      <member refid="classQgsInterpolator_1a7775de615194dfccde4a3247d0301f47" prot="private" virt="non-virtual"><scope>QgsInterpolator</scope><name>QgsInterpolator</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551fa" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>Result</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa94cd195b74c463cd188f613bc7a496d4" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>SourceBreakLines</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa0c6b723179740b22324d2621da3b229f" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>SourcePoints</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa1fce0ff37a48abdc35379e3eef0bd8e7" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>SourceStructureLines</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2f" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>SourceType</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa8c784e7ce64e090777d53ba05426e497" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>Success</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435a49f995262573144295a46328ef8157ce" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>ValueAttribute</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435a03d7a5a246b14b6847699ca4bc428edc" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>ValueM</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>ValueSource</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435aafd5f05a706024c82dfc82782becc5bb" prot="public" virt="non-virtual"><scope>QgsInterpolator</scope><name>ValueZ</name></member>
+      <member refid="classQgsInterpolator_1aaa9ca49fc1a21fa212817df8a7ab2550" prot="public" virt="virtual"><scope>QgsInterpolator</scope><name>~QgsInterpolator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

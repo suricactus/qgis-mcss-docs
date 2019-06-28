@@ -1,0 +1,1162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsLayoutExporter" kind="class" language="C++" prot="public">
+    <compoundname>QgsLayoutExporter</compoundname>
+    <includes refid="qgslayoutexporter_8h" local="no">qgslayoutexporter.h</includes>
+    <innerclass refid="structQgsLayoutExporter_1_1ImageExportSettings" prot="public">QgsLayoutExporter::ImageExportSettings</innerclass>
+    <innerclass refid="structQgsLayoutExporter_1_1PageExportDetails" prot="public">QgsLayoutExporter::PageExportDetails</innerclass>
+    <innerclass refid="structQgsLayoutExporter_1_1PdfExportSettings" prot="public">QgsLayoutExporter::PdfExportSettings</innerclass>
+    <innerclass refid="structQgsLayoutExporter_1_1PrintExportSettings" prot="public">QgsLayoutExporter::PrintExportSettings</innerclass>
+    <innerclass refid="structQgsLayoutExporter_1_1SvgExportSettings" prot="public">QgsLayoutExporter::SvgExportSettings</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" prot="public" static="no">
+        <name>ExportResult</name>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a4853c344e9d68a1b4a78f1139edd6cdf" prot="public">
+          <name>Success</name>
+          <briefdescription>
+<para>Export was successful. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a0b33a00ff68dee387527356c314d0beb" prot="public">
+          <name>Canceled</name>
+          <briefdescription>
+<para>Export was canceled. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a12a65e8a1556d97c174067196e209a29" prot="public">
+          <name>MemoryError</name>
+          <briefdescription>
+<para>Unable to allocate memory required to export. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a35152063d50c4f23fa7ebb81abb0b040" prot="public">
+          <name>FileError</name>
+          <briefdescription>
+<para>Could not write to destination file, likely due to a lock held by another application. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a2a34bc863a8071fd1798c4c38f0a5169" prot="public">
+          <name>PrintError</name>
+          <briefdescription>
+<para>Could not start printing to destination device. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2ae610830d958793d4eaf2150fcca67bc7" prot="public">
+          <name>SvgLayerError</name>
+          <briefdescription>
+<para>Could not create layered SVG file. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a30edd20ae2252fd69288163529eddc43" prot="public">
+          <name>IteratorError</name>
+          <briefdescription>
+<para>Error iterating over layout. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Result codes for exporting layouts. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="135" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" bodystart="134" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsLayoutExporter_1a31dfdf5376a891a010c7bc5c1b5bb94a" prot="private" static="no" mutable="yes">
+        <type>QString</type>
+        <definition>QString QgsLayoutExporter::mErrorFileName</definition>
+        <argsstring></argsstring>
+        <name>mErrorFileName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="513" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" bodystart="513" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutExporter_1a5d32c903920bcdc2d4912ace68faa845" prot="private" static="no" mutable="no">
+        <type>QPointer&lt; <ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> &gt;</type>
+        <definition>QPointer&lt; QgsLayout &gt; QgsLayoutExporter::mLayout</definition>
+        <argsstring></argsstring>
+        <name>mLayout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="511" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" bodystart="511" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsLayoutExporter_1afcfdc4e8d79d166ed2b883983a9a541d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsLayout</definition>
+        <argsstring></argsstring>
+        <name>TestQgsLayout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="579" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" bodystart="579" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsLayoutExporter_1afd6f1d7d911a40b4b5d738f6b7b22468" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PRIVATE QgsLayoutExporter::QgsLayoutExporter</definition>
+        <argsstring>(QgsLayout *layout)</argsstring>
+        <name>QgsLayoutExporter</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsLayoutExporter" kindref="compound">QgsLayoutExporter</ref>, for the specified <emphasis>layout</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="66" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="129" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a6e2dce0fb8a1d53242eea0061b79fa8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsLayoutExporter::~QgsLayoutExporter</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsLayoutExporter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1ac361fb79f659c1042b3012209950911b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::computeWorldFileParameters</definition>
+        <argsstring>(double &amp;a, double &amp;b, double &amp;c, double &amp;d, double &amp;e, double &amp;f, double dpi=-1) const</argsstring>
+        <name>computeWorldFileParameters</name>
+        <param>
+          <type>double &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Compute world file parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para>Assumes the whole page containing the reference map item will be exported.</para><para>The <emphasis>dpi</emphasis> argument can be set to the actual DPI of exported file, or left as -1 to use the layout&apos;s default DPI. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="491" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1442" bodyend="1459"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a6f9afd4fe9245ed50186d01613275330" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::computeWorldFileParameters</definition>
+        <argsstring>(const QRectF &amp;region, double &amp;a, double &amp;b, double &amp;c, double &amp;d, double &amp;e, double &amp;f, double dpi=-1) const</argsstring>
+        <name>computeWorldFileParameters</name>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Computes the world file parameters for a specified <emphasis>region</emphasis> of the layout. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>dpi</emphasis> argument can be set to the actual DPI of exported file, or left as -1 to use the layout&apos;s default DPI. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="498" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1461" bodyend="1534"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1aca3fb87f6a30e221c78209dc007985a2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsLayoutExporter::errorFile</definition>
+        <argsstring>() const</argsstring>
+        <name>errorFile</name>
+        <briefdescription>
+<para>Returns the file name corresponding to the last error encountered during an export. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="465" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" bodystart="465" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a093075b4a054fd8155267ddd9ab0a211" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>PRIVATE QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToImage</definition>
+        <argsstring>(const QString &amp;filePath, const QgsLayoutExporter::ImageExportSettings &amp;settings)</argsstring>
+        <name>exportToImage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filePath</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1ImageExportSettings" kindref="compound">QgsLayoutExporter::ImageExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Exports the layout to the <emphasis>filePath</emphasis>, using the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the layout is a multi-page layout, then filenames for each page will automatically be generated by appending &quot;_1&quot;, &quot;_2&quot;, etc to the image file&apos;s base name.</para><para>Returns a result code indicating whether the export was successful or an error was encountered. If an error code is returned, <ref refid="classQgsLayoutExporter_1aca3fb87f6a30e221c78209dc007985a2" kindref="member">errorFile()</ref> can be called to determine the filename for the export which encountered the error. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="223" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="327" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a0d5bdecfc7e15618c1d52b3184b53215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToPdf</definition>
+        <argsstring>(const QString &amp;filePath, const QgsLayoutExporter::PdfExportSettings &amp;settings)</argsstring>
+        <name>exportToPdf</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filePath</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1PdfExportSettings" kindref="compound">QgsLayoutExporter::PdfExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Exports the layout as a PDF to the <emphasis>filePath</emphasis>, using the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a result code indicating whether the export was successful or an error was encountered. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="297" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="478" bodyend="523"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a06259d4d89f4ecfc996e07d5c0846203" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToSvg</definition>
+        <argsstring>(const QString &amp;filePath, const QgsLayoutExporter::SvgExportSettings &amp;settings)</argsstring>
+        <name>exportToSvg</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filePath</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1SvgExportSettings" kindref="compound">QgsLayoutExporter::SvgExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Exports the layout as an SVG to the <emphasis>filePath</emphasis>, using the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a result code indicating whether the export was successful or an error was encountered. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="444" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="772" bodyend="973"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a46bb30ba5fd3368de74bbee7b2dd5c00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutExporter::georeferenceOutput</definition>
+        <argsstring>(const QString &amp;file, QgsLayoutItemMap *referenceMap=nullptr, const QRectF &amp;exportRegion=QRectF(), double dpi=-1) const</argsstring>
+        <name>georeferenceOutput</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsLayoutItemMap" kindref="compound">QgsLayoutItemMap</ref> *</type>
+          <declname>referenceMap</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>exportRegion</declname>
+          <defval>QRectF()</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Georeferences a <emphasis>file</emphasis> (image of PDF) exported from the layout. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>referenceMap</emphasis> argument specifies a map item to use for georeferencing. If left as nullptr, the default layout <ref refid="classQgsLayout_1a5838d5539b724909bdb685a9c380374d" kindref="member">QgsLayout::referenceMap()</ref> will be used.</para><para>The <emphasis>exportRegion</emphasis> argument can be set to a valid rectangle to indicate that only part of the layout was exported.</para><para>Similarly, the <emphasis>dpi</emphasis> can be set to the actual DPI of exported file, or left as -1 to use the layout&apos;s default DPI.</para><para>The function will return true if the output was successfully georeferenced.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1ac361fb79f659c1042b3012209950911b" kindref="member">computeWorldFileParameters()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="482" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1366" bodyend="1369"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a450590aecf4d96cce927923522bf24a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+        <definition>QgsLayout * QgsLayoutExporter::layout</definition>
+        <argsstring>() const</argsstring>
+        <name>layout</name>
+        <briefdescription>
+<para>Returns the layout linked to this exporter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="73" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="135" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1aef96faa1001920b686a630f1ca472a98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::print</definition>
+        <argsstring>(QPrinter &amp;printer, const QgsLayoutExporter::PrintExportSettings &amp;settings)</argsstring>
+        <name>print</name>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1PrintExportSettings" kindref="compound">QgsLayoutExporter::PrintExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Prints the layout to a <emphasis>printer</emphasis>, using the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a result code indicating whether the export was successful or an error was encountered. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="362" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="659" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1acc858f1c8aac9c3a7c37f4ea6bb71abd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::renderPage</definition>
+        <argsstring>(QPainter *painter, int page) const</argsstring>
+        <name>renderPage</name>
+        <param>
+          <type>QPainter *</type>
+          <declname>painter</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>page</declname>
+        </param>
+        <briefdescription>
+<para>Renders a full page to a destination <emphasis>painter</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>page</emphasis> argument specifies the page number to render. Page numbers are 0 based, such that the first page in a layout is page 0.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1af4d58cb8ef3db1d24f035d1ecc08381a" kindref="member">renderRegion()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="83" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="140" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a85f1e02cff773d7436e4100fb3068627" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage</type>
+        <definition>QImage QgsLayoutExporter::renderPageToImage</definition>
+        <argsstring>(int page, QSize imageSize=QSize(), double dpi=-1) const</argsstring>
+        <name>renderPageToImage</name>
+        <param>
+          <type>int</type>
+          <declname>page</declname>
+        </param>
+        <param>
+          <type>QSize</type>
+          <declname>imageSize</declname>
+          <defval>QSize()</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Renders a full page to an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>page</emphasis> argument specifies the page number to render. Page numbers are 0 based, such that the first page in a layout is page 0.</para><para>The optional <emphasis>imageSize</emphasis> parameter can specify the target image size, in pixels. It is the caller&apos;s responsibility to ensure that the ratio of the target image size matches the ratio of the corresponding layout page size.</para><para>The <emphasis>dpi</emphasis> parameter is an optional dpi override. Set to -1 to use the default layout print resolution. This parameter has no effect if <emphasis>imageSize</emphasis> is specified.</para><para>Returns the rendered image, or a null QImage if the image does not fit into available memory.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1acc858f1c8aac9c3a7c37f4ea6bb71abd" kindref="member">renderPage()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1a1e80b0706014fd240f82af2d2d45aa8a" kindref="member">renderRegionToImage()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="103" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="163" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1af4d58cb8ef3db1d24f035d1ecc08381a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>PRIVATE void QgsLayoutExporter::renderRegion</definition>
+        <argsstring>(QPainter *painter, const QRectF &amp;region) const</argsstring>
+        <name>renderRegion</name>
+        <param>
+          <type>QPainter *</type>
+          <declname>painter</declname>
+        </param>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>region</declname>
+        </param>
+        <briefdescription>
+<para>Renders a <emphasis>region</emphasis> from the layout to a <emphasis>painter</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method can be used to render sections of pages rather than full pages.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1acc858f1c8aac9c3a7c37f4ea6bb71abd" kindref="member">renderPage()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1a1e80b0706014fd240f82af2d2d45aa8a" kindref="member">renderRegionToImage()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="112" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="230" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a1e80b0706014fd240f82af2d2d45aa8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage</type>
+        <definition>QImage QgsLayoutExporter::renderRegionToImage</definition>
+        <argsstring>(const QRectF &amp;region, QSize imageSize=QSize(), double dpi=-1) const</argsstring>
+        <name>renderRegionToImage</name>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>region</declname>
+        </param>
+        <param>
+          <type>QSize</type>
+          <declname>imageSize</declname>
+          <defval>QSize()</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Renders a <emphasis>region</emphasis> of the layout to an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method can be used to render sections of pages rather than full pages.</para><para>The optional <emphasis>imageSize</emphasis> parameter can specify the target image size, in pixels. It is the caller&apos;s responsibility to ensure that the ratio of the target image size matches the ratio of the specified region of the layout.</para><para>The <emphasis>dpi</emphasis> parameter is an optional dpi override. Set to -1 to use the default layout print resolution. This parameter has no effect if <emphasis>imageSize</emphasis> is specified.</para><para>Returns the rendered image, or a null QImage if the image does not fit into available memory.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1af4d58cb8ef3db1d24f035d1ecc08381a" kindref="member">renderRegion()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1a85f1e02cff773d7436e4100fb3068627" kindref="member">renderPageToImage()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="130" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="250" bodyend="291"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsLayoutExporter_1a19ecf21db3c8089cea4f9ff65a9ac16b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToImage</definition>
+        <argsstring>(QgsAbstractLayoutIterator *iterator, const QString &amp;baseFilePath, const QString &amp;extension, const QgsLayoutExporter::ImageExportSettings &amp;settings, QString &amp;error, QgsFeedback *feedback=nullptr)</argsstring>
+        <name>exportToImage</name>
+        <param>
+          <type><ref refid="classQgsAbstractLayoutIterator" kindref="compound">QgsAbstractLayoutIterator</ref> *</type>
+          <declname>iterator</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>baseFilePath</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>extension</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1ImageExportSettings" kindref="compound">QgsLayoutExporter::ImageExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Exports a layout <emphasis>iterator</emphasis> to raster images, with the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>baseFilePath</emphasis> argument gives a base file path, which is modified by the iterator to obtain file paths for each iterator feature.</para><para>Returns a result code indicating whether the export was successful or an error was encountered. If an error was obtained then <emphasis>error</emphasis> will be set to the error description. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="236" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="430" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a5da9df5b81c7c60e46395f7a6fccc22c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToPdf</definition>
+        <argsstring>(QgsAbstractLayoutIterator *iterator, const QString &amp;fileName, const QgsLayoutExporter::PdfExportSettings &amp;settings, QString &amp;error, QgsFeedback *feedback=nullptr)</argsstring>
+        <name>exportToPdf</name>
+        <param>
+          <type><ref refid="classQgsAbstractLayoutIterator" kindref="compound">QgsAbstractLayoutIterator</ref> *</type>
+          <declname>iterator</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1PdfExportSettings" kindref="compound">QgsLayoutExporter::PdfExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Exports a layout <emphasis>iterator</emphasis> to a single PDF file, with the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>fileName</emphasis> argument gives the destination file name for the output PDF.</para><para>Returns a result code indicating whether the export was successful or an error was encountered. If an error was obtained then <emphasis>error</emphasis> will be set to the error description.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1abc31fe59eaf77f95a32dace5d3709a4c" kindref="member">exportToPdfs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="310" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="525" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1abc31fe59eaf77f95a32dace5d3709a4c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToPdfs</definition>
+        <argsstring>(QgsAbstractLayoutIterator *iterator, const QString &amp;baseFilePath, const QgsLayoutExporter::PdfExportSettings &amp;settings, QString &amp;error, QgsFeedback *feedback=nullptr)</argsstring>
+        <name>exportToPdfs</name>
+        <param>
+          <type><ref refid="classQgsAbstractLayoutIterator" kindref="compound">QgsAbstractLayoutIterator</ref> *</type>
+          <declname>iterator</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>baseFilePath</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1PdfExportSettings" kindref="compound">QgsLayoutExporter::PdfExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Exports a layout <emphasis>iterator</emphasis> to multiple PDF files, with the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>baseFilePath</emphasis> argument gives a base file path, which is modified by the iterator to obtain file paths for each iterator feature.</para><para>Returns a result code indicating whether the export was successful or an error was encountered. If an error was obtained then <emphasis>error</emphasis> will be set to the error description.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1a0d5bdecfc7e15618c1d52b3184b53215" kindref="member">exportToPdf()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="326" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="610" bodyend="657"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a045b4c2b490aabe11fde354517eccc2b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::exportToSvg</definition>
+        <argsstring>(QgsAbstractLayoutIterator *iterator, const QString &amp;baseFilePath, const QgsLayoutExporter::SvgExportSettings &amp;settings, QString &amp;error, QgsFeedback *feedback=nullptr)</argsstring>
+        <name>exportToSvg</name>
+        <param>
+          <type><ref refid="classQgsAbstractLayoutIterator" kindref="compound">QgsAbstractLayoutIterator</ref> *</type>
+          <declname>iterator</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>baseFilePath</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1SvgExportSettings" kindref="compound">QgsLayoutExporter::SvgExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Exports a layout <emphasis>iterator</emphasis> to SVG files, with the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>baseFilePath</emphasis> argument gives a base file path, which is modified by the iterator to obtain file paths for each iterator feature.</para><para>Returns a result code indicating whether the export was successful or an error was encountered. If an error was obtained then <emphasis>error</emphasis> will be set to the error description. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="456" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="975" bodyend="1024"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a16a96ef6248e661fe473a5515ffbd06c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::print</definition>
+        <argsstring>(QgsAbstractLayoutIterator *iterator, QPrinter &amp;printer, const QgsLayoutExporter::PrintExportSettings &amp;settings, QString &amp;error, QgsFeedback *feedback=nullptr)</argsstring>
+        <name>print</name>
+        <param>
+          <type><ref refid="classQgsAbstractLayoutIterator" kindref="compound">QgsAbstractLayoutIterator</ref> *</type>
+          <declname>iterator</declname>
+        </param>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1PrintExportSettings" kindref="compound">QgsLayoutExporter::PrintExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Exports a layout <emphasis>iterator</emphasis> to a <emphasis>printer</emphasis>, with the specified export <emphasis>settings</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a result code indicating whether the export was successful or an error was encountered. If an error was obtained then <emphasis>error</emphasis> will be set to the error description. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="371" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="695" bodyend="770"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsLayoutExporter_1a646a778cb8177b2c52c5af681378055b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsLayoutExporter::generateFileName</definition>
+        <argsstring>(const PageExportDetails &amp;details) const</argsstring>
+        <name>generateFileName</name>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1PageExportDetails" kindref="compound">PageExportDetails</ref> &amp;</type>
+          <declname>details</declname>
+        </param>
+        <briefdescription>
+<para>Generates the file name for a page during export. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses can override this method to customize page file naming. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="507" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1588" bodyend="1598"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsLayoutExporter_1ab282bdf82770726158d1cf729dbb207e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::appendMetadataToSvg</definition>
+        <argsstring>(QDomDocument &amp;svg) const</argsstring>
+        <name>appendMetadataToSvg</name>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>svg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="574" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1201" bodyend="1261"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1aa012b8bd2c5d9ba405e19431b3b8ba30" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; double[]&gt;</type>
+        <definition>std::unique_ptr&lt; double[]&gt; QgsLayoutExporter::computeGeoTransform</definition>
+        <argsstring>(const QgsLayoutItemMap *referenceMap=nullptr, const QRectF &amp;exportRegion=QRectF(), double dpi=-1) const</argsstring>
+        <name>computeGeoTransform</name>
+        <param>
+          <type>const <ref refid="classQgsLayoutItemMap" kindref="compound">QgsLayoutItemMap</ref> *</type>
+          <declname>referenceMap</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>exportRegion</declname>
+          <defval>QRectF()</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Computes a GDAL style geotransform for georeferencing a layout. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>referenceMap</emphasis> argument specifies a map item to use for georeferencing. If left as nullptr, the default layout <ref refid="classQgsLayout_1a5838d5539b724909bdb685a9c380374d" kindref="member">QgsLayout::referenceMap()</ref> will be used.</para><para>The <emphasis>exportRegion</emphasis> argument can be set to a valid rectangle to indicate that only part of the layout was exported.</para><para>Similarly, the <emphasis>dpi</emphasis> can be set to the actual DPI of exported file, or left as -1 to use the layout&apos;s default DPI.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutExporter_1a46bb30ba5fd3368de74bbee7b2dd5c00" kindref="member">georeferenceOutput()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="541" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1263" bodyend="1345"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a3f2a31f1cb5823e5ec8fdaa2ae8ada83" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage</type>
+        <definition>QImage QgsLayoutExporter::createImage</definition>
+        <argsstring>(const ImageExportSettings &amp;settings, int page, QRectF &amp;bounds, bool &amp;skipPage) const</argsstring>
+        <name>createImage</name>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1ImageExportSettings" kindref="compound">ImageExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>page</declname>
+        </param>
+        <param>
+          <type>QRectF &amp;</type>
+          <declname>bounds</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>skipPage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="515" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1536" bodyend="1571"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a9c1da8ecde1b319ffb91c2a7aefa8e9c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutExporter::georeferenceOutputPrivate</definition>
+        <argsstring>(const QString &amp;file, QgsLayoutItemMap *referenceMap=nullptr, const QRectF &amp;exportRegion=QRectF(), double dpi=-1, bool includeGeoreference=true, bool includeMetadata=false) const</argsstring>
+        <name>georeferenceOutputPrivate</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsLayoutItemMap" kindref="compound">QgsLayoutItemMap</ref> *</type>
+          <declname>referenceMap</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>exportRegion</declname>
+          <defval>QRectF()</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeGeoreference</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeMetadata</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="576" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1371" bodyend="1440"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a74c90753e45b1b468f659f2127c2903b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::print</definition>
+        <argsstring>(QPrinter &amp;printer)</argsstring>
+        <name>print</name>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <briefdescription>
+<para>Convenience function that prepares the printer and prints. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="556" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1054" bodyend="1067"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a7bef9ecf0ec5242c0c4a931aa6575c95" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::printPrivate</definition>
+        <argsstring>(QPrinter &amp;printer, QPainter &amp;painter, bool startNewPage=false, double dpi=-1, bool rasterize=false)</argsstring>
+        <name>printPrivate</name>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <param>
+          <type>QPainter &amp;</type>
+          <declname>painter</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>startNewPage</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dpi</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>rasterize</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Print on a preconfigured printer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>printer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QPrinter destination </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>painter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QPainter source </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>startNewPage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to begin the print on a new page </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dpi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to a value &gt; 0 to manually override the layout&apos;s default dpi </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rasterize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to force print as a raster image </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="566" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1069" bodyend="1124"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a33aa5bf7cebcc95f3268a31774296115" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" kindref="member">ExportResult</ref></type>
+        <definition>QgsLayoutExporter::ExportResult QgsLayoutExporter::renderToLayeredSvg</definition>
+        <argsstring>(const SvgExportSettings &amp;settings, double width, double height, int page, const QRectF &amp;bounds, const QString &amp;filename, int svgLayerId, const QString &amp;layerName, QDomDocument &amp;svg, QDomNode &amp;svgDocRoot, bool includeMetadata) const</argsstring>
+        <name>renderToLayeredSvg</name>
+        <param>
+          <type>const <ref refid="structQgsLayoutExporter_1_1SvgExportSettings" kindref="compound">SvgExportSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>page</declname>
+        </param>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>bounds</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>svgLayerId</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerName</declname>
+        </param>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>svg</declname>
+        </param>
+        <param>
+          <type>QDomNode &amp;</type>
+          <declname>svgDocRoot</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeMetadata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="570" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1140" bodyend="1199"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a2d26798ae87c145b4f0aeb3d38ba0bc3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::writeWorldFile</definition>
+        <argsstring>(const QString &amp;fileName, double a, double b, double c, double d, double e, double f) const</argsstring>
+        <name>writeWorldFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Write a world file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="544" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1347" bodyend="1364"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsLayoutExporter_1a5b9222d29ded4a31410a202623784e68" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayoutExporter::firstPageToBeExported</definition>
+        <argsstring>(QgsLayout *layout)</argsstring>
+        <name>firstPageToBeExported</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>Returns the page number of the first page to be exported from the layout, skipping any pages which have been excluded from export. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="521" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1573" bodyend="1586"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1ac8d7523b85556b4bd1bc22023068725b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::preparePrint</definition>
+        <argsstring>(QgsLayout *layout, QPrinter &amp;printer, bool setFirstPageSize=false)</argsstring>
+        <name>preparePrint</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>setFirstPageSize</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="551" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1040" bodyend="1052"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1aa66b954b5b64a1668b4fb76896190736" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::preparePrintAsPdf</definition>
+        <argsstring>(QgsLayout *layout, QPrinter &amp;printer, const QString &amp;filePath)</argsstring>
+        <name>preparePrintAsPdf</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filePath</declname>
+        </param>
+        <briefdescription>
+<para>Prepare a <emphasis>printer</emphasis> for printing a layout as a PDF, to the destination <emphasis>filePath</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="549" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1026" bodyend="1038"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1a9cc17179baf0717c3c9aaa1865ecde65" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutExporter::saveImage</definition>
+        <argsstring>(const QImage &amp;image, const QString &amp;imageFilename, const QString &amp;imageFormat, QgsProject *projectForMetadata)</argsstring>
+        <name>saveImage</name>
+        <param>
+          <type>const QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>imageFilename</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>imageFormat</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>projectForMetadata</declname>
+        </param>
+        <briefdescription>
+<para>Saves an image to a file, possibly using format specific options (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>LZW compression for tiff) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="526" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1600" bodyend="1627"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutExporter_1afc572e036f5a3bd503973478bdefa826" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutExporter::updatePrinterPageSize</definition>
+        <argsstring>(QgsLayout *layout, QPrinter &amp;printer, int page)</argsstring>
+        <name>updatePrinterPageSize</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>QPrinter &amp;</type>
+          <declname>printer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>page</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="568" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.cpp" bodystart="1126" bodyend="1138"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Handles rendering and exports of layouts to various formats. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" line="43" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutexporter.h" bodystart="42" bodyend="581"/>
+    <listofallmembers>
+      <member refid="classQgsLayoutExporter_1ab282bdf82770726158d1cf729dbb207e" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>appendMetadataToSvg</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a0b33a00ff68dee387527356c314d0beb" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>Canceled</name></member>
+      <member refid="classQgsLayoutExporter_1aa012b8bd2c5d9ba405e19431b3b8ba30" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>computeGeoTransform</name></member>
+      <member refid="classQgsLayoutExporter_1ac361fb79f659c1042b3012209950911b" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>computeWorldFileParameters</name></member>
+      <member refid="classQgsLayoutExporter_1a6f9afd4fe9245ed50186d01613275330" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>computeWorldFileParameters</name></member>
+      <member refid="classQgsLayoutExporter_1a3f2a31f1cb5823e5ec8fdaa2ae8ada83" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>createImage</name></member>
+      <member refid="classQgsLayoutExporter_1aca3fb87f6a30e221c78209dc007985a2" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>errorFile</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>ExportResult</name></member>
+      <member refid="classQgsLayoutExporter_1a093075b4a054fd8155267ddd9ab0a211" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToImage</name></member>
+      <member refid="classQgsLayoutExporter_1a19ecf21db3c8089cea4f9ff65a9ac16b" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToImage</name></member>
+      <member refid="classQgsLayoutExporter_1a0d5bdecfc7e15618c1d52b3184b53215" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToPdf</name></member>
+      <member refid="classQgsLayoutExporter_1a5da9df5b81c7c60e46395f7a6fccc22c" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToPdf</name></member>
+      <member refid="classQgsLayoutExporter_1abc31fe59eaf77f95a32dace5d3709a4c" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToPdfs</name></member>
+      <member refid="classQgsLayoutExporter_1a06259d4d89f4ecfc996e07d5c0846203" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToSvg</name></member>
+      <member refid="classQgsLayoutExporter_1a045b4c2b490aabe11fde354517eccc2b" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>exportToSvg</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a35152063d50c4f23fa7ebb81abb0b040" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>FileError</name></member>
+      <member refid="classQgsLayoutExporter_1a5b9222d29ded4a31410a202623784e68" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>firstPageToBeExported</name></member>
+      <member refid="classQgsLayoutExporter_1a646a778cb8177b2c52c5af681378055b" prot="protected" virt="virtual"><scope>QgsLayoutExporter</scope><name>generateFileName</name></member>
+      <member refid="classQgsLayoutExporter_1a46bb30ba5fd3368de74bbee7b2dd5c00" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>georeferenceOutput</name></member>
+      <member refid="classQgsLayoutExporter_1a9c1da8ecde1b319ffb91c2a7aefa8e9c" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>georeferenceOutputPrivate</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a30edd20ae2252fd69288163529eddc43" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>IteratorError</name></member>
+      <member refid="classQgsLayoutExporter_1a450590aecf4d96cce927923522bf24a9" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>layout</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a12a65e8a1556d97c174067196e209a29" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>MemoryError</name></member>
+      <member refid="classQgsLayoutExporter_1a31dfdf5376a891a010c7bc5c1b5bb94a" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>mErrorFileName</name></member>
+      <member refid="classQgsLayoutExporter_1a5d32c903920bcdc2d4912ace68faa845" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>mLayout</name></member>
+      <member refid="classQgsLayoutExporter_1ac8d7523b85556b4bd1bc22023068725b" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>preparePrint</name></member>
+      <member refid="classQgsLayoutExporter_1aa66b954b5b64a1668b4fb76896190736" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>preparePrintAsPdf</name></member>
+      <member refid="classQgsLayoutExporter_1aef96faa1001920b686a630f1ca472a98" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>print</name></member>
+      <member refid="classQgsLayoutExporter_1a16a96ef6248e661fe473a5515ffbd06c" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>print</name></member>
+      <member refid="classQgsLayoutExporter_1a74c90753e45b1b468f659f2127c2903b" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>print</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a2a34bc863a8071fd1798c4c38f0a5169" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>PrintError</name></member>
+      <member refid="classQgsLayoutExporter_1a7bef9ecf0ec5242c0c4a931aa6575c95" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>printPrivate</name></member>
+      <member refid="classQgsLayoutExporter_1afd6f1d7d911a40b4b5d738f6b7b22468" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>QgsLayoutExporter</name></member>
+      <member refid="classQgsLayoutExporter_1acc858f1c8aac9c3a7c37f4ea6bb71abd" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>renderPage</name></member>
+      <member refid="classQgsLayoutExporter_1a85f1e02cff773d7436e4100fb3068627" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>renderPageToImage</name></member>
+      <member refid="classQgsLayoutExporter_1af4d58cb8ef3db1d24f035d1ecc08381a" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>renderRegion</name></member>
+      <member refid="classQgsLayoutExporter_1a1e80b0706014fd240f82af2d2d45aa8a" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>renderRegionToImage</name></member>
+      <member refid="classQgsLayoutExporter_1a33aa5bf7cebcc95f3268a31774296115" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>renderToLayeredSvg</name></member>
+      <member refid="classQgsLayoutExporter_1a9cc17179baf0717c3c9aaa1865ecde65" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>saveImage</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2a4853c344e9d68a1b4a78f1139edd6cdf" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>Success</name></member>
+      <member refid="classQgsLayoutExporter_1a6fdd1a4001d1606d1795f74ce4cffda2ae610830d958793d4eaf2150fcca67bc7" prot="public" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>SvgLayerError</name></member>
+      <member refid="classQgsLayoutExporter_1afcfdc4e8d79d166ed2b883983a9a541d" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>TestQgsLayout</name></member>
+      <member refid="classQgsLayoutExporter_1afc572e036f5a3bd503973478bdefa826" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>updatePrinterPageSize</name></member>
+      <member refid="classQgsLayoutExporter_1a2d26798ae87c145b4f0aeb3d38ba0bc3" prot="private" virt="non-virtual"><scope>QgsLayoutExporter</scope><name>writeWorldFile</name></member>
+      <member refid="classQgsLayoutExporter_1a6e2dce0fb8a1d53242eea0061b79fa8b" prot="public" virt="virtual"><scope>QgsLayoutExporter</scope><name>~QgsLayoutExporter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

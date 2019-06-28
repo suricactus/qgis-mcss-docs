@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsInternalGeometryEngine" kind="class" language="C++" prot="public">
+    <compoundname>QgsInternalGeometryEngine</compoundname>
+    <includes refid="qgsinternalgeometryengine_8h" local="no">qgsinternalgeometryengine.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsInternalGeometryEngine_1a1ed0dc892cd787b95d95604b16939500" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>const QgsAbstractGeometry* QgsInternalGeometryEngine::mGeometry</definition>
+        <argsstring></argsstring>
+        <name>mGeometry</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="152" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1a215106f90638da4aedf319bc1786fe16" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsInternalGeometryEngine::QgsInternalGeometryEngine</definition>
+        <argsstring>(const QgsGeometry &amp;geometry)</argsstring>
+        <name>QgsInternalGeometryEngine</name>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>geometry</declname>
+        </param>
+        <briefdescription>
+<para>The caller is responsible that the geometry is available and unchanged for the whole lifetime of this object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>geometry</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="49" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1ad9524e7b8d1482d11959dbd06f5e95d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::densifyByCount</definition>
+        <argsstring>(int extraNodesPerSegment) const</argsstring>
+        <name>densifyByCount</name>
+        <param>
+          <type>int</type>
+          <declname>extraNodesPerSegment</declname>
+        </param>
+        <briefdescription>
+<para>Densifies the geometry by adding the specified number of extra nodes within each segment of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the geometry has z or m values present then these will be linearly interpolated at the added nodes. Curved geometry types are automatically segmentized by this routine. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="90" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="647" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1aa3decea1cd178d628876e62962236ea0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::densifyByDistance</definition>
+        <argsstring>(double distance) const</argsstring>
+        <name>densifyByDistance</name>
+        <param>
+          <type>double</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Densifies the geometry by adding regularly placed extra nodes inside each segment so that the maximum distance between any two nodes does not exceed the specified <emphasis>distance</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. specifying a distance 3 would cause the segment [0 0] -&gt; [10 0] to be converted to [0 0] -&gt; [2.5 0] -&gt; [5 0] -&gt; [7.5 0] -&gt; [10 0], since 3 extra nodes are required on the segment and spacing these at 2.5 increments allows them to be evenly spaced over the segment. If the geometry has z or m values present then these will be linearly interpolated at the added nodes. Curved geometry types are automatically segmentized by this routine. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="682" bodyend="715"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1a77916e5a892aa74c3e742d93962938a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::extrude</definition>
+        <argsstring>(double x, double y) const</argsstring>
+        <name>extrude</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Will extrude a line or (segmentized) curve by a given offset and return a polygon representation of it. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset in x direction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>offset in y direction </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>an extruded polygon </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="59" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="45" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1a86a345a9844f19f7e51452655ecb7dcb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::orthogonalize</definition>
+        <argsstring>(double tolerance=1.0E-8, int maxIterations=1000, double angleThreshold=15.0) const</argsstring>
+        <name>orthogonalize</name>
+        <param>
+          <type>double</type>
+          <declname>tolerance</declname>
+          <defval>1.0E-8</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxIterations</declname>
+          <defval>1000</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>angleThreshold</declname>
+          <defval>15.0</defval>
+        </param>
+        <briefdescription>
+<para>Attempts to orthogonalize a line or polygon geometry by shifting vertices to make the geometries angles either right angles or flat lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is an iterative algorithm which will loop until either the vertices are within a specified tolerance of right angles or a set number of maximum iterations is reached. The angle threshold parameter specifies how close to a right angle or straight line an angle must be before it is attempted to be straightened. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="80" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="490" bodyend="522"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1a3cd93492ab275db8df7222e03055737d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::poleOfInaccessibility</definition>
+        <argsstring>(double precision, double *distanceFromBoundary=nullptr) const</argsstring>
+        <name>poleOfInaccessibility</name>
+        <param>
+          <type>double</type>
+          <declname>precision</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>distanceFromBoundary</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Calculates the approximate pole of inaccessibility for a surface, which is the most distant internal point from the boundary of the surface. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function uses the &apos;polylabel&apos; algorithm (Vladimir Agafonkin, 2016), which is an iterative approach guaranteed to find the true pole of inaccessibility within a specified tolerance. More precise tolerances require more iterations and will take longer to calculate. Optionally, the distance to the polygon boundary from the pole can be stored. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="70" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="235" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1ab6d4b46a37edacacb61423bd7ddd1dfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::taperedBuffer</definition>
+        <argsstring>(double startWidth, double endWidth, int segments) const</argsstring>
+        <name>taperedBuffer</name>
+        <param>
+          <type>double</type>
+          <declname>startWidth</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>endWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>segments</declname>
+        </param>
+        <briefdescription>
+<para>Calculates a tapered width buffer for a (multi)curve geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>The buffer begins at a width of <emphasis>startWidth</emphasis> at the start of each curve, and ends at a width of <emphasis>endWidth</emphasis>. Note that unlike <ref refid="classQgsGeometry_1ab7302c054a2c5514222b4bd71df71ab8" kindref="member">QgsGeometry::buffer()</ref> methods, <emphasis>startWidth</emphasis> and <emphasis>endWidth</emphasis> are the diameter of the buffer at these points, not the radius.</para><para>The <emphasis>segments</emphasis> argument specifies the number of segments to approximate quarter-circle curves in the buffer.</para><para>Non (multi)curve input geometries will return a null output geometry.</para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="137" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="993" bodyend="1023"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1a8d31eb691f6a9a75c9f008796575bd93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::variableWidthBuffer</definition>
+        <argsstring>(int segments, const std::function&lt; std::unique_ptr&lt; double[] &gt;(const QgsLineString *line) &gt; &amp;widthFunction) const</argsstring>
+        <name>variableWidthBuffer</name>
+        <param>
+          <type>int</type>
+          <declname>segments</declname>
+        </param>
+        <param>
+          <type>const std::function&lt; std::unique_ptr&lt; double[] &gt;(const <ref refid="classQgsLineString" kindref="compound">QgsLineString</ref> *line) &gt; &amp;</type>
+          <declname>widthFunction</declname>
+        </param>
+        <briefdescription>
+<para>Calculates a variable width buffer for a (multi)curve geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>The width of the buffer at each node in the input linestrings is calculated by calling the specified <emphasis>widthFunction</emphasis>, which must return an array of the buffer widths for every node in the line.</para><para>The <emphasis>segments</emphasis> argument specifies the number of segments to approximate quarter-circle curves in the buffer.</para><para>Non (multi)curve input geometries will return a null output geometry.</para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="121" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="888" bodyend="991"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsInternalGeometryEngine_1a770689d2a5583905f64a664b43b34156" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsInternalGeometryEngine::variableWidthBufferByM</definition>
+        <argsstring>(int segments) const</argsstring>
+        <name>variableWidthBufferByM</name>
+        <param>
+          <type>int</type>
+          <declname>segments</declname>
+        </param>
+        <briefdescription>
+<para>Calculates a variable width buffer using the m-values from a (multi)line geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>segments</emphasis> argument specifies the number of segments to approximate quarter-circle curves in the buffer.</para><para>Non (multi)line input geometries will return a null output geometry.</para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="149" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.cpp" bodystart="1025" bodyend="1038"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class offers geometry processing methods. </para>    </briefdescription>
+    <detaileddescription>
+<para>The methods are available via <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref>::[geometryfunction] and therefore this does not need to be accessed directly.</para><para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" line="41" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsinternalgeometryengine.h" bodystart="40" bodyend="153"/>
+    <listofallmembers>
+      <member refid="classQgsInternalGeometryEngine_1ad9524e7b8d1482d11959dbd06f5e95d0" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>densifyByCount</name></member>
+      <member refid="classQgsInternalGeometryEngine_1aa3decea1cd178d628876e62962236ea0" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>densifyByDistance</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a77916e5a892aa74c3e742d93962938a3" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>extrude</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a1ed0dc892cd787b95d95604b16939500" prot="private" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>mGeometry</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a86a345a9844f19f7e51452655ecb7dcb" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>orthogonalize</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a3cd93492ab275db8df7222e03055737d" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>poleOfInaccessibility</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a215106f90638da4aedf319bc1786fe16" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>QgsInternalGeometryEngine</name></member>
+      <member refid="classQgsInternalGeometryEngine_1ab6d4b46a37edacacb61423bd7ddd1dfc" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>taperedBuffer</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a8d31eb691f6a9a75c9f008796575bd93" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>variableWidthBuffer</name></member>
+      <member refid="classQgsInternalGeometryEngine_1a770689d2a5583905f64a664b43b34156" prot="public" virt="non-virtual"><scope>QgsInternalGeometryEngine</scope><name>variableWidthBufferByM</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

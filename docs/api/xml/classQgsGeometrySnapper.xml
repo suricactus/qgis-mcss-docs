@@ -1,0 +1,398 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsGeometrySnapper" kind="class" language="C++" prot="public">
+    <compoundname>QgsGeometrySnapper</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="qgsgeometrysnapper_8h" local="no">qgsgeometrysnapper.h</includes>
+    <innerclass refid="structQgsGeometrySnapper_1_1ProcessFeatureWrapper" prot="private">QgsGeometrySnapper::ProcessFeatureWrapper</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0" prot="public" static="no">
+        <name>SnapMode</name>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a72236b7d3a2263e4796dec65e7bff936" prot="public">
+          <name>PreferNodes</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Prefer to snap to nodes, even when a segment may be closer than a node. New nodes will be inserted to make geometries follow each other exactly when inside allowable tolerance. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0adfa4aa9cdc65961db45f043ea0dc4f74" prot="public">
+          <name>PreferClosest</name>
+          <briefdescription>
+<para>Snap to closest point, regardless of it is a node or a segment. New nodes will be inserted to make geometries follow each other exactly when inside allowable tolerance. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0aecf172191b7b97c772e18c9e01eeef56" prot="public">
+          <name>PreferNodesNoExtraVertices</name>
+          <briefdescription>
+<para>Prefer to snap to nodes, even when a segment may be closer than a node. No new nodes will be inserted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a2ec3805795f807bdaba088bc1cdf5bcd" prot="public">
+          <name>PreferClosestNoExtraVertices</name>
+          <briefdescription>
+<para>Snap to closest point, regardless of it is a node or a segment. No new nodes will be inserted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a4f53fb7733c6876044154afaed121ec2" prot="public">
+          <name>EndPointPreferNodes</name>
+          <briefdescription>
+<para>Only snap start/end points of lines (point features will also be snapped, polygon features will not be modified), prefer to snap to nodes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a06a0456b5ce06bbce299374181c254e5" prot="public">
+          <name>EndPointPreferClosest</name>
+          <briefdescription>
+<para>Only snap start/end points of lines (point features will also be snapped, polygon features will not be modified), snap to closest point. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0ae6f35d2d9704b4291873ac02264c35a3" prot="public">
+          <name>EndPointToEndPoint</name>
+          <briefdescription>
+<para>Only snap the start/end points of lines to other start/end points of lines. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Snapping modes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="47" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="46" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428" prot="private" static="no">
+        <name>PointFlag</name>
+        <enumvalue id="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428af930e7a509360d912705196006234972" prot="private">
+          <name>SnappedToRefNode</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428a7e9f9d849a214263e49d01d66ad48c5d" prot="private">
+          <name>SnappedToRefSegment</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428a4ff02c565fde70f3ab6ba03b32261cda" prot="private">
+          <name>Unsnapped</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="102" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsGeometrySnapper_1ab7731dde0d3c188f4033abe424826dd2" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsSpatialIndex" kindref="compound">QgsSpatialIndex</ref></type>
+        <definition>QgsSpatialIndex QgsGeometrySnapper::mIndex</definition>
+        <argsstring></argsstring>
+        <name>mIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="107" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGeometrySnapper_1a1265a99258adce262caee61dac0b3ea4" prot="private" static="no" mutable="yes">
+        <type>QMutex</type>
+        <definition>QMutex QgsGeometrySnapper::mIndexMutex</definition>
+        <argsstring></argsstring>
+        <name>mIndexMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="108" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGeometrySnapper_1a6f47cfb3cf321a14c816fc37e464c0c6" prot="private" static="no" mutable="no">
+        <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref></type>
+        <definition>QgsFeatureList QgsGeometrySnapper::mInputFeatures</definition>
+        <argsstring></argsstring>
+        <name>mInputFeatures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGeometrySnapper_1a0aea304a3b34e0bcc7579cedb0713249" prot="private" static="no" mutable="yes">
+        <type>QMutex</type>
+        <definition>QMutex QgsGeometrySnapper::mReferenceLayerMutex</definition>
+        <argsstring></argsstring>
+        <name>mReferenceLayerMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="109" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGeometrySnapper_1ae4651e6d07151894ce29c027193b6ae6" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsFeatureSource" kindref="compound">QgsFeatureSource</ref> *</type>
+        <definition>QgsFeatureSource* QgsGeometrySnapper::mReferenceSource</definition>
+        <argsstring></argsstring>
+        <name>mReferenceSource</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsGeometrySnapper_1af1fe1fa76481d687a993e25e8852f9bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsGeometrySnapper::QgsGeometrySnapper</definition>
+        <argsstring>(QgsFeatureSource *referenceSource)</argsstring>
+        <name>QgsGeometrySnapper</name>
+        <param>
+          <type><ref refid="classQgsFeatureSource" kindref="compound">QgsFeatureSource</ref> *</type>
+          <declname>referenceSource</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsGeometrySnapper" kindref="compound">QgsGeometrySnapper</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>A reference feature source which contains geometries to snap to must be set. It is assumed that all geometries snapped using this object will have the same CRS as the reference source (ie, no reprojection is performed). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.cpp" bodystart="457" bodyend="462"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometrySnapper_1a46de19a1bade95328df16cc7141bdb17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref></type>
+        <definition>QgsFeatureList QgsGeometrySnapper::snapFeatures</definition>
+        <argsstring>(const QgsFeatureList &amp;features, double snapTolerance, SnapMode mode=PreferNodes)</argsstring>
+        <name>snapFeatures</name>
+        <param>
+          <type>const <ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref> &amp;</type>
+          <declname>features</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>snapTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0" kindref="member">SnapMode</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a72236b7d3a2263e4796dec65e7bff936" kindref="member">PreferNodes</ref></defval>
+        </param>
+        <briefdescription>
+<para>Snaps a set of features to the reference layer and returns the result. </para>        </briefdescription>
+        <detaileddescription>
+<para>This operation is multithreaded for performance. The <ref refid="classQgsGeometrySnapper_1a0d40b046872ca0cfb55419f1141bc255" kindref="member">featureSnapped()</ref> signal will be emitted each time a feature is processed. The snap tolerance is specified in the layer units for the reference layer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="76" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.cpp" bodystart="464" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometrySnapper_1a64fb10a3219ed6ba4fb1fd630007c969" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsGeometrySnapper::snapGeometry</definition>
+        <argsstring>(const QgsGeometry &amp;geometry, double snapTolerance, SnapMode mode=PreferNodes) const</argsstring>
+        <name>snapGeometry</name>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>geometry</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>snapTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0" kindref="member">SnapMode</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a72236b7d3a2263e4796dec65e7bff936" kindref="member">PreferNodes</ref></defval>
+        </param>
+        <briefdescription>
+<para>Snaps a geometry to the reference layer and returns the result. </para>        </briefdescription>
+        <detaileddescription>
+<para>The geometry must be in the same CRS as the reference layer, and must have the same type as the reference layer geometry. The snap tolerance is specified in the layer units for the reference layer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="69" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.cpp" bodystart="478" bodyend="500"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsGeometrySnapper_1a8037dcef9494b27a43f8e1450e4f85a1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsGeometrySnapper::snapGeometry</definition>
+        <argsstring>(const QgsGeometry &amp;geometry, double snapTolerance, const QList&lt; QgsGeometry &gt; &amp;referenceGeometries, SnapMode mode=PreferNodes)</argsstring>
+        <name>snapGeometry</name>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>geometry</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>snapTolerance</declname>
+        </param>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &gt; &amp;</type>
+          <declname>referenceGeometries</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0" kindref="member">SnapMode</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a72236b7d3a2263e4796dec65e7bff936" kindref="member">PreferNodes</ref></defval>
+        </param>
+        <briefdescription>
+<para>Snaps a single geometry against a list of reference geometries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.cpp" bodystart="502" bodyend="715"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsGeometrySnapper_1a0d40b046872ca0cfb55419f1141bc255" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGeometrySnapper::featureSnapped</definition>
+        <argsstring>()</argsstring>
+        <name>featureSnapped</name>
+        <briefdescription>
+<para>Emitted each time a feature has been processed when calling <ref refid="classQgsGeometrySnapper_1a46de19a1bade95328df16cc7141bdb17" kindref="member">snapFeatures()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="86" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsGeometrySnapper_1ae6c90910eb2eb22b4b767a1a18e65ad1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGeometrySnapper::processFeature</definition>
+        <argsstring>(QgsFeature &amp;feature, double snapTolerance, SnapMode mode)</argsstring>
+        <name>processFeature</name>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>snapTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0" kindref="member">SnapMode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.cpp" bodystart="471" bodyend="476"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsGeometrySnapper_1a9fa7617e67db789ec1f070485fa1e64d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGeometrySnapper::polyLineSize</definition>
+        <argsstring>(const QgsAbstractGeometry *geom, int iPart, int iRing)</argsstring>
+        <name>polyLineSize</name>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>geom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iPart</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iRing</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="113" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.cpp" bodystart="717" bodyend="730"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classQgsGeometrySnapper" kindref="compound">QgsGeometrySnapper</ref> allows a geometry to be snapped to the geometries within a different reference layer. </para>    </briefdescription>
+    <detaileddescription>
+<para>Vertices in the geometries will be modified to match the reference layer features within a specified snap tolerance. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3672">
+        <label>QgsGeometrySnapper</label>
+        <link refid="classQgsGeometrySnapper"/>
+        <childnode refid="3673" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3673">
+        <label>QObject</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3674">
+        <label>QgsGeometrySnapper</label>
+        <link refid="classQgsGeometrySnapper"/>
+        <childnode refid="3675" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3675">
+        <label>QObject</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" line="40" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/qgsgeometrysnapper.h" bodystart="39" bodyend="115"/>
+    <listofallmembers>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a06a0456b5ce06bbce299374181c254e5" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>EndPointPreferClosest</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a4f53fb7733c6876044154afaed121ec2" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>EndPointPreferNodes</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0ae6f35d2d9704b4291873ac02264c35a3" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>EndPointToEndPoint</name></member>
+      <member refid="classQgsGeometrySnapper_1a0d40b046872ca0cfb55419f1141bc255" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>featureSnapped</name></member>
+      <member refid="classQgsGeometrySnapper_1ab7731dde0d3c188f4033abe424826dd2" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>mIndex</name></member>
+      <member refid="classQgsGeometrySnapper_1a1265a99258adce262caee61dac0b3ea4" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>mIndexMutex</name></member>
+      <member refid="classQgsGeometrySnapper_1a6f47cfb3cf321a14c816fc37e464c0c6" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>mInputFeatures</name></member>
+      <member refid="classQgsGeometrySnapper_1a0aea304a3b34e0bcc7579cedb0713249" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>mReferenceLayerMutex</name></member>
+      <member refid="classQgsGeometrySnapper_1ae4651e6d07151894ce29c027193b6ae6" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>mReferenceSource</name></member>
+      <member refid="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>PointFlag</name></member>
+      <member refid="classQgsGeometrySnapper_1a9fa7617e67db789ec1f070485fa1e64d" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>polyLineSize</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0adfa4aa9cdc65961db45f043ea0dc4f74" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>PreferClosest</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a2ec3805795f807bdaba088bc1cdf5bcd" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>PreferClosestNoExtraVertices</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0a72236b7d3a2263e4796dec65e7bff936" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>PreferNodes</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0aecf172191b7b97c772e18c9e01eeef56" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>PreferNodesNoExtraVertices</name></member>
+      <member refid="classQgsGeometrySnapper_1ae6c90910eb2eb22b4b767a1a18e65ad1" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>processFeature</name></member>
+      <member refid="classQgsGeometrySnapper_1af1fe1fa76481d687a993e25e8852f9bd" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>QgsGeometrySnapper</name></member>
+      <member refid="classQgsGeometrySnapper_1a46de19a1bade95328df16cc7141bdb17" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>snapFeatures</name></member>
+      <member refid="classQgsGeometrySnapper_1a64fb10a3219ed6ba4fb1fd630007c969" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>snapGeometry</name></member>
+      <member refid="classQgsGeometrySnapper_1a8037dcef9494b27a43f8e1450e4f85a1" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>snapGeometry</name></member>
+      <member refid="classQgsGeometrySnapper_1a9e178eb0bcf4d6101b057930fc864ea0" prot="public" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>SnapMode</name></member>
+      <member refid="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428af930e7a509360d912705196006234972" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>SnappedToRefNode</name></member>
+      <member refid="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428a7e9f9d849a214263e49d01d66ad48c5d" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>SnappedToRefSegment</name></member>
+      <member refid="classQgsGeometrySnapper_1aa5118df11edd453e2f61d41981fcb428a4ff02c565fde70f3ab6ba03b32261cda" prot="private" virt="non-virtual"><scope>QgsGeometrySnapper</scope><name>Unsnapped</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

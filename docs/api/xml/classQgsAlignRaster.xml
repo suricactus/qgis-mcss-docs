@@ -1,0 +1,828 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsAlignRaster" kind="class" language="C++" prot="public">
+    <compoundname>QgsAlignRaster</compoundname>
+    <includes refid="qgsalignraster_8h" local="no">qgsalignraster.h</includes>
+    <innerclass refid="structQgsAlignRaster_1_1Item" prot="public">QgsAlignRaster::Item</innerclass>
+    <innerclass refid="structQgsAlignRaster_1_1ProgressHandler" prot="public">QgsAlignRaster::ProgressHandler</innerclass>
+    <innerclass refid="structQgsAlignRaster_1_1RasterInfo" prot="public">QgsAlignRaster::RasterInfo</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classQgsAlignRaster_1a213424facf87d3666ce42057f84a33fc" prot="public" static="no">
+        <type>QList&lt; <ref refid="structQgsAlignRaster_1_1Item" kindref="compound">QgsAlignRaster::Item</ref> &gt;</type>
+        <definition>typedef QList&lt;QgsAlignRaster::Item&gt; QgsAlignRaster::List</definition>
+        <argsstring></argsstring>
+        <name>List</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="154" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163d" prot="public" static="no">
+        <name>ResampleAlg</name>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da1b12dc25dffe63ed8ffc0c179326e499" prot="public">
+          <name>RA_NearestNeighbour</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Nearest neighbour (select on one input pixel) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da9e6d9d1ee0f2544e9fa50412332a4894" prot="public">
+          <name>RA_Bilinear</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Bilinear (2x2 kernel) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da25e0478bac376ceaea9b987ef4e263c5" prot="public">
+          <name>RA_Cubic</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Cubic Convolution Approximation (4x4 kernel) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da2057eb2067f0f732af65c4fd2885151f" prot="public">
+          <name>RA_CubicSpline</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Cubic B-Spline Approximation (4x4 kernel) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163daf07c4c3291500719b464d7635f08ee80" prot="public">
+          <name>RA_Lanczos</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Lanczos windowed sinc interpolation (6x6 kernel) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da49196c49cb41f46d3578dfd44a87f629" prot="public">
+          <name>RA_Average</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Average (computes the average of all non-NODATA contributing pixels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da3b903288b33d4962d57de496095c3fe8" prot="public">
+          <name>RA_Mode</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Mode (selects the value which appears most often of all the sampled points) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da62b4b6a7f2758bc143c42cda5e263699" prot="public">
+          <name>RA_Max</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+<para>Maximum (selects the maximum of all non-NODATA contributing pixels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da97c3561c87809df2878a52666e6c4663" prot="public">
+          <name>RA_Min</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+<para>Minimum (selects the minimum of all non-NODATA contributing pixels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da93275dd4c509502da0374fab52006372" prot="public">
+          <name>RA_Median</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+<para>Median (selects the median of all non-NODATA contributing pixels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da2fb24423bd21bed2a271ed3ef66cc87b" prot="public">
+          <name>RA_Q1</name>
+          <initializer>= 11</initializer>
+          <briefdescription>
+<para>First quartile (selects the first quartile of all non-NODATA contributing pixels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da78a2a6568b56c6c2390ae2ca46a84b86" prot="public">
+          <name>RA_Q3</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+<para>Third quartile (selects the third quartile of all non-NODATA contributing pixels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Resampling algorithm to be used (equivalent to GDAL&apos;s enum GDALResampleAlg) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>RA_Max, RA_Min, RA_Median, RA_Q1 and RA_Q3 are available on GDAL &gt;= 2.0 builds only </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="114" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="113" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsAlignRaster_1a9f4bae80569f722c7e226165b8c928f0" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsAlignRaster::mCellSizeX</definition>
+        <argsstring></argsstring>
+        <name>mCellSizeX</name>
+        <briefdescription>
+<para>Destination cell size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="292" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1af5f32b2a2c9350facaccdbf0f88cf1ed" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsAlignRaster::mCellSizeY</definition>
+        <argsstring></argsstring>
+        <name>mCellSizeY</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="292" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a5dfad15cfb7ad819847fbd3d466f0550" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsAlignRaster::mClipExtent[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>mClipExtent</name>
+        <briefdescription>
+<para>Optional clip extent: sets &quot;requested area&quot; which be extended to fit the raster grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Clipping not done if all coords are zeroes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="300" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a7d12677be29f329f4258b1cc65c0e171" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsAlignRaster::mCrsWkt</definition>
+        <argsstring></argsstring>
+        <name>mCrsWkt</name>
+        <briefdescription>
+<para>Destination CRS - stored in well-known text (WKT) format. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="290" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1ae618c591fe961fa2edfef38a46d25703" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsAlignRaster::mErrorMessage</definition>
+        <argsstring></argsstring>
+        <name>mErrorMessage</name>
+        <briefdescription>
+<para>Last error message from <ref refid="classQgsAlignRaster_1a5ac33fb057b5ec446f261f1bba55e902" kindref="member">run()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="284" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1aad66d57b593a9512d9b31e023d76a3ad" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsAlignRaster::mGeoTransform[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>mGeoTransform</name>
+        <briefdescription>
+<para>Computed geo-transform. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="305" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a2073d68e8fa31d53e9b7d20dec2ea415" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsAlignRaster::mGridOffsetX</definition>
+        <argsstring></argsstring>
+        <name>mGridOffsetX</name>
+        <briefdescription>
+<para>Destination grid offset - expected to be in interval &lt;0,cellsize) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="294" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a953e4aec9d896f1fae30b5453049165c" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsAlignRaster::mGridOffsetY</definition>
+        <argsstring></argsstring>
+        <name>mGridOffsetY</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="294" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a2f6f86a7c19e4317f0077b4256926dda" prot="protected" static="no" mutable="no">
+        <type><ref refid="structQgsAlignRaster_1_1ProgressHandler" kindref="compound">ProgressHandler</ref> *</type>
+        <definition>ProgressHandler* QgsAlignRaster::mProgressHandler</definition>
+        <argsstring></argsstring>
+        <name>mProgressHandler</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Object that facilitates reporting of progress / cancelation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="281" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a6402ecd156b78937754a0e5f2bb68b0d" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsAlignRaster_1a213424facf87d3666ce42057f84a33fc" kindref="member">List</ref></type>
+        <definition>List QgsAlignRaster::mRasters</definition>
+        <argsstring></argsstring>
+        <name>mRasters</name>
+        <briefdescription>
+<para>List of rasters to be aligned (with their output files and other options) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="287" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="287" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a7ebaa6294d52662606ee8fcfc000479f" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsAlignRaster::mXSize</definition>
+        <argsstring></argsstring>
+        <name>mXSize</name>
+        <briefdescription>
+<para>Computed raster grid width. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="307" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAlignRaster_1a05028ade971fee6c763beb55345ac338" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsAlignRaster::mYSize</definition>
+        <argsstring></argsstring>
+        <name>mYSize</name>
+        <briefdescription>
+<para>Computed raster grid height. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="310" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsAlignRaster_1af1e81070c730933e10d298473e426ab2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsAlignRaster::QgsAlignRaster</definition>
+        <argsstring>()</argsstring>
+        <name>QgsAlignRaster</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="50" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="118" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a2a2781f3b18b15610de23cf02f9720c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsAlignRaster::alignedRasterExtent</definition>
+        <argsstring>() const</argsstring>
+        <name>alignedRasterExtent</name>
+        <briefdescription>
+<para>Returns the expected extent of the resulting aligned raster. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>first need to run <ref refid="classQgsAlignRaster_1a95688733610b969c7e30ea742b910e16" kindref="member">checkInputParameters()</ref> which returns with success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="248" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="350" bodyend="353"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1ad80705be4841c8aa20519429c9138b8d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QSize</type>
+        <definition>QSize QgsAlignRaster::alignedRasterSize</definition>
+        <argsstring>() const</argsstring>
+        <name>alignedRasterSize</name>
+        <briefdescription>
+<para>Returns the expected size of the resulting aligned raster. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>first need to run <ref refid="classQgsAlignRaster_1a95688733610b969c7e30ea742b910e16" kindref="member">checkInputParameters()</ref> which returns with success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="242" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="345" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a08e3e138ffd23e3ae06c57d49ab0df33" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QSizeF</type>
+        <definition>QSizeF QgsAlignRaster::cellSize</definition>
+        <argsstring>() const</argsstring>
+        <name>cellSize</name>
+        <briefdescription>
+<para>Gets output cell size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="188" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="188" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a95688733610b969c7e30ea742b910e16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAlignRaster::checkInputParameters</definition>
+        <argsstring>()</argsstring>
+        <name>checkInputParameters</name>
+        <briefdescription>
+<para>Determine destination extent from the input rasters and calculate derived values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on success, sets error on error (see <ref refid="classQgsAlignRaster_1abecb96cf6ad122ef93aef6331af0dabe" kindref="member">errorMessage()</ref>) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="236" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="237" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a13afd2f14a579f7038382f02ed748b61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsAlignRaster::clipExtent</definition>
+        <argsstring>() const</argsstring>
+        <name>clipExtent</name>
+        <briefdescription>
+<para>Gets clipping extent (region of interest). </para>        </briefdescription>
+        <detaileddescription>
+<para>No extra clipping is done if the rectangle is null </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="211" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="145" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a8a23c50b9601b739e183a6798e6c5c5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsAlignRaster::destinationCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationCrs</name>
+        <briefdescription>
+<para>Gets the output CRS in WKT format. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="193" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="193" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a00f2ed3c20118ccadbb74fc15e01f032" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::dump</definition>
+        <argsstring>() const</argsstring>
+        <name>dump</name>
+        <briefdescription>
+<para>write contents of the object to standard error stream - for debugging </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="263" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="375" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1abecb96cf6ad122ef93aef6331af0dabe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsAlignRaster::errorMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>errorMessage</name>
+        <briefdescription>
+<para>Returns the error from a previous <ref refid="classQgsAlignRaster_1a5ac33fb057b5ec446f261f1bba55e902" kindref="member">run()</ref> call. </para>        </briefdescription>
+        <detaileddescription>
+<para>Error message is empty if <ref refid="classQgsAlignRaster_1a5ac33fb057b5ec446f261f1bba55e902" kindref="member">run()</ref> succeeded (returned true) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="260" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a1fdd835f2e81293f2da4ed61cfece614" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QPointF</type>
+        <definition>QPointF QgsAlignRaster::gridOffset</definition>
+        <argsstring>() const</argsstring>
+        <name>gridOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="181" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="181" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a942fa895189fbbd3b5b9b7912789ca24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structQgsAlignRaster_1_1ProgressHandler" kindref="compound">ProgressHandler</ref> *</type>
+        <definition>ProgressHandler* QgsAlignRaster::progressHandler</definition>
+        <argsstring>() const</argsstring>
+        <name>progressHandler</name>
+        <briefdescription>
+<para>Gets associated progress handler. May be nullptr (default) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a7b55c1a5a1b79e91a5066372b651e7b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsAlignRaster_1a213424facf87d3666ce42057f84a33fc" kindref="member">List</ref></type>
+        <definition>List QgsAlignRaster::rasters</definition>
+        <argsstring>() const</argsstring>
+        <name>rasters</name>
+        <briefdescription>
+<para>Gets list of rasters that will be aligned. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="178" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="178" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a5ac33fb057b5ec446f261f1bba55e902" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAlignRaster::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <briefdescription>
+<para>Run the alignment process. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on success, sets error on error (see <ref refid="classQgsAlignRaster_1abecb96cf6ad122ef93aef6331af0dabe" kindref="member">errorMessage()</ref>) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="254" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="356" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1ad8c291ec9b188fb1bf14b5d058cca772" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setCellSize</definition>
+        <argsstring>(double x, double y)</argsstring>
+        <name>setCellSize</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Sets output cell size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="184" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="184" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a5ff4322c8b53eda563f9246782751193" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setCellSize</definition>
+        <argsstring>(QSizeF size)</argsstring>
+        <name>setCellSize</name>
+        <param>
+          <type>QSizeF</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Sets output cell size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="186" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="186" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a7e302de1c549c41bd34fd1e567244547" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setClipExtent</definition>
+        <argsstring>(double xmin, double ymin, double xmax, double ymax)</argsstring>
+        <name>setClipExtent</name>
+        <param>
+          <type>double</type>
+          <declname>xmin</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ymin</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>xmax</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ymax</declname>
+        </param>
+        <briefdescription>
+<para>Configure clipping extent (region of interest). </para>        </briefdescription>
+        <detaileddescription>
+<para>No extra clipping is done if the rectangle is null </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="199" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="131" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a1146da45c04fa22a784e388663e963e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setClipExtent</definition>
+        <argsstring>(const QgsRectangle &amp;extent)</argsstring>
+        <name>setClipExtent</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>extent</declname>
+        </param>
+        <briefdescription>
+<para>Configure clipping extent (region of interest). </para>        </briefdescription>
+        <detaileddescription>
+<para>No extra clipping is done if the rectangle is null </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="205" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="139" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a68182466c2774e009b696cd7e3b8c91e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setDestinationCrs</definition>
+        <argsstring>(const QString &amp;crsWkt)</argsstring>
+        <name>setDestinationCrs</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>crsWkt</declname>
+        </param>
+        <briefdescription>
+<para>Sets the output CRS in WKT format. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="191" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="191" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a779865f71c0197136eea30c5c0773fa8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setGridOffset</definition>
+        <argsstring>(QPointF offset)</argsstring>
+        <name>setGridOffset</name>
+        <param>
+          <type>QPointF</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="180" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a06fbbf040500607b719d84a826ab5050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAlignRaster::setParametersFromRaster</definition>
+        <argsstring>(const RasterInfo &amp;rasterInfo, const QString &amp;customCRSWkt=QString(), QSizeF customCellSize=QSizeF(), QPointF customGridOffset=QPointF(-1, -1))</argsstring>
+        <name>setParametersFromRaster</name>
+        <param>
+          <type>const <ref refid="structQgsAlignRaster_1_1RasterInfo" kindref="compound">RasterInfo</ref> &amp;</type>
+          <declname>rasterInfo</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>customCRSWkt</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>QSizeF</type>
+          <declname>customCellSize</declname>
+          <defval>QSizeF()</defval>
+        </param>
+        <param>
+          <type>QPointF</type>
+          <declname>customGridOffset</declname>
+          <defval>QPointF(-1, -1)</defval>
+        </param>
+        <briefdescription>
+<para>Set destination CRS, cell size and grid offset from a raster file. </para>        </briefdescription>
+        <detaileddescription>
+<para>The user may provide custom values for some of the parameters - in such case only the remaining parameters are calculated.</para><para>If default CRS is used, the parameters are set according to the raster file&apos;s geo-transform. If a custom CRS is provided, suggested reprojection is calculated first (using GDAL) in order to determine suitable defaults for cell size and grid offset.</para><para><simplesect kind="return"><para>true on success (may fail if it is not possible to reproject raster to given CRS) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="224" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="157" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a1a219601c011984f95d066849ab3c716" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAlignRaster::setParametersFromRaster</definition>
+        <argsstring>(const QString &amp;filename, const QString &amp;customCRSWkt=QString(), QSizeF customCellSize=QSizeF(), QPointF customGridOffset=QPointF(-1, -1))</argsstring>
+        <name>setParametersFromRaster</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>customCRSWkt</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>QSizeF</type>
+          <declname>customCellSize</declname>
+          <defval>QSizeF()</defval>
+        </param>
+        <param>
+          <type>QPointF</type>
+          <declname>customGridOffset</declname>
+          <defval>QPointF(-1, -1)</defval>
+        </param>
+        <briefdescription>
+<para>Overridden variant for convenience, taking filename instead <ref refid="structQgsAlignRaster_1_1RasterInfo" kindref="compound">RasterInfo</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>See the other variant for details. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="230" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1aaa57b6a97e64a71316dc6f8996408308" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setProgressHandler</definition>
+        <argsstring>(ProgressHandler *progressHandler)</argsstring>
+        <name>setProgressHandler</name>
+        <param>
+          <type><ref refid="structQgsAlignRaster_1_1ProgressHandler" kindref="compound">ProgressHandler</ref> *</type>
+          <declname>progressHandler</declname>
+        </param>
+        <briefdescription>
+<para>Assign a progress handler instance. Does not take ownership. nullptr can be passed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1acd4c5f9332e9b5b5c7be25fbff8b0eee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAlignRaster::setRasters</definition>
+        <argsstring>(const List &amp;list)</argsstring>
+        <name>setRasters</name>
+        <param>
+          <type>const <ref refid="classQgsAlignRaster_1a213424facf87d3666ce42057f84a33fc" kindref="member">List</ref> &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Sets list of rasters that will be aligned. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="176" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="176" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAlignRaster_1a874a3631543a4215161df0db175d62ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsAlignRaster::suggestedReferenceLayer</definition>
+        <argsstring>() const</argsstring>
+        <name>suggestedReferenceLayer</name>
+        <briefdescription>
+<para>Returns the index of the layer which has smallest cell size (returns -1 on error) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="266" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="388" bodyend="416"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsAlignRaster_1a75b775738b3893de2dd0914dbf8d7ca1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAlignRaster::createAndWarp</definition>
+        <argsstring>(const Item &amp;raster)</argsstring>
+        <name>createAndWarp</name>
+        <param>
+          <type>const <ref refid="structQgsAlignRaster_1_1Item" kindref="compound">Item</ref> &amp;</type>
+          <declname>raster</declname>
+        </param>
+        <briefdescription>
+<para>Internal function for processing of one raster (1. create output, 2. do the alignment) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="271" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="419" bodyend="508"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classQgsAlignRaster_1ad2cbf0ad7cb52f512b63fcec17fc74c7" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAlignRaster::suggestedWarpOutput</definition>
+        <argsstring>(const RasterInfo &amp;info, const QString &amp;destWkt, QSizeF *cellSize=nullptr, QPointF *gridOffset=nullptr, QgsRectangle *rect=nullptr)</argsstring>
+        <name>suggestedWarpOutput</name>
+        <param>
+          <type>const <ref refid="structQgsAlignRaster_1_1RasterInfo" kindref="compound">RasterInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>destWkt</declname>
+        </param>
+        <param>
+          <type>QSizeF *</type>
+          <declname>cellSize</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QPointF *</type>
+          <declname>gridOffset</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> *</type>
+          <declname>rect</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Determine suggested output of raster warp to a different CRS. Returns true on success. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="274" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.cpp" bodystart="510" bodyend="543"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classQgsAlignRaster" kindref="compound">QgsAlignRaster</ref> takes one or more raster layers and warps (resamples) them so they have the same: </para>    </briefdescription>
+    <detaileddescription>
+<para><itemizedlist>
+<listitem><para>coordinate reference system</para></listitem><listitem><para>cell size and raster size</para></listitem><listitem><para>offset of the raster grid</para></listitem></itemizedlist>
+</para><para><simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="1122">
+        <label>QgsAlignRaster</label>
+        <link refid="classQgsAlignRaster"/>
+        <childnode refid="1123" relation="usage">
+          <edgelabel>mProgressHandler</edgelabel>
+        </childnode>
+      </node>
+      <node id="1123">
+        <label>QgsAlignRaster::ProgressHandler</label>
+        <link refid="structQgsAlignRaster_1_1ProgressHandler"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" line="44" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsalignraster.h" bodystart="43" bodyend="312"/>
+    <listofallmembers>
+      <member refid="classQgsAlignRaster_1a2a2781f3b18b15610de23cf02f9720c7" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>alignedRasterExtent</name></member>
+      <member refid="classQgsAlignRaster_1ad80705be4841c8aa20519429c9138b8d" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>alignedRasterSize</name></member>
+      <member refid="classQgsAlignRaster_1a08e3e138ffd23e3ae06c57d49ab0df33" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>cellSize</name></member>
+      <member refid="classQgsAlignRaster_1a95688733610b969c7e30ea742b910e16" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>checkInputParameters</name></member>
+      <member refid="classQgsAlignRaster_1a13afd2f14a579f7038382f02ed748b61" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>clipExtent</name></member>
+      <member refid="classQgsAlignRaster_1a75b775738b3893de2dd0914dbf8d7ca1" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>createAndWarp</name></member>
+      <member refid="classQgsAlignRaster_1a8a23c50b9601b739e183a6798e6c5c5e" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>destinationCrs</name></member>
+      <member refid="classQgsAlignRaster_1a00f2ed3c20118ccadbb74fc15e01f032" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>dump</name></member>
+      <member refid="classQgsAlignRaster_1abecb96cf6ad122ef93aef6331af0dabe" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>errorMessage</name></member>
+      <member refid="classQgsAlignRaster_1a1fdd835f2e81293f2da4ed61cfece614" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>gridOffset</name></member>
+      <member refid="classQgsAlignRaster_1a213424facf87d3666ce42057f84a33fc" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>List</name></member>
+      <member refid="classQgsAlignRaster_1a9f4bae80569f722c7e226165b8c928f0" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mCellSizeX</name></member>
+      <member refid="classQgsAlignRaster_1af5f32b2a2c9350facaccdbf0f88cf1ed" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mCellSizeY</name></member>
+      <member refid="classQgsAlignRaster_1a5dfad15cfb7ad819847fbd3d466f0550" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mClipExtent</name></member>
+      <member refid="classQgsAlignRaster_1a7d12677be29f329f4258b1cc65c0e171" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mCrsWkt</name></member>
+      <member refid="classQgsAlignRaster_1ae618c591fe961fa2edfef38a46d25703" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mErrorMessage</name></member>
+      <member refid="classQgsAlignRaster_1aad66d57b593a9512d9b31e023d76a3ad" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mGeoTransform</name></member>
+      <member refid="classQgsAlignRaster_1a2073d68e8fa31d53e9b7d20dec2ea415" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mGridOffsetX</name></member>
+      <member refid="classQgsAlignRaster_1a953e4aec9d896f1fae30b5453049165c" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mGridOffsetY</name></member>
+      <member refid="classQgsAlignRaster_1a2f6f86a7c19e4317f0077b4256926dda" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mProgressHandler</name></member>
+      <member refid="classQgsAlignRaster_1a6402ecd156b78937754a0e5f2bb68b0d" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mRasters</name></member>
+      <member refid="classQgsAlignRaster_1a7ebaa6294d52662606ee8fcfc000479f" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mXSize</name></member>
+      <member refid="classQgsAlignRaster_1a05028ade971fee6c763beb55345ac338" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>mYSize</name></member>
+      <member refid="classQgsAlignRaster_1a942fa895189fbbd3b5b9b7912789ca24" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>progressHandler</name></member>
+      <member refid="classQgsAlignRaster_1af1e81070c730933e10d298473e426ab2" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>QgsAlignRaster</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da49196c49cb41f46d3578dfd44a87f629" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Average</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da9e6d9d1ee0f2544e9fa50412332a4894" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Bilinear</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da25e0478bac376ceaea9b987ef4e263c5" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Cubic</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da2057eb2067f0f732af65c4fd2885151f" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_CubicSpline</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163daf07c4c3291500719b464d7635f08ee80" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Lanczos</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da62b4b6a7f2758bc143c42cda5e263699" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Max</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da93275dd4c509502da0374fab52006372" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Median</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da97c3561c87809df2878a52666e6c4663" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Min</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da3b903288b33d4962d57de496095c3fe8" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Mode</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da1b12dc25dffe63ed8ffc0c179326e499" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_NearestNeighbour</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da2fb24423bd21bed2a271ed3ef66cc87b" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Q1</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163da78a2a6568b56c6c2390ae2ca46a84b86" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>RA_Q3</name></member>
+      <member refid="classQgsAlignRaster_1a7b55c1a5a1b79e91a5066372b651e7b7" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>rasters</name></member>
+      <member refid="classQgsAlignRaster_1af40cecf7d70c33dda90b7c3f005b163d" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>ResampleAlg</name></member>
+      <member refid="classQgsAlignRaster_1a5ac33fb057b5ec446f261f1bba55e902" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>run</name></member>
+      <member refid="classQgsAlignRaster_1ad8c291ec9b188fb1bf14b5d058cca772" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setCellSize</name></member>
+      <member refid="classQgsAlignRaster_1a5ff4322c8b53eda563f9246782751193" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setCellSize</name></member>
+      <member refid="classQgsAlignRaster_1a7e302de1c549c41bd34fd1e567244547" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setClipExtent</name></member>
+      <member refid="classQgsAlignRaster_1a1146da45c04fa22a784e388663e963e9" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setClipExtent</name></member>
+      <member refid="classQgsAlignRaster_1a68182466c2774e009b696cd7e3b8c91e" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setDestinationCrs</name></member>
+      <member refid="classQgsAlignRaster_1a779865f71c0197136eea30c5c0773fa8" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setGridOffset</name></member>
+      <member refid="classQgsAlignRaster_1a06fbbf040500607b719d84a826ab5050" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setParametersFromRaster</name></member>
+      <member refid="classQgsAlignRaster_1a1a219601c011984f95d066849ab3c716" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setParametersFromRaster</name></member>
+      <member refid="classQgsAlignRaster_1aaa57b6a97e64a71316dc6f8996408308" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setProgressHandler</name></member>
+      <member refid="classQgsAlignRaster_1acd4c5f9332e9b5b5c7be25fbff8b0eee" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>setRasters</name></member>
+      <member refid="classQgsAlignRaster_1a874a3631543a4215161df0db175d62ea" prot="public" virt="non-virtual"><scope>QgsAlignRaster</scope><name>suggestedReferenceLayer</name></member>
+      <member refid="classQgsAlignRaster_1ad2cbf0ad7cb52f512b63fcec17fc74c7" prot="protected" virt="non-virtual"><scope>QgsAlignRaster</scope><name>suggestedWarpOutput</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

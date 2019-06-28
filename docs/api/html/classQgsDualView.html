@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsDualView class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsDualView <span class="m-thin">class</span>
+        </h1>
+        <p>This widget is used to show the attributes of a set of features of a <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pri-slots">Private slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>The attributes can be edited. It supports two different layouts: the table layout, in which the attributes for the features are shown in a table and the editor layout, where the features are shown as a selectable list and the attributes for the currently selected feature are shown in a form.</p>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a16fe3da400b1de09a4f29fcc02e076d0" class="m-doc">ViewMode</a> { </span><span class="m-doc-wrap"><a href="#a16fe3da400b1de09a4f29fcc02e076d0a6611e2cf48db27a187e8499430f4122c" class="m-doc">AttributeTable</a> = 0,
+              <a href="#a16fe3da400b1de09a4f29fcc02e076d0ab95592984782bbd87ada5917b8afd1f9" class="m-doc">AttributeEditor</a> = 1 }</span>
+            </dt>
+            <dd>The view modes, in which this widget can present information.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a364beb3f8058852a6fb89492d7c65610" class="m-doc">QgsDualView</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructor.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6934542ea56cfd693e852fd2b2745faf" class="m-doc">attributeTableConfig</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsAttributeTableConfig.html" class="m-doc">QgsAttributeTableConfig</a></span>
+            </dt>
+            <dd>The config used for the attribute table.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4f1c2098e5fdea351a95aee563dc3a0e" class="m-doc">featureCount</a>(</span><span class="m-doc-wrap">) -&gt; int</span>
+            </dt>
+            <dd>Returns the number of features on the layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acb47ff947cf803962c272a4bae575ff8" class="m-doc">filteredFeatureCount</a>(</span><span class="m-doc-wrap">) -&gt; int</span>
+            </dt>
+            <dd>Returns the number of features which are currently visible, according to the filter restrictions.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a27ba11cf4f2114f0be932f27d186f375" class="m-doc-self" name="a27ba11cf4f2114f0be932f27d186f375">filteredFeatures</a>(</span><span class="m-doc-wrap">) -&gt; <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a></span>
+            </dt>
+            <dd>Gets a list of currently visible feature ids.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a22945fdebe5469680a0fddb80dd40268" class="m-doc">filterMode</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsAttributeTableFilterModel.html#a825a1bdea8457ae447b69cbd1a56b39c" class="m-doc">QgsAttributeTableFilterModel::<wbr />FilterMode</a></span>
+            </dt>
+            <dd>Gets the filter mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aba24b827a759875443e655d9cce7cba5" class="m-doc">init</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              <a href="classQgsMapCanvas.html" class="m-doc">QgsMapCanvas</a>* mapCanvas,
+              const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; request = <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>(),
+              const <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>&amp; context = <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>(),
+              bool loadFeatures = true)</span>
+            </dt>
+            <dd>Has to be called to initialize the dual view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5d537037a0dc1845e75a5a63e30b29d6" class="m-doc">masterModel</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsAttributeTableModel.html" class="m-doc">QgsAttributeTableModel</a>*</span>
+            </dt>
+            <dd>Returns the model which has the information about all features (not only filtered)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a368ead58bd43f71d261a6b3f0aac9163" class="m-doc-self" name="a368ead58bd43f71d261a6b3f0aac9163">setAttributeTableConfig</a>(</span><span class="m-doc-wrap">const <a href="classQgsAttributeTableConfig.html" class="m-doc">QgsAttributeTableConfig</a>&amp; config)</span>
+            </dt>
+            <dd>Set the attribute table config which should be used to control the appearance of the attribute table.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a17a9faa33ff288559538862d63acae2c" class="m-doc">setFeatureSelectionManager</a>(</span><span class="m-doc-wrap"><a href="classQgsIFeatureSelectionManager.html" class="m-doc">QgsIFeatureSelectionManager</a>* featureSelectionManager)</span>
+            </dt>
+            <dd>Set the feature selection model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a54873ee78db0a0ce7e220a72d51e91ce" class="m-doc">setFilteredFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; filteredFeatures)</span>
+            </dt>
+            <dd>Set a list of currently visible features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aebdf14c057dd2fcd9f277d1a9d4a6a0a" class="m-doc">setFilterMode</a>(</span><span class="m-doc-wrap"><a href="classQgsAttributeTableFilterModel.html#a825a1bdea8457ae447b69cbd1a56b39c" class="m-doc">QgsAttributeTableFilterModel::<wbr />FilterMode</a> filterMode)</span>
+            </dt>
+            <dd>Set the filter mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab194727fef33da1a9cca332f0fb9649e" class="m-doc">setRequest</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; request)</span>
+            </dt>
+            <dd>Set the request.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af7008f510e2328c79dc532856f2be88d" class="m-doc">setSelectedOnTop</a>(</span><span class="m-doc-wrap">bool selectedOnTop)</span>
+            </dt>
+            <dd>Toggle the selectedOnTop flag.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aae34338f2b58f0341efb241dc377db1c" class="m-doc-self" name="aae34338f2b58f0341efb241dc377db1c">setSortExpression</a>(</span><span class="m-doc-wrap">const QString&amp; sortExpression,
+              Qt::SortOrder sortOrder = Qt::AscendingOrder)</span>
+            </dt>
+            <dd>Set the expression used for sorting the table and feature list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af58117b2c3c22c8218057074b881f705" class="m-doc">setView</a>(</span><span class="m-doc-wrap"><a href="classQgsDualView.html#a16fe3da400b1de09a4f29fcc02e076d0" class="m-doc">ViewMode</a> view)</span>
+            </dt>
+            <dd>Change the current view mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae9f353a703ed29db62ba25f5f33a1e91" class="m-doc-self" name="ae9f353a703ed29db62ba25f5f33a1e91">sortExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Gets the expression used for sorting the table and feature list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acaca262d50b42a46737032a9d92ac5fe" class="m-doc">tableView</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsAttributeTableView.html" class="m-doc">QgsAttributeTableView</a>*</span>
+            </dt>
+            <dd>Returns the table view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4aad238901d077a4bd972e39f12d6fa2" class="m-doc">view</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsDualView.html#a16fe3da400b1de09a4f29fcc02e076d0" class="m-doc">ViewMode</a></span>
+            </dt>
+            <dd>Returns the current view mode.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aaad29094e72b8df86faafe7b41b73c4c" class="m-doc">displayExpressionChanged</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span>
+            </dt>
+            <dd>Is emitted, whenever the display expression is successfully changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2e853639f312b7359ff011fa1a26b2cb" class="m-doc-self" name="a2e853639f312b7359ff011fa1a26b2cb">filterChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Is emitted, whenever the filter changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7f44dd5f155c45140a314bedb142d50f" class="m-doc">filterExpressionSet</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              <a href="classQgsAttributeForm.html#afb85de3b929d94d19b253417916fabe5" class="m-doc">QgsAttributeForm::<wbr />FilterType</a> type)</span>
+            </dt>
+            <dd>Is emitted when a filter expression is set using the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5585625060f8aa57c94529a690d52b2b" class="m-doc">formModeChanged</a>(</span><span class="m-doc-wrap"><a href="classQgsAttributeEditorContext.html#acd1405f72a3422484c8ae0645f391c5d" class="m-doc">QgsAttributeEditorContext::<wbr />Mode</a> mode)</span>
+            </dt>
+            <dd>Emitted when the form changes mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a007f96d204804b489f7144f4289ab4d6" class="m-doc">showContextMenuExternally</a>(</span><span class="m-doc-wrap"><a href="classQgsActionMenu.html" class="m-doc">QgsActionMenu</a>* menu,
+              <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid)</span>
+            </dt>
+            <dd>Emitted when selecting context menu on the feature list to create the context menu individually.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2bb06f38a401cf616befdb68626cd745" class="m-doc">cancelProgress</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Cancel the progress dialog (if any)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a124b1cbb3e4a78e3cd5723e885fe7128" class="m-doc">copyCellContent</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd>Copy the content of the selected cell in the clipboard.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a83721613d3eead61f35a9f50410dd13b" class="m-doc">saveEditChanges</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>saveEditChanges</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac3f3900efc87a963ea0a30ec5dd11114" class="m-doc">setCurrentEditSelection</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids)</span>
+            </dt>
+            <dd>Set the current edit selection in the AttributeEditor mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a252d32ca2f9cd5dfe3f9fc954e453bfd" class="m-doc">setMultiEditEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether multi edit mode is enabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa845b941797ad4d4b7d5a4c40041afbb" class="m-doc">toggleSearchMode</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Toggles whether search mode should be enabled in the form.</dd>
+          </dl>
+        </section>
+        <section id="pri-slots">
+          <h2><a href="#pri-slots">Private slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a675f653e8b9a9bcaee6670d07af06262" class="m-doc">finished</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Will be called, once all the features are loaded.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9f7579839ec979d7ef96f961dffcb464" class="m-doc">progress</a>(</span><span class="m-doc-wrap">int i,
+              bool&amp; cancel) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Will be called periodically, when loading layers from slow data providers.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a16fe3da400b1de09a4f29fcc02e076d0"><div>
+            <h3>
+              enum QgsDualView::<wbr /><a href="#a16fe3da400b1de09a4f29fcc02e076d0" class="m-doc-self">ViewMode</a>
+            </h3>
+            <p>The view modes, in which this widget can present information.</p>
+<p>Relates to the QStackedWidget stacks.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a16fe3da400b1de09a4f29fcc02e076d0a6611e2cf48db27a187e8499430f4122c" class="m-doc-self" name="a16fe3da400b1de09a4f29fcc02e076d0a6611e2cf48db27a187e8499430f4122c">AttributeTable</a></td>
+                  <td>
+                  <p>Shows the features and attributes in a table layout.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a16fe3da400b1de09a4f29fcc02e076d0ab95592984782bbd87ada5917b8afd1f9" class="m-doc-self" name="a16fe3da400b1de09a4f29fcc02e076d0ab95592984782bbd87ada5917b8afd1f9">AttributeEditor</a></td>
+                  <td>
+                  <p>Show a list of the features, where one can be chosen and the according attribute dialog will be presented in the neighbouring frame.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a364beb3f8058852a6fb89492d7c65610"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a364beb3f8058852a6fb89492d7c65610" class="m-doc-self">QgsDualView</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parent</td>
+                  <td>The parent widget</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6934542ea56cfd693e852fd2b2745faf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAttributeTableConfig.html" class="m-doc">QgsAttributeTableConfig</a> QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6934542ea56cfd693e852fd2b2745faf" class="m-doc-self">attributeTableConfig</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>The config used for the attribute table.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The config used for the attribute table.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a4f1c2098e5fdea351a95aee563dc3a0e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4f1c2098e5fdea351a95aee563dc3a0e" class="m-doc-self">featureCount</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the number of features on the layer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Number of features</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="acb47ff947cf803962c272a4bae575ff8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acb47ff947cf803962c272a4bae575ff8" class="m-doc-self">filteredFeatureCount</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the number of features which are currently visible, according to the filter restrictions.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Number of features</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a22945fdebe5469680a0fddb80dd40268"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAttributeTableFilterModel.html#a825a1bdea8457ae447b69cbd1a56b39c" class="m-doc">QgsAttributeTableFilterModel::<wbr />FilterMode</a> QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a22945fdebe5469680a0fddb80dd40268" class="m-doc-self">filterMode</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Gets the filter mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the filter mode</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aba24b827a759875443e655d9cce7cba5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aba24b827a759875443e655d9cce7cba5" class="m-doc-self">init</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              <a href="classQgsMapCanvas.html" class="m-doc">QgsMapCanvas</a>* mapCanvas,
+              const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; request = <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>(),
+              const <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>&amp; context = <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>(),
+              bool loadFeatures = true)</span></span>
+            </h3>
+            <p>Has to be called to initialize the dual view.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>The layer which should be used to fetch features</td>
+                </tr>
+                <tr>
+                  <td>mapCanvas</td>
+                  <td>The mapCanvas (used for the FilterMode <a href="classQgsAttributeTableFilterModel.html#a825a1bdea8457ae447b69cbd1a56b39ca56c67895559e1d6046a730f99d3a0219" class="m-doc">QgsAttributeTableFilterModel::<wbr />ShowVisible</a>)</td>
+                </tr>
+                <tr>
+                  <td>request</td>
+                  <td>Use a modified request to limit the shown features</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>The context in which this view is shown</td>
+                </tr>
+                <tr>
+                  <td>loadFeatures</td>
+                  <td>whether to initially load all features into the view. If set to false, limited features can later be loaded using <a href="classQgsDualView.html#aebdf14c057dd2fcd9f277d1a9d4a6a0a" class="m-doc">setFilterMode()</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5d537037a0dc1845e75a5a63e30b29d6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAttributeTableModel.html" class="m-doc">QgsAttributeTableModel</a>* QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d537037a0dc1845e75a5a63e30b29d6" class="m-doc-self">masterModel</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the model which has the information about all features (not only filtered)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The master model</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a17a9faa33ff288559538862d63acae2c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a17a9faa33ff288559538862d63acae2c" class="m-doc-self">setFeatureSelectionManager</a>(</span><span class="m-doc-wrap"><a href="classQgsIFeatureSelectionManager.html" class="m-doc">QgsIFeatureSelectionManager</a>* featureSelectionManager)</span></span>
+            </h3>
+            <p>Set the feature selection model.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">featureSelectionManager</td>
+                  <td>the feature selection model</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a54873ee78db0a0ce7e220a72d51e91ce"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a54873ee78db0a0ce7e220a72d51e91ce" class="m-doc-self">setFilteredFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; filteredFeatures)</span></span>
+            </h3>
+            <p>Set a list of currently visible features.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">filteredFeatures</td>
+                  <td>A list of feature ids</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aebdf14c057dd2fcd9f277d1a9d4a6a0a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aebdf14c057dd2fcd9f277d1a9d4a6a0a" class="m-doc-self">setFilterMode</a>(</span><span class="m-doc-wrap"><a href="classQgsAttributeTableFilterModel.html#a825a1bdea8457ae447b69cbd1a56b39c" class="m-doc">QgsAttributeTableFilterModel::<wbr />FilterMode</a> filterMode)</span></span>
+            </h3>
+            <p>Set the filter mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">filterMode</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab194727fef33da1a9cca332f0fb9649e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab194727fef33da1a9cca332f0fb9649e" class="m-doc-self">setRequest</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; request)</span></span>
+            </h3>
+            <p>Set the request.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">request</td>
+                  <td>The request</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af7008f510e2328c79dc532856f2be88d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af7008f510e2328c79dc532856f2be88d" class="m-doc-self">setSelectedOnTop</a>(</span><span class="m-doc-wrap">bool selectedOnTop)</span></span>
+            </h3>
+            <p>Toggle the selectedOnTop flag.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">selectedOnTop</td>
+                  <td>True: Show selected features on top. False: Use defined sorting column.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If enabled, selected features will be moved to top.</p>
+          </div></section>
+          <section class="m-doc-details" id="af58117b2c3c22c8218057074b881f705"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af58117b2c3c22c8218057074b881f705" class="m-doc-self">setView</a>(</span><span class="m-doc-wrap"><a href="classQgsDualView.html#a16fe3da400b1de09a4f29fcc02e076d0" class="m-doc">ViewMode</a> view)</span></span>
+            </h3>
+            <p>Change the current view mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">view</td>
+                  <td>The view mode to set</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDualView.html#a4aad238901d077a4bd972e39f12d6fa2" class="m-doc">view()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acaca262d50b42a46737032a9d92ac5fe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAttributeTableView.html" class="m-doc">QgsAttributeTableView</a>* QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acaca262d50b42a46737032a9d92ac5fe" class="m-doc-self">tableView</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the table view.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The table view</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a4aad238901d077a4bd972e39f12d6fa2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsDualView.html#a16fe3da400b1de09a4f29fcc02e076d0" class="m-doc">ViewMode</a> QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4aad238901d077a4bd972e39f12d6fa2" class="m-doc-self">view</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current view mode.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDualView.html#af58117b2c3c22c8218057074b881f705" class="m-doc">setView()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aaad29094e72b8df86faafe7b41b73c4c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaad29094e72b8df86faafe7b41b73c4c" class="m-doc-self">displayExpressionChanged</a>(</span><span class="m-doc-wrap">const QString&amp; expression) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted, whenever the display expression is successfully changed.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">expression</td>
+                  <td>The expression that was applied</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7f44dd5f155c45140a314bedb142d50f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7f44dd5f155c45140a314bedb142d50f" class="m-doc-self">filterExpressionSet</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              <a href="classQgsAttributeForm.html#afb85de3b929d94d19b253417916fabe5" class="m-doc">QgsAttributeForm::<wbr />FilterType</a> type) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted when a filter expression is set using the view.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">expression</td>
+                  <td>filter expression</td>
+                </tr>
+                <tr>
+                  <td>type</td>
+                  <td>filter type</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5585625060f8aa57c94529a690d52b2b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5585625060f8aa57c94529a690d52b2b" class="m-doc-self">formModeChanged</a>(</span><span class="m-doc-wrap"><a href="classQgsAttributeEditorContext.html#acd1405f72a3422484c8ae0645f391c5d" class="m-doc">QgsAttributeEditorContext::<wbr />Mode</a> mode) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the form changes mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">mode</td>
+                  <td>new mode</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a007f96d204804b489f7144f4289ab4d6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a007f96d204804b489f7144f4289ab4d6" class="m-doc-self">showContextMenuExternally</a>(</span><span class="m-doc-wrap"><a href="classQgsActionMenu.html" class="m-doc">QgsActionMenu</a>* menu,
+              <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when selecting context menu on the feature list to create the context menu individually.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">menu</td>
+                  <td>context menu</td>
+                </tr>
+                <tr>
+                  <td>fid</td>
+                  <td>feature id of the selected feature</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2bb06f38a401cf616befdb68626cd745"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2bb06f38a401cf616befdb68626cd745" class="m-doc-self">cancelProgress</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Cancel the progress dialog (if any)</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a124b1cbb3e4a78e3cd5723e885fe7128"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a124b1cbb3e4a78e3cd5723e885fe7128" class="m-doc-self">copyCellContent</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Copy the content of the selected cell in the clipboard.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 1.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a83721613d3eead61f35a9f50410dd13b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83721613d3eead61f35a9f50410dd13b" class="m-doc-self">saveEditChanges</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>saveEditChanges</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if the saving was OK. false is possible due to connected validation logic.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac3f3900efc87a963ea0a30ec5dd11114"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3f3900efc87a963ea0a30ec5dd11114" class="m-doc-self">setCurrentEditSelection</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Set the current edit selection in the AttributeEditor mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fids</td>
+                  <td>A list of edited features (Currently only one at a time is supported)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a252d32ca2f9cd5dfe3f9fc954e453bfd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a252d32ca2f9cd5dfe3f9fc954e453bfd" class="m-doc-self">setMultiEditEnabled</a>(</span><span class="m-doc-wrap">bool enabled) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets whether multi edit mode is enabled.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa845b941797ad4d4b7d5a4c40041afbb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa845b941797ad4d4b7d5a4c40041afbb" class="m-doc-self">toggleSearchMode</a>(</span><span class="m-doc-wrap">bool enabled) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Toggles whether search mode should be enabled in the form.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">enabled</td>
+                  <td>set to true to switch on search mode</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a675f653e8b9a9bcaee6670d07af06262"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a675f653e8b9a9bcaee6670d07af06262" class="m-doc-self">finished</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private slot</span></span></span>
+            </h3>
+            <p>Will be called, once all the features are loaded.</p>
+<p>Use e.g. to close a dialog created from progress( int i, bool &amp;cancel )</p>
+          </div></section>
+          <section class="m-doc-details" id="a9f7579839ec979d7ef96f961dffcb464"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDualView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9f7579839ec979d7ef96f961dffcb464" class="m-doc-self">progress</a>(</span><span class="m-doc-wrap">int i,
+              bool&amp; cancel) <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private slot</span></span></span>
+            </h3>
+            <p>Will be called periodically, when loading layers from slow data providers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">i</td>
+                  <td>The number of features already loaded</td>
+                </tr>
+                <tr>
+                  <td>cancel</td>
+                  <td>Set to true to cancel</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

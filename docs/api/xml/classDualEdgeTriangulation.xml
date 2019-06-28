@@ -1,0 +1,1337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classDualEdgeTriangulation" kind="class" language="C++" prot="public">
+    <compoundname>DualEdgeTriangulation</compoundname>
+    <basecompoundref refid="classTriangulation" prot="public" virt="non-virtual">Triangulation</basecompoundref>
+    <includes refid="DualEdgeTriangulation_8h" local="no">DualEdgeTriangulation.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1af9763bb523890fb2b808fe8616c5b7ef" prot="protected" static="no" mutable="no">
+        <type>QColor</type>
+        <definition>QColor DualEdgeTriangulation::mBreakEdgeColor</definition>
+        <argsstring></argsstring>
+        <name>mBreakEdgeColor</name>
+        <briefdescription>
+<para>Color to paint the breaklines. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="132" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1aea8d834794563c974333105d2b74ce89" prot="protected" static="no" mutable="no">
+        <type><ref refid="classTriangulation" kindref="compound">Triangulation</ref> *</type>
+        <definition>Triangulation* DualEdgeTriangulation::mDecorator</definition>
+        <argsstring></argsstring>
+        <name>mDecorator</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Pointer to the decorator using this triangulation. It it is used directly, mDecorator equals this. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="134" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a1d008997130061213c4146faef72dcd5" prot="protected" static="no" mutable="no">
+        <type>QColor</type>
+        <definition>QColor DualEdgeTriangulation::mEdgeColor</definition>
+        <argsstring></argsstring>
+        <name>mEdgeColor</name>
+        <briefdescription>
+<para>Color to paint the normal edges. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="128" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a928e79ac62bdd67fd586e82b785a93e6" prot="protected" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int DualEdgeTriangulation::mEdgeInside</definition>
+        <argsstring></argsstring>
+        <name>mEdgeInside</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Number of an edge which does not point to the virtual point. It continuously updated for a fast search. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="154" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a5de235d7a4df5e817a43847026248949" prot="protected" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int DualEdgeTriangulation::mEdgeOutside</definition>
+        <argsstring></argsstring>
+        <name>mEdgeOutside</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Number of an edge on the outside of the convex hull. It is updated in method &apos;baseEdgeOfTriangle&apos; to enable insertion of points outside the convex hull. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a6ee9820279be4eda2476efd9607881d1" prot="protected" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int DualEdgeTriangulation::mEdgeWithPoint</definition>
+        <argsstring></argsstring>
+        <name>mEdgeWithPoint</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>If an inserted point is exactly on an existing edge, &apos;baseEdgeOfTriangle&apos; returns -20 and sets the variable &apos;mEdgeWithPoint&apos;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="158" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a5de2754deaeb1be4f990628f1c0e2695" prot="protected" static="no" mutable="no">
+        <type><ref refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413" kindref="member">Triangulation::ForcedCrossBehavior</ref></type>
+        <definition>Triangulation::ForcedCrossBehavior DualEdgeTriangulation::mForcedCrossBehavior</definition>
+        <argsstring></argsstring>
+        <name>mForcedCrossBehavior</name>
+        <initializer>= <ref refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aa560416e991c80889a0751d3e05cd5d6" kindref="member">Triangulation::DeleteFirst</ref></initializer>
+        <briefdescription>
+<para>Member to store the behavior in case of crossing forced segments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1abecc4c1681668112d713355926b06f55" prot="protected" static="no" mutable="no">
+        <type>QColor</type>
+        <definition>QColor DualEdgeTriangulation::mForcedEdgeColor</definition>
+        <argsstring></argsstring>
+        <name>mForcedEdgeColor</name>
+        <briefdescription>
+<para>Color to paint the forced edges. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="130" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a16538ec1a8fac7a804b9afab9675cb60" prot="protected" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classHalfEdge" kindref="compound">HalfEdge</ref> * &gt;</type>
+        <definition>QVector&lt;HalfEdge *&gt; DualEdgeTriangulation::mHalfEdge</definition>
+        <argsstring></argsstring>
+        <name>mHalfEdge</name>
+        <briefdescription>
+<para>Stores pointers to the HalfEdges. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="122" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1afbe27941693c40f0abb8757d7fd1a229" prot="protected" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> * &gt;</type>
+        <definition>QVector&lt;QgsPoint *&gt; DualEdgeTriangulation::mPointVector</definition>
+        <argsstring></argsstring>
+        <name>mPointVector</name>
+        <briefdescription>
+<para>Stores pointers to all points in the triangulations (including the points contained in the lines) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="118" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1ac7f1b349544ad42833f0069d45819051" prot="protected" static="no" mutable="no">
+        <type><ref refid="classTriangleInterpolator" kindref="compound">TriangleInterpolator</ref> *</type>
+        <definition>TriangleInterpolator* DualEdgeTriangulation::mTriangleInterpolator</definition>
+        <argsstring></argsstring>
+        <name>mTriangleInterpolator</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Association to an interpolator object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="124" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a0d72af972737eb3e82570f6fb93a0735" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::mTwiceInsPoint</definition>
+        <argsstring></argsstring>
+        <name>mTwiceInsPoint</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>If a point has been inserted twice, its number is stored in this member. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="162" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a02cdee6c119b5e65bb24a629b6d63677" prot="protected" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int DualEdgeTriangulation::mUnstableEdge</definition>
+        <argsstring></argsstring>
+        <name>mUnstableEdge</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>If an instability occurs in &apos;baseEdgeOfTriangle&apos;, mUnstableEdge is set to the value of the current edge. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="160" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1ac14332c3e9c05676da197bb45e733401" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::xMax</definition>
+        <argsstring></argsstring>
+        <name>xMax</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>X-coordinate of the upper right corner of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="108" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1ab97d758efb6c27c6fef1c8e2a620ec6c" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::xMin</definition>
+        <argsstring></argsstring>
+        <name>xMin</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>X-coordinate of the lower left corner of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="110" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a38fdc3c64b512344ff7870aa27869a0e" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::yMax</definition>
+        <argsstring></argsstring>
+        <name>yMax</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Y-coordinate of the upper right corner of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="112" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a7214aec389a9cebf743f40f825878306" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::yMin</definition>
+        <argsstring></argsstring>
+        <name>yMin</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Y-coordinate of the lower left corner of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="114" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a033060bb8f1eefcaeae98fb5bd97997a" prot="protected" static="yes" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int DualEdgeTriangulation::DEFAULT_STORAGE_FOR_HALF_EDGES</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_STORAGE_FOR_HALF_EDGES</name>
+        <initializer>= 300006</initializer>
+        <briefdescription>
+<para>Default value for the number of storable HalfEdges at the beginning. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="120" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a78f30ee384e2a43206cca0c7a638f0e0" prot="protected" static="yes" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int DualEdgeTriangulation::DEFAULT_STORAGE_FOR_POINTS</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_STORAGE_FOR_POINTS</name>
+        <initializer>= 100000</initializer>
+        <briefdescription>
+<para>Default value for the number of storable points at the beginning. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="116" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDualEdgeTriangulation_1a8640d2dfe3eb9e3ad3af5e1d1dfb3043" prot="protected" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int DualEdgeTriangulation::MAX_BASE_ITERATIONS</definition>
+        <argsstring></argsstring>
+        <name>MAX_BASE_ITERATIONS</name>
+        <initializer>= 300000</initializer>
+        <briefdescription>
+<para>Threshold for the leftOfTest to handle numerical instabilities. </para>        </briefdescription>
+        <detaileddescription>
+<para>Security to prevent endless loops in &apos;baseEdgeOfTriangle&apos;. It there are more iteration then this number, the point will not be inserted </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="142" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classDualEdgeTriangulation_1a2e9dedcb9ea820c508ecf19b1187fa3f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsInterpolator</definition>
+        <argsstring></argsstring>
+        <name>TestQgsInterpolator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="178" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a792285f1dc9eff081c54ca1f2bdc119f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DualEdgeTriangulation::DualEdgeTriangulation</definition>
+        <argsstring>()</argsstring>
+        <name>DualEdgeTriangulation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="50" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="183" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1ab5c8c5c91629f0cc26a6671740ba2c01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DualEdgeTriangulation::DualEdgeTriangulation</definition>
+        <argsstring>(int nop, Triangulation *decorator)</argsstring>
+        <name>DualEdgeTriangulation</name>
+        <param>
+          <type>int</type>
+          <declname>nop</declname>
+        </param>
+        <param>
+          <type><ref refid="classTriangulation" kindref="compound">Triangulation</ref> *</type>
+          <declname>decorator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="51" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="193" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a866d2e64dc709852e7f5028365803c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DualEdgeTriangulation::~DualEdgeTriangulation</definition>
+        <argsstring>() override</argsstring>
+        <name>~DualEdgeTriangulation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="28" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a4b0d932cc9904abc8563a5c49e7a7924" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::addLine</definition>
+        <argsstring>(const QVector&lt; QgsPoint &gt; &amp;points, QgsInterpolator::SourceType lineType) override</argsstring>
+        <name>addLine</name>
+        <reimplements refid="classTriangulation_1abb1841159d194ddc50c9455615af288f">addLine</reimplements>
+        <param>
+          <type>const QVector&lt; <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2f" kindref="member">QgsInterpolator::SourceType</ref></type>
+          <declname>lineType</declname>
+        </param>
+        <briefdescription>
+<para>Adds a line (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>a break-, structure- or an isoline) to the triangulation, by specifying a list of source <emphasis>points</emphasis>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="54" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="69" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1acd489c0efecba6bcc6f20a139755f38d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::addPoint</definition>
+        <argsstring>(const QgsPoint &amp;p) override</argsstring>
+        <name>addPoint</name>
+        <reimplements refid="classTriangulation_1a0d17ecf5db958ac13c7e7ed2d97168eb">addPoint</reimplements>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Adds a <emphasis>point</emphasis> to the triangulation. </para>        </briefdescription>
+        <detaileddescription>
+<para>The point should have a z-value matching the value to interpolate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="55" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="101" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a7a0970ddd6a39bf1af490c2ba541ed6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::calcNormal</definition>
+        <argsstring>(double x, double y, Vector3D *result) override</argsstring>
+        <name>calcNormal</name>
+        <reimplements refid="classTriangulation_1aa9ee556c46cadd40d6b8f6bc3423fa01">calcNormal</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the normal at a point on the surface. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="59" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="621" bodyend="632"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a2347bf831fea72b60243df7ee48c73af" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::calcPoint</definition>
+        <argsstring>(double x, double y, QgsPoint &amp;result) override</argsstring>
+        <name>calcPoint</name>
+        <reimplements refid="classTriangulation_1a51951fbe164a241e8d1e64051c666b30">calcPoint</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Calculates x-, y and z-value of the point on the surface and assigns it to &apos;result&apos;. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true in case of success and flase in case of failure </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="60" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="634" bodyend="645"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a401d272d3c5ad3cf951d99ddf7ca64a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::eliminateHorizontalTriangles</definition>
+        <argsstring>() override</argsstring>
+        <name>eliminateHorizontalTriangles</name>
+        <reimplements refid="classTriangulation_1ac007a071c6a826712077bec466f095ca">eliminateHorizontalTriangles</reimplements>
+        <briefdescription>
+<para>Eliminates the horizontal triangles by swapping or by insertion of new points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="90" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1535" bodyend="1622"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a53f45d11a3699fc664d9d327d9838d91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::getNumberOfPoints</definition>
+        <argsstring>() const override</argsstring>
+        <name>getNumberOfPoints</name>
+        <reimplements refid="classTriangulation_1ac5f39bfbe393ba52807fe0046eb74f02">getNumberOfPoints</reimplements>
+        <briefdescription>
+<para>Returns the number of points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="78" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="203" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a17653c0cbe5d0cba5ea26b8f3b09d92b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::getOppositePoint</definition>
+        <argsstring>(int p1, int p2) override</argsstring>
+        <name>getOppositePoint</name>
+        <reimplements refid="classTriangulation_1a204cbaa8ab2ae229006c630dae5175c9">getOppositePoint</reimplements>
+        <param>
+          <type>int</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>p2</declname>
+        </param>
+        <briefdescription>
+<para>Returns the number of the point opposite to the triangle points p1, p2 (which have to be on a halfedge). </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns -1 if point is a virtual point. Returns -10 if point crosses over edges. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="65" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="856" bodyend="888"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1acdddaab0f0c9e5719ef2928769b904a4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> *</type>
+        <definition>QgsPoint * DualEdgeTriangulation::getPoint</definition>
+        <argsstring>(int i) const override</argsstring>
+        <name>getPoint</name>
+        <reimplements refid="classTriangulation_1a9f3458d5e869ea75fdbd5e4fc6428e3d">getPoint</reimplements>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Draws the points, edges and the forced lines. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a pointer to the point with number i </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="64" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="208" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a4013929acfbdef26db98a064d72092be" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; int &gt; *</type>
+        <definition>QList&lt; int &gt; * DualEdgeTriangulation::getPointsAroundEdge</definition>
+        <argsstring>(double x, double y) override</argsstring>
+        <name>getPointsAroundEdge</name>
+        <reimplements refid="classTriangulation_1af24302c688e62ca12e7d0a7c77918448">getPointsAroundEdge</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Returns a value list with the numbers of the four points, which would be affected by an edge swap. This function is e.g. needed by <ref refid="classNormVecDecorator" kindref="compound">NormVecDecorator</ref> to know the points, for which the normals have to be recalculated. The returned ValueList has to be deleted by the code which calls the method. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="102" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="2915" bodyend="2976"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1adbc8f25c60034f6ccdcea5e63ac69cc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; int &gt;</type>
+        <definition>QList&lt; int &gt; DualEdgeTriangulation::getSurroundingTriangles</definition>
+        <argsstring>(int pointno) override</argsstring>
+        <name>getSurroundingTriangles</name>
+        <reimplements refid="classTriangulation_1a168182a090503221f44caa336f7f32a2">getSurroundingTriangles</reimplements>
+        <param>
+          <type>int</type>
+          <declname>pointno</declname>
+        </param>
+        <briefdescription>
+<para>Returns a pointer to a value list with the information of the triangles surrounding (counterclockwise) a point. </para>        </briefdescription>
+        <detaileddescription>
+<para>Four integer values describe a triangle, the first three are the number of the half edges of the triangle and the fourth is -10, if the third (and most counterclockwise) edge is a breakline, and -20 otherwise. Any virtual point needs to have the number -1 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="68" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="890" bodyend="924"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a4484215f19577ad8cc8bb99de5d57c35" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::getTriangle</definition>
+        <argsstring>(double x, double y, QgsPoint &amp;p1, int &amp;n1, QgsPoint &amp;p2, int &amp;n2, QgsPoint &amp;p3, int &amp;n3) override</argsstring>
+        <name>getTriangle</name>
+        <reimplements refid="classTriangulation_1a0c37090b51fe786f82acabd2937ebc17">getTriangle</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>n1</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>n2</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p3</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>n3</declname>
+        </param>
+        <briefdescription>
+<para>Finds out in which triangle the point with coordinates x and y is and assigns the numbers of the vertices to &apos;n1&apos;, &apos;n2&apos; and &apos;n3&apos; and the vertices to &apos;p1&apos;, &apos;p2&apos; and &apos;p3&apos;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="66" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="926" bodyend="1032"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1ac968240e8e2097dfec115b463acdeb86" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::getTriangle</definition>
+        <argsstring>(double x, double y, QgsPoint &amp;p1, QgsPoint &amp;p2, QgsPoint &amp;p3) override</argsstring>
+        <name>getTriangle</name>
+        <reimplements refid="classTriangulation_1a6608f6f58769ab9e629f6eaa87c6f4f8">getTriangle</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p3</declname>
+        </param>
+        <briefdescription>
+<para>Finds out, in which triangle the point with coordinates x and y is and assigns the points at the vertices to &apos;p1&apos;, &apos;p2&apos; and &apos;p3. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="67" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1034" bodyend="1130"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a41ab0eb0e8627c64584f193cba08a0ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::getXMax</definition>
+        <argsstring>() const override</argsstring>
+        <name>getXMax</name>
+        <reimplements refid="classTriangulation_1afee3ce4cf833bbf38bf87500eb3c3534">getXMax</reimplements>
+        <briefdescription>
+<para>Returns the largest x-coordinate value of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="70" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="70" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a0262dff3e2fe3e9f6221b86c1c9b552a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::getXMin</definition>
+        <argsstring>() const override</argsstring>
+        <name>getXMin</name>
+        <reimplements refid="classTriangulation_1aed8837bcf9ce2b2f10ce0061eb1c07b7">getXMin</reimplements>
+        <briefdescription>
+<para>Returns the smallest x-coordinate value of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="72" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="72" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a834b94369c90b9a13d10cda4c32ea57d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::getYMax</definition>
+        <argsstring>() const override</argsstring>
+        <name>getYMax</name>
+        <reimplements refid="classTriangulation_1a323d0e5054762e1c3e2fb031959e1165">getYMax</reimplements>
+        <briefdescription>
+<para>Returns the largest y-coordinate value of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="74" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a632becf0680c3c2c1748094df4717058" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::getYMin</definition>
+        <argsstring>() const override</argsstring>
+        <name>getYMin</name>
+        <reimplements refid="classTriangulation_1a8f8117facf20ddf7cfd28ad430639ff9">getYMin</reimplements>
+        <briefdescription>
+<para>Returns the smallest x-coordinate value of the bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="76" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a2548323b00504792d8a962512ea3cf98" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::performConsistencyTest</definition>
+        <argsstring>() override</argsstring>
+        <name>performConsistencyTest</name>
+        <reimplements refid="classTriangulation_1ab221ea040cd6c811ca98c2750a495a20">performConsistencyTest</reimplements>
+        <briefdescription>
+<para>Performs a consistency check, remove this later. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="57" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="49" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1abf7f07cfc4c07060141f7634229a7781" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::pointInside</definition>
+        <argsstring>(double x, double y) override</argsstring>
+        <name>pointInside</name>
+        <reimplements refid="classTriangulation_1a7719a5a1a94dc4ffaebb86e344ee8269">pointInside</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Returns true, if the point with coordinates x and y is inside the convex hull and false otherwise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="2488" bodyend="2570"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a8d7c0e7de6a7c4c8287e6712bc6f5aa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::ruppertRefinement</definition>
+        <argsstring>() override</argsstring>
+        <name>ruppertRefinement</name>
+        <reimplements refid="classTriangulation_1a14f1679a5111de289a7516bee07cce9e">ruppertRefinement</reimplements>
+        <briefdescription>
+<para>Adds points to make the triangles better shaped (algorithm of ruppert) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="92" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1624" bodyend="2311"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a1bac7ab7a1af4705be6dff8c666d0d4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::saveTriangulation</definition>
+        <argsstring>(QgsFeatureSink *sink, QgsFeedback *feedback=nullptr) const override</argsstring>
+        <name>saveTriangulation</name>
+        <reimplements refid="classTriangulation_1ab1a75337497178053d129e5ea9782838">saveTriangulation</reimplements>
+        <param>
+          <type><ref refid="classQgsFeatureSink" kindref="compound">QgsFeatureSink</ref> *</type>
+          <declname>sink</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Saves the triangulation features to a feature <emphasis>sink</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The sink must be setup to accept LineString features, with fields matching those returned by <ref refid="classTriangulation_1a1a34ead0d4a8b74fd1dbea0362316ea4" kindref="member">triangulationFields()</ref>.</para><para><simplesect kind="return"><para>true in case of success</para></simplesect>
+<simplesect kind="see"><para><ref refid="classTriangulation_1a1a34ead0d4a8b74fd1dbea0362316ea4" kindref="member">triangulationFields()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="2978" bodyend="3039"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1ac03fcc457c8dfcad2a8b5955648b4786" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::setBreakEdgeColor</definition>
+        <argsstring>(int r, int g, int b) override</argsstring>
+        <name>setBreakEdgeColor</name>
+        <reimplements refid="classTriangulation_1a92fb14c42cc5d1df7c8a06717e0ad9ac">setBreakEdgeColor</reimplements>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Sets the color of the breaklines. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="86" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1525" bodyend="1528"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1abf120970226474850cf1414343ccaaf6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::setDecorator</definition>
+        <argsstring>(Triangulation *d)</argsstring>
+        <name>setDecorator</name>
+        <param>
+          <type><ref refid="classTriangulation" kindref="compound">Triangulation</ref> *</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="53" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1acafec9bde50fbb251d38e6c946fc919b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::setEdgeColor</definition>
+        <argsstring>(int r, int g, int b) override</argsstring>
+        <name>setEdgeColor</name>
+        <reimplements refid="classTriangulation_1a28e47fe32c7f48b82b8b6b9844e61fd6">setEdgeColor</reimplements>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Sets the color of the normal edges. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1515" bodyend="1518"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a568b90457b069c484301581a65223c79" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::setForcedCrossBehavior</definition>
+        <argsstring>(Triangulation::ForcedCrossBehavior b) override</argsstring>
+        <name>setForcedCrossBehavior</name>
+        <reimplements refid="classTriangulation_1aa7607f541eecf3e432a3c8dd0816e003">setForcedCrossBehavior</reimplements>
+        <param>
+          <type><ref refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413" kindref="member">Triangulation::ForcedCrossBehavior</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Sets the behavior of the triangulation in case of crossing forced lines. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="80" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1510" bodyend="1513"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1af83b74b89303d099bdaa9dfdec98b0f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::setForcedEdgeColor</definition>
+        <argsstring>(int r, int g, int b) override</argsstring>
+        <name>setForcedEdgeColor</name>
+        <reimplements refid="classTriangulation_1a9f314cc09454591fd46a5a8b6389afa2">setForcedEdgeColor</reimplements>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+<para>Sets the color of the forced edges. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="84" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1520" bodyend="1523"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a78c1ced446bc174f86d2f437c517ec38" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::setTriangleInterpolator</definition>
+        <argsstring>(TriangleInterpolator *interpolator) override</argsstring>
+        <name>setTriangleInterpolator</name>
+        <reimplements refid="classTriangulation_1ad9a666e04a02c1e1aaf0fdffda56a9a7">setTriangleInterpolator</reimplements>
+        <param>
+          <type><ref refid="classTriangleInterpolator" kindref="compound">TriangleInterpolator</ref> *</type>
+          <declname>interpolator</declname>
+        </param>
+        <briefdescription>
+<para>Sets an interpolator object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="88" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1530" bodyend="1533"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a44f05630f5314513989291c5320ce6de" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::swapEdge</definition>
+        <argsstring>(double x, double y) override</argsstring>
+        <name>swapEdge</name>
+        <reimplements refid="classTriangulation_1a82285eb39eda3dd76fa921b25a2317df">swapEdge</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Reads the dual edge structure of a taff file. </para>        </briefdescription>
+        <detaileddescription>
+<para>Saves the dual edge structure to a taff file Swaps the edge which is closest to the point with x and y coordinates (if this is possible) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="2854" bodyend="2913"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classDualEdgeTriangulation_1aeafdc43102c41312926560ac3a42c2b1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::baseEdgeOfPoint</definition>
+        <argsstring>(int point)</argsstring>
+        <name>baseEdgeOfPoint</name>
+        <param>
+          <type>int</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the number of an edge which points to the point with number &apos;point&apos; or -1 if there is an error. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="144" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="372" bodyend="442"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a9f58554dd766620d20ae006ffaf9a6ff" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::baseEdgeOfTriangle</definition>
+        <argsstring>(const QgsPoint &amp;point)</argsstring>
+        <name>baseEdgeOfTriangle</name>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Returns the number of a <ref refid="classHalfEdge" kindref="compound">HalfEdge</ref> from a triangle in which &apos;point&apos; is in. If the number -10 is returned, this means, that &apos;point&apos; is outside the convex hull. If -5 is returned, then numerical problems with the leftOfTest occurred (and the value of the possible edge is stored in the variable &apos;mUnstableEdge&apos;. -20 means, that the inserted point is exactly on an edge (the number is stored in the variable &apos;mEdgeWithPoint&apos;). -25 means, that the point is already in the triangulation (the number of the point is stored in the member &apos;mTwiceInsPoint&apos;. If -100 is returned, this means that something else went wrong. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="146" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="444" bodyend="619"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1af55e1d9edda43c789ac4db15d2fabca4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::checkSwap</definition>
+        <argsstring>(unsigned int edge, unsigned int recursiveDeep)</argsstring>
+        <name>checkSwap</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>edge</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>recursiveDeep</declname>
+        </param>
+        <briefdescription>
+<para>Checks, if &apos;edge&apos; has to be swapped because of the empty circle criterion. If so, doSwap(...) is called. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="647" bodyend="662"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a7183b661e2cf5e12c06fa3ed252c5197" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::doOnlySwap</definition>
+        <argsstring>(unsigned int edge)</argsstring>
+        <name>doOnlySwap</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Swaps &apos;edge&apos; and does no recursiv testing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="152" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="664" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a0a120e3e0d1554e8eb52bdc1afe1e6f1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::doSwap</definition>
+        <argsstring>(unsigned int edge, unsigned int recursiveDeep)</argsstring>
+        <name>doSwap</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>edge</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>recursiveDeep</declname>
+        </param>
+        <briefdescription>
+<para>Swaps &apos;edge&apos; and test recursively for other swaps (delaunay criterion) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="682" bodyend="703"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1ae9267332186ab8ba93677055299aef73" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::edgeOnConvexHull</definition>
+        <argsstring>(int edge)</argsstring>
+        <name>edgeOnConvexHull</name>
+        <param>
+          <type>int</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Returns true, if a half edge is on the convex hull and false otherwise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="174" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="3136" bodyend="3139"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1adbfae2d13b6a4e69d2b803e1eb8dc59a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::evaluateInfluenceRegion</definition>
+        <argsstring>(QgsPoint *point, int edge, QSet&lt; int &gt; &amp;set)</argsstring>
+        <name>evaluateInfluenceRegion</name>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> *</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>edge</declname>
+        </param>
+        <param>
+          <type>QSet&lt; int &gt; &amp;</type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+<para>Function needed for the ruppert algorithm. Tests, if point is in the circle through both endpoints of edge and the endpoint of edge-&gt;dual-&gt;next-&gt;point. If so, the function calls itself recursively for edge-&gt;next and edge-&gt;next-&gt;next. Stops, if it finds a forced edge or a convex hull edge. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="176" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="3141" bodyend="3161"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a915fb044f857c0893fb38ca3fe5d6e5a" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::halfEdgeBBoxTest</definition>
+        <argsstring>(int edge, double xlowleft, double ylowleft, double xupright, double yupright) const</argsstring>
+        <name>halfEdgeBBoxTest</name>
+        <param>
+          <type>int</type>
+          <declname>edge</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>xlowleft</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ylowleft</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>xupright</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>yupright</declname>
+        </param>
+        <briefdescription>
+<para>Tests, if the bounding box of the halfedge with index i intersects the specified bounding box. The main purpose for this method is the drawing of the triangulation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="168" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="216" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a8947daf2ee4a521c02f986faa0b06044" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int DualEdgeTriangulation::insertEdge</definition>
+        <argsstring>(int dual, int next, int point, bool mbreak, bool forced)</argsstring>
+        <name>insertEdge</name>
+        <param>
+          <type>int</type>
+          <declname>dual</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>next</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>mbreak</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forced</declname>
+        </param>
+        <briefdescription>
+<para>Inserts an edge and makes sure, everything is OK with the storage of the edge. The number of the <ref refid="classHalfEdge" kindref="compound">HalfEdge</ref> is returned. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="136" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1132" bodyend="1138"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a601a65827ef5a28f0622c2d9c2a1b3c4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::insertForcedSegment</definition>
+        <argsstring>(int p1, int p2, QgsInterpolator::SourceType segmentType)</argsstring>
+        <name>insertForcedSegment</name>
+        <param>
+          <type>int</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2f" kindref="member">QgsInterpolator::SourceType</ref></type>
+          <declname>segmentType</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a forced segment between the points with the numbers p1 and p2 into the triangulation and returns the number of a <ref refid="classHalfEdge" kindref="compound">HalfEdge</ref> belonging to this forced edge or -100 in case of failure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="138" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="1140" bodyend="1508"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1aa15e9d3dfe9d1dd651e226d27c3af386" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int DualEdgeTriangulation::splitHalfEdge</definition>
+        <argsstring>(int edge, float position)</argsstring>
+        <name>splitHalfEdge</name>
+        <param>
+          <type>int</type>
+          <declname>edge</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a new point on the halfedge with number &apos;edge&apos;. The position can have a value from 0 to 1 (e.g. 0.5 would be in the middle). The return value is the number of the new inserted point. tin is the triangulation, which should be used to calculate the elevation of the inserted point. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="172" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="3081" bodyend="3134"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a69cb169d099922de5092b3d52750f3c6" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double DualEdgeTriangulation::swapMinAngle</definition>
+        <argsstring>(int edge) const</argsstring>
+        <name>swapMinAngle</name>
+        <param>
+          <type>int</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the minimum angle, which would be present, if the specified halfedge would be swapped. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="170" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="3041" bodyend="3079"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1a7654aa7e5be6176e778d7e5d3065c5ba" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DualEdgeTriangulation::swapPossible</definition>
+        <argsstring>(unsigned int edge)</argsstring>
+        <name>swapPossible</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+<para>Returns true, if it is possible to swap an edge, otherwise false(concave quad or edge on (or outside) the convex hull) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="164" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="2314" bodyend="2349"/>
+      </memberdef>
+      <memberdef kind="function" id="classDualEdgeTriangulation_1aa8f9c8a36e297b87d2bcaf1c8794a0c9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DualEdgeTriangulation::triangulatePolygon</definition>
+        <argsstring>(QList&lt; int &gt; *poly, QList&lt; int &gt; *free, int mainedge)</argsstring>
+        <name>triangulatePolygon</name>
+        <param>
+          <type>QList&lt; int &gt; *</type>
+          <declname>poly</declname>
+        </param>
+        <param>
+          <type>QList&lt; int &gt; *</type>
+          <declname>free</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mainedge</declname>
+        </param>
+        <briefdescription>
+<para>Divides a polygon in a triangle and two polygons and calls itself recursively for these two polygons. &apos;poly&apos; is a pointer to a list with the numbers of the edges of the polygon, &apos;free&apos; is a pointer to a list of free halfedges, and &apos;mainedge&apos; is the number of the edge, towards which the new triangle is inserted. Mainedge has to be the same as poly-&gt;begin(), otherwise the recursion does not work. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="166" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.cpp" bodystart="2351" bodyend="2486"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classDualEdgeTriangulation" kindref="compound">DualEdgeTriangulation</ref> is an implementation of a triangulation class based on the dual edge data structure. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings. </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="271">
+        <label>DualEdgeTriangulation</label>
+        <link refid="classDualEdgeTriangulation"/>
+        <childnode refid="272" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="272">
+        <label>Triangulation</label>
+        <link refid="classTriangulation"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="275">
+        <label>TriangleInterpolator</label>
+        <link refid="classTriangleInterpolator"/>
+      </node>
+      <node id="273">
+        <label>DualEdgeTriangulation</label>
+        <link refid="classDualEdgeTriangulation"/>
+        <childnode refid="274" relation="public-inheritance">
+        </childnode>
+        <childnode refid="275" relation="usage">
+          <edgelabel>mTriangleInterpolator</edgelabel>
+        </childnode>
+        <childnode refid="274" relation="usage">
+          <edgelabel>mDecorator</edgelabel>
+        </childnode>
+      </node>
+      <node id="274">
+        <label>Triangulation</label>
+        <link refid="classTriangulation"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" line="48" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/DualEdgeTriangulation.h" bodystart="47" bodyend="179"/>
+    <listofallmembers>
+      <member refid="classDualEdgeTriangulation_1a4b0d932cc9904abc8563a5c49e7a7924" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>addLine</name></member>
+      <member refid="classDualEdgeTriangulation_1acd489c0efecba6bcc6f20a139755f38d" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>addPoint</name></member>
+      <member refid="classDualEdgeTriangulation_1aeafdc43102c41312926560ac3a42c2b1" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>baseEdgeOfPoint</name></member>
+      <member refid="classDualEdgeTriangulation_1a9f58554dd766620d20ae006ffaf9a6ff" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>baseEdgeOfTriangle</name></member>
+      <member refid="classDualEdgeTriangulation_1a7a0970ddd6a39bf1af490c2ba541ed6b" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>calcNormal</name></member>
+      <member refid="classDualEdgeTriangulation_1a2347bf831fea72b60243df7ee48c73af" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>calcPoint</name></member>
+      <member refid="classDualEdgeTriangulation_1af55e1d9edda43c789ac4db15d2fabca4" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>checkSwap</name></member>
+      <member refid="classDualEdgeTriangulation_1a033060bb8f1eefcaeae98fb5bd97997a" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>DEFAULT_STORAGE_FOR_HALF_EDGES</name></member>
+      <member refid="classDualEdgeTriangulation_1a78f30ee384e2a43206cca0c7a638f0e0" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>DEFAULT_STORAGE_FOR_POINTS</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aa560416e991c80889a0751d3e05cd5d6" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>DeleteFirst</name></member>
+      <member refid="classDualEdgeTriangulation_1a7183b661e2cf5e12c06fa3ed252c5197" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>doOnlySwap</name></member>
+      <member refid="classDualEdgeTriangulation_1a0a120e3e0d1554e8eb52bdc1afe1e6f1" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>doSwap</name></member>
+      <member refid="classDualEdgeTriangulation_1a792285f1dc9eff081c54ca1f2bdc119f" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>DualEdgeTriangulation</name></member>
+      <member refid="classDualEdgeTriangulation_1ab5c8c5c91629f0cc26a6671740ba2c01" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>DualEdgeTriangulation</name></member>
+      <member refid="classDualEdgeTriangulation_1ae9267332186ab8ba93677055299aef73" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>edgeOnConvexHull</name></member>
+      <member refid="classDualEdgeTriangulation_1a401d272d3c5ad3cf951d99ddf7ca64a0" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>eliminateHorizontalTriangles</name></member>
+      <member refid="classDualEdgeTriangulation_1adbfae2d13b6a4e69d2b803e1eb8dc59a" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>evaluateInfluenceRegion</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>ForcedCrossBehavior</name></member>
+      <member refid="classDualEdgeTriangulation_1a53f45d11a3699fc664d9d327d9838d91" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getNumberOfPoints</name></member>
+      <member refid="classDualEdgeTriangulation_1a17653c0cbe5d0cba5ea26b8f3b09d92b" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getOppositePoint</name></member>
+      <member refid="classDualEdgeTriangulation_1acdddaab0f0c9e5719ef2928769b904a4" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getPoint</name></member>
+      <member refid="classDualEdgeTriangulation_1a4013929acfbdef26db98a064d72092be" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getPointsAroundEdge</name></member>
+      <member refid="classDualEdgeTriangulation_1adbc8f25c60034f6ccdcea5e63ac69cc2" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getSurroundingTriangles</name></member>
+      <member refid="classDualEdgeTriangulation_1a4484215f19577ad8cc8bb99de5d57c35" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getTriangle</name></member>
+      <member refid="classDualEdgeTriangulation_1ac968240e8e2097dfec115b463acdeb86" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getTriangle</name></member>
+      <member refid="classDualEdgeTriangulation_1a41ab0eb0e8627c64584f193cba08a0ab" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getXMax</name></member>
+      <member refid="classDualEdgeTriangulation_1a0262dff3e2fe3e9f6221b86c1c9b552a" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getXMin</name></member>
+      <member refid="classDualEdgeTriangulation_1a834b94369c90b9a13d10cda4c32ea57d" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getYMax</name></member>
+      <member refid="classDualEdgeTriangulation_1a632becf0680c3c2c1748094df4717058" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>getYMin</name></member>
+      <member refid="classDualEdgeTriangulation_1a915fb044f857c0893fb38ca3fe5d6e5a" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>halfEdgeBBoxTest</name></member>
+      <member refid="classDualEdgeTriangulation_1a8947daf2ee4a521c02f986faa0b06044" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>insertEdge</name></member>
+      <member refid="classDualEdgeTriangulation_1a601a65827ef5a28f0622c2d9c2a1b3c4" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>insertForcedSegment</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aa60878fb5905d503f9537994c397c5c1" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>InsertVertex</name></member>
+      <member refid="classDualEdgeTriangulation_1a8640d2dfe3eb9e3ad3af5e1d1dfb3043" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>MAX_BASE_ITERATIONS</name></member>
+      <member refid="classDualEdgeTriangulation_1af9763bb523890fb2b808fe8616c5b7ef" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mBreakEdgeColor</name></member>
+      <member refid="classDualEdgeTriangulation_1aea8d834794563c974333105d2b74ce89" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mDecorator</name></member>
+      <member refid="classDualEdgeTriangulation_1a1d008997130061213c4146faef72dcd5" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mEdgeColor</name></member>
+      <member refid="classDualEdgeTriangulation_1a928e79ac62bdd67fd586e82b785a93e6" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mEdgeInside</name></member>
+      <member refid="classDualEdgeTriangulation_1a5de235d7a4df5e817a43847026248949" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mEdgeOutside</name></member>
+      <member refid="classDualEdgeTriangulation_1a6ee9820279be4eda2476efd9607881d1" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mEdgeWithPoint</name></member>
+      <member refid="classDualEdgeTriangulation_1a5de2754deaeb1be4f990628f1c0e2695" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mForcedCrossBehavior</name></member>
+      <member refid="classDualEdgeTriangulation_1abecc4c1681668112d713355926b06f55" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mForcedEdgeColor</name></member>
+      <member refid="classDualEdgeTriangulation_1a16538ec1a8fac7a804b9afab9675cb60" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mHalfEdge</name></member>
+      <member refid="classDualEdgeTriangulation_1afbe27941693c40f0abb8757d7fd1a229" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mPointVector</name></member>
+      <member refid="classDualEdgeTriangulation_1ac7f1b349544ad42833f0069d45819051" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mTriangleInterpolator</name></member>
+      <member refid="classDualEdgeTriangulation_1a0d72af972737eb3e82570f6fb93a0735" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mTwiceInsPoint</name></member>
+      <member refid="classDualEdgeTriangulation_1a02cdee6c119b5e65bb24a629b6d63677" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>mUnstableEdge</name></member>
+      <member refid="classDualEdgeTriangulation_1a2548323b00504792d8a962512ea3cf98" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>performConsistencyTest</name></member>
+      <member refid="classDualEdgeTriangulation_1abf7f07cfc4c07060141f7634229a7781" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>pointInside</name></member>
+      <member refid="classDualEdgeTriangulation_1a8d7c0e7de6a7c4c8287e6712bc6f5aa9" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>ruppertRefinement</name></member>
+      <member refid="classDualEdgeTriangulation_1a1bac7ab7a1af4705be6dff8c666d0d4d" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>saveTriangulation</name></member>
+      <member refid="classDualEdgeTriangulation_1ac03fcc457c8dfcad2a8b5955648b4786" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>setBreakEdgeColor</name></member>
+      <member refid="classDualEdgeTriangulation_1abf120970226474850cf1414343ccaaf6" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>setDecorator</name></member>
+      <member refid="classDualEdgeTriangulation_1acafec9bde50fbb251d38e6c946fc919b" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>setEdgeColor</name></member>
+      <member refid="classDualEdgeTriangulation_1a568b90457b069c484301581a65223c79" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>setForcedCrossBehavior</name></member>
+      <member refid="classDualEdgeTriangulation_1af83b74b89303d099bdaa9dfdec98b0f3" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>setForcedEdgeColor</name></member>
+      <member refid="classDualEdgeTriangulation_1a78c1ced446bc174f86d2f437c517ec38" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>setTriangleInterpolator</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aeaadcebf3abc9ed8808490d773ca0dc9" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>SnappingTypeVertex</name></member>
+      <member refid="classDualEdgeTriangulation_1aa15e9d3dfe9d1dd651e226d27c3af386" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>splitHalfEdge</name></member>
+      <member refid="classDualEdgeTriangulation_1a44f05630f5314513989291c5320ce6de" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>swapEdge</name></member>
+      <member refid="classDualEdgeTriangulation_1a69cb169d099922de5092b3d52750f3c6" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>swapMinAngle</name></member>
+      <member refid="classDualEdgeTriangulation_1a7654aa7e5be6176e778d7e5d3065c5ba" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>swapPossible</name></member>
+      <member refid="classDualEdgeTriangulation_1a2e9dedcb9ea820c508ecf19b1187fa3f" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>TestQgsInterpolator</name></member>
+      <member refid="classDualEdgeTriangulation_1aa8f9c8a36e297b87d2bcaf1c8794a0c9" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>triangulatePolygon</name></member>
+      <member refid="classTriangulation_1a1a34ead0d4a8b74fd1dbea0362316ea4" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>triangulationFields</name></member>
+      <member refid="classDualEdgeTriangulation_1ac14332c3e9c05676da197bb45e733401" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>xMax</name></member>
+      <member refid="classDualEdgeTriangulation_1ab97d758efb6c27c6fef1c8e2a620ec6c" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>xMin</name></member>
+      <member refid="classDualEdgeTriangulation_1a38fdc3c64b512344ff7870aa27869a0e" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>yMax</name></member>
+      <member refid="classDualEdgeTriangulation_1a7214aec389a9cebf743f40f825878306" prot="protected" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>yMin</name></member>
+      <member refid="classDualEdgeTriangulation_1a866d2e64dc709852e7f5028365803c95" prot="public" virt="non-virtual"><scope>DualEdgeTriangulation</scope><name>~DualEdgeTriangulation</name></member>
+      <member refid="classTriangulation_1a6651d84a634771ff6f1cd1de45ee6131" prot="public" virt="virtual"><scope>DualEdgeTriangulation</scope><name>~Triangulation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

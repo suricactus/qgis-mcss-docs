@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsStatisticalSummary class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsStatisticalSummary <span class="m-thin">class</span>
+        </h1>
+        <p>Calculator for summary statistics for a list of doubles.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Statistics are calculated by calling <a href="classQgsStatisticalSummary.html#a0c7cfb41652730e239cf28632eb66518" class="m-doc">calculate()</a> and passing a list of doubles. The individual statistics can then be retrieved using the associated methods. Note that not all statistics are calculated by default. Statistics which require slower computations are only calculated by specifying the statistic in the constructor or via <a href="classQgsStatisticalSummary.html#aa1ace489b4e9478121eec604103269ef" class="m-doc">setStatistics()</a>.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a10da9c8134adc32b081937750a032418" class="m-doc">Statistic</a> { </span><span class="m-doc-wrap"><a href="#a10da9c8134adc32b081937750a032418afca3bd02ff96dc1b17d11b7a9576d147" class="m-doc">Count</a> = 1 &lt;&lt; 0,
+              <a href="#a10da9c8134adc32b081937750a032418a889562d41f682fdb791584feb0c201c6" class="m-doc">CountMissing</a> = 1 &lt;&lt; 15,
+              <a href="#a10da9c8134adc32b081937750a032418a42153aa94406b5de7be1febabde2f059" class="m-doc">Sum</a> = 1 &lt;&lt; 1,
+              <a href="#a10da9c8134adc32b081937750a032418ae7ef39de29dcdcc6445bfb144963f5a8" class="m-doc">Mean</a> = 1 &lt;&lt; 2,
+              <a href="#a10da9c8134adc32b081937750a032418a2163768fb85e55f57c9258a3069a0bcf" class="m-doc">Median</a> = 1 &lt;&lt; 3,
+              <a href="#a10da9c8134adc32b081937750a032418af8c46830d97b3d2c81b5f1c15746b8ed" class="m-doc">StDev</a> = 1 &lt;&lt; 4,
+              <a href="#a10da9c8134adc32b081937750a032418abbcf8f989dd6fbc39b018528d3b9240a" class="m-doc">StDevSample</a> = 1 &lt;&lt; 5,
+              <a href="#a10da9c8134adc32b081937750a032418aa747b4ae343051d9ec73203ddb501e0b" class="m-doc">Min</a> = 1 &lt;&lt; 6,
+              <a href="#a10da9c8134adc32b081937750a032418a13b011c5eb16794f4691c871a3b0f428" class="m-doc">Max</a> = 1 &lt;&lt; 7,
+              <a href="#a10da9c8134adc32b081937750a032418aab0947738110625ecc1a249377d7bac6" class="m-doc">Range</a> = 1 &lt;&lt; 8,
+              <a href="#a10da9c8134adc32b081937750a032418a6159be01c51b4cf33b0f7de86b77ff5f" class="m-doc">Minority</a> = 1 &lt;&lt; 9,
+              <a href="#a10da9c8134adc32b081937750a032418a87a745a4469b100ec67132465fca80b5" class="m-doc">Majority</a> = 1 &lt;&lt; 10,
+              <a href="#a10da9c8134adc32b081937750a032418a2c2064a3f59c43251b6a2ac5dd334440" class="m-doc">Variety</a> = 1 &lt;&lt; 11,
+              <a href="#a10da9c8134adc32b081937750a032418af1301e2e6261bfb8f29d90c7a77cf84b" class="m-doc">FirstQuartile</a> = 1 &lt;&lt; 12,
+              <a href="#a10da9c8134adc32b081937750a032418a6cd78d36d284557c9a4dbf9074206b29" class="m-doc">ThirdQuartile</a> = 1 &lt;&lt; 13,
+              <a href="#a10da9c8134adc32b081937750a032418a0faa5b3ddaa27a0953ba8f07216c5775" class="m-doc">InterQuartileRange</a> = 1 &lt;&lt; 14,
+              <a href="#a10da9c8134adc32b081937750a032418a4851e8e9ce3efe439b1dd7de71b441c1" class="m-doc">First</a> = 1 &lt;&lt; 16,
+              <a href="#a10da9c8134adc32b081937750a032418a52d3c0b7183658c9676791425106f882" class="m-doc">Last</a> = 1 &lt;&lt; 17,
+              <a href="#a10da9c8134adc32b081937750a032418a65d5570ace8cd9684673e505af3e382f" class="m-doc">All</a> = Count | CountMissing | Sum | Mean | Median | StDev | Max | Min | Range | Minority | Majority | Variety | FirstQuartile | ThirdQuartile | InterQuartileRange | First | Last }</span>
+            </dt>
+            <dd>Enumeration of flags that specify statistics to be calculated.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#af344d9732274b603af3d1e9b7fce289d" class="m-doc">displayName</a>(</span><span class="m-doc-wrap"><a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418" class="m-doc">QgsStatisticalSummary::<wbr />Statistic</a> statistic) -&gt; QString</span>
+            </dt>
+            <dd>Returns the friendly display name for a <em>statistic</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3e28e75b6cc5e278c4043ce4bc2a9745" class="m-doc">shortName</a>(</span><span class="m-doc-wrap"><a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418" class="m-doc">QgsStatisticalSummary::<wbr />Statistic</a> statistic) -&gt; QString</span>
+            </dt>
+            <dd>Returns a short, friendly display name for a <em>statistic</em>, suitable for use in a field name.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a74660d6c2650fd2dfb05f693eb5bd7f4" class="m-doc">QgsStatisticalSummary</a>(</span><span class="m-doc-wrap">QgsStatisticalSummary::Statistics stats = <a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418a65d5570ace8cd9684673e505af3e382f" class="m-doc">QgsStatisticalSummary::<wbr />All</a>)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsStatisticalSummary.html" class="m-doc">QgsStatisticalSummary</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2c4e3042a15d1a50a3b4ad97c9f49b18" class="m-doc">addValue</a>(</span><span class="m-doc-wrap">double value)</span>
+            </dt>
+            <dd>Adds a single value to the statistics calculation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a014dfd822d9d97025e4cdb525a0edbfd" class="m-doc">addVariant</a>(</span><span class="m-doc-wrap">const QVariant&amp; value)</span>
+            </dt>
+            <dd>Adds a single value to the statistics calculation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0c7cfb41652730e239cf28632eb66518" class="m-doc">calculate</a>(</span><span class="m-doc-wrap">const QList&lt;double&gt;&amp; values)</span>
+            </dt>
+            <dd>Calculates summary statistics for a list of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab6e1fb233a9edd811b308268ecb0c20c" class="m-doc-self" name="ab6e1fb233a9edd811b308268ecb0c20c">count</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns calculated count of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a363dfed8ecac217b38f71354a76b5cd6" class="m-doc">countMissing</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the number of missing (null) values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adc0fb333d9e334e7ca61bf1bb6375eb2" class="m-doc">finalize</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Must be called after adding all values with addValues() and before retrieving any calculated statistics.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a94688ae72739c3b31cce76608dbaecbc" class="m-doc">first</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the first value obtained.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a030db7ab4464f4a76a1c6b2f4e87f52c" class="m-doc">firstQuartile</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the first quartile of the values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4530600dd6b65dc630e1ecb7cc86d93b" class="m-doc">interQuartileRange</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the inter quartile range of the values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2973d77310daa9fe7bd7de127814d661" class="m-doc">last</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the last value obtained.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a345c1ef1b364b0db11023c3c9c3e699a" class="m-doc">majority</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns majority of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abe9834af6c5a54b922389b6028085ef3" class="m-doc">max</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns calculated maximum from values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2298d4afb0c7c789cf924e3f9f7d8cbf" class="m-doc">mean</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns calculated mean of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7251bd0b48ebb6d754e477586ae8bcb8" class="m-doc">median</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns calculated median of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8eb03afd877ebdf14102d006a1a9089e" class="m-doc">min</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns calculated minimum from values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a75d1db9b6995a5e39d89e029d1f3404b" class="m-doc">minority</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns minority of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abd77df23df9a45002ba784514b7b34db" class="m-doc">range</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns calculated range (difference between maximum and minimum values).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a869562dd6f51d9082e92abd74e3c7342" class="m-doc-self" name="a869562dd6f51d9082e92abd74e3c7342">reset</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Resets the calculated values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8e60eb57e21bf758953277e262eaa48c" class="m-doc">sampleStDev</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns sample standard deviation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa1ace489b4e9478121eec604103269ef" class="m-doc">setStatistics</a>(</span><span class="m-doc-wrap">QgsStatisticalSummary::Statistics stats)</span>
+            </dt>
+            <dd>Sets flags which specify which statistics will be calculated.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a70eff772e68906481538c3fea2572315" class="m-doc">statistic</a>(</span><span class="m-doc-wrap"><a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418" class="m-doc">QgsStatisticalSummary::<wbr />Statistic</a> stat) const -&gt; double</span>
+            </dt>
+            <dd>Returns the value of a specified statistic.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a402903949c1aad65731ec5807acdda7a" class="m-doc">statistics</a>(</span><span class="m-doc-wrap">) const -&gt; Statistics</span>
+            </dt>
+            <dd>Returns flags which specify which statistics will be calculated.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9e5f83153141b7d21d361268e12e353a" class="m-doc">stDev</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns population standard deviation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a16c84fd530333a1060e817a5ac0d2122" class="m-doc-self" name="a16c84fd530333a1060e817a5ac0d2122">sum</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns calculated sum of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa80e22286f44c6221a9c2ac95e1d45cd" class="m-doc">thirdQuartile</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the third quartile of the values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#add277c988708e3768856d64a2086ec5d" class="m-doc">variety</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns variety of values.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a10da9c8134adc32b081937750a032418"><div>
+            <h3>
+              enum QgsStatisticalSummary::<wbr /><a href="#a10da9c8134adc32b081937750a032418" class="m-doc-self">Statistic</a>
+            </h3>
+            <p>Enumeration of flags that specify statistics to be calculated.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418afca3bd02ff96dc1b17d11b7a9576d147" class="m-doc-self" name="a10da9c8134adc32b081937750a032418afca3bd02ff96dc1b17d11b7a9576d147">Count</a></td>
+                  <td>
+                  <p>Count.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a889562d41f682fdb791584feb0c201c6" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a889562d41f682fdb791584feb0c201c6">CountMissing</a></td>
+                  <td>
+                  <p>Number of missing (null) values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a42153aa94406b5de7be1febabde2f059" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a42153aa94406b5de7be1febabde2f059">Sum</a></td>
+                  <td>
+                  <p>Sum of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418ae7ef39de29dcdcc6445bfb144963f5a8" class="m-doc-self" name="a10da9c8134adc32b081937750a032418ae7ef39de29dcdcc6445bfb144963f5a8">Mean</a></td>
+                  <td>
+                  <p>Mean of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a2163768fb85e55f57c9258a3069a0bcf" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a2163768fb85e55f57c9258a3069a0bcf">Median</a></td>
+                  <td>
+                  <p>Median of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418af8c46830d97b3d2c81b5f1c15746b8ed" class="m-doc-self" name="a10da9c8134adc32b081937750a032418af8c46830d97b3d2c81b5f1c15746b8ed">StDev</a></td>
+                  <td>
+                  <p>Standard deviation of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418abbcf8f989dd6fbc39b018528d3b9240a" class="m-doc-self" name="a10da9c8134adc32b081937750a032418abbcf8f989dd6fbc39b018528d3b9240a">StDevSample</a></td>
+                  <td>
+                  <p>Sample standard deviation of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418aa747b4ae343051d9ec73203ddb501e0b" class="m-doc-self" name="a10da9c8134adc32b081937750a032418aa747b4ae343051d9ec73203ddb501e0b">Min</a></td>
+                  <td>
+                  <p>Min of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a13b011c5eb16794f4691c871a3b0f428" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a13b011c5eb16794f4691c871a3b0f428">Max</a></td>
+                  <td>
+                  <p>Max of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418aab0947738110625ecc1a249377d7bac6" class="m-doc-self" name="a10da9c8134adc32b081937750a032418aab0947738110625ecc1a249377d7bac6">Range</a></td>
+                  <td>
+                  <p>Range of values (max - min)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a6159be01c51b4cf33b0f7de86b77ff5f" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a6159be01c51b4cf33b0f7de86b77ff5f">Minority</a></td>
+                  <td>
+                  <p>Minority of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a87a745a4469b100ec67132465fca80b5" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a87a745a4469b100ec67132465fca80b5">Majority</a></td>
+                  <td>
+                  <p>Majority of values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a2c2064a3f59c43251b6a2ac5dd334440" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a2c2064a3f59c43251b6a2ac5dd334440">Variety</a></td>
+                  <td>
+                  <p>Variety (count of distinct) values.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418af1301e2e6261bfb8f29d90c7a77cf84b" class="m-doc-self" name="a10da9c8134adc32b081937750a032418af1301e2e6261bfb8f29d90c7a77cf84b">FirstQuartile</a></td>
+                  <td>
+                  <p>First quartile.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a6cd78d36d284557c9a4dbf9074206b29" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a6cd78d36d284557c9a4dbf9074206b29">ThirdQuartile</a></td>
+                  <td>
+                  <p>Third quartile.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a0faa5b3ddaa27a0953ba8f07216c5775" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a0faa5b3ddaa27a0953ba8f07216c5775">InterQuartileRange</a></td>
+                  <td>
+                  <p>Inter quartile range (IQR)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a4851e8e9ce3efe439b1dd7de71b441c1" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a4851e8e9ce3efe439b1dd7de71b441c1">First</a></td>
+                  <td>
+                  <p>First value (since QGIS 3.6)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a52d3c0b7183658c9676791425106f882" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a52d3c0b7183658c9676791425106f882">Last</a></td>
+                  <td>
+                  <p>Last value (since QGIS 3.6)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a10da9c8134adc32b081937750a032418a65d5570ace8cd9684673e505af3e382f" class="m-doc-self" name="a10da9c8134adc32b081937750a032418a65d5570ace8cd9684673e505af3e382f">All</a></td>
+                  <td>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="af344d9732274b603af3d1e9b7fce289d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af344d9732274b603af3d1e9b7fce289d" class="m-doc-self">displayName</a>(</span><span class="m-doc-wrap"><a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418" class="m-doc">QgsStatisticalSummary::<wbr />Statistic</a> statistic)</span></span>
+            </h3>
+            <p>Returns the friendly display name for a <em>statistic</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a3e28e75b6cc5e278c4043ce4bc2a9745" class="m-doc">shortName()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3e28e75b6cc5e278c4043ce4bc2a9745"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3e28e75b6cc5e278c4043ce4bc2a9745" class="m-doc-self">shortName</a>(</span><span class="m-doc-wrap"><a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418" class="m-doc">QgsStatisticalSummary::<wbr />Statistic</a> statistic)</span></span>
+            </h3>
+            <p>Returns a short, friendly display name for a <em>statistic</em>, suitable for use in a field name.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#af344d9732274b603af3d1e9b7fce289d" class="m-doc">displayName()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a74660d6c2650fd2dfb05f693eb5bd7f4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a74660d6c2650fd2dfb05f693eb5bd7f4" class="m-doc-self">QgsStatisticalSummary</a>(</span><span class="m-doc-wrap">QgsStatisticalSummary::Statistics stats = <a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418a65d5570ace8cd9684673e505af3e382f" class="m-doc">QgsStatisticalSummary::<wbr />All</a>)</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsStatisticalSummary.html" class="m-doc">QgsStatisticalSummary</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">stats</td>
+                  <td>flags for statistics to calculate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2c4e3042a15d1a50a3b4ad97c9f49b18"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2c4e3042a15d1a50a3b4ad97c9f49b18" class="m-doc-self">addValue</a>(</span><span class="m-doc-wrap">double value)</span></span>
+            </h3>
+            <p>Adds a single value to the statistics calculation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td>value to add</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Calling this method allows values to be added to the calculation one at a time. For large quantities of values this may be more efficient then first adding all the values to a list and calling <a href="classQgsStatisticalSummary.html#a0c7cfb41652730e239cf28632eb66518" class="m-doc">calculate()</a>.</p><aside class="m-note m-info"><h4>Note</h4><p>call <a href="classQgsStatisticalSummary.html#a869562dd6f51d9082e92abd74e3c7342" class="m-doc">reset()</a> before adding the first value using this method to clear the results from any previous calculations</p><p><a href="classQgsStatisticalSummary.html#adc0fb333d9e334e7ca61bf1bb6375eb2" class="m-doc">finalize()</a> must be called after adding the final value and before retrieving calculated statistics.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a0c7cfb41652730e239cf28632eb66518" class="m-doc">calculate()</a></p><p><a href="classQgsStatisticalSummary.html#a014dfd822d9d97025e4cdb525a0edbfd" class="m-doc">addVariant()</a></p><p><a href="classQgsStatisticalSummary.html#adc0fb333d9e334e7ca61bf1bb6375eb2" class="m-doc">finalize()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a014dfd822d9d97025e4cdb525a0edbfd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a014dfd822d9d97025e4cdb525a0edbfd" class="m-doc-self">addVariant</a>(</span><span class="m-doc-wrap">const QVariant&amp; value)</span></span>
+            </h3>
+            <p>Adds a single value to the statistics calculation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td>variant containing to add. Non-numeric values are treated as null.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Calling this method allows values to be added to the calculation one at a time. For large quantities of values this may be more efficient then first adding all the values to a list and calling <a href="classQgsStatisticalSummary.html#a0c7cfb41652730e239cf28632eb66518" class="m-doc">calculate()</a>.</p><aside class="m-note m-info"><h4>Note</h4><p>call <a href="classQgsStatisticalSummary.html#a869562dd6f51d9082e92abd74e3c7342" class="m-doc">reset()</a> before adding the first value using this method to clear the results from any previous calculations</p><p><a href="classQgsStatisticalSummary.html#adc0fb333d9e334e7ca61bf1bb6375eb2" class="m-doc">finalize()</a> must be called after adding the final value and before retrieving calculated statistics.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a2c4e3042a15d1a50a3b4ad97c9f49b18" class="m-doc">addValue()</a></p><p><a href="classQgsStatisticalSummary.html#a0c7cfb41652730e239cf28632eb66518" class="m-doc">calculate()</a></p><p><a href="classQgsStatisticalSummary.html#adc0fb333d9e334e7ca61bf1bb6375eb2" class="m-doc">finalize()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0c7cfb41652730e239cf28632eb66518"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0c7cfb41652730e239cf28632eb66518" class="m-doc-self">calculate</a>(</span><span class="m-doc-wrap">const QList&lt;double&gt;&amp; values)</span></span>
+            </h3>
+            <p>Calculates summary statistics for a list of values.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">values</td>
+                  <td>list of doubles</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a363dfed8ecac217b38f71354a76b5cd6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a363dfed8ecac217b38f71354a76b5cd6" class="m-doc-self">countMissing</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the number of missing (null) values.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adc0fb333d9e334e7ca61bf1bb6375eb2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc0fb333d9e334e7ca61bf1bb6375eb2" class="m-doc-self">finalize</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Must be called after adding all values with addValues() and before retrieving any calculated statistics.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a2c4e3042a15d1a50a3b4ad97c9f49b18" class="m-doc">addValue()</a></p><p><a href="classQgsStatisticalSummary.html#a014dfd822d9d97025e4cdb525a0edbfd" class="m-doc">addVariant()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a94688ae72739c3b31cce76608dbaecbc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a94688ae72739c3b31cce76608dbaecbc" class="m-doc-self">first</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the first value obtained.</p>
+<p>A NaN value may be returned if no values were encountered.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a2973d77310daa9fe7bd7de127814d661" class="m-doc">last()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a030db7ab4464f4a76a1c6b2f4e87f52c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a030db7ab4464f4a76a1c6b2f4e87f52c" class="m-doc-self">firstQuartile</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the first quartile of the values.</p>
+<p>The quartile is calculated using the &quot;Tukey&#x27;s hinges&quot; method. A NaN value may be returned if the first quartile cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#aa80e22286f44c6221a9c2ac95e1d45cd" class="m-doc">thirdQuartile</a></p><p><a href="classQgsStatisticalSummary.html#a4530600dd6b65dc630e1ecb7cc86d93b" class="m-doc">interQuartileRange</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4530600dd6b65dc630e1ecb7cc86d93b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4530600dd6b65dc630e1ecb7cc86d93b" class="m-doc-self">interQuartileRange</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the inter quartile range of the values.</p>
+<p>The quartiles are calculated using the &quot;Tukey&#x27;s hinges&quot; method. A NaN value may be returned if the IQR cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a030db7ab4464f4a76a1c6b2f4e87f52c" class="m-doc">firstQuartile</a></p><p><a href="classQgsStatisticalSummary.html#aa80e22286f44c6221a9c2ac95e1d45cd" class="m-doc">thirdQuartile</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2973d77310daa9fe7bd7de127814d661"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2973d77310daa9fe7bd7de127814d661" class="m-doc-self">last</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the last value obtained.</p>
+<p>A NaN value may be returned if no values were encountered.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a94688ae72739c3b31cce76608dbaecbc" class="m-doc">first()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a345c1ef1b364b0db11023c3c9c3e699a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a345c1ef1b364b0db11023c3c9c3e699a" class="m-doc-self">majority</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns majority of values.</p>
+<p>The majority is the value with most occurrences in the list This is only calculated if Statistic::Majority has been specified in the constructor or via setStatistics. A NaN value may be returned if the majority cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a75d1db9b6995a5e39d89e029d1f3404b" class="m-doc">minority</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abe9834af6c5a54b922389b6028085ef3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abe9834af6c5a54b922389b6028085ef3" class="m-doc-self">max</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns calculated maximum from values.</p>
+<p>A NaN value may be returned if the maximum cannot be calculated.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2298d4afb0c7c789cf924e3f9f7d8cbf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2298d4afb0c7c789cf924e3f9f7d8cbf" class="m-doc-self">mean</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns calculated mean of values.</p>
+<p>A NaN value may be returned if the mean cannot be calculated.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7251bd0b48ebb6d754e477586ae8bcb8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7251bd0b48ebb6d754e477586ae8bcb8" class="m-doc-self">median</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns calculated median of values.</p>
+<p>This is only calculated if Statistic::Median has been specified in the constructor or via setStatistics. A NaN value may be returned if the median cannot be calculated.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8eb03afd877ebdf14102d006a1a9089e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8eb03afd877ebdf14102d006a1a9089e" class="m-doc-self">min</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns calculated minimum from values.</p>
+<p>A NaN value may be returned if the minimum cannot be calculated.</p>
+          </div></section>
+          <section class="m-doc-details" id="a75d1db9b6995a5e39d89e029d1f3404b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a75d1db9b6995a5e39d89e029d1f3404b" class="m-doc-self">minority</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns minority of values.</p>
+<p>The minority is the value with least occurrences in the list This is only calculated if Statistic::Minority has been specified in the constructor or via setStatistics. A NaN value may be returned if the minority cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a345c1ef1b364b0db11023c3c9c3e699a" class="m-doc">majority</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abd77df23df9a45002ba784514b7b34db"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abd77df23df9a45002ba784514b7b34db" class="m-doc-self">range</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns calculated range (difference between maximum and minimum values).</p>
+<p>A NaN value may be returned if the range cannot be calculated.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8e60eb57e21bf758953277e262eaa48c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8e60eb57e21bf758953277e262eaa48c" class="m-doc-self">sampleStDev</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns sample standard deviation.</p>
+<p>This is only calculated if Statistic::StDev has been specified in the constructor or via setStatistics. A NaN value may be returned if the standard deviation cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a9e5f83153141b7d21d361268e12e353a" class="m-doc">stDev</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa1ace489b4e9478121eec604103269ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa1ace489b4e9478121eec604103269ef" class="m-doc-self">setStatistics</a>(</span><span class="m-doc-wrap">QgsStatisticalSummary::Statistics stats)</span></span>
+            </h3>
+            <p>Sets flags which specify which statistics will be calculated.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">stats</td>
+                  <td>flags for statistics to calculate</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Some statistics are always calculated (e.g., sum, min and max).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a402903949c1aad65731ec5807acdda7a" class="m-doc">statistics</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a70eff772e68906481538c3fea2572315"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a70eff772e68906481538c3fea2572315" class="m-doc-self">statistic</a>(</span><span class="m-doc-wrap"><a href="classQgsStatisticalSummary.html#a10da9c8134adc32b081937750a032418" class="m-doc">QgsStatisticalSummary::<wbr />Statistic</a> stat) const</span></span>
+            </h3>
+            <p>Returns the value of a specified statistic.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">stat</td>
+                  <td>statistic to return</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>calculated value of statistic. A NaN value may be returned for invalid statistics.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a402903949c1aad65731ec5807acdda7a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Statistics QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a402903949c1aad65731ec5807acdda7a" class="m-doc-self">statistics</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns flags which specify which statistics will be calculated.</p>
+<p>Some statistics are always calculated (e.g., sum, min and max).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#aa1ace489b4e9478121eec604103269ef" class="m-doc">setStatistics</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9e5f83153141b7d21d361268e12e353a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e5f83153141b7d21d361268e12e353a" class="m-doc-self">stDev</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns population standard deviation.</p>
+<p>This is only calculated if Statistic::StDev has been specified in the constructor or via setStatistics. A NaN value may be returned if the standard deviation cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a8e60eb57e21bf758953277e262eaa48c" class="m-doc">sampleStDev</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa80e22286f44c6221a9c2ac95e1d45cd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa80e22286f44c6221a9c2ac95e1d45cd" class="m-doc-self">thirdQuartile</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the third quartile of the values.</p>
+<p>The quartile is calculated using the &quot;Tukey&#x27;s hinges&quot; method. A NaN value may be returned if the third quartile cannot be calculated.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsStatisticalSummary.html#a030db7ab4464f4a76a1c6b2f4e87f52c" class="m-doc">firstQuartile</a></p><p><a href="classQgsStatisticalSummary.html#a4530600dd6b65dc630e1ecb7cc86d93b" class="m-doc">interQuartileRange</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="add277c988708e3768856d64a2086ec5d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsStatisticalSummary::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#add277c988708e3768856d64a2086ec5d" class="m-doc-self">variety</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns variety of values.</p>
+<p>The variety is the count of unique values from the list. This is only calculated if Statistic::Variety has been specified in the constructor or via setStatistics.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

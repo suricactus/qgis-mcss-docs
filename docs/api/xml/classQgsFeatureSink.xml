@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsFeatureSink" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsFeatureSink</compoundname>
+    <derivedcompoundref refid="classQgsFeaturePool" prot="public" virt="non-virtual">QgsFeaturePool</derivedcompoundref>
+    <derivedcompoundref refid="classQgsFeatureStore" prot="public" virt="non-virtual">QgsFeatureStore</derivedcompoundref>
+    <derivedcompoundref refid="classQgsProxyFeatureSink" prot="public" virt="non-virtual">QgsProxyFeatureSink</derivedcompoundref>
+    <derivedcompoundref refid="classQgsSpatialIndex" prot="public" virt="non-virtual">QgsSpatialIndex</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorDataProvider" prot="public" virt="non-virtual">QgsVectorDataProvider</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorFileWriter" prot="public" virt="non-virtual">QgsVectorFileWriter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorLayer" prot="public" virt="non-virtual">QgsVectorLayer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorLayerExporter" prot="public" virt="non-virtual">QgsVectorLayerExporter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorLayerJoinBuffer" prot="public" virt="non-virtual">QgsVectorLayerJoinBuffer</derivedcompoundref>
+    <includes refid="qgsfeaturesink_8h" local="no">qgsfeaturesink.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239acd4b5c2a6ae1868f72a80b8fce669072" prot="public">
+          <name>FastInsert</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Use faster inserts, at the cost of updating the passed features to reflect changes made at the provider. </para>          </briefdescription>
+          <detaileddescription>
+<para>This includes skipping the update of the passed feature IDs to match the resulting feature IDs for the feature within the data provider. Individual sink subclasses may or may not choose to respect this flag, depending on whether or not skipping this update represents a significant speed boost for the operation. </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flags controlling how features are added to a sink. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="61" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" bodystart="60" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19" prot="public" static="no">
+        <name>SinkFlag</name>
+        <enumvalue id="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19a068ceb3d5fef4dea3ee5ea0d0527300e" prot="public">
+          <name>RegeneratePrimaryKey</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>This flag indicates, that a primary key field cannot be guaranteed to be unique and the sink should ignore it if somehow possible. </para>          </briefdescription>
+          <detaileddescription>
+<para>This should for example be set for a geopackage file if the field &quot;fid&quot; has a risk to contain duplicate entries. In this case sinks like <ref refid="classQgsVectorFileWriter" kindref="compound">QgsVectorFileWriter</ref> or <ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> will prefer to regenerate the fid instead of trying to reuse the fids provided in addFeature calls.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flags that can be set on a <ref refid="classQgsFeatureSink" kindref="compound">QgsFeatureSink</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Not all sinks may implement all flags.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="43" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" bodystart="42" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsFeatureSink_1a216423652491057eef823728c29654e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsFeatureSink::~QgsFeatureSink</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsFeatureSink</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureSink::addFeature</definition>
+        <argsstring>(QgsFeature &amp;feature, QgsFeatureSink::Flags flags=nullptr)</argsstring>
+        <name>addFeature</name>
+        <reimplementedby refid="classQgsVectorDataProviderFeaturePool_1af795204a73851a151a861a95d1f8ff3e">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerFeaturePool_1a9df260f58cc89afcf3c4d7686b0cab91">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsFeatureStore_1a6d8b89f7f75734cbb3fb5a81c093f4a4">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsProxyFeatureSink_1a7d7d0403ed95ab054a974d3a442f50c4">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsSpatialIndex_1ac27b971acd87b58010a8709371167ad4">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerExporter_1abfd59483fd63e8f80551224af6d32a61">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsProcessingFeatureSink_1ac73fceaa7a9ba8d11bb69dddf3272742">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsVectorFileWriter_1a037c91a3018bfcb6c5e350bdbbae99f4">addFeature</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayer_1a0f464d5978375d8eb4894499f7e11358">addFeature</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a single <emphasis>feature</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsFeatureSink_1ae74a8e6dbc5dfdb3c769df49d0fc4bd2" kindref="member">addFeatures()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.cpp" bodystart="20" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureSink_1ae74a8e6dbc5dfdb3c769df49d0fc4bd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsFeatureSink::addFeatures</definition>
+        <argsstring>(QgsFeatureList &amp;features, QgsFeatureSink::Flags flags=nullptr)=0</argsstring>
+        <name>addFeatures</name>
+        <reimplementedby refid="classQgsVectorDataProviderFeaturePool_1ab410c2f6ef68d4e43ce1d517300b8dd2">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerFeaturePool_1a81cbc4d2fc4bd2237227a8bdcb4a0557">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsFeatureStore_1a335724619ebe835dbf6a506e6455fa7e">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsProxyFeatureSink_1a5c26dabfafa63d3efcd11e0d7d1b4ec6">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsSpatialIndex_1a9afc4863da5fb383e7e868c0df1afebe">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerExporter_1a25c4585020eee6a870057c3493f3d7ff">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerJoinBuffer_1a8ee57e96762f345b0a2a2476efd02094">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsVectorDataProvider_1aa0f0e2128bc5b491880c118a0daa80a0">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsProcessingFeatureSink_1accb6b4c797ed861aafbd833c9a7363f9">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsVectorFileWriter_1aa7a2e60585dc1bf76b6dd54f44a153ac">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayer_1a5d728f8081fe30d5d894d15902397797">addFeatures</reimplementedby>
+        <param>
+          <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref> &amp;</type>
+          <declname>features</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a list of <emphasis>features</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05" kindref="member">addFeature()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureSink_1a3d65e9e2cac5e0e0b699b08922f20f68" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureSink::addFeatures</definition>
+        <argsstring>(QgsFeatureIterator &amp;iterator, QgsFeatureSink::Flags flags=nullptr)</argsstring>
+        <name>addFeatures</name>
+        <reimplementedby refid="classQgsProxyFeatureSink_1a000668fa7171d92319b6cbea5319eaf5">addFeatures</reimplementedby>
+        <reimplementedby refid="classQgsProcessingFeatureSink_1a7e3081a97049bb625dc132bb170d1f5f">addFeatures</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeatureIterator" kindref="compound">QgsFeatureIterator</ref> &amp;</type>
+          <declname>iterator</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds all features from the specified <emphasis>iterator</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="return"><para>true if all features were added successfully, or false if any feature could not be added </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.cpp" bodystart="34" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureSink_1a649343548eb3c919cfd42ccee588c7ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsFeatureSink::flushBuffer</definition>
+        <argsstring>()</argsstring>
+        <name>flushBuffer</name>
+        <reimplementedby refid="classQgsVectorLayerExporter_1ab5bd1116f9da7b6c3bd469764cce3e4a">flushBuffer</reimplementedby>
+        <briefdescription>
+<para>Flushes any internal buffer which may exist in the sink, causing any buffered features to be added to the sink&apos;s destination. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>false if any buffered features could not be added to the sink. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An interface for objects which accept features via addFeature(s) methods. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3072">
+        <label>QgsAuxiliaryLayer</label>
+        <link refid="classQgsAuxiliaryLayer"/>
+        <childnode refid="3071" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3070">
+        <label>QgsVectorFileWriter</label>
+        <link refid="classQgsVectorFileWriter"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3064">
+        <label>QgsVectorLayerFeaturePool</label>
+        <link refid="classQgsVectorLayerFeaturePool"/>
+        <childnode refid="3062" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3061">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="3068">
+        <label>QgsSpatialIndex</label>
+        <link refid="classQgsSpatialIndex"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3074">
+        <label>QgsVectorLayerJoinBuffer</label>
+        <link refid="classQgsVectorLayerJoinBuffer"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3066">
+        <label>QgsProxyFeatureSink</label>
+        <link refid="classQgsProxyFeatureSink"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3069">
+        <label>QgsVectorDataProvider</label>
+        <link refid="classQgsVectorDataProvider"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3071">
+        <label>QgsVectorLayer</label>
+        <link refid="classQgsVectorLayer"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3062">
+        <label>QgsFeaturePool</label>
+        <link refid="classQgsFeaturePool"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3073">
+        <label>QgsVectorLayerExporter</label>
+        <link refid="classQgsVectorLayerExporter"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3063">
+        <label>QgsVectorDataProviderFeaturePool</label>
+        <link refid="classQgsVectorDataProviderFeaturePool"/>
+        <childnode refid="3062" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3067">
+        <label>QgsProcessingFeatureSink</label>
+        <link refid="classQgsProcessingFeatureSink"/>
+        <childnode refid="3066" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3065">
+        <label>QgsFeatureStore</label>
+        <link refid="classQgsFeatureStore"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" line="34" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeaturesink.h" bodystart="33" bodyend="101"/>
+    <listofallmembers>
+      <member refid="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05" prot="public" virt="virtual"><scope>QgsFeatureSink</scope><name>addFeature</name></member>
+      <member refid="classQgsFeatureSink_1ae74a8e6dbc5dfdb3c769df49d0fc4bd2" prot="public" virt="pure-virtual"><scope>QgsFeatureSink</scope><name>addFeatures</name></member>
+      <member refid="classQgsFeatureSink_1a3d65e9e2cac5e0e0b699b08922f20f68" prot="public" virt="virtual"><scope>QgsFeatureSink</scope><name>addFeatures</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239acd4b5c2a6ae1868f72a80b8fce669072" prot="public" virt="non-virtual"><scope>QgsFeatureSink</scope><name>FastInsert</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239" prot="public" virt="non-virtual"><scope>QgsFeatureSink</scope><name>Flag</name></member>
+      <member refid="classQgsFeatureSink_1a649343548eb3c919cfd42ccee588c7ce" prot="public" virt="virtual"><scope>QgsFeatureSink</scope><name>flushBuffer</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19a068ceb3d5fef4dea3ee5ea0d0527300e" prot="public" virt="non-virtual"><scope>QgsFeatureSink</scope><name>RegeneratePrimaryKey</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19" prot="public" virt="non-virtual"><scope>QgsFeatureSink</scope><name>SinkFlag</name></member>
+      <member refid="classQgsFeatureSink_1a216423652491057eef823728c29654e4" prot="public" virt="virtual"><scope>QgsFeatureSink</scope><name>~QgsFeatureSink</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,915 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsMapTool" kind="class" language="C++" prot="public">
+    <compoundname>QgsMapTool</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <derivedcompoundref refid="classQgsMapToolEdit" prot="public" virt="non-virtual">QgsMapToolEdit</derivedcompoundref>
+    <derivedcompoundref refid="classQgsMapToolEmitPoint" prot="public" virt="non-virtual">QgsMapToolEmitPoint</derivedcompoundref>
+    <derivedcompoundref refid="classQgsMapToolExtent" prot="public" virt="non-virtual">QgsMapToolExtent</derivedcompoundref>
+    <derivedcompoundref refid="classQgsMapToolIdentify" prot="public" virt="non-virtual">QgsMapToolIdentify</derivedcompoundref>
+    <derivedcompoundref refid="classQgsMapToolPan" prot="public" virt="non-virtual">QgsMapToolPan</derivedcompoundref>
+    <derivedcompoundref refid="classQgsMapToolZoom" prot="public" virt="non-virtual">QgsMapToolZoom</derivedcompoundref>
+    <includes refid="qgsmaptool_8h" local="no">qgsmaptool.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7a8e0b65fbe4a020984bc68ba309708fd7" prot="public">
+          <name>Transient</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Indicates that this map tool performs a transient (one-off) operation. If it does, the tool can be operated once and then a previous map tool automatically restored. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7a64eeac5b2c8c39c491428b35130f451a" prot="public">
+          <name>EditTool</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Map tool is an edit tool, which can only be used when layer is editable. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7a0943a8f77150bc6684be29fc20ae73bd" prot="public">
+          <name>AllowZoomRect</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+<para>Allow zooming by rectangle (by holding shift and dragging) while the tool is active. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of flags that adjust the way the map tool operates. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="89" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="88" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsMapTool_1a96553c10ff7402b4bf8daf3598529fef" prot="protected" static="no" mutable="no">
+        <type>QAction *</type>
+        <definition>QAction* QgsMapTool::mAction</definition>
+        <argsstring></argsstring>
+        <name>mAction</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>optionally map tool can have pointer to action which will be used to set that action as active </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="250" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapTool_1a275a8e9a8fc0a26e9d6ccea35f8ff958" prot="protected" static="no" mutable="no">
+        <type>QAbstractButton *</type>
+        <definition>QAbstractButton* QgsMapTool::mButton</definition>
+        <argsstring></argsstring>
+        <name>mButton</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>optionally map tool can have pointer to a button which will be used to set that action as active </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="256" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapTool_1a1153fffa536fc007bc419aab2866da93" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsMapCanvas" kindref="compound">QgsMapCanvas</ref> *</type>
+        <definition>QgsMapCanvas* QgsMapTool::mCanvas</definition>
+        <argsstring></argsstring>
+        <name>mCanvas</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>pointer to map canvas </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="241" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapTool_1af438d3b7a57bd03dcae2b419966e0319" prot="protected" static="no" mutable="no">
+        <type>QCursor</type>
+        <definition>QCursor QgsMapTool::mCursor</definition>
+        <argsstring></argsstring>
+        <name>mCursor</name>
+        <briefdescription>
+<para>cursor used in map tool </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="244" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapTool_1a3d222da5b4e20ea15ad3d0bde7197094" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsMapTool::mToolName</definition>
+        <argsstring></argsstring>
+        <name>mToolName</name>
+        <briefdescription>
+<para>translated name of the map tool </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="259" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsMapTool_1aaa7ce345972d0b7d4b93e004124222c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsMapTool::~QgsMapTool</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsMapTool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1aa3168575e1bb517a141bc19c522c0e6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QAction *</type>
+        <definition>QAction * QgsMapTool::action</definition>
+        <argsstring>()</argsstring>
+        <name>action</name>
+        <briefdescription>
+<para>Returns associated action with map tool or NULL if no action is associated. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="138" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ae43d0b80202ae4c9706c6154ae04b525" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::activate</definition>
+        <argsstring>()</argsstring>
+        <name>activate</name>
+        <reimplementedby refid="classQgsMapToolPan_1ad4535bd6a789125b7bd17ad4adcd6699">activate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolExtent_1abe6309b68c15cd4bdc1fba3fa87dc077">activate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolAdvancedDigitizing_1ad8b7761dabc129da2c7f6a66fd98cb17">activate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolCapture_1a36bbeeba9cac1fba7c671261f744fa63">activate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentify_1a52d622c7e3072775c5c4993a47c0c233">activate</reimplementedby>
+        <briefdescription>
+<para>called when set as currently active map tool </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="158" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="82" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a4abea5661b13ba0efacac83d66e5240f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QAbstractButton *</type>
+        <definition>QAbstractButton * QgsMapTool::button</definition>
+        <argsstring>()</argsstring>
+        <name>button</name>
+        <briefdescription>
+<para>Returns associated button with map tool or NULL if no button is associated. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="152" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a6d7b1a04ee0a1c8c7b2a8899ecbce728" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapCanvas" kindref="compound">QgsMapCanvas</ref> *</type>
+        <definition>QgsMapCanvas * QgsMapTool::canvas</definition>
+        <argsstring>()</argsstring>
+        <name>canvas</name>
+        <briefdescription>
+<para>returns pointer to the tool&apos;s map canvas </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="167" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="197" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a2cd0d0f87e52a8480d48437e7083807e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::canvasDoubleClickEvent</definition>
+        <argsstring>(QgsMapMouseEvent *e)</argsstring>
+        <name>canvasDoubleClickEvent</name>
+        <reimplementedby refid="classQgsMapToolPan_1a88246a105a3cacd392a1845d970ce016">canvasDoubleClickEvent</reimplementedby>
+        <param>
+          <type><ref refid="classQgsMapMouseEvent" kindref="compound">QgsMapMouseEvent</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Mouse double-click event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="110" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="161" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a8f798dcd64b6718caae7fec22cf1312a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::canvasMoveEvent</definition>
+        <argsstring>(QgsMapMouseEvent *e)</argsstring>
+        <name>canvasMoveEvent</name>
+        <reimplementedby refid="classQgsMapToolEmitPoint_1a343d77c3b89e585a9d1f30ab5dcbc5a0">canvasMoveEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolZoom_1af89359d92c36f83b597c677226b77fcc">canvasMoveEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolPan_1a9a06f95535e004c75fdf916d8a393cdf">canvasMoveEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolExtent_1a4c5759d8f4073082d5e34300651c964e">canvasMoveEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolAdvancedDigitizing_1a2a71cfeab4b7a0ad87552f536ce17e07">canvasMoveEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentify_1ac0fe4e2ba7ef971259a50e17dc990dfc">canvasMoveEvent</reimplementedby>
+        <param>
+          <type><ref refid="classQgsMapMouseEvent" kindref="compound">QgsMapMouseEvent</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Mouse move event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="107" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="156" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a69ff11a28cab2164a68c07546f86b828" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::canvasPressEvent</definition>
+        <argsstring>(QgsMapMouseEvent *e)</argsstring>
+        <name>canvasPressEvent</name>
+        <reimplementedby refid="classQgsMapToolEmitPoint_1ac9731351b679ae9d5dfe235865570c5b">canvasPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolZoom_1a7a4d5f80170e67a2f6f278568326e47f">canvasPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolPan_1a1ed0151a29863cc7730f7a61ed1af510">canvasPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolExtent_1aa7b355a8770b7a42652d61c4b3fba4ba">canvasPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolAdvancedDigitizing_1a6cabc9ca0fbf910649a671e10da3d6f5">canvasPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentify_1ae430c05cbe20fe6a44c98382b08cbc10">canvasPressEvent</reimplementedby>
+        <param>
+          <type><ref refid="classQgsMapMouseEvent" kindref="compound">QgsMapMouseEvent</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Mouse press event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="113" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="166" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ab8a832825badb4b170c0e0c18e1f6c79" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::canvasReleaseEvent</definition>
+        <argsstring>(QgsMapMouseEvent *e)</argsstring>
+        <name>canvasReleaseEvent</name>
+        <reimplementedby refid="classQgsMapToolEmitPoint_1a1e3e4f56cd4352f25cd2b2e5d434db4b">canvasReleaseEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolZoom_1ad8cfebcb57a595a8b4f5baad2dcf3422">canvasReleaseEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolPan_1abb859c0a82ac02c82aaed5f114bdbfa0">canvasReleaseEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentifyFeature_1af8deef1816f33b571eb38bea0bf04f38">canvasReleaseEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolExtent_1a820aa96b754670fb58fce0a16f5c1e44">canvasReleaseEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolAdvancedDigitizing_1ab4475e9b01f3a228d110d3294f89bda7">canvasReleaseEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentify_1aa2856aef3460a5534f505737a28d5f9b">canvasReleaseEvent</reimplementedby>
+        <param>
+          <type><ref refid="classQgsMapMouseEvent" kindref="compound">QgsMapMouseEvent</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Mouse release event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="116" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="171" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1acf3fdd6f0f61adfae0857fda183ca93d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::clean</definition>
+        <argsstring>()</argsstring>
+        <name>clean</name>
+        <reimplementedby refid="classQgsMapToolCapture_1a5d49fbb9fce85133c0c6ad60764b7b92">clean</reimplementedby>
+        <briefdescription>
+<para>convenient method to clean members </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="164" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="108" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1af8ec3a15ba223a39d4bccf049fb44599" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::deactivate</definition>
+        <argsstring>()</argsstring>
+        <name>deactivate</name>
+        <reimplementedby refid="classQgsMapToolPan_1a6895fc4046d62d1403f7949f349eb9c7">deactivate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolZoom_1ab1300b1d8bbc839aa14e4ab5eac18174">deactivate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolExtent_1a5c438a5d06161ce37a07feb01288fecf">deactivate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolCapture_1a01ab4e6891a8235c982a161794fdfd25">deactivate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolAdvancedDigitizing_1a279890bc02d29682058850911528fbc8">deactivate</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentify_1a3749f0a825e6158fb1b9666dac7655e5">deactivate</reimplementedby>
+        <briefdescription>
+<para>called when map tool is being deactivated </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="161" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="98" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ab56417f8fb315c1853f27941fe6be740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>Flags</type>
+        <definition>virtual Flags QgsMapTool::flags</definition>
+        <argsstring>() const</argsstring>
+        <name>flags</name>
+        <reimplementedby refid="classQgsMapToolEmitPoint_1a0e75f1625b05c669edfd029e9f9307cc">flags</reimplementedby>
+        <reimplementedby refid="classQgsMapToolZoom_1a6b8c55cf58bc5ef6fe9d48d06828c342">flags</reimplementedby>
+        <reimplementedby refid="classQgsMapToolEdit_1a106903d703972ac96745132c9c4ea529">flags</reimplementedby>
+        <reimplementedby refid="classQgsMapToolPan_1a887bc762ae7f809e237142e7a2afc246">flags</reimplementedby>
+        <reimplementedby refid="classQgsMapToolExtent_1a428fac27be67d36b936230333afde395">flags</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentify_1ae87c3e37266f89d4703747189afcc553">flags</reimplementedby>
+        <briefdescription>
+<para>Returns the flags for the map tool. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="102" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="102" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ae48e458c7502f952cfa8c73a217be1ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsMapTool::gestureEvent</definition>
+        <argsstring>(QGestureEvent *e)</argsstring>
+        <name>gestureEvent</name>
+        <reimplementedby refid="classQgsMapToolPan_1acaba950d2410b0fe8d18e0d10487752e">gestureEvent</reimplementedby>
+        <param>
+          <type>QGestureEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>gesture event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="128" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="191" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1acda6b89336eaee90b6cd39954cc8394e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsMapTool::isActive</definition>
+        <argsstring>() const</argsstring>
+        <name>isActive</name>
+        <briefdescription>
+<para>Returns if the current map tool active on the map canvas. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="144" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="133" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a965f9409023596bb9ba27c9d650e1960" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::keyPressEvent</definition>
+        <argsstring>(QKeyEvent *e)</argsstring>
+        <name>keyPressEvent</name>
+        <reimplementedby refid="classQgsMapToolZoom_1a5f2cee6a6c42bb5159c3afdd6ff2c0d2">keyPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolIdentifyFeature_1ab2cd82d5d4e020de0e2e546f834ce8d5">keyPressEvent</reimplementedby>
+        <reimplementedby refid="classQgsMapToolCapture_1a291758fdf223591fd413fd1271b0de06">keyPressEvent</reimplementedby>
+        <param>
+          <type>QKeyEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Key event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="122" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="181" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1aa3abe41e29328cbd4d660bb90d1b9983" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::keyReleaseEvent</definition>
+        <argsstring>(QKeyEvent *e)</argsstring>
+        <name>keyReleaseEvent</name>
+        <reimplementedby refid="classQgsMapToolZoom_1afefea08fe75207c38ccdf46a446899be">keyReleaseEvent</reimplementedby>
+        <param>
+          <type>QKeyEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Key event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="125" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="186" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a861b5670efeb10e9356fea9dbac57641" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::setAction</definition>
+        <argsstring>(QAction *action)</argsstring>
+        <name>setAction</name>
+        <param>
+          <type>QAction *</type>
+          <declname>action</declname>
+        </param>
+        <briefdescription>
+<para>Use this to associate a QAction to this maptool. </para>        </briefdescription>
+        <detaileddescription>
+<para>Then when the setMapTool method of mapcanvas is called the action state will be set to on. Usually this will cause e.g. a toolbutton to appear pressed in and the previously used toolbutton to pop out. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="135" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="113" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a538f79352c9689e6d3a47cc7f12d07c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::setButton</definition>
+        <argsstring>(QAbstractButton *button)</argsstring>
+        <name>setButton</name>
+        <param>
+          <type>QAbstractButton *</type>
+          <declname>button</declname>
+        </param>
+        <briefdescription>
+<para>Use this to associate a button to this maptool. </para>        </briefdescription>
+        <detaileddescription>
+<para>It has the same meaning as <ref refid="classQgsMapTool_1a861b5670efeb10e9356fea9dbac57641" kindref="member">setAction()</ref> function except it works with a button instead of an QAction. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="149" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="138" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a3071451db6a2463825f2680591355f38" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::setCursor</definition>
+        <argsstring>(const QCursor &amp;cursor)</argsstring>
+        <name>setCursor</name>
+        <param>
+          <type>const QCursor &amp;</type>
+          <declname>cursor</declname>
+        </param>
+        <briefdescription>
+<para>Sets a user defined cursor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="155" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="148" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a007fe906fccf2e2cd1d12ce273333b32" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsMapTool::toolName</definition>
+        <argsstring>()</argsstring>
+        <name>toolName</name>
+        <briefdescription>
+<para>Emit map tool changed with the old tool. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.3 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ac3885a922abd7ca861c6ba31e8abe61a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::wheelEvent</definition>
+        <argsstring>(QWheelEvent *e)</argsstring>
+        <name>wheelEvent</name>
+        <param>
+          <type>QWheelEvent *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Mouse wheel event for overriding. Default implementation does nothing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="119" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="176" bodyend="179"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsMapTool_1a13ea93b790d1c6ffb9de682d356b04f5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsMapTool::searchRadiusMM</definition>
+        <argsstring>()</argsstring>
+        <name>searchRadiusMM</name>
+        <briefdescription>
+<para>Gets search radius in mm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used by identify, tip etc. The values is currently set in identify tool options (move somewhere else?) and defaults to <ref refid="classQgis_1ab6ae46d7b224bddcd85f19615bfbf0ab" kindref="member">Qgis::DEFAULT_SEARCH_RADIUS_MM</ref>. <simplesect kind="since"><para>QGIS 2.3 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="180" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="202" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a9f3c8663ef6a208f16af3a3927ca938f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsMapTool::searchRadiusMU</definition>
+        <argsstring>(const QgsRenderContext &amp;context)</argsstring>
+        <name>searchRadiusMU</name>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Gets search radius in map units for given context. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used by identify, tip etc. The values is calculated from <ref refid="classQgsMapTool_1a13ea93b790d1c6ffb9de682d356b04f5" kindref="member">searchRadiusMM()</ref>. <simplesect kind="since"><para>QGIS 2.3 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="186" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="214" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1aa407b996987b9fd74dcbd24ca8265237" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsMapTool::searchRadiusMU</definition>
+        <argsstring>(QgsMapCanvas *canvas)</argsstring>
+        <name>searchRadiusMU</name>
+        <param>
+          <type><ref refid="classQgsMapCanvas" kindref="compound">QgsMapCanvas</ref> *</type>
+          <declname>canvas</declname>
+        </param>
+        <briefdescription>
+<para>Gets search radius in map units for given canvas. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used by identify, tip etc. The values is calculated from <ref refid="classQgsMapTool_1a13ea93b790d1c6ffb9de682d356b04f5" kindref="member">searchRadiusMM()</ref>. <simplesect kind="since"><para>QGIS 2.3 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="192" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="219" bodyend="228"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsMapTool_1a6fdb2db81a67113694d9aa529ac0d293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::activated</definition>
+        <argsstring>()</argsstring>
+        <name>activated</name>
+        <briefdescription>
+<para>signal emitted once the map tool is activated </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="202" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapTool_1a0b4dda4a618e78e1a7abcbaf14459599" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::deactivated</definition>
+        <argsstring>()</argsstring>
+        <name>deactivated</name>
+        <briefdescription>
+<para>signal emitted once the map tool is deactivated </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="205" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapTool_1a25c8b7fee757fe46de0e3c58b4321c36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::messageDiscarded</definition>
+        <argsstring>()</argsstring>
+        <name>messageDiscarded</name>
+        <briefdescription>
+<para>emit signal to clear previous message </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="199" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapTool_1a43cf9f29728c8284b96e5433a2ae8a86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::messageEmitted</definition>
+        <argsstring>(const QString &amp;message, Qgis::MessageLevel=Qgis::Info)</argsstring>
+        <name>messageEmitted</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgis_1a60c079f4d8b7c479498be3d42ec96257" kindref="member">Qgis::MessageLevel</ref></type>
+          <defval><ref refid="classQgis_1a60c079f4d8b7c479498be3d42ec96257afce4aaf1d34b0afcf7629e6567ff125b" kindref="member">Qgis::Info</ref></defval>
+        </param>
+        <briefdescription>
+<para>emit a message </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="196" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classQgsMapTool_1a57e575e8bdc0ba7e55a045c3b38a9422" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapTool::actionDestroyed</definition>
+        <argsstring>()</argsstring>
+        <name>actionDestroyed</name>
+        <briefdescription>
+<para>clear pointer when action is destroyed </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="209" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="122" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsMapTool_1a22c0614112d1f7476bd9cc8a38889969" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsMapTool::QgsMapTool</definition>
+        <argsstring>(QgsMapCanvas *canvas)</argsstring>
+        <name>QgsMapTool</name>
+        <param>
+          <type><ref refid="classQgsMapCanvas" kindref="compound">QgsMapCanvas</ref> *</type>
+          <declname>canvas</declname>
+        </param>
+        <briefdescription>
+<para>constructor takes map canvas as a parameter </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="214" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="27" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a241de3f9f0bee208d51195498d1397fe" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QPoint</type>
+        <definition>QPoint QgsMapTool::toCanvasCoordinates</definition>
+        <argsstring>(const QgsPointXY &amp;point)</argsstring>
+        <name>toCanvasCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from map coordinates to screen coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="238" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="74" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a3d9ca27088ccc853d9b16823445a6b9a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsMapTool::toLayerCoordinates</definition>
+        <argsstring>(const QgsMapLayer *layer, QPoint point)</argsstring>
+        <name>toLayerCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>QPoint</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from screen coordinates to layer&apos;s coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="220" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="53" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ae8ad80c6ac674b68f4d159575c761547" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsMapTool::toLayerCoordinates</definition>
+        <argsstring>(const QgsMapLayer *layer, const QgsPointXY &amp;point)</argsstring>
+        <name>toLayerCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from map coordinates to layer&apos;s coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="223" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1abade4860721cec29259ec6341b34a124" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsMapTool::toLayerCoordinates</definition>
+        <argsstring>(const QgsMapLayer *layer, const QgsRectangle &amp;rect)</argsstring>
+        <name>toLayerCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>rect</declname>
+        </param>
+        <briefdescription>
+<para>trnasformation of the rect from map coordinates to layer&apos;s coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="235" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1a2fca26595c8e8471f4bc2074095d9fb5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsMapTool::toMapCoordinates</definition>
+        <argsstring>(QPoint point)</argsstring>
+        <name>toMapCoordinates</name>
+        <param>
+          <type>QPoint</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from screen coordinates to map coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="217" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1ace8cc2b1566460ae7ce60df1e0aa30f1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsMapTool::toMapCoordinates</definition>
+        <argsstring>(const QgsMapLayer *layer, const QgsPointXY &amp;point)</argsstring>
+        <name>toMapCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from layer&apos;s coordinates to map coordinates (which is different in case reprojection is used) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="226" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapTool_1af05910b4c06444435e3841cae54e07a6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref></type>
+        <definition>QgsPoint QgsMapTool::toMapCoordinates</definition>
+        <argsstring>(const QgsMapLayer *layer, const QgsPoint &amp;point)</argsstring>
+        <name>toMapCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from layer&apos;s coordinates to map coordinates (which is different in case reprojection is used) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>available in Python bindings as toMapCoordinatesV2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="232" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.cpp" bodystart="46" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for all map tools. </para>    </briefdescription>
+    <detaileddescription>
+<para>Map tools are user interactive tools for manipulating the map canvas. For example map pan and zoom features are implemented as map tools. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5647">
+        <label>QgsMapToolCapture</label>
+        <link refid="classQgsMapToolCapture"/>
+        <childnode refid="5646" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5650">
+        <label>QgsMapToolIdentify</label>
+        <link refid="classQgsMapToolIdentify"/>
+        <childnode refid="5643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5653">
+        <label>QgsMapToolZoom</label>
+        <link refid="classQgsMapToolZoom"/>
+        <childnode refid="5643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5648">
+        <label>QgsMapToolEmitPoint</label>
+        <link refid="classQgsMapToolEmitPoint"/>
+        <childnode refid="5643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5644">
+        <label>QObject</label>
+      </node>
+      <node id="5649">
+        <label>QgsMapToolExtent</label>
+        <link refid="classQgsMapToolExtent"/>
+        <childnode refid="5643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5643">
+        <label>QgsMapTool</label>
+        <link refid="classQgsMapTool"/>
+        <childnode refid="5644" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5651">
+        <label>QgsMapToolIdentifyFeature</label>
+        <link refid="classQgsMapToolIdentifyFeature"/>
+        <childnode refid="5650" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5652">
+        <label>QgsMapToolPan</label>
+        <link refid="classQgsMapToolPan"/>
+        <childnode refid="5643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5646">
+        <label>QgsMapToolAdvancedDigitizing</label>
+        <link refid="classQgsMapToolAdvancedDigitizing"/>
+        <childnode refid="5645" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5645">
+        <label>QgsMapToolEdit</label>
+        <link refid="classQgsMapToolEdit"/>
+        <childnode refid="5643" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5655">
+        <label>QObject</label>
+      </node>
+      <node id="5657">
+        <label>QGraphicsView</label>
+      </node>
+      <node id="5654">
+        <label>QgsMapTool</label>
+        <link refid="classQgsMapTool"/>
+        <childnode refid="5655" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5656" relation="usage">
+          <edgelabel>mCanvas</edgelabel>
+        </childnode>
+      </node>
+      <node id="5656">
+        <label>QgsMapCanvas</label>
+        <link refid="classQgsMapCanvas"/>
+        <childnode refid="5657" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" line="63" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmaptool.h" bodystart="62" bodyend="261"/>
+    <listofallmembers>
+      <member refid="classQgsMapTool_1aa3168575e1bb517a141bc19c522c0e6f" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>action</name></member>
+      <member refid="classQgsMapTool_1a57e575e8bdc0ba7e55a045c3b38a9422" prot="private" virt="non-virtual"><scope>QgsMapTool</scope><name>actionDestroyed</name></member>
+      <member refid="classQgsMapTool_1ae43d0b80202ae4c9706c6154ae04b525" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>activate</name></member>
+      <member refid="classQgsMapTool_1a6fdb2db81a67113694d9aa529ac0d293" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>activated</name></member>
+      <member refid="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7a0943a8f77150bc6684be29fc20ae73bd" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>AllowZoomRect</name></member>
+      <member refid="classQgsMapTool_1a4abea5661b13ba0efacac83d66e5240f" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>button</name></member>
+      <member refid="classQgsMapTool_1a6d7b1a04ee0a1c8c7b2a8899ecbce728" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>canvas</name></member>
+      <member refid="classQgsMapTool_1a2cd0d0f87e52a8480d48437e7083807e" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>canvasDoubleClickEvent</name></member>
+      <member refid="classQgsMapTool_1a8f798dcd64b6718caae7fec22cf1312a" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>canvasMoveEvent</name></member>
+      <member refid="classQgsMapTool_1a69ff11a28cab2164a68c07546f86b828" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>canvasPressEvent</name></member>
+      <member refid="classQgsMapTool_1ab8a832825badb4b170c0e0c18e1f6c79" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>canvasReleaseEvent</name></member>
+      <member refid="classQgsMapTool_1acf3fdd6f0f61adfae0857fda183ca93d" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>clean</name></member>
+      <member refid="classQgsMapTool_1af8ec3a15ba223a39d4bccf049fb44599" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>deactivate</name></member>
+      <member refid="classQgsMapTool_1a0b4dda4a618e78e1a7abcbaf14459599" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>deactivated</name></member>
+      <member refid="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7a64eeac5b2c8c39c491428b35130f451a" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>EditTool</name></member>
+      <member refid="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>Flag</name></member>
+      <member refid="classQgsMapTool_1ab56417f8fb315c1853f27941fe6be740" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>flags</name></member>
+      <member refid="classQgsMapTool_1ae48e458c7502f952cfa8c73a217be1ad" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>gestureEvent</name></member>
+      <member refid="classQgsMapTool_1acda6b89336eaee90b6cd39954cc8394e" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>isActive</name></member>
+      <member refid="classQgsMapTool_1a965f9409023596bb9ba27c9d650e1960" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>keyPressEvent</name></member>
+      <member refid="classQgsMapTool_1aa3abe41e29328cbd4d660bb90d1b9983" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>keyReleaseEvent</name></member>
+      <member refid="classQgsMapTool_1a96553c10ff7402b4bf8daf3598529fef" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>mAction</name></member>
+      <member refid="classQgsMapTool_1a275a8e9a8fc0a26e9d6ccea35f8ff958" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>mButton</name></member>
+      <member refid="classQgsMapTool_1a1153fffa536fc007bc419aab2866da93" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>mCanvas</name></member>
+      <member refid="classQgsMapTool_1af438d3b7a57bd03dcae2b419966e0319" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>mCursor</name></member>
+      <member refid="classQgsMapTool_1a25c8b7fee757fe46de0e3c58b4321c36" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>messageDiscarded</name></member>
+      <member refid="classQgsMapTool_1a43cf9f29728c8284b96e5433a2ae8a86" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>messageEmitted</name></member>
+      <member refid="classQgsMapTool_1a3d222da5b4e20ea15ad3d0bde7197094" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>mToolName</name></member>
+      <member refid="classQgsMapTool_1a22c0614112d1f7476bd9cc8a38889969" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>QgsMapTool</name></member>
+      <member refid="classQgsMapTool_1a13ea93b790d1c6ffb9de682d356b04f5" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>searchRadiusMM</name></member>
+      <member refid="classQgsMapTool_1a9f3c8663ef6a208f16af3a3927ca938f" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>searchRadiusMU</name></member>
+      <member refid="classQgsMapTool_1aa407b996987b9fd74dcbd24ca8265237" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>searchRadiusMU</name></member>
+      <member refid="classQgsMapTool_1a861b5670efeb10e9356fea9dbac57641" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>setAction</name></member>
+      <member refid="classQgsMapTool_1a538f79352c9689e6d3a47cc7f12d07c5" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>setButton</name></member>
+      <member refid="classQgsMapTool_1a3071451db6a2463825f2680591355f38" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>setCursor</name></member>
+      <member refid="classQgsMapTool_1a241de3f9f0bee208d51195498d1397fe" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toCanvasCoordinates</name></member>
+      <member refid="classQgsMapTool_1a3d9ca27088ccc853d9b16823445a6b9a" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toLayerCoordinates</name></member>
+      <member refid="classQgsMapTool_1ae8ad80c6ac674b68f4d159575c761547" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toLayerCoordinates</name></member>
+      <member refid="classQgsMapTool_1abade4860721cec29259ec6341b34a124" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toLayerCoordinates</name></member>
+      <member refid="classQgsMapTool_1a2fca26595c8e8471f4bc2074095d9fb5" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toMapCoordinates</name></member>
+      <member refid="classQgsMapTool_1ace8cc2b1566460ae7ce60df1e0aa30f1" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toMapCoordinates</name></member>
+      <member refid="classQgsMapTool_1af05910b4c06444435e3841cae54e07a6" prot="protected" virt="non-virtual"><scope>QgsMapTool</scope><name>toMapCoordinates</name></member>
+      <member refid="classQgsMapTool_1a007fe906fccf2e2cd1d12ce273333b32" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>toolName</name></member>
+      <member refid="classQgsMapTool_1acc97c82d572ee6523047b9df32f783b7a8e0b65fbe4a020984bc68ba309708fd7" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>Transient</name></member>
+      <member refid="classQgsMapTool_1ac3885a922abd7ca861c6ba31e8abe61a" prot="public" virt="virtual"><scope>QgsMapTool</scope><name>wheelEvent</name></member>
+      <member refid="classQgsMapTool_1aaa7ce345972d0b7d4b93e004124222c3" prot="public" virt="non-virtual"><scope>QgsMapTool</scope><name>~QgsMapTool</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

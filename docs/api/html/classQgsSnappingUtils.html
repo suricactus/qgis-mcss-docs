@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsSnappingUtils class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsSnappingUtils <span class="m-thin">class</span>
+        </h1>
+        <p>This class has all the configuration of snapping and can return answers to snapping queries.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Internally, it keeps a cache of <a href="classQgsPointLocator.html" class="m-doc">QgsPointLocator</a> instances for multiple layers.</p><p>Currently it supports the following queries:</p><ul><li><a href="classQgsSnappingUtils.html#a0517b08e2e3cf785519dbf1583d8f14e" class="m-doc">snapToMap()</a> - has multiple modes of operation</li><li><a href="classQgsSnappingUtils.html#a20939e2234344f1c0a717643d43c816c" class="m-doc">snapToCurrentLayer()</a> For more complex queries it is possible to use <a href="classQgsSnappingUtils.html#a3ffb6ca59e1bc74bbdc944bb5f18b2e2" class="m-doc">locatorForLayer()</a> method that returns point locator instance with layer&#x27;s indexed data.</li></ul><p>Indexing strategy determines how fast the queries will be and how much memory will be used.</p><p>When working with map canvas, it may be useful to use derived class <a href="classQgsMapCanvasSnappingUtils.html" class="m-doc">QgsMapCanvasSnappingUtils</a> which keeps the configuration in sync with map canvas (e.g. current view, active layer).</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsMapCanvasSnappingUtils.html" class="m-doc">QgsMapCanvasSnappingUtils</a>
+            </dt>
+            <dd>Snapping utils instance that is connected to a canvas and updates the configuration (map settings + current layer) whenever that is changed in the canvas.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsSnappingUtils_1_1LayerConfig.html" class="m-doc">LayerConfig</a>
+            </dt>
+            <dd>Configures how a certain layer should be handled in a snapping operation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a2ea7577667b94657e14f63ba7dd0bf07" class="m-doc">IndexingStrategy</a> { </span><span class="m-doc-wrap"><a href="#a2ea7577667b94657e14f63ba7dd0bf07a11b7d0d4c2cada575b4d9e079115554e" class="m-doc">IndexAlwaysFull</a>,
+              <a href="#a2ea7577667b94657e14f63ba7dd0bf07affebbca756d51383c32982ac0db80b7d" class="m-doc">IndexNeverFull</a>,
+              <a href="#a2ea7577667b94657e14f63ba7dd0bf07a1bbc95a32272cf284a2cd28c56fe365d" class="m-doc">IndexHybrid</a>,
+              <a href="#a2ea7577667b94657e14f63ba7dd0bf07af057d7f729763a280ca972805890c4e6" class="m-doc">IndexExtent</a> }</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ac6233f3031a233511be606930762c1cc" class="m-doc-self" name="ac6233f3031a233511be606930762c1cc">QgsSnappingUtils</a>(</span><span class="m-doc-wrap">QObject* parent = nullptr,
+              bool enableSnappingForInvisibleFeature = true)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsSnappingUtils.html" class="m-doc">QgsSnappingUtils</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab895c9731ac1eb42a8c30643270264d5" class="m-doc-self" name="ab895c9731ac1eb42a8c30643270264d5">config</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsSnappingConfig.html" class="m-doc">QgsSnappingConfig</a></span>
+            </dt>
+            <dd>The snapping configuration controls the behavior of this object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a91cb0e79d57353a7f18d64a80de4c0dd" class="m-doc-self" name="a91cb0e79d57353a7f18d64a80de4c0dd">currentLayer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>The current layer used if mode is SnapCurrentLayer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69936e953c3f2ff4902bd2049b971fe6" class="m-doc">dump</a>(</span><span class="m-doc-wrap">) -&gt; QString</span>
+            </dt>
+            <dd>Gets extra information about the instance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6d8af303dc4ff736af4ed9cb4cb3aeb2" class="m-doc-self" name="a6d8af303dc4ff736af4ed9cb4cb3aeb2">indexingStrategy</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsSnappingUtils.html#a2ea7577667b94657e14f63ba7dd0bf07" class="m-doc">IndexingStrategy</a></span>
+            </dt>
+            <dd>Find out which strategy is used for indexing - by default hybrid indexing is used.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f4729a8fbbfd2a64e69482cfa876fd7" class="m-doc-self" name="a3f4729a8fbbfd2a64e69482cfa876fd7">layers</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="structQgsSnappingUtils_1_1LayerConfig.html" class="m-doc">QgsSnappingUtils::<wbr />LayerConfig</a>&gt;</span>
+            </dt>
+            <dd>Query layers used for snapping.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3ffb6ca59e1bc74bbdc944bb5f18b2e2" class="m-doc-self" name="a3ffb6ca59e1bc74bbdc944bb5f18b2e2">locatorForLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* vl) -&gt; <a href="classQgsPointLocator.html" class="m-doc">QgsPointLocator</a>*</span>
+            </dt>
+            <dd>Gets a point locator for the given layer. If such locator does not exist, it will be created.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab774311e458391a39c79317fb9b68c08" class="m-doc-self" name="ab774311e458391a39c79317fb9b68c08">setCurrentLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span>
+            </dt>
+            <dd>Sets current layer so that if mode is SnapCurrentLayer we know which layer to use.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aefac6ca842f11d313421f3583e943480" class="m-doc">setEnableSnappingForInvisibleFeature</a>(</span><span class="m-doc-wrap">bool enable)</span>
+            </dt>
+            <dd>Set if invisible features must be snapped or not.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab74a933f57ff57f011889a29b1f69921" class="m-doc-self" name="ab74a933f57ff57f011889a29b1f69921">setIndexingStrategy</a>(</span><span class="m-doc-wrap"><a href="classQgsSnappingUtils.html#a2ea7577667b94657e14f63ba7dd0bf07" class="m-doc">IndexingStrategy</a> strategy)</span>
+            </dt>
+            <dd>Sets a strategy for indexing geometry data - determines how fast and memory consuming the data structures will be.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a277aae5f53dc755fe5591620a7439e41" class="m-doc-self" name="a277aae5f53dc755fe5591620a7439e41">setMapSettings</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp; settings)</span>
+            </dt>
+            <dd>Assign current map settings to the utils - used for conversion between screen coords to map coords.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a20939e2234344f1c0a717643d43c816c" class="m-doc">snapToCurrentLayer</a>(</span><span class="m-doc-wrap">QPoint point,
+              QgsPointLocator::Types type,
+              <a href="structQgsPointLocator_1_1MatchFilter.html" class="m-doc">QgsPointLocator::<wbr />MatchFilter</a>* filter = nullptr) -&gt; <a href="structQgsPointLocator_1_1Match.html" class="m-doc">QgsPointLocator::<wbr />Match</a></span>
+            </dt>
+            <dd>Snap to current layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0517b08e2e3cf785519dbf1583d8f14e" class="m-doc-self" name="a0517b08e2e3cf785519dbf1583d8f14e">snapToMap</a>(</span><span class="m-doc-wrap">QPoint point,
+              <a href="structQgsPointLocator_1_1MatchFilter.html" class="m-doc">QgsPointLocator::<wbr />MatchFilter</a>* filter = nullptr) -&gt; <a href="structQgsPointLocator_1_1Match.html" class="m-doc">QgsPointLocator::<wbr />Match</a></span>
+            </dt>
+            <dd>Snap to map according to the current configuration. Optional filter allows discarding unwanted matches.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7a06db84d194796a3706a4aff7b73ddd" class="m-doc-self" name="a7a06db84d194796a3706a4aff7b73ddd">configChanged</a>(</span><span class="m-doc-wrap">const <a href="classQgsSnappingConfig.html" class="m-doc">QgsSnappingConfig</a>&amp; snappingConfig)</span>
+            </dt>
+            <dd>Emitted when the snapping settings object changes.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae8a01f9fb7723409227ace8544423a92" class="m-doc-self" name="ae8a01f9fb7723409227ace8544423a92">setConfig</a>(</span><span class="m-doc-wrap">const <a href="classQgsSnappingConfig.html" class="m-doc">QgsSnappingConfig</a>&amp; snappingConfig)</span>
+            </dt>
+            <dd>The snapping configuration controls the behavior of this object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a27bb65cbf02d23a32dac1ab0c06c42f6" class="m-doc">toggleEnabled</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Toggles the state of snapping.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa20b2836586a70bb05781d2c95956bbe" class="m-doc-self" name="aa20b2836586a70bb05781d2c95956bbe">clearAllLocators</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Deletes all existing locators (e.g. when destination CRS has changed and we need to reindex)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a519d99073e392afa34caee7b4494bc24" class="m-doc-self" name="a519d99073e392afa34caee7b4494bc24">prepareIndexProgress</a>(</span><span class="m-doc-wrap">int index) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Called when finished indexing a layer. When index == count the indexing is complete.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afb974ba413586f6cd48783ce13a9b933" class="m-doc-self" name="afb974ba413586f6cd48783ce13a9b933">prepareIndexStarting</a>(</span><span class="m-doc-wrap">int count) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Called when starting to index - can be overridden and e.g. progress dialog can be provided.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a2ea7577667b94657e14f63ba7dd0bf07"><div>
+            <h3>
+              enum QgsSnappingUtils::<wbr /><a href="#a2ea7577667b94657e14f63ba7dd0bf07" class="m-doc-self">IndexingStrategy</a>
+            </h3>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a2ea7577667b94657e14f63ba7dd0bf07a11b7d0d4c2cada575b4d9e079115554e" class="m-doc-self" name="a2ea7577667b94657e14f63ba7dd0bf07a11b7d0d4c2cada575b4d9e079115554e">IndexAlwaysFull</a></td>
+                  <td>
+                  <p>For all layers build index of full extent. Uses more memory, but queries are faster.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a2ea7577667b94657e14f63ba7dd0bf07affebbca756d51383c32982ac0db80b7d" class="m-doc-self" name="a2ea7577667b94657e14f63ba7dd0bf07affebbca756d51383c32982ac0db80b7d">IndexNeverFull</a></td>
+                  <td>
+                  <p>For all layers only create temporary indexes of small extent. Low memory usage, slower queries.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a2ea7577667b94657e14f63ba7dd0bf07a1bbc95a32272cf284a2cd28c56fe365d" class="m-doc-self" name="a2ea7577667b94657e14f63ba7dd0bf07a1bbc95a32272cf284a2cd28c56fe365d">IndexHybrid</a></td>
+                  <td>
+                  <p>For &quot;big&quot; layers using IndexNeverFull, for the rest IndexAlwaysFull. Compromise between speed and memory usage.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a2ea7577667b94657e14f63ba7dd0bf07af057d7f729763a280ca972805890c4e6" class="m-doc-self" name="a2ea7577667b94657e14f63ba7dd0bf07af057d7f729763a280ca972805890c4e6">IndexExtent</a></td>
+                  <td>
+                  <p>For all layer build index of extent given in map settings.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a69936e953c3f2ff4902bd2049b971fe6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsSnappingUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69936e953c3f2ff4902bd2049b971fe6" class="m-doc-self">dump</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Gets extra information about the instance.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aefac6ca842f11d313421f3583e943480"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSnappingUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aefac6ca842f11d313421f3583e943480" class="m-doc-self">setEnableSnappingForInvisibleFeature</a>(</span><span class="m-doc-wrap">bool enable)</span></span>
+            </h3>
+            <p>Set if invisible features must be snapped or not.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">enable</td>
+                  <td>Enable or not this feature</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a20939e2234344f1c0a717643d43c816c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="structQgsPointLocator_1_1Match.html" class="m-doc">QgsPointLocator::<wbr />Match</a> QgsSnappingUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20939e2234344f1c0a717643d43c816c" class="m-doc-self">snapToCurrentLayer</a>(</span><span class="m-doc-wrap">QPoint point,
+              QgsPointLocator::Types type,
+              <a href="structQgsPointLocator_1_1MatchFilter.html" class="m-doc">QgsPointLocator::<wbr />MatchFilter</a>* filter = nullptr)</span></span>
+            </h3>
+            <p>Snap to current layer.</p>
+<p>Snap to current layer</p>
+          </div></section>
+          <section class="m-doc-details" id="a27bb65cbf02d23a32dac1ab0c06c42f6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSnappingUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a27bb65cbf02d23a32dac1ab0c06c42f6" class="m-doc-self">toggleEnabled</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Toggles the state of snapping.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

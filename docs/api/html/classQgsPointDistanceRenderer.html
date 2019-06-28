@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsPointDistanceRenderer class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsPointDistanceRenderer <span class="m-thin">class</span>
+        </h1>
+        <p>An abstract base class for distance based point renderers (e.g., clusterer and displacement renderers).</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+                <li><a href="#pri-methods">Private functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsPointDistanceRenderer.html" class="m-doc">QgsPointDistanceRenderer</a> handles calculation of point clusters using a distance based threshold. Subclasses must implement drawGroup() to handle the rendering of individual point clusters in the desired style.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsPointClusterRenderer.html" class="m-doc">QgsPointClusterRenderer</a>
+            </dt>
+            <dd>A renderer that automatically clusters points with the same geographic position.</dd>
+            <dt>
+              class <a href="classQgsPointDisplacementRenderer.html" class="m-doc">QgsPointDisplacementRenderer</a>
+            </dt>
+            <dd>A renderer that automatically displaces points with the same geographic location.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsPointDistanceRenderer_1_1GroupedFeature.html" class="m-doc">GroupedFeature</a>
+            </dt>
+            <dd>Contains properties for a feature within a clustered group.</dd>
+            <dt>
+              using <a href="#aeb42336bd18a1b0b02a4640f20665977" class="m-doc-self" name="aeb42336bd18a1b0b02a4640f20665977">ClusteredGroup</a> = QList&lt;<a href="structQgsPointDistanceRenderer_1_1GroupedFeature.html" class="m-doc">QgsPointDistanceRenderer::<wbr />GroupedFeature</a>&gt;
+            </dt>
+            <dd>A group of clustered points (ie features within the distance tolerance).</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a472fbbca61116a3019fd9ceba96cef91" class="m-doc">QgsPointDistanceRenderer</a>(</span><span class="m-doc-wrap">const QString&amp; rendererName,
+              const QString&amp; labelAttributeName = QString())</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsPointDistanceRenderer.html" class="m-doc">QgsPointDistanceRenderer</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8ae8d6e2151b3ebb4038fec2d2bccc35" class="m-doc">capabilities</a>(</span><span class="m-doc-wrap">) -&gt; QgsFeatureRenderer::Capabilities <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns details about internals of this renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9e640d995b9622d546ffd7bde8f996b8" class="m-doc">checkLegendSymbolItem</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              bool state) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>item in symbology was checked</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a98311bbda29286aa294be4329f9f80d8" class="m-doc">embeddedRenderer</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the current embedded renderer (subrenderer) for this feature renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d18996d098b56feb36fa7f7392b3d27" class="m-doc">filter</a>(</span><span class="m-doc-wrap">const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields = <a href="classQgsFields.html" class="m-doc">QgsFields</a>()) -&gt; QString <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>If a renderer does not require all the features this method may be overridden and return an expression used as where clause.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af3104b826fd056d705c840d95b13c294" class="m-doc-self" name="af3104b826fd056d705c840d95b13c294">filterNeedsGeometry</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns true if this renderer requires the geometry to apply the filter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a685b56edfd8adc9ac61251496b160530" class="m-doc">labelAttributeName</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the attribute name used for labeling points, or an empty string if no labeling will be done by the renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a12aa530ce83f84f7ee731c10206ef9fa" class="m-doc">labelColor</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Returns the color used for for labeling points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5c0d22f4b2f5469f964b0b1986c41dee" class="m-doc">labelFont</a>(</span><span class="m-doc-wrap">) const -&gt; QFont</span>
+            </dt>
+            <dd>Returns the font used for labeling points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af908f79b61d1cc9cde609092e0c7d5aa" class="m-doc">legendKeysForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QSet&lt;QString&gt; <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns legend keys matching a specified feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1b3712893cf6809961989aeed169cadf" class="m-doc">legendSymbolItemChecked</a>(</span><span class="m-doc-wrap">const QString&amp; key) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>items of symbology items in legend is checked</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a56d4f412198829d7965822a54a4e3f34" class="m-doc">legendSymbolItems</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgslegendsymbolitem_8h.html#a407af583ecc2cfb135af16d9596bdaee" class="m-doc">QgsLegendSymbolList</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns a list of symbology items for the legend.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ccc10234def276202ae9db0d7b78e0d" class="m-doc">legendSymbolItemsCheckable</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>items of symbology items in legend should be checkable</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3734f90b9497f916500f08aef4028442" class="m-doc">minimumLabelScale</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the minimum map scale (i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac26a81e31d524f2d8355517a89adb5fb" class="m-doc">originalSymbolForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns symbol for feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7e4d41f5aca124903b071913646bd81b" class="m-doc">originalSymbolsForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Equivalent of <a href="classQgsPointDistanceRenderer.html#a7e4d41f5aca124903b071913646bd81b" class="m-doc">originalSymbolsForFeature()</a> call extended to support renderers that may use more symbols per feature - similar to <a href="classQgsPointDistanceRenderer.html#aa583263cda0c4a1e6e939b0ba80450c7" class="m-doc">symbolsForFeature()</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4c19bfd037e8129bfbae17ea9c694f91" class="m-doc">renderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int layer = -1,
+              bool selected = false,
+              bool drawVertexMarker = false) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Render a feature using this renderer in the given context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8901ece37e232a987d2ea1368212c3f0" class="m-doc">setEmbeddedRenderer</a>(</span><span class="m-doc-wrap"><a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>* subRenderer) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Sets an embedded renderer (subrenderer) for this feature renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa5c011b3bfe7229163d4faf3266ef66b" class="m-doc">setLabelAttributeName</a>(</span><span class="m-doc-wrap">const QString&amp; name)</span>
+            </dt>
+            <dd>Sets the attribute name for labeling points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a083475b5ce9d5c985938b96d8b779d27" class="m-doc">setLabelColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets the color to use for for labeling points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3355e8e7e5e63e82cb53b897e3b51a5b" class="m-doc">setLabelFont</a>(</span><span class="m-doc-wrap">const QFont&amp; font)</span>
+            </dt>
+            <dd>Sets the font used for labeling points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad78273e724c91e41c58f9e3c34ac282c" class="m-doc">setLegendSymbolItem</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* symbol) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Sets the symbol to be used for a legend symbol item.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4c0ddf98adc358a4f59501ce77dd04e2" class="m-doc">setMinimumLabelScale</a>(</span><span class="m-doc-wrap">double scale)</span>
+            </dt>
+            <dd>Sets the minimum map <em>scale</em> (i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#add6307157715f87048f2b4c4b7dda267" class="m-doc">setTolerance</a>(</span><span class="m-doc-wrap">double distance)</span>
+            </dt>
+            <dd>Sets the tolerance distance for grouping points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad43491c2016db097d499549cd3f45d84" class="m-doc">setToleranceMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span>
+            </dt>
+            <dd>Sets the map unit scale object for the distance tolerance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a94dbd6f05752e1902a1deaaba9093dbf" class="m-doc">setToleranceUnit</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span>
+            </dt>
+            <dd>Sets the units for the tolerance distance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Must be called when a new render cycle is started.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Must be called when a render cycle has finished, to allow the renderer to clean up.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a52eed1acc2d00abbb8dd4a5d1433cdad" class="m-doc">symbolForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>To be overridden.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1d07a0d1b016f231de03cd5f585bcaf2" class="m-doc">symbols</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns list of symbols used by the renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa583263cda0c4a1e6e939b0ba80450c7" class="m-doc">symbolsForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns list of symbols used for rendering the feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a511a93eec6ca1ebd6abdb52d404fa230" class="m-doc">tolerance</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the tolerance distance for grouping points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7480767bd3129e9aab621f0d32f9f390" class="m-doc">toleranceMapUnitScale</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp;</span>
+            </dt>
+            <dd>Returns the map unit scale object for the distance tolerance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a></span>
+            </dt>
+            <dd>Returns the units for the tolerance distance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a160bc75d4076d0da0dcb23a3827fcecf" class="m-doc-self" name="a160bc75d4076d0da0dcb23a3827fcecf">toSld</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              QDomElement&amp; element,
+              const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; props = <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>()) const <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>used from subclasses to create SLD Rule elements following SLD v1.1 specs</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa95ca179e5cec362540221b13736a146" class="m-doc">usedAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QSet&lt;QString&gt; <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns a list of attributes required by this renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af2713e66e8e4c24c0201c363e652c73e" class="m-doc">willRenderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns whether the renderer will render a feature or not.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa0df020b4e337557e7e0451c13661619" class="m-doc">drawLabels</a>(</span><span class="m-doc-wrap">QPointF centerPoint,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              const QList&lt;QPointF&gt;&amp; labelShifts,
+              const <a href="classQgsPointDistanceRenderer.html#aeb42336bd18a1b0b02a4640f20665977" class="m-doc">ClusteredGroup</a>&amp; group)</span>
+            </dt>
+            <dd>Renders the labels for a group.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QList&lt;<a href="classQgsPointDistanceRenderer.html#aeb42336bd18a1b0b02a4640f20665977" class="m-doc">ClusteredGroup</a>&gt; <a href="#a2ee12aaa5485ddfd7f540245dac6120b" class="m-doc-self" name="a2ee12aaa5485ddfd7f540245dac6120b">mClusteredGroups</a>
+            </dt>
+            <dd>Groups of features that are considered clustered together.</dd>
+            <dt>
+              bool <a href="#aada1eaf5e12ad26babbc56ee1f3e6184" class="m-doc-self" name="aada1eaf5e12ad26babbc56ee1f3e6184">mDrawLabels</a>
+            </dt>
+            <dd>Whether labels should be drawn for points. This is set internally from <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> depending on scale denominator.</dd>
+            <dt>
+              QMap&lt;<a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>, int&gt; <a href="#a369ffd9c120df0362acc42cc55bdf93c" class="m-doc-self" name="a369ffd9c120df0362acc42cc55bdf93c">mGroupIndex</a>
+            </dt>
+            <dd>Mapping of feature ID to the feature&#x27;s group index.</dd>
+            <dt>
+              QMap&lt;<a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>, <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt; <a href="#a07893f01debf0034469bd7a0e6ec8c6a" class="m-doc-self" name="a07893f01debf0034469bd7a0e6ec8c6a">mGroupLocations</a>
+            </dt>
+            <dd>Mapping of feature ID to approximate group location.</dd>
+            <dt>
+              QString <a href="#a9a5aa2fefc52fda1461b47e9c9113a11" class="m-doc-self" name="a9a5aa2fefc52fda1461b47e9c9113a11">mLabelAttributeName</a>
+            </dt>
+            <dd>Attribute name for labeling. An empty string indicates that no labels should be rendered.</dd>
+            <dt>
+              QColor <a href="#a2343bbf5d58611b90b02e6207751de98" class="m-doc-self" name="a2343bbf5d58611b90b02e6207751de98">mLabelColor</a>
+            </dt>
+            <dd>Label text color.</dd>
+            <dt>
+              QFont <a href="#ab6ed37e6963421853a5b1eac36df8c49" class="m-doc-self" name="ab6ed37e6963421853a5b1eac36df8c49">mLabelFont</a>
+            </dt>
+            <dd>Label font.</dd>
+            <dt>
+              int <a href="#a18307df6ec6176ca3e2220d7cb54f62c" class="m-doc-self" name="a18307df6ec6176ca3e2220d7cb54f62c">mLabelIndex</a>
+            </dt>
+            <dd>Label attribute index (or -1 if none). This index is not stored, it is requested in the <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> method.</dd>
+            <dt>
+              double <a href="#a0f0bb396b4c4b6576734d950b01be1fa" class="m-doc-self" name="a0f0bb396b4c4b6576734d950b01be1fa">mMinLabelScale</a>
+            </dt>
+            <dd>Maximum scale denominator for label display. A zero value indicates no scale limitation.</dd>
+            <dt>
+              std::unique_ptr&lt;<a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>&gt; <a href="#abcce91ce06cde61ff581023541069244" class="m-doc-self" name="abcce91ce06cde61ff581023541069244">mRenderer</a>
+            </dt>
+            <dd>Embedded base renderer. This can be used for rendering individual, isolated points.</dd>
+            <dt>
+              <a href="classQgsSpatialIndex.html" class="m-doc">QgsSpatialIndex</a>* <a href="#a1c36aef7cdbafe20932674ce23a45182" class="m-doc-self" name="a1c36aef7cdbafe20932674ce23a45182">mSpatialIndex</a>
+            </dt>
+            <dd>Spatial index for fast lookup of nearby points.</dd>
+            <dt>
+              double <a href="#aa7c335d374961ae9d6f178411b5e076c" class="m-doc-self" name="aa7c335d374961ae9d6f178411b5e076c">mTolerance</a>
+            </dt>
+            <dd>Distance tolerance. Points that are closer together than this distance are considered clustered.</dd>
+            <dt>
+              <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a> <a href="#a2b52ddfa4d89eedcdd125df33289443a" class="m-doc-self" name="a2b52ddfa4d89eedcdd125df33289443a">mToleranceMapUnitScale</a>
+            </dt>
+            <dd>Map unit scale for distance tolerance.</dd>
+            <dt>
+              <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> <a href="#abe5852bbe9a3446a7661f8c1a5718abe" class="m-doc-self" name="abe5852bbe9a3446a7661f8c1a5718abe">mToleranceUnit</a>
+            </dt>
+            <dd>Unit for distance tolerance.</dd>
+          </dl>
+        </section>
+        <section id="pri-methods">
+          <h2><a href="#pri-methods">Private functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab9e9eb4159e31358cf65f4e6de1fc778" class="m-doc">drawGroup</a>(</span><span class="m-doc-wrap">QPointF centerPoint,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsPointDistanceRenderer.html#aeb42336bd18a1b0b02a4640f20665977" class="m-doc">ClusteredGroup</a>&amp; group) =0SIP_FORCE <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Draws a group of clustered points.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a472fbbca61116a3019fd9ceba96cef91"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a472fbbca61116a3019fd9ceba96cef91" class="m-doc-self">QgsPointDistanceRenderer</a>(</span><span class="m-doc-wrap">const QString&amp; rendererName,
+              const QString&amp; labelAttributeName = QString())</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsPointDistanceRenderer.html" class="m-doc">QgsPointDistanceRenderer</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rendererName</td>
+                  <td>name of renderer for registry</td>
+                </tr>
+                <tr>
+                  <td>labelAttributeName</td>
+                  <td>optional attribute for labeling points</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8ae8d6e2151b3ebb4038fec2d2bccc35"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QgsFeatureRenderer::Capabilities QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8ae8d6e2151b3ebb4038fec2d2bccc35" class="m-doc-self">capabilities</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns details about internals of this renderer.</p>
+<p>E.g. if you only want to deal with visible features:</p><pre class="m-code"><span class="k">if</span> <span class="n">not</span> <span class="n">renderer</span><span class="p">.</span><span class="n">capabilities</span><span class="p">().</span><span class="n">testFlag</span><span class="p">(</span><span class="n">QgsFeatureRenderer</span><span class="p">.</span><span class="n">Filter</span><span class="p">)</span> <span class="n">or</span> <span class="n">renderer</span><span class="p">.</span><span class="n">willRenderFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">deal_with_my_feature</span><span class="p">()</span>
+<span class="k">else</span><span class="o">:</span>
+    <span class="n">skip_the_curren_feature</span><span class="p">()</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="a9e640d995b9622d546ffd7bde8f996b8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e640d995b9622d546ffd7bde8f996b8" class="m-doc-self">checkLegendSymbolItem</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              bool state) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>item in symbology was checked</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.5</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a98311bbda29286aa294be4329f9f80d8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>* QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a98311bbda29286aa294be4329f9f80d8" class="m-doc-self">embeddedRenderer</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the current embedded renderer (subrenderer) for this feature renderer.</p>
+<p>The base class implementation does not use subrenderers and will always return null.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a8901ece37e232a987d2ea1368212c3f0" class="m-doc">setEmbeddedRenderer()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2d18996d098b56feb36fa7f7392b3d27"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d18996d098b56feb36fa7f7392b3d27" class="m-doc-self">filter</a>(</span><span class="m-doc-wrap">const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields = <a href="classQgsFields.html" class="m-doc">QgsFields</a>()) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>If a renderer does not require all the features this method may be overridden and return an expression used as where clause.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>An expression used as where clause</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This will be called once after <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> and before the first call to <a href="classQgsPointDistanceRenderer.html#a4c19bfd037e8129bfbae17ea9c694f91" class="m-doc">renderFeature()</a>. By default this returns a null string and all features will be requested. You do not need to specify the extent in here, this is taken care of separately and will be combined with a filter returned from this method.</p>
+          </div></section>
+          <section class="m-doc-details" id="a685b56edfd8adc9ac61251496b160530"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a685b56edfd8adc9ac61251496b160530" class="m-doc-self">labelAttributeName</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the attribute name used for labeling points, or an empty string if no labeling will be done by the renderer.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#aa5c011b3bfe7229163d4faf3266ef66b" class="m-doc">setLabelAttributeName()</a></p><p><a href="classQgsPointDistanceRenderer.html#a5c0d22f4b2f5469f964b0b1986c41dee" class="m-doc">labelFont()</a></p><p><a href="classQgsPointDistanceRenderer.html#a3734f90b9497f916500f08aef4028442" class="m-doc">minimumLabelScale()</a></p><p><a href="classQgsPointDistanceRenderer.html#a12aa530ce83f84f7ee731c10206ef9fa" class="m-doc">labelColor()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a12aa530ce83f84f7ee731c10206ef9fa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a12aa530ce83f84f7ee731c10206ef9fa" class="m-doc-self">labelColor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the color used for for labeling points.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a083475b5ce9d5c985938b96d8b779d27" class="m-doc">setLabelColor()</a></p><p><a href="classQgsPointDistanceRenderer.html#a685b56edfd8adc9ac61251496b160530" class="m-doc">labelAttributeName()</a></p><p><a href="classQgsPointDistanceRenderer.html#a5c0d22f4b2f5469f964b0b1986c41dee" class="m-doc">labelFont()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5c0d22f4b2f5469f964b0b1986c41dee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QFont QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5c0d22f4b2f5469f964b0b1986c41dee" class="m-doc-self">labelFont</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the font used for labeling points.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a3355e8e7e5e63e82cb53b897e3b51a5b" class="m-doc">setLabelFont()</a></p><p><a href="classQgsPointDistanceRenderer.html#a685b56edfd8adc9ac61251496b160530" class="m-doc">labelAttributeName()</a></p><p><a href="classQgsPointDistanceRenderer.html#a12aa530ce83f84f7ee731c10206ef9fa" class="m-doc">labelColor()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af908f79b61d1cc9cde609092e0c7d5aa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSet&lt;QString&gt; QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af908f79b61d1cc9cde609092e0c7d5aa" class="m-doc-self">legendKeysForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns legend keys matching a specified feature.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1b3712893cf6809961989aeed169cadf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1b3712893cf6809961989aeed169cadf" class="m-doc-self">legendSymbolItemChecked</a>(</span><span class="m-doc-wrap">const QString&amp; key) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>items of symbology items in legend is checked</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.5</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a56d4f412198829d7965822a54a4e3f34"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgslegendsymbolitem_8h.html#a407af583ecc2cfb135af16d9596bdaee" class="m-doc">QgsLegendSymbolList</a> QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a56d4f412198829d7965822a54a4e3f34" class="m-doc-self">legendSymbolItems</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns a list of symbology items for the legend.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7ccc10234def276202ae9db0d7b78e0d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ccc10234def276202ae9db0d7b78e0d" class="m-doc-self">legendSymbolItemsCheckable</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>items of symbology items in legend should be checkable</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.5</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3734f90b9497f916500f08aef4028442"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3734f90b9497f916500f08aef4028442" class="m-doc-self">minimumLabelScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the minimum map scale (i.e.</p>
+<p>most &quot;zoomed out&quot;) at which points should be labeled by the renderer. The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a4c0ddf98adc358a4f59501ce77dd04e2" class="m-doc">setMinimumLabelScale()</a></p><p><a href="classQgsPointDistanceRenderer.html#a685b56edfd8adc9ac61251496b160530" class="m-doc">labelAttributeName()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac26a81e31d524f2d8355517a89adb5fb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac26a81e31d524f2d8355517a89adb5fb" class="m-doc-self">originalSymbolForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns symbol for feature.</p>
+<p>The difference compared to <a href="classQgsPointDistanceRenderer.html#a52eed1acc2d00abbb8dd4a5d1433cdad" class="m-doc">symbolForFeature()</a> is that it returns original symbol which can be used as an identifier for renderer&#x27;s rule - the former may return a temporary replacement of a symbol for use in rendering.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7e4d41f5aca124903b071913646bd81b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7e4d41f5aca124903b071913646bd81b" class="m-doc-self">originalSymbolsForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Equivalent of <a href="classQgsPointDistanceRenderer.html#a7e4d41f5aca124903b071913646bd81b" class="m-doc">originalSymbolsForFeature()</a> call extended to support renderers that may use more symbols per feature - similar to <a href="classQgsPointDistanceRenderer.html#aa583263cda0c4a1e6e939b0ba80450c7" class="m-doc">symbolsForFeature()</a></p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4c19bfd037e8129bfbae17ea9c694f91"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4c19bfd037e8129bfbae17ea9c694f91" class="m-doc-self">renderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int layer = -1,
+              bool selected = false,
+              bool drawVertexMarker = false) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Render a feature using this renderer in the given context.</p>
+<p>Must be called between <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> and <a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a> calls. Default implementation renders a symbol as determined by <a href="classQgsPointDistanceRenderer.html#a52eed1acc2d00abbb8dd4a5d1433cdad" class="m-doc">symbolForFeature()</a> call. Returns true if the feature has been returned (this is used for example to determine whether the feature may be labelled).</p><p>If layer is not -1, the renderer should draw only a particula layer from symbols (in order to support symbol level rendering).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a></p><p><a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8901ece37e232a987d2ea1368212c3f0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8901ece37e232a987d2ea1368212c3f0" class="m-doc-self">setEmbeddedRenderer</a>(</span><span class="m-doc-wrap"><a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>* subRenderer) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Sets an embedded renderer (subrenderer) for this feature renderer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">subRenderer</td>
+                  <td>the embedded renderer. Ownership will be transferred.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The base class implementation does nothing with subrenderers, but individual derived classes can use these to modify their behavior.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a98311bbda29286aa294be4329f9f80d8" class="m-doc">embeddedRenderer()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa5c011b3bfe7229163d4faf3266ef66b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa5c011b3bfe7229163d4faf3266ef66b" class="m-doc-self">setLabelAttributeName</a>(</span><span class="m-doc-wrap">const QString&amp; name)</span></span>
+            </h3>
+            <p>Sets the attribute name for labeling points.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>attribute name, or empty string to avoid labeling features by the renderer</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a685b56edfd8adc9ac61251496b160530" class="m-doc">labelAttributeName()</a></p><p><a href="classQgsPointDistanceRenderer.html#a3355e8e7e5e63e82cb53b897e3b51a5b" class="m-doc">setLabelFont()</a></p><p><a href="classQgsPointDistanceRenderer.html#a083475b5ce9d5c985938b96d8b779d27" class="m-doc">setLabelColor()</a></p><p><a href="classQgsPointDistanceRenderer.html#a4c0ddf98adc358a4f59501ce77dd04e2" class="m-doc">setMinimumLabelScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a083475b5ce9d5c985938b96d8b779d27"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a083475b5ce9d5c985938b96d8b779d27" class="m-doc-self">setLabelColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span></span>
+            </h3>
+            <p>Sets the color to use for for labeling points.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>label color</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a12aa530ce83f84f7ee731c10206ef9fa" class="m-doc">labelColor()</a></p><p><a href="classQgsPointDistanceRenderer.html#aa5c011b3bfe7229163d4faf3266ef66b" class="m-doc">setLabelAttributeName()</a></p><p><a href="classQgsPointDistanceRenderer.html#a3355e8e7e5e63e82cb53b897e3b51a5b" class="m-doc">setLabelFont()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3355e8e7e5e63e82cb53b897e3b51a5b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3355e8e7e5e63e82cb53b897e3b51a5b" class="m-doc-self">setLabelFont</a>(</span><span class="m-doc-wrap">const QFont&amp; font)</span></span>
+            </h3>
+            <p>Sets the font used for labeling points.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">font</td>
+                  <td>label font</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a5c0d22f4b2f5469f964b0b1986c41dee" class="m-doc">labelFont()</a></p><p><a href="classQgsPointDistanceRenderer.html#aa5c011b3bfe7229163d4faf3266ef66b" class="m-doc">setLabelAttributeName()</a></p><p><a href="classQgsPointDistanceRenderer.html#a083475b5ce9d5c985938b96d8b779d27" class="m-doc">setLabelColor()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad78273e724c91e41c58f9e3c34ac282c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad78273e724c91e41c58f9e3c34ac282c" class="m-doc-self">setLegendSymbolItem</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* symbol) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Sets the symbol to be used for a legend symbol item.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>rule key for legend symbol</td>
+                </tr>
+                <tr>
+                  <td>symbol</td>
+                  <td>new symbol for legend item. Ownership is transferred to renderer.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4c0ddf98adc358a4f59501ce77dd04e2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4c0ddf98adc358a4f59501ce77dd04e2" class="m-doc-self">setMinimumLabelScale</a>(</span><span class="m-doc-wrap">double scale)</span></span>
+            </h3>
+            <p>Sets the minimum map <em>scale</em> (i.e.</p>
+<p>most &quot;zoomed out&quot;) at which points should be labeled by the renderer. The <em>scale</em> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a3734f90b9497f916500f08aef4028442" class="m-doc">minimumLabelScale()</a></p><p><a href="classQgsPointDistanceRenderer.html#aa5c011b3bfe7229163d4faf3266ef66b" class="m-doc">setLabelAttributeName()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="add6307157715f87048f2b4c4b7dda267"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#add6307157715f87048f2b4c4b7dda267" class="m-doc-self">setTolerance</a>(</span><span class="m-doc-wrap">double distance)</span></span>
+            </h3>
+            <p>Sets the tolerance distance for grouping points.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">distance</td>
+                  <td>tolerance distance</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Units are specified using <a href="classQgsPointDistanceRenderer.html#a94dbd6f05752e1902a1deaaba9093dbf" class="m-doc">setToleranceUnit()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a511a93eec6ca1ebd6abdb52d404fa230" class="m-doc">tolerance()</a></p><p><a href="classQgsPointDistanceRenderer.html#a94dbd6f05752e1902a1deaaba9093dbf" class="m-doc">setToleranceUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad43491c2016db097d499549cd3f45d84"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad43491c2016db097d499549cd3f45d84" class="m-doc-self">setToleranceMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span></span>
+            </h3>
+            <p>Sets the map unit scale object for the distance tolerance.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">scale</td>
+                  <td>scale for distance tolerance</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This is only used if the <a href="classQgsPointDistanceRenderer.html#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit()</a> is set to <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adfaf57b44fb236b466b09b64acf3da19a89" class="m-doc">QgsUnitTypes::<wbr />RenderMapUnits</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a7480767bd3129e9aab621f0d32f9f390" class="m-doc">toleranceMapUnitScale()</a></p><p><a href="classQgsPointDistanceRenderer.html#a94dbd6f05752e1902a1deaaba9093dbf" class="m-doc">setToleranceUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a94dbd6f05752e1902a1deaaba9093dbf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a94dbd6f05752e1902a1deaaba9093dbf" class="m-doc-self">setToleranceUnit</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span></span>
+            </h3>
+            <p>Sets the units for the tolerance distance.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">unit</td>
+                  <td>tolerance distance units</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#add6307157715f87048f2b4c4b7dda267" class="m-doc">setTolerance()</a></p><p><a href="classQgsPointDistanceRenderer.html#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7fe789803d4623cb9001371cceb6b64c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7fe789803d4623cb9001371cceb6b64c" class="m-doc-self">startRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Must be called when a new render cycle is started.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>Additional information passed to the renderer about the job which will be rendered</td>
+                </tr>
+                <tr>
+                  <td>fields</td>
+                  <td>The fields available for rendering</td>
+                </tr>
+              </tbody>
+            </table>
+<p>A call to <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> must always be followed by a corresponding call to <a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a> after all features have been rendered.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a></p></aside><aside class="m-note m-danger"><h4>Warning</h4><p>This method is not thread safe. Before calling <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> in a non-main thread, the renderer should instead be cloned and <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a>/stopRender() called on the clone.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4ee5d8d6d73543f93a8c4533537dbcba"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc-self">stopRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Must be called when a render cycle has finished, to allow the renderer to clean up.</p>
+<p>Calls to <a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a> must always be preceded by a call to <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a>.</p><aside class="m-note m-danger"><h4>Warning</h4><p>This method is not thread safe. Before calling <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> in a non-main thread, the renderer should instead be cloned and <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a>/stopRender() called on the clone.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a52eed1acc2d00abbb8dd4a5d1433cdad"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52eed1acc2d00abbb8dd4a5d1433cdad" class="m-doc-self">symbolForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>To be overridden.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">feature</td>
+                  <td>feature</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>render context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>returns pointer to symbol or 0 if symbol was not found</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Must be called between <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> and <a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a> calls.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1d07a0d1b016f231de03cd5f585bcaf2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1d07a0d1b016f231de03cd5f585bcaf2" class="m-doc-self">symbols</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns list of symbols used by the renderer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>render context</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa583263cda0c4a1e6e939b0ba80450c7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa583263cda0c4a1e6e939b0ba80450c7" class="m-doc-self">symbolsForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns list of symbols used for rendering the feature.</p>
+<p>For renderers that do not support MoreSymbolsPerFeature it is more efficient to use <a href="classQgsPointDistanceRenderer.html#a52eed1acc2d00abbb8dd4a5d1433cdad" class="m-doc">symbolForFeature()</a></p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a511a93eec6ca1ebd6abdb52d404fa230"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a511a93eec6ca1ebd6abdb52d404fa230" class="m-doc-self">tolerance</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the tolerance distance for grouping points.</p>
+<p>Units are retrieved using <a href="classQgsPointDistanceRenderer.html#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#add6307157715f87048f2b4c4b7dda267" class="m-doc">setTolerance()</a></p><p><a href="classQgsPointDistanceRenderer.html#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7480767bd3129e9aab621f0d32f9f390"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7480767bd3129e9aab621f0d32f9f390" class="m-doc-self">toleranceMapUnitScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map unit scale object for the distance tolerance.</p>
+<p>This is only used if the <a href="classQgsPointDistanceRenderer.html#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit()</a> is set to <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adfaf57b44fb236b466b09b64acf3da19a89" class="m-doc">QgsUnitTypes::<wbr />RenderMapUnits</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#ad43491c2016db097d499549cd3f45d84" class="m-doc">setToleranceMapUnitScale()</a></p><p><a href="classQgsPointDistanceRenderer.html#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc">toleranceUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2cf9a726dab233737d4eaf636ae9a428"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2cf9a726dab233737d4eaf636ae9a428" class="m-doc-self">toleranceUnit</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units for the tolerance distance.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPointDistanceRenderer.html#a511a93eec6ca1ebd6abdb52d404fa230" class="m-doc">tolerance()</a></p><p><a href="classQgsPointDistanceRenderer.html#a94dbd6f05752e1902a1deaaba9093dbf" class="m-doc">setToleranceUnit()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa95ca179e5cec362540221b13736a146"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSet&lt;QString&gt; QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa95ca179e5cec362540221b13736a146" class="m-doc-self">usedAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns a list of attributes required by this renderer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A set of attributes</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Attributes not listed in here may not have been requested from the provider at rendering time.</p>
+          </div></section>
+          <section class="m-doc-details" id="af2713e66e8e4c24c0201c363e652c73e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af2713e66e8e4c24c0201c363e652c73e" class="m-doc-self">willRenderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns whether the renderer will render a feature or not.</p>
+<p>Must be called between <a href="classQgsPointDistanceRenderer.html#a7fe789803d4623cb9001371cceb6b64c" class="m-doc">startRender()</a> and <a href="classQgsPointDistanceRenderer.html#a4ee5d8d6d73543f93a8c4533537dbcba" class="m-doc">stopRender()</a> calls. Default implementation uses <a href="classQgsPointDistanceRenderer.html#a52eed1acc2d00abbb8dd4a5d1433cdad" class="m-doc">symbolForFeature()</a>.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa0df020b4e337557e7e0451c13661619"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa0df020b4e337557e7e0451c13661619" class="m-doc-self">drawLabels</a>(</span><span class="m-doc-wrap">QPointF centerPoint,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              const QList&lt;QPointF&gt;&amp; labelShifts,
+              const <a href="classQgsPointDistanceRenderer.html#aeb42336bd18a1b0b02a4640f20665977" class="m-doc">ClusteredGroup</a>&amp; group) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Renders the labels for a group.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">centerPoint</td>
+                  <td>center point of group</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>destination render context</td>
+                </tr>
+                <tr>
+                  <td>labelShifts</td>
+                  <td>displacement for individual label positions</td>
+                </tr>
+                <tr>
+                  <td>group</td>
+                  <td>group of clustered features to label</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>may not be available in Python bindings on some platforms</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab9e9eb4159e31358cf65f4e6de1fc778"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPointDistanceRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab9e9eb4159e31358cf65f4e6de1fc778" class="m-doc-self">drawGroup</a>(</span><span class="m-doc-wrap">QPointF centerPoint,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsPointDistanceRenderer.html#aeb42336bd18a1b0b02a4640f20665977" class="m-doc">ClusteredGroup</a>&amp; group) =0SIP_FORCE <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
+            </h3>
+            <p>Draws a group of clustered points.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">centerPoint</td>
+                  <td>central point (geographic centroid) of all points contained within the cluster</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>destination render context</td>
+                </tr>
+                <tr>
+                  <td>group</td>
+                  <td>contents of group</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

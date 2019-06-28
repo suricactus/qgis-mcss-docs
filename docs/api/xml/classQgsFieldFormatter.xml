@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsFieldFormatter" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsFieldFormatter</compoundname>
+    <derivedcompoundref refid="classQgsDateTimeFieldFormatter" prot="public" virt="non-virtual">QgsDateTimeFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsFallbackFieldFormatter" prot="public" virt="non-virtual">QgsFallbackFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsKeyValueFieldFormatter" prot="public" virt="non-virtual">QgsKeyValueFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsListFieldFormatter" prot="public" virt="non-virtual">QgsListFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsRangeFieldFormatter" prot="public" virt="non-virtual">QgsRangeFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsRelationReferenceFieldFormatter" prot="public" virt="non-virtual">QgsRelationReferenceFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsValueMapFieldFormatter" prot="public" virt="non-virtual">QgsValueMapFieldFormatter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsValueRelationFieldFormatter" prot="public" virt="non-virtual">QgsValueRelationFieldFormatter</derivedcompoundref>
+    <includes refid="qgsfieldformatter_8h" local="no">qgsfieldformatter.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsFieldFormatter_1a21ecb74bc9fb149b8752f9d470383fb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsFieldFormatter::QgsFieldFormatter</definition>
+        <argsstring>()</argsstring>
+        <name>QgsFieldFormatter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="43" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldFormatter_1a67fc537b1c177c2d8a393473054a4302" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsFieldFormatter::~QgsFieldFormatter</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsFieldFormatter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldFormatter_1a451afcffb73e2d3c3463e7675d960b22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Qt::AlignmentFlag</type>
+        <definition>Qt::AlignmentFlag QgsFieldFormatter::alignmentFlag</definition>
+        <argsstring>(QgsVectorLayer *layer, int fieldIndex, const QVariantMap &amp;config) const</argsstring>
+        <name>alignmentFlag</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Returns the alignment for a particular field. </para>        </briefdescription>
+        <detaileddescription>
+<para>By default this will consider the field type but can be overwritten if mapped values are represented.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="79" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.cpp" bodystart="48" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldFormatter_1a1f2a6bb4ebf9cdd5c53fa7c02eb9ae86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsFieldFormatter::createCache</definition>
+        <argsstring>(QgsVectorLayer *layer, int fieldIndex, const QVariantMap &amp;config) const</argsstring>
+        <name>createCache</name>
+        <reimplementedby refid="classQgsValueRelationFieldFormatter_1a7d14539e34e86e3a095428db514a5c19">createCache</reimplementedby>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Create a cache for a given field. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will be used in situations where a field is being represented various times in a loop. And will be passed to other methods on QgsFieldKit and <ref refid="classQgsEditorWidgetWrapper" kindref="compound">QgsEditorWidgetWrapper</ref>.</para><para>For example, the attribute table will create a cache once for each field and then use this cache for representation. The <ref refid="classQgsValueRelationFieldFormatter" kindref="compound">QgsValueRelationFieldFormatter</ref> and QgsValueRelationEditorWidget implement this functionality to create a lookuptable once (a QVariantMap / dict) and are make use of a cache if present.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.cpp" bodystart="62" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldFormatter_1a4cc866f8397a2843f2c5f81c0c2bb78b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsFieldFormatter::id</definition>
+        <argsstring>() const =0</argsstring>
+        <name>id</name>
+        <reimplementedby refid="classQgsRangeFieldFormatter_1a6f9e527e03ba7b31130f10646931b466">id</reimplementedby>
+        <reimplementedby refid="classQgsFallbackFieldFormatter_1a4f338b9a705fea56e65f116d48e9c352">id</reimplementedby>
+        <reimplementedby refid="classQgsListFieldFormatter_1adac95bcfa01dc04bdd32c74d9bef6450">id</reimplementedby>
+        <reimplementedby refid="classQgsRelationReferenceFieldFormatter_1ab53500dd8c324d11a74eb1d3c6265fb6">id</reimplementedby>
+        <reimplementedby refid="classQgsKeyValueFieldFormatter_1a062313f2c59a8533591a43346a1e884a">id</reimplementedby>
+        <reimplementedby refid="classQgsDateTimeFieldFormatter_1a4279f95b47e260dd25a0a2a8c2e587de">id</reimplementedby>
+        <reimplementedby refid="classQgsValueMapFieldFormatter_1a0794e98f38584f6ff746cfc8b514e994">id</reimplementedby>
+        <reimplementedby refid="classQgsValueRelationFieldFormatter_1a406f7bb6a7b8fdf84667fb33f1977dd0">id</reimplementedby>
+        <briefdescription>
+<para>Returns a unique id for this field formatter. </para>        </briefdescription>
+        <detaileddescription>
+<para>This id will later be used to identify this field formatter in the registry with <ref refid="classQgsFieldFormatterRegistry_1afb0912d40c920756c58b5121ddccde09" kindref="member">QgsFieldFormatterRegistry::fieldFormatter()</ref>.</para><para>This id matches the id of a <ref refid="classQgsEditorWidgetFactory" kindref="compound">QgsEditorWidgetFactory</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldFormatter_1ac9dc40b958c0da8b443e0f48856061a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsFieldFormatter::representValue</definition>
+        <argsstring>(QgsVectorLayer *layer, int fieldIndex, const QVariantMap &amp;config, const QVariant &amp;cache, const QVariant &amp;value) const</argsstring>
+        <name>representValue</name>
+        <reimplementedby refid="classQgsRangeFieldFormatter_1a8de4502ee9a7e175b7eb88ad58c0e3b4">representValue</reimplementedby>
+        <reimplementedby refid="classQgsListFieldFormatter_1a9baa8fdd942c92de75fa0b40afc91022">representValue</reimplementedby>
+        <reimplementedby refid="classQgsRelationReferenceFieldFormatter_1a4de7ace0eba0918fc5db5b54a6b3c21c">representValue</reimplementedby>
+        <reimplementedby refid="classQgsKeyValueFieldFormatter_1a56b8dade22872276e4fe3b5954713cb3">representValue</reimplementedby>
+        <reimplementedby refid="classQgsDateTimeFieldFormatter_1a23646d52778d40a845ce725bf227095b">representValue</reimplementedby>
+        <reimplementedby refid="classQgsValueMapFieldFormatter_1abdd1d95980345967a445448ff6a26801">representValue</reimplementedby>
+        <reimplementedby refid="classQgsValueRelationFieldFormatter_1a69b85375be26e85df765fceddd3b87ce">representValue</reimplementedby>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>cache</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Create a pretty String representation of the value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>By default the string representation of the provided value as implied by the field definition is returned.</para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.cpp" bodystart="26" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldFormatter_1a9cf67f32a7db28df41783658f3bbdf1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsFieldFormatter::sortValue</definition>
+        <argsstring>(QgsVectorLayer *layer, int fieldIndex, const QVariantMap &amp;config, const QVariant &amp;cache, const QVariant &amp;value) const</argsstring>
+        <name>sortValue</name>
+        <reimplementedby refid="classQgsRelationReferenceFieldFormatter_1addf73b3371a4e546fa79d8452f2deeb3">sortValue</reimplementedby>
+        <reimplementedby refid="classQgsValueMapFieldFormatter_1ab82290b1579d419b74b2595d4cc9c118">sortValue</reimplementedby>
+        <reimplementedby refid="classQgsValueRelationFieldFormatter_1a6d010b0575cbe7636f407299a83f451d">sortValue</reimplementedby>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>config</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>cache</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>If the default sort order should be overwritten for this widget, you can transform the value in here. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>an unmodified value by default.</para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="71" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.cpp" bodystart="38" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A field formatter helps to handle and display values for a field. </para>    </briefdescription>
+    <detaileddescription>
+<para>It allows for using a shared configuration with the editor widgets for representation of attribute values. Field kits normally have one single instance which is managed by the <ref refid="classQgsFieldFormatterRegistry" kindref="compound">QgsFieldFormatterRegistry</ref>. Custom field formatters should be registered there and field formatters for use within code should normally be obtained from there.</para><para>This is an abstract base class and will always need to be subclassed.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3125">
+        <label>QgsValueRelationFieldFormatter</label>
+        <link refid="classQgsValueRelationFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3118">
+        <label>QgsDateTimeFieldFormatter</label>
+        <link refid="classQgsDateTimeFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3121">
+        <label>QgsListFieldFormatter</label>
+        <link refid="classQgsListFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3119">
+        <label>QgsFallbackFieldFormatter</label>
+        <link refid="classQgsFallbackFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3120">
+        <label>QgsKeyValueFieldFormatter</label>
+        <link refid="classQgsKeyValueFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3122">
+        <label>QgsRangeFieldFormatter</label>
+        <link refid="classQgsRangeFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3124">
+        <label>QgsValueMapFieldFormatter</label>
+        <link refid="classQgsValueMapFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3123">
+        <label>QgsRelationReferenceFieldFormatter</label>
+        <link refid="classQgsRelationReferenceFieldFormatter"/>
+        <childnode refid="3117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3117">
+        <label>QgsFieldFormatter</label>
+        <link refid="classQgsFieldFormatter"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" line="41" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldformatter.h" bodystart="40" bodyend="95"/>
+    <listofallmembers>
+      <member refid="classQgsFieldFormatter_1a451afcffb73e2d3c3463e7675d960b22" prot="public" virt="virtual"><scope>QgsFieldFormatter</scope><name>alignmentFlag</name></member>
+      <member refid="classQgsFieldFormatter_1a1f2a6bb4ebf9cdd5c53fa7c02eb9ae86" prot="public" virt="virtual"><scope>QgsFieldFormatter</scope><name>createCache</name></member>
+      <member refid="classQgsFieldFormatter_1a4cc866f8397a2843f2c5f81c0c2bb78b" prot="public" virt="pure-virtual"><scope>QgsFieldFormatter</scope><name>id</name></member>
+      <member refid="classQgsFieldFormatter_1a21ecb74bc9fb149b8752f9d470383fb5" prot="public" virt="non-virtual"><scope>QgsFieldFormatter</scope><name>QgsFieldFormatter</name></member>
+      <member refid="classQgsFieldFormatter_1ac9dc40b958c0da8b443e0f48856061a2" prot="public" virt="virtual"><scope>QgsFieldFormatter</scope><name>representValue</name></member>
+      <member refid="classQgsFieldFormatter_1a9cf67f32a7db28df41783658f3bbdf1f" prot="public" virt="virtual"><scope>QgsFieldFormatter</scope><name>sortValue</name></member>
+      <member refid="classQgsFieldFormatter_1a67fc537b1c177c2d8a393473054a4302" prot="public" virt="virtual"><scope>QgsFieldFormatter</scope><name>~QgsFieldFormatter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

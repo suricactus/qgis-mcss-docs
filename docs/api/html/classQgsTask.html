@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsTask class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsTask <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for long running background tasks.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-slots">Protected slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Tasks can be controlled directly, or added to a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a> for automatic management.</p><p>Derived classes should implement the process they want to execute in the background within the <a href="classQgsTask.html#a2d77e5bc36f0bbef5c7e2ee38a796bbe" class="m-doc">run()</a> method. This method will be called when the task commences (ie via calling <a href="classQgsTask.html#a2d77e5bc36f0bbef5c7e2ee38a796bbe" class="m-doc">run()</a> ).</p><p>Long running tasks should periodically check the <a href="classQgsTask.html#af268c16fc903e9a63e93bf5818e50eca" class="m-doc">isCanceled()</a> flag to detect if the task has been canceled via some external event. If this flag is true then the task should clean up and terminate at the earliest possible convenience.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsMapRendererTask.html" class="m-doc">QgsMapRendererTask</a>
+            </dt>
+            <dd><a href="classQgsTask.html" class="m-doc">QgsTask</a> task which draws a map to an image file or a painter as a background task.</dd>
+            <dt>
+              class <a href="classQgsNetworkContentFetcherTask.html" class="m-doc">QgsNetworkContentFetcherTask</a>
+            </dt>
+            <dd>Handles HTTP network content fetching in a background task.</dd>
+            <dt>
+              class <a href="classQgsProcessingAlgRunnerTask.html" class="m-doc">QgsProcessingAlgRunnerTask</a>
+            </dt>
+            <dd><a href="classQgsTask.html" class="m-doc">QgsTask</a> task which runs a <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a> in a background task.</dd>
+            <dt>
+              class <a href="classQgsProxyProgressTask.html" class="m-doc">QgsProxyProgressTask</a>
+            </dt>
+            <dd>A <a href="classQgsTask.html" class="m-doc">QgsTask</a> shell which proxies progress reports.</dd>
+            <dt>
+              class <a href="classQgsRasterFileWriterTask.html" class="m-doc">QgsRasterFileWriterTask</a>
+            </dt>
+            <dd><a href="classQgsTask.html" class="m-doc">QgsTask</a> task which performs a <a href="classQgsRasterFileWriter.html" class="m-doc">QgsRasterFileWriter</a> layer saving operation as a background task.</dd>
+            <dt>
+              class <a href="classQgsVectorFileWriterTask.html" class="m-doc">QgsVectorFileWriterTask</a>
+            </dt>
+            <dd><a href="classQgsTask.html" class="m-doc">QgsTask</a> task which performs a <a href="classQgsVectorFileWriter.html" class="m-doc">QgsVectorFileWriter</a> layer saving operation as a background task.</dd>
+            <dt>
+              class <a href="classQgsVectorLayerExporterTask.html" class="m-doc">QgsVectorLayerExporterTask</a>
+            </dt>
+            <dd><a href="classQgsTask.html" class="m-doc">QgsTask</a> task which performs a <a href="classQgsVectorLayerExporter.html" class="m-doc">QgsVectorLayerExporter</a> layer export operation as a background task.</dd>
+            <dt>
+              class <a href="classQgsVectorLayerFeatureCounter.html" class="m-doc">QgsVectorLayerFeatureCounter</a>
+            </dt>
+            <dd>Counts the features in a <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a> in task.</dd>
+            <dt>
+              class <a href="classQgsVirtualLayerTask.html" class="m-doc">QgsVirtualLayerTask</a>
+            </dt>
+            <dd>Initializes a virtual layer with postpone mode activated and reloads the data in a separated thread.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a78265e4b22b3fa23910713b55cb3397a" class="m-doc">Flag</a> { </span><span class="m-doc-wrap"><a href="#a78265e4b22b3fa23910713b55cb3397aa1cb7aaa2e363846d69093018c368af20" class="m-doc">CanCancel</a> = 1 &lt;&lt; 1,
+              <a href="#a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" class="m-doc">AllFlags</a> = CanCancel }</span>
+            </dt>
+            <dd>Task flags.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ae5622a3fc728da46df42c04a47f4e82b" class="m-doc">SubTaskDependency</a> { </span><span class="m-doc-wrap"><a href="#ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" class="m-doc">SubTaskIndependent</a> = 0,
+              <a href="#ae5622a3fc728da46df42c04a47f4e82ba4f04e3281cba5e2c705141f0ed07097d" class="m-doc">ParentDependsOnSubTask</a> }</span>
+            </dt>
+            <dd>Controls how subtasks relate to their parent task.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#abf6d09858b2621d25b15e61f9b94716a" class="m-doc">TaskStatus</a> { </span><span class="m-doc-wrap"><a href="#abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" class="m-doc">Queued</a>,
+              <a href="#abf6d09858b2621d25b15e61f9b94716aac2e4a7d8f3fb678c3b8b979fd55f07fb" class="m-doc">OnHold</a>,
+              <a href="#abf6d09858b2621d25b15e61f9b94716aae2415f41b060b3ff551a498d926667e2" class="m-doc">Running</a>,
+              <a href="#abf6d09858b2621d25b15e61f9b94716aaf885759c2ac9e8d0e76a8f035e0ef2e8" class="m-doc">Complete</a>,
+              <a href="#abf6d09858b2621d25b15e61f9b94716aa642c6a9896682897fb8e1990fadc5bb2" class="m-doc">Terminated</a> }</span>
+            </dt>
+            <dd>Status of tasks.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a6b6a5a9ce2caeb19b8f1c93d003e8ae7" class="m-doc">QgsTask</a>(</span><span class="m-doc-wrap">const QString&amp; description = QString(),
+              QgsTask::Flags flags = <a href="classQgsTask.html#a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" class="m-doc">AllFlags</a>)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsTask.html" class="m-doc">QgsTask</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adee948d61b73caf57498eb57f087fb8d" class="m-doc">addSubTask</a>(</span><span class="m-doc-wrap"><a href="classQgsTask.html" class="m-doc">QgsTask</a>* subTask,
+              const <a href="qgstaskmanager_8h.html#aca25b7c15b64f8170f669436fef001db" class="m-doc">QgsTaskList</a>&amp; dependencies = <a href="qgstaskmanager_8h.html#aca25b7c15b64f8170f669436fef001db" class="m-doc">QgsTaskList</a>(),
+              <a href="classQgsTask.html#ae5622a3fc728da46df42c04a47f4e82b" class="m-doc">SubTaskDependency</a> subTaskDependency = <a href="classQgsTask.html#ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" class="m-doc">SubTaskIndependent</a>)</span>
+            </dt>
+            <dd>Adds a subtask to this task.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af9eb9236ea0d342fa5aa9f2073b4e08a" class="m-doc-self" name="af9eb9236ea0d342fa5aa9f2073b4e08a">canCancel</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the task can be canceled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5d10b93acb49394b851bebf8a03680d7" class="m-doc">cancel</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Notifies the task that it should terminate.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2ec1a2f6f324a0083028f1df10accbd8" class="m-doc">dependentLayers</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;</span>
+            </dt>
+            <dd>Returns the list of layers on which the task depends.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad3a6fd5f8743c007927cf54c98c323c0" class="m-doc-self" name="ad3a6fd5f8743c007927cf54c98c323c0">description</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the task&#x27;s description.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab0d3c22232efac5deb4c0a9114b95a8f" class="m-doc">elapsedTime</a>(</span><span class="m-doc-wrap">) const -&gt; qint64</span>
+            </dt>
+            <dd>Returns the elapsed time since the task commenced, in milliseconds.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0eb8cade49fad19ae30e02e44e52ab67" class="m-doc-self" name="a0eb8cade49fad19ae30e02e44e52ab67">flags</a>(</span><span class="m-doc-wrap">) const -&gt; Flags</span>
+            </dt>
+            <dd>Returns the flags associated with the task.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac531f6ac746c2a48762908bca9f569e8" class="m-doc">hold</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Places the task on hold.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a77207b78e993a8068ca932a78588ba78" class="m-doc-self" name="a77207b78e993a8068ca932a78588ba78">isActive</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the task is active, ie it is not complete and has not been canceled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1bc035725fa4689d486e6024a17fa694" class="m-doc-self" name="a1bc035725fa4689d486e6024a17fa694">progress</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the task&#x27;s progress (between 0.0 and 100.0)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac118b1200a6b56a9bc36908da3fdf6fd" class="m-doc">setDependentLayers</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;&amp; dependentLayers)</span>
+            </dt>
+            <dd>Sets a list of layers on which the task depends.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a09fe64a54e26d3a4de96d77a1a28d4ff" class="m-doc-self" name="a09fe64a54e26d3a4de96d77a1a28d4ff">status</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsTask.html#abf6d09858b2621d25b15e61f9b94716a" class="m-doc">TaskStatus</a></span>
+            </dt>
+            <dd>Returns the current task status.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab3ac2490c151cc90d175d175b8112b05" class="m-doc">unhold</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Releases the task from being held.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af640d3e3150cd8636bdddbfcd263c698" class="m-doc">waitForFinished</a>(</span><span class="m-doc-wrap">int timeout = 30000) -&gt; bool</span>
+            </dt>
+            <dd>Blocks the current thread until the task finishes or a maximum of <em>timeout</em> milliseconds.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5b2b284b03102808efedaac5dfc00707" class="m-doc">begun</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Will be emitted by task to indicate its commencement.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2df3b95a83b5296959947950d9320940" class="m-doc">progressChanged</a>(</span><span class="m-doc-wrap">double progress)</span>
+            </dt>
+            <dd>Will be emitted by task when its progress changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aad96341858c75ce3ed6995fb83c663ef" class="m-doc">statusChanged</a>(</span><span class="m-doc-wrap">int status)</span>
+            </dt>
+            <dd>Will be emitted by task when its status changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1943c69e00a43641d929ec64787e54b0" class="m-doc">taskCompleted</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Will be emitted by task to indicate its successful completion.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa5f8557431c472b72804a8e9a39bbfaa" class="m-doc">taskTerminated</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Will be emitted by task if it has terminated for any reason other then completion (e.g., when a task has been canceled or encountered an internal error).</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2775f4377b3bc65b4dfb89d67c89c639" class="m-doc">finished</a>(</span><span class="m-doc-wrap">bool result) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>If the task is managed by a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a>, this will be called after the task has finished (whether through successful completion or via early termination).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af268c16fc903e9a63e93bf5818e50eca" class="m-doc">isCanceled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Will return true if task should terminate ASAP.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d77e5bc36f0bbef5c7e2ee38a796bbe" class="m-doc">run</a>(</span><span class="m-doc-wrap">) -&gt; bool <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Performs the task&#x27;s operation.</dd>
+          </dl>
+        </section>
+        <section id="pro-slots">
+          <h2><a href="#pro-slots">Protected slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af44d70df34a60ea921f55c1c69a62c69" class="m-doc">setProgress</a>(</span><span class="m-doc-wrap">double progress)</span>
+            </dt>
+            <dd>Sets the task&#x27;s current progress.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a78265e4b22b3fa23910713b55cb3397a"><div>
+            <h3>
+              enum QgsTask::<wbr /><a href="#a78265e4b22b3fa23910713b55cb3397a" class="m-doc-self">Flag</a>
+            </h3>
+            <p>Task flags.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a78265e4b22b3fa23910713b55cb3397aa1cb7aaa2e363846d69093018c368af20" class="m-doc-self" name="a78265e4b22b3fa23910713b55cb3397aa1cb7aaa2e363846d69093018c368af20">CanCancel</a></td>
+                  <td>
+                  <p>Task can be canceled.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" class="m-doc-self" name="a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9">AllFlags</a></td>
+                  <td>
+                  <p>Task supports all flags.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae5622a3fc728da46df42c04a47f4e82b"><div>
+            <h3>
+              enum QgsTask::<wbr /><a href="#ae5622a3fc728da46df42c04a47f4e82b" class="m-doc-self">SubTaskDependency</a>
+            </h3>
+            <p>Controls how subtasks relate to their parent task.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" class="m-doc-self" name="ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67">SubTaskIndependent</a></td>
+                  <td>
+                  <p>Subtask is independent of the parent, and can run before, after or at the same time as the parent.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5622a3fc728da46df42c04a47f4e82ba4f04e3281cba5e2c705141f0ed07097d" class="m-doc-self" name="ae5622a3fc728da46df42c04a47f4e82ba4f04e3281cba5e2c705141f0ed07097d">ParentDependsOnSubTask</a></td>
+                  <td>
+                  <p>Subtask must complete before parent can begin.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="abf6d09858b2621d25b15e61f9b94716a"><div>
+            <h3>
+              enum QgsTask::<wbr /><a href="#abf6d09858b2621d25b15e61f9b94716a" class="m-doc-self">TaskStatus</a>
+            </h3>
+            <p>Status of tasks.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" class="m-doc-self" name="abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662">Queued</a></td>
+                  <td>
+                  <p>Task is queued and has not begun.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#abf6d09858b2621d25b15e61f9b94716aac2e4a7d8f3fb678c3b8b979fd55f07fb" class="m-doc-self" name="abf6d09858b2621d25b15e61f9b94716aac2e4a7d8f3fb678c3b8b979fd55f07fb">OnHold</a></td>
+                  <td>
+                  <p>Task is queued but on hold and will not be started.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#abf6d09858b2621d25b15e61f9b94716aae2415f41b060b3ff551a498d926667e2" class="m-doc-self" name="abf6d09858b2621d25b15e61f9b94716aae2415f41b060b3ff551a498d926667e2">Running</a></td>
+                  <td>
+                  <p>Task is currently running.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#abf6d09858b2621d25b15e61f9b94716aaf885759c2ac9e8d0e76a8f035e0ef2e8" class="m-doc-self" name="abf6d09858b2621d25b15e61f9b94716aaf885759c2ac9e8d0e76a8f035e0ef2e8">Complete</a></td>
+                  <td>
+                  <p>Task successfully completed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#abf6d09858b2621d25b15e61f9b94716aa642c6a9896682897fb8e1990fadc5bb2" class="m-doc-self" name="abf6d09858b2621d25b15e61f9b94716aa642c6a9896682897fb8e1990fadc5bb2">Terminated</a></td>
+                  <td>
+                  <p>Task was terminated or errored.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a6b6a5a9ce2caeb19b8f1c93d003e8ae7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6b6a5a9ce2caeb19b8f1c93d003e8ae7" class="m-doc-self">QgsTask</a>(</span><span class="m-doc-wrap">const QString&amp; description = QString(),
+              QgsTask::Flags flags = <a href="classQgsTask.html#a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" class="m-doc">AllFlags</a>)</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsTask.html" class="m-doc">QgsTask</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">description</td>
+                  <td>text description of task</td>
+                </tr>
+                <tr>
+                  <td>flags</td>
+                  <td>task flags</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adee948d61b73caf57498eb57f087fb8d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adee948d61b73caf57498eb57f087fb8d" class="m-doc-self">addSubTask</a>(</span><span class="m-doc-wrap"><a href="classQgsTask.html" class="m-doc">QgsTask</a>* subTask,
+              const <a href="qgstaskmanager_8h.html#aca25b7c15b64f8170f669436fef001db" class="m-doc">QgsTaskList</a>&amp; dependencies = <a href="qgstaskmanager_8h.html#aca25b7c15b64f8170f669436fef001db" class="m-doc">QgsTaskList</a>(),
+              <a href="classQgsTask.html#ae5622a3fc728da46df42c04a47f4e82b" class="m-doc">SubTaskDependency</a> subTaskDependency = <a href="classQgsTask.html#ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" class="m-doc">SubTaskIndependent</a>)</span></span>
+            </h3>
+            <p>Adds a subtask to this task.</p>
+<p>Subtasks allow a single task to be created which consists of multiple smaller tasks. Subtasks are not visible or indepedently controllable by users. Ownership of the subtask is transferred. Subtasks can have an optional list of dependent tasks, which must be completed before the subtask can begin. By default subtasks are considered independent of the parent task, ie they can be run either before, after, or at the same time as the parent task. This behavior can be overridden through the subTaskDependency argument. Note that subtasks should NEVER be dependent on their parent task, and violating this constraint will prevent the task from completing successfully.</p><p>The parent task must be added to a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a> for subtasks to be utilized. Subtasks should not be added manually to a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a>, rather, only the parent task should be added to the manager.</p><p>Subtasks can be nested, ie a subtask can legally be a parent task itself with its own set of subtasks.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5d10b93acb49394b851bebf8a03680d7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d10b93acb49394b851bebf8a03680d7" class="m-doc-self">cancel</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Notifies the task that it should terminate.</p>
+<p>Calling this is not guaranteed to immediately end the task, rather it sets the <a href="classQgsTask.html#af268c16fc903e9a63e93bf5818e50eca" class="m-doc">isCanceled()</a> flag which task subclasses can check and terminate their operations at an appropriate time. Any subtasks owned by this task will also be canceled. Derived classes must ensure that the base class implementation is called from any overridden version.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTask.html#af268c16fc903e9a63e93bf5818e50eca" class="m-doc">isCanceled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2ec1a2f6f324a0083028f1df10accbd8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt; QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2ec1a2f6f324a0083028f1df10accbd8" class="m-doc-self">dependentLayers</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the list of layers on which the task depends.</p>
+<p>The task will automatically be canceled if any of these layers are about to be removed.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTask.html#ac118b1200a6b56a9bc36908da3fdf6fd" class="m-doc">setDependentLayers()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab0d3c22232efac5deb4c0a9114b95a8f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">qint64 QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab0d3c22232efac5deb4c0a9114b95a8f" class="m-doc-self">elapsedTime</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the elapsed time since the task commenced, in milliseconds.</p>
+<p>The value is undefined for tasks which have not begun.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac531f6ac746c2a48762908bca9f569e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac531f6ac746c2a48762908bca9f569e8" class="m-doc-self">hold</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Places the task on hold.</p>
+<p>If the task in not queued (ie it is already running or has finished) then calling this has no effect. Calling this method only has an effect for tasks which are managed by a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTask.html#ab3ac2490c151cc90d175d175b8112b05" class="m-doc">unhold()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac118b1200a6b56a9bc36908da3fdf6fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac118b1200a6b56a9bc36908da3fdf6fd" class="m-doc-self">setDependentLayers</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;&amp; dependentLayers)</span></span>
+            </h3>
+            <p>Sets a list of layers on which the task depends.</p>
+<p>The task will automatically be canceled if any of these layers are about to be removed.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTask.html#a2ec1a2f6f324a0083028f1df10accbd8" class="m-doc">dependentLayers()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab3ac2490c151cc90d175d175b8112b05"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab3ac2490c151cc90d175d175b8112b05" class="m-doc-self">unhold</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Releases the task from being held.</p>
+<p>For tasks managed by a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a> calling this will re-add them to the queue. If the task in not currently being held then calling this has no effect.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTask.html#ac531f6ac746c2a48762908bca9f569e8" class="m-doc">hold()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af640d3e3150cd8636bdddbfcd263c698"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af640d3e3150cd8636bdddbfcd263c698" class="m-doc-self">waitForFinished</a>(</span><span class="m-doc-wrap">int timeout = 30000)</span></span>
+            </h3>
+            <p>Blocks the current thread until the task finishes or a maximum of <em>timeout</em> milliseconds.</p>
+<p>If <em>timeout</em> is <code>0</code> the thread will be blocked forever. In case of a timeout, the task will still be running. In case the task already is finished, the method will return immediately while returning <code>true</code>.</p><p>The result will be false if the wait timed out and true in any other case.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5b2b284b03102808efedaac5dfc00707"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5b2b284b03102808efedaac5dfc00707" class="m-doc-self">begun</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Will be emitted by task to indicate its commencement.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>derived classes should not emit this signal directly, it will automatically be emitted when the task begins</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2df3b95a83b5296959947950d9320940"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2df3b95a83b5296959947950d9320940" class="m-doc-self">progressChanged</a>(</span><span class="m-doc-wrap">double progress) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Will be emitted by task when its progress changes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">progress</td>
+                  <td>percent of progress, from 0.0 - 100.0</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>derived classes should not emit this signal directly, instead they should call <a href="classQgsTask.html#af44d70df34a60ea921f55c1c69a62c69" class="m-doc">setProgress()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aad96341858c75ce3ed6995fb83c663ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aad96341858c75ce3ed6995fb83c663ef" class="m-doc-self">statusChanged</a>(</span><span class="m-doc-wrap">int status) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Will be emitted by task when its status changes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">status</td>
+                  <td>new task status</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>derived classes should not emit this signal directly, it will automatically be emitted</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1943c69e00a43641d929ec64787e54b0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1943c69e00a43641d929ec64787e54b0" class="m-doc-self">taskCompleted</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Will be emitted by task to indicate its successful completion.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>derived classes should not emit this signal directly, it will automatically be emitted</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa5f8557431c472b72804a8e9a39bbfaa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa5f8557431c472b72804a8e9a39bbfaa" class="m-doc-self">taskTerminated</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Will be emitted by task if it has terminated for any reason other then completion (e.g., when a task has been canceled or encountered an internal error).</p>
+<aside class="m-note m-info"><h4>Note</h4><p>derived classes should not emit this signal directly, it will automatically be emitted</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2775f4377b3bc65b4dfb89d67c89c639"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2775f4377b3bc65b4dfb89d67c89c639" class="m-doc-self">finished</a>(</span><span class="m-doc-wrap">bool result) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>If the task is managed by a <a href="classQgsTaskManager.html" class="m-doc">QgsTaskManager</a>, this will be called after the task has finished (whether through successful completion or via early termination).</p>
+<p>The result argument reflects whether the task was successfully completed or not. This method is always called from the main thread, so it is safe to create widgets and perform other operations which require the main thread. However, the GUI will be blocked for the duration of this method so tasks should avoid performing any lengthy operations here.</p>
+          </div></section>
+          <section class="m-doc-details" id="af268c16fc903e9a63e93bf5818e50eca"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af268c16fc903e9a63e93bf5818e50eca" class="m-doc-self">isCanceled</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Will return true if task should terminate ASAP.</p>
+<p>If the task reports the CanCancel flag, then derived classes&#x27; <a href="classQgsTask.html#a2d77e5bc36f0bbef5c7e2ee38a796bbe" class="m-doc">run()</a> methods should periodically check this and terminate in a safe manner.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2d77e5bc36f0bbef5c7e2ee38a796bbe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d77e5bc36f0bbef5c7e2ee38a796bbe" class="m-doc-self">run</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">pure virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Performs the task&#x27;s operation.</p>
+<p>This method will be called when the task commences (ie via calling start() ), and subclasses should implement the operation they wish to perform in the background within this method.</p><p>A task must return a boolean value to indicate whether the task was completed successfully or terminated before completion.</p>
+          </div></section>
+          <section class="m-doc-details" id="af44d70df34a60ea921f55c1c69a62c69"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTask::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af44d70df34a60ea921f55c1c69a62c69" class="m-doc-self">setProgress</a>(</span><span class="m-doc-wrap">double progress) <span class="m-label m-warning">protected slot</span></span></span>
+            </h3>
+            <p>Sets the task&#x27;s current progress.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">progress</td>
+                  <td>percent of progress, from 0.0 - 100.0</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The derived class should call this method whenever the task wants to update its progress. Calling will automatically emit the progressChanged signal.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

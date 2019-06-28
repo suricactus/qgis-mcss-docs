@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsGeometryEditUtils" kind="class" language="C++" prot="public">
+    <compoundname>QgsGeometryEditUtils</compoundname>
+    <includes refid="qgsgeometryeditutils_8h" local="no">qgsgeometryeditutils.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsGeometryEditUtils_1a51e6a2c00a30daf1da69bec9a0b3b1a2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry_1a8baf383b737d73cafeabe09f5b0d7ef7" kindref="member">QgsGeometry::OperationResult</ref></type>
+        <definition>QgsGeometry::OperationResult QgsGeometryEditUtils::addPart</definition>
+        <argsstring>(QgsAbstractGeometry *geometry, std::unique_ptr&lt; QgsAbstractGeometry &gt; part)</argsstring>
+        <name>addPart</name>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>geometry</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &gt;</type>
+          <declname>part</declname>
+        </param>
+        <briefdescription>
+<para>Add a <emphasis>part</emphasis> to multi type <emphasis>geometry</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the <emphasis>part</emphasis> is transferred. <simplesect kind="return"><para>0 in case of success, 1 if not a multigeometry, 2 if part is not a valid geometry, 3 if new polygon ring not disjoint with existing polygons of the feature </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" line="56" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.cpp" bodystart="98" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryEditUtils_1a4185c54cc8940ea75fd5ac47b833b777" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry_1a8baf383b737d73cafeabe09f5b0d7ef7" kindref="member">QgsGeometry::OperationResult</ref></type>
+        <definition>QgsGeometry::OperationResult QgsGeometryEditUtils::addRing</definition>
+        <argsstring>(QgsAbstractGeometry *geometry, std::unique_ptr&lt; QgsCurve &gt; ring)</argsstring>
+        <name>addRing</name>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>geometry</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classQgsCurve" kindref="compound">QgsCurve</ref> &gt;</type>
+          <declname>ring</declname>
+        </param>
+        <briefdescription>
+<para>Add an interior <emphasis>ring</emphasis> to a <emphasis>geometry</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the <emphasis>ring</emphasis> is transferred. <simplesect kind="return"><para>0 in case of success (ring added), 1 problem with geometry type, 2 ring not closed, 3 ring is not valid geometry, 4 ring not disjoint with existing rings, 5 no polygon found which contained the ring </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" line="48" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.cpp" bodystart="29" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryEditUtils_1a3218456d58f3f77c8170f01643b94b46" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsAbstractGeometry &gt; QgsGeometryEditUtils::avoidIntersections</definition>
+        <argsstring>(const QgsAbstractGeometry &amp;geom, const QList&lt; QgsVectorLayer *&gt; &amp;avoidIntersectionsLayers, const QHash&lt; QgsVectorLayer *, QSet&lt; QgsFeatureId &gt; &gt; &amp;ignoreFeatures=(QHash&lt; QgsVectorLayer *, QSet&lt; QgsFeatureId &gt; &gt;()))</argsstring>
+        <name>avoidIntersections</name>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &amp;</type>
+          <declname>geom</declname>
+        </param>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *&gt; &amp;</type>
+          <declname>avoidIntersectionsLayers</declname>
+        </param>
+        <param>
+          <type>const QHash&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *, QSet&lt; <ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref> &gt; &gt; &amp;</type>
+          <declname>ignoreFeatures</declname>
+          <defval>(QHash&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *, QSet&lt; <ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref> &gt; &gt;())</defval>
+        </param>
+        <briefdescription>
+<para>Alters a geometry so that it avoids intersections with features from all open vector layers. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>geom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>geometry to alter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>avoidIntersectionsLayers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of layers to check for intersections </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ignoreFeatures</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map of layer to feature id of features to ignore </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" line="76" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.cpp" bodystart="224" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryEditUtils_1a317323a466413de859b67cdcc27b814c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGeometryEditUtils::deletePart</definition>
+        <argsstring>(QgsAbstractGeometry *geom, int partNum)</argsstring>
+        <name>deletePart</name>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>geom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>partNum</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a part from a geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if delete was successful </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" line="68" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.cpp" bodystart="208" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryEditUtils_1ab14ffe27e14907f1b97c005da9a92092" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGeometryEditUtils::deleteRing</definition>
+        <argsstring>(QgsAbstractGeometry *geom, int ringNum, int partNum=0)</argsstring>
+        <name>deleteRing</name>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>geom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ringNum</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>partNum</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Deletes a ring from a geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if delete was successful </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.cpp" bodystart="175" bodyend="206"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Convenience functions for geometry editing. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.10 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" line="39" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsgeometryeditutils.h" bodystart="38" bodyend="79"/>
+    <listofallmembers>
+      <member refid="classQgsGeometryEditUtils_1a51e6a2c00a30daf1da69bec9a0b3b1a2" prot="public" virt="non-virtual"><scope>QgsGeometryEditUtils</scope><name>addPart</name></member>
+      <member refid="classQgsGeometryEditUtils_1a4185c54cc8940ea75fd5ac47b833b777" prot="public" virt="non-virtual"><scope>QgsGeometryEditUtils</scope><name>addRing</name></member>
+      <member refid="classQgsGeometryEditUtils_1a3218456d58f3f77c8170f01643b94b46" prot="public" virt="non-virtual"><scope>QgsGeometryEditUtils</scope><name>avoidIntersections</name></member>
+      <member refid="classQgsGeometryEditUtils_1a317323a466413de859b67cdcc27b814c" prot="public" virt="non-virtual"><scope>QgsGeometryEditUtils</scope><name>deletePart</name></member>
+      <member refid="classQgsGeometryEditUtils_1ab14ffe27e14907f1b97c005da9a92092" prot="public" virt="non-virtual"><scope>QgsGeometryEditUtils</scope><name>deleteRing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsProviderRegistry class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsProviderRegistry <span class="m-thin">class</span>
+        </h1>
+        <p>A registry / canonical manager of data providers.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>This is a Singleton class that manages data provider access.</p><p>Providers can be either loaded via libraries or native providers that are included in the core QGIS installation and accessed through function pointers.</p><p>Loaded providers may be restricted using QGIS_PROVIDER_FILE environment variable. QGIS_PROVIDER_FILE is regexp pattern applied to provider file name (not provider key). For example, if the variable is set to gdal|ogr|postgres it will load only providers gdal, ogr and postgres.</p>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              using <a href="#a10bfedcb0a63f6f6a99d6ce20d08bf08" class="m-doc">Providers</a> = std::map&lt;QString, <a href="classQgsProviderMetadata.html" class="m-doc">QgsProviderMetadata</a>*&gt;
+            </dt>
+            <dd>Open the given vector data source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a61aa28b3e612e5529e4b47f745161b67" class="m-doc-self" name="a61aa28b3e612e5529e4b47f745161b67">WidgetMode</a> { </span><span class="m-doc-wrap"><a href="#a61aa28b3e612e5529e4b47f745161b67a8c7214051cdf3c183902eeb7acbad12d" class="m-doc">None</a>,
+              <a href="#a61aa28b3e612e5529e4b47f745161b67a5873df93429708f3a5e559b06a6d74ff" class="m-doc">Embedded</a>,
+              <a href="#a61aa28b3e612e5529e4b47f745161b67af28836d918bef572f0e2cc35cfef3a57" class="m-doc">Manager</a> }</span>
+            </dt>
+            <dd>Different ways a source select dialog can be used (embedded is for the data source manager dialog)</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a60c16019b5073ee00c3e26141312bfb2" class="m-doc-self" name="a60c16019b5073ee00c3e26141312bfb2">instance</a>(</span><span class="m-doc-wrap">const QString&amp; pluginPath = QString()) -&gt; <a href="classQgsProviderRegistry.html" class="m-doc">QgsProviderRegistry</a>*</span>
+            </dt>
+            <dd>Means of accessing canonical single instance.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a666ec1f97817cb0ff1a6964d1cc58526" class="m-doc">createProvider</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              const QString&amp; dataSource,
+              const <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>&amp; options = <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>()) -&gt; <a href="classQgsDataProvider.html" class="m-doc">QgsDataProvider</a>*</span>
+            </dt>
+            <dd>Creates a new instance of a provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8176626696b68045410afbd5c3f3c397" class="m-doc">createProviderLibrary</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const -&gt; QLibrary*</span>
+            </dt>
+            <dd>Returns a new QLibrary for the specified <em>providerKey</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afb61876eea3d664971966a8e4c6c0c06" class="m-doc">createSelectionWidget</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              QWidget* parent = nullptr,
+              Qt::WindowFlags fl = Qt::WindowFlags(),
+              <a href="classQgsProviderRegistry.html#a61aa28b3e612e5529e4b47f745161b67" class="m-doc">QgsProviderRegistry::<wbr />WidgetMode</a> widgetMode = QgsProviderRegistry::WidgetMode::None) -&gt; QWidget*</span>
+            </dt>
+            <dd>Returns a new widget for selecting layers from a provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6bbbd608b7cda2a6e28acb3fe9ecdb01" class="m-doc-self" name="a6bbbd608b7cda2a6e28acb3fe9ecdb01">databaseDrivers</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a string containing the available database drivers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a25d53a41b52b7fe7b7d7ab534d6e8ed1" class="m-doc">decodeUri</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              const QString&amp; uri) -&gt; QVariantMap</span>
+            </dt>
+            <dd>Breaks a provider data source URI into its component paths (e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae2774e5df72140dd5ef81bdc2d76540a" class="m-doc-self" name="ae2774e5df72140dd5ef81bdc2d76540a">directoryDrivers</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a string containing the available directory drivers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab87352a15b4a8f8a6e602c36d44ad53a" class="m-doc">fileMeshDatasetFilters</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns mesh&#x27;s dataset file filter string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9aafd432f8458e3a0cdfb0b258e080f6" class="m-doc">fileMeshFilters</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns mesh file filter string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9619a9f55ce53a0e776e94900440ef66" class="m-doc">fileRasterFilters</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns raster file filter string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a92dc062ff9d75df08d077a27aa36b76d" class="m-doc">fileVectorFilters</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns vector file filter string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1fa718045e3560cc54f241a8a2721d52" class="m-doc">function</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              const QString&amp; functionName) -&gt; QFunctionPointer</span>
+            </dt>
+            <dd>Gets pointer to provider function.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6b3b7a6e1a244d4fdfcd4c44072bdddf" class="m-doc">library</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const -&gt; QString</span>
+            </dt>
+            <dd>Returns path for the library of the provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abc567c89d532f13cc31dbe5397c3f3be" class="m-doc-self" name="abc567c89d532f13cc31dbe5397c3f3be">libraryDirectory</a>(</span><span class="m-doc-wrap">) const -&gt; QDir</span>
+            </dt>
+            <dd>Returns the library directory where plugins are found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9edf0f30804e3b45dc5f470680130ac6" class="m-doc-self" name="a9edf0f30804e3b45dc5f470680130ac6">pluginList</a>(</span><span class="m-doc-wrap">bool asHtml = false) const -&gt; QString</span>
+            </dt>
+            <dd>Returns list of provider plugins found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a641872c7b098c133f01a0e2fcdcac53d" class="m-doc-self" name="a641872c7b098c133f01a0e2fcdcac53d">protocolDrivers</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a string containing the available protocol drivers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa8145ac173834838a51ee865890b66ee" class="m-doc">providerCapabilities</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const -&gt; int</span>
+            </dt>
+            <dd>Returns the provider capabilities.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab13891dbb3384877e1b866d7037180d6" class="m-doc-self" name="ab13891dbb3384877e1b866d7037180d6">providerList</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns list of available providers by their keys.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ac0a8d049d4ab7c77f652533a1fd95c" class="m-doc-self" name="a6ac0a8d049d4ab7c77f652533a1fd95c">providerMetadata</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const -&gt; const <a href="classQgsProviderMetadata.html" class="m-doc">QgsProviderMetadata</a>*</span>
+            </dt>
+            <dd>Returns metadata of the provider or NULL if not found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad9928b92eb28e9e3762311c57c88c291" class="m-doc">registerProvider</a>(</span><span class="m-doc-wrap"><a href="classQgsProviderMetadata.html" class="m-doc">QgsProviderMetadata</a>* providerMetadata) -&gt; bool</span>
+            </dt>
+            <dd>register a new vector data provider from its <em>providerMetadata</em></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2c014850814f6bd8e9582bf07eb3c391" class="m-doc-self" name="a2c014850814f6bd8e9582bf07eb3c391">setLibraryDirectory</a>(</span><span class="m-doc-wrap">const QDir&amp; path)</span>
+            </dt>
+            <dd>Sets library directory where to search for plugins.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="a10bfedcb0a63f6f6a99d6ce20d08bf08"><div>
+            <h3>
+              typedef std::map&lt;QString, <a href="classQgsProviderMetadata.html" class="m-doc">QgsProviderMetadata</a>*&gt; QgsProviderRegistry::<wbr /><a href="#a10bfedcb0a63f6f6a99d6ce20d08bf08" class="m-doc-self">Providers</a>
+            </h3>
+            <p>Open the given vector data source.</p>
+<p>Similar to open(QString const &amp;), except that the user specifies a data provider with which to open the data source instead of using the default data provider that QgsDataManager would figure out to use. This should be useful when (and if) there will exist more than one data provider that can handle a given data source. (E.g., use GDAL to open an SDTS file, or a different data provider that uses sdts++.)</p><p>Called by QgsDataManager::open().</p><p>Temporarily always returns false until finished implementing.</p><p>Eventually would be nice if could make QgsDataManager smart enough to figure out whether the given name mapped to a vector, raster, or database source.Type for data provider metadata associative container</p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a666ec1f97817cb0ff1a6964d1cc58526"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsDataProvider.html" class="m-doc">QgsDataProvider</a>* QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a666ec1f97817cb0ff1a6964d1cc58526" class="m-doc-self">createProvider</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              const QString&amp; dataSource,
+              const <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>&amp; options = <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>())</span></span>
+            </h3>
+            <p>Creates a new instance of a provider.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">providerKey</td>
+                  <td>identifier of the provider</td>
+                </tr>
+                <tr>
+                  <td>dataSource</td>
+                  <td>string containing data source for the provider</td>
+                </tr>
+                <tr>
+                  <td>options</td>
+                  <td>provider options</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>new instance of provider or NULL on error</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8176626696b68045410afbd5c3f3c397"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QLibrary* QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8176626696b68045410afbd5c3f3c397" class="m-doc-self">createProviderLibrary</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const</span></span>
+            </h3>
+            <p>Returns a new QLibrary for the specified <em>providerKey</em>.</p>
+<p>Ownership of the returned object is transferred to the caller and the caller is responsible for deleting it.</p><p>If the provider uses direct provider function pointers instead of a library nullptr will be returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="afb61876eea3d664971966a8e4c6c0c06"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QWidget* QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afb61876eea3d664971966a8e4c6c0c06" class="m-doc-self">createSelectionWidget</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              QWidget* parent = nullptr,
+              Qt::WindowFlags fl = Qt::WindowFlags(),
+              <a href="classQgsProviderRegistry.html#a61aa28b3e612e5529e4b47f745161b67" class="m-doc">QgsProviderRegistry::<wbr />WidgetMode</a> widgetMode = QgsProviderRegistry::WidgetMode::None)</span></span>
+            </h3>
+            <p>Returns a new widget for selecting layers from a provider.</p>
+<p>Either the <em>parent</em> widget must be set or the caller becomes responsible for deleting the returned widget.</p>
+          </div></section>
+          <section class="m-doc-details" id="a25d53a41b52b7fe7b7d7ab534d6e8ed1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a25d53a41b52b7fe7b7d7ab534d6e8ed1" class="m-doc-self">decodeUri</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              const QString&amp; uri)</span></span>
+            </h3>
+            <p>Breaks a provider data source URI into its component paths (e.g.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">providerKey</td>
+                  <td>identifier of the provider</td>
+                </tr>
+                <tr>
+                  <td>uri</td>
+                  <td>uri string</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>map containing components. Standard components include &quot;path&quot;, &quot;layerName&quot;, &quot;url&quot;.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>file path, layer name).</p><aside class="m-note m-info"><h4>Note</h4><p>this function may not be supported by all providers, an empty map will be returned in such case</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab87352a15b4a8f8a6e602c36d44ad53a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab87352a15b4a8f8a6e602c36d44ad53a" class="m-doc-self">fileMeshDatasetFilters</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns mesh&#x27;s dataset file filter string.</p>
+<p>Returns a string suitable for a QFileDialog of mesh datasets file formats supported by all data providers.</p><p>This walks through all data providers appending calls to their fileMeshFilters to a string, which is then returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProviderRegistry.html#a9aafd432f8458e3a0cdfb0b258e080f6" class="m-doc">fileMeshFilters()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9aafd432f8458e3a0cdfb0b258e080f6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9aafd432f8458e3a0cdfb0b258e080f6" class="m-doc-self">fileMeshFilters</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns mesh file filter string.</p>
+<p>Returns a string suitable for a QFileDialog of mesh file formats supported by all data providers.</p><p>This walks through all data providers appending calls to their fileMeshFilters to a string, which is then returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProviderRegistry.html#ab87352a15b4a8f8a6e602c36d44ad53a" class="m-doc">fileMeshDatasetFilters()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9619a9f55ce53a0e776e94900440ef66"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9619a9f55ce53a0e776e94900440ef66" class="m-doc-self">fileRasterFilters</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns raster file filter string.</p>
+<p>Returns a string suitable for a QFileDialog of raster file formats supported by all data providers.</p><p>This walks through all data providers appending calls to their buildSupportedRasterFileFilter to a string, which is then returned.</p><aside class="m-note m-info"><h4>Note</h4><p>This replaces QgsRasterLayer::buildSupportedRasterFileFilter()</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a92dc062ff9d75df08d077a27aa36b76d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a92dc062ff9d75df08d077a27aa36b76d" class="m-doc-self">fileVectorFilters</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns vector file filter string.</p>
+<p>Returns a string suitable for a QFileDialog of vector file formats supported by all data providers.</p><p>This walks through all data providers appending calls to their fileVectorFilters to a string, which is then returned.</p><aside class="m-note m-info"><h4>Note</h4></aside><p>It&#x27;d be nice to eventually be raster/vector neutral.</p>
+          </div></section>
+          <section class="m-doc-details" id="a1fa718045e3560cc54f241a8a2721d52"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QFunctionPointer QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1fa718045e3560cc54f241a8a2721d52" class="m-doc-self">function</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey,
+              const QString&amp; functionName)</span></span>
+            </h3>
+            <p>Gets pointer to provider function.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">providerKey</td>
+                  <td>identifier of the provider</td>
+                </tr>
+                <tr>
+                  <td>functionName</td>
+                  <td>name of function</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>pointer to function or NULL on error. If the provider uses direct provider function pointers instead of a library nullptr will be returned.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6b3b7a6e1a244d4fdfcd4c44072bdddf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6b3b7a6e1a244d4fdfcd4c44072bdddf" class="m-doc-self">library</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const</span></span>
+            </h3>
+            <p>Returns path for the library of the provider.</p>
+<p>If the provider uses direct provider function pointers instead of a library an empty string will be returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="aa8145ac173834838a51ee865890b66ee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa8145ac173834838a51ee865890b66ee" class="m-doc-self">providerCapabilities</a>(</span><span class="m-doc-wrap">const QString&amp; providerKey) const</span></span>
+            </h3>
+            <p>Returns the provider capabilities.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">providerKey</td>
+                  <td>identifier of the provider</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad9928b92eb28e9e3762311c57c88c291"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProviderRegistry::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad9928b92eb28e9e3762311c57c88c291" class="m-doc-self">registerProvider</a>(</span><span class="m-doc-wrap"><a href="classQgsProviderMetadata.html" class="m-doc">QgsProviderMetadata</a>* providerMetadata)</span></span>
+            </h3>
+            <p>register a new vector data provider from its <em>providerMetadata</em></p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true on success, false if a provider with the same key was already registered</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>ownership of the <a href="classQgsProviderMetadata.html" class="m-doc">QgsProviderMetadata</a> instance is transferred to the registry</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

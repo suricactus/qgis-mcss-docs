@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsTransformEffect class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsTransformEffect <span class="m-thin">class</span>
+        </h1>
+        <p>A paint effect which applies transformations (such as move, scale and rotate) to a picture.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a>
+            </dt>
+            <dd>Base class for visual effects which can be applied to QPicture drawings.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a8ef213b9a1ec85f3d7c880ecf7f0d605" class="m-doc">create</a>(</span><span class="m-doc-wrap">const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; map) -&gt; <a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a>*</span>
+            </dt>
+            <dd>Creates a new <a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a> effect from a properties string map.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a71b75790ee1c42536c423eef1be82e72" class="m-doc-self" name="a71b75790ee1c42536c423eef1be82e72">QgsTransformEffect</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Constructor for <a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a564e985188538b5b0ae319b3532c8e22" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Duplicates an effect by creating a deep copy of the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a98d450756b66301ab2c8f7395b197a43" class="m-doc">properties</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the properties describing the paint effect encoded in a string format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a34389efed1137983f87f34715595fcf2" class="m-doc">readProperties</a>(</span><span class="m-doc-wrap">const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; props) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reads a string map of an effect&#x27;s properties and restores the effect to the state described by the properties map.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af17d3cec7a549663ab9b655357d94523" class="m-doc">reflectX</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether transform will be reflected along the x-axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acf05b2ccc4f9f49c1b5966469844156b" class="m-doc">reflectY</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether transform will be reflected along the y-axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa690b0afe9aab7e9d067bf5749dfeaed" class="m-doc">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the transform rotation, in degrees clockwise.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af4e19c7f5aafa18f346c7e14c4248df7" class="m-doc">scaleX</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the x axis scaling factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af120ae3d84a4a0a36273ca4a1aa02987" class="m-doc">scaleY</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the y axis scaling factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2e311536c051dcb6baa9916725b61741" class="m-doc">setReflectX</a>(</span><span class="m-doc-wrap">const bool reflectX)</span>
+            </dt>
+            <dd>Sets whether to reflect along the x-axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a35b9882051e187773cf86153f07eaf0d" class="m-doc">setReflectY</a>(</span><span class="m-doc-wrap">const bool reflectY)</span>
+            </dt>
+            <dd>Sets whether to reflect along the y-axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab461b5f1cd51c62043547e0501b279b2" class="m-doc">setRotation</a>(</span><span class="m-doc-wrap">const double rotation)</span>
+            </dt>
+            <dd>Sets the transform <em>rotation</em>, in degrees clockwise.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a74d1bf21f0efb5a28cf0244b7c19b6c3" class="m-doc">setScaleX</a>(</span><span class="m-doc-wrap">const double scaleX)</span>
+            </dt>
+            <dd>Sets the x axis scaling factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a93037444d952d15b754f3d2c6a4da212" class="m-doc">setScaleY</a>(</span><span class="m-doc-wrap">const double scaleY)</span>
+            </dt>
+            <dd>Sets the y axis scaling factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab755a0001d454018722cc925042a76bb" class="m-doc">setShearX</a>(</span><span class="m-doc-wrap">const double shearX)</span>
+            </dt>
+            <dd>Sets the x axis shearing factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8fd6c94daa195def5752a6f6b5a76057" class="m-doc">setShearY</a>(</span><span class="m-doc-wrap">const double shearY)</span>
+            </dt>
+            <dd>Sets the y axis shearing factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aea22dd2dd1ae4dc4477bd5bde34c0afb" class="m-doc">setTranslateMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span>
+            </dt>
+            <dd>Sets the map unit scale used for the transform translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adf36c33776361975337d46e1782b2411" class="m-doc">setTranslateUnit</a>(</span><span class="m-doc-wrap">const <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span>
+            </dt>
+            <dd>Sets the units used for the transform translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2141a67140b4c206850626b6e1c979e4" class="m-doc">setTranslateX</a>(</span><span class="m-doc-wrap">const double translateX)</span>
+            </dt>
+            <dd>Sets the transform x translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aff9d4a004310e9644217aa693020bf27" class="m-doc">setTranslateY</a>(</span><span class="m-doc-wrap">const double translateY)</span>
+            </dt>
+            <dd>Sets the transform y translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac1674c4a615b2d3f2fd27e7a58cdf258" class="m-doc">shearX</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the x axis shearing factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa911e43aa1bda8a251a03745d823ff43" class="m-doc">shearY</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the y axis shearing factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9ca399be8fbf787e4fc018425eb49d5d" class="m-doc">translateMapUnitScale</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp;</span>
+            </dt>
+            <dd>Returns the map unit scale used for the transform translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8b03f4a94f0cf486117f680613bf57e2" class="m-doc">translateUnit</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a></span>
+            </dt>
+            <dd>Returns the units used for the transform translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f48029f1f4bf5ba04f7a2ded6dd01f6" class="m-doc">translateX</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the transform x translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a91f3b8383ca2ed990a2f921f398a1a9a" class="m-doc">translateY</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the transform y translation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aaefa570734b3c34643e734cb8da339bf" class="m-doc">type</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the effect type.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac811adcaae2dd21902808a4978c76609" class="m-doc">boundingRect</a>(</span><span class="m-doc-wrap">const QRectF&amp; rect,
+              const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QRectF <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the bounding rect required for drawing the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab4c4aeb59821b295f6095f7ab99cbfd3" class="m-doc">draw</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Handles drawing of the effect&#x27;s result on to the specified render context.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a8ef213b9a1ec85f3d7c880ecf7f0d605"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a>* QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8ef213b9a1ec85f3d7c880ecf7f0d605" class="m-doc-self">create</a>(</span><span class="m-doc-wrap">const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; map)</span></span>
+            </h3>
+            <p>Creates a new <a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a> effect from a properties string map.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">map</td>
+                  <td>encoded properties string map</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>new <a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a564e985188538b5b0ae319b3532c8e22"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a>* QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a564e985188538b5b0ae319b3532c8e22" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Duplicates an effect by creating a deep copy of the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>clone of paint effect</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a98d450756b66301ab2c8f7395b197a43"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a> QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a98d450756b66301ab2c8f7395b197a43" class="m-doc-self">properties</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the properties describing the paint effect encoded in a string format.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>string map of properties, in the form property key, value</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a34389efed1137983f87f34715595fcf2" class="m-doc">readProperties</a></p><p><a href="classQgsPaintEffect.html#a3183a56cb881bf2c6fa30e119ec9109a" class="m-doc">saveProperties</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a34389efed1137983f87f34715595fcf2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a34389efed1137983f87f34715595fcf2" class="m-doc-self">readProperties</a>(</span><span class="m-doc-wrap">const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; props) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Reads a string map of an effect&#x27;s properties and restores the effect to the state described by the properties map.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">props</td>
+                  <td>effect properties encoded in a string map</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a98d450756b66301ab2c8f7395b197a43" class="m-doc">properties</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af17d3cec7a549663ab9b655357d94523"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af17d3cec7a549663ab9b655357d94523" class="m-doc-self">reflectX</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether transform will be reflected along the x-axis.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if transform will reflect horizontally</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a2e311536c051dcb6baa9916725b61741" class="m-doc">setReflectX</a></p><p><a href="classQgsTransformEffect.html#acf05b2ccc4f9f49c1b5966469844156b" class="m-doc">reflectY</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acf05b2ccc4f9f49c1b5966469844156b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acf05b2ccc4f9f49c1b5966469844156b" class="m-doc-self">reflectY</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether transform will be reflected along the y-axis.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if transform will reflect horizontally</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a35b9882051e187773cf86153f07eaf0d" class="m-doc">setReflectY</a></p><p><a href="classQgsTransformEffect.html#af17d3cec7a549663ab9b655357d94523" class="m-doc">reflectX</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa690b0afe9aab7e9d067bf5749dfeaed"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa690b0afe9aab7e9d067bf5749dfeaed" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the transform rotation, in degrees clockwise.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#ab461b5f1cd51c62043547e0501b279b2" class="m-doc">setRotation()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af4e19c7f5aafa18f346c7e14c4248df7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af4e19c7f5aafa18f346c7e14c4248df7" class="m-doc-self">scaleX</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the x axis scaling factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>x axis scaling factor, where 1.0 = no scaling</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a74d1bf21f0efb5a28cf0244b7c19b6c3" class="m-doc">setScaleX</a></p><p><a href="classQgsTransformEffect.html#af120ae3d84a4a0a36273ca4a1aa02987" class="m-doc">scaleY</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af120ae3d84a4a0a36273ca4a1aa02987"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af120ae3d84a4a0a36273ca4a1aa02987" class="m-doc-self">scaleY</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the y axis scaling factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>y axis scaling factor, where 1.0 = no scaling</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a93037444d952d15b754f3d2c6a4da212" class="m-doc">setScaleY</a></p><p><a href="classQgsTransformEffect.html#af4e19c7f5aafa18f346c7e14c4248df7" class="m-doc">scaleX</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2e311536c051dcb6baa9916725b61741"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e311536c051dcb6baa9916725b61741" class="m-doc-self">setReflectX</a>(</span><span class="m-doc-wrap">const bool reflectX)</span></span>
+            </h3>
+            <p>Sets whether to reflect along the x-axis.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">reflectX</td>
+                  <td>true to reflect horizontally</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#af17d3cec7a549663ab9b655357d94523" class="m-doc">reflectX</a></p><p><a href="classQgsTransformEffect.html#a35b9882051e187773cf86153f07eaf0d" class="m-doc">setReflectY</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a35b9882051e187773cf86153f07eaf0d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a35b9882051e187773cf86153f07eaf0d" class="m-doc-self">setReflectY</a>(</span><span class="m-doc-wrap">const bool reflectY)</span></span>
+            </h3>
+            <p>Sets whether to reflect along the y-axis.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">reflectY</td>
+                  <td>true to reflect horizontally</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#acf05b2ccc4f9f49c1b5966469844156b" class="m-doc">reflectY</a></p><p><a href="classQgsTransformEffect.html#a2e311536c051dcb6baa9916725b61741" class="m-doc">setReflectX</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab461b5f1cd51c62043547e0501b279b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab461b5f1cd51c62043547e0501b279b2" class="m-doc-self">setRotation</a>(</span><span class="m-doc-wrap">const double rotation)</span></span>
+            </h3>
+            <p>Sets the transform <em>rotation</em>, in degrees clockwise.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#aa690b0afe9aab7e9d067bf5749dfeaed" class="m-doc">rotation()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a74d1bf21f0efb5a28cf0244b7c19b6c3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a74d1bf21f0efb5a28cf0244b7c19b6c3" class="m-doc-self">setScaleX</a>(</span><span class="m-doc-wrap">const double scaleX)</span></span>
+            </h3>
+            <p>Sets the x axis scaling factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">scaleX</td>
+                  <td>factor to scale x axis by, where 1.0 = no scaling</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#af4e19c7f5aafa18f346c7e14c4248df7" class="m-doc">scaleX</a></p><p><a href="classQgsTransformEffect.html#a93037444d952d15b754f3d2c6a4da212" class="m-doc">setScaleY</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a93037444d952d15b754f3d2c6a4da212"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a93037444d952d15b754f3d2c6a4da212" class="m-doc-self">setScaleY</a>(</span><span class="m-doc-wrap">const double scaleY)</span></span>
+            </h3>
+            <p>Sets the y axis scaling factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">scaleY</td>
+                  <td>factor to scale y axis by, where 1.0 = no scaling</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#af4e19c7f5aafa18f346c7e14c4248df7" class="m-doc">scaleX</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab755a0001d454018722cc925042a76bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab755a0001d454018722cc925042a76bb" class="m-doc-self">setShearX</a>(</span><span class="m-doc-wrap">const double shearX)</span></span>
+            </h3>
+            <p>Sets the x axis shearing factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shearX</td>
+                  <td>x axis shearing</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#ac1674c4a615b2d3f2fd27e7a58cdf258" class="m-doc">shearX</a></p><p><a href="classQgsTransformEffect.html#a8fd6c94daa195def5752a6f6b5a76057" class="m-doc">setShearY</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8fd6c94daa195def5752a6f6b5a76057"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8fd6c94daa195def5752a6f6b5a76057" class="m-doc-self">setShearY</a>(</span><span class="m-doc-wrap">const double shearY)</span></span>
+            </h3>
+            <p>Sets the y axis shearing factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shearY</td>
+                  <td>y axis shearing</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#aa911e43aa1bda8a251a03745d823ff43" class="m-doc">shearY</a></p><p><a href="classQgsTransformEffect.html#ab755a0001d454018722cc925042a76bb" class="m-doc">setShearX</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aea22dd2dd1ae4dc4477bd5bde34c0afb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aea22dd2dd1ae4dc4477bd5bde34c0afb" class="m-doc-self">setTranslateMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span></span>
+            </h3>
+            <p>Sets the map unit scale used for the transform translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">scale</td>
+                  <td>map unit scale for translation</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a9ca399be8fbf787e4fc018425eb49d5d" class="m-doc">translateMapUnitScale</a></p><p><a href="classQgsTransformEffect.html#a2141a67140b4c206850626b6e1c979e4" class="m-doc">setTranslateX</a></p><p><a href="classQgsTransformEffect.html#aff9d4a004310e9644217aa693020bf27" class="m-doc">setTranslateY</a></p><p><a href="classQgsTransformEffect.html#adf36c33776361975337d46e1782b2411" class="m-doc">setTranslateUnit</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adf36c33776361975337d46e1782b2411"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adf36c33776361975337d46e1782b2411" class="m-doc-self">setTranslateUnit</a>(</span><span class="m-doc-wrap">const <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span></span>
+            </h3>
+            <p>Sets the units used for the transform translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">unit</td>
+                  <td>units for translation</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a8b03f4a94f0cf486117f680613bf57e2" class="m-doc">translateUnit</a></p><p><a href="classQgsTransformEffect.html#a2141a67140b4c206850626b6e1c979e4" class="m-doc">setTranslateX</a></p><p><a href="classQgsTransformEffect.html#aff9d4a004310e9644217aa693020bf27" class="m-doc">setTranslateY</a></p><p><a href="classQgsTransformEffect.html#aea22dd2dd1ae4dc4477bd5bde34c0afb" class="m-doc">setTranslateMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2141a67140b4c206850626b6e1c979e4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2141a67140b4c206850626b6e1c979e4" class="m-doc-self">setTranslateX</a>(</span><span class="m-doc-wrap">const double translateX)</span></span>
+            </h3>
+            <p>Sets the transform x translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">translateX</td>
+                  <td>distance to translate along the x axis</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a3f48029f1f4bf5ba04f7a2ded6dd01f6" class="m-doc">translateX</a></p><p><a href="classQgsTransformEffect.html#aff9d4a004310e9644217aa693020bf27" class="m-doc">setTranslateY</a></p><p><a href="classQgsTransformEffect.html#adf36c33776361975337d46e1782b2411" class="m-doc">setTranslateUnit</a></p><p><a href="classQgsTransformEffect.html#aea22dd2dd1ae4dc4477bd5bde34c0afb" class="m-doc">setTranslateMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aff9d4a004310e9644217aa693020bf27"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff9d4a004310e9644217aa693020bf27" class="m-doc-self">setTranslateY</a>(</span><span class="m-doc-wrap">const double translateY)</span></span>
+            </h3>
+            <p>Sets the transform y translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">translateY</td>
+                  <td>distance to translate along the y axis</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a91f3b8383ca2ed990a2f921f398a1a9a" class="m-doc">translateY</a></p><p><a href="classQgsTransformEffect.html#a2141a67140b4c206850626b6e1c979e4" class="m-doc">setTranslateX</a></p><p><a href="classQgsTransformEffect.html#adf36c33776361975337d46e1782b2411" class="m-doc">setTranslateUnit</a></p><p><a href="classQgsTransformEffect.html#aea22dd2dd1ae4dc4477bd5bde34c0afb" class="m-doc">setTranslateMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac1674c4a615b2d3f2fd27e7a58cdf258"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac1674c4a615b2d3f2fd27e7a58cdf258" class="m-doc-self">shearX</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the x axis shearing factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>x axis shearing</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#ab755a0001d454018722cc925042a76bb" class="m-doc">setShearX</a></p><p><a href="classQgsTransformEffect.html#aa911e43aa1bda8a251a03745d823ff43" class="m-doc">shearY</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa911e43aa1bda8a251a03745d823ff43"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa911e43aa1bda8a251a03745d823ff43" class="m-doc-self">shearY</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the y axis shearing factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>y axis shearing</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a8fd6c94daa195def5752a6f6b5a76057" class="m-doc">setShearY</a></p><p><a href="classQgsTransformEffect.html#ac1674c4a615b2d3f2fd27e7a58cdf258" class="m-doc">shearX</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9ca399be8fbf787e4fc018425eb49d5d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ca399be8fbf787e4fc018425eb49d5d" class="m-doc-self">translateMapUnitScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map unit scale used for the transform translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>map unit scale for translation</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#aea22dd2dd1ae4dc4477bd5bde34c0afb" class="m-doc">setTranslateMapUnitScale</a></p><p><a href="classQgsTransformEffect.html#a3f48029f1f4bf5ba04f7a2ded6dd01f6" class="m-doc">translateX</a></p><p><a href="classQgsTransformEffect.html#a91f3b8383ca2ed990a2f921f398a1a9a" class="m-doc">translateY</a></p><p><a href="classQgsTransformEffect.html#a8b03f4a94f0cf486117f680613bf57e2" class="m-doc">translateUnit</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8b03f4a94f0cf486117f680613bf57e2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8b03f4a94f0cf486117f680613bf57e2" class="m-doc-self">translateUnit</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units used for the transform translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>units for translation</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#adf36c33776361975337d46e1782b2411" class="m-doc">setTranslateUnit</a></p><p><a href="classQgsTransformEffect.html#a3f48029f1f4bf5ba04f7a2ded6dd01f6" class="m-doc">translateX</a></p><p><a href="classQgsTransformEffect.html#a91f3b8383ca2ed990a2f921f398a1a9a" class="m-doc">translateY</a></p><p><a href="classQgsTransformEffect.html#a9ca399be8fbf787e4fc018425eb49d5d" class="m-doc">translateMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3f48029f1f4bf5ba04f7a2ded6dd01f6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f48029f1f4bf5ba04f7a2ded6dd01f6" class="m-doc-self">translateX</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the transform x translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>X distance translated along the x axis</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#a2141a67140b4c206850626b6e1c979e4" class="m-doc">setTranslateX</a></p><p><a href="classQgsTransformEffect.html#a91f3b8383ca2ed990a2f921f398a1a9a" class="m-doc">translateY</a></p><p><a href="classQgsTransformEffect.html#a8b03f4a94f0cf486117f680613bf57e2" class="m-doc">translateUnit</a></p><p><a href="classQgsTransformEffect.html#a9ca399be8fbf787e4fc018425eb49d5d" class="m-doc">translateMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a91f3b8383ca2ed990a2f921f398a1a9a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a91f3b8383ca2ed990a2f921f398a1a9a" class="m-doc-self">translateY</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the transform y translation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Y distance translated along the y axis</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTransformEffect.html#aff9d4a004310e9644217aa693020bf27" class="m-doc">setTranslateY</a></p><p><a href="classQgsTransformEffect.html#a3f48029f1f4bf5ba04f7a2ded6dd01f6" class="m-doc">translateX</a></p><p><a href="classQgsTransformEffect.html#a8b03f4a94f0cf486117f680613bf57e2" class="m-doc">translateUnit</a></p><p><a href="classQgsTransformEffect.html#a9ca399be8fbf787e4fc018425eb49d5d" class="m-doc">translateMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aaefa570734b3c34643e734cb8da339bf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaefa570734b3c34643e734cb8da339bf" class="m-doc-self">type</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the effect type.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>unique string representation of the effect type</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac811adcaae2dd21902808a4978c76609"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QRectF QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac811adcaae2dd21902808a4978c76609" class="m-doc-self">boundingRect</a>(</span><span class="m-doc-wrap">const QRectF&amp; rect,
+              const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the bounding rect required for drawing the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rect</td>
+                  <td>original source bounding rect</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>modified bounding rect</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This method can be used to expand the bounding rect of a source picture to account for offset or blurring effects.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#afad6072b9380a1c2270ba121816462ea" class="m-doc">sourceAsImage</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab4c4aeb59821b295f6095f7ab99cbfd3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTransformEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab4c4aeb59821b295f6095f7ab99cbfd3" class="m-doc-self">draw</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">override</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Handles drawing of the effect&#x27;s result on to the specified render context.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Derived classes must reimplement this method to apply any transformations to the source QPicture and draw the result using the context&#x27;s painter.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a33a7179181f0cafed64ee16ec0042e5d" class="m-doc">drawSource</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

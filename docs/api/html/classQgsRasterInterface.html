@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsRasterInterface class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsRasterInterface <span class="m-thin">class</span>
+        </h1>
+        <p>Base class for processing filters like renderers, reprojector, resampler etc.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsBrightnessContrastFilter.html" class="m-doc">QgsBrightnessContrastFilter</a>
+            </dt>
+            <dd>Brightness/contrast filter pipe for rasters.</dd>
+            <dt>
+              class <a href="classQgsHueSaturationFilter.html" class="m-doc">QgsHueSaturationFilter</a>
+            </dt>
+            <dd>Color and saturation filter pipe for rasters.</dd>
+            <dt>
+              class <a href="classQgsRasterDataProvider.html" class="m-doc">QgsRasterDataProvider</a>
+            </dt>
+            <dd>Base class for raster data providers.</dd>
+            <dt>
+              class <a href="classQgsRasterNuller.html" class="m-doc">QgsRasterNuller</a>
+            </dt>
+            <dd>Raster pipe that deals with null values.</dd>
+            <dt>
+              class <a href="classQgsRasterProjector.html" class="m-doc">QgsRasterProjector</a>
+            </dt>
+            <dd><a href="classQgsRasterProjector.html" class="m-doc">QgsRasterProjector</a> implements approximate projection support for it calculates grid of points in source CRS for target CRS + extent which are used to calculate affine transformation matrices.</dd>
+            <dt>
+              class <a href="classQgsRasterRenderer.html" class="m-doc">QgsRasterRenderer</a>
+            </dt>
+            <dd>Raster renderer pipe that applies colors to a raster.</dd>
+            <dt>
+              class <a href="classQgsRasterResampleFilter.html" class="m-doc">QgsRasterResampleFilter</a>
+            </dt>
+            <dd>Resample filter pipe for rasters.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a508c8cf96ed6925d12a33085612f9b05" class="m-doc-self" name="a508c8cf96ed6925d12a33085612f9b05">Capability</a> { </span><span class="m-doc-wrap"><a href="#a508c8cf96ed6925d12a33085612f9b05a444d11298cdd17320df4af97558e5718" class="m-doc">NoCapabilities</a> = 0,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05aadc59abc8f2b2c71d9297613e18261b5" class="m-doc">Size</a> = 1 &lt;&lt; 1,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05a584740055ac9d887a713d013243b62a2" class="m-doc">Create</a> = 1 &lt;&lt; 2,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05a167967c4e816c3601a3b5e0b44fff2f4" class="m-doc">Remove</a> = 1 &lt;&lt; 3,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05a1089f3b5f33d01c4b60a89d7f62fed6c" class="m-doc">BuildPyramids</a> = 1 &lt;&lt; 4,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05a395b13b3e726868979d953dce4e359ba" class="m-doc">Identify</a> = 1 &lt;&lt; 5,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05a3289d821c3ce98cc0152d083c040ab2e" class="m-doc">IdentifyValue</a> = 1 &lt;&lt; 6,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05aec5ee874e5e3a63ec621f5bb76a399f0" class="m-doc">IdentifyText</a> = 1 &lt;&lt; 7,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05acb26e48d27a087df228b73e542b1f1d2" class="m-doc">IdentifyHtml</a> = 1 &lt;&lt; 8,
+              <a href="#a508c8cf96ed6925d12a33085612f9b05aa107514876635dc1aa1812e4c00b1cbd" class="m-doc">IdentifyFeature</a> = 1 &lt;&lt; 9 }</span>
+            </dt>
+            <dd>If you add to this, please also add to <a href="classQgsRasterInterface.html#a473e08e19842141c0502065b91ce807b" class="m-doc">capabilitiesString()</a></dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a93c7eda09b19f57e73f27d52272ebf1c" class="m-doc-self" name="a93c7eda09b19f57e73f27d52272ebf1c">bandCount</a>(</span><span class="m-doc-wrap">) const -&gt; int <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Gets number of bands.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aaa39473935ac32b7b38970fed2ffaaac" class="m-doc">bandStatistics</a>(</span><span class="m-doc-wrap">int bandNo,
+              int stats = <a href="classQgsRasterBandStats.html#a7c29f50c8a8cf36e5a1174cffaf9be8babe38d36291e813925651b877fcc1c4e1" class="m-doc">QgsRasterBandStats::<wbr />All</a>,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              <a href="classQgsRasterBlockFeedback.html" class="m-doc">QgsRasterBlockFeedback</a>* feedback = nullptr) -&gt; <a href="classQgsRasterBandStats.html" class="m-doc">QgsRasterBandStats</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the band statistics.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0f28ed600d4fabd86c88c520652b8ae6" class="m-doc">block</a>(</span><span class="m-doc-wrap">int bandNo,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent,
+              int width,
+              int height,
+              <a href="classQgsRasterBlockFeedback.html" class="m-doc">QgsRasterBlockFeedback</a>* feedback = nullptr) -&gt; <a href="classQgsRasterBlock.html" class="m-doc">QgsRasterBlock</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Read block of data using given extent and size.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adb432fe846c0ca47321636f606128b99" class="m-doc-self" name="adb432fe846c0ca47321636f606128b99">capabilities</a>(</span><span class="m-doc-wrap">) const -&gt; int <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a bitmask containing the supported capabilities.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a473e08e19842141c0502065b91ce807b" class="m-doc-self" name="a473e08e19842141c0502065b91ce807b">capabilitiesString</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the above in friendly format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1cf751088ebc443bb7efb0c0006b442d" class="m-doc-self" name="a1cf751088ebc443bb7efb0c0006b442d">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Clone itself, create deep copy.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0754453f6588941a102e9c5effb7423c" class="m-doc">cumulativeCut</a>(</span><span class="m-doc-wrap">int bandNo,
+              double lowerCount,
+              double upperCount,
+              double&amp; lowerValue,
+              double&amp; upperValue,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Find values for cumulative pixel count cut.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3513c5b4cba6f7454b9d801a218ab971" class="m-doc-self" name="a3513c5b4cba6f7454b9d801a218ab971">dataType</a>(</span><span class="m-doc-wrap">int bandNo) const -&gt; <a href="classQgis.html#aeb8e0dfb7dc6eb09e552bf3dff9c84d5" class="m-doc">Qgis::<wbr />DataType</a> <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns data type for the band specified by number.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae1860edc92ef6534c48987ee0e647df7" class="m-doc">extent</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets the extent of the interface.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6fd95d26a509c3855900518b5411b193" class="m-doc-self" name="a6fd95d26a509c3855900518b5411b193">generateBandName</a>(</span><span class="m-doc-wrap">int bandNumber) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>helper function to create zero padded band names</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a96e3b90944051463689fd94291f64d59" class="m-doc">hasHistogram</a>(</span><span class="m-doc-wrap">int bandNo,
+              int binCount,
+              double minimum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              double maximum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              bool includeOutOfRange = false) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns true if histogram is available (cached, already calculated)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad14d9430addc4dc547f157b11b1b2765" class="m-doc">hasStatistics</a>(</span><span class="m-doc-wrap">int bandNo,
+              int stats = <a href="classQgsRasterBandStats.html#a7c29f50c8a8cf36e5a1174cffaf9be8babe38d36291e813925651b877fcc1c4e1" class="m-doc">QgsRasterBandStats::<wbr />All</a>,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns true if histogram is available (cached, already calculated).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af8aecc430f757bbfd2a3ad19640f0bff" class="m-doc">histogram</a>(</span><span class="m-doc-wrap">int bandNo,
+              int binCount = 0,
+              double minimum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              double maximum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              bool includeOutOfRange = false,
+              <a href="classQgsRasterBlockFeedback.html" class="m-doc">QgsRasterBlockFeedback</a>* feedback = nullptr) -&gt; <a href="classQgsRasterHistogram.html" class="m-doc">QgsRasterHistogram</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a band histogram.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5133e64fa9b646ba44ba970e58ba7de1" class="m-doc-self" name="a5133e64fa9b646ba44ba970e58ba7de1">input</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Current input.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a97f3f96ee9376c7bce4fa5098e680adc" class="m-doc-self" name="a97f3f96ee9376c7bce4fa5098e680adc">on</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns whether the interface is on or off.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad9f3a115ec5d9039d57260bdfeed5295" class="m-doc-self" name="ad9f3a115ec5d9039d57260bdfeed5295">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; filterElem) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets base class members from xml. Usually called from create() methods of subclasses.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#affa882def3997d2e7aac2662947336c2" class="m-doc">setInput</a>(</span><span class="m-doc-wrap"><a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* input) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Set input.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a71a9a54722582c331239ab5efd31822d" class="m-doc-self" name="a71a9a54722582c331239ab5efd31822d">setOn</a>(</span><span class="m-doc-wrap">bool on) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets whether the interface is on or off.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8c551f46c2eb3908bb407bda3ddd9f97" class="m-doc-self" name="a8c551f46c2eb3908bb407bda3ddd9f97">sourceDataType</a>(</span><span class="m-doc-wrap">int bandNo) const -&gt; <a href="classQgis.html#aeb8e0dfb7dc6eb09e552bf3dff9c84d5" class="m-doc">Qgis::<wbr />DataType</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns source data type for the band specified by number, source data type may be shorter than dataType.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8f18bf422730b3ad42f16efd5860df0c" class="m-doc">sourceInput</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets source / raw input, the first in pipe, usually provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a303711d66ff2c648ab69d3f9c7fb84bb" class="m-doc">sourceInput</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets source / raw input, the first in pipe, usually provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae9547759099c137dea230259f1f06bac" class="m-doc-self" name="ae9547759099c137dea230259f1f06bac">writeXml</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              QDomElement&amp; parentElem) const <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Write base class members to xml.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8e8027c88f4f0ab5bc634da41a588edf" class="m-doc-self" name="a8e8027c88f4f0ab5bc634da41a588edf">xBlockSize</a>(</span><span class="m-doc-wrap">) const -&gt; int <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets block size.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6024da23ab7abf219925b505a956526b" class="m-doc-self" name="a6024da23ab7abf219925b505a956526b">xSize</a>(</span><span class="m-doc-wrap">) const -&gt; int <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets raster size.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5676bc47dd66917d489d1aa1857943d1" class="m-doc">initHistogram</a>(</span><span class="m-doc-wrap"><a href="classQgsRasterHistogram.html" class="m-doc">QgsRasterHistogram</a>&amp; histogram,
+              int bandNo,
+              int binCount,
+              double minimum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              double maximum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; boundingBox = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              bool includeOutOfRange = false)</span>
+            </dt>
+            <dd>Fill in histogram defaults if not specified.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9068892452454f5437f4f4d159a956e1" class="m-doc-self" name="a9068892452454f5437f4f4d159a956e1">initStatistics</a>(</span><span class="m-doc-wrap"><a href="classQgsRasterBandStats.html" class="m-doc">QgsRasterBandStats</a>&amp; statistics,
+              int bandNo,
+              int stats = <a href="classQgsRasterBandStats.html#a7c29f50c8a8cf36e5a1174cffaf9be8babe38d36291e813925651b877fcc1c4e1" class="m-doc">QgsRasterBandStats::<wbr />All</a>,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; boundingBox = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int binCount = 0)</span>
+            </dt>
+            <dd>Fill in statistics defaults if not specified.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QList&lt;<a href="classQgsRasterHistogram.html" class="m-doc">QgsRasterHistogram</a>&gt; <a href="#ae62adab6db8d26dc8e04ba136ba819c8" class="m-doc-self" name="ae62adab6db8d26dc8e04ba136ba819c8">mHistograms</a>
+            </dt>
+            <dd>List of cached histograms, all bands mixed.</dd>
+            <dt>
+              QList&lt;<a href="classQgsRasterBandStats.html" class="m-doc">QgsRasterBandStats</a>&gt; <a href="#a462c9ae3fde5e7896deb047ff78cfa2c" class="m-doc-self" name="a462c9ae3fde5e7896deb047ff78cfa2c">mStatistics</a>
+            </dt>
+            <dd>List of cached statistics, all bands mixed.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="aaa39473935ac32b7b38970fed2ffaaac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRasterBandStats.html" class="m-doc">QgsRasterBandStats</a> QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaa39473935ac32b7b38970fed2ffaaac" class="m-doc-self">bandStatistics</a>(</span><span class="m-doc-wrap">int bandNo,
+              int stats = <a href="classQgsRasterBandStats.html#a7c29f50c8a8cf36e5a1174cffaf9be8babe38d36291e813925651b877fcc1c4e1" class="m-doc">QgsRasterBandStats::<wbr />All</a>,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              <a href="classQgsRasterBlockFeedback.html" class="m-doc">QgsRasterBlockFeedback</a>* feedback = nullptr) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the band statistics.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bandNo</td>
+                  <td>The band (number).</td>
+                </tr>
+                <tr>
+                  <td>stats</td>
+                  <td>Requested statistics</td>
+                </tr>
+                <tr>
+                  <td>extent</td>
+                  <td>Extent used to calc statistics, if empty, whole raster extent is used.</td>
+                </tr>
+                <tr>
+                  <td>sampleSize</td>
+                  <td>Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</td>
+                </tr>
+                <tr>
+                  <td>feedback</td>
+                  <td>optional feedback object</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a0f28ed600d4fabd86c88c520652b8ae6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRasterBlock.html" class="m-doc">QgsRasterBlock</a>* QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0f28ed600d4fabd86c88c520652b8ae6" class="m-doc-self">block</a>(</span><span class="m-doc-wrap">int bandNo,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent,
+              int width,
+              int height,
+              <a href="classQgsRasterBlockFeedback.html" class="m-doc">QgsRasterBlockFeedback</a>* feedback = nullptr) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Read block of data using given extent and size.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bandNo</td>
+                  <td>band number</td>
+                </tr>
+                <tr>
+                  <td>extent</td>
+                  <td>extent of block</td>
+                </tr>
+                <tr>
+                  <td>width</td>
+                  <td>pixel width of block</td>
+                </tr>
+                <tr>
+                  <td>height</td>
+                  <td>pixel height of block</td>
+                </tr>
+                <tr>
+                  <td>feedback</td>
+                  <td>optional raster feedback object for cancelation/preview. Added in QGIS 3.0.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Returns pointer to data. Caller is responsible to free the memory returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="a0754453f6588941a102e9c5effb7423c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0754453f6588941a102e9c5effb7423c" class="m-doc-self">cumulativeCut</a>(</span><span class="m-doc-wrap">int bandNo,
+              double lowerCount,
+              double upperCount,
+              double&amp; lowerValue,
+              double&amp; upperValue,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Find values for cumulative pixel count cut.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bandNo</td>
+                  <td>The band (number).</td>
+                </tr>
+                <tr>
+                  <td>lowerCount</td>
+                  <td>The lower count as fraction of 1, e.g. 0.02 = 2%</td>
+                </tr>
+                <tr>
+                  <td>upperCount</td>
+                  <td>The upper count as fraction of 1, e.g. 0.98 = 98%</td>
+                </tr>
+                <tr>
+                  <td>lowerValue</td>
+                  <td>Location into which the lower value will be set.</td>
+                </tr>
+                <tr>
+                  <td>upperValue</td>
+                  <td>Location into which the upper value will be set.</td>
+                </tr>
+                <tr>
+                  <td>extent</td>
+                  <td>Extent used to calc histogram, if empty, whole raster extent is used.</td>
+                </tr>
+                <tr>
+                  <td>sampleSize</td>
+                  <td>Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae1860edc92ef6534c48987ee0e647df7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae1860edc92ef6534c48987ee0e647df7" class="m-doc-self">extent</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Gets the extent of the interface.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> containing the extent of the layer</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a96e3b90944051463689fd94291f64d59"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a96e3b90944051463689fd94291f64d59" class="m-doc-self">hasHistogram</a>(</span><span class="m-doc-wrap">int bandNo,
+              int binCount,
+              double minimum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              double maximum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              bool includeOutOfRange = false) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns true if histogram is available (cached, already calculated)</p>
+<aside class="m-note m-info"><h4>Note</h4><p>the parameters are the same as in</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRasterInterface.html#af8aecc430f757bbfd2a3ad19640f0bff" class="m-doc">histogram()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad14d9430addc4dc547f157b11b1b2765"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad14d9430addc4dc547f157b11b1b2765" class="m-doc-self">hasStatistics</a>(</span><span class="m-doc-wrap">int bandNo,
+              int stats = <a href="classQgsRasterBandStats.html#a7c29f50c8a8cf36e5a1174cffaf9be8babe38d36291e813925651b877fcc1c4e1" class="m-doc">QgsRasterBandStats::<wbr />All</a>,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns true if histogram is available (cached, already calculated).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if statistics are available (ready to use)</td>
+                </tr>
+              </tfoot>
+            </table>
+<ul><li>The parameters are the same as in <a href="classQgsRasterInterface.html#aaa39473935ac32b7b38970fed2ffaaac" class="m-doc">bandStatistics()</a></li></ul>
+          </div></section>
+          <section class="m-doc-details" id="af8aecc430f757bbfd2a3ad19640f0bff"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRasterHistogram.html" class="m-doc">QgsRasterHistogram</a> QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af8aecc430f757bbfd2a3ad19640f0bff" class="m-doc-self">histogram</a>(</span><span class="m-doc-wrap">int bandNo,
+              int binCount = 0,
+              double minimum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              double maximum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              bool includeOutOfRange = false,
+              <a href="classQgsRasterBlockFeedback.html" class="m-doc">QgsRasterBlockFeedback</a>* feedback = nullptr) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a band histogram.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bandNo</td>
+                  <td>The band (number).</td>
+                </tr>
+                <tr>
+                  <td>binCount</td>
+                  <td>Number of bins (intervals,buckets). If 0, the number of bins is decided automatically according to data type, raster size etc.</td>
+                </tr>
+                <tr>
+                  <td>minimum</td>
+                  <td>Minimum value, if NaN (None for Python), raster minimum value will be used.</td>
+                </tr>
+                <tr>
+                  <td>maximum</td>
+                  <td>Maximum value, if NaN (None for Python), raster maximum value will be used.</td>
+                </tr>
+                <tr>
+                  <td>extent</td>
+                  <td>Extent used to calc histogram, if empty, whole raster extent is used.</td>
+                </tr>
+                <tr>
+                  <td>sampleSize</td>
+                  <td>Approximate number of cells in sample. If 0, all cells (whole raster will be used). If raster does not have exact size (WCS without exact size for example), provider decides size of sample.</td>
+                </tr>
+                <tr>
+                  <td>includeOutOfRange</td>
+                  <td>include out of range values</td>
+                </tr>
+                <tr>
+                  <td>feedback</td>
+                  <td>optional feedback object</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Vector of non NULL cell counts for each bin.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Histograms are cached in providers.</p><aside class="m-note m-info"><h4>Note</h4><p>binCount, minimum and maximum not optional in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="affa882def3997d2e7aac2662947336c2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#affa882def3997d2e7aac2662947336c2" class="m-doc-self">setInput</a>(</span><span class="m-doc-wrap"><a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* input) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Set input.</p>
+<p>Returns true if set correctly, false if cannot use that input</p>
+          </div></section>
+          <section class="m-doc-details" id="a8f18bf422730b3ad42f16efd5860df0c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8f18bf422730b3ad42f16efd5860df0c" class="m-doc-self">sourceInput</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Gets source / raw input, the first in pipe, usually provider.</p>
+<p>It may be used to get info about original data, e.g. resolution to decide resampling etc.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a303711d66ff2c648ab69d3f9c7fb84bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRasterInterface.html" class="m-doc">QgsRasterInterface</a>* QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a303711d66ff2c648ab69d3f9c7fb84bb" class="m-doc-self">sourceInput</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Gets source / raw input, the first in pipe, usually provider.</p>
+<p>It may be used to get info about original data, e.g. resolution to decide resampling etc.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5676bc47dd66917d489d1aa1857943d1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRasterInterface::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5676bc47dd66917d489d1aa1857943d1" class="m-doc-self">initHistogram</a>(</span><span class="m-doc-wrap"><a href="classQgsRasterHistogram.html" class="m-doc">QgsRasterHistogram</a>&amp; histogram,
+              int bandNo,
+              int binCount,
+              double minimum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              double maximum = std::numeric_limits&lt;double&gt;::quiet_NaN(),
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; boundingBox = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>(),
+              int sampleSize = 0,
+              bool includeOutOfRange = false) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Fill in histogram defaults if not specified.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>the parameters are the same as in</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRasterInterface.html#af8aecc430f757bbfd2a3ad19640f0bff" class="m-doc">histogram()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

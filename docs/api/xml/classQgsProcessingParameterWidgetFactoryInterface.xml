@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProcessingParameterWidgetFactoryInterface" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsProcessingParameterWidgetFactoryInterface</compoundname>
+    <includes refid="qgsprocessingwidgetwrapper_8h" local="no">qgsprocessingwidgetwrapper.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1a35f582173e75a8aecd722ecf8fadbb4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsProcessingParameterWidgetFactoryInterface::~QgsProcessingParameterWidgetFactoryInterface</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsProcessingParameterWidgetFactoryInterface</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="367" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1aa0214c713a0ce5f79dab11427dfa4cb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsProcessingModelerParameterWidget" kindref="compound">QgsProcessingModelerParameterWidget</ref> *</type>
+        <definition>QgsProcessingModelerParameterWidget * QgsProcessingParameterWidgetFactoryInterface::createModelerWidgetWrapper</definition>
+        <argsstring>(QgsProcessingModelAlgorithm *model, const QString &amp;childId, const QgsProcessingParameterDefinition *parameter, QgsProcessingContext &amp;context)</argsstring>
+        <name>createModelerWidgetWrapper</name>
+        <param>
+          <type>QgsProcessingModelAlgorithm *</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>childId</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingParameterDefinition" kindref="compound">QgsProcessingParameterDefinition</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new modeler parameter widget for the given <emphasis>parameter</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This widget allows configuration of the parameter&apos;s value when used inside a Processing <emphasis>model</emphasis>.</para><para>The ID of the child algorithm within the model must be specified via the <emphasis>childId</emphasis> argument. This value corresponds to the QgsProcessingModelChildAlgorithm::childId() string, which uniquely identifies which child algorithm the parameter is associated with inside the given <emphasis>model</emphasis>.</para><para>A Processing <emphasis>context</emphasis> must also be specified, which allows the widget to resolve parameter values which are context dependent. The context must last for the lifetime of the widget.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1a2bdac4438f1294a0c2968040a3e8a3f3" kindref="member">createWidgetWrapper()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="399" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.cpp" bodystart="306" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1a2bdac4438f1294a0c2968040a3e8a3f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractProcessingParameterWidgetWrapper" kindref="compound">QgsAbstractProcessingParameterWidgetWrapper</ref> *</type>
+        <definition>virtual QgsAbstractProcessingParameterWidgetWrapper* QgsProcessingParameterWidgetFactoryInterface::createWidgetWrapper</definition>
+        <argsstring>(const QgsProcessingParameterDefinition *parameter, QgsProcessingGui::WidgetType type)=0</argsstring>
+        <name>createWidgetWrapper</name>
+        <param>
+          <type>const <ref refid="classQgsProcessingParameterDefinition" kindref="compound">QgsProcessingParameterDefinition</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingGui_1a67ecba71f4acc1fba24dd0530545a80d" kindref="member">QgsProcessingGui::WidgetType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new widget wrapper for the specified <emphasis>parameter</emphasis> definition. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>type</emphasis> argument indicates the dialog type to create a wrapper for.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1aa0214c713a0ce5f79dab11427dfa4cb2" kindref="member">createModelerWidgetWrapper()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="381" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1a427d086c68771f9472b4cd1bc013aef7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProcessingParameterWidgetFactoryInterface::parameterType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>parameterType</name>
+        <briefdescription>
+<para>Returns the type string for the parameter type the factory is associated with. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="372" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1a5fe9aa616e5856be38462656f64830d1" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; int &gt;</type>
+        <definition>virtual QList&lt; int &gt; QgsProcessingParameterWidgetFactoryInterface::compatibleDataTypes</definition>
+        <argsstring>() const =0</argsstring>
+        <name>compatibleDataTypes</name>
+        <briefdescription>
+<para>Returns a list of compatible Processing data types for inputs for this parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>In order to determine the available sources for the parameter in a model the types returned by this method are checked. The returned list corresponds to the various available values from <ref refid="classQgsProcessing_1acad4d2322342455b53eee5701e2b3115" kindref="member">QgsProcessing::SourceType</ref>.</para><para>Subclasses should return a list of all <ref refid="classQgsProcessing_1acad4d2322342455b53eee5701e2b3115" kindref="member">QgsProcessing::SourceType</ref> values which can be used as values for the parameter.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1ab8e91533cadb2e9b2932a7e9e451b753" kindref="member">compatibleParameterTypes()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1a3c6f050b8e839690d3492b01a302eefc" kindref="member">compatibleOutputTypes()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="452" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1a3c6f050b8e839690d3492b01a302eefc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList QgsProcessingParameterWidgetFactoryInterface::compatibleOutputTypes</definition>
+        <argsstring>() const =0</argsstring>
+        <name>compatibleOutputTypes</name>
+        <briefdescription>
+<para>Returns a list of compatible Processing output types for inputs for this parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>In order to determine the available sources for the parameter in a model the types returned by this method are checked. The returned list corresponds to the various available values for <ref refid="classQgsProcessingOutputDefinition_1aab8d9c5651c923a01b791c5670aaebd6" kindref="member">QgsProcessingOutputDefinition::type()</ref>.</para><para>Subclasses should return a list of all <ref refid="classQgsProcessingOutputDefinition_1aab8d9c5651c923a01b791c5670aaebd6" kindref="member">QgsProcessingOutputDefinition::type()</ref> values which can be used as values for the parameter.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1ab8e91533cadb2e9b2932a7e9e451b753" kindref="member">compatibleParameterTypes()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1a5fe9aa616e5856be38462656f64830d1" kindref="member">compatibleDataTypes()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="436" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1ab8e91533cadb2e9b2932a7e9e451b753" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList QgsProcessingParameterWidgetFactoryInterface::compatibleParameterTypes</definition>
+        <argsstring>() const =0</argsstring>
+        <name>compatibleParameterTypes</name>
+        <briefdescription>
+<para>Returns a list of compatible Processing parameter types for inputs for this parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>In order to determine the available sources for the parameter in a model the types returned by this method are checked. The returned list corresponds to the various available values for <ref refid="classQgsProcessingParameterDefinition_1a9f99ab59bf4bcc1ff7cc8fe389cd6721" kindref="member">QgsProcessingParameterDefinition::type()</ref>.</para><para>Subclasses should return a list of all <ref refid="classQgsProcessingParameterDefinition_1a9f99ab59bf4bcc1ff7cc8fe389cd6721" kindref="member">QgsProcessingParameterDefinition::type()</ref> values which can be used as input values for the parameter.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1a3c6f050b8e839690d3492b01a302eefc" kindref="member">compatibleOutputTypes()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingParameterWidgetFactoryInterface_1a5fe9aa616e5856be38462656f64830d1" kindref="member">compatibleDataTypes()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="420" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingParameterWidgetFactoryInterface_1afed75d8c789d20c4e6056baff55711ac" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingParameterWidgetFactoryInterface::modelerExpressionFormatString</definition>
+        <argsstring>() const</argsstring>
+        <name>modelerExpressionFormatString</name>
+        <briefdescription>
+<para>Returns the expected expression format string for expression results for the parameter within model child algorithms. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is shown in modeler widget wrappers when using the &quot;pre-calculated&quot; expression mode, and should give helpful text to users to indicate the expected results from the expression.</para><para>This is purely a text format and no expression validation is made against it. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="463" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.cpp" bodystart="314" bodyend="317"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An interface for Processing widget wrapper factories. </para>    </briefdescription>
+    <detaileddescription>
+<para>Widget wrapper factories allow creation of <ref refid="classQgsAbstractProcessingParameterWidgetWrapper" kindref="compound">QgsAbstractProcessingParameterWidgetWrapper</ref> objects. They are centrally managed by <ref refid="classQgsProcessingGuiRegistry" kindref="compound">QgsProcessingGuiRegistry</ref>. Usually, individual factories are not directly utilized, rather the <ref refid="classQgsGui_1a30b388e2c66f5625e6b79811bf60be3d" kindref="member">QgsGui::processingGuiRegistry()</ref>-&gt;createParameterWidgetWrapper() method is used to create widget wrappers.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" line="363" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/processing/qgsprocessingwidgetwrapper.h" bodystart="362" bodyend="465"/>
+    <listofallmembers>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1a5fe9aa616e5856be38462656f64830d1" prot="protected" virt="pure-virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>compatibleDataTypes</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1a3c6f050b8e839690d3492b01a302eefc" prot="protected" virt="pure-virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>compatibleOutputTypes</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1ab8e91533cadb2e9b2932a7e9e451b753" prot="protected" virt="pure-virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>compatibleParameterTypes</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1aa0214c713a0ce5f79dab11427dfa4cb2" prot="public" virt="virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>createModelerWidgetWrapper</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1a2bdac4438f1294a0c2968040a3e8a3f3" prot="public" virt="pure-virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>createWidgetWrapper</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1afed75d8c789d20c4e6056baff55711ac" prot="protected" virt="virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>modelerExpressionFormatString</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1a427d086c68771f9472b4cd1bc013aef7" prot="public" virt="pure-virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>parameterType</name></member>
+      <member refid="classQgsProcessingParameterWidgetFactoryInterface_1a35f582173e75a8aecd722ecf8fadbb4b" prot="public" virt="virtual"><scope>QgsProcessingParameterWidgetFactoryInterface</scope><name>~QgsProcessingParameterWidgetFactoryInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

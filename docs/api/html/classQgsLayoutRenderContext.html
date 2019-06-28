@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLayoutRenderContext class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLayoutRenderContext <span class="m-thin">class</span>
+        </h1>
+        <p>Stores information relating to the current rendering settings for a layout.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#aae823feceb47451b481ce3be51e37456" class="m-doc">Flag</a> { </span><span class="m-doc-wrap"><a href="#aae823feceb47451b481ce3be51e37456a1f8829da0e3c457492e1bfa972b10bfa" class="m-doc">FlagDebug</a> = 1 &lt;&lt; 1,
+              <a href="#aae823feceb47451b481ce3be51e37456ab34ccefd70766f37395ef08b6cd40a7a" class="m-doc">FlagOutlineOnly</a> = 1 &lt;&lt; 2,
+              <a href="#aae823feceb47451b481ce3be51e37456ad1e481c985d50b3625ea62d7e92e9973" class="m-doc">FlagAntialiasing</a> = 1 &lt;&lt; 3,
+              <a href="#aae823feceb47451b481ce3be51e37456a4519e95aeb475fda05f98af050535df1" class="m-doc">FlagUseAdvancedEffects</a> = 1 &lt;&lt; 4,
+              <a href="#aae823feceb47451b481ce3be51e37456ad61ea955d93bbf4c53031dbe8b7cb881" class="m-doc">FlagForceVectorOutput</a> = 1 &lt;&lt; 5,
+              <a href="#aae823feceb47451b481ce3be51e37456aeacbaa9cde8e72d54a752629aaf0a8a3" class="m-doc">FlagHideCoverageLayer</a> = 1 &lt;&lt; 6,
+              <a href="#aae823feceb47451b481ce3be51e37456a610ffdc4825896bc89df73a1794dcc3f" class="m-doc">FlagDrawSelection</a> = 1 &lt;&lt; 7 }</span>
+            </dt>
+            <dd>Flags for controlling how a layout is rendered.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a9a49a238d7addd3ddb67c6edc64ba8cd" class="m-doc-self" name="a9a49a238d7addd3ddb67c6edc64ba8cd">QgsLayoutRenderContext</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsLayoutRenderContext.html" class="m-doc">QgsLayoutRenderContext</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4099c25df454421d8a569b932b7771ec" class="m-doc">boundingBoxesVisible</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the item bounding boxes should be drawn.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad76fd15d456f7d1f509d3858a1213630" class="m-doc">currentExportLayer</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the current item layer to draw while exporting.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9e48478f909c0e3ef25531f83bc118d5" class="m-doc">dpi</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the <em>dpi</em> for outputting the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a59f94805b284ec6b69b8a50625bff649" class="m-doc">flags</a>(</span><span class="m-doc-wrap">) const -&gt; QgsLayoutRenderContext::Flags</span>
+            </dt>
+            <dd>Returns the current combination of flags used for rendering the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5fcf98076e9927a78d368ba7bb7cf593" class="m-doc">gridVisible</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the page grid should be drawn.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a44b4c3820e727705c84f99ee5cda8dd6" class="m-doc">isPreviewRender</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the render current being conducted is a preview render, i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acfd63ac51fa35eb182b3bac7ad27f353" class="m-doc">measurementConverter</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutMeasurementConverter.html" class="m-doc">QgsLayoutMeasurementConverter</a>&amp;</span>
+            </dt>
+            <dd>Returns the layout measurement converter to be used in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a824719e923388a9600ae44466fd9c1d1" class="m-doc">measurementConverter</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutMeasurementConverter.html" class="m-doc">QgsLayoutMeasurementConverter</a>&amp;</span>
+            </dt>
+            <dd>Returns the layout measurement converter to be used in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a22297c581f0f0935a0fa6083b925202f" class="m-doc">pagesVisible</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the page items are be visible in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1a715517abc0caaafaedba3bab072456" class="m-doc-self" name="a1a715517abc0caaafaedba3bab072456">renderContextFlags</a>(</span><span class="m-doc-wrap">) const -&gt; QgsRenderContext::Flags</span>
+            </dt>
+            <dd>Returns the combination of render context flags matched to the layout context&#x27;s settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa82fcd7e315890d229e53dc88f570e8a" class="m-doc">selectionColor</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Gets color that is used for drawing of selected vector features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae87ae4d2759139effcefcf25575880d1" class="m-doc">setBoundingBoxesVisible</a>(</span><span class="m-doc-wrap">bool visible)</span>
+            </dt>
+            <dd>Sets whether the item bounding boxes should be <em>visible</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a52651055bc5c6d68b84ce193cd69b469" class="m-doc">setCurrentExportLayer</a>(</span><span class="m-doc-wrap">int layer = -1)</span>
+            </dt>
+            <dd>Sets the current item <em>layer</em> to draw while exporting.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a010601f8a46c563ac8737ba94120467f" class="m-doc">setDpi</a>(</span><span class="m-doc-wrap">double dpi)</span>
+            </dt>
+            <dd>Sets the <em>dpi</em> for outputting the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a74f6f2f5b79655e9ce1facddcb170e29" class="m-doc">setFlag</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRenderContext.html#aae823feceb47451b481ce3be51e37456" class="m-doc">QgsLayoutRenderContext::<wbr />Flag</a> flag,
+              bool on = true)</span>
+            </dt>
+            <dd>Enables or disables a particular rendering <em>flag</em> for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acfdbbb5753eb9ebdaadc9e41ee3a0f0d" class="m-doc">setFlags</a>(</span><span class="m-doc-wrap">QgsLayoutRenderContext::Flags flags)</span>
+            </dt>
+            <dd>Sets the combination of <em>flags</em> that will be used for rendering the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1c42aaa229df33e3386db103a907a313" class="m-doc">setGridVisible</a>(</span><span class="m-doc-wrap">bool visible)</span>
+            </dt>
+            <dd>Sets whether the page grid should be <em>visible</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae72203509c66e629dd49eeba54931733" class="m-doc">setPagesVisible</a>(</span><span class="m-doc-wrap">bool visible)</span>
+            </dt>
+            <dd>Sets whether the page items should be <em>visible</em> in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a03fc483b86406833e652dcc6e1c4c96d" class="m-doc">setSelectionColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets color that is used for drawing of selected vector features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a007971cd4cd22fc5334718ef973ce18b" class="m-doc">setTextRenderFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a> format)</span>
+            </dt>
+            <dd>Sets the text render <em>format</em>, which dictates how text is rendered (e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adc6d2a7ab432e31aabf0705818437f12" class="m-doc">testFlag</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRenderContext.html#aae823feceb47451b481ce3be51e37456" class="m-doc">Flag</a> flag) const -&gt; bool</span>
+            </dt>
+            <dd>Check whether a particular rendering <em>flag</em> is enabled for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a664436a520fd47b2160d64ac1960d52c" class="m-doc">textRenderFormat</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a></span>
+            </dt>
+            <dd>Returns the text render format, which dictates how text is rendered (e.g.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a094aa9e78bebc6f0428803bc95a1ac80" class="m-doc-self" name="a094aa9e78bebc6f0428803bc95a1ac80">dpiChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the context&#x27;s DPI is changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6949f63e5e931c1aab0566ccc03b8f9c" class="m-doc">flagsChanged</a>(</span><span class="m-doc-wrap">QgsLayoutRenderContext::Flags flags)</span>
+            </dt>
+            <dd>Emitted whenever the context&#x27;s <em>flags</em> change.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="aae823feceb47451b481ce3be51e37456"><div>
+            <h3>
+              enum QgsLayoutRenderContext::<wbr /><a href="#aae823feceb47451b481ce3be51e37456" class="m-doc-self">Flag</a>
+            </h3>
+            <p>Flags for controlling how a layout is rendered.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456a1f8829da0e3c457492e1bfa972b10bfa" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456a1f8829da0e3c457492e1bfa972b10bfa">FlagDebug</a></td>
+                  <td>
+                  <p>Debug/testing mode, items are drawn as solid rectangles.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456ab34ccefd70766f37395ef08b6cd40a7a" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456ab34ccefd70766f37395ef08b6cd40a7a">FlagOutlineOnly</a></td>
+                  <td>
+                  <p>Render items as outlines only.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456ad1e481c985d50b3625ea62d7e92e9973" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456ad1e481c985d50b3625ea62d7e92e9973">FlagAntialiasing</a></td>
+                  <td>
+                  <p>Use antialiasing when drawing items.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456a4519e95aeb475fda05f98af050535df1" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456a4519e95aeb475fda05f98af050535df1">FlagUseAdvancedEffects</a></td>
+                  <td>
+                  <p>Enable advanced effects such as blend modes.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456ad61ea955d93bbf4c53031dbe8b7cb881" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456ad61ea955d93bbf4c53031dbe8b7cb881">FlagForceVectorOutput</a></td>
+                  <td>
+                  <p>Force output in vector format where possible, even if items require rasterization to keep their correct appearance.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456aeacbaa9cde8e72d54a752629aaf0a8a3" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456aeacbaa9cde8e72d54a752629aaf0a8a3">FlagHideCoverageLayer</a></td>
+                  <td>
+                  <p>Hide coverage layer in outputs.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aae823feceb47451b481ce3be51e37456a610ffdc4825896bc89df73a1794dcc3f" class="m-doc-self" name="aae823feceb47451b481ce3be51e37456a610ffdc4825896bc89df73a1794dcc3f">FlagDrawSelection</a></td>
+                  <td>
+                  <p>Draw selection.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a4099c25df454421d8a569b932b7771ec"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4099c25df454421d8a569b932b7771ec" class="m-doc-self">boundingBoxesVisible</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the item bounding boxes should be drawn.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#ae87ae4d2759139effcefcf25575880d1" class="m-doc">setBoundingBoxesVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad76fd15d456f7d1f509d3858a1213630"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad76fd15d456f7d1f509d3858a1213630" class="m-doc-self">currentExportLayer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current item layer to draw while exporting.</p>
+<p><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a> subclasses which support multi-layer SVG exports must check this and customize their rendering based on the layer.</p><p>If <em>layer</em> is -1, all item layers should be rendered.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a52651055bc5c6d68b84ce193cd69b469" class="m-doc">setCurrentExportLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9e48478f909c0e3ef25531f83bc118d5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e48478f909c0e3ef25531f83bc118d5" class="m-doc-self">dpi</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the <em>dpi</em> for outputting the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a010601f8a46c563ac8737ba94120467f" class="m-doc">setDpi()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a59f94805b284ec6b69b8a50625bff649"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QgsLayoutRenderContext::Flags QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a59f94805b284ec6b69b8a50625bff649" class="m-doc-self">flags</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current combination of flags used for rendering the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#acfdbbb5753eb9ebdaadc9e41ee3a0f0d" class="m-doc">setFlags()</a></p><p><a href="classQgsLayoutRenderContext.html#a74f6f2f5b79655e9ce1facddcb170e29" class="m-doc">setFlag()</a></p><p><a href="classQgsLayoutRenderContext.html#adc6d2a7ab432e31aabf0705818437f12" class="m-doc">testFlag()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5fcf98076e9927a78d368ba7bb7cf593"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5fcf98076e9927a78d368ba7bb7cf593" class="m-doc-self">gridVisible</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the page grid should be drawn.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a1c42aaa229df33e3386db103a907a313" class="m-doc">setGridVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a44b4c3820e727705c84f99ee5cda8dd6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a44b4c3820e727705c84f99ee5cda8dd6" class="m-doc-self">isPreviewRender</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the render current being conducted is a preview render, i.e.</p>
+<p>it is being rendered inside a QGraphicsView widget as opposed to a destination device (such as an image).</p>
+          </div></section>
+          <section class="m-doc-details" id="acfd63ac51fa35eb182b3bac7ad27f353"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsLayoutMeasurementConverter.html" class="m-doc">QgsLayoutMeasurementConverter</a>&amp; QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acfd63ac51fa35eb182b3bac7ad27f353" class="m-doc-self">measurementConverter</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the layout measurement converter to be used in the layout.</p>
+<p>This converter is used for translating between other measurement units and the layout&#x27;s native unit.</p>
+          </div></section>
+          <section class="m-doc-details" id="a824719e923388a9600ae44466fd9c1d1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutMeasurementConverter.html" class="m-doc">QgsLayoutMeasurementConverter</a>&amp; QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a824719e923388a9600ae44466fd9c1d1" class="m-doc-self">measurementConverter</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the layout measurement converter to be used in the layout.</p>
+<p>This converter is used for translating between other measurement units and the layout&#x27;s native unit.</p>
+          </div></section>
+          <section class="m-doc-details" id="a22297c581f0f0935a0fa6083b925202f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a22297c581f0f0935a0fa6083b925202f" class="m-doc-self">pagesVisible</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the page items are be visible in the layout.</p>
+<p>This setting effects both display of the page boundaries in layout views and whether they will be rendered in layout exports.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#ae72203509c66e629dd49eeba54931733" class="m-doc">setPagesVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa82fcd7e315890d229e53dc88f570e8a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa82fcd7e315890d229e53dc88f570e8a" class="m-doc-self">selectionColor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets color that is used for drawing of selected vector features.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a03fc483b86406833e652dcc6e1c4c96d" class="m-doc">setSelectionColor()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae87ae4d2759139effcefcf25575880d1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae87ae4d2759139effcefcf25575880d1" class="m-doc-self">setBoundingBoxesVisible</a>(</span><span class="m-doc-wrap">bool visible)</span></span>
+            </h3>
+            <p>Sets whether the item bounding boxes should be <em>visible</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a4099c25df454421d8a569b932b7771ec" class="m-doc">boundingBoxesVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a52651055bc5c6d68b84ce193cd69b469"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52651055bc5c6d68b84ce193cd69b469" class="m-doc-self">setCurrentExportLayer</a>(</span><span class="m-doc-wrap">int layer = -1)</span></span>
+            </h3>
+            <p>Sets the current item <em>layer</em> to draw while exporting.</p>
+<p><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a> subclasses which support multi-layer SVG exports must check the <a href="classQgsLayoutRenderContext.html#ad76fd15d456f7d1f509d3858a1213630" class="m-doc">currentExportLayer()</a> and customize their rendering based on the layer.</p><p>If <em>layer</em> is -1, all item layers will be rendered.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#ad76fd15d456f7d1f509d3858a1213630" class="m-doc">currentExportLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a010601f8a46c563ac8737ba94120467f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a010601f8a46c563ac8737ba94120467f" class="m-doc-self">setDpi</a>(</span><span class="m-doc-wrap">double dpi)</span></span>
+            </h3>
+            <p>Sets the <em>dpi</em> for outputting the layout.</p>
+<p>This also sets the corresponding DPI for the context&#x27;s <a href="classQgsLayoutRenderContext.html#a824719e923388a9600ae44466fd9c1d1" class="m-doc">measurementConverter()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a9e48478f909c0e3ef25531f83bc118d5" class="m-doc">dpi()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a74f6f2f5b79655e9ce1facddcb170e29"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a74f6f2f5b79655e9ce1facddcb170e29" class="m-doc-self">setFlag</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRenderContext.html#aae823feceb47451b481ce3be51e37456" class="m-doc">QgsLayoutRenderContext::<wbr />Flag</a> flag,
+              bool on = true)</span></span>
+            </h3>
+            <p>Enables or disables a particular rendering <em>flag</em> for the layout.</p>
+<p>Other existing flags are not affected.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#acfdbbb5753eb9ebdaadc9e41ee3a0f0d" class="m-doc">setFlags()</a></p><p><a href="classQgsLayoutRenderContext.html#a59f94805b284ec6b69b8a50625bff649" class="m-doc">flags()</a></p><p><a href="classQgsLayoutRenderContext.html#adc6d2a7ab432e31aabf0705818437f12" class="m-doc">testFlag()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acfdbbb5753eb9ebdaadc9e41ee3a0f0d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acfdbbb5753eb9ebdaadc9e41ee3a0f0d" class="m-doc-self">setFlags</a>(</span><span class="m-doc-wrap">QgsLayoutRenderContext::Flags flags)</span></span>
+            </h3>
+            <p>Sets the combination of <em>flags</em> that will be used for rendering the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a74f6f2f5b79655e9ce1facddcb170e29" class="m-doc">setFlag()</a></p><p><a href="classQgsLayoutRenderContext.html#a59f94805b284ec6b69b8a50625bff649" class="m-doc">flags()</a></p><p><a href="classQgsLayoutRenderContext.html#adc6d2a7ab432e31aabf0705818437f12" class="m-doc">testFlag()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1c42aaa229df33e3386db103a907a313"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c42aaa229df33e3386db103a907a313" class="m-doc-self">setGridVisible</a>(</span><span class="m-doc-wrap">bool visible)</span></span>
+            </h3>
+            <p>Sets whether the page grid should be <em>visible</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a5fcf98076e9927a78d368ba7bb7cf593" class="m-doc">gridVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae72203509c66e629dd49eeba54931733"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae72203509c66e629dd49eeba54931733" class="m-doc-self">setPagesVisible</a>(</span><span class="m-doc-wrap">bool visible)</span></span>
+            </h3>
+            <p>Sets whether the page items should be <em>visible</em> in the layout.</p>
+<p>Removing them will prevent both display of the page boundaries in layout views and will also prevent them from being rendered in layout exports.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a22297c581f0f0935a0fa6083b925202f" class="m-doc">pagesVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a03fc483b86406833e652dcc6e1c4c96d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a03fc483b86406833e652dcc6e1c4c96d" class="m-doc-self">setSelectionColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span></span>
+            </h3>
+            <p>Sets color that is used for drawing of selected vector features.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#aa82fcd7e315890d229e53dc88f570e8a" class="m-doc">selectionColor()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a007971cd4cd22fc5334718ef973ce18b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a007971cd4cd22fc5334718ef973ce18b" class="m-doc-self">setTextRenderFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a> format)</span></span>
+            </h3>
+            <p>Sets the text render <em>format</em>, which dictates how text is rendered (e.g.</p>
+<p>as paths or real text objects).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a664436a520fd47b2160d64ac1960d52c" class="m-doc">textRenderFormat()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4.3</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adc6d2a7ab432e31aabf0705818437f12"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc6d2a7ab432e31aabf0705818437f12" class="m-doc-self">testFlag</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRenderContext.html#aae823feceb47451b481ce3be51e37456" class="m-doc">Flag</a> flag) const</span></span>
+            </h3>
+            <p>Check whether a particular rendering <em>flag</em> is enabled for the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#acfdbbb5753eb9ebdaadc9e41ee3a0f0d" class="m-doc">setFlags()</a></p><p><a href="classQgsLayoutRenderContext.html#a74f6f2f5b79655e9ce1facddcb170e29" class="m-doc">setFlag()</a></p><p><a href="classQgsLayoutRenderContext.html#a59f94805b284ec6b69b8a50625bff649" class="m-doc">flags()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a664436a520fd47b2160d64ac1960d52c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a> QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a664436a520fd47b2160d64ac1960d52c" class="m-doc-self">textRenderFormat</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the text render format, which dictates how text is rendered (e.g.</p>
+<p>as paths or real text objects).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#a007971cd4cd22fc5334718ef973ce18b" class="m-doc">setTextRenderFormat()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4.3</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6949f63e5e931c1aab0566ccc03b8f9c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutRenderContext::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6949f63e5e931c1aab0566ccc03b8f9c" class="m-doc-self">flagsChanged</a>(</span><span class="m-doc-wrap">QgsLayoutRenderContext::Flags flags) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted whenever the context&#x27;s <em>flags</em> change.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutRenderContext.html#acfdbbb5753eb9ebdaadc9e41ee3a0f0d" class="m-doc">setFlags()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsHeatmapRenderer class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsHeatmapRenderer <span class="m-thin">class</span>
+        </h1>
+        <p>A renderer which draws points as a live heatmap.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.7</p></aside>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a681c727830a617b00bf6c7de566c7a52" class="m-doc-self" name="a681c727830a617b00bf6c7de566c7a52">create</a>(</span><span class="m-doc-wrap">QDomElement&amp; element,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) -&gt; <a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>*</span>
+            </dt>
+            <dd>Creates a new heatmap renderer instance from XML.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aa26dea089e5100af79c3c1710a2369dd" class="m-doc-self" name="aa26dea089e5100af79c3c1710a2369dd">QgsHeatmapRenderer</a>(</span><span class="m-doc-wrap">const <a href="classQgsHeatmapRenderer.html" class="m-doc">QgsHeatmapRenderer</a>&amp;) <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd>Direct copies are forbidden. Use <a href="classQgsHeatmapRenderer.html#ae2140f57dc530264afd5d9b0b9c39aa8" class="m-doc">clone()</a> instead.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae2140f57dc530264afd5d9b0b9c39aa8" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsHeatmapRenderer.html" class="m-doc">QgsHeatmapRenderer</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Create a deep copy of this renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a198a8176005db345942d3c8f4a043e61" class="m-doc">colorRamp</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsColorRamp.html" class="m-doc">QgsColorRamp</a>*</span>
+            </dt>
+            <dd>Returns the color ramp used for shading the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac6b67f687ea4c549abdb41a3b40d1bf6" class="m-doc-self" name="ac6b67f687ea4c549abdb41a3b40d1bf6">dump</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns debug information about this renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4d3991aebb905fc50ff5848fee5ef5bd" class="m-doc">maximumValue</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the maximum value used for shading the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1678c768965832410b0e1d90962d60ce" class="m-doc">modifyRequestExtent</a>(</span><span class="m-doc-wrap"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Allows for a renderer to modify the extent of a feature request prior to rendering.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2410aaaaecbe0ddd329669ec9ca938a7" class="m-doc-self" name="a2410aaaaecbe0ddd329669ec9ca938a7">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsHeatmapRenderer.html" class="m-doc">QgsHeatmapRenderer</a>&amp;) -&gt; <a href="classQgsHeatmapRenderer.html" class="m-doc">QgsHeatmapRenderer</a>&amp; <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd>Direct copies are forbidden. Use <a href="classQgsHeatmapRenderer.html#ae2140f57dc530264afd5d9b0b9c39aa8" class="m-doc">clone()</a> instead.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9751d616a14696a55f6753c2c4d3ec5b" class="m-doc">radius</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the radius for the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6c7c9a7678a03c5ec48caf87704acd18" class="m-doc">radiusMapUnitScale</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp;</span>
+            </dt>
+            <dd>Returns the map unit scale used for the heatmap&#x27;s radius.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a042b2b88871a34a80f16abcfa423b8e8" class="m-doc">radiusUnit</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a></span>
+            </dt>
+            <dd>Returns the units used for the heatmap&#x27;s radius.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8a3b8d2732827cea53ac404dd1f39759" class="m-doc">renderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int layer = -1,
+              bool selected = false,
+              bool drawVertexMarker = false) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Render a feature using this renderer in the given context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a64f8e0141360e512f58251c947e0df58" class="m-doc">renderQuality</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the render quality used for drawing the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac9d6b0c13eb47bcff8f458504b3fc27c" class="m-doc-self" name="ac9d6b0c13eb47bcff8f458504b3fc27c">save</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) -&gt; QDomElement <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>store renderer info to XML element</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a12fb1940a647e212df4d256c43187080" class="m-doc">setColorRamp</a>(</span><span class="m-doc-wrap"><a href="classQgsColorRamp.html" class="m-doc">QgsColorRamp</a>* ramp)</span>
+            </dt>
+            <dd>Sets the color ramp to use for shading the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac07981a6fc8c235fd6f877c87e1af6fd" class="m-doc">setMaximumValue</a>(</span><span class="m-doc-wrap">const double value)</span>
+            </dt>
+            <dd>Sets the maximum value used for shading the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4c4ebe818fa0e851d2c7b8c6c7e38ffe" class="m-doc">setRadius</a>(</span><span class="m-doc-wrap">const double radius)</span>
+            </dt>
+            <dd>Sets the radius for the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af4a825e592893c7ff6c49353735fd4b7" class="m-doc">setRadiusMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span>
+            </dt>
+            <dd>Sets the map unit scale used for the heatmap&#x27;s radius.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adfac261ba4b7f0c8b84274ee946f284a" class="m-doc">setRadiusUnit</a>(</span><span class="m-doc-wrap">const <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span>
+            </dt>
+            <dd>Sets the units used for the heatmap&#x27;s radius.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6afd520bf1ebca6f73ad1b7370a73f31" class="m-doc">setRenderQuality</a>(</span><span class="m-doc-wrap">const int quality)</span>
+            </dt>
+            <dd>Sets the render quality used for drawing the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab08dcbc1757854c8b61020f6b2df046c" class="m-doc">setWeightExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span>
+            </dt>
+            <dd>Sets the expression used for weighting points when generating the heatmap.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Must be called when a new render cycle is started.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc">stopRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Must be called when a render cycle has finished, to allow the renderer to clean up.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a13219b097fe4039b8d69b190aebc1cb0" class="m-doc">symbolForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af95f2946547e9fe96c9abf9d2222e3be" class="m-doc">symbols</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; <a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3b9697d1c8f6c84765f8afebd03f4ac4" class="m-doc">usedAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QSet&lt;QString&gt; <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns a list of attributes required by this renderer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a01f21fc3165cea5c9b70414b71c491ba" class="m-doc">weightExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the expression used for weighting points when generating the heatmap.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ae2140f57dc530264afd5d9b0b9c39aa8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsHeatmapRenderer.html" class="m-doc">QgsHeatmapRenderer</a>* QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae2140f57dc530264afd5d9b0b9c39aa8" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Create a deep copy of this renderer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A copy of this renderer</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Should be implemented by all subclasses and generate a proper subclass.</p>
+          </div></section>
+          <section class="m-doc-details" id="a198a8176005db345942d3c8f4a043e61"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsColorRamp.html" class="m-doc">QgsColorRamp</a>* QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a198a8176005db345942d3c8f4a043e61" class="m-doc-self">colorRamp</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the color ramp used for shading the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>color ramp for heatmap</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a12fb1940a647e212df4d256c43187080" class="m-doc">setColorRamp</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4d3991aebb905fc50ff5848fee5ef5bd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4d3991aebb905fc50ff5848fee5ef5bd" class="m-doc-self">maximumValue</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the maximum value used for shading the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>maximum value for heatmap shading. If 0, then maximum value will be automatically calculated.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#ac07981a6fc8c235fd6f877c87e1af6fd" class="m-doc">setMaximumValue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1678c768965832410b0e1d90962d60ce"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1678c768965832410b0e1d90962d60ce" class="m-doc-self">modifyRequestExtent</a>(</span><span class="m-doc-wrap"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Allows for a renderer to modify the extent of a feature request prior to rendering.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">extent</td>
+                  <td>reference to request&#x27;s filter extent. Modify extent to change the extent of feature request</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>render context</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.7</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9751d616a14696a55f6753c2c4d3ec5b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9751d616a14696a55f6753c2c4d3ec5b" class="m-doc-self">radius</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the radius for the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>heatmap radius</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a4c4ebe818fa0e851d2c7b8c6c7e38ffe" class="m-doc">setRadius</a></p><p><a href="classQgsHeatmapRenderer.html#a042b2b88871a34a80f16abcfa423b8e8" class="m-doc">radiusUnit</a></p><p><a href="classQgsHeatmapRenderer.html#a6c7c9a7678a03c5ec48caf87704acd18" class="m-doc">radiusMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6c7c9a7678a03c5ec48caf87704acd18"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6c7c9a7678a03c5ec48caf87704acd18" class="m-doc-self">radiusMapUnitScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map unit scale used for the heatmap&#x27;s radius.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>map unit scale for heatmap&#x27;s radius</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a9751d616a14696a55f6753c2c4d3ec5b" class="m-doc">radius</a></p><p><a href="classQgsHeatmapRenderer.html#a042b2b88871a34a80f16abcfa423b8e8" class="m-doc">radiusUnit</a></p><p><a href="classQgsHeatmapRenderer.html#af4a825e592893c7ff6c49353735fd4b7" class="m-doc">setRadiusMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a042b2b88871a34a80f16abcfa423b8e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a042b2b88871a34a80f16abcfa423b8e8" class="m-doc-self">radiusUnit</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units used for the heatmap&#x27;s radius.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>units for heatmap radius</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a9751d616a14696a55f6753c2c4d3ec5b" class="m-doc">radius</a></p><p><a href="classQgsHeatmapRenderer.html#adfac261ba4b7f0c8b84274ee946f284a" class="m-doc">setRadiusUnit</a></p><p><a href="classQgsHeatmapRenderer.html#a6c7c9a7678a03c5ec48caf87704acd18" class="m-doc">radiusMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8a3b8d2732827cea53ac404dd1f39759"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8a3b8d2732827cea53ac404dd1f39759" class="m-doc-self">renderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int layer = -1,
+              bool selected = false,
+              bool drawVertexMarker = false) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Render a feature using this renderer in the given context.</p>
+<p>Must be called between <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a> and <a href="classQgsHeatmapRenderer.html#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc">stopRender()</a> calls. Default implementation renders a symbol as determined by <a href="classQgsHeatmapRenderer.html#a13219b097fe4039b8d69b190aebc1cb0" class="m-doc">symbolForFeature()</a> call. Returns true if the feature has been returned (this is used for example to determine whether the feature may be labelled).</p><p>If layer is not -1, the renderer should draw only a particula layer from symbols (in order to support symbol level rendering).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a></p><p><a href="classQgsHeatmapRenderer.html#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc">stopRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a64f8e0141360e512f58251c947e0df58"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a64f8e0141360e512f58251c947e0df58" class="m-doc-self">renderQuality</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the render quality used for drawing the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>render quality. A value of 1 indicates maximum quality, and increasing the value will result in faster drawing but lower quality rendering.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a6afd520bf1ebca6f73ad1b7370a73f31" class="m-doc">setRenderQuality</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a12fb1940a647e212df4d256c43187080"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a12fb1940a647e212df4d256c43187080" class="m-doc-self">setColorRamp</a>(</span><span class="m-doc-wrap"><a href="classQgsColorRamp.html" class="m-doc">QgsColorRamp</a>* ramp)</span></span>
+            </h3>
+            <p>Sets the color ramp to use for shading the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ramp</td>
+                  <td>color ramp for heatmap. Ownership of ramp is transferred to the renderer.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a198a8176005db345942d3c8f4a043e61" class="m-doc">colorRamp</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac07981a6fc8c235fd6f877c87e1af6fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac07981a6fc8c235fd6f877c87e1af6fd" class="m-doc-self">setMaximumValue</a>(</span><span class="m-doc-wrap">const double value)</span></span>
+            </h3>
+            <p>Sets the maximum value used for shading the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td>maximum value for heatmap shading. Set to 0 for automatic calculation of maximum value.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a4d3991aebb905fc50ff5848fee5ef5bd" class="m-doc">maximumValue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4c4ebe818fa0e851d2c7b8c6c7e38ffe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4c4ebe818fa0e851d2c7b8c6c7e38ffe" class="m-doc-self">setRadius</a>(</span><span class="m-doc-wrap">const double radius)</span></span>
+            </h3>
+            <p>Sets the radius for the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">radius</td>
+                  <td>heatmap radius</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a9751d616a14696a55f6753c2c4d3ec5b" class="m-doc">radius</a></p><p><a href="classQgsHeatmapRenderer.html#adfac261ba4b7f0c8b84274ee946f284a" class="m-doc">setRadiusUnit</a></p><p><a href="classQgsHeatmapRenderer.html#af4a825e592893c7ff6c49353735fd4b7" class="m-doc">setRadiusMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af4a825e592893c7ff6c49353735fd4b7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af4a825e592893c7ff6c49353735fd4b7" class="m-doc-self">setRadiusMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span></span>
+            </h3>
+            <p>Sets the map unit scale used for the heatmap&#x27;s radius.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">scale</td>
+                  <td>map unit scale for heatmap&#x27;s radius</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a4c4ebe818fa0e851d2c7b8c6c7e38ffe" class="m-doc">setRadius</a></p><p><a href="classQgsHeatmapRenderer.html#adfac261ba4b7f0c8b84274ee946f284a" class="m-doc">setRadiusUnit</a></p><p><a href="classQgsHeatmapRenderer.html#a6c7c9a7678a03c5ec48caf87704acd18" class="m-doc">radiusMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adfac261ba4b7f0c8b84274ee946f284a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adfac261ba4b7f0c8b84274ee946f284a" class="m-doc-self">setRadiusUnit</a>(</span><span class="m-doc-wrap">const <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span></span>
+            </h3>
+            <p>Sets the units used for the heatmap&#x27;s radius.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">unit</td>
+                  <td>units for heatmap radius</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a042b2b88871a34a80f16abcfa423b8e8" class="m-doc">radiusUnit</a></p><p><a href="classQgsHeatmapRenderer.html#a4c4ebe818fa0e851d2c7b8c6c7e38ffe" class="m-doc">setRadius</a></p><p><a href="classQgsHeatmapRenderer.html#a6c7c9a7678a03c5ec48caf87704acd18" class="m-doc">radiusMapUnitScale</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6afd520bf1ebca6f73ad1b7370a73f31"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6afd520bf1ebca6f73ad1b7370a73f31" class="m-doc-self">setRenderQuality</a>(</span><span class="m-doc-wrap">const int quality)</span></span>
+            </h3>
+            <p>Sets the render quality used for drawing the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">quality</td>
+                  <td>render quality. A value of 1 indicates maximum quality, and increasing the value will result in faster drawing but lower quality rendering.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a64f8e0141360e512f58251c947e0df58" class="m-doc">renderQuality</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab08dcbc1757854c8b61020f6b2df046c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab08dcbc1757854c8b61020f6b2df046c" class="m-doc-self">setWeightExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span></span>
+            </h3>
+            <p>Sets the expression used for weighting points when generating the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">expression</td>
+                  <td>point weight expression. If set to empty, all points are equally weighted.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a01f21fc3165cea5c9b70414b71c491ba" class="m-doc">weightExpression</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2131bda456168af131c3b5d2d71329d3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2131bda456168af131c3b5d2d71329d3" class="m-doc-self">startRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Must be called when a new render cycle is started.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>Additional information passed to the renderer about the job which will be rendered</td>
+                </tr>
+                <tr>
+                  <td>fields</td>
+                  <td>The fields available for rendering</td>
+                </tr>
+              </tbody>
+            </table>
+<p>A call to <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a> must always be followed by a corresponding call to <a href="classQgsHeatmapRenderer.html#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc">stopRender()</a> after all features have been rendered.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc">stopRender()</a></p></aside><aside class="m-note m-danger"><h4>Warning</h4><p>This method is not thread safe. Before calling <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a> in a non-main thread, the renderer should instead be cloned and <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a>/stopRender() called on the clone.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac180378cd030fb0d446c7374a6b2a9bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc-self">stopRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Must be called when a render cycle has finished, to allow the renderer to clean up.</p>
+<p>Calls to <a href="classQgsHeatmapRenderer.html#ac180378cd030fb0d446c7374a6b2a9bb" class="m-doc">stopRender()</a> must always be preceded by a call to <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a>.</p><aside class="m-note m-danger"><h4>Warning</h4><p>This method is not thread safe. Before calling <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a> in a non-main thread, the renderer should instead be cloned and <a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a>/stopRender() called on the clone.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#a2131bda456168af131c3b5d2d71329d3" class="m-doc">startRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a13219b097fe4039b8d69b190aebc1cb0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a13219b097fe4039b8d69b190aebc1cb0" class="m-doc-self">symbolForFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>symbolForFeature2 in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af95f2946547e9fe96c9abf9d2222e3be"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsrenderer_8h.html#a9e5c0f5f88a8fd455ad8ef92c3e96f1f" class="m-doc">QgsSymbolList</a> QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af95f2946547e9fe96c9abf9d2222e3be" class="m-doc-self">symbols</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>symbol2 in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3b9697d1c8f6c84765f8afebd03f4ac4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSet&lt;QString&gt; QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b9697d1c8f6c84765f8afebd03f4ac4" class="m-doc-self">usedAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns a list of attributes required by this renderer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A set of attributes</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Attributes not listed in here may not have been requested from the provider at rendering time.</p>
+          </div></section>
+          <section class="m-doc-details" id="a01f21fc3165cea5c9b70414b71c491ba"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsHeatmapRenderer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a01f21fc3165cea5c9b70414b71c491ba" class="m-doc-self">weightExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the expression used for weighting points when generating the heatmap.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>point weight expression. If empty, all points are equally weighted.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsHeatmapRenderer.html#ab08dcbc1757854c8b61020f6b2df046c" class="m-doc">setWeightExpression</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

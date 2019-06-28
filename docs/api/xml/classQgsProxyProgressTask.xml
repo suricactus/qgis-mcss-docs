@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProxyProgressTask" kind="class" language="C++" prot="public">
+    <compoundname>QgsProxyProgressTask</compoundname>
+    <basecompoundref refid="classQgsTask" prot="public" virt="non-virtual">QgsTask</basecompoundref>
+    <includes refid="qgsproxyprogresstask_8h" local="no">qgsproxyprogresstask.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsProxyProgressTask_1aa3d5376d42513a40188c057da4fe4346" prot="private" static="no" mutable="no">
+        <type>QMutex</type>
+        <definition>QMutex QgsProxyProgressTask::mNotFinishedMutex</definition>
+        <argsstring></argsstring>
+        <name>mNotFinishedMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="66" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProxyProgressTask_1a5399ec3746cc2b86953376d100595663" prot="private" static="no" mutable="no">
+        <type>QWaitCondition</type>
+        <definition>QWaitCondition QgsProxyProgressTask::mNotFinishedWaitCondition</definition>
+        <argsstring></argsstring>
+        <name>mNotFinishedWaitCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="65" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProxyProgressTask_1a107619cb8a71126414a3a194416bb5ec" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsProxyProgressTask::mResult</definition>
+        <argsstring></argsstring>
+        <name>mResult</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="67" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsProxyProgressTask_1ac3a934a4e6744e3f41969563a0c22609" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsProxyProgressTask::QgsProxyProgressTask</definition>
+        <argsstring>(const QString &amp;description)</argsstring>
+        <name>QgsProxyProgressTask</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsProxyProgressTask" kindref="compound">QgsProxyProgressTask</ref>, with the specified <emphasis>description</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="44" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProxyProgressTask_1a34bbd3520fabe6dbe081dccf1d1f84c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProxyProgressTask::finalize</definition>
+        <argsstring>(bool result)</argsstring>
+        <name>finalize</name>
+        <param>
+          <type>bool</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Finalizes the task, with the specified <emphasis>result</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be called when the operation being proxied has completed, to remove this proxy task from the task manager. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.cpp" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProxyProgressTask_1add1cdd862f2e5144cc46e8a07b2c1111" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProxyProgressTask::run</definition>
+        <argsstring>() override</argsstring>
+        <name>run</name>
+        <reimplements refid="classQgsTask_1a2d77e5bc36f0bbef5c7e2ee38a796bbe">run</reimplements>
+        <briefdescription>
+<para>Performs the task&apos;s operation. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method will be called when the task commences (ie via calling start() ), and subclasses should implement the operation they wish to perform in the background within this method.</para><para>A task must return a boolean value to indicate whether the task was completed successfully or terminated before completion. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="54" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.cpp" bodystart="31" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProxyProgressTask_1a1cb3f88d59f01a6f5321a0c2f7b03813" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProxyProgressTask::setProxyProgress</definition>
+        <argsstring>(double progress)</argsstring>
+        <name>setProxyProgress</name>
+        <param>
+          <type>double</type>
+          <declname>progress</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>progress</emphasis> (from 0 to 100) for the proxied operation. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is safe to call from the main thread. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="61" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A <ref refid="classQgsTask" kindref="compound">QgsTask</ref> shell which proxies progress reports. </para>    </briefdescription>
+    <detaileddescription>
+<para>Simple task shell which runs until finalized and reports progress only. This is usually used to expose a blocking operation&apos;s progress via task manager.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7341">
+        <label>QgsProxyProgressTask</label>
+        <link refid="classQgsProxyProgressTask"/>
+        <childnode refid="7342" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7343">
+        <label>QObject</label>
+      </node>
+      <node id="7342">
+        <label>QgsTask</label>
+        <link refid="classQgsTask"/>
+        <childnode refid="7343" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7344">
+        <label>QgsProxyProgressTask</label>
+        <link refid="classQgsProxyProgressTask"/>
+        <childnode refid="7345" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7346">
+        <label>QObject</label>
+      </node>
+      <node id="7345">
+        <label>QgsTask</label>
+        <link refid="classQgsTask"/>
+        <childnode refid="7346" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" line="36" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproxyprogresstask.h" bodystart="35" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classQgsTask_1adee948d61b73caf57498eb57f087fb8d" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>addSubTask</name></member>
+      <member refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>AllFlags</name></member>
+      <member refid="classQgsTask_1a5b2b284b03102808efedaac5dfc00707" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>begun</name></member>
+      <member refid="classQgsTask_1af9eb9236ea0d342fa5aa9f2073b4e08a" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>canCancel</name></member>
+      <member refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa1cb7aaa2e363846d69093018c368af20" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>CanCancel</name></member>
+      <member refid="classQgsTask_1a5d10b93acb49394b851bebf8a03680d7" prot="public" virt="virtual"><scope>QgsProxyProgressTask</scope><name>cancel</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aaf885759c2ac9e8d0e76a8f035e0ef2e8" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>Complete</name></member>
+      <member refid="classQgsTask_1a2ec1a2f6f324a0083028f1df10accbd8" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>dependentLayers</name></member>
+      <member refid="classQgsTask_1ad3a6fd5f8743c007927cf54c98c323c0" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>description</name></member>
+      <member refid="classQgsTask_1ab0d3c22232efac5deb4c0a9114b95a8f" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>elapsedTime</name></member>
+      <member refid="classQgsProxyProgressTask_1a34bbd3520fabe6dbe081dccf1d1f84c8" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>finalize</name></member>
+      <member refid="classQgsTask_1a2775f4377b3bc65b4dfb89d67c89c639" prot="protected" virt="virtual"><scope>QgsProxyProgressTask</scope><name>finished</name></member>
+      <member refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397a" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>Flag</name></member>
+      <member refid="classQgsTask_1a0eb8cade49fad19ae30e02e44e52ab67" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>flags</name></member>
+      <member refid="classQgsTask_1ac531f6ac746c2a48762908bca9f569e8" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>hold</name></member>
+      <member refid="classQgsTask_1a77207b78e993a8068ca932a78588ba78" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>isActive</name></member>
+      <member refid="classQgsTask_1af268c16fc903e9a63e93bf5818e50eca" prot="protected" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>isCanceled</name></member>
+      <member refid="classQgsProxyProgressTask_1aa3d5376d42513a40188c057da4fe4346" prot="private" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>mNotFinishedMutex</name></member>
+      <member refid="classQgsProxyProgressTask_1a5399ec3746cc2b86953376d100595663" prot="private" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>mNotFinishedWaitCondition</name></member>
+      <member refid="classQgsProxyProgressTask_1a107619cb8a71126414a3a194416bb5ec" prot="private" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>mResult</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aac2e4a7d8f3fb678c3b8b979fd55f07fb" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>OnHold</name></member>
+      <member refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba4f04e3281cba5e2c705141f0ed07097d" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>ParentDependsOnSubTask</name></member>
+      <member refid="classQgsTask_1a1bc035725fa4689d486e6024a17fa694" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>progress</name></member>
+      <member refid="classQgsTask_1a2df3b95a83b5296959947950d9320940" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>progressChanged</name></member>
+      <member refid="classQgsProxyProgressTask_1ac3a934a4e6744e3f41969563a0c22609" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>QgsProxyProgressTask</name></member>
+      <member refid="classQgsTask_1a6b6a5a9ce2caeb19b8f1c93d003e8ae7" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>QgsTask</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>Queued</name></member>
+      <member refid="classQgsProxyProgressTask_1add1cdd862f2e5144cc46e8a07b2c1111" prot="public" virt="virtual"><scope>QgsProxyProgressTask</scope><name>run</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aae2415f41b060b3ff551a498d926667e2" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>Running</name></member>
+      <member refid="classQgsTask_1ac118b1200a6b56a9bc36908da3fdf6fd" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>setDependentLayers</name></member>
+      <member refid="classQgsTask_1af44d70df34a60ea921f55c1c69a62c69" prot="protected" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>setProgress</name></member>
+      <member refid="classQgsProxyProgressTask_1a1cb3f88d59f01a6f5321a0c2f7b03813" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>setProxyProgress</name></member>
+      <member refid="classQgsTask_1a09fe64a54e26d3a4de96d77a1a28d4ff" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>status</name></member>
+      <member refid="classQgsTask_1aad96341858c75ce3ed6995fb83c663ef" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>statusChanged</name></member>
+      <member refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82b" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>SubTaskDependency</name></member>
+      <member refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>SubTaskIndependent</name></member>
+      <member refid="classQgsTask_1a1943c69e00a43641d929ec64787e54b0" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>taskCompleted</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716a" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>TaskStatus</name></member>
+      <member refid="classQgsTask_1aa5f8557431c472b72804a8e9a39bbfaa" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>taskTerminated</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa642c6a9896682897fb8e1990fadc5bb2" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>Terminated</name></member>
+      <member refid="classQgsTask_1ab3ac2490c151cc90d175d175b8112b05" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>unhold</name></member>
+      <member refid="classQgsTask_1af640d3e3150cd8636bdddbfcd263c698" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>waitForFinished</name></member>
+      <member refid="classQgsTask_1a2be94a3a3e2a4d2c0e6ad79ad80301fb" prot="public" virt="non-virtual"><scope>QgsProxyProgressTask</scope><name>~QgsTask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

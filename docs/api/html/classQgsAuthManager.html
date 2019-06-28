@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsAuthManager class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsAuthManager <span class="m-thin">class</span>
+        </h1>
+        <p>Singleton offering an interface to manage the authentication configuration database and to utilize configurations through various authentication method plugins.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-attribs">Public static variables</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsAuthManager.html" class="m-doc">QgsAuthManager</a> should not usually be directly created, but rather accessed through <a href="classQgsApplication.html#aa879f2f9f0d9d79f1d7968cc0f1b9a6a" class="m-doc">QgsApplication::<wbr />authManager()</a>.</p>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a0fc84dfac89f5b14f1ee802a13d24ecb" class="m-doc-self" name="a0fc84dfac89f5b14f1ee802a13d24ecb">MessageLevel</a> { </span><span class="m-doc-wrap"><a href="#a0fc84dfac89f5b14f1ee802a13d24ecbab514eac53b2ccdd151c01b97eeee89e5" class="m-doc">INFO</a> = 0,
+              <a href="#a0fc84dfac89f5b14f1ee802a13d24ecba2027aa626ba578ffbcc931442d479d4a" class="m-doc">WARNING</a> = 1,
+              <a href="#a0fc84dfac89f5b14f1ee802a13d24ecba7afe794b70c36cdf9961854f061ecf8a" class="m-doc">CRITICAL</a> = 2 }</span>
+            </dt>
+            <dd>Message log level (mirrors that of <a href="classQgsMessageLog.html" class="m-doc">QgsMessageLog</a>, so it can also output there)</dd>
+          </dl>
+        </section>
+        <section id="pub-static-attribs">
+          <h2><a href="#pub-static-attribs">Public static variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              static const QString <a href="#a52374b6f35514ca47e203633c9366679" class="m-doc-self" name="a52374b6f35514ca47e203633c9366679">AUTH_MAN_TAG</a>
+            </dt>
+            <dd>The display name of the Authentication Manager.</dd>
+            <dt>
+              static const QString <a href="#ae0107862e97a6b3333613bac43aafc3a" class="m-doc-self" name="ae0107862e97a6b3333613bac43aafc3a">AUTH_PASSWORD_HELPER_DISPLAY_NAME</a>
+            </dt>
+            <dd>The display name of the password helper (platform dependent)</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abe4afe518eefe8e58d87979d4fd65443" class="m-doc-self" name="abe4afe518eefe8e58d87979d4fd65443">authDatabaseConfigTable</a>(</span><span class="m-doc-wrap">) const -&gt; const QString</span>
+            </dt>
+            <dd>Name of the authentication database table that stores configs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab280f075bed9633cd892de8c76a43600" class="m-doc-self" name="ab280f075bed9633cd892de8c76a43600">authDatabaseConnection</a>(</span><span class="m-doc-wrap">) const -&gt; QSqlDatabase</span>
+            </dt>
+            <dd>Sets up the application instance of the authentication database connection.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a013a5421764b48dd3dd34cf3f3e4739c" class="m-doc-self" name="a013a5421764b48dd3dd34cf3f3e4739c">authDatabaseServersTable</a>(</span><span class="m-doc-wrap">) const -&gt; const QString</span>
+            </dt>
+            <dd>Name of the authentication database table that stores server exceptions/configs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a63e68de971ab1515b4b3862f25a47c32" class="m-doc">authenticationDatabasePath</a>(</span><span class="m-doc-wrap">) const -&gt; const QString</span>
+            </dt>
+            <dd>The standard authentication database file in ~/.qgis3/ or defined location.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a734154dbef7490b25551632a0455a9ff" class="m-doc-self" name="a734154dbef7490b25551632a0455a9ff">authManTag</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Simple text tag describing authentication system for message logs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa6685e6402ff2ad836f63e2a0d7666f2" class="m-doc">authMethod</a>(</span><span class="m-doc-wrap">const QString&amp; authMethodKey) -&gt; <a href="classQgsAuthMethod.html" class="m-doc">QgsAuthMethod</a>*</span>
+            </dt>
+            <dd>Gets authentication method from the config/provider cache via its key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1eec643c8dfdf852e65e127fa3ca7cfe" class="m-doc">authMethodEditWidget</a>(</span><span class="m-doc-wrap">const QString&amp; authMethodKey,
+              QWidget* parent) -&gt; QWidget*</span>
+            </dt>
+            <dd>Gets authentication method edit widget via its key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aca194ec2e5772dfe3a836773c9510e9c" class="m-doc-self" name="aca194ec2e5772dfe3a836773c9510e9c">authMethodsKeys</a>(</span><span class="m-doc-wrap">const QString&amp; dataprovider = QString()) -&gt; QStringList</span>
+            </dt>
+            <dd>Gets keys of supported authentication methods.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1de130513a8c8f4faebde50d3b57eb7e" class="m-doc">authMethodsMap</a>(</span><span class="m-doc-wrap">const QString&amp; dataprovider = QString()) -&gt; <a href="qgsauthmethod_8h.html#a471e53cde0f1ef6bd42b4deafd6c2908" class="m-doc">QgsAuthMethodsMap</a></span>
+            </dt>
+            <dd>Gets available authentication methods mapped to their key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4ff5a1b02994e7915ea70c1996591fc8" class="m-doc">authSetting</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant(),
+              bool decrypt = false) -&gt; QVariant</span>
+            </dt>
+            <dd>authSetting get an authentication setting (retrieved as string and returned as QVariant( QString ))</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af1caaed5349a4214cfc56e718c2094dd" class="m-doc-self" name="af1caaed5349a4214cfc56e718c2094dd">availableAuthMethodConfigs</a>(</span><span class="m-doc-wrap">const QString&amp; dataprovider = QString()) -&gt; <a href="qgsauthconfig_8h.html#ab317cb1239ba59b99835b409ecb74dfe" class="m-doc">QgsAuthMethodConfigsMap</a></span>
+            </dt>
+            <dd>Gets mapping of authentication config ids and their base configs (not decrypted data)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a91708e0ade02930b854747c4826c2c5b" class="m-doc">backupAuthenticationDatabase</a>(</span><span class="m-doc-wrap">QString* backuppath = nullptr) -&gt; bool</span>
+            </dt>
+            <dd>Close connection to current authentication database and back it up.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac0c073165e8c83f59fadfb3891456af9" class="m-doc">caCertsCache</a>(</span><span class="m-doc-wrap">) -&gt; const QMap&lt;QString, QPair&lt;<a href="classQgsAuthCertUtils.html#abe90cccf324e3bd5c7f81691140375dd" class="m-doc">QgsAuthCertUtils::<wbr />CaCertSource</a>, QSslCertificate&gt;&gt;</span>
+            </dt>
+            <dd>caCertsCache get all CA certs mapped to their sha1 from cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a80358f3cb7e1d4e4d75ac5975c9f6090" class="m-doc">certAuthority</a>(</span><span class="m-doc-wrap">const QString&amp; id) -&gt; const QSslCertificate</span>
+            </dt>
+            <dd>Gets a certificate authority by id (sha hash)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa2bc56ee03fe7867c051add4df61936d" class="m-doc">certIdentities</a>(</span><span class="m-doc-wrap">) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>certIdentities get certificate identities</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a04e95b520e445f94f040590adc9f0626" class="m-doc">certIdentity</a>(</span><span class="m-doc-wrap">const QString&amp; id) -&gt; const QSslCertificate</span>
+            </dt>
+            <dd>certIdentity get a certificate identity by <em>id</em> (sha hash)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4b9ca6756070bb7df42ad4b72b4c5765" class="m-doc">certIdentityBundle</a>(</span><span class="m-doc-wrap">const QString&amp; id) -&gt; const QPair&lt;QSslCertificate, QSslKey&gt;</span>
+            </dt>
+            <dd>Gets a certificate identity bundle by <em>id</em> (sha hash).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a07b1beedd757983bd618f92530b70906" class="m-doc">certIdentityBundleToPem</a>(</span><span class="m-doc-wrap">const QString&amp; id) -&gt; const QStringList</span>
+            </dt>
+            <dd>certIdentityBundleToPem get a certificate identity bundle by <em>id</em> (sha hash) returned as PEM text</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa3fb213e6777d238455fce04ae96a803" class="m-doc">certIdentityIds</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>certIdentityIds get list of certificate identity ids from database</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a60c9d30487a369472134d08685292525" class="m-doc">certificateTrustPolicy</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; <a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a></span>
+            </dt>
+            <dd>certificateTrustPolicy get trust policy for a particular certificate <em>cert</em></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a020327d08c301f203e8ec979319e0117" class="m-doc">certTrustCache</a>(</span><span class="m-doc-wrap">) -&gt; const QMap&lt;<a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a>, QStringList&gt;</span>
+            </dt>
+            <dd>certTrustCache get cache of certificate sha1s, per trust policy</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a75eeb8006413c1d21fc9ee3f39800133" class="m-doc">certTrustPolicy</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; <a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a></span>
+            </dt>
+            <dd>certTrustPolicy get whether certificate <em>cert</em> is trusted by user</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa043e800ddc0714a5009e6ae4c3a8463" class="m-doc">clearMasterPassword</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Clear supplied master password.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a14d35a31054a7ac2c7cfd607cdf5db29" class="m-doc">configAuthMethod</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) -&gt; <a href="classQgsAuthMethod.html" class="m-doc">QgsAuthMethod</a>*</span>
+            </dt>
+            <dd>Gets authentication method from the config/provider cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aff04d81ca53fc37ceee81d90c7bdf518" class="m-doc">configAuthMethodKey</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) const -&gt; QString</span>
+            </dt>
+            <dd>Gets key of authentication method associated with config ID.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a83a0f4145438323bf414e4cc2d4b5733" class="m-doc-self" name="a83a0f4145438323bf414e4cc2d4b5733">configIdRegex</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the regular expression for authcfg=.{7} key/value token for authentication ids.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a714ffa9adc9f88e402f6a0630282e385" class="m-doc-self" name="a714ffa9adc9f88e402f6a0630282e385">configIds</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Gets list of authentication ids from database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6f5ea5adbdc0eab79cfc6e87e01f0c6d" class="m-doc">configIdUnique</a>(</span><span class="m-doc-wrap">const QString&amp; id) const -&gt; bool</span>
+            </dt>
+            <dd>Verify if provided authentication id is unique.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8eeaf4bcfc17f3f86a0f01b1ce6785aa" class="m-doc">databaseCAs</a>(</span><span class="m-doc-wrap">) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>databaseCAs get database-stored certificate authorities</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a56b91514c33d1754359f389ff2ede2f0" class="m-doc-self" name="a56b91514c33d1754359f389ff2ede2f0">defaultCertTrustPolicy</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a></span>
+            </dt>
+            <dd>Gets the default certificate trust policy preferred by user.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a142353b507abd1bd3fd06f5e438572ca" class="m-doc-self" name="a142353b507abd1bd3fd06f5e438572ca">disabledMessage</a>(</span><span class="m-doc-wrap">) const -&gt; const QString</span>
+            </dt>
+            <dd>Standard message for when <a href="namespaceQCA.html" class="m-doc">QCA</a>&#x27;s qca-ossl plugin is missing and system is disabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8ede00489324f224119794094a4801ef" class="m-doc-self" name="a8ede00489324f224119794094a4801ef">dumpIgnoredSslErrorsCache_</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Utility function to dump the cache for debug purposes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a30efd772621612e5a896fcea5230eb40" class="m-doc">eraseAuthenticationDatabase</a>(</span><span class="m-doc-wrap">bool backup,
+              QString* backuppath = nullptr) -&gt; bool</span>
+            </dt>
+            <dd>Erase all rows from all tables in authentication database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9ef8749744d3665f89af093cf274e970" class="m-doc-self" name="a9ef8749744d3665f89af093cf274e970">existsAuthSetting</a>(</span><span class="m-doc-wrap">const QString&amp; key) -&gt; bool</span>
+            </dt>
+            <dd>Check if an authentication setting exists.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6a222f8abd22807a121f669b98b17082" class="m-doc-self" name="a6a222f8abd22807a121f669b98b17082">existsCertAuthority</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Check if a certificate authority exists.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abf26ffaea65e630062c24359de533969" class="m-doc-self" name="abf26ffaea65e630062c24359de533969">existsCertIdentity</a>(</span><span class="m-doc-wrap">const QString&amp; id) -&gt; bool</span>
+            </dt>
+            <dd>Check if a certificate identity exists.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9a2a1484912fda4af562fe6ef2bfe10f" class="m-doc-self" name="a9a2a1484912fda4af562fe6ef2bfe10f">existsSslCertCustomConfig</a>(</span><span class="m-doc-wrap">const QString&amp; id,
+              const QString&amp; hostport) -&gt; bool</span>
+            </dt>
+            <dd>Check if SSL certificate custom config exists.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2b2f6b20f0e29adab71004cb6f1802d2" class="m-doc">extraFileCAs</a>(</span><span class="m-doc-wrap">) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>extraFileCAs extra file-based certificate authorities</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af0cbd457e9e678cd9b2ebc3f871b45e8" class="m-doc">hasConfigId</a>(</span><span class="m-doc-wrap">const QString&amp; txt) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether a string includes an authcfg ID token.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3b210ec3bd5b02f088eff9477cc4d7de" class="m-doc">ignoredSslErrorCache</a>(</span><span class="m-doc-wrap">) -&gt; QHash&lt;QString, QSet&lt;QSslError::SslError&gt;&gt;</span>
+            </dt>
+            <dd>ignoredSslErrorCache Get ignored SSL error cache, keyed with cert/connection&#x27;s sha:host:port.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3cd5ebc04fbd90b3f6dec1cad4c9995d" class="m-doc">init</a>(</span><span class="m-doc-wrap">const QString&amp; pluginPath = QString(),
+              const QString&amp; authDatabasePath = QString()) -&gt; bool</span>
+            </dt>
+            <dd>init initialize <a href="namespaceQCA.html" class="m-doc">QCA</a>, prioritize qca-ossl plugin and optionally set up the authentication database</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2032136d836deeedbb587e81880c7ff8" class="m-doc-self" name="a2032136d836deeedbb587e81880c7ff8">initSslCaches</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Initialize various SSL authentication caches.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4cb0c49262776c240edfd96a2e788087" class="m-doc-self" name="a4cb0c49262776c240edfd96a2e788087">isDisabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Whether <a href="namespaceQCA.html" class="m-doc">QCA</a> has the qca-ossl plugin, which a base run-time requirement.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a75e5d58e73e192f1a054e5e56a38834c" class="m-doc">loadAuthenticationConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg,
+              <a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; mconfig,
+              bool full = false) -&gt; bool</span>
+            </dt>
+            <dd>Load an authentication config from the database into subclass.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6bebc32db002489768722e703e9c5e8c" class="m-doc">mappedDatabaseCAs</a>(</span><span class="m-doc-wrap">) -&gt; const QMap&lt;QString, QSslCertificate&gt;</span>
+            </dt>
+            <dd>mappedDatabaseCAs get sha1-mapped database-stored certificate authorities</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a770e2a216408f8315ed1c0dc9e2bf468" class="m-doc-self" name="a770e2a216408f8315ed1c0dc9e2bf468">masterPasswordHashInDatabase</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Verify a password hash existing in authentication database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad1ad9b645814719551b731ecbe0b373a" class="m-doc-self" name="ad1ad9b645814719551b731ecbe0b373a">masterPasswordIsSet</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Whether master password has be input and verified, i.e. authentication database is accessible.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a275cd0a82ef15e097d95b48918b5b5cd" class="m-doc">masterPasswordSame</a>(</span><span class="m-doc-wrap">const QString&amp; pass) const -&gt; bool</span>
+            </dt>
+            <dd>Check whether supplied password is the same as the one already set.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8995989aa4717dfcb72b687193e15a3f" class="m-doc">passwordHelperDelete</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Delete master password from wallet.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad2c9c590b26f05d97be1ec1af0e40033" class="m-doc">passwordHelperEnabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Password helper enabled getter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa95fdb46d0b5159116a0182108f9c60e" class="m-doc">passwordHelperErrorMessage</a>(</span><span class="m-doc-wrap">) -&gt; const QString</span>
+            </dt>
+            <dd>Error message getter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad3615eb2b77edce80253dd61cb4ed84b" class="m-doc">passwordHelperLoggingEnabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Password helper logging enabled getter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acdbdd5a5b2490429770b4ad43df93418" class="m-doc">passwordHelperSync</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Store the password manager into the wallet.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2f6664d7f2fd71d8e370c602af630ebe" class="m-doc-self" name="a2f6664d7f2fd71d8e370c602af630ebe">rebuildCaCertsCache</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Rebuild certificate authority cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a62bfcaa274803a4e2451e32f7cbb6516" class="m-doc-self" name="a62bfcaa274803a4e2451e32f7cbb6516">rebuildCertTrustCache</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Rebuild certificate authority cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1fac62c3b4a0e0dca1cc80817f6f26d6" class="m-doc-self" name="a1fac62c3b4a0e0dca1cc80817f6f26d6">rebuildIgnoredSslErrorCache</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Rebuild ignoredSSL error cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae98ac1ff820d0ed32d2b64f94e45e9f8" class="m-doc-self" name="ae98ac1ff820d0ed32d2b64f94e45e9f8">rebuildTrustedCaCertsCache</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Rebuild trusted certificate authorities cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a882635d254abd1faf1352929eb41818c" class="m-doc-self" name="a882635d254abd1faf1352929eb41818c">registerCoreAuthMethods</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Instantiate and register existing C++ core authentication methods from plugins.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5dd69411db5fb27315d57b91ca45d31d" class="m-doc">removeAllAuthenticationConfigs</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Clear all authentication configs from table in database and from provider caches.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeeb910abba7f205f4c4f1b3ec137a4b3" class="m-doc">removeAuthenticationConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) -&gt; bool</span>
+            </dt>
+            <dd>Remove an authentication config in the database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d8ae3c52b4362c34b55a7ff7927f850" class="m-doc-self" name="a2d8ae3c52b4362c34b55a7ff7927f850">removeAuthSetting</a>(</span><span class="m-doc-wrap">const QString&amp; key) -&gt; bool</span>
+            </dt>
+            <dd>Remove an authentication setting.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a68b8c4e8cbeeb38777c110e3dff07471" class="m-doc-self" name="a68b8c4e8cbeeb38777c110e3dff07471">removeCertAuthority</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Remove a certificate authority.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af866ef2648509e697765d72e94ac2310" class="m-doc-self" name="af866ef2648509e697765d72e94ac2310">removeCertIdentity</a>(</span><span class="m-doc-wrap">const QString&amp; id) -&gt; bool</span>
+            </dt>
+            <dd>Remove a certificate identity.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa4175b246b0d33e64c52dbc0569dd8be" class="m-doc-self" name="aa4175b246b0d33e64c52dbc0569dd8be">removeCertTrustPolicies</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs) -&gt; bool</span>
+            </dt>
+            <dd>Remove a group certificate authorities.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aefa692506182b7c7492c8240e6bb981c" class="m-doc-self" name="aefa692506182b7c7492c8240e6bb981c">removeCertTrustPolicy</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Remove a certificate authority.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ade63c2329f9c52971a8a92f36c468861" class="m-doc-self" name="ade63c2329f9c52971a8a92f36c468861">removeSslCertCustomConfig</a>(</span><span class="m-doc-wrap">const QString&amp; id,
+              const QString&amp; hostport) -&gt; bool</span>
+            </dt>
+            <dd>Remove an SSL certificate custom config.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac3a955f406cab920487c8a9513c40680" class="m-doc">resetMasterPassword</a>(</span><span class="m-doc-wrap">const QString&amp; newpass,
+              const QString&amp; oldpass,
+              bool keepbackup,
+              QString* backuppath = nullptr) -&gt; bool</span>
+            </dt>
+            <dd>Reset the master password to a new one, then re-encrypt all previous configs in a new database file, optionally backup curren database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2f7b1955272f7ee2034f40064cc614a1" class="m-doc">scheduledAuthDatabaseErase</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Whether there is a scheduled opitonal erase of authentication database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a02be6d8dd90bc2631de6e22a6fbfca3d" class="m-doc-self" name="a02be6d8dd90bc2631de6e22a6fbfca3d">setDefaultCertTrustPolicy</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a> policy) -&gt; bool</span>
+            </dt>
+            <dd>Sets the default certificate trust policy preferred by user.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad37105c67520f4fa34b8559d1147e766" class="m-doc">setMasterPassword</a>(</span><span class="m-doc-wrap">bool verify = false) -&gt; bool</span>
+            </dt>
+            <dd>Main call to initially set or continually check master password is set.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6f4c7a90aca88821b246513821b042a5" class="m-doc">setMasterPassword</a>(</span><span class="m-doc-wrap">const QString&amp; pass,
+              bool verify = false) -&gt; bool</span>
+            </dt>
+            <dd>Overloaded call to reset master password or set it initially without user interaction.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4088886e34ce0aace8155c439577407d" class="m-doc">setPasswordHelperEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Password helper enabled setter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab795db878e487484c1d67f1cc7111bae" class="m-doc">setPasswordHelperLoggingEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Password helper logging enabled setter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a42dc4ad650ab3b9629701afb356779cb" class="m-doc">setScheduledAuthDatabaseErase</a>(</span><span class="m-doc-wrap">bool scheduleErase)</span>
+            </dt>
+            <dd>Schedule an optional erase of authentication database, starting when mutex is lockable.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a93082481b9b745dec09b09663d7a5f54" class="m-doc">setScheduledAuthDatabaseEraseRequestEmitted</a>(</span><span class="m-doc-wrap">bool emitted)</span>
+            </dt>
+            <dd>Re-emit a signal to schedule an optional erase of authentication database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af19ee1e173e07e7d5ef9bb4d8e8d401e" class="m-doc">sslCertCustomConfig</a>(</span><span class="m-doc-wrap">const QString&amp; id,
+              const QString&amp; hostport) -&gt; const <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a></span>
+            </dt>
+            <dd>sslCertCustomConfig get an SSL certificate custom config by <em>id</em> (sha hash) and <em>hostport</em> (host:port)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abb2c9b101f3e46f7bbb0d2964b6fed2c" class="m-doc">sslCertCustomConfigByHost</a>(</span><span class="m-doc-wrap">const QString&amp; hostport) -&gt; const <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a></span>
+            </dt>
+            <dd>sslCertCustomConfigByHost get an SSL certificate custom config by <em>hostport</em> (host:port)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a458849efbffe61c1014f7d7b48d21d95" class="m-doc">sslCertCustomConfigs</a>(</span><span class="m-doc-wrap">) -&gt; const QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;</span>
+            </dt>
+            <dd>sslCertCustomConfigs get SSL certificate custom configs</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6acf1b15905a9692d1cb552e748d010b" class="m-doc">storeAuthenticationConfig</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; mconfig) -&gt; bool</span>
+            </dt>
+            <dd>Store an authentication config in the database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0095aebea6a29248e7060d725269354d" class="m-doc-self" name="a0095aebea6a29248e7060d725269354d">storeAuthSetting</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value,
+              bool encrypt = false) -&gt; bool</span>
+            </dt>
+            <dd>Store an authentication setting (stored as string via QVariant( value ).toString() )</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adc0a5d1f3fd446f26c71252f378ce6c4" class="m-doc-self" name="adc0a5d1f3fd446f26c71252f378ce6c4">storeCertAuthorities</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs) -&gt; bool</span>
+            </dt>
+            <dd>Store multiple certificate authorities.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa36186380a584dfc579d5325dd4bde17" class="m-doc-self" name="aa36186380a584dfc579d5325dd4bde17">storeCertAuthority</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Store a certificate authority.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1bce5f8bebb7ec5d636fd99b2b60fd75" class="m-doc-self" name="a1bce5f8bebb7ec5d636fd99b2b60fd75">storeCertIdentity</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert,
+              const QSslKey&amp; key) -&gt; bool</span>
+            </dt>
+            <dd>Store a certificate identity.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2eb7c0805cf0cdc9cb19130ac9c0237a" class="m-doc-self" name="a2eb7c0805cf0cdc9cb19130ac9c0237a">storeCertTrustPolicy</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert,
+              <a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a> policy) -&gt; bool</span>
+            </dt>
+            <dd>Store user trust value for a certificate.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab6bc87f601291f0923604adc73cb35e7" class="m-doc-self" name="ab6bc87f601291f0923604adc73cb35e7">storeSslCertCustomConfig</a>(</span><span class="m-doc-wrap">const <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&amp; config) -&gt; bool</span>
+            </dt>
+            <dd>Store an SSL certificate custom config.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af18f219986048fa96252051c300fd5a1" class="m-doc">supportedAuthMethodExpansions</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) -&gt; QgsAuthMethod::Expansions</span>
+            </dt>
+            <dd>Gets supported authentication method expansion(s), e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a65488d78b99b0a291fd10173b803afd6" class="m-doc">systemRootCAs</a>(</span><span class="m-doc-wrap">) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>systemRootCAs get root system certificate authorities</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69c387221a912f7e54b65de297f3dafb" class="m-doc">trustedCaCerts</a>(</span><span class="m-doc-wrap">bool includeinvalid = false) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>trustedCaCerts get list of all trusted CA certificates</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aff3ce69491acfbb993b37b5627893d43" class="m-doc">trustedCaCertsCache</a>(</span><span class="m-doc-wrap">) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>trustedCaCertsCache cache of trusted certificate authorities, ready for network connections</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a58be91a20b5f4eb5850830560649be05" class="m-doc">trustedCaCertsPemText</a>(</span><span class="m-doc-wrap">) -&gt; const QByteArray</span>
+            </dt>
+            <dd>trustedCaCertsPemText get concatenated string of all trusted CA certificates</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4add655971f72e4d3dec6cecb76f695c" class="m-doc-self" name="a4add655971f72e4d3dec6cecb76f695c">uniqueConfigId</a>(</span><span class="m-doc-wrap">) const -&gt; const QString</span>
+            </dt>
+            <dd>Gets a unique generated 7-character string to assign to as config id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a45f5e9dd0863a2a33b348169e0436866" class="m-doc">untrustedCaCerts</a>(</span><span class="m-doc-wrap">QList&lt;QSslCertificate&gt; trustedCAs = QList&lt;QSslCertificate&gt;()) -&gt; const QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>untrustedCaCerts get list of untrusted certificate authorities</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abd0af607b2faee76f339cf7f96e1dd1b" class="m-doc">updateAuthenticationConfig</a>(</span><span class="m-doc-wrap">const <a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; config) -&gt; bool</span>
+            </dt>
+            <dd>Update an authentication config in the database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab4e593fca6b024902e7499dcb73d3f24" class="m-doc-self" name="ab4e593fca6b024902e7499dcb73d3f24">updateConfigAuthMethods</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Sync the confg/authentication method cache with what is in database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa7005267b6811022b623412a9e7cbb86" class="m-doc">updateDataSourceUriItems</a>(</span><span class="m-doc-wrap">QStringList&amp; connectionItems,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool</span>
+            </dt>
+            <dd>Provider call to update a <a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a> with an authentication config.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0a68a8c2cc638e55eddfde67490dbc8d" class="m-doc-self" name="a0a68a8c2cc638e55eddfde67490dbc8d">updateIgnoredSslErrorsCache</a>(</span><span class="m-doc-wrap">const QString&amp; shahostport,
+              const QList&lt;QSslError&gt;&amp; errors) -&gt; bool</span>
+            </dt>
+            <dd>Update ignored SSL error cache with possible ignored SSL errors, using sha:host:port key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0cc65e483d7b50243c73cb2ea6e375ba" class="m-doc-self" name="a0cc65e483d7b50243c73cb2ea6e375ba">updateIgnoredSslErrorsCacheFromConfig</a>(</span><span class="m-doc-wrap">const <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&amp; config) -&gt; bool</span>
+            </dt>
+            <dd>Update ignored SSL error cache with possible ignored SSL errors, using server config.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7e7a1e6c0f08ccdb979bc0adf9e2230d" class="m-doc">updateNetworkProxy</a>(</span><span class="m-doc-wrap">QNetworkProxy&amp; proxy,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool</span>
+            </dt>
+            <dd>Provider call to update a QNetworkProxy with an authentication config.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae351364f98af3ad988b0a646aa4bed12" class="m-doc">updateNetworkReply</a>(</span><span class="m-doc-wrap">QNetworkReply* reply,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool</span>
+            </dt>
+            <dd>Provider call to update a QNetworkReply with an authentication config (used to skip known SSL errors, etc.)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa04d0781bcee7fccb5125f54d35bc666" class="m-doc">updateNetworkRequest</a>(</span><span class="m-doc-wrap">QNetworkRequest&amp; request,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool</span>
+            </dt>
+            <dd>Provider call to update a QNetworkRequest with an authentication config.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0ca0f51eba177642dcaaa8bcbcb4f656" class="m-doc">verifyMasterPassword</a>(</span><span class="m-doc-wrap">const QString&amp; compare = QString()) -&gt; bool</span>
+            </dt>
+            <dd>Verify the supplied master password against any existing hash in authentication database.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3e4155611a9d4712470309fa9cbad447" class="m-doc-self" name="a3e4155611a9d4712470309fa9cbad447">authDatabaseChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the authentication db is significantly changed, e.g. large record removal, erased, etc.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a91da660b4be246ac88e6b63285619acf" class="m-doc-self" name="a91da660b4be246ac88e6b63285619acf">authDatabaseEraseRequested</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when a user has indicated they may want to erase the authentication db.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad36687d7f760fdd88045b37ddd2e71dc" class="m-doc">masterPasswordVerified</a>(</span><span class="m-doc-wrap">bool verified)</span>
+            </dt>
+            <dd>Emitted when a password has been verify (or not)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a16aabb9e6efac56fe214b89a9ebd30c5" class="m-doc">messageOut</a>(</span><span class="m-doc-wrap">const QString&amp; message,
+              const QString&amp; tag = <a href="classQgsAuthManager.html#a52374b6f35514ca47e203633c9366679" class="m-doc">QgsAuthManager::<wbr />AUTH_MAN_TAG</a>,
+              <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecb" class="m-doc">QgsAuthManager::<wbr />MessageLevel</a> level = <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecbab514eac53b2ccdd151c01b97eeee89e5" class="m-doc">QgsAuthManager::<wbr />INFO</a>) const</span>
+            </dt>
+            <dd>Custom logging signal to relay to console output and <a href="classQgsMessageLog.html" class="m-doc">QgsMessageLog</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9989475a10455ae23a59c0edd6181eee" class="m-doc-self" name="a9989475a10455ae23a59c0edd6181eee">passwordHelperFailure</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Signals emitted on password helper failure, mainly used in the tests to exit main application loop.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a444c9f3f77a24f14b7229097bfd9388f" class="m-doc">passwordHelperMessageOut</a>(</span><span class="m-doc-wrap">const QString&amp; message,
+              const QString&amp; tag = <a href="classQgsAuthManager.html#a52374b6f35514ca47e203633c9366679" class="m-doc">QgsAuthManager::<wbr />AUTH_MAN_TAG</a>,
+              <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecb" class="m-doc">QgsAuthManager::<wbr />MessageLevel</a> level = <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecbab514eac53b2ccdd151c01b97eeee89e5" class="m-doc">QgsAuthManager::<wbr />INFO</a>)</span>
+            </dt>
+            <dd>Custom logging signal to inform the user about master password &lt;-&gt; password manager interactions.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a808a7420c3b28645322dcb0726261ec1" class="m-doc-self" name="a808a7420c3b28645322dcb0726261ec1">passwordHelperSuccess</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Signals emitted on password helper success, mainly used in the tests to exit main application loop.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a034969428ad72f39f56ca3cd49f08475" class="m-doc-self" name="a034969428ad72f39f56ca3cd49f08475">clearAllCachedConfigs</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Clear all authentication configs from authentication method caches.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9f1f186d6952f6c860b910c2544b3cec" class="m-doc-self" name="a9f1f186d6952f6c860b910c2544b3cec">clearCachedConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg)</span>
+            </dt>
+            <dd>Clear an authentication config from its associated authentication method cache.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aacc49706c9dd0aa1ed6a94361bdc15c9" class="m-doc">instance</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsAuthManager.html" class="m-doc">QgsAuthManager</a>*</span>
+            </dt>
+            <dd>Enforce singleton pattern.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a63e68de971ab1515b4b3862f25a47c32"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QString QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a63e68de971ab1515b4b3862f25a47c32" class="m-doc-self">authenticationDatabasePath</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>The standard authentication database file in ~/.qgis3/ or defined location.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsApplication.html#ab4e912d6a82a6abb8f75b65147ef99f9" class="m-doc">QgsApplication::<wbr />qgisAuthDatabaseFilePath</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa6685e6402ff2ad836f63e2a0d7666f2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAuthMethod.html" class="m-doc">QgsAuthMethod</a>* QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa6685e6402ff2ad836f63e2a0d7666f2" class="m-doc-self">authMethod</a>(</span><span class="m-doc-wrap">const QString&amp; authMethodKey)</span></span>
+            </h3>
+            <p>Gets authentication method from the config/provider cache via its key.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authMethodKey</td>
+                  <td>Authentication method key</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1eec643c8dfdf852e65e127fa3ca7cfe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QWidget* QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1eec643c8dfdf852e65e127fa3ca7cfe" class="m-doc-self">authMethodEditWidget</a>(</span><span class="m-doc-wrap">const QString&amp; authMethodKey,
+              QWidget* parent)</span></span>
+            </h3>
+            <p>Gets authentication method edit widget via its key.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authMethodKey</td>
+                  <td>Authentication method key</td>
+                </tr>
+                <tr>
+                  <td>parent</td>
+                  <td>Parent widget</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1de130513a8c8f4faebde50d3b57eb7e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsauthmethod_8h.html#a471e53cde0f1ef6bd42b4deafd6c2908" class="m-doc">QgsAuthMethodsMap</a> QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1de130513a8c8f4faebde50d3b57eb7e" class="m-doc-self">authMethodsMap</a>(</span><span class="m-doc-wrap">const QString&amp; dataprovider = QString())</span></span>
+            </h3>
+            <p>Gets available authentication methods mapped to their key.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">dataprovider</td>
+                  <td>Provider key filter, returning only methods that support a particular provider</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4ff5a1b02994e7915ea70c1996591fc8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ff5a1b02994e7915ea70c1996591fc8" class="m-doc-self">authSetting</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant(),
+              bool decrypt = false)</span></span>
+            </h3>
+            <p>authSetting get an authentication setting (retrieved as string and returned as QVariant( QString ))</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>setting key</td>
+                </tr>
+                <tr>
+                  <td>defaultValue</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>decrypt</td>
+                  <td>if the value needs decrypted</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>QVariant( QString ) authentication setting</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a91708e0ade02930b854747c4826c2c5b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a91708e0ade02930b854747c4826c2c5b" class="m-doc-self">backupAuthenticationDatabase</a>(</span><span class="m-doc-wrap">QString* backuppath = nullptr)</span></span>
+            </h3>
+            <p>Close connection to current authentication database and back it up.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Path to backup</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac0c073165e8c83f59fadfb3891456af9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QMap&lt;QString, QPair&lt;<a href="classQgsAuthCertUtils.html#abe90cccf324e3bd5c7f81691140375dd" class="m-doc">QgsAuthCertUtils::<wbr />CaCertSource</a>, QSslCertificate&gt;&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac0c073165e8c83f59fadfb3891456af9" class="m-doc-self">caCertsCache</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>caCertsCache get all CA certs mapped to their sha1 from cache.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>map of sha1 &lt;source, certificates&gt;</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a80358f3cb7e1d4e4d75ac5975c9f6090"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QSslCertificate QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a80358f3cb7e1d4e4d75ac5975c9f6090" class="m-doc-self">certAuthority</a>(</span><span class="m-doc-wrap">const QString&amp; id)</span></span>
+            </h3>
+            <p>Gets a certificate authority by id (sha hash)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>sha hash</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a certificate</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>certAuthority get a certificate authority by <em>id</em> (sha hash)</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa2bc56ee03fe7867c051add4df61936d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa2bc56ee03fe7867c051add4df61936d" class="m-doc-self">certIdentities</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>certIdentities get certificate identities</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificates</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a04e95b520e445f94f040590adc9f0626"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QSslCertificate QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a04e95b520e445f94f040590adc9f0626" class="m-doc-self">certIdentity</a>(</span><span class="m-doc-wrap">const QString&amp; id)</span></span>
+            </h3>
+            <p>certIdentity get a certificate identity by <em>id</em> (sha hash)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>sha hash of the cert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>the certificate</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4b9ca6756070bb7df42ad4b72b4c5765"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QPair&lt;QSslCertificate, QSslKey&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4b9ca6756070bb7df42ad4b72b4c5765" class="m-doc-self">certIdentityBundle</a>(</span><span class="m-doc-wrap">const QString&amp; id)</span></span>
+            </h3>
+            <p>Gets a certificate identity bundle by <em>id</em> (sha hash).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>sha shash</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a pair with the certificate and its SSL key</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a07b1beedd757983bd618f92530b70906"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QStringList QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a07b1beedd757983bd618f92530b70906" class="m-doc-self">certIdentityBundleToPem</a>(</span><span class="m-doc-wrap">const QString&amp; id)</span></span>
+            </h3>
+            <p>certIdentityBundleToPem get a certificate identity bundle by <em>id</em> (sha hash) returned as PEM text</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>sha hash</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a list of strings</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa3fb213e6777d238455fce04ae96a803"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa3fb213e6777d238455fce04ae96a803" class="m-doc-self">certIdentityIds</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>certIdentityIds get list of certificate identity ids from database</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificate ids</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a60c9d30487a369472134d08685292525"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a> QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60c9d30487a369472134d08685292525" class="m-doc-self">certificateTrustPolicy</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert)</span></span>
+            </h3>
+            <p>certificateTrustPolicy get trust policy for a particular certificate <em>cert</em></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cert</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>DefaultTrust if certificate sha not in trust table, i.e. follows default trust policy</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a020327d08c301f203e8ec979319e0117"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QMap&lt;<a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a>, QStringList&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a020327d08c301f203e8ec979319e0117" class="m-doc-self">certTrustCache</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>certTrustCache get cache of certificate sha1s, per trust policy</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>trust-policy-mapped certificate sha1s</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a75eeb8006413c1d21fc9ee3f39800133"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a> QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a75eeb8006413c1d21fc9ee3f39800133" class="m-doc-self">certTrustPolicy</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert)</span></span>
+            </h3>
+            <p>certTrustPolicy get whether certificate <em>cert</em> is trusted by user</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cert</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>DefaultTrust if certificate sha not in trust table, i.e. follows default trust policy</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa043e800ddc0714a5009e6ae4c3a8463"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa043e800ddc0714a5009e6ae4c3a8463" class="m-doc-self">clearMasterPassword</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Clear supplied master password.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>This will not necessarily clear authenticated connections cached in network connection managers</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a14d35a31054a7ac2c7cfd607cdf5db29"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAuthMethod.html" class="m-doc">QgsAuthMethod</a>* QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14d35a31054a7ac2c7cfd607cdf5db29" class="m-doc-self">configAuthMethod</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg)</span></span>
+            </h3>
+            <p>Gets authentication method from the config/provider cache.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authcfg</td>
+                  <td>Authentication config id</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aff04d81ca53fc37ceee81d90c7bdf518"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff04d81ca53fc37ceee81d90c7bdf518" class="m-doc-self">configAuthMethodKey</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) const</span></span>
+            </h3>
+            <p>Gets key of authentication method associated with config ID.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authcfg</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6f5ea5adbdc0eab79cfc6e87e01f0c6d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6f5ea5adbdc0eab79cfc6e87e01f0c6d" class="m-doc-self">configIdUnique</a>(</span><span class="m-doc-wrap">const QString&amp; id) const</span></span>
+            </h3>
+            <p>Verify if provided authentication id is unique.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>Id to check</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8eeaf4bcfc17f3f86a0f01b1ce6785aa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8eeaf4bcfc17f3f86a0f01b1ce6785aa" class="m-doc-self">databaseCAs</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>databaseCAs get database-stored certificate authorities</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificate authorities</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a30efd772621612e5a896fcea5230eb40"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a30efd772621612e5a896fcea5230eb40" class="m-doc-self">eraseAuthenticationDatabase</a>(</span><span class="m-doc-wrap">bool backup,
+              QString* backuppath = nullptr)</span></span>
+            </h3>
+            <p>Erase all rows from all tables in authentication database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">backup</td>
+                  <td>Whether to backup of current database</td>
+                </tr>
+                <tr>
+                  <td>backuppath</td>
+                  <td>Where the backup is locate</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2b2f6b20f0e29adab71004cb6f1802d2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2b2f6b20f0e29adab71004cb6f1802d2" class="m-doc-self">extraFileCAs</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>extraFileCAs extra file-based certificate authorities</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificate authorities</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af0cbd457e9e678cd9b2ebc3f871b45e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af0cbd457e9e678cd9b2ebc3f871b45e8" class="m-doc-self">hasConfigId</a>(</span><span class="m-doc-wrap">const QString&amp; txt) const</span></span>
+            </h3>
+            <p>Returns whether a string includes an authcfg ID token.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">txt</td>
+                  <td>String to check</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a3b210ec3bd5b02f088eff9477cc4d7de"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QHash&lt;QString, QSet&lt;QSslError::SslError&gt;&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b210ec3bd5b02f088eff9477cc4d7de" class="m-doc-self">ignoredSslErrorCache</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>ignoredSslErrorCache Get ignored SSL error cache, keyed with cert/connection&#x27;s sha:host:port.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>hash keyed with cert/connection&#x27;s sha:host:port.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3cd5ebc04fbd90b3f6dec1cad4c9995d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3cd5ebc04fbd90b3f6dec1cad4c9995d" class="m-doc-self">init</a>(</span><span class="m-doc-wrap">const QString&amp; pluginPath = QString(),
+              const QString&amp; authDatabasePath = QString())</span></span>
+            </h3>
+            <p>init initialize <a href="namespaceQCA.html" class="m-doc">QCA</a>, prioritize qca-ossl plugin and optionally set up the authentication database</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pluginPath</td>
+                  <td>the plugin path</td>
+                </tr>
+                <tr>
+                  <td>authDatabasePath</td>
+                  <td>the authentication DB path</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true on success</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsApplication.html#a41b2d890c1cd6426451a46c1dc110d27" class="m-doc">QgsApplication::<wbr />pluginPath</a></p><p><a href="classQgsApplication.html#ab4e912d6a82a6abb8f75b65147ef99f9" class="m-doc">QgsApplication::<wbr />qgisAuthDatabaseFilePath</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a75e5d58e73e192f1a054e5e56a38834c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a75e5d58e73e192f1a054e5e56a38834c" class="m-doc-self">loadAuthenticationConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg,
+              <a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; mconfig,
+              bool full = false)</span></span>
+            </h3>
+            <p>Load an authentication config from the database into subclass.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authcfg</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+                <tr>
+                  <td>mconfig</td>
+                  <td>Subclassed config to load into</td>
+                </tr>
+                <tr>
+                  <td>full</td>
+                  <td>Whether to decrypt and populate all sensitive data in subclass</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6bebc32db002489768722e703e9c5e8c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QMap&lt;QString, QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6bebc32db002489768722e703e9c5e8c" class="m-doc-self">mappedDatabaseCAs</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>mappedDatabaseCAs get sha1-mapped database-stored certificate authorities</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>sha1-mapped certificate authorities</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a275cd0a82ef15e097d95b48918b5b5cd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a275cd0a82ef15e097d95b48918b5b5cd" class="m-doc-self">masterPasswordSame</a>(</span><span class="m-doc-wrap">const QString&amp; pass) const</span></span>
+            </h3>
+            <p>Check whether supplied password is the same as the one already set.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pass</td>
+                  <td>Password to verify</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8995989aa4717dfcb72b687193e15a3f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8995989aa4717dfcb72b687193e15a3f" class="m-doc-self">passwordHelperDelete</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Delete master password from wallet.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad2c9c590b26f05d97be1ec1af0e40033"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad2c9c590b26f05d97be1ec1af0e40033" class="m-doc-self">passwordHelperEnabled</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Password helper enabled getter.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa95fdb46d0b5159116a0182108f9c60e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QString QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa95fdb46d0b5159116a0182108f9c60e" class="m-doc-self">passwordHelperErrorMessage</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Error message getter.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad3615eb2b77edce80253dd61cb4ed84b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad3615eb2b77edce80253dd61cb4ed84b" class="m-doc-self">passwordHelperLoggingEnabled</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Password helper logging enabled getter.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acdbdd5a5b2490429770b4ad43df93418"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acdbdd5a5b2490429770b4ad43df93418" class="m-doc-self">passwordHelperSync</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Store the password manager into the wallet.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5dd69411db5fb27315d57b91ca45d31d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5dd69411db5fb27315d57b91ca45d31d" class="m-doc-self">removeAllAuthenticationConfigs</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Clear all authentication configs from table in database and from provider caches.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aeeb910abba7f205f4c4f1b3ec137a4b3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeeb910abba7f205f4c4f1b3ec137a4b3" class="m-doc-self">removeAuthenticationConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg)</span></span>
+            </h3>
+            <p>Remove an authentication config in the database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authcfg</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac3a955f406cab920487c8a9513c40680"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3a955f406cab920487c8a9513c40680" class="m-doc-self">resetMasterPassword</a>(</span><span class="m-doc-wrap">const QString&amp; newpass,
+              const QString&amp; oldpass,
+              bool keepbackup,
+              QString* backuppath = nullptr)</span></span>
+            </h3>
+            <p>Reset the master password to a new one, then re-encrypt all previous configs in a new database file, optionally backup curren database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">newpass</td>
+                  <td>New master password to replace existing</td>
+                </tr>
+                <tr>
+                  <td>oldpass</td>
+                  <td>Current master password to replace existing</td>
+                </tr>
+                <tr>
+                  <td>keepbackup</td>
+                  <td>Whether to keep the generated backup of current database</td>
+                </tr>
+                <tr>
+                  <td>backuppath</td>
+                  <td>Where the backup is located, if kept</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2f7b1955272f7ee2034f40064cc614a1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2f7b1955272f7ee2034f40064cc614a1" class="m-doc-self">scheduledAuthDatabaseErase</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Whether there is a scheduled opitonal erase of authentication database.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad37105c67520f4fa34b8559d1147e766"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad37105c67520f4fa34b8559d1147e766" class="m-doc-self">setMasterPassword</a>(</span><span class="m-doc-wrap">bool verify = false)</span></span>
+            </h3>
+            <p>Main call to initially set or continually check master password is set.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">verify</td>
+                  <td>Whether password&#x27;s hash was saved in authentication database</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>If it is not set, the user is asked for its input</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6f4c7a90aca88821b246513821b042a5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6f4c7a90aca88821b246513821b042a5" class="m-doc-self">setMasterPassword</a>(</span><span class="m-doc-wrap">const QString&amp; pass,
+              bool verify = false)</span></span>
+            </h3>
+            <p>Overloaded call to reset master password or set it initially without user interaction.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pass</td>
+                  <td>Password to use</td>
+                </tr>
+                <tr>
+                  <td>verify</td>
+                  <td>Whether password&#x27;s hash was saved in authentication database</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>Only use this in trusted reset functions, unit tests or user/app setup scripts!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4088886e34ce0aace8155c439577407d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4088886e34ce0aace8155c439577407d" class="m-doc-self">setPasswordHelperEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Password helper enabled setter.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab795db878e487484c1d67f1cc7111bae"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab795db878e487484c1d67f1cc7111bae" class="m-doc-self">setPasswordHelperLoggingEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Password helper logging enabled setter.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a42dc4ad650ab3b9629701afb356779cb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a42dc4ad650ab3b9629701afb356779cb" class="m-doc-self">setScheduledAuthDatabaseErase</a>(</span><span class="m-doc-wrap">bool scheduleErase)</span></span>
+            </h3>
+            <p>Schedule an optional erase of authentication database, starting when mutex is lockable.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>When an erase is scheduled, any attempt to set the master password, e.g. password input dialog, is effectively canceled. For example: In a GUI app, this keeps excess password input dialogs from popping up when a user has initiated an erase, from a password input dialog, because they forgot their password. The created schedule timer will emit a request to gain access to the user, through the given application, to prompt the erase operation (e.g. via a dialog); if no access to user interaction occurs within 90 seconds, it cancels the schedule.</p><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a93082481b9b745dec09b09663d7a5f54"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a93082481b9b745dec09b09663d7a5f54" class="m-doc-self">setScheduledAuthDatabaseEraseRequestEmitted</a>(</span><span class="m-doc-wrap">bool emitted)</span></span>
+            </h3>
+            <p>Re-emit a signal to schedule an optional erase of authentication database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">emitted</td>
+                  <td>Setting to false will cause signal to be emitted by the schedule timer. Setting to true will stop any emitting, but will not stop the schedule timer.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This can be called from the slot connected to a previously emitted scheduling signal, so that the slot can ask for another emit later, if the slot noticies the current GUI processing state is not ready for interacting with the user, e.g. project is still loading</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af19ee1e173e07e7d5ef9bb4d8e8d401e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a> QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af19ee1e173e07e7d5ef9bb4d8e8d401e" class="m-doc-self">sslCertCustomConfig</a>(</span><span class="m-doc-wrap">const QString&amp; id,
+              const QString&amp; hostport)</span></span>
+            </h3>
+            <p>sslCertCustomConfig get an SSL certificate custom config by <em>id</em> (sha hash) and <em>hostport</em> (host:port)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>sha hash</td>
+                </tr>
+                <tr>
+                  <td>hostport</td>
+                  <td>string host:port</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a SSL certificate custom config</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abb2c9b101f3e46f7bbb0d2964b6fed2c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a> QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abb2c9b101f3e46f7bbb0d2964b6fed2c" class="m-doc-self">sslCertCustomConfigByHost</a>(</span><span class="m-doc-wrap">const QString&amp; hostport)</span></span>
+            </h3>
+            <p>sslCertCustomConfigByHost get an SSL certificate custom config by <em>hostport</em> (host:port)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">hostport</td>
+                  <td>host:port</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a SSL certificate custom config</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a458849efbffe61c1014f7d7b48d21d95"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a458849efbffe61c1014f7d7b48d21d95" class="m-doc-self">sslCertCustomConfigs</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>sslCertCustomConfigs get SSL certificate custom configs</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of SSL certificate custom config</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6acf1b15905a9692d1cb552e748d010b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6acf1b15905a9692d1cb552e748d010b" class="m-doc-self">storeAuthenticationConfig</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; mconfig)</span></span>
+            </h3>
+            <p>Store an authentication config in the database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">mconfig</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af18f219986048fa96252051c300fd5a1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QgsAuthMethod::Expansions QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af18f219986048fa96252051c300fd5a1" class="m-doc-self">supportedAuthMethodExpansions</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg)</span></span>
+            </h3>
+            <p>Gets supported authentication method expansion(s), e.g.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">authcfg</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p>NetworkRequest | DataSourceURI, as flags</p>
+          </div></section>
+          <section class="m-doc-details" id="a65488d78b99b0a291fd10173b803afd6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a65488d78b99b0a291fd10173b803afd6" class="m-doc-self">systemRootCAs</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>systemRootCAs get root system certificate authorities</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificate authorities</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a69c387221a912f7e54b65de297f3dafb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69c387221a912f7e54b65de297f3dafb" class="m-doc-self">trustedCaCerts</a>(</span><span class="m-doc-wrap">bool includeinvalid = false)</span></span>
+            </h3>
+            <p>trustedCaCerts get list of all trusted CA certificates</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">includeinvalid</td>
+                  <td>whether invalid certs needs to be returned</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>list of certificates</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aff3ce69491acfbb993b37b5627893d43"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff3ce69491acfbb993b37b5627893d43" class="m-doc-self">trustedCaCertsCache</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>trustedCaCertsCache cache of trusted certificate authorities, ready for network connections</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificates</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a58be91a20b5f4eb5850830560649be05"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QByteArray QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a58be91a20b5f4eb5850830560649be05" class="m-doc-self">trustedCaCertsPemText</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>trustedCaCertsPemText get concatenated string of all trusted CA certificates</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>bye array with all PEM encoded trusted CAs</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a45f5e9dd0863a2a33b348169e0436866"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QList&lt;QSslCertificate&gt; QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a45f5e9dd0863a2a33b348169e0436866" class="m-doc-self">untrustedCaCerts</a>(</span><span class="m-doc-wrap">QList&lt;QSslCertificate&gt; trustedCAs = QList&lt;QSslCertificate&gt;())</span></span>
+            </h3>
+            <p>untrustedCaCerts get list of untrusted certificate authorities</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of certificates</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abd0af607b2faee76f339cf7f96e1dd1b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abd0af607b2faee76f339cf7f96e1dd1b" class="m-doc-self">updateAuthenticationConfig</a>(</span><span class="m-doc-wrap">const <a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; config)</span></span>
+            </h3>
+            <p>Update an authentication config in the database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">config</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa7005267b6811022b623412a9e7cbb86"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7005267b6811022b623412a9e7cbb86" class="m-doc-self">updateDataSourceUriItems</a>(</span><span class="m-doc-wrap">QStringList&amp; connectionItems,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString())</span></span>
+            </h3>
+            <p>Provider call to update a <a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a> with an authentication config.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">connectionItems</td>
+                  <td>The connection items, e.g. username=myname, of <a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a></td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Provider key filter, offering logic branching in authentication method</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7e7a1e6c0f08ccdb979bc0adf9e2230d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7e7a1e6c0f08ccdb979bc0adf9e2230d" class="m-doc-self">updateNetworkProxy</a>(</span><span class="m-doc-wrap">QNetworkProxy&amp; proxy,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString())</span></span>
+            </h3>
+            <p>Provider call to update a QNetworkProxy with an authentication config.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">proxy</td>
+                  <td>the QNetworkProxy</td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Provider key filter, offering logic branching in authentication method</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae351364f98af3ad988b0a646aa4bed12"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae351364f98af3ad988b0a646aa4bed12" class="m-doc-self">updateNetworkReply</a>(</span><span class="m-doc-wrap">QNetworkReply* reply,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString())</span></span>
+            </h3>
+            <p>Provider call to update a QNetworkReply with an authentication config (used to skip known SSL errors, etc.)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">reply</td>
+                  <td>The QNetworkReply</td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Provider key filter, offering logic branching in authentication method</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa04d0781bcee7fccb5125f54d35bc666"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa04d0781bcee7fccb5125f54d35bc666" class="m-doc-self">updateNetworkRequest</a>(</span><span class="m-doc-wrap">QNetworkRequest&amp; request,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString())</span></span>
+            </h3>
+            <p>Provider call to update a QNetworkRequest with an authentication config.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">request</td>
+                  <td>The QNetworkRequest</td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Associated authentication config id</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Provider key filter, offering logic branching in authentication method</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether operation succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a0ca0f51eba177642dcaaa8bcbcb4f656"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0ca0f51eba177642dcaaa8bcbcb4f656" class="m-doc-self">verifyMasterPassword</a>(</span><span class="m-doc-wrap">const QString&amp; compare = QString())</span></span>
+            </h3>
+            <p>Verify the supplied master password against any existing hash in authentication database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">compare</td>
+                  <td>Password to compare against</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>Do not emit verification signals when only comparing</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad36687d7f760fdd88045b37ddd2e71dc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad36687d7f760fdd88045b37ddd2e71dc" class="m-doc-self">masterPasswordVerified</a>(</span><span class="m-doc-wrap">bool verified) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when a password has been verify (or not)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">verified</td>
+                  <td>The state of password&#x27;s verification</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a16aabb9e6efac56fe214b89a9ebd30c5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a16aabb9e6efac56fe214b89a9ebd30c5" class="m-doc-self">messageOut</a>(</span><span class="m-doc-wrap">const QString&amp; message,
+              const QString&amp; tag = <a href="classQgsAuthManager.html#a52374b6f35514ca47e203633c9366679" class="m-doc">QgsAuthManager::<wbr />AUTH_MAN_TAG</a>,
+              <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecb" class="m-doc">QgsAuthManager::<wbr />MessageLevel</a> level = <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecbab514eac53b2ccdd151c01b97eeee89e5" class="m-doc">QgsAuthManager::<wbr />INFO</a>) const <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Custom logging signal to relay to console output and <a href="classQgsMessageLog.html" class="m-doc">QgsMessageLog</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">message</td>
+                  <td>Message to send</td>
+                </tr>
+                <tr>
+                  <td>tag</td>
+                  <td>Associated tag (title)</td>
+                </tr>
+                <tr>
+                  <td>level</td>
+                  <td>Message log level</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMessageLog.html" class="m-doc">QgsMessageLog</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a444c9f3f77a24f14b7229097bfd9388f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a444c9f3f77a24f14b7229097bfd9388f" class="m-doc-self">passwordHelperMessageOut</a>(</span><span class="m-doc-wrap">const QString&amp; message,
+              const QString&amp; tag = <a href="classQgsAuthManager.html#a52374b6f35514ca47e203633c9366679" class="m-doc">QgsAuthManager::<wbr />AUTH_MAN_TAG</a>,
+              <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecb" class="m-doc">QgsAuthManager::<wbr />MessageLevel</a> level = <a href="classQgsAuthManager.html#a0fc84dfac89f5b14f1ee802a13d24ecbab514eac53b2ccdd151c01b97eeee89e5" class="m-doc">QgsAuthManager::<wbr />INFO</a>) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Custom logging signal to inform the user about master password &lt;-&gt; password manager interactions.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">message</td>
+                  <td>Message to send</td>
+                </tr>
+                <tr>
+                  <td>tag</td>
+                  <td>Associated tag (title)</td>
+                </tr>
+                <tr>
+                  <td>level</td>
+                  <td>Message log level</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMessageLog.html" class="m-doc">QgsMessageLog</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aacc49706c9dd0aa1ed6a94361bdc15c9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsAuthManager.html" class="m-doc">QgsAuthManager</a>* QgsAuthManager::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aacc49706c9dd0aa1ed6a94361bdc15c9" class="m-doc-self">instance</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Enforce singleton pattern.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>To set up the manager instance and initialize everything use <a href="classQgsAuthManager.html#aacc49706c9dd0aa1ed6a94361bdc15c9" class="m-doc">QgsAuthManager::<wbr />instance()</a>-&gt;<a href="classQgsAuthManager.html#a3cd5ebc04fbd90b3f6dec1cad4c9995d" class="m-doc">init()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

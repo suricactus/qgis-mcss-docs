@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsSymbol class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsSymbol <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for all rendered symbols.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a639384f951e63e8ea5125f3ca53f2d30" class="m-doc">RenderHint</a> { </span><span class="m-doc-wrap"><a href="#a639384f951e63e8ea5125f3ca53f2d30a302364e271105a6dbdb0aa298b3364ab" class="m-doc">DynamicRotation</a> = 2 }</span>
+            </dt>
+            <dd>Flags controlling behavior of symbols during rendering.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a437af6ef98bf56bec257fc238cbd590d" class="m-doc">ScaleMethod</a> { </span><span class="m-doc-wrap"><a href="#a437af6ef98bf56bec257fc238cbd590da1db8bde03aeeb93dff2d8f415d892345" class="m-doc">ScaleArea</a>,
+              <a href="#a437af6ef98bf56bec257fc238cbd590dafa377b3de26f1b1795f74e470ffe2666" class="m-doc">ScaleDiameter</a> }</span>
+            </dt>
+            <dd>Scale method.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a9ea3553f10174b434ef33f7519bf575d" class="m-doc">SymbolType</a> { </span><span class="m-doc-wrap"><a href="#a9ea3553f10174b434ef33f7519bf575da9ce7acf81cd9c17a363071608439f4e3" class="m-doc">Marker</a>,
+              <a href="#a9ea3553f10174b434ef33f7519bf575da0fbcc1d422ffe1808f664fd109ed6ed8" class="m-doc">Line</a>,
+              <a href="#a9ea3553f10174b434ef33f7519bf575da7a23c02d5ba72919cd4f1cd23ec12154" class="m-doc">Fill</a>,
+              <a href="#a9ea3553f10174b434ef33f7519bf575da6f2237c81aa23bde7bd72d305c6bb247" class="m-doc">Hybrid</a> }</span>
+            </dt>
+            <dd>Type of the symbol.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5223e83271d317cd5c09173831aa791c" class="m-doc">defaultSymbol</a>(</span><span class="m-doc-wrap"><a href="classQgsWkbTypes.html#a60e72c2f73cb07fdbcdbc2d5068b5d9c" class="m-doc">QgsWkbTypes::<wbr />GeometryType</a> geomType) -&gt; <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>*</span>
+            </dt>
+            <dd>Returns a new default symbol for the specified geometry type.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4efca55cefe9b20dcb2ae94a065ec7f6" class="m-doc">appendSymbolLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer) -&gt; bool</span>
+            </dt>
+            <dd>Appends a symbol <em>layer</em> at the end of the current symbol layer list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a746b9136a8a7bc04bee71ea8731fc1a8" class="m-doc">asImage</a>(</span><span class="m-doc-wrap">QSize size,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>* customContext = nullptr) -&gt; QImage</span>
+            </dt>
+            <dd>Returns an image of the symbol at the specified <em>size</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab114c2eb3cdc35ff4a0d31657e554d5b" class="m-doc">bigSymbolPreviewImage</a>(</span><span class="m-doc-wrap"><a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a>* expressionContext = nullptr) -&gt; QImage</span>
+            </dt>
+            <dd>Returns a large (roughly 100x100 pixel) preview image for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a972e1adc272c966ce3341d5265d5573a" class="m-doc">changeSymbolLayer</a>(</span><span class="m-doc-wrap">int index,
+              <a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer) -&gt; bool</span>
+            </dt>
+            <dd>Deletes the current layer at the specified <em>index</em> and replaces it with <em>layer</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69c78c6a6cdf7d12a7fa51f58bf075a6" class="m-doc">clipFeaturesToExtent</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether features drawn by the symbol will be clipped to the render context&#x27;s extent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adf497f68328897c808eaa114e0a07e5a" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns a deep copy of this symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac9b6edde89e8765a52cc404eb3d4f760" class="m-doc">color</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Returns the symbol&#x27;s color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a808681ba836d1a1786310c7071f0cabf" class="m-doc-self" name="a808681ba836d1a1786310c7071f0cabf">deleteSymbolLayer</a>(</span><span class="m-doc-wrap">int index) -&gt; bool</span>
+            </dt>
+            <dd>Removes and deletes the symbol layer at the specified <em>index</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5c0e07d59efd9a123e03e3ab09d6f55a" class="m-doc">drawPreviewIcon</a>(</span><span class="m-doc-wrap">QPainter* painter,
+              QSize size,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>* customContext = nullptr)</span>
+            </dt>
+            <dd>Draws an icon of the symbol that occupies an area given by <em>size</em> using the specified <em>painter</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7b965c5ae9573269f83b0e0bd1d80405" class="m-doc-self" name="a7b965c5ae9573269f83b0e0bd1d80405">dump</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a string dump of the symbol&#x27;s properties.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af06296c132a9d3ed71a7723598d36e8c" class="m-doc">exportImage</a>(</span><span class="m-doc-wrap">const QString&amp; path,
+              const QString&amp; format,
+              QSize size)</span>
+            </dt>
+            <dd>Export the symbol as an image format, to the specified <em>path</em> and with the given <em>size</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeffabe5316a3494d2aca6b88ff4e522c" class="m-doc">forceRHR</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if polygon features drawn by the symbol will be reoriented to follow the standard right-hand-rule orientation, in which the area that is bounded by the polygon is to the right of the boundary.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ce3f13534dee8ed5ee15b93aa9924d4" class="m-doc">hasDataDefinedProperties</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the symbol utilizes any data defined properties.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5ebdab8e197f23a9ff71dc1784e932f0" class="m-doc">insertSymbolLayer</a>(</span><span class="m-doc-wrap">int index,
+              <a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer) -&gt; bool</span>
+            </dt>
+            <dd>Inserts a symbol <em>layer</em> to specified <em>index</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abf3cd0c7bbe49d55634e173d7bf00d9f" class="m-doc">layer</a>(</span><span class="m-doc-wrap">) const -&gt; Q_DECL_DEPRECATED const <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* <span class="m-label m-danger">deprecated</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5ff8f15e4d459dc7a64263bf59df0da7" class="m-doc">mapUnitScale</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a></span>
+            </dt>
+            <dd>Returns the map unit scale for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a65c662f3510dddd9371dc5172cbf8059" class="m-doc">opacity</a>(</span><span class="m-doc-wrap">) const -&gt; qreal</span>
+            </dt>
+            <dd>Returns the opacity for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a589834df90dda496d7836850ce58a544" class="m-doc">outputUnit</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a></span>
+            </dt>
+            <dd>Returns the units to use for sizes and widths within the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab40460fe7843a6a3764762d10e191b54" class="m-doc">renderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int layer = -1,
+              bool selected = false,
+              bool drawVertexMarker = false,
+              int currentVertexMarkerType = 0,
+              int currentVertexMarkerSize = 0)</span>
+            </dt>
+            <dd>Render a feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a95de5f5c990806de2f2fa814f30775bf" class="m-doc">renderHints</a>(</span><span class="m-doc-wrap">) const -&gt; RenderHints</span>
+            </dt>
+            <dd>Returns the rendering hint flags for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af083dfa3900ec7ce48696126285a353c" class="m-doc">setClipFeaturesToExtent</a>(</span><span class="m-doc-wrap">bool clipFeaturesToExtent)</span>
+            </dt>
+            <dd>Sets whether features drawn by the symbol should be clipped to the render context&#x27;s extent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a915fe6067a9629be73037e0bf7c9caa0" class="m-doc">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets the <em>color</em> for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af6a3e77ba9cddea9b6d019eddb85893b" class="m-doc">setForceRHR</a>(</span><span class="m-doc-wrap">bool force)</span>
+            </dt>
+            <dd>Sets whether polygon features drawn by the symbol should be reoriented to follow the standard right-hand-rule orientation, in which the area that is bounded by the polygon is to the right of the boundary.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae6dfa3402fc605613743029b3adaab7f" class="m-doc">setLayer</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer) -&gt; Q_DECL_DEPRECATED void <span class="m-label m-danger">deprecated</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab119882d6dea51e5160272cc244b2ec3" class="m-doc">setMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span>
+            </dt>
+            <dd>Sets the map unit <em>scale</em> for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa1f47455bcffabe11adab0980f40aaea" class="m-doc">setOpacity</a>(</span><span class="m-doc-wrap">qreal opacity)</span>
+            </dt>
+            <dd>Sets the <em>opacity</em> for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a392779176504d33a049f66f2190faa6c" class="m-doc">setOutputUnit</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span>
+            </dt>
+            <dd>Sets the units to use for sizes and widths within the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a09abccd800385aad7d3bee543ae78a43" class="m-doc">setRenderHints</a>(</span><span class="m-doc-wrap">RenderHints hints)</span>
+            </dt>
+            <dd>Sets rendering hint flags for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae2faf6d1913a62069a8e39c6b49a5125" class="m-doc">startRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields = <a href="classQgsFields.html" class="m-doc">QgsFields</a>())</span>
+            </dt>
+            <dd>Begins the rendering process for the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a332774a8c166aba8ccaddc5ac5bcccaa" class="m-doc">stopRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context)</span>
+            </dt>
+            <dd>Ends the rendering process.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2263c74ab76d0e37402770d5b02838ba" class="m-doc">symbolLayer</a>(</span><span class="m-doc-wrap">int layer) -&gt; <a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>*</span>
+            </dt>
+            <dd>Returns a specific symbol layer contained in the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab7f76577804a135e4fff506d326cf8c3" class="m-doc">symbolLayerCount</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the total number of symbol layers contained in the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9b6fd673cda900657cb7ff64ed932a8a" class="m-doc">symbolLayers</a>(</span><span class="m-doc-wrap">) -&gt; <a href="qgssymbol_8h.html#ab66afab0bc2e8acd97e6d8fda24db244" class="m-doc">QgsSymbolLayerList</a></span>
+            </dt>
+            <dd>Returns the list of symbol layers contained in the symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ac3b380a2a12ed68aa552b65d679eed" class="m-doc">symbolRenderContext</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>*</span>
+            </dt>
+            <dd>Returns the symbol render context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aad0242caa98b024e45cf12f19b098e33" class="m-doc">takeSymbolLayer</a>(</span><span class="m-doc-wrap">int index) -&gt; <a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>*</span>
+            </dt>
+            <dd>Removes a symbol layer from the list and returns a pointer to it.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a073295a0be4c42857d1b357cf5f0b178" class="m-doc-self" name="a073295a0be4c42857d1b357cf5f0b178">toSld</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              QDomElement&amp; element,
+              <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a> props) const</span>
+            </dt>
+            <dd>Converts the symbol to a SLD representation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6250fd71ff61cf18536bf46e4ace82d8" class="m-doc-self" name="a6250fd71ff61cf18536bf46e4ace82d8">type</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsSymbol.html#a9ea3553f10174b434ef33f7519bf575d" class="m-doc">SymbolType</a></span>
+            </dt>
+            <dd>Returns the symbol&#x27;s type.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8a6c1e39cf9a3b9ec4a50ce1dd37435e" class="m-doc">usedAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QSet&lt;QString&gt;</span>
+            </dt>
+            <dd>Returns a list of attributes required to render this feature.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a2d7022dc047f693717e7a404205d4202" class="m-doc-self" name="a2d7022dc047f693717e7a404205d4202">_getLineString</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsCurve.html" class="m-doc">QgsCurve</a>&amp; curve,
+              bool clipToExtent = true) -&gt; QPolygonF</span>
+            </dt>
+            <dd>Creates a line string in screen coordinates from a <a href="classQgsCurve.html" class="m-doc">QgsCurve</a> in map coordinates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a49c3af5a7154778ae0b07280c6e6140c" class="m-doc-self" name="a49c3af5a7154778ae0b07280c6e6140c">_getPoint</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsPoint.html" class="m-doc">QgsPoint</a>&amp; point) -&gt; QPointF</span>
+            </dt>
+            <dd>Creates a point in screen coordinates from a <a href="classQgsPoint.html" class="m-doc">QgsPoint</a> in map coordinates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a68a29409c8c6f697ec2397676de2aa74" class="m-doc">_getPolygon</a>(</span><span class="m-doc-wrap">QPolygonF&amp; pts,
+              QList&lt;QPolygonF&gt;&amp; holes,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsPolygon.html" class="m-doc">QgsPolygon</a>&amp; polygon,
+              bool clipToExtent = true,
+              bool correctRingOrientation = false)</span>
+            </dt>
+            <dd>Creates a polygon in screen coordinates from a QgsPolygonXYin map coordinates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3b32d55819f3fd392994acb1660ad213" class="m-doc">_getPolygonRing</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsCurve.html" class="m-doc">QgsCurve</a>&amp; curve,
+              bool clipToExtent,
+              bool isExteriorRing = false,
+              bool correctRingOrientation = false) -&gt; QPolygonF</span>
+            </dt>
+            <dd>Creates a polygon ring in screen coordinates from a <a href="classQgsCurve.html" class="m-doc">QgsCurve</a> in map coordinates.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a07e81f59b4b09c608f6ca2b3ca914c9f" class="m-doc">cloneLayers</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgssymbol_8h.html#ab66afab0bc2e8acd97e6d8fda24db244" class="m-doc">QgsSymbolLayerList</a></span>
+            </dt>
+            <dd>Retrieve a cloned list of all layers that make up this symbol.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac7d5fd27d7b3223177d8ca801fe3841e" class="m-doc">renderUsingLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context)</span>
+            </dt>
+            <dd>Renders a context using a particular symbol layer without passing in a geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afb28cd71490598d19a438efbb104367b" class="m-doc">renderVertexMarker</a>(</span><span class="m-doc-wrap">QPointF pt,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int currentVertexMarkerType,
+              int currentVertexMarkerSize)</span>
+            </dt>
+            <dd>Render editing vertex marker at specified point.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              qreal <a href="#a33dfd9ca02affe21d999803ca175b05b" class="m-doc-self" name="a33dfd9ca02affe21d999803ca175b05b">mOpacity</a>
+            </dt>
+            <dd>Symbol opacity (in the range 0 - 1)</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a639384f951e63e8ea5125f3ca53f2d30"><div>
+            <h3>
+              enum QgsSymbol::<wbr /><a href="#a639384f951e63e8ea5125f3ca53f2d30" class="m-doc-self">RenderHint</a>
+            </h3>
+            <p>Flags controlling behavior of symbols during rendering.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a639384f951e63e8ea5125f3ca53f2d30a302364e271105a6dbdb0aa298b3364ab" class="m-doc-self" name="a639384f951e63e8ea5125f3ca53f2d30a302364e271105a6dbdb0aa298b3364ab">DynamicRotation</a></td>
+                  <td>
+                  <p>Rotation of symbol may be changed during rendering and symbol should not be cached.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a437af6ef98bf56bec257fc238cbd590d"><div>
+            <h3>
+              enum QgsSymbol::<wbr /><a href="#a437af6ef98bf56bec257fc238cbd590d" class="m-doc-self">ScaleMethod</a>
+            </h3>
+            <p>Scale method.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a437af6ef98bf56bec257fc238cbd590da1db8bde03aeeb93dff2d8f415d892345" class="m-doc-self" name="a437af6ef98bf56bec257fc238cbd590da1db8bde03aeeb93dff2d8f415d892345">ScaleArea</a></td>
+                  <td>
+                  <p>Calculate scale by the area.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a437af6ef98bf56bec257fc238cbd590dafa377b3de26f1b1795f74e470ffe2666" class="m-doc-self" name="a437af6ef98bf56bec257fc238cbd590dafa377b3de26f1b1795f74e470ffe2666">ScaleDiameter</a></td>
+                  <td>
+                  <p>Calculate scale by the diameter.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a9ea3553f10174b434ef33f7519bf575d"><div>
+            <h3>
+              enum QgsSymbol::<wbr /><a href="#a9ea3553f10174b434ef33f7519bf575d" class="m-doc-self">SymbolType</a>
+            </h3>
+            <p>Type of the symbol.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a9ea3553f10174b434ef33f7519bf575da9ce7acf81cd9c17a363071608439f4e3" class="m-doc-self" name="a9ea3553f10174b434ef33f7519bf575da9ce7acf81cd9c17a363071608439f4e3">Marker</a></td>
+                  <td>
+                  <p>Marker symbol.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a9ea3553f10174b434ef33f7519bf575da0fbcc1d422ffe1808f664fd109ed6ed8" class="m-doc-self" name="a9ea3553f10174b434ef33f7519bf575da0fbcc1d422ffe1808f664fd109ed6ed8">Line</a></td>
+                  <td>
+                  <p>Line symbol.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a9ea3553f10174b434ef33f7519bf575da7a23c02d5ba72919cd4f1cd23ec12154" class="m-doc-self" name="a9ea3553f10174b434ef33f7519bf575da7a23c02d5ba72919cd4f1cd23ec12154">Fill</a></td>
+                  <td>
+                  <p>Fill symbol.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a9ea3553f10174b434ef33f7519bf575da6f2237c81aa23bde7bd72d305c6bb247" class="m-doc-self" name="a9ea3553f10174b434ef33f7519bf575da6f2237c81aa23bde7bd72d305c6bb247">Hybrid</a></td>
+                  <td>
+                  <p>Hybrid symbol.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a5223e83271d317cd5c09173831aa791c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5223e83271d317cd5c09173831aa791c" class="m-doc-self">defaultSymbol</a>(</span><span class="m-doc-wrap"><a href="classQgsWkbTypes.html#a60e72c2f73cb07fdbcdbc2d5068b5d9c" class="m-doc">QgsWkbTypes::<wbr />GeometryType</a> geomType)</span></span>
+            </h3>
+            <p>Returns a new default symbol for the specified geometry type.</p>
+<p>The caller takes ownership of the returned object.</p>
+          </div></section>
+          <section class="m-doc-details" id="a4efca55cefe9b20dcb2ae94a065ec7f6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4efca55cefe9b20dcb2ae94a065ec7f6" class="m-doc-self">appendSymbolLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer)</span></span>
+            </h3>
+            <p>Appends a symbol <em>layer</em> at the end of the current symbol layer list.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if the layer was successfully added, false if the layer is not compatible with the symbol&#x27;s <a href="classQgsSymbol.html#a6250fd71ff61cf18536bf46e4ace82d8" class="m-doc">type()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Ownership of <em>layer</em> is transferred to the symbol.</p>
+          </div></section>
+          <section class="m-doc-details" id="a746b9136a8a7bc04bee71ea8731fc1a8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QImage QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a746b9136a8a7bc04bee71ea8731fc1a8" class="m-doc-self">asImage</a>(</span><span class="m-doc-wrap">QSize size,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>* customContext = nullptr)</span></span>
+            </h3>
+            <p>Returns an image of the symbol at the specified <em>size</em>.</p>
+<p>Optionally a custom render context may be given in order to ensure that the preview icon exactly matches the settings from that context.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#af06296c132a9d3ed71a7723598d36e8c" class="m-doc">exportImage()</a></p><p><a href="classQgsSymbol.html#a5c0e07d59efd9a123e03e3ab09d6f55a" class="m-doc">drawPreviewIcon()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab114c2eb3cdc35ff4a0d31657e554d5b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QImage QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab114c2eb3cdc35ff4a0d31657e554d5b" class="m-doc-self">bigSymbolPreviewImage</a>(</span><span class="m-doc-wrap"><a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a>* expressionContext = nullptr)</span></span>
+            </h3>
+            <p>Returns a large (roughly 100x100 pixel) preview image for the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">expressionContext</td>
+                  <td>optional expression context, for evaluation of data defined symbol properties</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a746b9136a8a7bc04bee71ea8731fc1a8" class="m-doc">asImage()</a></p><p><a href="classQgsSymbol.html#a5c0e07d59efd9a123e03e3ab09d6f55a" class="m-doc">drawPreviewIcon()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a972e1adc272c966ce3341d5265d5573a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a972e1adc272c966ce3341d5265d5573a" class="m-doc-self">changeSymbolLayer</a>(</span><span class="m-doc-wrap">int index,
+              <a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer)</span></span>
+            </h3>
+            <p>Deletes the current layer at the specified <em>index</em> and replaces it with <em>layer</em>.</p>
+<p>Ownership of <em>layer</em> is transferred to the symbol.</p><p>Returns false if <em>layer</em> is not compatible with the symbol&#x27;s <a href="classQgsSymbol.html#a6250fd71ff61cf18536bf46e4ace82d8" class="m-doc">type()</a>, or true if the layer was successfully replaced.</p>
+          </div></section>
+          <section class="m-doc-details" id="a69c78c6a6cdf7d12a7fa51f58bf075a6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69c78c6a6cdf7d12a7fa51f58bf075a6" class="m-doc-self">clipFeaturesToExtent</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether features drawn by the symbol will be clipped to the render context&#x27;s extent.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if features will be clipped</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If this option is enabled then features which are partially outside the extent will be clipped. This speeds up rendering of the feature, but may have undesirable side effects for certain symbol types.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#af083dfa3900ec7ce48696126285a353c" class="m-doc">setClipFeaturesToExtent</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adf497f68328897c808eaa114e0a07e5a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbol.html" class="m-doc">QgsSymbol</a>* QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adf497f68328897c808eaa114e0a07e5a" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns a deep copy of this symbol.</p>
+<p>Ownership is transferred to the caller.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac9b6edde89e8765a52cc404eb3d4f760"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac9b6edde89e8765a52cc404eb3d4f760" class="m-doc-self">color</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the symbol&#x27;s color.</p>
+<p>For multi-layer symbols, this method returns the color of the first unlocked symbol layer.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a915fe6067a9629be73037e0bf7c9caa0" class="m-doc">setColor()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5c0e07d59efd9a123e03e3ab09d6f55a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5c0e07d59efd9a123e03e3ab09d6f55a" class="m-doc-self">drawPreviewIcon</a>(</span><span class="m-doc-wrap">QPainter* painter,
+              QSize size,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>* customContext = nullptr)</span></span>
+            </h3>
+            <p>Draws an icon of the symbol that occupies an area given by <em>size</em> using the specified <em>painter</em>.</p>
+<p>Optionally a custom render context may be given in order to ensure that the preview icon exactly matches the settings from that context.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#af06296c132a9d3ed71a7723598d36e8c" class="m-doc">exportImage()</a></p><p><a href="classQgsSymbol.html#a746b9136a8a7bc04bee71ea8731fc1a8" class="m-doc">asImage()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af06296c132a9d3ed71a7723598d36e8c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af06296c132a9d3ed71a7723598d36e8c" class="m-doc-self">exportImage</a>(</span><span class="m-doc-wrap">const QString&amp; path,
+              const QString&amp; format,
+              QSize size)</span></span>
+            </h3>
+            <p>Export the symbol as an image format, to the specified <em>path</em> and with the given <em>size</em>.</p>
+<p>If <em>format</em> is &quot;SVG&quot; then an SVG file will be created, otherwise a raster image of the specified format will be created.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a746b9136a8a7bc04bee71ea8731fc1a8" class="m-doc">asImage()</a></p><p><a href="classQgsSymbol.html#a5c0e07d59efd9a123e03e3ab09d6f55a" class="m-doc">drawPreviewIcon()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeffabe5316a3494d2aca6b88ff4e522c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeffabe5316a3494d2aca6b88ff4e522c" class="m-doc-self">forceRHR</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if polygon features drawn by the symbol will be reoriented to follow the standard right-hand-rule orientation, in which the area that is bounded by the polygon is to the right of the boundary.</p>
+<p>In particular, the exterior ring is oriented in a clockwise direction and the interior rings in a counter-clockwise direction.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#af6a3e77ba9cddea9b6d019eddb85893b" class="m-doc">setForceRHR()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7ce3f13534dee8ed5ee15b93aa9924d4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ce3f13534dee8ed5ee15b93aa9924d4" class="m-doc-self">hasDataDefinedProperties</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the symbol utilizes any data defined properties.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5ebdab8e197f23a9ff71dc1784e932f0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ebdab8e197f23a9ff71dc1784e932f0" class="m-doc-self">insertSymbolLayer</a>(</span><span class="m-doc-wrap">int index,
+              <a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer)</span></span>
+            </h3>
+            <p>Inserts a symbol <em>layer</em> to specified <em>index</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>The index at which the layer should be added</td>
+                </tr>
+                <tr>
+                  <td>layer</td>
+                  <td>The symbol layer to add</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True if the layer is added, False if the index or the layer is bad</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Ownership of <em>layer</em> is transferred to the symbol.</p>
+          </div></section>
+          <section class="m-doc-details" id="abf3cd0c7bbe49d55634e173d7bf00d9f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Q_DECL_DEPRECATED const <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abf3cd0c7bbe49d55634e173d7bf00d9f" class="m-doc-self">layer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-danger"><h4><a href="deprecated.html#_deprecated000036" class="m-doc">Deprecated</a></h4><p>Will be removed in QGIS 4.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5ff8f15e4d459dc7a64263bf59df0da7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a> QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ff8f15e4d459dc7a64263bf59df0da7" class="m-doc-self">mapUnitScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map unit scale for the symbol.</p>
+<p>If the symbol consists of multiple layers, the map unit scale is only returned if all layers have the same scale settings. If the settings differ, a default constructed map unit scale is returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#ab119882d6dea51e5160272cc244b2ec3" class="m-doc">setMapUnitScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a65c662f3510dddd9371dc5172cbf8059"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">qreal QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a65c662f3510dddd9371dc5172cbf8059" class="m-doc-self">opacity</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the opacity for the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>opacity value between 0 (fully transparent) and 1 (fully opaque)</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#aa1f47455bcffabe11adab0980f40aaea" class="m-doc">setOpacity()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a589834df90dda496d7836850ce58a544"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a589834df90dda496d7836850ce58a544" class="m-doc-self">outputUnit</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units to use for sizes and widths within the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>output unit, or <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adfa10bc3042d38686b837b44ce9226fc89b" class="m-doc">QgsUnitTypes::<wbr />RenderUnknownUnit</a> if the symbol contains mixed units</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Individual symbol layer definitions will interpret this in different ways, e.g., a marker symbol may use it to specify the units for the marker size, while a line symbol may use it to specify the units for the line width.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a392779176504d33a049f66f2190faa6c" class="m-doc">setOutputUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab40460fe7843a6a3764762d10e191b54"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab40460fe7843a6a3764762d10e191b54" class="m-doc-self">renderFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int layer = -1,
+              bool selected = false,
+              bool drawVertexMarker = false,
+              int currentVertexMarkerType = 0,
+              int currentVertexMarkerSize = 0)</span></span>
+            </h3>
+            <p>Render a feature.</p>
+<p>Before calling this the <a href="classQgsSymbol.html#ae2faf6d1913a62069a8e39c6b49a5125" class="m-doc">startRender()</a> method should be called to initialize the rendering process. After rendering all features <a href="classQgsSymbol.html#a332774a8c166aba8ccaddc5ac5bcccaa" class="m-doc">stopRender()</a> must be called.</p>
+          </div></section>
+          <section class="m-doc-details" id="a95de5f5c990806de2f2fa814f30775bf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">RenderHints QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a95de5f5c990806de2f2fa814f30775bf" class="m-doc-self">renderHints</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the rendering hint flags for the symbol.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a09abccd800385aad7d3bee543ae78a43" class="m-doc">setRenderHints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af083dfa3900ec7ce48696126285a353c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af083dfa3900ec7ce48696126285a353c" class="m-doc-self">setClipFeaturesToExtent</a>(</span><span class="m-doc-wrap">bool clipFeaturesToExtent)</span></span>
+            </h3>
+            <p>Sets whether features drawn by the symbol should be clipped to the render context&#x27;s extent.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">clipFeaturesToExtent</td>
+                  <td>set to true to enable clipping (defaults to true)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If this option is enabled then features which are partially outside the extent will be clipped. This speeds up rendering of the feature, but may have undesirable side effects for certain symbol types.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a69c78c6a6cdf7d12a7fa51f58bf075a6" class="m-doc">clipFeaturesToExtent</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a915fe6067a9629be73037e0bf7c9caa0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a915fe6067a9629be73037e0bf7c9caa0" class="m-doc-self">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span></span>
+            </h3>
+            <p>Sets the <em>color</em> for the symbol.</p>
+<p>Calling this method sets the color for each individual symbol layer contained within the symbol to <em>color</em>.</p><p>Locked symbol layers are skipped and are left unchanged.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#ac9b6edde89e8765a52cc404eb3d4f760" class="m-doc">color()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af6a3e77ba9cddea9b6d019eddb85893b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af6a3e77ba9cddea9b6d019eddb85893b" class="m-doc-self">setForceRHR</a>(</span><span class="m-doc-wrap">bool force)</span></span>
+            </h3>
+            <p>Sets whether polygon features drawn by the symbol should be reoriented to follow the standard right-hand-rule orientation, in which the area that is bounded by the polygon is to the right of the boundary.</p>
+<p>In particular, the exterior ring is oriented in a clockwise direction and the interior rings in a counter-clockwise direction.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#aeffabe5316a3494d2aca6b88ff4e522c" class="m-doc">forceRHR()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae6dfa3402fc605613743029b3adaab7f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Q_DECL_DEPRECATED void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae6dfa3402fc605613743029b3adaab7f" class="m-doc-self">setLayer</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>the layer will be NULL after stopRender</p></aside><aside class="m-note m-danger"><h4><a href="deprecated.html#_deprecated000035" class="m-doc">Deprecated</a></h4><p>Will be removed in QGIS 4.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab119882d6dea51e5160272cc244b2ec3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab119882d6dea51e5160272cc244b2ec3" class="m-doc-self">setMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span></span>
+            </h3>
+            <p>Sets the map unit <em>scale</em> for the symbol.</p>
+<p>Calling this method sets the scale for all symbol layers contained within the symbol.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a5ff8f15e4d459dc7a64263bf59df0da7" class="m-doc">mapUnitScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa1f47455bcffabe11adab0980f40aaea"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa1f47455bcffabe11adab0980f40aaea" class="m-doc-self">setOpacity</a>(</span><span class="m-doc-wrap">qreal opacity)</span></span>
+            </h3>
+            <p>Sets the <em>opacity</em> for the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">opacity</td>
+                  <td>opacity value between 0 (fully transparent) and 1 (fully opaque)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a65c662f3510dddd9371dc5172cbf8059" class="m-doc">opacity()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a392779176504d33a049f66f2190faa6c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a392779176504d33a049f66f2190faa6c" class="m-doc-self">setOutputUnit</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span></span>
+            </h3>
+            <p>Sets the units to use for sizes and widths within the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">unit</td>
+                  <td>output units</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Individual symbol definitions will interpret this in different ways, e.g., a marker symbol may use it to specify the units for the marker size, while a line symbol may use it to specify the units for the line width.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a589834df90dda496d7836850ce58a544" class="m-doc">outputUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a09abccd800385aad7d3bee543ae78a43"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a09abccd800385aad7d3bee543ae78a43" class="m-doc-self">setRenderHints</a>(</span><span class="m-doc-wrap">RenderHints hints)</span></span>
+            </h3>
+            <p>Sets rendering hint flags for the symbol.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a95de5f5c990806de2f2fa814f30775bf" class="m-doc">renderHints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae2faf6d1913a62069a8e39c6b49a5125"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae2faf6d1913a62069a8e39c6b49a5125" class="m-doc-self">startRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields = <a href="classQgsFields.html" class="m-doc">QgsFields</a>())</span></span>
+            </h3>
+            <p>Begins the rendering process for the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>render context which symbol will be drawn using</td>
+                </tr>
+                <tr>
+                  <td>fields</td>
+                  <td>fields for features to be rendered (usually the associated vector layer&#x27;s fields). Required for correct calculation of data defined overrides.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This must be called before <a href="classQgsSymbol.html#ab40460fe7843a6a3764762d10e191b54" class="m-doc">renderFeature()</a>, and should be followed by a call to <a href="classQgsSymbol.html#a332774a8c166aba8ccaddc5ac5bcccaa" class="m-doc">stopRender()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a332774a8c166aba8ccaddc5ac5bcccaa" class="m-doc">stopRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a332774a8c166aba8ccaddc5ac5bcccaa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a332774a8c166aba8ccaddc5ac5bcccaa" class="m-doc-self">stopRender</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Ends the rendering process.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>render context, must match the context specified when <a href="classQgsSymbol.html#ae2faf6d1913a62069a8e39c6b49a5125" class="m-doc">startRender()</a> was called.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This should be called after rendering all desired features.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#ae2faf6d1913a62069a8e39c6b49a5125" class="m-doc">startRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2263c74ab76d0e37402770d5b02838ba"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2263c74ab76d0e37402770d5b02838ba" class="m-doc-self">symbolLayer</a>(</span><span class="m-doc-wrap">int layer)</span></span>
+            </h3>
+            <p>Returns a specific symbol layer contained in the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>layer number</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>corresponding symbol layer</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a9b6fd673cda900657cb7ff64ed932a8a" class="m-doc">symbolLayers</a></p><p><a href="classQgsSymbol.html#ab7f76577804a135e4fff506d326cf8c3" class="m-doc">symbolLayerCount</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.7</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab7f76577804a135e4fff506d326cf8c3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab7f76577804a135e4fff506d326cf8c3" class="m-doc-self">symbolLayerCount</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the total number of symbol layers contained in the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>count of symbol layers</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a9b6fd673cda900657cb7ff64ed932a8a" class="m-doc">symbolLayers</a></p><p><a href="classQgsSymbol.html#a2263c74ab76d0e37402770d5b02838ba" class="m-doc">symbolLayer</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.7</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9b6fd673cda900657cb7ff64ed932a8a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgssymbol_8h.html#ab66afab0bc2e8acd97e6d8fda24db244" class="m-doc">QgsSymbolLayerList</a> QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9b6fd673cda900657cb7ff64ed932a8a" class="m-doc-self">symbolLayers</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the list of symbol layers contained in the symbol.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>symbol layers list</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSymbol.html#a2263c74ab76d0e37402770d5b02838ba" class="m-doc">symbolLayer</a></p><p><a href="classQgsSymbol.html#ab7f76577804a135e4fff506d326cf8c3" class="m-doc">symbolLayerCount</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.7</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1ac3b380a2a12ed68aa552b65d679eed"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>* QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1ac3b380a2a12ed68aa552b65d679eed" class="m-doc-self">symbolRenderContext</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the symbol render context.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The symbol render context</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Only valid between startRender and stopRender calls.</p>
+          </div></section>
+          <section class="m-doc-details" id="aad0242caa98b024e45cf12f19b098e33"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aad0242caa98b024e45cf12f19b098e33" class="m-doc-self">takeSymbolLayer</a>(</span><span class="m-doc-wrap">int index)</span></span>
+            </h3>
+            <p>Removes a symbol layer from the list and returns a pointer to it.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>The index of the layer to remove</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A pointer to the removed layer</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Ownership of the layer is handed to the caller.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8a6c1e39cf9a3b9ec4a50ce1dd37435e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSet&lt;QString&gt; QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8a6c1e39cf9a3b9ec4a50ce1dd37435e" class="m-doc-self">usedAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const</span></span>
+            </h3>
+            <p>Returns a list of attributes required to render this feature.</p>
+<p>This should include any attributes required by the symbology including the ones required by expressions.</p>
+          </div></section>
+          <section class="m-doc-details" id="a68a29409c8c6f697ec2397676de2aa74"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68a29409c8c6f697ec2397676de2aa74" class="m-doc-self">_getPolygon</a>(</span><span class="m-doc-wrap">QPolygonF&amp; pts,
+              QList&lt;QPolygonF&gt;&amp; holes,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsPolygon.html" class="m-doc">QgsPolygon</a>&amp; polygon,
+              bool clipToExtent = true,
+              bool correctRingOrientation = false) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Creates a polygon in screen coordinates from a QgsPolygonXYin map coordinates.</p>
+<p>If <em>correctRingOrientation</em> is true then the ring will be oriented to match standard ring orientation, e.g. clockwise for exterior rings and counter-clockwise for interior rings.</p>
+          </div></section>
+          <section class="m-doc-details" id="a3b32d55819f3fd392994acb1660ad213"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QPolygonF QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b32d55819f3fd392994acb1660ad213" class="m-doc-self">_getPolygonRing</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              const <a href="classQgsCurve.html" class="m-doc">QgsCurve</a>&amp; curve,
+              bool clipToExtent,
+              bool isExteriorRing = false,
+              bool correctRingOrientation = false) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Creates a polygon ring in screen coordinates from a <a href="classQgsCurve.html" class="m-doc">QgsCurve</a> in map coordinates.</p>
+<p>If <em>correctRingOrientation</em> is true then the ring will be oriented to match standard ring orientation, e.g. clockwise for exterior rings and counter-clockwise for interior rings.</p>
+          </div></section>
+          <section class="m-doc-details" id="a07e81f59b4b09c608f6ca2b3ca914c9f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgssymbol_8h.html#ab66afab0bc2e8acd97e6d8fda24db244" class="m-doc">QgsSymbolLayerList</a> QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a07e81f59b4b09c608f6ca2b3ca914c9f" class="m-doc-self">cloneLayers</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Retrieve a cloned list of all layers that make up this symbol.</p>
+<p>Ownership is transferred to the caller.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac7d5fd27d7b3223177d8ca801fe3841e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac7d5fd27d7b3223177d8ca801fe3841e" class="m-doc-self">renderUsingLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolLayer.html" class="m-doc">QgsSymbolLayer</a>* layer,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Renders a context using a particular symbol layer without passing in a geometry.</p>
+<p>This is used as fallback, if the symbol being rendered is not compatible with the specified layer. In such a case, this method can be called and will call the layer&#x27;s rendering method anyway but the geometry passed to the layer will be empty. This is required for layers that generate their own geometry from other information in the rendering context.</p>
+          </div></section>
+          <section class="m-doc-details" id="afb28cd71490598d19a438efbb104367b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSymbol::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afb28cd71490598d19a438efbb104367b" class="m-doc-self">renderVertexMarker</a>(</span><span class="m-doc-wrap">QPointF pt,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              int currentVertexMarkerType,
+              int currentVertexMarkerSize) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Render editing vertex marker at specified point.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

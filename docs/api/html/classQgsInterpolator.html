@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsInterpolator class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsInterpolator <span class="m-thin">class</span>
+        </h1>
+        <p>Interface class for interpolations.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Interpolators take the vertices of a vector layer as base data. The z-Value can be an attribute or the z-coordinates in case of 3D types.</p>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsIDWInterpolator.html" class="m-doc">QgsIDWInterpolator</a>
+            </dt>
+            <dd>Inverse distance weight interpolator.</dd>
+            <dt>
+              class <a href="classQgsTinInterpolator.html" class="m-doc">QgsTinInterpolator</a>
+            </dt>
+            <dd>Interpolation in a triangular irregular network.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsInterpolator_1_1LayerData.html" class="m-doc">LayerData</a>
+            </dt>
+            <dd>A source together with the information about interpolation attribute / z-coordinate interpolation and the type (point, structure line, breakline)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a7aab4d165c2262fd4d8dc0bdf0d551fa" class="m-doc">Result</a> { </span><span class="m-doc-wrap"><a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa8c784e7ce64e090777d53ba05426e497" class="m-doc">Success</a> = 0,
+              <a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa324afd5a619df8958bfff3f2e3289758" class="m-doc">Canceled</a>,
+              <a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa7b162519a18fa2dd61b0d5af099365bd" class="m-doc">InvalidSource</a>,
+              <a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa7d85115db62d2cbcfc768fabf79a87c0" class="m-doc">FeatureGeometryError</a> }</span>
+            </dt>
+            <dd>Result of an interpolation operation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2f" class="m-doc">SourceType</a> { </span><span class="m-doc-wrap"><a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2fa0c6b723179740b22324d2621da3b229f" class="m-doc">SourcePoints</a>,
+              <a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2fa1fce0ff37a48abdc35379e3eef0bd8e7" class="m-doc">SourceStructureLines</a>,
+              <a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2fa94cd195b74c463cd188f613bc7a496d4" class="m-doc">SourceBreakLines</a> }</span>
+            </dt>
+            <dd>Describes the type of input data.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a556ac915aa8abb0130d98e0aad598435" class="m-doc">ValueSource</a> { </span><span class="m-doc-wrap"><a href="#a556ac915aa8abb0130d98e0aad598435a49f995262573144295a46328ef8157ce" class="m-doc">ValueAttribute</a>,
+              <a href="#a556ac915aa8abb0130d98e0aad598435aafd5f05a706024c82dfc82782becc5bb" class="m-doc">ValueZ</a>,
+              <a href="#a556ac915aa8abb0130d98e0aad598435a03d7a5a246b14b6847699ca4bc428edc" class="m-doc">ValueM</a> }</span>
+            </dt>
+            <dd>Source for interpolated values from features.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a47e25bc2a4c807f453b84e49c6e2efa5" class="m-doc">interpolatePoint</a>(</span><span class="m-doc-wrap">double x,
+              double y,
+              double&amp; result,
+              <a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback = nullptr) -&gt; int <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Calculates interpolation value for map coordinates x, y.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af0ee867d9dc40805134bde9765ed6385" class="m-doc">layerData</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="structQgsInterpolator_1_1LayerData.html" class="m-doc">LayerData</a>&gt;</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adef2f968df30d8e85a5bb0be5f45ac6e" class="m-doc">cacheBaseData</a>(</span><span class="m-doc-wrap"><a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback = nullptr) -&gt; <a href="classQgsInterpolator.html#a7aab4d165c2262fd4d8dc0bdf0d551fa" class="m-doc">Result</a></span>
+            </dt>
+            <dd>Caches the vertex and value data from the provider.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QVector&lt;<a href="structQgsInterpolatorVertexData.html" class="m-doc">QgsInterpolatorVertexData</a>&gt; <a href="#a411f9dc053ae1bc59ce5ca9c037603eb" class="m-doc-self" name="a411f9dc053ae1bc59ce5ca9c037603eb">mCachedBaseData</a>
+            </dt>
+            <dd>Cached vertex data for input sources.</dd>
+            <dt>
+              bool <a href="#a941255f6794f230b7d291704a75e6736" class="m-doc-self" name="a941255f6794f230b7d291704a75e6736">mDataIsCached</a>
+            </dt>
+            <dd>Flag that tells if the cache already has been filled.</dd>
+            <dt>
+              QList&lt;<a href="structQgsInterpolator_1_1LayerData.html" class="m-doc">LayerData</a>&gt; <a href="#aa7e64d65a55b618efb1ec28dde21bb4a" class="m-doc-self" name="aa7e64d65a55b618efb1ec28dde21bb4a">mLayerData</a>
+            </dt>
+            <dd>Information about the input vector layers and the attributes (or z-values) that are used for interpolation.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a7aab4d165c2262fd4d8dc0bdf0d551fa"><div>
+            <h3>
+              enum QgsInterpolator::<wbr /><a href="#a7aab4d165c2262fd4d8dc0bdf0d551fa" class="m-doc-self">Result</a>
+            </h3>
+            <p>Result of an interpolation operation.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa8c784e7ce64e090777d53ba05426e497" class="m-doc-self" name="a7aab4d165c2262fd4d8dc0bdf0d551faa8c784e7ce64e090777d53ba05426e497">Success</a></td>
+                  <td>
+                  <p>Operation was successful.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa324afd5a619df8958bfff3f2e3289758" class="m-doc-self" name="a7aab4d165c2262fd4d8dc0bdf0d551faa324afd5a619df8958bfff3f2e3289758">Canceled</a></td>
+                  <td>
+                  <p>Operation was manually canceled.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa7b162519a18fa2dd61b0d5af099365bd" class="m-doc-self" name="a7aab4d165c2262fd4d8dc0bdf0d551faa7b162519a18fa2dd61b0d5af099365bd">InvalidSource</a></td>
+                  <td>
+                  <p>Operation failed due to invalid source.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a7aab4d165c2262fd4d8dc0bdf0d551faa7d85115db62d2cbcfc768fabf79a87c0" class="m-doc-self" name="a7aab4d165c2262fd4d8dc0bdf0d551faa7d85115db62d2cbcfc768fabf79a87c0">FeatureGeometryError</a></td>
+                  <td>
+                  <p>Operation failed due to invalid feature geometry.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8e8d0a3f66caf3cbf844ddf8baf67f2f"><div>
+            <h3>
+              enum QgsInterpolator::<wbr /><a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2f" class="m-doc-self">SourceType</a>
+            </h3>
+            <p>Describes the type of input data.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2fa0c6b723179740b22324d2621da3b229f" class="m-doc-self" name="a8e8d0a3f66caf3cbf844ddf8baf67f2fa0c6b723179740b22324d2621da3b229f">SourcePoints</a></td>
+                  <td>
+                  <p>Point source.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2fa1fce0ff37a48abdc35379e3eef0bd8e7" class="m-doc-self" name="a8e8d0a3f66caf3cbf844ddf8baf67f2fa1fce0ff37a48abdc35379e3eef0bd8e7">SourceStructureLines</a></td>
+                  <td>
+                  <p>Structure lines.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a8e8d0a3f66caf3cbf844ddf8baf67f2fa94cd195b74c463cd188f613bc7a496d4" class="m-doc-self" name="a8e8d0a3f66caf3cbf844ddf8baf67f2fa94cd195b74c463cd188f613bc7a496d4">SourceBreakLines</a></td>
+                  <td>
+                  <p>Break lines.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a556ac915aa8abb0130d98e0aad598435"><div>
+            <h3>
+              enum QgsInterpolator::<wbr /><a href="#a556ac915aa8abb0130d98e0aad598435" class="m-doc-self">ValueSource</a>
+            </h3>
+            <p>Source for interpolated values from features.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a556ac915aa8abb0130d98e0aad598435a49f995262573144295a46328ef8157ce" class="m-doc-self" name="a556ac915aa8abb0130d98e0aad598435a49f995262573144295a46328ef8157ce">ValueAttribute</a></td>
+                  <td>
+                  <p>Take value from feature&#x27;s attribute.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a556ac915aa8abb0130d98e0aad598435aafd5f05a706024c82dfc82782becc5bb" class="m-doc-self" name="a556ac915aa8abb0130d98e0aad598435aafd5f05a706024c82dfc82782becc5bb">ValueZ</a></td>
+                  <td>
+                  <p>Use feature&#x27;s geometry Z values for interpolation.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a556ac915aa8abb0130d98e0aad598435a03d7a5a246b14b6847699ca4bc428edc" class="m-doc-self" name="a556ac915aa8abb0130d98e0aad598435a03d7a5a246b14b6847699ca4bc428edc">ValueM</a></td>
+                  <td>
+                  <p>Use feature&#x27;s geometry M values for interpolation.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a47e25bc2a4c807f453b84e49c6e2efa5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsInterpolator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a47e25bc2a4c807f453b84e49c6e2efa5" class="m-doc-self">interpolatePoint</a>(</span><span class="m-doc-wrap">double x,
+              double y,
+              double&amp; result,
+              <a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback = nullptr) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Calculates interpolation value for map coordinates x, y.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>x-coordinate (in map units)</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>y-coordinate (in map units)</td>
+                </tr>
+                <tr>
+                  <td>result</td>
+                  <td>interpolation result</td>
+                </tr>
+                <tr>
+                  <td>feedback</td>
+                  <td>optional feedback object for progress and cancelation support</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>0 in case of success</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af0ee867d9dc40805134bde9765ed6385"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="structQgsInterpolator_1_1LayerData.html" class="m-doc">LayerData</a>&gt; QgsInterpolator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af0ee867d9dc40805134bde9765ed6385" class="m-doc-self">layerData</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adef2f968df30d8e85a5bb0be5f45ac6e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsInterpolator.html#a7aab4d165c2262fd4d8dc0bdf0d551fa" class="m-doc">Result</a> QgsInterpolator::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adef2f968df30d8e85a5bb0be5f45ac6e" class="m-doc-self">cacheBaseData</a>(</span><span class="m-doc-wrap"><a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback = nullptr) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Caches the vertex and value data from the provider.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Success in case of success</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>All the vertex data will be held in virtual memory.</p><p>An optional <em>feedback</em> argument may be specified to allow cancelation and progress reports from the cache operation.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

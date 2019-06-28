@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLayout class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLayout <span class="m-thin">class</span>
+        </h1>
+        <p>Base class for layouts, which can contain items such as maps, labels, scalebars, etc.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>While the raw QGraphicsScene API can be used to render the contents of a <a href="classQgsLayout.html" class="m-doc">QgsLayout</a> to a QPainter, it is recommended to instead use a <a href="classQgsLayoutExporter.html" class="m-doc">QgsLayoutExporter</a> to handle rendering layouts instead. <a href="classQgsLayoutExporter.html" class="m-doc">QgsLayoutExporter</a> automatically takes care of the intracacies of preparing the layout and paint devices for correct exports, respecting various user settings such as the layout context DPI.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsExpressionContextGenerator.html" class="m-doc">QgsExpressionContextGenerator</a>
+            </dt>
+            <dd>Abstract interface for generating an expression context.</dd>
+            <dt>
+              class <a href="classQgsLayoutUndoObjectInterface.html" class="m-doc">QgsLayoutUndoObjectInterface</a>
+            </dt>
+            <dd>Interface for layout objects which support undo/redo commands.</dd>
+          </dl>
+        </section>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsPrintLayout.html" class="m-doc">QgsPrintLayout</a>
+            </dt>
+            <dd>Print layout, a <a href="classQgsLayout.html" class="m-doc">QgsLayout</a> subclass for static or atlas-based layouts.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#afcebfa4c7ea76c3322fe9d3d3f7e48a9" class="m-doc">UndoCommand</a> { </span><span class="m-doc-wrap"><a href="#afcebfa4c7ea76c3322fe9d3d3f7e48a9a3588f3cb8a334ba4c4ecca19a226dfb1" class="m-doc">UndoLayoutDpi</a>,
+              <a href="#afcebfa4c7ea76c3322fe9d3d3f7e48a9addfaa5a77063bdddb58c324d24ceaaaf" class="m-doc">UndoNone</a> = -1 }</span>
+            </dt>
+            <dd>Layout undo commands, used for collapsing undo commands.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#adcd588c7433b4026cc085e49b9ab5114" class="m-doc">ZValues</a> { </span><span class="m-doc-wrap"><a href="#adcd588c7433b4026cc085e49b9ab5114a89080f83cffa586c6b5a0327e661495d" class="m-doc">ZPage</a> = 0,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114a71f643980df33dd6440f694dcbee0f10" class="m-doc">ZItem</a> = 1,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114aecfa058b6caac8bba91d619525739db9" class="m-doc">ZGrid</a> = 9997,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114a81352179b104db1a701abbaaf9fcd607" class="m-doc">ZGuide</a> = 9998,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114a5d39bb541bfc19f039074849a85dc3aa" class="m-doc">ZSmartGuide</a> = 9999,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114a308d597b4f95bc6d6945a8194a83d925" class="m-doc">ZMouseHandles</a> = 10000,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114ac3255b7845e04c6962e4ec81c1ed8b6a" class="m-doc">ZViewTool</a> = 10001,
+              <a href="#adcd588c7433b4026cc085e49b9ab5114a95bd715a3806982bb49983851c944469" class="m-doc">ZSnapIndicator</a> = 10002 }</span>
+            </dt>
+            <dd>Preset item z-values, to ensure correct stacking.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#af7d640326990213883d829a8b6b858b7" class="m-doc">QgsLayout</a>(</span><span class="m-doc-wrap"><a href="classQgsProject.html" class="m-doc">QgsProject</a>* project)</span>
+            </dt>
+            <dd>Construct a new layout linked to the specified <em>project</em>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aee297020fb2bd5c8b1a535ef733a75f8" class="m-doc">addItemsFromXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; parentElement,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context,
+              QPointF* position = nullptr,
+              bool pasteInPlace = false) -&gt; QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;</span>
+            </dt>
+            <dd>Add items from an XML representation to the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adb110eb57dbca346ab65b99f2c402fe8" class="m-doc">addLayoutItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item)</span>
+            </dt>
+            <dd>Adds an <em>item</em> to the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4cc19a7b428eaf740807e1098a864135" class="m-doc">addMultiFrame</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>* multiFrame)</span>
+            </dt>
+            <dd>Adds a <em>multiFrame</em> to the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a70a447cf90d3510720123a85a8c22c4b" class="m-doc">clear</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Clears the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6c1b2644fd0a5c4d53432d2b94f62327" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>*</span>
+            </dt>
+            <dd>Creates a clone of the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac26fe96e1ba53e069732149056dcbca8" class="m-doc">convertFromLayoutUnits</a>(</span><span class="m-doc-wrap">double length,
+              <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> unit) const -&gt; <a href="classQgsLayoutMeasurement.html" class="m-doc">QgsLayoutMeasurement</a></span>
+            </dt>
+            <dd>Converts a <em>length</em> measurement from the layout&#x27;s native units to a specified target <em>unit</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7fe359f4d3b45d6f615b900a559bdbc2" class="m-doc">convertFromLayoutUnits</a>(</span><span class="m-doc-wrap">QSizeF size,
+              <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> unit) const -&gt; <a href="classQgsLayoutSize.html" class="m-doc">QgsLayoutSize</a></span>
+            </dt>
+            <dd>Converts a <em>size</em> from the layout&#x27;s native units to a specified target <em>unit</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5951fada828a112650dc34f68c3a019f" class="m-doc">convertFromLayoutUnits</a>(</span><span class="m-doc-wrap">QPointF point,
+              <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> unit) const -&gt; <a href="classQgsLayoutPoint.html" class="m-doc">QgsLayoutPoint</a></span>
+            </dt>
+            <dd>Converts a <em>point</em> from the layout&#x27;s native units to a specified target <em>unit</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc">convertToLayoutUnits</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutMeasurement.html" class="m-doc">QgsLayoutMeasurement</a> measurement) const -&gt; double</span>
+            </dt>
+            <dd>Converts a measurement into the layout&#x27;s native units.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ace8173f04eda5fcc9ece28e92296ab63" class="m-doc">convertToLayoutUnits</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayoutSize.html" class="m-doc">QgsLayoutSize</a>&amp; size) const -&gt; QSizeF</span>
+            </dt>
+            <dd>Converts a size into the layout&#x27;s native units.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a05bf4b442513893ad9a6d5d4ed4e7f33" class="m-doc">convertToLayoutUnits</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayoutPoint.html" class="m-doc">QgsLayoutPoint</a>&amp; point) const -&gt; QPointF</span>
+            </dt>
+            <dd>Converts a <em>point</em> into the layout&#x27;s native units.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a219a3abb1a847eaf086117cbaa362ae3" class="m-doc">createCommand</a>(</span><span class="m-doc-wrap">const QString&amp; text,
+              int id = 0,
+              QUndoCommand* parent = nullptr) -&gt; <a href="classQgsAbstractLayoutUndoCommand.html" class="m-doc">QgsAbstractLayoutUndoCommand</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Creates a new layout undo command with the specified <em>text</em> and <em>parent</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac989e1fb76e05f6c28d72f2e54e04310" class="m-doc">createExpressionContext</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Creates an expression context relating to the layout&#x27;s current state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ad1cd4bd2b0e82722ad798ce236eed9" class="m-doc">customProperties</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns list of keys stored in custom properties for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a95b7b1eb1e1d0c293e586bc45742b8c8" class="m-doc">customProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant()) const -&gt; QVariant</span>
+            </dt>
+            <dd>Read a custom property from the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9ab5a86e6e6003c4d4c6725be72b28c2" class="m-doc">deselectAll</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Clears any selected items in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1d4c9c0648bbd87a20e0327bc77470a8" class="m-doc-self" name="a1d4c9c0648bbd87a20e0327bc77470a8">gridSettings</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutGridSettings.html" class="m-doc">QgsLayoutGridSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s grid settings, which stores settings relating to grid appearance, spacing and offsets.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#accfa628d2e007cc67ecb6e81d8ee1116" class="m-doc-self" name="accfa628d2e007cc67ecb6e81d8ee1116">gridSettings</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutGridSettings.html" class="m-doc">QgsLayoutGridSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s grid settings, which stores settings relating to grid appearance, spacing and offsets.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0416b1a99c8345c1e96b13a09c127df7" class="m-doc">groupItems</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;&amp; items) -&gt; <a href="classQgsLayoutItemGroup.html" class="m-doc">QgsLayoutItemGroup</a>*</span>
+            </dt>
+            <dd>Creates a new group from a list of layout <em>items</em> and adds the group to the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a53df4ea16d8bf46f53a0daf992817e48" class="m-doc-self" name="a53df4ea16d8bf46f53a0daf992817e48">guides</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutGuideCollection.html" class="m-doc">QgsLayoutGuideCollection</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s guide collection, which manages page snap guides.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afcaf3989da6c7d73fb5eee38f6139215" class="m-doc-self" name="afcaf3989da6c7d73fb5eee38f6139215">guides</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutGuideCollection.html" class="m-doc">QgsLayoutGuideCollection</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s guide collection, which manages page snap guides.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a23aed6c0715eefbab4e91dbb29a2b1f3" class="m-doc">initializeDefaults</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Initializes an empty layout, e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a00b4d410f78289b08bcce5d2e92c81ae" class="m-doc">itemById</a>(</span><span class="m-doc-wrap">const QString&amp; id) const -&gt; <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*</span>
+            </dt>
+            <dd>Returns a layout item given its <em>id</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7c4be9d33c6503733669114c97856c9d" class="m-doc">itemByTemplateUuid</a>(</span><span class="m-doc-wrap">const QString&amp; uuid) const -&gt; <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*</span>
+            </dt>
+            <dd>Returns the layout item with matching template <em>uuid</em> unique identifier, or a nullptr if a matching item could not be found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f254a2cf301f73f54c66570f43966c6" class="m-doc">itemByUuid</a>(</span><span class="m-doc-wrap">const QString&amp; uuid,
+              bool includeTemplateUuids = false) const -&gt; <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*</span>
+            </dt>
+            <dd>Returns the layout item with matching <em>uuid</em> unique identifier, or a nullptr if a matching item could not be found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3277791903ea7ed7e933f975e0d55d51" class="m-doc-self" name="a3277791903ea7ed7e933f975e0d55d51">itemsModel</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutModel.html" class="m-doc">QgsLayoutModel</a>*</span>
+            </dt>
+            <dd>Returns the items model attached to the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa041d33c60e6a6c3f30d81bb7442f704" class="m-doc">layoutBounds</a>(</span><span class="m-doc-wrap">bool ignorePages = false,
+              double margin = 0.0) const -&gt; QRectF</span>
+            </dt>
+            <dd>Calculates the bounds of all non-gui items in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7081e55ea9915b400e521a839aea87ed" class="m-doc">layoutItemAt</a>(</span><span class="m-doc-wrap">QPointF position,
+              bool ignoreLocked = false) const -&gt; <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*</span>
+            </dt>
+            <dd>Returns the topmost layout item at a specified <em>position</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9c431435df907f7e6b43ca9bbd2862f7" class="m-doc">layoutItemAt</a>(</span><span class="m-doc-wrap">QPointF position,
+              const <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* belowItem,
+              bool ignoreLocked = false) const -&gt; <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*</span>
+            </dt>
+            <dd>Returns the topmost layout item at a specified <em>position</em> which is below a specified <em>item</em>.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a10bd120a3eee0b381c1dab11a6fade78" class="m-doc">layoutItems</a>(</span><span class="m-doc-wrap">QList&lt;T*&gt;&amp; itemList) const</span>
+            </dt>
+            <dd>Returns a list of layout items of a specific type.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#ae2476c31a796dcbd08e999338a2e62b9" class="m-doc">layoutObjects</a>(</span><span class="m-doc-wrap">QList&lt;T*&gt;&amp; objectList) const</span>
+            </dt>
+            <dd>Returns a list of layout objects (items and multiframes) of a specific type.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad84ff95e98598ed3c29eef973d7b4bff" class="m-doc">loadFromTemplate</a>(</span><span class="m-doc-wrap">const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context,
+              bool clearExisting = true,
+              bool* ok = nullptr) -&gt; QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;</span>
+            </dt>
+            <dd>Load a layout template <em>document</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7d2b8a039d26fb64472159eb779b2511" class="m-doc">lowerItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false) -&gt; bool</span>
+            </dt>
+            <dd>Lowers an <em>item</em> down the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5d4c4ecbc8d628fa944ae28efeafd9fe" class="m-doc">moveItemToBottom</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false) -&gt; bool</span>
+            </dt>
+            <dd>Lowers an <em>item</em> down to the bottom of the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5702e636459bdb9af162173180e80c68" class="m-doc">moveItemToTop</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false) -&gt; bool</span>
+            </dt>
+            <dd>Raises an <em>item</em> up to the top of the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adbf66a4ac7f67e5ad3f0f1aa3b828548" class="m-doc">multiFrameByUuid</a>(</span><span class="m-doc-wrap">const QString&amp; uuid,
+              bool includeTemplateUuids = false) const -&gt; <a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>*</span>
+            </dt>
+            <dd>Returns the layout multiframe with matching <em>uuid</em> unique identifier, or a nullptr if a matching multiframe could not be found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad6bdf27b8d6dee3d0abf841efd6ada73" class="m-doc">multiFrames</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>*&gt;</span>
+            </dt>
+            <dd>Returns a list of multi frames contained in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a335b0864da1587dfb7f9f903d58c02d6" class="m-doc-self" name="a335b0864da1587dfb7f9f903d58c02d6">pageCollection</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutPageCollection.html" class="m-doc">QgsLayoutPageCollection</a>*</span>
+            </dt>
+            <dd>Returns a pointer to the layout&#x27;s page collection, which stores and manages page items in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab5541d19ea49a07eae140024ecfbf433" class="m-doc-self" name="ab5541d19ea49a07eae140024ecfbf433">pageCollection</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutPageCollection.html" class="m-doc">QgsLayoutPageCollection</a>*</span>
+            </dt>
+            <dd>Returns a pointer to the layout&#x27;s page collection, which stores and manages page items in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af60ac802cccb5e1193708c1ec0ff3e92" class="m-doc">pageItemBounds</a>(</span><span class="m-doc-wrap">int page,
+              bool visibleOnly = false) const -&gt; QRectF</span>
+            </dt>
+            <dd>Returns the bounding box of the items contained on a specified <em>page</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af0879344f00d03fc45f7f9cc5d37aaa3" class="m-doc">project</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsProject.html" class="m-doc">QgsProject</a>*</span>
+            </dt>
+            <dd>The project associated with the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a90963ca47991af8b87024e7bdfc54181" class="m-doc">raiseItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false) -&gt; bool</span>
+            </dt>
+            <dd>Raises an <em>item</em> up the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6a841b2309ee3d171e4e47fc9107d423" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; layoutElement,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets the collection&#x27;s state from a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5838d5539b724909bdb685a9c380374d" class="m-doc">referenceMap</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLayoutItemMap.html" class="m-doc">QgsLayoutItemMap</a>*</span>
+            </dt>
+            <dd>Returns the map item which will be used to generate corresponding world files when the layout is exported.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a67a41b002be1d24971b54bfd36924453" class="m-doc-self" name="a67a41b002be1d24971b54bfd36924453">reloadSettings</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Refreshes the layout when global layout related options change.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a293efef898ff14ae570051f8657b222a" class="m-doc">removeCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key)</span>
+            </dt>
+            <dd>Remove a custom property from the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abc071f5106e1d6254189cf3fffc5e11f" class="m-doc">removeLayoutItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item)</span>
+            </dt>
+            <dd>Removes an <em>item</em> from the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a10ec1871a7fc8085be884f3b841ffb0c" class="m-doc">removeMultiFrame</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>* multiFrame)</span>
+            </dt>
+            <dd>Removes a <em>multiFrame</em> from the layout (but does not delete it).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a275bb7bb68287bcd28b61e30bf369d82" class="m-doc-self" name="a275bb7bb68287bcd28b61e30bf369d82">renderContext</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutRenderContext.html" class="m-doc">QgsLayoutRenderContext</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s render context, which stores information relating to the current rendering settings for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5cccf9d8c6490cd53827256daf7eb97c" class="m-doc-self" name="a5cccf9d8c6490cd53827256daf7eb97c">renderContext</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutRenderContext.html" class="m-doc">QgsLayoutRenderContext</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s render context, which stores information relating to the current rendering settings for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad00cbf77a9f62bc18e939ce22395808f" class="m-doc-self" name="ad00cbf77a9f62bc18e939ce22395808f">reportContext</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutReportContext.html" class="m-doc">QgsLayoutReportContext</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s report context, which stores information relating to the current reporting context for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8be975f71d962cabc5820b2662fbfaba" class="m-doc-self" name="a8be975f71d962cabc5820b2662fbfaba">reportContext</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutReportContext.html" class="m-doc">QgsLayoutReportContext</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s report context, which stores information relating to the current reporting context for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a20f1d0e8ccc8612a5a7f396486a3c04a" class="m-doc">saveAsTemplate</a>(</span><span class="m-doc-wrap">const QString&amp; path,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const -&gt; bool</span>
+            </dt>
+            <dd>Saves the layout as a template at the given file <em>path</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a92c721319b6115043cf6ea492bbe2eb9" class="m-doc">selectedLayoutItems</a>(</span><span class="m-doc-wrap">bool includeLockedItems = true) -&gt; QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;</span>
+            </dt>
+            <dd>Returns list of selected layout items.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a123cda2092640f931e7951e1fe979d3c" class="m-doc">setCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value)</span>
+            </dt>
+            <dd>Set a custom property for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad1b3df2837a2c4f555399898c45e4249" class="m-doc">setReferenceMap</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItemMap.html" class="m-doc">QgsLayoutItemMap</a>* map)</span>
+            </dt>
+            <dd>Sets the <em>map</em> item which will be used to generate corresponding world files when the layout is exported.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9dfb42e2e8f0e07b0777d7ab11abb572" class="m-doc-self" name="a9dfb42e2e8f0e07b0777d7ab11abb572">setSelectedItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item)</span>
+            </dt>
+            <dd>Clears any selected items and sets <em>item</em> as the current selection.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa3f106b1ec87cee1d74dd8546b56774d" class="m-doc">setUnits</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> units)</span>
+            </dt>
+            <dd>Sets the native measurement <em>units</em> for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9a45306ef4c8c7afc6a295a487864519" class="m-doc-self" name="a9a45306ef4c8c7afc6a295a487864519">snapper</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutSnapper.html" class="m-doc">QgsLayoutSnapper</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s snapper, which stores handles layout snap grids and lines and snapping points to the nearest matching point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1fe3a5f85d7b99ace6f0400b962a80ea" class="m-doc-self" name="a1fe3a5f85d7b99ace6f0400b962a80ea">snapper</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutSnapper.html" class="m-doc">QgsLayoutSnapper</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the layout&#x27;s snapper, which stores handles layout snap grids and lines and snapping points to the nearest matching point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af94248ca552cf242671346365b52a6ae" class="m-doc-self" name="af94248ca552cf242671346365b52a6ae">undoStack</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutUndoStack.html" class="m-doc">QgsLayoutUndoStack</a>*</span>
+            </dt>
+            <dd>Returns a pointer to the layout&#x27;s undo stack, which manages undo/redo states for the layout and it&#x27;s associated objects.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af00c47eb3ad63fa5eb0486bec6f97c8a" class="m-doc-self" name="af00c47eb3ad63fa5eb0486bec6f97c8a">undoStack</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayoutUndoStack.html" class="m-doc">QgsLayoutUndoStack</a>*</span>
+            </dt>
+            <dd>Returns a pointer to the layout&#x27;s undo stack, which manages undo/redo states for the layout and it&#x27;s associated objects.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a55d80b0f220c0f8af472d170be572009" class="m-doc">ungroupItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItemGroup.html" class="m-doc">QgsLayoutItemGroup</a>* group) -&gt; QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;</span>
+            </dt>
+            <dd>Ungroups items by removing them from an item <em>group</em> and removing the group from the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a></span>
+            </dt>
+            <dd>Returns the native units for the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac6004af08224020c0512a22ed2a128f4" class="m-doc">updateZValues</a>(</span><span class="m-doc-wrap">bool addUndoCommands = true)</span>
+            </dt>
+            <dd>Resets the z-values of items based on their position in the internal z order list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad1877e24e5e584825edd238ad4916320" class="m-doc">writeXml</a>(</span><span class="m-doc-wrap">QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const -&gt; QDomElement <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the layout&#x27;s state encapsulated in a DOM element.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a594d395d92e2897f03a1d72efc784628" class="m-doc">changed</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Is emitted when properties of the layout change.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac2d8ba6277a977d05d91e7cfbaf1213c" class="m-doc-self" name="ac2d8ba6277a977d05d91e7cfbaf1213c">refreshed</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Is emitted when the layout has been refreshed and items should also be refreshed and updated.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a96ad4403db00ee5a341aeda09fcd4be7" class="m-doc">selectedItemChanged</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* selected)</span>
+            </dt>
+            <dd>Emitted whenever the selected item changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3a06503bc20c06b743beb59ff988e7fb" class="m-doc-self" name="a3a06503bc20c06b743beb59ff988e7fb">variablesChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted whenever the expression variables stored in the layout have been changed.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab09b498cef01deadfa02f5a7b3b3d3ff" class="m-doc">refresh</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Forces the layout, and all items contained within it, to refresh.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1ec5ef22f0fef46c31213a873c319e60" class="m-doc-self" name="a1ec5ef22f0fef46c31213a873c319e60">updateBounds</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Updates the scene bounds of the layout.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="afcebfa4c7ea76c3322fe9d3d3f7e48a9"><div>
+            <h3>
+              enum QgsLayout::<wbr /><a href="#afcebfa4c7ea76c3322fe9d3d3f7e48a9" class="m-doc-self">UndoCommand</a>
+            </h3>
+            <p>Layout undo commands, used for collapsing undo commands.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#afcebfa4c7ea76c3322fe9d3d3f7e48a9a3588f3cb8a334ba4c4ecca19a226dfb1" class="m-doc-self" name="afcebfa4c7ea76c3322fe9d3d3f7e48a9a3588f3cb8a334ba4c4ecca19a226dfb1">UndoLayoutDpi</a></td>
+                  <td>
+                  <p>Change layout default DPI.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#afcebfa4c7ea76c3322fe9d3d3f7e48a9addfaa5a77063bdddb58c324d24ceaaaf" class="m-doc-self" name="afcebfa4c7ea76c3322fe9d3d3f7e48a9addfaa5a77063bdddb58c324d24ceaaaf">UndoNone</a></td>
+                  <td>
+                  <p>No command suppression.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adcd588c7433b4026cc085e49b9ab5114"><div>
+            <h3>
+              enum QgsLayout::<wbr /><a href="#adcd588c7433b4026cc085e49b9ab5114" class="m-doc-self">ZValues</a>
+            </h3>
+            <p>Preset item z-values, to ensure correct stacking.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114a89080f83cffa586c6b5a0327e661495d" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114a89080f83cffa586c6b5a0327e661495d">ZPage</a></td>
+                  <td>
+                  <p>Z-value for page (paper) items.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114a71f643980df33dd6440f694dcbee0f10" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114a71f643980df33dd6440f694dcbee0f10">ZItem</a></td>
+                  <td>
+                  <p>Minimum z value for items.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114aecfa058b6caac8bba91d619525739db9" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114aecfa058b6caac8bba91d619525739db9">ZGrid</a></td>
+                  <td>
+                  <p>Z-value for page grids.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114a81352179b104db1a701abbaaf9fcd607" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114a81352179b104db1a701abbaaf9fcd607">ZGuide</a></td>
+                  <td>
+                  <p>Z-value for page guides.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114a5d39bb541bfc19f039074849a85dc3aa" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114a5d39bb541bfc19f039074849a85dc3aa">ZSmartGuide</a></td>
+                  <td>
+                  <p>Z-value for smart (item bounds based) guides.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114a308d597b4f95bc6d6945a8194a83d925" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114a308d597b4f95bc6d6945a8194a83d925">ZMouseHandles</a></td>
+                  <td>
+                  <p>Z-value for mouse handles.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114ac3255b7845e04c6962e4ec81c1ed8b6a" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114ac3255b7845e04c6962e4ec81c1ed8b6a">ZViewTool</a></td>
+                  <td>
+                  <p>Z-value for temporary view tool items.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#adcd588c7433b4026cc085e49b9ab5114a95bd715a3806982bb49983851c944469" class="m-doc-self" name="adcd588c7433b4026cc085e49b9ab5114a95bd715a3806982bb49983851c944469">ZSnapIndicator</a></td>
+                  <td>
+                  <p>Z-value for snapping indicator.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="af7d640326990213883d829a8b6b858b7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af7d640326990213883d829a8b6b858b7" class="m-doc-self">QgsLayout</a>(</span><span class="m-doc-wrap"><a href="classQgsProject.html" class="m-doc">QgsProject</a>* project)</span></span>
+            </h3>
+            <p>Construct a new layout linked to the specified <em>project</em>.</p>
+<p>If the layout is a &quot;new&quot; layout (as opposed to a layout which will restore a previous state from XML) then <a href="classQgsLayout.html#a23aed6c0715eefbab4e91dbb29a2b1f3" class="m-doc">initializeDefaults()</a> should be called on the new layout.</p>
+          </div></section>
+          <section class="m-doc-details" id="aee297020fb2bd5c8b1a535ef733a75f8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt; QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aee297020fb2bd5c8b1a535ef733a75f8" class="m-doc-self">addItemsFromXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; parentElement,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context,
+              QPointF* position = nullptr,
+              bool pasteInPlace = false)</span></span>
+            </h3>
+            <p>Add items from an XML representation to the layout.</p>
+<p>Used for project file reading and pasting items from clipboard.</p><p>The <em>position</em> argument is optional, and if it is not specified the items will be restored to their original position from the XML serialization. If specified, the items will be positioned such that the top-left bounds of all added items is located at this <em>position</em>.</p><p>The <em>pasteInPlace</em> argument determines whether the serialized position should be respected, but remapped to the origin of the page corresponding to the page at <em>position</em>.</p><p>A list of the newly added items is returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="adb110eb57dbca346ab65b99f2c402fe8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adb110eb57dbca346ab65b99f2c402fe8" class="m-doc-self">addLayoutItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item)</span></span>
+            </h3>
+            <p>Adds an <em>item</em> to the layout.</p>
+<p>This should be called instead of the base class addItem() method. Ownership of the item is transferred to the layout.</p>
+          </div></section>
+          <section class="m-doc-details" id="a4cc19a7b428eaf740807e1098a864135"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4cc19a7b428eaf740807e1098a864135" class="m-doc-self">addMultiFrame</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>* multiFrame)</span></span>
+            </h3>
+            <p>Adds a <em>multiFrame</em> to the layout.</p>
+<p>The object is owned by the layout until <a href="classQgsLayout.html#a10ec1871a7fc8085be884f3b841ffb0c" class="m-doc">removeMultiFrame()</a> is called.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a10ec1871a7fc8085be884f3b841ffb0c" class="m-doc">removeMultiFrame()</a></p><p><a href="classQgsLayout.html#ad6bdf27b8d6dee3d0abf841efd6ada73" class="m-doc">multiFrames()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a70a447cf90d3510720123a85a8c22c4b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a70a447cf90d3510720123a85a8c22c4b" class="m-doc-self">clear</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Clears the layout.</p>
+<p>Calling this method removes all items and pages from the layout.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6c1b2644fd0a5c4d53432d2b94f62327"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6c1b2644fd0a5c4d53432d2b94f62327" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Creates a clone of the layout.</p>
+<p>Ownership of the return layout is transferred to the caller.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac26fe96e1ba53e069732149056dcbca8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutMeasurement.html" class="m-doc">QgsLayoutMeasurement</a> QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac26fe96e1ba53e069732149056dcbca8" class="m-doc-self">convertFromLayoutUnits</a>(</span><span class="m-doc-wrap">double length,
+              <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> unit) const</span></span>
+            </h3>
+            <p>Converts a <em>length</em> measurement from the layout&#x27;s native units to a specified target <em>unit</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>length of measurement in specified units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc">convertToLayoutUnits()</a></p><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7fe359f4d3b45d6f615b900a559bdbc2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutSize.html" class="m-doc">QgsLayoutSize</a> QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7fe359f4d3b45d6f615b900a559bdbc2" class="m-doc-self">convertFromLayoutUnits</a>(</span><span class="m-doc-wrap">QSizeF size,
+              <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> unit) const</span></span>
+            </h3>
+            <p>Converts a <em>size</em> from the layout&#x27;s native units to a specified target <em>unit</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>size of measurement in specified units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc">convertToLayoutUnits()</a></p><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5951fada828a112650dc34f68c3a019f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutPoint.html" class="m-doc">QgsLayoutPoint</a> QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5951fada828a112650dc34f68c3a019f" class="m-doc-self">convertFromLayoutUnits</a>(</span><span class="m-doc-wrap">QPointF point,
+              <a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> unit) const</span></span>
+            </h3>
+            <p>Converts a <em>point</em> from the layout&#x27;s native units to a specified target <em>unit</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>point in specified units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc">convertToLayoutUnits()</a></p><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a68e6ac8ac7879c7225f50c59bfaeb861"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc-self">convertToLayoutUnits</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutMeasurement.html" class="m-doc">QgsLayoutMeasurement</a> measurement) const</span></span>
+            </h3>
+            <p>Converts a measurement into the layout&#x27;s native units.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>length of measurement in layout units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ac26fe96e1ba53e069732149056dcbca8" class="m-doc">convertFromLayoutUnits()</a></p><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ace8173f04eda5fcc9ece28e92296ab63"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSizeF QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ace8173f04eda5fcc9ece28e92296ab63" class="m-doc-self">convertToLayoutUnits</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayoutSize.html" class="m-doc">QgsLayoutSize</a>&amp; size) const</span></span>
+            </h3>
+            <p>Converts a size into the layout&#x27;s native units.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>size of measurement in layout units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ac26fe96e1ba53e069732149056dcbca8" class="m-doc">convertFromLayoutUnits()</a></p><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a05bf4b442513893ad9a6d5d4ed4e7f33"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QPointF QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a05bf4b442513893ad9a6d5d4ed4e7f33" class="m-doc-self">convertToLayoutUnits</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayoutPoint.html" class="m-doc">QgsLayoutPoint</a>&amp; point) const</span></span>
+            </h3>
+            <p>Converts a <em>point</em> into the layout&#x27;s native units.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>point in layout units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ac26fe96e1ba53e069732149056dcbca8" class="m-doc">convertFromLayoutUnits()</a></p><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a219a3abb1a847eaf086117cbaa362ae3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAbstractLayoutUndoCommand.html" class="m-doc">QgsAbstractLayoutUndoCommand</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a219a3abb1a847eaf086117cbaa362ae3" class="m-doc-self">createCommand</a>(</span><span class="m-doc-wrap">const QString&amp; text,
+              int id = 0,
+              QUndoCommand* parent = nullptr) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Creates a new layout undo command with the specified <em>text</em> and <em>parent</em>.</p>
+<p>The <em>id</em> argument can be used to specify an id number for the source event - this is used to determine whether QUndoCommand command compression can apply to the command.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac989e1fb76e05f6c28d72f2e54e04310"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a> QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac989e1fb76e05f6c28d72f2e54e04310" class="m-doc-self">createExpressionContext</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Creates an expression context relating to the layout&#x27;s current state.</p>
+<p>The context includes scopes for global, project, layout and layout context properties.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6ad1cd4bd2b0e82722ad798ce236eed9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6ad1cd4bd2b0e82722ad798ce236eed9" class="m-doc-self">customProperties</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns list of keys stored in custom properties for the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a123cda2092640f931e7951e1fe979d3c" class="m-doc">setCustomProperty()</a></p><p><a href="classQgsLayout.html#a95b7b1eb1e1d0c293e586bc45742b8c8" class="m-doc">customProperty()</a></p><p><a href="classQgsLayout.html#a293efef898ff14ae570051f8657b222a" class="m-doc">removeCustomProperty()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a95b7b1eb1e1d0c293e586bc45742b8c8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a95b7b1eb1e1d0c293e586bc45742b8c8" class="m-doc-self">customProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant()) const</span></span>
+            </h3>
+            <p>Read a custom property from the layout.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>property key</td>
+                </tr>
+                <tr>
+                  <td>defaultValue</td>
+                  <td>default value to return if property with matching key does not exist</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>value of matching property</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a123cda2092640f931e7951e1fe979d3c" class="m-doc">setCustomProperty()</a></p><p><a href="classQgsLayout.html#a293efef898ff14ae570051f8657b222a" class="m-doc">removeCustomProperty()</a></p><p><a href="classQgsLayout.html#a6ad1cd4bd2b0e82722ad798ce236eed9" class="m-doc">customProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9ab5a86e6e6003c4d4c6725be72b28c2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ab5a86e6e6003c4d4c6725be72b28c2" class="m-doc-self">deselectAll</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Clears any selected items in the layout.</p>
+<p>Call this method rather than QGraphicsScene::clearSelection, as the latter does not correctly emit signals to allow the layout&#x27;s model to update.</p>
+          </div></section>
+          <section class="m-doc-details" id="a0416b1a99c8345c1e96b13a09c127df7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItemGroup.html" class="m-doc">QgsLayoutItemGroup</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0416b1a99c8345c1e96b13a09c127df7" class="m-doc-self">groupItems</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;&amp; items)</span></span>
+            </h3>
+            <p>Creates a new group from a list of layout <em>items</em> and adds the group to the layout.</p>
+<p>If grouping was not possible, a nullptr will be returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a55d80b0f220c0f8af472d170be572009" class="m-doc">ungroupItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a23aed6c0715eefbab4e91dbb29a2b1f3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a23aed6c0715eefbab4e91dbb29a2b1f3" class="m-doc-self">initializeDefaults</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Initializes an empty layout, e.g.</p>
+<p>by adding a default page to the layout. This should be called after creating a new layout.</p>
+          </div></section>
+          <section class="m-doc-details" id="a00b4d410f78289b08bcce5d2e92c81ae"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a00b4d410f78289b08bcce5d2e92c81ae" class="m-doc-self">itemById</a>(</span><span class="m-doc-wrap">const QString&amp; id) const</span></span>
+            </h3>
+            <p>Returns a layout item given its <em>id</em>.</p>
+<p>Since item IDs are not necessarely unique, this function returns the first matching item found.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a3f254a2cf301f73f54c66570f43966c6" class="m-doc">itemByUuid()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7c4be9d33c6503733669114c97856c9d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7c4be9d33c6503733669114c97856c9d" class="m-doc-self">itemByTemplateUuid</a>(</span><span class="m-doc-wrap">const QString&amp; uuid) const</span></span>
+            </h3>
+            <p>Returns the layout item with matching template <em>uuid</em> unique identifier, or a nullptr if a matching item could not be found.</p>
+<p>Unlike <a href="classQgsLayout.html#a3f254a2cf301f73f54c66570f43966c6" class="m-doc">itemByUuid()</a>, this method ONLY checks template UUIDs for a match.</p><p>Template UUIDs are valid only for items which have been added to an existing layout from a template. In this case the template UUID is the original item UUID at the time the template was created, vs the item&#x27;s uuid() which returns the current instance of the item&#x27;s unique identifier.</p><p>Note that template UUIDs are only available while a layout is being restored from XML.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a3f254a2cf301f73f54c66570f43966c6" class="m-doc">itemByUuid()</a></p><p><a href="classQgsLayout.html#adbf66a4ac7f67e5ad3f0f1aa3b828548" class="m-doc">multiFrameByUuid()</a></p><p><a href="classQgsLayout.html#a00b4d410f78289b08bcce5d2e92c81ae" class="m-doc">itemById()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3f254a2cf301f73f54c66570f43966c6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f254a2cf301f73f54c66570f43966c6" class="m-doc-self">itemByUuid</a>(</span><span class="m-doc-wrap">const QString&amp; uuid,
+              bool includeTemplateUuids = false) const</span></span>
+            </h3>
+            <p>Returns the layout item with matching <em>uuid</em> unique identifier, or a nullptr if a matching item could not be found.</p>
+<p>If <em>includeTemplateUuids</em> is true, then item&#x27;s template UUID will also be tested when trying to match the uuid. This may differ from the item&#x27;s UUID for items which have been added to an existing layout from a template. In this case the template UUID returns the original item UUID at the time the template was created, vs the item&#x27;s uuid() which returns the current instance of the item&#x27;s unique identifier. Note that template UUIDs are only available while a layout is being restored from XML.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a7c4be9d33c6503733669114c97856c9d" class="m-doc">itemByTemplateUuid()</a></p><p><a href="classQgsLayout.html#adbf66a4ac7f67e5ad3f0f1aa3b828548" class="m-doc">multiFrameByUuid()</a></p><p><a href="classQgsLayout.html#a00b4d410f78289b08bcce5d2e92c81ae" class="m-doc">itemById()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa041d33c60e6a6c3f30d81bb7442f704"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QRectF QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa041d33c60e6a6c3f30d81bb7442f704" class="m-doc-self">layoutBounds</a>(</span><span class="m-doc-wrap">bool ignorePages = false,
+              double margin = 0.0) const</span></span>
+            </h3>
+            <p>Calculates the bounds of all non-gui items in the layout.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ignorePages</td>
+                  <td>set to true to ignore page items</td>
+                </tr>
+                <tr>
+                  <td>margin</td>
+                  <td>optional marginal (in percent, e.g., 0.05 = 5% ) to add around items</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>layout bounds, in layout units.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Ignores snap lines, mouse handles and other cosmetic items.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#af60ac802cccb5e1193708c1ec0ff3e92" class="m-doc">pageItemBounds()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7081e55ea9915b400e521a839aea87ed"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7081e55ea9915b400e521a839aea87ed" class="m-doc-self">layoutItemAt</a>(</span><span class="m-doc-wrap">QPointF position,
+              bool ignoreLocked = false) const</span></span>
+            </h3>
+            <p>Returns the topmost layout item at a specified <em>position</em>.</p>
+<p>Ignores paper items. If <em>ignoreLocked</em> is set to true any locked items will be ignored.</p>
+          </div></section>
+          <section class="m-doc-details" id="a9c431435df907f7e6b43ca9bbd2862f7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9c431435df907f7e6b43ca9bbd2862f7" class="m-doc-self">layoutItemAt</a>(</span><span class="m-doc-wrap">QPointF position,
+              const <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* belowItem,
+              bool ignoreLocked = false) const</span></span>
+            </h3>
+            <p>Returns the topmost layout item at a specified <em>position</em> which is below a specified <em>item</em>.</p>
+<p>Ignores paper items. If <em>ignoreLocked</em> is set to true any locked items will be ignored.</p>
+          </div></section>
+          <section class="m-doc-details" id="a10bd120a3eee0b381c1dab11a6fade78"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a10bd120a3eee0b381c1dab11a6fade78" class="m-doc-self">layoutItems</a>(</span><span class="m-doc-wrap">QList&lt;T*&gt;&amp; itemList) const</span></span>
+            </h3>
+            <p>Returns a list of layout items of a specific type.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae2476c31a796dcbd08e999338a2e62b9"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae2476c31a796dcbd08e999338a2e62b9" class="m-doc-self">layoutObjects</a>(</span><span class="m-doc-wrap">QList&lt;T*&gt;&amp; objectList) const</span></span>
+            </h3>
+            <p>Returns a list of layout objects (items and multiframes) of a specific type.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad84ff95e98598ed3c29eef973d7b4bff"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt; QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad84ff95e98598ed3c29eef973d7b4bff" class="m-doc-self">loadFromTemplate</a>(</span><span class="m-doc-wrap">const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context,
+              bool clearExisting = true,
+              bool* ok = nullptr)</span></span>
+            </h3>
+            <p>Load a layout template <em>document</em>.</p>
+<p>By default this method will clear all items from the existing layout and real all layout settings from the template. Setting <em>clearExisting</em> to false will only add new items from the template, without overwriting the existing items or layout settings.</p><p>If <em>ok</em> is specified, it will be set to true if the load was successful.</p><p>Returns a list of loaded items.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7d2b8a039d26fb64472159eb779b2511"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7d2b8a039d26fb64472159eb779b2511" class="m-doc-self">lowerItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false)</span></span>
+            </h3>
+            <p>Lowers an <em>item</em> down the z-order.</p>
+<p>Returns true if the item was successfully lowered.</p><p>If <em>deferUpdate</em> is true, the scene will not be visibly updated to reflect the new stacking order. This allows multiple <a href="classQgsLayout.html#a90963ca47991af8b87024e7bdfc54181" class="m-doc">raiseItem()</a> calls to be made in sequence without the cost of updating the scene for each one.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a90963ca47991af8b87024e7bdfc54181" class="m-doc">raiseItem()</a></p><p><a href="classQgsLayout.html#ac6004af08224020c0512a22ed2a128f4" class="m-doc">updateZValues()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5d4c4ecbc8d628fa944ae28efeafd9fe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d4c4ecbc8d628fa944ae28efeafd9fe" class="m-doc-self">moveItemToBottom</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false)</span></span>
+            </h3>
+            <p>Lowers an <em>item</em> down to the bottom of the z-order.</p>
+<p>Returns true if the item was successfully lowered. If <em>deferUpdate</em> is true, the scene will not be visibly updated to reflect the new stacking order. This allows multiple <a href="classQgsLayout.html#a90963ca47991af8b87024e7bdfc54181" class="m-doc">raiseItem()</a> calls to be made in sequence without the cost of updating the scene for each one.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a5702e636459bdb9af162173180e80c68" class="m-doc">moveItemToTop()</a></p><p><a href="classQgsLayout.html#ac6004af08224020c0512a22ed2a128f4" class="m-doc">updateZValues()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5702e636459bdb9af162173180e80c68"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5702e636459bdb9af162173180e80c68" class="m-doc-self">moveItemToTop</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false)</span></span>
+            </h3>
+            <p>Raises an <em>item</em> up to the top of the z-order.</p>
+<p>Returns true if the item was successfully raised.</p><p>If <em>deferUpdate</em> is true, the scene will not be visibly updated to reflect the new stacking order. This allows multiple <a href="classQgsLayout.html#a90963ca47991af8b87024e7bdfc54181" class="m-doc">raiseItem()</a> calls to be made in sequence without the cost of updating the scene for each one.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a5d4c4ecbc8d628fa944ae28efeafd9fe" class="m-doc">moveItemToBottom()</a></p><p><a href="classQgsLayout.html#ac6004af08224020c0512a22ed2a128f4" class="m-doc">updateZValues()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adbf66a4ac7f67e5ad3f0f1aa3b828548"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adbf66a4ac7f67e5ad3f0f1aa3b828548" class="m-doc-self">multiFrameByUuid</a>(</span><span class="m-doc-wrap">const QString&amp; uuid,
+              bool includeTemplateUuids = false) const</span></span>
+            </h3>
+            <p>Returns the layout multiframe with matching <em>uuid</em> unique identifier, or a nullptr if a matching multiframe could not be found.</p>
+<p>If <em>includeTemplateUuids</em> is true, then the multiframe&#x27;s QgsLayoutMultiFrame::templateUuid() will also be tested when trying to match the uuid. Template UUIDs are valid only for items which have been added to an existing layout from a template. In this case the template UUID is the original item UUID at the time the template was created, vs the item&#x27;s uuid() which returns the current instance of the item&#x27;s unique identifier. Note that template UUIDs are only available while a layout is being restored from XML.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a3f254a2cf301f73f54c66570f43966c6" class="m-doc">itemByUuid()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad6bdf27b8d6dee3d0abf841efd6ada73"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>*&gt; QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad6bdf27b8d6dee3d0abf841efd6ada73" class="m-doc-self">multiFrames</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of multi frames contained in the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a4cc19a7b428eaf740807e1098a864135" class="m-doc">addMultiFrame()</a></p><p><a href="classQgsLayout.html#a10ec1871a7fc8085be884f3b841ffb0c" class="m-doc">removeMultiFrame()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af60ac802cccb5e1193708c1ec0ff3e92"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QRectF QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af60ac802cccb5e1193708c1ec0ff3e92" class="m-doc-self">pageItemBounds</a>(</span><span class="m-doc-wrap">int page,
+              bool visibleOnly = false) const</span></span>
+            </h3>
+            <p>Returns the bounding box of the items contained on a specified <em>page</em>.</p>
+<p>A page number of 0 represents the first page in the layout.</p><p>Set <em>visibleOnly</em> to true to only include visible items.</p><p>The returned bounds are in layout units.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#aa041d33c60e6a6c3f30d81bb7442f704" class="m-doc">layoutBounds()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af0879344f00d03fc45f7f9cc5d37aaa3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsProject.html" class="m-doc">QgsProject</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af0879344f00d03fc45f7f9cc5d37aaa3" class="m-doc-self">project</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>The project associated with the layout.</p>
+<p>Used to get access to layers, map themes, relations and various other bits. It is never null.</p>
+          </div></section>
+          <section class="m-doc-details" id="a90963ca47991af8b87024e7bdfc54181"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a90963ca47991af8b87024e7bdfc54181" class="m-doc-self">raiseItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item,
+              bool deferUpdate = false)</span></span>
+            </h3>
+            <p>Raises an <em>item</em> up the z-order.</p>
+<p>Returns true if the item was successfully raised.</p><p>If <em>deferUpdate</em> is true, the scene will not be visibly updated to reflect the new stacking order. This allows multiple <a href="classQgsLayout.html#a90963ca47991af8b87024e7bdfc54181" class="m-doc">raiseItem()</a> calls to be made in sequence without the cost of updating the scene for each one.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a7d2b8a039d26fb64472159eb779b2511" class="m-doc">lowerItem()</a></p><p><a href="classQgsLayout.html#ac6004af08224020c0512a22ed2a128f4" class="m-doc">updateZValues()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6a841b2309ee3d171e4e47fc9107d423"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6a841b2309ee3d171e4e47fc9107d423" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; layoutElement,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Sets the collection&#x27;s state from a DOM element.</p>
+<p><em>layoutElement</em> is the DOM node corresponding to the layout.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ad1877e24e5e584825edd238ad4916320" class="m-doc">writeXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5838d5539b724909bdb685a9c380374d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutItemMap.html" class="m-doc">QgsLayoutItemMap</a>* QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5838d5539b724909bdb685a9c380374d" class="m-doc-self">referenceMap</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map item which will be used to generate corresponding world files when the layout is exported.</p>
+<p>If no map was explicitly set via <a href="classQgsLayout.html#ad1b3df2837a2c4f555399898c45e4249" class="m-doc">setReferenceMap()</a>, the largest map in the layout will be returned (or nullptr if there are no maps in the layout).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ad1b3df2837a2c4f555399898c45e4249" class="m-doc">setReferenceMap()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a293efef898ff14ae570051f8657b222a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a293efef898ff14ae570051f8657b222a" class="m-doc-self">removeCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key)</span></span>
+            </h3>
+            <p>Remove a custom property from the layout.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>property key</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a123cda2092640f931e7951e1fe979d3c" class="m-doc">setCustomProperty()</a></p><p><a href="classQgsLayout.html#a95b7b1eb1e1d0c293e586bc45742b8c8" class="m-doc">customProperty()</a></p><p><a href="classQgsLayout.html#a6ad1cd4bd2b0e82722ad798ce236eed9" class="m-doc">customProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abc071f5106e1d6254189cf3fffc5e11f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc071f5106e1d6254189cf3fffc5e11f" class="m-doc-self">removeLayoutItem</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item)</span></span>
+            </h3>
+            <p>Removes an <em>item</em> from the layout.</p>
+<p>This should be called instead of the base class removeItem() method. The item will also be deleted.</p>
+          </div></section>
+          <section class="m-doc-details" id="a10ec1871a7fc8085be884f3b841ffb0c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a10ec1871a7fc8085be884f3b841ffb0c" class="m-doc-self">removeMultiFrame</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>* multiFrame)</span></span>
+            </h3>
+            <p>Removes a <em>multiFrame</em> from the layout (but does not delete it).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a4cc19a7b428eaf740807e1098a864135" class="m-doc">addMultiFrame()</a></p><p><a href="classQgsLayout.html#ad6bdf27b8d6dee3d0abf841efd6ada73" class="m-doc">multiFrames()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a20f1d0e8ccc8612a5a7f396486a3c04a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20f1d0e8ccc8612a5a7f396486a3c04a" class="m-doc-self">saveAsTemplate</a>(</span><span class="m-doc-wrap">const QString&amp; path,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const</span></span>
+            </h3>
+            <p>Saves the layout as a template at the given file <em>path</em>.</p>
+<p>Returns true if save was successful.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ad84ff95e98598ed3c29eef973d7b4bff" class="m-doc">loadFromTemplate()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a92c721319b6115043cf6ea492bbe2eb9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt; QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a92c721319b6115043cf6ea492bbe2eb9" class="m-doc-self">selectedLayoutItems</a>(</span><span class="m-doc-wrap">bool includeLockedItems = true)</span></span>
+            </h3>
+            <p>Returns list of selected layout items.</p>
+<p>If <em>includeLockedItems</em> is set to true, then locked items will also be included in the returned list.</p>
+          </div></section>
+          <section class="m-doc-details" id="a123cda2092640f931e7951e1fe979d3c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a123cda2092640f931e7951e1fe979d3c" class="m-doc-self">setCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value)</span></span>
+            </h3>
+            <p>Set a custom property for the layout.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>property key. If a property with the same key already exists it will be overwritten.</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>property value</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a95b7b1eb1e1d0c293e586bc45742b8c8" class="m-doc">customProperty()</a></p><p><a href="classQgsLayout.html#a293efef898ff14ae570051f8657b222a" class="m-doc">removeCustomProperty()</a></p><p><a href="classQgsLayout.html#a6ad1cd4bd2b0e82722ad798ce236eed9" class="m-doc">customProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad1b3df2837a2c4f555399898c45e4249"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad1b3df2837a2c4f555399898c45e4249" class="m-doc-self">setReferenceMap</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItemMap.html" class="m-doc">QgsLayoutItemMap</a>* map)</span></span>
+            </h3>
+            <p>Sets the <em>map</em> item which will be used to generate corresponding world files when the layout is exported.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a5838d5539b724909bdb685a9c380374d" class="m-doc">referenceMap()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa3f106b1ec87cee1d74dd8546b56774d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa3f106b1ec87cee1d74dd8546b56774d" class="m-doc-self">setUnits</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> units)</span></span>
+            </h3>
+            <p>Sets the native measurement <em>units</em> for the layout.</p>
+<p>These also form the default unit for measurements for the layout.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc">units()</a></p><p><a href="classQgsLayout.html#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc">convertToLayoutUnits()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a55d80b0f220c0f8af472d170be572009"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt; QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a55d80b0f220c0f8af472d170be572009" class="m-doc-self">ungroupItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItemGroup.html" class="m-doc">QgsLayoutItemGroup</a>* group)</span></span>
+            </h3>
+            <p>Ungroups items by removing them from an item <em>group</em> and removing the group from the layout.</p>
+<p>Child items will remain in the layout and will not be deleted.</p><p>Returns a list of the items removed from the group, or an empty list if ungrouping was not successful.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a0416b1a99c8345c1e96b13a09c127df7" class="m-doc">groupItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a973dae4c769ae52aa0f8e3aaea3852a7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#a1006515f99be229cc6ad6922c629c48c" class="m-doc">QgsUnitTypes::<wbr />LayoutUnit</a> QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a973dae4c769ae52aa0f8e3aaea3852a7" class="m-doc-self">units</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the native units for the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#aa3f106b1ec87cee1d74dd8546b56774d" class="m-doc">setUnits()</a></p><p><a href="classQgsLayout.html#a68e6ac8ac7879c7225f50c59bfaeb861" class="m-doc">convertToLayoutUnits()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac6004af08224020c0512a22ed2a128f4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac6004af08224020c0512a22ed2a128f4" class="m-doc-self">updateZValues</a>(</span><span class="m-doc-wrap">bool addUndoCommands = true)</span></span>
+            </h3>
+            <p>Resets the z-values of items based on their position in the internal z order list.</p>
+<p>This should be called after any stacking changes which deferred z-order updates.</p>
+          </div></section>
+          <section class="m-doc-details" id="ad1877e24e5e584825edd238ad4916320"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QDomElement QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad1877e24e5e584825edd238ad4916320" class="m-doc-self">writeXml</a>(</span><span class="m-doc-wrap">QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the layout&#x27;s state encapsulated in a DOM element.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#a6a841b2309ee3d171e4e47fc9107d423" class="m-doc">readXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a594d395d92e2897f03a1d72efc784628"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a594d395d92e2897f03a1d72efc784628" class="m-doc-self">changed</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted when properties of the layout change.</p>
+<p>This signal is only emitted for settings directly managed by the layout, and is not emitted when child items change.</p>
+          </div></section>
+          <section class="m-doc-details" id="a96ad4403db00ee5a341aeda09fcd4be7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a96ad4403db00ee5a341aeda09fcd4be7" class="m-doc-self">selectedItemChanged</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* selected) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted whenever the selected item changes.</p>
+<p>If nullptr, no item is selected.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab09b498cef01deadfa02f5a7b3b3d3ff"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayout::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab09b498cef01deadfa02f5a7b3b3d3ff" class="m-doc-self">refresh</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Forces the layout, and all items contained within it, to refresh.</p>
+<p>For instance, this causes maps to redraw and rebuild cached images, html items to reload their source url, and attribute tables to refresh their contents. Calling this also triggers a recalculation of all data defined attributes within the layout.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayout.html#ac2d8ba6277a977d05d91e7cfbaf1213c" class="m-doc">refreshed()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

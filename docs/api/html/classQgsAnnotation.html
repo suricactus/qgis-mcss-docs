@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsAnnotation class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsAnnotation <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for annotation items which are drawn over a map.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsAnnotation.html" class="m-doc">QgsAnnotation</a> is an abstract base class for map annotation items. These annotations can be drawn within a map, and have either a fixed map position (retrieved using <a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a>) or are placed relative to the map&#x27;s frame (retrieved using <a href="classQgsAnnotation.html#aeab39ed4e02c7e20e07bccbc9e926f18" class="m-doc">relativePosition()</a>). Annotations with a fixed map position also have a corresponding <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>, which can be determined by calling <a href="classQgsAnnotation.html#a21279ae95a7b32ac625b9dade501e272" class="m-doc">mapPositionCrs()</a>.</p><p>Derived classes should implement their custom painting routines within a <a href="classQgsAnnotation.html#a2a5ec0622fd5a19485dd2156e432994c" class="m-doc">renderAnnotation()</a> override.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsFormAnnotation.html" class="m-doc">QgsFormAnnotation</a>
+            </dt>
+            <dd>An annotation item that embeds a designer form showing the feature attribute.</dd>
+            <dt>
+              class <a href="classQgsHtmlAnnotation.html" class="m-doc">QgsHtmlAnnotation</a>
+            </dt>
+            <dd>An annotation item that embeds HTML content.</dd>
+            <dt>
+              class <a href="classQgsSvgAnnotation.html" class="m-doc">QgsSvgAnnotation</a>
+            </dt>
+            <dd>An annotation which renders the contents of an SVG file.</dd>
+            <dt>
+              class <a href="classQgsTextAnnotation.html" class="m-doc">QgsTextAnnotation</a>
+            </dt>
+            <dd>An annotation item that displays formatted text from a QTextDocument document.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ab829806d56fd58d587c4f37437343a9d" class="m-doc-self" name="ab829806d56fd58d587c4f37437343a9d">QgsAnnotation</a>(</span><span class="m-doc-wrap">QObject* parent = nullptr)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsAnnotation.html" class="m-doc">QgsAnnotation</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a83ab43db38d3f4da1526872a9fb65ff3" class="m-doc">associatedFeature</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsFeature.html" class="m-doc">QgsFeature</a></span>
+            </dt>
+            <dd>Returns the feature associated with the annotation, or an invalid feature if none has been set.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a95a7f081dfd1b5769b751e494726cc40" class="m-doc-self" name="a95a7f081dfd1b5769b751e494726cc40">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsAnnotation.html" class="m-doc">QgsAnnotation</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Clones the annotation, returning a new copy of the annotation reflecting the annotation&#x27;s current state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1fbfaf5986daf118914e0060310b890b" class="m-doc">contentsMargin</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsMargins.html" class="m-doc">QgsMargins</a></span>
+            </dt>
+            <dd>Returns the margins (in millimeters) between the outside of the frame and the annotation content.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a43f278839a447cf8c92afb79b2e65179" class="m-doc">fillSymbol</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsFillSymbol.html" class="m-doc">QgsFillSymbol</a>*</span>
+            </dt>
+            <dd>Returns the symbol that is used for rendering the annotation frame.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a41a34714cfaa6553bd23a02f889c615a" class="m-doc">frameOffsetFromReferencePoint</a>(</span><span class="m-doc-wrap">) const -&gt; QPointF</span>
+            </dt>
+            <dd>Returns the annotation&#x27;s frame&#x27;s offset from the <a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a> reference point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a17686651856f19b82d83830946d59ffa" class="m-doc">frameSize</a>(</span><span class="m-doc-wrap">) const -&gt; QSizeF</span>
+            </dt>
+            <dd>Returns the size of the annotation&#x27;s frame (the main area in which the annotation&#x27;s content is drawn).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a63be130e8cacf9ac5a2e0e6adeeca50e" class="m-doc">hasFixedMapPosition</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the annotation is attached to a fixed map position, or false if the annotation uses a position relative to the current map extent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aacfe7d3b7df162c53200c125bc65b777" class="m-doc">isVisible</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the annotation is visible and should be rendered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1658f3f0f49fae4c41217334872db70e" class="m-doc">mapLayer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*</span>
+            </dt>
+            <dd>Returns the map layer associated with the annotation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4b522c3a7331c8023ba1098daba24e9c" class="m-doc">mapPosition</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>Returns the map position of the annotation, if it is attached to a fixed map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a21279ae95a7b32ac625b9dade501e272" class="m-doc">mapPositionCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the CRS of the map position, or an invalid CRS if the annotation does not have a fixed map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a43fbc3a277de968776ab6765be100c28" class="m-doc">markerSymbol</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsMarkerSymbol.html" class="m-doc">QgsMarkerSymbol</a>*</span>
+            </dt>
+            <dd>Returns the symbol that is drawn at the annotation&#x27;s map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab062dff0c0f1159a0fff8b9e137db174" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; itemElem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Restores the annotation&#x27;s state from a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeab39ed4e02c7e20e07bccbc9e926f18" class="m-doc">relativePosition</a>(</span><span class="m-doc-wrap">) const -&gt; QPointF</span>
+            </dt>
+            <dd>Returns the relative position of the annotation, if it is not attached to a fixed map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a950af28fa57736b1a242d753cc7c17cc" class="m-doc-self" name="a950af28fa57736b1a242d753cc7c17cc">render</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const</span>
+            </dt>
+            <dd>Renders the annotation to a target render context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6ea5c69e8d2a0bb22c65f5ac176da4a2" class="m-doc">setAssociatedFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets the feature associated with the annotation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a52feb41edf4cd4b3e93447aca2127299" class="m-doc">setContentsMargin</a>(</span><span class="m-doc-wrap">const <a href="classQgsMargins.html" class="m-doc">QgsMargins</a>&amp; margins)</span>
+            </dt>
+            <dd>Sets the margins (in millimeters) between the outside of the frame and the annotation content.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a14db640e92249d034dd1f41c7d0c257a" class="m-doc">setFillSymbol</a>(</span><span class="m-doc-wrap"><a href="classQgsFillSymbol.html" class="m-doc">QgsFillSymbol</a>* symbol)</span>
+            </dt>
+            <dd>Sets the fill symbol used for rendering the annotation frame.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a153ba9c5109098d13ca62f7882e8145c" class="m-doc">setFrameOffsetFromReferencePoint</a>(</span><span class="m-doc-wrap">QPointF offset)</span>
+            </dt>
+            <dd>Sets the annotation&#x27;s frame&#x27;s offset from the <a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a> reference point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a072e091457c8ab569f8708b1e578e6bd" class="m-doc">setFrameSize</a>(</span><span class="m-doc-wrap">QSizeF size)</span>
+            </dt>
+            <dd>Sets the size of the annotation&#x27;s frame (the main area in which the annotation&#x27;s content is drawn).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab41aa25dcf74fb8a68dfa4d232a61a61" class="m-doc">setHasFixedMapPosition</a>(</span><span class="m-doc-wrap">bool fixed)</span>
+            </dt>
+            <dd>Sets whether the annotation is attached to a fixed map position, or uses a position relative to the current map extent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aff6137f6fe60ae38ebf788cc32825f5a" class="m-doc">setMapLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer)</span>
+            </dt>
+            <dd>Sets the map layer associated with the annotation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3de5aa9ec23988b04dd0a4b3aec8ed7b" class="m-doc">setMapPosition</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; position)</span>
+            </dt>
+            <dd>Sets the map position of the annotation, if it is attached to a fixed map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a85a59b2de5c4d10586008d9ee5375673" class="m-doc">setMapPositionCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span>
+            </dt>
+            <dd>Sets the CRS of the map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac24a030a3b8a32a5a19a1cee2970b285" class="m-doc">setMarkerSymbol</a>(</span><span class="m-doc-wrap"><a href="classQgsMarkerSymbol.html" class="m-doc">QgsMarkerSymbol</a>* symbol)</span>
+            </dt>
+            <dd>Sets the symbol that is drawn at the annotation&#x27;s map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a26a2be597b9722dbc0c76af63abe430d" class="m-doc">setRelativePosition</a>(</span><span class="m-doc-wrap">QPointF position)</span>
+            </dt>
+            <dd>Sets the relative position of the annotation, if it is not attached to a fixed map position.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad85f22d7e855ab32aa7eb513087dc567" class="m-doc">setVisible</a>(</span><span class="m-doc-wrap">bool visible)</span>
+            </dt>
+            <dd>Sets whether the annotation is visible and should be rendered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afa9dc22a2aa59eaf9c388353411dafef" class="m-doc">writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; elem,
+              QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Writes the annotation state to a DOM element.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a002ed93281410abe5c43b355eb2cdd3c" class="m-doc-self" name="a002ed93281410abe5c43b355eb2cdd3c">appearanceChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted whenever the annotation&#x27;s appearance changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afafbebfed7e77c0f28d08ccc0c0393df" class="m-doc-self" name="afafbebfed7e77c0f28d08ccc0c0393df">mapLayerChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the map layer associated with the annotation changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3e9d4ffa0fc444032015d405dc48ac30" class="m-doc-self" name="a3e9d4ffa0fc444032015d405dc48ac30">moved</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the annotation&#x27;s position has changed and items need to be moved to reflect this.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8e712c4b267f19491ea3dba01fb002b3" class="m-doc">_readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; annotationElem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context)</span>
+            </dt>
+            <dd>Reads common annotation properties from a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a48cb9b4cd6dd29ed140868d7f92d21b8" class="m-doc">_writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; itemElem,
+              QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const</span>
+            </dt>
+            <dd>Writes common annotation properties to a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a90501279874b94b7c3e135f1345fd4f1" class="m-doc">copyCommonProperties</a>(</span><span class="m-doc-wrap"><a href="classQgsAnnotation.html" class="m-doc">QgsAnnotation</a>* target) const</span>
+            </dt>
+            <dd>Copies common annotation properties to the <em>targe</em> annotation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa448116884ae6550a727ba6223b21b49" class="m-doc">minimumFrameSize</a>(</span><span class="m-doc-wrap">) const -&gt; QSizeF <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the minimum frame size for the annotation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2a5ec0622fd5a19485dd2156e432994c" class="m-doc">renderAnnotation</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              QSizeF size) const <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Renders the annotation&#x27;s contents to a target /a context at the specified /a size.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a83ab43db38d3f4da1526872a9fb65ff3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a> QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83ab43db38d3f4da1526872a9fb65ff3" class="m-doc-self">associatedFeature</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the feature associated with the annotation, or an invalid feature if none has been set.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a6ea5c69e8d2a0bb22c65f5ac176da4a2" class="m-doc">setAssociatedFeature()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1fbfaf5986daf118914e0060310b890b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMargins.html" class="m-doc">QgsMargins</a> QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1fbfaf5986daf118914e0060310b890b" class="m-doc-self">contentsMargin</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the margins (in millimeters) between the outside of the frame and the annotation content.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a52feb41edf4cd4b3e93447aca2127299" class="m-doc">setContentsMargin()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a43f278839a447cf8c92afb79b2e65179"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFillSymbol.html" class="m-doc">QgsFillSymbol</a>* QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a43f278839a447cf8c92afb79b2e65179" class="m-doc-self">fillSymbol</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the symbol that is used for rendering the annotation frame.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a14db640e92249d034dd1f41c7d0c257a" class="m-doc">setFillSymbol()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a41a34714cfaa6553bd23a02f889c615a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QPointF QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a41a34714cfaa6553bd23a02f889c615a" class="m-doc-self">frameOffsetFromReferencePoint</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the annotation&#x27;s frame&#x27;s offset from the <a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a> reference point.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a153ba9c5109098d13ca62f7882e8145c" class="m-doc">setFrameOffsetFromReferencePoint()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a17686651856f19b82d83830946d59ffa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSizeF QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a17686651856f19b82d83830946d59ffa" class="m-doc-self">frameSize</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the size of the annotation&#x27;s frame (the main area in which the annotation&#x27;s content is drawn).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a072e091457c8ab569f8708b1e578e6bd" class="m-doc">setFrameSize()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a63be130e8cacf9ac5a2e0e6adeeca50e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a63be130e8cacf9ac5a2e0e6adeeca50e" class="m-doc-self">hasFixedMapPosition</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the annotation is attached to a fixed map position, or false if the annotation uses a position relative to the current map extent.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#ab41aa25dcf74fb8a68dfa4d232a61a61" class="m-doc">setHasFixedMapPosition()</a></p><p><a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a></p><p><a href="classQgsAnnotation.html#aeab39ed4e02c7e20e07bccbc9e926f18" class="m-doc">relativePosition()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aacfe7d3b7df162c53200c125bc65b777"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aacfe7d3b7df162c53200c125bc65b777" class="m-doc-self">isVisible</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the annotation is visible and should be rendered.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#ad85f22d7e855ab32aa7eb513087dc567" class="m-doc">setVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1658f3f0f49fae4c41217334872db70e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1658f3f0f49fae4c41217334872db70e" class="m-doc-self">mapLayer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map layer associated with the annotation.</p>
+<p>Annotations can be associated with a map layer if their visibility should be synchronized with the layer&#x27;s visibility.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#aff6137f6fe60ae38ebf788cc32825f5a" class="m-doc">setMapLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4b522c3a7331c8023ba1098daba24e9c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4b522c3a7331c8023ba1098daba24e9c" class="m-doc-self">mapPosition</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map position of the annotation, if it is attached to a fixed map position.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a3de5aa9ec23988b04dd0a4b3aec8ed7b" class="m-doc">setMapPosition()</a></p><p><a href="classQgsAnnotation.html#a1a2f132cbe6cd0af5c3df36f347e24d3" class="m-doc">hasFixedMapPosition()</a></p><p><a href="classQgsAnnotation.html#a21279ae95a7b32ac625b9dade501e272" class="m-doc">mapPositionCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a21279ae95a7b32ac625b9dade501e272"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a21279ae95a7b32ac625b9dade501e272" class="m-doc-self">mapPositionCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the CRS of the map position, or an invalid CRS if the annotation does not have a fixed map position.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a85a59b2de5c4d10586008d9ee5375673" class="m-doc">setMapPositionCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a43fbc3a277de968776ab6765be100c28"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMarkerSymbol.html" class="m-doc">QgsMarkerSymbol</a>* QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a43fbc3a277de968776ab6765be100c28" class="m-doc-self">markerSymbol</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the symbol that is drawn at the annotation&#x27;s map position.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#ac24a030a3b8a32a5a19a1cee2970b285" class="m-doc">setMarkerSymbol()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab062dff0c0f1159a0fff8b9e137db174"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab062dff0c0f1159a0fff8b9e137db174" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; itemElem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Restores the annotation&#x27;s state from a DOM element.</p>
+<p>Derived classes should call <a href="classQgsAnnotation.html#a8e712c4b267f19491ea3dba01fb002b3" class="m-doc">_<wbr />readXml()</a> within their implementation of this method.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#afa9dc22a2aa59eaf9c388353411dafef" class="m-doc">writeXml()</a></p><p><a href="classQgsAnnotation.html#a8e712c4b267f19491ea3dba01fb002b3" class="m-doc">_<wbr />readXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeab39ed4e02c7e20e07bccbc9e926f18"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QPointF QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeab39ed4e02c7e20e07bccbc9e926f18" class="m-doc-self">relativePosition</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the relative position of the annotation, if it is not attached to a fixed map position.</p>
+<p>The coordinates in the return point should be between 0 and 1, and represent the relative percentage for the position compared to the map width and height.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a26a2be597b9722dbc0c76af63abe430d" class="m-doc">setRelativePosition()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6ea5c69e8d2a0bb22c65f5ac176da4a2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6ea5c69e8d2a0bb22c65f5ac176da4a2" class="m-doc-self">setAssociatedFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Sets the feature associated with the annotation.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a83ab43db38d3f4da1526872a9fb65ff3" class="m-doc">associatedFeature()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a52feb41edf4cd4b3e93447aca2127299"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52feb41edf4cd4b3e93447aca2127299" class="m-doc-self">setContentsMargin</a>(</span><span class="m-doc-wrap">const <a href="classQgsMargins.html" class="m-doc">QgsMargins</a>&amp; margins)</span></span>
+            </h3>
+            <p>Sets the margins (in millimeters) between the outside of the frame and the annotation content.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a1fbfaf5986daf118914e0060310b890b" class="m-doc">contentsMargin()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a14db640e92249d034dd1f41c7d0c257a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14db640e92249d034dd1f41c7d0c257a" class="m-doc-self">setFillSymbol</a>(</span><span class="m-doc-wrap"><a href="classQgsFillSymbol.html" class="m-doc">QgsFillSymbol</a>* symbol)</span></span>
+            </h3>
+            <p>Sets the fill symbol used for rendering the annotation frame.</p>
+<p>Ownership of the symbol is transferred to the annotation.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a43f278839a447cf8c92afb79b2e65179" class="m-doc">fillSymbol()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a153ba9c5109098d13ca62f7882e8145c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a153ba9c5109098d13ca62f7882e8145c" class="m-doc-self">setFrameOffsetFromReferencePoint</a>(</span><span class="m-doc-wrap">QPointF offset)</span></span>
+            </h3>
+            <p>Sets the annotation&#x27;s frame&#x27;s offset from the <a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a> reference point.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a41a34714cfaa6553bd23a02f889c615a" class="m-doc">frameOffsetFromReferencePoint()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a072e091457c8ab569f8708b1e578e6bd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a072e091457c8ab569f8708b1e578e6bd" class="m-doc-self">setFrameSize</a>(</span><span class="m-doc-wrap">QSizeF size)</span></span>
+            </h3>
+            <p>Sets the size of the annotation&#x27;s frame (the main area in which the annotation&#x27;s content is drawn).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#ad9728ab4eb29b0ad112e7527a7138310" class="m-doc">frameSize()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab41aa25dcf74fb8a68dfa4d232a61a61"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab41aa25dcf74fb8a68dfa4d232a61a61" class="m-doc-self">setHasFixedMapPosition</a>(</span><span class="m-doc-wrap">bool fixed)</span></span>
+            </h3>
+            <p>Sets whether the annotation is attached to a fixed map position, or uses a position relative to the current map extent.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a1a2f132cbe6cd0af5c3df36f347e24d3" class="m-doc">hasFixedMapPosition()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aff6137f6fe60ae38ebf788cc32825f5a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff6137f6fe60ae38ebf788cc32825f5a" class="m-doc-self">setMapLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer)</span></span>
+            </h3>
+            <p>Sets the map layer associated with the annotation.</p>
+<p>Annotations can be associated with a map layer if their visibility should be synchronized with the layer&#x27;s visibility.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a1658f3f0f49fae4c41217334872db70e" class="m-doc">mapLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3de5aa9ec23988b04dd0a4b3aec8ed7b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3de5aa9ec23988b04dd0a4b3aec8ed7b" class="m-doc-self">setMapPosition</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; position)</span></span>
+            </h3>
+            <p>Sets the map position of the annotation, if it is attached to a fixed map position.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a914527156ce6ae21622a4ba7c1e1fa40" class="m-doc">mapPosition()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a85a59b2de5c4d10586008d9ee5375673"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a85a59b2de5c4d10586008d9ee5375673" class="m-doc-self">setMapPositionCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span></span>
+            </h3>
+            <p>Sets the CRS of the map position.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a21279ae95a7b32ac625b9dade501e272" class="m-doc">mapPositionCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac24a030a3b8a32a5a19a1cee2970b285"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac24a030a3b8a32a5a19a1cee2970b285" class="m-doc-self">setMarkerSymbol</a>(</span><span class="m-doc-wrap"><a href="classQgsMarkerSymbol.html" class="m-doc">QgsMarkerSymbol</a>* symbol)</span></span>
+            </h3>
+            <p>Sets the symbol that is drawn at the annotation&#x27;s map position.</p>
+<p>Ownership of the symbol is transferred to the annotation.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#a43fbc3a277de968776ab6765be100c28" class="m-doc">markerSymbol()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a26a2be597b9722dbc0c76af63abe430d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a26a2be597b9722dbc0c76af63abe430d" class="m-doc-self">setRelativePosition</a>(</span><span class="m-doc-wrap">QPointF position)</span></span>
+            </h3>
+            <p>Sets the relative position of the annotation, if it is not attached to a fixed map position.</p>
+<p>The coordinates in the return point should be between 0 and 1, and represent the relative percentage for the position compared to the map width and height.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#aeab39ed4e02c7e20e07bccbc9e926f18" class="m-doc">relativePosition()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad85f22d7e855ab32aa7eb513087dc567"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad85f22d7e855ab32aa7eb513087dc567" class="m-doc-self">setVisible</a>(</span><span class="m-doc-wrap">bool visible)</span></span>
+            </h3>
+            <p>Sets whether the annotation is visible and should be rendered.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#aacfe7d3b7df162c53200c125bc65b777" class="m-doc">isVisible()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afa9dc22a2aa59eaf9c388353411dafef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afa9dc22a2aa59eaf9c388353411dafef" class="m-doc-self">writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; elem,
+              QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Writes the annotation state to a DOM element.</p>
+<p>Derived classes should call <a href="classQgsAnnotation.html#a48cb9b4cd6dd29ed140868d7f92d21b8" class="m-doc">_<wbr />writeXml()</a> within their implementation of this method.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#ab062dff0c0f1159a0fff8b9e137db174" class="m-doc">readXml()</a></p><p><a href="classQgsAnnotation.html#a48cb9b4cd6dd29ed140868d7f92d21b8" class="m-doc">_<wbr />writeXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8e712c4b267f19491ea3dba01fb002b3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8e712c4b267f19491ea3dba01fb002b3" class="m-doc-self">_readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; annotationElem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Reads common annotation properties from a DOM element.</p>
+<p>This method should be called from subclasses in their readXml method.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#ab062dff0c0f1159a0fff8b9e137db174" class="m-doc">readXml()</a></p><p><a href="classQgsAnnotation.html#a48cb9b4cd6dd29ed140868d7f92d21b8" class="m-doc">_<wbr />writeXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a48cb9b4cd6dd29ed140868d7f92d21b8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a48cb9b4cd6dd29ed140868d7f92d21b8" class="m-doc-self">_writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; itemElem,
+              QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Writes common annotation properties to a DOM element.</p>
+<p>This method should be called from subclasses in their writeXml method.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAnnotation.html#afa9dc22a2aa59eaf9c388353411dafef" class="m-doc">writeXml()</a></p><p><a href="classQgsAnnotation.html#a8e712c4b267f19491ea3dba01fb002b3" class="m-doc">_<wbr />readXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a90501279874b94b7c3e135f1345fd4f1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a90501279874b94b7c3e135f1345fd4f1" class="m-doc-self">copyCommonProperties</a>(</span><span class="m-doc-wrap"><a href="classQgsAnnotation.html" class="m-doc">QgsAnnotation</a>* target) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Copies common annotation properties to the <em>targe</em> annotation.</p>
+<p>Can be used within <a href="classQgsAnnotation.html#a95a7f081dfd1b5769b751e494726cc40" class="m-doc">QgsAnnotation::<wbr />clone()</a> implementations to assist with creating copies.</p>
+          </div></section>
+          <section class="m-doc-details" id="aa448116884ae6550a727ba6223b21b49"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSizeF QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa448116884ae6550a727ba6223b21b49" class="m-doc-self">minimumFrameSize</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the minimum frame size for the annotation.</p>
+<p>Subclasses should implement this if they cannot be resized smaller than a certain minimum size.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2a5ec0622fd5a19485dd2156e432994c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAnnotation::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2a5ec0622fd5a19485dd2156e432994c" class="m-doc-self">renderAnnotation</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              QSizeF size) const <span class="m-label m-warning">pure virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Renders the annotation&#x27;s contents to a target /a context at the specified /a size.</p>
+<p>Derived classes should implement their custom annotation drawing logic here.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

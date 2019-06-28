@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsCoordinateTransform class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsCoordinateTransform <span class="m-thin">class</span>
+        </h1>
+        <p>Class for doing transforms between two map coordinate systems.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>This class can convert map coordinates to a different coordinate reference system. It is normally associated with a map layer and is used to transform between the layer&#x27;s coordinate system and the coordinate system of the map canvas, although it can be used in a more general sense to transform coordinates.</p><p>When used to transform between a layer and the map canvas, all references to source and destination coordinate systems refer to layer and map canvas respectively. All operations are from the perspective of the layer. For example, a forward transformation transforms coordinates from the layer&#x27;s coordinate system to the map canvas.</p><aside class="m-note m-info"><h4>Note</h4><p>Since QGIS 3.0 <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> objects are implicitly shared.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a></p><p><a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a></p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> { </span><span class="m-doc-wrap"><a href="#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>,
+              <a href="#a8bc24d9a900ec38443bb573eb77e66f5a86faf04e40154edd976b1240e2bdc9bd" class="m-doc">ReverseTransform</a> }</span>
+            </dt>
+            <dd>Enum used to indicate the direction (forward or inverse) of the transform.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a5ac962d57af3f4c4a14eeddb60a8582e" class="m-doc">invalidateCache</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Clears the internal cache used to initialize <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> objects.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a0c3ea56232b94d295a8193d2821c2c42" class="m-doc-self" name="a0c3ea56232b94d295a8193d2821c2c42">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Default constructor, creates an invalid <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aa5ad428819ac020f8f5716e835ab754f" class="m-doc">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination,
+              const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> to transform from the <em>source</em> to <em>destination</em> coordinate reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a0716e11c2d1e92d50286210aee6f2800" class="m-doc">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination,
+              const <a href="classQgsProject.html" class="m-doc">QgsProject</a>* project) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> to transform from the <em>source</em> to <em>destination</em> coordinate reference system, when used with the given <em>project</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a6d8083d97876a010cfd9f9d06a5da581" class="m-doc">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination,
+              int sourceDatumTransformId,
+              int destinationDatumTransformId) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> to transform from the <em>source</em> to <em>destination</em> coordinate reference system, with the specified datum transforms (see <a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a>).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2a104ca0659305aa2ebae8d2615d6723" class="m-doc-self" name="a2a104ca0659305aa2ebae8d2615d6723">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>&amp; o)</span>
+            </dt>
+            <dd>Copy constructor.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8c036726885d51e9fdfe1478a063dfcd" class="m-doc">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination) -&gt; Q_DECL_DEPRECATED <span class="m-label m-danger">deprecated</span> <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> using <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> objects.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a07014bf094a7515f4f3cfbbcff112e93" class="m-doc">context</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a></span>
+            </dt>
+            <dd>Returns the context in which the coordinate transform will be calculated.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac0a2b4857ecdf33a91a20436c3819c9a" class="m-doc">destinationCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the destination coordinate reference system, which the transform will transform coordinates to.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac7d8e8852baafe7cb9537e8ad53cfe7b" class="m-doc">destinationDatumTransformId</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the ID of the datum transform to use when projecting to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a777e21a2a399d4b73de2b0295b7833ff" class="m-doc-self" name="a777e21a2a399d4b73de2b0295b7833ff">isShortCircuited</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the transform short circuits because the source and destination are equivalent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa3b31ab89bfcac52eb7d850680de686a" class="m-doc">isValid</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the coordinate transform is valid, ie both the source and destination CRS have been set and are valid.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a91cd7ba6a7e2f8b9ac7efedf6f7deab4" class="m-doc-self" name="a91cd7ba6a7e2f8b9ac7efedf6f7deab4">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>&amp; o) -&gt; <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5e1f2807badfc5ed8ec01b5be8612508" class="m-doc">scaleFactor</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; referenceExtent) const -&gt; double</span>
+            </dt>
+            <dd>Computes an <em>estimated</em> conversion factor between source and destination units:</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3ce28aadd7a1917e5c2d8a40550794a0" class="m-doc">setContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span>
+            </dt>
+            <dd>Sets the <em>context</em> in which the coordinate transform should be calculated.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6a171e1bdd814da1ebedb207fa668000" class="m-doc">setDestinationCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span>
+            </dt>
+            <dd>Sets the destination coordinate reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a389580a55ed138177b4b902b9f504863" class="m-doc">setDestinationDatumTransformId</a>(</span><span class="m-doc-wrap">int datumId)</span>
+            </dt>
+            <dd>Sets the <em>datumId</em> ID of the datum transform to use when projecting to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5304c5eb66064ed518108f2a0ebfe03d" class="m-doc">setSourceCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span>
+            </dt>
+            <dd>Sets the source coordinate reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a875c24aa08c973f2a31c6a5ad60cc89b" class="m-doc">setSourceDatumTransformId</a>(</span><span class="m-doc-wrap">int datumId)</span>
+            </dt>
+            <dd>Sets the <em>datumId</em> ID of the datum transform to use when projecting from the source CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a14c73eaf63da37bd89b0c66d57f3d269" class="m-doc">sourceCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the source coordinate reference system, which the transform will transform coordinates from.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeb6bb9d851632f0373b82545779ae372" class="m-doc">sourceDatumTransformId</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the ID of the datum transform to use when projecting from the source CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1c68a75ed7b0751080cadb55cf8b8c3c" class="m-doc">transform</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; point,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>Transform the point from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7a7d98c165ad694307f2fa6914272ade" class="m-doc">transform</a>(</span><span class="m-doc-wrap">double x,
+              double y,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>Transform the point specified by x,y from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a852b548cffc428577c8952cfba194ce0" class="m-doc">transform</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rectangle,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Transforms a rectangle to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8cc5d64f1438300f231ec9444edbbe67" class="m-doc">transformBoundingBox</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rectangle,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>,
+              bool handle180Crossover = false) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Transforms a rectangle from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8d87c4b485d594e3918ed92c663c46f8" class="m-doc">transformCoords</a>(</span><span class="m-doc-wrap">int numPoint,
+              double* x,
+              double* y,
+              double* z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span>
+            </dt>
+            <dd>Transform an array of coordinates to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a93841a1a5541408dfe6c90d1633f130f" class="m-doc">transformInPlace</a>(</span><span class="m-doc-wrap">double&amp; x,
+              double&amp; y,
+              double&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span>
+            </dt>
+            <dd>Transforms an array of x, y and z double coordinates in place, from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a420a1852a9fd148b3d0f832247686e02" class="m-doc">transformInPlace</a>(</span><span class="m-doc-wrap">float&amp; x,
+              float&amp; y,
+              double&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span>
+            </dt>
+            <dd>Transforms an array of x, y and z float coordinates in place, from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0c71bd051798cd3645b511f89c9d6d93" class="m-doc">transformInPlace</a>(</span><span class="m-doc-wrap">float&amp; x,
+              float&amp; y,
+              float&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span>
+            </dt>
+            <dd>Transforms an array of x, y and z float coordinates in place, from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a83dbcc8efac1cc50e590ab899a32eed5" class="m-doc">transformInPlace</a>(</span><span class="m-doc-wrap">QVector&lt;float&gt;&amp; x,
+              QVector&lt;float&gt;&amp; y,
+              QVector&lt;float&gt;&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span>
+            </dt>
+            <dd>Transforms a vector of x, y and z float coordinates in place, from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4b64b01330ea3de1c309747b3c7d8bc1" class="m-doc">transformInPlace</a>(</span><span class="m-doc-wrap">QVector&lt;double&gt;&amp; x,
+              QVector&lt;double&gt;&amp; y,
+              QVector&lt;double&gt;&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span>
+            </dt>
+            <dd>Transforms a vector of x, y and z double coordinates in place, from the source CRS to the destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4689d1514ad18700fbb06536106bae20" class="m-doc">transformPolygon</a>(</span><span class="m-doc-wrap">QPolygonF&amp; polygon,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span>
+            </dt>
+            <dd>Transforms a polygon to the destination coordinate system.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a8bc24d9a900ec38443bb573eb77e66f5"><div>
+            <h3>
+              enum QgsCoordinateTransform::<wbr /><a href="#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc-self">TransformDirection</a>
+            </h3>
+            <p>Enum used to indicate the direction (forward or inverse) of the transform.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc-self" name="a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e">ForwardTransform</a></td>
+                  <td>
+                  <p>Transform from source to destination CRS.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a8bc24d9a900ec38443bb573eb77e66f5a86faf04e40154edd976b1240e2bdc9bd" class="m-doc-self" name="a8bc24d9a900ec38443bb573eb77e66f5a86faf04e40154edd976b1240e2bdc9bd">ReverseTransform</a></td>
+                  <td>
+                  <p>Transform from destination to source CRS.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a5ac962d57af3f4c4a14eeddb60a8582e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ac962d57af3f4c4a14eeddb60a8582e" class="m-doc-self">invalidateCache</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Clears the internal cache used to initialize <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> objects.</p>
+<p>This should be called whenever the srs database has been modified in order to ensure that outdated CRS transforms are not created.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa5ad428819ac020f8f5716e835ab754f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa5ad428819ac020f8f5716e835ab754f" class="m-doc-self">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination,
+              const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> to transform from the <em>source</em> to <em>destination</em> coordinate reference system.</p>
+<p>The <em>context</em> argument specifies the context under which the transform will be applied, and is used for calculating necessary datum transforms to utilize.</p><p>Python scripts should generally use the constructor variant which accepts a <a href="classQgsProject.html" class="m-doc">QgsProject</a> instance instead of this constructor.</p><aside class="m-note m-danger"><h4>Warning</h4><p>Do NOT use an empty/default constructed <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext()</a> object when creating <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> objects. This prevents correct datum transform handling and may result in inaccurate transformations. Always ensure that the <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a> object is correctly retrieved based on the current code context, or use the constructor variant which accepts a <a href="classQgsProject.html" class="m-doc">QgsProject</a> argument instead.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0716e11c2d1e92d50286210aee6f2800"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0716e11c2d1e92d50286210aee6f2800" class="m-doc-self">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination,
+              const <a href="classQgsProject.html" class="m-doc">QgsProject</a>* project) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> to transform from the <em>source</em> to <em>destination</em> coordinate reference system, when used with the given <em>project</em>.</p>
+<p>No reference to <em>project</em> is stored or utilized outside of the constructor, and it is used to retrieve the project&#x27;s transform context only.</p><p>Python scripts should utilize the <a href="classQgsProject.html#a26df6e8516ac9625901108875681803b" class="m-doc">QgsProject.instance()</a> project instance when creating <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>. This will ensure that any datum transforms defined in the project will be correctly respected during coordinate transforms. E.g.</p><pre class="m-code"><span class="n">transform</span> <span class="o">=</span> <span class="n">QgsCoordinateTransform</span><span class="p">(</span><span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s">&quot;EPSG:3111&quot;</span><span class="p">),</span>
+                                   <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s">&quot;EPSG:4326&quot;</span><span class="p">),</span> <span class="n">QgsProject</span><span class="p">.</span><span class="n">instance</span><span class="p">())</span></pre><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6d8083d97876a010cfd9f9d06a5da581"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d8083d97876a010cfd9f9d06a5da581" class="m-doc-self">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination,
+              int sourceDatumTransformId,
+              int destinationDatumTransformId) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> to transform from the <em>source</em> to <em>destination</em> coordinate reference system, with the specified datum transforms (see <a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a>).</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8c036726885d51e9fdfe1478a063dfcd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Q_DECL_DEPRECATED QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8c036726885d51e9fdfe1478a063dfcd" class="m-doc-self">QgsCoordinateTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; source,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destination) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructs a <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> using <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> objects.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">source</td>
+                  <td>source CRS, typically of the layer&#x27;s coordinate system</td>
+                </tr>
+                <tr>
+                  <td>destination</td>
+                  <td>CRS, typically of the map canvas coordinate system correctly handle the user&#x27;s datum transform setup. Instead the constructor variant which accepts a <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a> or <a href="classQgsProject.html" class="m-doc">QgsProject</a> argument should be used instead. It is highly likely that this constructor will be removed in future QGIS versions.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings.</p></aside><aside class="m-note m-danger"><h4><a href="deprecated.html#_deprecated000004" class="m-doc">Deprecated</a></h4><p>Use of this constructor is strongly discouraged, as it will not</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a07014bf094a7515f4f3cfbbcff112e93"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a07014bf094a7515f4f3cfbbcff112e93" class="m-doc-self">context</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the context in which the coordinate transform will be calculated.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html#a3ce28aadd7a1917e5c2d8a40550794a0" class="m-doc">setContext()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac0a2b4857ecdf33a91a20436c3819c9a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac0a2b4857ecdf33a91a20436c3819c9a" class="m-doc-self">destinationCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the destination coordinate reference system, which the transform will transform coordinates to.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html#a6a171e1bdd814da1ebedb207fa668000" class="m-doc">setDestinationCrs()</a></p><p><a href="classQgsCoordinateTransform.html#a14c73eaf63da37bd89b0c66d57f3d269" class="m-doc">sourceCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac7d8e8852baafe7cb9537e8ad53cfe7b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac7d8e8852baafe7cb9537e8ad53cfe7b" class="m-doc-self">destinationDatumTransformId</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the ID of the datum transform to use when projecting to the destination CRS.</p>
+<p>This is usually calculated automatically from the transform&#x27;s <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>, but can be manually overwritten by a call to <a href="classQgsCoordinateTransform.html#a389580a55ed138177b4b902b9f504863" class="m-doc">setDestinationDatumTransformId()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a></p><p><a href="classQgsCoordinateTransform.html#a389580a55ed138177b4b902b9f504863" class="m-doc">setDestinationDatumTransformId()</a></p><p><a href="classQgsCoordinateTransform.html#aeb6bb9d851632f0373b82545779ae372" class="m-doc">sourceDatumTransformId()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa3b31ab89bfcac52eb7d850680de686a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa3b31ab89bfcac52eb7d850680de686a" class="m-doc-self">isValid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the coordinate transform is valid, ie both the source and destination CRS have been set and are valid.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5e1f2807badfc5ed8ec01b5be8612508"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5e1f2807badfc5ed8ec01b5be8612508" class="m-doc-self">scaleFactor</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; referenceExtent) const</span></span>
+            </h3>
+            <p>Computes an <em>estimated</em> conversion factor between source and destination units:</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">referenceExtent</td>
+                  <td>A reference extent based on which to perform the computation</td>
+                </tr>
+              </tbody>
+            </table>
+<p>sourceUnits * scaleFactor = destinationUnits</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3ce28aadd7a1917e5c2d8a40550794a0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3ce28aadd7a1917e5c2d8a40550794a0" class="m-doc-self">setContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Sets the <em>context</em> in which the coordinate transform should be calculated.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html#a07014bf094a7515f4f3cfbbcff112e93" class="m-doc">context()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6a171e1bdd814da1ebedb207fa668000"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6a171e1bdd814da1ebedb207fa668000" class="m-doc-self">setDestinationCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span></span>
+            </h3>
+            <p>Sets the destination coordinate reference system.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">crs</td>
+                  <td>CRS to transform coordinates to</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html#ac0a2b4857ecdf33a91a20436c3819c9a" class="m-doc">destinationCrs()</a></p><p><a href="classQgsCoordinateTransform.html#a5304c5eb66064ed518108f2a0ebfe03d" class="m-doc">setSourceCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a389580a55ed138177b4b902b9f504863"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a389580a55ed138177b4b902b9f504863" class="m-doc-self">setDestinationDatumTransformId</a>(</span><span class="m-doc-wrap">int datumId)</span></span>
+            </h3>
+            <p>Sets the <em>datumId</em> ID of the datum transform to use when projecting to the destination CRS.</p>
+<p>This is usually calculated automatically from the transform&#x27;s <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>. Calling this method will overwrite any automatically calculated datum transform.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a></p><p><a href="classQgsCoordinateTransform.html#ac7d8e8852baafe7cb9537e8ad53cfe7b" class="m-doc">destinationDatumTransformId()</a></p><p><a href="classQgsCoordinateTransform.html#a875c24aa08c973f2a31c6a5ad60cc89b" class="m-doc">setSourceDatumTransformId()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5304c5eb66064ed518108f2a0ebfe03d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5304c5eb66064ed518108f2a0ebfe03d" class="m-doc-self">setSourceCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span></span>
+            </h3>
+            <p>Sets the source coordinate reference system.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">crs</td>
+                  <td>CRS to transform coordinates from</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html#a14c73eaf63da37bd89b0c66d57f3d269" class="m-doc">sourceCrs()</a></p><p><a href="classQgsCoordinateTransform.html#a6a171e1bdd814da1ebedb207fa668000" class="m-doc">setDestinationCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a875c24aa08c973f2a31c6a5ad60cc89b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a875c24aa08c973f2a31c6a5ad60cc89b" class="m-doc-self">setSourceDatumTransformId</a>(</span><span class="m-doc-wrap">int datumId)</span></span>
+            </h3>
+            <p>Sets the <em>datumId</em> ID of the datum transform to use when projecting from the source CRS.</p>
+<p>This is usually calculated automatically from the transform&#x27;s <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>. Calling this method will overwrite any automatically calculated datum transform.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a></p><p><a href="classQgsCoordinateTransform.html#aeb6bb9d851632f0373b82545779ae372" class="m-doc">sourceDatumTransformId()</a></p><p><a href="classQgsCoordinateTransform.html#a389580a55ed138177b4b902b9f504863" class="m-doc">setDestinationDatumTransformId()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a14c73eaf63da37bd89b0c66d57f3d269"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14c73eaf63da37bd89b0c66d57f3d269" class="m-doc-self">sourceCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the source coordinate reference system, which the transform will transform coordinates from.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html#a5304c5eb66064ed518108f2a0ebfe03d" class="m-doc">setSourceCrs()</a></p><p><a href="classQgsCoordinateTransform.html#ac0a2b4857ecdf33a91a20436c3819c9a" class="m-doc">destinationCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeb6bb9d851632f0373b82545779ae372"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeb6bb9d851632f0373b82545779ae372" class="m-doc-self">sourceDatumTransformId</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the ID of the datum transform to use when projecting from the source CRS.</p>
+<p>This is usually calculated automatically from the transform&#x27;s <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>, but can be manually overwritten by a call to <a href="classQgsCoordinateTransform.html#a875c24aa08c973f2a31c6a5ad60cc89b" class="m-doc">setSourceDatumTransformId()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDatumTransform.html" class="m-doc">QgsDatumTransform</a></p><p><a href="classQgsCoordinateTransform.html#a875c24aa08c973f2a31c6a5ad60cc89b" class="m-doc">setSourceDatumTransformId()</a></p><p><a href="classQgsCoordinateTransform.html#ac7d8e8852baafe7cb9537e8ad53cfe7b" class="m-doc">destinationDatumTransformId()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1c68a75ed7b0751080cadb55cf8b8c3c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c68a75ed7b0751080cadb55cf8b8c3c" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; point,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span></span>
+            </h3>
+            <p>Transform the point from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">point</td>
+                  <td>point to transform</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>transformed point</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7a7d98c165ad694307f2fa6914272ade"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7a7d98c165ad694307f2fa6914272ade" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">double x,
+              double y,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span></span>
+            </h3>
+            <p>Transform the point specified by x,y from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>x coordinate of point to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>y coordinate of point to transform</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>transformed point</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p>
+          </div></section>
+          <section class="m-doc-details" id="a852b548cffc428577c8952cfba194ce0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a852b548cffc428577c8952cfba194ce0" class="m-doc-self">transform</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rectangle,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span></span>
+            </h3>
+            <p>Transforms a rectangle to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rectangle</td>
+                  <td>rectangle to transform</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>transformed rectangle</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8cc5d64f1438300f231ec9444edbbe67"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8cc5d64f1438300f231ec9444edbbe67" class="m-doc-self">transformBoundingBox</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rectangle,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>,
+              bool handle180Crossover = false)</span></span>
+            </h3>
+            <p>Transforms a rectangle from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rectangle</td>
+                  <td>rectangle to transform</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+                <tr>
+                  <td>handle180Crossover</td>
+                  <td>set to true if destination CRS is geographic and handling of extents crossing the 180 degree longitude line is required</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>rectangle in destination CRS</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. This method assumes that the rectangle is a bounding box, and creates a bounding box in the projected CRS, such that all points from the source rectangle are within the returned rectangle.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8d87c4b485d594e3918ed92c663c46f8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8d87c4b485d594e3918ed92c663c46f8" class="m-doc-self">transformCoords</a>(</span><span class="m-doc-wrap">int numPoint,
+              double* x,
+              double* y,
+              double* z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span></span>
+            </h3>
+            <p>Transform an array of coordinates to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">numPoint</td>
+                  <td>number of coordinates in arrays</td>
+                </tr>
+                <tr>
+                  <td>x</td>
+                  <td>array of x coordinates to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>array of y coordinates to transform</td>
+                </tr>
+                <tr>
+                  <td>z</td>
+                  <td>array of z coordinates to transform</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p>
+          </div></section>
+          <section class="m-doc-details" id="a93841a1a5541408dfe6c90d1633f130f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a93841a1a5541408dfe6c90d1633f130f" class="m-doc-self">transformInPlace</a>(</span><span class="m-doc-wrap">double&amp; x,
+              double&amp; y,
+              double&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span></span>
+            </h3>
+            <p>Transforms an array of x, y and z double coordinates in place, from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>array of x coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>array of y coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>z</td>
+                  <td>array of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters)</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p>
+          </div></section>
+          <section class="m-doc-details" id="a420a1852a9fd148b3d0f832247686e02"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a420a1852a9fd148b3d0f832247686e02" class="m-doc-self">transformInPlace</a>(</span><span class="m-doc-wrap">float&amp; x,
+              float&amp; y,
+              double&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span></span>
+            </h3>
+            <p>Transforms an array of x, y and z float coordinates in place, from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>array of x coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>array of y coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>z</td>
+                  <td>array of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters)</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0c71bd051798cd3645b511f89c9d6d93"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0c71bd051798cd3645b511f89c9d6d93" class="m-doc-self">transformInPlace</a>(</span><span class="m-doc-wrap">float&amp; x,
+              float&amp; y,
+              float&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span></span>
+            </h3>
+            <p>Transforms an array of x, y and z float coordinates in place, from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>array of x coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>array of y coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>z</td>
+                  <td>array of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters)</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a83dbcc8efac1cc50e590ab899a32eed5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83dbcc8efac1cc50e590ab899a32eed5" class="m-doc-self">transformInPlace</a>(</span><span class="m-doc-wrap">QVector&lt;float&gt;&amp; x,
+              QVector&lt;float&gt;&amp; y,
+              QVector&lt;float&gt;&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span></span>
+            </h3>
+            <p>Transforms a vector of x, y and z float coordinates in place, from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>vector of x coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>vector of y coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>z</td>
+                  <td>vector of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters)</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4b64b01330ea3de1c309747b3c7d8bc1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4b64b01330ea3de1c309747b3c7d8bc1" class="m-doc-self">transformInPlace</a>(</span><span class="m-doc-wrap">QVector&lt;double&gt;&amp; x,
+              QVector&lt;double&gt;&amp; y,
+              QVector&lt;double&gt;&amp; z,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>) const</span></span>
+            </h3>
+            <p>Transforms a vector of x, y and z double coordinates in place, from the source CRS to the destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">x</td>
+                  <td>vector of x coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>y</td>
+                  <td>vector of y coordinates of points to transform</td>
+                </tr>
+                <tr>
+                  <td>z</td>
+                  <td>vector of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters)</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to ForwardTransform)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4689d1514ad18700fbb06536106bae20"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4689d1514ad18700fbb06536106bae20" class="m-doc-self">transformPolygon</a>(</span><span class="m-doc-wrap">QPolygonF&amp; polygon,
+              <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5" class="m-doc">TransformDirection</a> direction = <a href="classQgsCoordinateTransform.html#a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" class="m-doc">ForwardTransform</a>)</span></span>
+            </h3>
+            <p>Transforms a polygon to the destination coordinate system.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">polygon</td>
+                  <td>polygon to transform (occurs in place)</td>
+                </tr>
+                <tr>
+                  <td>direction</td>
+                  <td>transform direction (defaults to forward transformation)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

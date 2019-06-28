@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsTextFormat class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsTextFormat <span class="m-thin">class</span>
+        </h1>
+        <p>Container for all settings relating to text rendering.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a> objects are implicitly shared.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3afe56a5ef61ecae1747f78ac70031a8" class="m-doc">fromMimeData</a>(</span><span class="m-doc-wrap">const QMimeData* data,
+              bool* ok = nullptr) -&gt; <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a></span>
+            </dt>
+            <dd>Attempts to parse the provided mime <em>data</em> as a <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ab18b69877a2b6adb6b257e7e929cbf4c" class="m-doc">fromQFont</a>(</span><span class="m-doc-wrap">const QFont&amp; font) -&gt; <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a></span>
+            </dt>
+            <dd>Returns a text format matching the settings from an input <em>font</em>.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a78818e744ddbcf758e872bead2130e53" class="m-doc">QgsTextFormat</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a>&amp; other)</span>
+            </dt>
+            <dd>Copy constructor.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a04c46db5dda2299fb700359b10762db0" class="m-doc">background</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsTextBackgroundSettings.html" class="m-doc">QgsTextBackgroundSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the text background settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab9ac4166655c314d325d805c544cf2f4" class="m-doc">background</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsTextBackgroundSettings.html" class="m-doc">QgsTextBackgroundSettings</a></span>
+            </dt>
+            <dd>Returns a reference to the text background settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a68e04136c8a17effeb3589eecae42a66" class="m-doc">blendMode</a>(</span><span class="m-doc-wrap">) const -&gt; QPainter::CompositionMode</span>
+            </dt>
+            <dd>Returns the blending mode used for drawing the text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8edaceab569e2588a4cda5faab06dd39" class="m-doc">buffer</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsTextBufferSettings.html" class="m-doc">QgsTextBufferSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the text buffer settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4f643a5853772437720c320b14e02252" class="m-doc">buffer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsTextBufferSettings.html" class="m-doc">QgsTextBufferSettings</a></span>
+            </dt>
+            <dd>Returns a reference to the text buffer settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af57af2e8dfd5a836949af607e38bf86c" class="m-doc">color</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Returns the color that text will be rendered in.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afb7f4e6bd07ed7ba81686d2ae5f9d5e9" class="m-doc-self" name="afb7f4e6bd07ed7ba81686d2ae5f9d5e9">containsAdvancedEffects</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if any component of the font format requires advanced effects such as blend modes, which require output in raster formats to be fully respected.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af5e1aec78368245815825b8b64ced322" class="m-doc">font</a>(</span><span class="m-doc-wrap">) const -&gt; QFont</span>
+            </dt>
+            <dd>Returns the font used for rendering text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5664c2ceeb04540fa811c2053cb4b8f9" class="m-doc">fontFound</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the specified font was found on the system, or false if the font was not found and a replacement was used instead.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4029630de042c796221ff47cc8a9a13c" class="m-doc">lineHeight</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the line height for text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad3d5869a1f351a3da8da7b5bd9e9ed4e" class="m-doc">namedStyle</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the named style for the font used for rendering text (e.g., &quot;bold&quot;).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abbdde239d9f4ec2f314bf5b0e7f9b04d" class="m-doc">opacity</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the text&#x27;s opacity.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af73392489de967537be80e3fafbc76b7" class="m-doc">readFromLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span>
+            </dt>
+            <dd>Reads settings from a layer&#x27;s custom properties (for QGIS 2.x projects).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6b6252f5c62b2ecf8b420fc3111838e8" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; elem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context)</span>
+            </dt>
+            <dd>Read settings from a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a89e568e3ad88f3e02675f76cfd26abd1" class="m-doc">resolvedFontFamily</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the family for the resolved font, ie if the specified font was not found on the system this will return the name of the replacement font.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a10e9d02406e9e26ccd33795ec5b1ed99" class="m-doc">scaledFont</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QFont</span>
+            </dt>
+            <dd>Returns a font with the size scaled to match the format&#x27;s size settings (including units and map unit scale) for a specified render context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae624e6f441fcc5c3483c90c1180c3cd2" class="m-doc">setBackground</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextBackgroundSettings.html" class="m-doc">QgsTextBackgroundSettings</a>&amp; backgroundSettings)</span>
+            </dt>
+            <dd>Sets the text&#x27;s background settings.q.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a083c6033c189968961945948654a61b8" class="m-doc">setBlendMode</a>(</span><span class="m-doc-wrap">QPainter::CompositionMode mode)</span>
+            </dt>
+            <dd>Sets the blending mode used for drawing the text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa3f1e5f1c056b5e77ab72d8f13b7bbbe" class="m-doc">setBuffer</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextBufferSettings.html" class="m-doc">QgsTextBufferSettings</a>&amp; bufferSettings)</span>
+            </dt>
+            <dd>Sets the text&#x27;s buffer settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a083355ffc5f4f46c98d2ac8aebeecf6a" class="m-doc">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets the color that text will be rendered in.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a29eb0b1d8d6f4fc6279880411aad0d07" class="m-doc">setFont</a>(</span><span class="m-doc-wrap">const QFont&amp; font)</span>
+            </dt>
+            <dd>Sets the font used for rendering text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afef29dede65c12e1abb8e9d00ab6703d" class="m-doc">setLineHeight</a>(</span><span class="m-doc-wrap">double height)</span>
+            </dt>
+            <dd>Sets the line height for text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af01ca6f2d7f7c4e7e775319a5f76ee73" class="m-doc">setNamedStyle</a>(</span><span class="m-doc-wrap">const QString&amp; style)</span>
+            </dt>
+            <dd>Sets the named style for the font used for rendering text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a65c56f9c390086a325927415ab2f2d6f" class="m-doc">setOpacity</a>(</span><span class="m-doc-wrap">double opacity)</span>
+            </dt>
+            <dd>Sets the text&#x27;s opacity.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a54deb40e5e19af8e26dc76ef2e176e7a" class="m-doc">setShadow</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextShadowSettings.html" class="m-doc">QgsTextShadowSettings</a>&amp; shadowSettings)</span>
+            </dt>
+            <dd>Sets the text&#x27;s drop shadow settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0975c3e674363a46934ee4c70020b4c9" class="m-doc">setSize</a>(</span><span class="m-doc-wrap">double size)</span>
+            </dt>
+            <dd>Sets the size for rendered text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aefa052ce6639cd688279503f083cded9" class="m-doc">setSizeMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span>
+            </dt>
+            <dd>Sets the map unit scale object for the size.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab5be6b717e7f8f77d45fe811f4d8a7bd" class="m-doc">setSizeUnit</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span>
+            </dt>
+            <dd>Sets the units for the size of rendered text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a15d4ec349a27472affc6be9bd8f43030" class="m-doc">shadow</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsTextShadowSettings.html" class="m-doc">QgsTextShadowSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the text drop shadow settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac69d53752354813f4ea58ea9c12c4351" class="m-doc">shadow</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsTextShadowSettings.html" class="m-doc">QgsTextShadowSettings</a></span>
+            </dt>
+            <dd>Returns a reference to the text drop shadow settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad407530ac399398ea60aa56d253bc008" class="m-doc">size</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the size for rendered text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a146199d366ed73bbc6ddf2fbb0f29ae8" class="m-doc">sizeMapUnitScale</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a></span>
+            </dt>
+            <dd>Returns the map unit scale object for the size.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a></span>
+            </dt>
+            <dd>Returns the units for the size of rendered text.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aef68b2cbd70f813c26b600e1516c357d" class="m-doc">toMimeData</a>(</span><span class="m-doc-wrap">) const -&gt; QMimeData*</span>
+            </dt>
+            <dd>Returns new mime data representing the text format settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab53a1f8f4678685d6a0b9d09e48b6668" class="m-doc">toQFont</a>(</span><span class="m-doc-wrap">) const -&gt; QFont</span>
+            </dt>
+            <dd>Returns a QFont matching the relevant settings from this text format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae69d2e871aaf8b18fc89c53e65dc291c" class="m-doc">writeXml</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const -&gt; QDomElement</span>
+            </dt>
+            <dd>Write settings into a DOM element.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a3afe56a5ef61ecae1747f78ac70031a8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3afe56a5ef61ecae1747f78ac70031a8" class="m-doc-self">fromMimeData</a>(</span><span class="m-doc-wrap">const QMimeData* data,
+              bool* ok = nullptr)</span></span>
+            </h3>
+            <p>Attempts to parse the provided mime <em>data</em> as a <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a>.</p>
+<p>If data can be parsed as a text format, <em>ok</em> will be set to true.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#aef68b2cbd70f813c26b600e1516c357d" class="m-doc">toMimeData()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab18b69877a2b6adb6b257e7e929cbf4c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab18b69877a2b6adb6b257e7e929cbf4c" class="m-doc-self">fromQFont</a>(</span><span class="m-doc-wrap">const QFont&amp; font)</span></span>
+            </h3>
+            <p>Returns a text format matching the settings from an input <em>font</em>.</p>
+<p>Unlike <a href="classQgsTextFormat.html#a29eb0b1d8d6f4fc6279880411aad0d07" class="m-doc">setFont()</a>, this method also handles the size and size units from <em>font</em>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ab53a1f8f4678685d6a0b9d09e48b6668" class="m-doc">toQFont()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a78818e744ddbcf758e872bead2130e53"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a78818e744ddbcf758e872bead2130e53" class="m-doc-self">QgsTextFormat</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a>&amp; other)</span></span>
+            </h3>
+            <p>Copy constructor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">other</td>
+                  <td>source <a href="classQgsTextFormat.html" class="m-doc">QgsTextFormat</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a04c46db5dda2299fb700359b10762db0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTextBackgroundSettings.html" class="m-doc">QgsTextBackgroundSettings</a>&amp; QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a04c46db5dda2299fb700359b10762db0" class="m-doc-self">background</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns a reference to the text background settings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ae624e6f441fcc5c3483c90c1180c3cd2" class="m-doc">setBackground()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab9ac4166655c314d325d805c544cf2f4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTextBackgroundSettings.html" class="m-doc">QgsTextBackgroundSettings</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab9ac4166655c314d325d805c544cf2f4" class="m-doc-self">background</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a reference to the text background settings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ae624e6f441fcc5c3483c90c1180c3cd2" class="m-doc">setBackground()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a68e04136c8a17effeb3589eecae42a66"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QPainter::CompositionMode QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68e04136c8a17effeb3589eecae42a66" class="m-doc-self">blendMode</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the blending mode used for drawing the text.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a083c6033c189968961945948654a61b8" class="m-doc">setBlendMode()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8edaceab569e2588a4cda5faab06dd39"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTextBufferSettings.html" class="m-doc">QgsTextBufferSettings</a>&amp; QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8edaceab569e2588a4cda5faab06dd39" class="m-doc-self">buffer</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns a reference to the text buffer settings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#aa3f1e5f1c056b5e77ab72d8f13b7bbbe" class="m-doc">setBuffer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4f643a5853772437720c320b14e02252"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTextBufferSettings.html" class="m-doc">QgsTextBufferSettings</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4f643a5853772437720c320b14e02252" class="m-doc-self">buffer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a reference to the text buffer settings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#aa3f1e5f1c056b5e77ab72d8f13b7bbbe" class="m-doc">setBuffer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af57af2e8dfd5a836949af607e38bf86c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af57af2e8dfd5a836949af607e38bf86c" class="m-doc-self">color</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the color that text will be rendered in.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a083355ffc5f4f46c98d2ac8aebeecf6a" class="m-doc">setColor()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af5e1aec78368245815825b8b64ced322"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QFont QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af5e1aec78368245815825b8b64ced322" class="m-doc-self">font</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the font used for rendering text.</p>
+<p>Note that the size of the font is not used, and <a href="classQgsTextFormat.html#ad407530ac399398ea60aa56d253bc008" class="m-doc">size()</a> should be called instead to determine the size of rendered text.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a10e9d02406e9e26ccd33795ec5b1ed99" class="m-doc">scaledFont()</a></p><p><a href="classQgsTextFormat.html#a29eb0b1d8d6f4fc6279880411aad0d07" class="m-doc">setFont()</a></p><p><a href="classQgsTextFormat.html#ad3d5869a1f351a3da8da7b5bd9e9ed4e" class="m-doc">namedStyle()</a></p><p><a href="classQgsTextFormat.html#ab53a1f8f4678685d6a0b9d09e48b6668" class="m-doc">toQFont()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5664c2ceeb04540fa811c2053cb4b8f9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5664c2ceeb04540fa811c2053cb4b8f9" class="m-doc-self">fontFound</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the specified font was found on the system, or false if the font was not found and a replacement was used instead.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a89e568e3ad88f3e02675f76cfd26abd1" class="m-doc">resolvedFontFamily()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4029630de042c796221ff47cc8a9a13c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4029630de042c796221ff47cc8a9a13c" class="m-doc-self">lineHeight</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the line height for text.</p>
+<p>This is a number between 0.0 and 10.0 representing the leading between lines as a multiplier of line height.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#afef29dede65c12e1abb8e9d00ab6703d" class="m-doc">setLineHeight()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad3d5869a1f351a3da8da7b5bd9e9ed4e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad3d5869a1f351a3da8da7b5bd9e9ed4e" class="m-doc-self">namedStyle</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the named style for the font used for rendering text (e.g., &quot;bold&quot;).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#af01ca6f2d7f7c4e7e775319a5f76ee73" class="m-doc">setNamedStyle()</a></p><p><a href="classQgsTextFormat.html#af5e1aec78368245815825b8b64ced322" class="m-doc">font()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abbdde239d9f4ec2f314bf5b0e7f9b04d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abbdde239d9f4ec2f314bf5b0e7f9b04d" class="m-doc-self">opacity</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the text&#x27;s opacity.</p>
+<p>The opacity is a double value between 0 (fully transparent) and 1 (totally opaque).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a65c56f9c390086a325927415ab2f2d6f" class="m-doc">setOpacity()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af73392489de967537be80e3fafbc76b7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af73392489de967537be80e3fafbc76b7" class="m-doc-self">readFromLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span></span>
+            </h3>
+            <p>Reads settings from a layer&#x27;s custom properties (for QGIS 2.x projects).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>source vector layer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6b6252f5c62b2ecf8b420fc3111838e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6b6252f5c62b2ecf8b420fc3111838e8" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; elem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Read settings from a DOM element.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ae69d2e871aaf8b18fc89c53e65dc291c" class="m-doc">writeXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a89e568e3ad88f3e02675f76cfd26abd1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a89e568e3ad88f3e02675f76cfd26abd1" class="m-doc-self">resolvedFontFamily</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the family for the resolved font, ie if the specified font was not found on the system this will return the name of the replacement font.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a5664c2ceeb04540fa811c2053cb4b8f9" class="m-doc">fontFound()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a10e9d02406e9e26ccd33795ec5b1ed99"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QFont QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a10e9d02406e9e26ccd33795ec5b1ed99" class="m-doc-self">scaledFont</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const</span></span>
+            </h3>
+            <p>Returns a font with the size scaled to match the format&#x27;s size settings (including units and map unit scale) for a specified render context.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>font with scaled size</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#af5e1aec78368245815825b8b64ced322" class="m-doc">font()</a></p><p><a href="classQgsTextFormat.html#ad407530ac399398ea60aa56d253bc008" class="m-doc">size()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae624e6f441fcc5c3483c90c1180c3cd2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae624e6f441fcc5c3483c90c1180c3cd2" class="m-doc-self">setBackground</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextBackgroundSettings.html" class="m-doc">QgsTextBackgroundSettings</a>&amp; backgroundSettings)</span></span>
+            </h3>
+            <p>Sets the text&#x27;s background settings.q.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">backgroundSettings</td>
+                  <td>background settings</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a04c46db5dda2299fb700359b10762db0" class="m-doc">background()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a083c6033c189968961945948654a61b8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a083c6033c189968961945948654a61b8" class="m-doc-self">setBlendMode</a>(</span><span class="m-doc-wrap">QPainter::CompositionMode mode)</span></span>
+            </h3>
+            <p>Sets the blending mode used for drawing the text.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">mode</td>
+                  <td>blending mode</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a68e04136c8a17effeb3589eecae42a66" class="m-doc">blendMode()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa3f1e5f1c056b5e77ab72d8f13b7bbbe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa3f1e5f1c056b5e77ab72d8f13b7bbbe" class="m-doc-self">setBuffer</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextBufferSettings.html" class="m-doc">QgsTextBufferSettings</a>&amp; bufferSettings)</span></span>
+            </h3>
+            <p>Sets the text&#x27;s buffer settings.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bufferSettings</td>
+                  <td>buffer settings</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a8edaceab569e2588a4cda5faab06dd39" class="m-doc">buffer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a083355ffc5f4f46c98d2ac8aebeecf6a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a083355ffc5f4f46c98d2ac8aebeecf6a" class="m-doc-self">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span></span>
+            </h3>
+            <p>Sets the color that text will be rendered in.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>text color</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#af57af2e8dfd5a836949af607e38bf86c" class="m-doc">color()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a29eb0b1d8d6f4fc6279880411aad0d07"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a29eb0b1d8d6f4fc6279880411aad0d07" class="m-doc-self">setFont</a>(</span><span class="m-doc-wrap">const QFont&amp; font)</span></span>
+            </h3>
+            <p>Sets the font used for rendering text.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">font</td>
+                  <td>desired font</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Note that the size of the font is not used, and <a href="classQgsTextFormat.html#a0975c3e674363a46934ee4c70020b4c9" class="m-doc">setSize()</a> should be called instead to explicitly set the size of rendered text.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#af5e1aec78368245815825b8b64ced322" class="m-doc">font()</a></p><p><a href="classQgsTextFormat.html#af01ca6f2d7f7c4e7e775319a5f76ee73" class="m-doc">setNamedStyle()</a></p><p><a href="classQgsTextFormat.html#ab18b69877a2b6adb6b257e7e929cbf4c" class="m-doc">fromQFont()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afef29dede65c12e1abb8e9d00ab6703d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afef29dede65c12e1abb8e9d00ab6703d" class="m-doc-self">setLineHeight</a>(</span><span class="m-doc-wrap">double height)</span></span>
+            </h3>
+            <p>Sets the line height for text.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">height</td>
+                  <td>a number between 0.0 and 10.0 representing the leading between lines as a multiplier of line height.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a4029630de042c796221ff47cc8a9a13c" class="m-doc">lineHeight()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af01ca6f2d7f7c4e7e775319a5f76ee73"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af01ca6f2d7f7c4e7e775319a5f76ee73" class="m-doc-self">setNamedStyle</a>(</span><span class="m-doc-wrap">const QString&amp; style)</span></span>
+            </h3>
+            <p>Sets the named style for the font used for rendering text.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">style</td>
+                  <td>named style, e.g., &quot;bold&quot;</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ad3d5869a1f351a3da8da7b5bd9e9ed4e" class="m-doc">namedStyle()</a></p><p><a href="classQgsTextFormat.html#a29eb0b1d8d6f4fc6279880411aad0d07" class="m-doc">setFont()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a65c56f9c390086a325927415ab2f2d6f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a65c56f9c390086a325927415ab2f2d6f" class="m-doc-self">setOpacity</a>(</span><span class="m-doc-wrap">double opacity)</span></span>
+            </h3>
+            <p>Sets the text&#x27;s opacity.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">opacity</td>
+                  <td>opacity as a double value between 0 (fully transparent) and 1 (totally opaque)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#abbdde239d9f4ec2f314bf5b0e7f9b04d" class="m-doc">opacity()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a54deb40e5e19af8e26dc76ef2e176e7a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a54deb40e5e19af8e26dc76ef2e176e7a" class="m-doc-self">setShadow</a>(</span><span class="m-doc-wrap">const <a href="classQgsTextShadowSettings.html" class="m-doc">QgsTextShadowSettings</a>&amp; shadowSettings)</span></span>
+            </h3>
+            <p>Sets the text&#x27;s drop shadow settings.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shadowSettings</td>
+                  <td>shadow settings</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a15d4ec349a27472affc6be9bd8f43030" class="m-doc">shadow()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0975c3e674363a46934ee4c70020b4c9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0975c3e674363a46934ee4c70020b4c9" class="m-doc-self">setSize</a>(</span><span class="m-doc-wrap">double size)</span></span>
+            </h3>
+            <p>Sets the size for rendered text.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">size</td>
+                  <td>size of rendered text. Units are set using <a href="classQgsTextFormat.html#ab5be6b717e7f8f77d45fe811f4d8a7bd" class="m-doc">setSizeUnit()</a></td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ad407530ac399398ea60aa56d253bc008" class="m-doc">size()</a></p><p><a href="classQgsTextFormat.html#ab5be6b717e7f8f77d45fe811f4d8a7bd" class="m-doc">setSizeUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aefa052ce6639cd688279503f083cded9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aefa052ce6639cd688279503f083cded9" class="m-doc-self">setSizeMapUnitScale</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a>&amp; scale)</span></span>
+            </h3>
+            <p>Sets the map unit scale object for the size.</p>
+<p>This is only used if the <a href="classQgsTextFormat.html#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit()</a> is set to QgsUnitTypes::RenderMapUnit.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a146199d366ed73bbc6ddf2fbb0f29ae8" class="m-doc">sizeMapUnitScale()</a></p><p><a href="classQgsTextFormat.html#ab5be6b717e7f8f77d45fe811f4d8a7bd" class="m-doc">setSizeUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab5be6b717e7f8f77d45fe811f4d8a7bd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab5be6b717e7f8f77d45fe811f4d8a7bd" class="m-doc-self">setSizeUnit</a>(</span><span class="m-doc-wrap"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> unit)</span></span>
+            </h3>
+            <p>Sets the units for the size of rendered text.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">unit</td>
+                  <td>size units</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a0975c3e674363a46934ee4c70020b4c9" class="m-doc">setSize()</a></p><p><a href="classQgsTextFormat.html#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit()</a></p><p><a href="classQgsTextFormat.html#aefa052ce6639cd688279503f083cded9" class="m-doc">setSizeMapUnitScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a15d4ec349a27472affc6be9bd8f43030"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTextShadowSettings.html" class="m-doc">QgsTextShadowSettings</a>&amp; QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a15d4ec349a27472affc6be9bd8f43030" class="m-doc-self">shadow</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns a reference to the text drop shadow settings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a54deb40e5e19af8e26dc76ef2e176e7a" class="m-doc">setShadow()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac69d53752354813f4ea58ea9c12c4351"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsTextShadowSettings.html" class="m-doc">QgsTextShadowSettings</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac69d53752354813f4ea58ea9c12c4351" class="m-doc-self">shadow</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a reference to the text drop shadow settings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a54deb40e5e19af8e26dc76ef2e176e7a" class="m-doc">setShadow()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad407530ac399398ea60aa56d253bc008"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad407530ac399398ea60aa56d253bc008" class="m-doc-self">size</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the size for rendered text.</p>
+<p>Units are retrieved using <a href="classQgsTextFormat.html#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a0975c3e674363a46934ee4c70020b4c9" class="m-doc">setSize()</a></p><p><a href="classQgsTextFormat.html#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a146199d366ed73bbc6ddf2fbb0f29ae8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMapUnitScale.html" class="m-doc">QgsMapUnitScale</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a146199d366ed73bbc6ddf2fbb0f29ae8" class="m-doc-self">sizeMapUnitScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the map unit scale object for the size.</p>
+<p>This is only used if the <a href="classQgsTextFormat.html#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit()</a> is set to QgsUnitTypes::RenderMapUnit.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#aefa052ce6639cd688279503f083cded9" class="m-doc">setSizeMapUnitScale()</a></p><p><a href="classQgsTextFormat.html#a4424463edad77915d9ed05ea10beb64b" class="m-doc">sizeUnit()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4424463edad77915d9ed05ea10beb64b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#ae04d6633d29996dbc2ab07e737a04adf" class="m-doc">QgsUnitTypes::<wbr />RenderUnit</a> QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4424463edad77915d9ed05ea10beb64b" class="m-doc-self">sizeUnit</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units for the size of rendered text.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ad407530ac399398ea60aa56d253bc008" class="m-doc">size()</a></p><p><a href="classQgsTextFormat.html#ab5be6b717e7f8f77d45fe811f4d8a7bd" class="m-doc">setSizeUnit()</a></p><p><a href="classQgsTextFormat.html#a146199d366ed73bbc6ddf2fbb0f29ae8" class="m-doc">sizeMapUnitScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aef68b2cbd70f813c26b600e1516c357d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QMimeData* QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aef68b2cbd70f813c26b600e1516c357d" class="m-doc-self">toMimeData</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns new mime data representing the text format settings.</p>
+<p>Caller takes responsibility for deleting the returned object.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a3afe56a5ef61ecae1747f78ac70031a8" class="m-doc">fromMimeData()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab53a1f8f4678685d6a0b9d09e48b6668"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QFont QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab53a1f8f4678685d6a0b9d09e48b6668" class="m-doc-self">toQFont</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a QFont matching the relevant settings from this text format.</p>
+<p>Unlike <a href="classQgsTextFormat.html#af5e1aec78368245815825b8b64ced322" class="m-doc">font()</a>, this method also handles the size and size units from the text format.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#ab18b69877a2b6adb6b257e7e929cbf4c" class="m-doc">fromQFont()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae69d2e871aaf8b18fc89c53e65dc291c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QDomElement QgsTextFormat::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae69d2e871aaf8b18fc89c53e65dc291c" class="m-doc-self">writeXml</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const</span></span>
+            </h3>
+            <p>Write settings into a DOM element.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTextFormat.html#a6b6252f5c62b2ecf8b420fc3111838e8" class="m-doc">readXml()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,2067 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsLayerTreeModel" kind="class" language="C++" prot="public">
+    <compoundname>QgsLayerTreeModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QAbstractItemModel</basecompoundref>
+    <derivedcompoundref refid="classQgsLegendModel" prot="public" virt="non-virtual">QgsLegendModel</derivedcompoundref>
+    <includes refid="qgslayertreemodel_8h" local="no">qgslayertreemodel.h</includes>
+    <innerclass refid="structQgsLayerTreeModel_1_1LayerLegendData" prot="protected">QgsLayerTreeModel::LayerLegendData</innerclass>
+    <innerclass refid="structQgsLayerTreeModel_1_1LayerLegendTree" prot="protected">QgsLayerTreeModel::LayerLegendTree</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a3aff637104414db77d4ceb54db3f8ee0" prot="public">
+          <name>ShowLegend</name>
+          <initializer>= 0x0001</initializer>
+          <briefdescription>
+<para>Add legend nodes for layer nodes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a25d080d7d329e01e0b99aa1e299d6f1e" prot="public">
+          <name>ShowLegendAsTree</name>
+          <initializer>= 0x0004</initializer>
+          <briefdescription>
+<para>For legends that support it, will show them in a tree instead of a list (needs also ShowLegend). Added in 2.8. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a6cd11c232df94b1c8ca1411fdc2242c5" prot="public">
+          <name>DeferredLegendInvalidation</name>
+          <initializer>= 0x0008</initializer>
+          <briefdescription>
+<para>Defer legend model invalidation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8ab7cd7daa3dac8b9ecdeb8960e348527d" prot="public">
+          <name>UseEmbeddedWidgets</name>
+          <initializer>= 0x0010</initializer>
+          <briefdescription>
+<para>Layer nodes may optionally include extra embedded widgets (if used in <ref refid="classQgsLayerTreeView" kindref="compound">QgsLayerTreeView</ref>). Added in 2.16. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a32c3dd5417486d98037068d194a768d2" prot="public">
+          <name>AllowNodeReorder</name>
+          <initializer>= 0x1000</initializer>
+          <briefdescription>
+<para>Allow reordering with drag&apos;n&apos;drop. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8aa24ea86df2945792c1a9ae671b73218d" prot="public">
+          <name>AllowNodeRename</name>
+          <initializer>= 0x2000</initializer>
+          <briefdescription>
+<para>Allow renaming of groups and layers. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a154c74db1374949de799fd9a0422c070" prot="public">
+          <name>AllowNodeChangeVisibility</name>
+          <initializer>= 0x4000</initializer>
+          <briefdescription>
+<para>Allow user to set node visibility with a checkbox. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8aa626628f11400c5e4a1f9a2c2a1e473d" prot="public">
+          <name>AllowLegendChangeState</name>
+          <initializer>= 0x8000</initializer>
+          <briefdescription>
+<para>Allow check boxes for legend nodes (if supported by layer&apos;s legend) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a0c7e6c7e11ff269ebb57a508113870d0" prot="public">
+          <name>ActionHierarchical</name>
+          <initializer>= 0x10000</initializer>
+          <briefdescription>
+<para>Check/uncheck action has consequences on children (or parents for leaf node) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="93" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1ac54ec8a70bfed6d3cfdd2d20701a1c1b" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::mAutoCollapseLegendNodesCount</definition>
+        <argsstring></argsstring>
+        <name>mAutoCollapseLegendNodesCount</name>
+        <briefdescription>
+<para>Minimal number of nodes when legend should be automatically collapsed. -1 = disabled. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="352" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a7dacf93ce56589e84d12c3af4e31e895" prot="protected" static="no" mutable="no">
+        <type>QPersistentModelIndex</type>
+        <definition>QPersistentModelIndex QgsLayerTreeModel::mCurrentIndex</definition>
+        <argsstring></argsstring>
+        <name>mCurrentIndex</name>
+        <briefdescription>
+<para>Current index - will be underlined. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="350" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="350" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a04bc156f0d2bc5b2aad813a90da32fab" prot="protected" static="no" mutable="no">
+        <type>QTimer</type>
+        <definition>QTimer QgsLayerTreeModel::mDeferLegendInvalidationTimer</definition>
+        <argsstring></argsstring>
+        <name>mDeferLegendInvalidationTimer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="431" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1afd4f503bed47aa3cf58588cef05c0981" prot="protected" static="no" mutable="no">
+        <type>Flags</type>
+        <definition>Flags QgsLayerTreeModel::mFlags</definition>
+        <argsstring></argsstring>
+        <name>mFlags</name>
+        <briefdescription>
+<para>Sets of flags for the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="348" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a873f53ea57d32816550af0b24ae0c2b6" prot="protected" static="no" mutable="no">
+        <type>QFont</type>
+        <definition>QFont QgsLayerTreeModel::mFontGroup</definition>
+        <argsstring></argsstring>
+        <name>mFontGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="417" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="417" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1abb9388eed20a40e8d2012546292928a5" prot="protected" static="no" mutable="no">
+        <type>QFont</type>
+        <definition>QFont QgsLayerTreeModel::mFontLayer</definition>
+        <argsstring></argsstring>
+        <name>mFontLayer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="416" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="416" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1adc14f6e50c6cb20ce07b49d12fc8cdba" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; QString, QString &gt;</type>
+        <definition>QMap&lt;QString, QString&gt; QgsLayerTreeModel::mLayerStyleOverrides</definition>
+        <argsstring></argsstring>
+        <name>mLayerStyleOverrides</name>
+        <briefdescription>
+<para>Overrides of map layers&apos; styles: key = layer ID, value = style XML. </para>        </briefdescription>
+        <detaileddescription>
+<para>This allows showing a legend that is different from the current style of layers </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="411" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="411" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a91b6e236789838f7f4745c917f186541" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; <ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *, <ref refid="structQgsLayerTreeModel_1_1LayerLegendData" kindref="compound">LayerLegendData</ref> &gt;</type>
+        <definition>QMap&lt;QgsLayerTreeLayer *, LayerLegendData&gt; QgsLayerTreeModel::mLegend</definition>
+        <argsstring></argsstring>
+        <name>mLegend</name>
+        <briefdescription>
+<para>Per layer data about layer&apos;s legend nodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="414" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="414" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a0c2fe980a4ff00a8b94a800f7eac42ae" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsLayerTreeModel::mLegendFilterByScale</definition>
+        <argsstring></argsstring>
+        <name>mLegendFilterByScale</name>
+        <briefdescription>
+<para>scale denominator for filtering of legend nodes (&lt;= 0 means no filtering) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="420" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="420" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a4627c9f0f302a559ba82c228da1661f3" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsMapHitTest" kindref="compound">QgsMapHitTest</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;QgsMapHitTest&gt; QgsLayerTreeModel::mLegendFilterHitTest</definition>
+        <argsstring></argsstring>
+        <name>mLegendFilterHitTest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="423" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a3c944f465e2984e5c785df09ec53e597" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;QgsMapSettings&gt; QgsLayerTreeModel::mLegendFilterMapSettings</definition>
+        <argsstring></argsstring>
+        <name>mLegendFilterMapSettings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="422" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="422" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a4b6ae342654f1e745be03126e4c4404e" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsLayerTreeModel::mLegendFilterUsesExtent</definition>
+        <argsstring></argsstring>
+        <name>mLegendFilterUsesExtent</name>
+        <briefdescription>
+<para>whether to use map filtering </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="426" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a242e33804f88f9a3e8093b9841642d41" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::mLegendMapViewDpi</definition>
+        <argsstring></argsstring>
+        <name>mLegendMapViewDpi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="429" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1ad841ebcff8712bb98b9ccb13bf329d57" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsLayerTreeModel::mLegendMapViewMupp</definition>
+        <argsstring></argsstring>
+        <name>mLegendMapViewMupp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="428" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="428" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a1c82af7332452d5117a3759f2a7b7828" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsLayerTreeModel::mLegendMapViewScale</definition>
+        <argsstring></argsstring>
+        <name>mLegendMapViewScale</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="430" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayerTreeModel_1a973e88b46b9c9ac6594e4900f6e4eac8" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsLayerTree" kindref="compound">QgsLayerTree</ref> *</type>
+        <definition>QgsLayerTree* QgsLayerTreeModel::mRootNode</definition>
+        <argsstring></argsstring>
+        <name>mRootNode</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Pointer to the root node of the layer tree. Not owned by the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="346" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a3ed1e6aaa170e73448b88228c2870cc3" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsLayerTreeModel::QgsLayerTreeModel</definition>
+        <argsstring>(QgsLayerTree *rootNode, QObject *parent=nullptr)</argsstring>
+        <name>QgsLayerTreeModel</name>
+        <param>
+          <type><ref refid="classQgsLayerTree" kindref="compound">QgsLayerTree</ref> *</type>
+          <declname>rootNode</declname>
+        </param>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Construct a new tree model with given layer tree (root node must not be null pointer). </para>        </briefdescription>
+        <detaileddescription>
+<para>The root node is not transferred by the model. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="72" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="37" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a2d629591d7a629bf794eb702f3015e75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsLayerTreeModel::~QgsLayerTreeModel</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsLayerTreeModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="74" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a15010177a229e583cfddc5ca8aac0c35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::autoCollapseLegendNodes</definition>
+        <argsstring>() const</argsstring>
+        <name>autoCollapseLegendNodes</name>
+        <briefdescription>
+<para>Returns at what number of legend nodes the layer node should be collapsed. -1 means no auto-collapse (default). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="207" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a09d84900338dfa956ee9cafcd470fe31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::columnCount</definition>
+        <argsstring>(const QModelIndex &amp;parent=QModelIndex()) const override</argsstring>
+        <name>columnCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="79" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="91" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a608b2884c69ab4c42326290c91eac815" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::currentIndex</definition>
+        <argsstring>() const</argsstring>
+        <name>currentIndex</name>
+        <briefdescription>
+<para>Gets index of the item marked as current. Item marked as current is underlined. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="195" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="537" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a38f313cb0bd233a63b6674551b704a45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsLayerTreeModel::data</definition>
+        <argsstring>(const QModelIndex &amp;index, int role=Qt::DisplayRole) const override</argsstring>
+        <name>data</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+          <defval>Qt::DisplayRole</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="156" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a0d6dc820def90f620b138f6ffd754b8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayerTreeModel::dropMimeData</definition>
+        <argsstring>(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &amp;parent) override</argsstring>
+        <name>dropMimeData</name>
+        <param>
+          <type>const QMimeData *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>Qt::DropAction</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="88" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1031" bodyend="1077"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1affc331ff7049e742c605b33069b6469a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+        <definition>QgsLayerTreeModelLegendNode * QgsLayerTreeModel::findLegendNode</definition>
+        <argsstring>(const QString &amp;layerId, const QString &amp;ruleKey) const</argsstring>
+        <name>findLegendNode</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>ruleKey</declname>
+        </param>
+        <briefdescription>
+<para>Searches through the layer tree to find a legend node with a matching layer ID and rule key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map layer ID </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ruleKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>legend node rule key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> if found </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="177" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1479" bodyend="1499"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a587c2f40dcb95746a985f4168596cd2e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Qt::ItemFlags</type>
+        <definition>Qt::ItemFlags QgsLayerTreeModel::flags</definition>
+        <argsstring>(const QModelIndex &amp;index) const override</argsstring>
+        <name>flags</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="83" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="334" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a0b747df53d3883d43f63301dad7dc04f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Flags</type>
+        <definition>QgsLayerTreeModel::Flags QgsLayerTreeModel::flags</definition>
+        <argsstring>() const</argsstring>
+        <name>flags</name>
+        <briefdescription>
+<para>Returns OR-ed combination of model flags. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="115" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1103" bodyend="1106"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ab4b68fac146d580db1c8d5c9b6091347" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::index</definition>
+        <argsstring>(int row, int column, const QModelIndex &amp;parent=QModelIndex()) const override</argsstring>
+        <name>index</name>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="80" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="97" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a95e27550d139ece4871f2bcf35ea68da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+        <definition>QgsLayerTreeNode * QgsLayerTreeModel::index2node</definition>
+        <argsstring>(const QModelIndex &amp;index) const</argsstring>
+        <name>index2node</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns layer tree node for given index. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns root node for invalid index. Returns null pointer if index does not refer to a layer tree node (e.g. it is a legend node) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="123" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="61" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ab4a871cb44ba1742461d411e0fd5adf8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> * &gt;</type>
+        <definition>QList&lt; QgsLayerTreeNode * &gt; QgsLayerTreeModel::indexes2nodes</definition>
+        <argsstring>(const QModelIndexList &amp;list, bool skipInternal=false) const</argsstring>
+        <name>indexes2nodes</name>
+        <param>
+          <type>const QModelIndexList &amp;</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>skipInternal</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Convert a <emphasis>list</emphasis> of indexes to a list of layer tree nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Indices that do not represent layer tree nodes are skipped. If <emphasis>skipInternal</emphasis> is true, a node is included in the output list only if no parent node is in the list. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="132" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="471" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a0cdf799edb85773e073f7b5f73a63e82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> * &gt;</type>
+        <definition>QList&lt; QgsLayerTreeModelLegendNode * &gt; QgsLayerTreeModel::layerLegendNodes</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer, bool skipNodeEmbeddedInParent=false)</argsstring>
+        <name>layerLegendNodes</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>skipNodeEmbeddedInParent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Returns filtered list of active legend nodes attached to a particular layer node (by default it returns also legend node embedded in parent layer node (if any) unless skipNodeEmbeddedInParent is true) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Parameter skipNodeEmbeddedInParent added in QGIS 2.18 </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayerTreeModel_1ac10ce0512adc3ec2a8dacde919ea529f" kindref="member">layerOriginalLegendNodes()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="154" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1462" bodyend="1472"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ac10ce0512adc3ec2a8dacde919ea529f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> * &gt;</type>
+        <definition>QList&lt; QgsLayerTreeModelLegendNode * &gt; QgsLayerTreeModel::layerOriginalLegendNodes</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer)</argsstring>
+        <name>layerOriginalLegendNodes</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+<para>Returns original (unfiltered) list of legend nodes attached to a particular layer node. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayerTreeModel_1a0cdf799edb85773e073f7b5f73a63e82" kindref="member">layerLegendNodes()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="161" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1474" bodyend="1477"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ac86cc6ce1169e8cd543136ea47023f1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QMap&lt; QString, QString &gt;</type>
+        <definition>QMap&lt; QString, QString &gt; QgsLayerTreeModel::layerStyleOverrides</definition>
+        <argsstring>() const</argsstring>
+        <name>layerStyleOverrides</name>
+        <briefdescription>
+<para>Gets map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.10 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="269" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="682" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ae57b5fa908a79930dcb8f654d7e63945" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QFont</type>
+        <definition>QFont QgsLayerTreeModel::layerTreeNodeFont</definition>
+        <argsstring>(int nodeType) const</argsstring>
+        <name>layerTreeNodeFont</name>
+        <param>
+          <type>int</type>
+          <declname>nodeType</declname>
+        </param>
+        <briefdescription>
+<para>Gets font for a particular type of layer tree node. nodeType should come from <ref refid="classQgsLayerTreeNode_1a2a159ed7a5a428acd53fb226234cda17" kindref="member">QgsLayerTreeNode::NodeType</ref> enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="202" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="579" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a19b9eee4250a226b72dbb55377dab13a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsLayerTreeModel::legendFilterByScale</definition>
+        <argsstring>() const</argsstring>
+        <name>legendFilterByScale</name>
+        <briefdescription>
+<para>Returns the scale which restricts the legend nodes which are visible. </para>        </briefdescription>
+        <detaileddescription>
+<para>The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. A scale &lt;= 0 indicates that no scale filtering is being performed. <simplesect kind="see"><para><ref refid="classQgsLayerTreeModel_1a296c0f1b7ef5ba02d69fe4f89fa32de5" kindref="member">setLegendFilterByScale()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="225" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="225" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a7be58023df7b1bd8ec604c523baaaa47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> *</type>
+        <definition>const QgsMapSettings* QgsLayerTreeModel::legendFilterMapSettings</definition>
+        <argsstring>() const</argsstring>
+        <name>legendFilterMapSettings</name>
+        <briefdescription>
+<para>Returns the current map settings used for the current legend filter (or null if none is enabled) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="249" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="249" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a603d5f38a2a23e5a925ed6541708a223" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::legendMapViewData</definition>
+        <argsstring>(double *mapUnitsPerPixel, int *dpi, double *scale) const</argsstring>
+        <name>legendMapViewData</name>
+        <param>
+          <type>double *</type>
+          <declname>mapUnitsPerPixel</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>dpi</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Gets hints about map view - to be used in legend nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Arguments that are not null will receive values. If there are no valid map view data (from previous call to <ref refid="classQgsLayerTreeModel_1a3d717bafc9f29cf76a837b2090c4b346" kindref="member">setLegendMapViewData()</ref>), returned values are zeros. <simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="263" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="675" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a219fd9ae4bb4a081fb5f5ab522b182bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::legendNode2index</definition>
+        <argsstring>(QgsLayerTreeModelLegendNode *legendNode)</argsstring>
+        <name>legendNode2index</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+          <declname>legendNode</declname>
+        </param>
+        <briefdescription>
+<para>Returns index for a given legend node. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the legend node does not belong to the layer tree, the result is undefined. If the legend node is belongs to the tree but it is filtered out, invalid model index is returned. <simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="145" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1331" bodyend="1357"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ab082785bc69d4d12799a564be44bec5d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+        <definition>QgsLayerTreeModelLegendNode * QgsLayerTreeModel::legendNodeEmbeddedInParent</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer) const</argsstring>
+        <name>legendNodeEmbeddedInParent</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+<para>Returns legend node that may be embedded in parent (i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>its icon will be used for layer&apos;s icon). <simplesect kind="since"><para>QGIS 2.18 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="167" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1447" bodyend="1450"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a9f87f2d1488b7ecd055610ecf0053be7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QMimeData *</type>
+        <definition>QMimeData * QgsLayerTreeModel::mimeData</definition>
+        <argsstring>(const QModelIndexList &amp;indexes) const override</argsstring>
+        <name>mimeData</name>
+        <param>
+          <type>const QModelIndexList &amp;</type>
+          <declname>indexes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="87" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1004" bodyend="1029"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a9ca4b3c6781ecf97bfb6be21f6998ce9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsLayerTreeModel::mimeTypes</definition>
+        <argsstring>() const override</argsstring>
+        <name>mimeTypes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="86" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="996" bodyend="1001"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a0a5252e51c940365d8cc18b82e4421ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::node2index</definition>
+        <argsstring>(QgsLayerTreeNode *node) const</argsstring>
+        <name>node2index</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+<para>Returns index for a given node. If the node does not belong to the layer tree, the result is undefined. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="125" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="435" bodyend="445"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a482d1bda174260d554027b6c84789793" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::parent</definition>
+        <argsstring>(const QModelIndex &amp;child) const override</argsstring>
+        <name>parent</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="119" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aeb87ff7eca65f425e451e684c1d009fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::refreshLayerLegend</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer)</argsstring>
+        <name>refreshLayerLegend</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+<para>Force a refresh of legend nodes of a layer node. </para>        </briefdescription>
+        <detaileddescription>
+<para>Not necessary to call when layer&apos;s renderer is changed as the model listens to these events. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="192" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="517" bodyend="535"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aab52c8e9f1c79ac786f1b541eab73b00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayerTreeModel::removeRows</definition>
+        <argsstring>(int row, int count, const QModelIndex &amp;parent=QModelIndex()) override</argsstring>
+        <name>removeRows</name>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="89" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1079" bodyend="1088"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a884e38dfb1a075809b64f45081d38f17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayerTree" kindref="compound">QgsLayerTree</ref> *</type>
+        <definition>QgsLayerTree * QgsLayerTreeModel::rootGroup</definition>
+        <argsstring>() const</argsstring>
+        <name>rootGroup</name>
+        <briefdescription>
+<para>Returns pointer to the root node of the layer tree. Always a non-null pointer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="180" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="497" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aa217f6124f911ec7aaa6d1a9caecee9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::rowCount</definition>
+        <argsstring>(const QModelIndex &amp;parent=QModelIndex()) const override</argsstring>
+        <name>rowCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="78" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="71" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a5ec2670395922c337632c50098351245" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setAutoCollapseLegendNodes</definition>
+        <argsstring>(int nodeCount)</argsstring>
+        <name>setAutoCollapseLegendNodes</name>
+        <param>
+          <type>int</type>
+          <declname>nodeCount</declname>
+        </param>
+        <briefdescription>
+<para>Sets at what number of legend nodes the layer node should be collapsed. Setting -1 disables the auto-collapse (default). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="205" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="205" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a6da566fba16f1a1be23cf9795ba19b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setCurrentIndex</definition>
+        <argsstring>(const QModelIndex &amp;currentIndex)</argsstring>
+        <name>setCurrentIndex</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>currentIndex</declname>
+        </param>
+        <briefdescription>
+<para>Sets index of the current item. May be used by view. Item marked as current is underlined. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="542" bodyend="551"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a13a839bb36c790c2510ffa4808d5e37f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayerTreeModel::setData</definition>
+        <argsstring>(const QModelIndex &amp;index, const QVariant &amp;value, int role=Qt::EditRole) override</argsstring>
+        <name>setData</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+          <defval>Qt::EditRole</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="84" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="371" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a4c4760b9af6b613b79167670d525db21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setFlag</definition>
+        <argsstring>(Flag f, bool on=true)</argsstring>
+        <name>setFlag</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8" kindref="member">Flag</ref></type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>on</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Enable or disable a model flag. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="113" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1095" bodyend="1101"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a8644bf1332a1686db50a039d7e6ff5fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setFlags</definition>
+        <argsstring>(QgsLayerTreeModel::Flags f)</argsstring>
+        <name>setFlags</name>
+        <param>
+          <type>QgsLayerTreeModel::Flags</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Sets OR-ed combination of model flags. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1090" bodyend="1093"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1acf7bceb345b7e95d90208aa751acfe80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setLayerStyleOverrides</definition>
+        <argsstring>(const QMap&lt; QString, QString &gt; &amp;overrides)</argsstring>
+        <name>setLayerStyleOverrides</name>
+        <param>
+          <type>const QMap&lt; QString, QString &gt; &amp;</type>
+          <declname>overrides</declname>
+        </param>
+        <briefdescription>
+<para>Sets map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.10 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="275" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="687" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a51e612dd4b4ee4117c27709be948d164" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setLayerTreeNodeFont</definition>
+        <argsstring>(int nodeType, const QFont &amp;font)</argsstring>
+        <name>setLayerTreeNodeFont</name>
+        <param>
+          <type>int</type>
+          <declname>nodeType</declname>
+        </param>
+        <param>
+          <type>const QFont &amp;</type>
+          <declname>font</declname>
+        </param>
+        <briefdescription>
+<para>Sets font for a particular type of layer tree node. nodeType should come from <ref refid="classQgsLayerTreeNode_1a2a159ed7a5a428acd53fb226234cda17" kindref="member">QgsLayerTreeNode::NodeType</ref> enumeration. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="200" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="554" bodyend="576"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1afe9f6d842619e048ee5ab9b431a30ab7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setLegendFilter</definition>
+        <argsstring>(const QgsMapSettings *settings, bool useExtent=true, const QgsGeometry &amp;polygon=QgsGeometry(), bool useExpressions=true)</argsstring>
+        <name>setLegendFilter</name>
+        <param>
+          <type>const <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> *</type>
+          <declname>settings</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>useExtent</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>polygon</declname>
+          <defval><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref>()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>useExpressions</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Filter display of legend nodes for given map settings. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>settings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Map settings. Setting a null pointer or invalid settings will disable any filter. Ownership is not changed, a copy is made </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>useExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to use the extent of the map settings as a first spatial filter on legend nodes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>polygon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If not empty, this polygon will be used instead of the map extent to filter legend nodes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>useExpressions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether to use legend node filter expressions </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="243" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="607" bodyend="658"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a217e168da9cbd68791226b6e9587256d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setLegendFilterByMap</definition>
+        <argsstring>(const QgsMapSettings *settings)</argsstring>
+        <name>setLegendFilterByMap</name>
+        <param>
+          <type>const <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> *</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Force only display of legend nodes which are valid for given map settings. </para>        </briefdescription>
+        <detaileddescription>
+<para>Setting null pointer or invalid map settings will disable the functionality. Ownership of map settings pointer does not change, a copy is made. <simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="233" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="602" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a296c0f1b7ef5ba02d69fe4f89fa32de5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setLegendFilterByScale</definition>
+        <argsstring>(double scale)</argsstring>
+        <name>setLegendFilterByScale</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Force only display of legend nodes which are valid for a given <emphasis>scale</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>scale</emphasis> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. Setting <emphasis>scale</emphasis> &lt;= 0 will disable the functionality. <simplesect kind="see"><para><ref refid="classQgsLayerTreeModel_1a19b9eee4250a226b72dbb55377dab13a" kindref="member">legendFilterByScale()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="216" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="592" bodyend="600"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a3d717bafc9f29cf76a837b2090c4b346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setLegendMapViewData</definition>
+        <argsstring>(double mapUnitsPerPixel, int dpi, double scale)</argsstring>
+        <name>setLegendMapViewData</name>
+        <param>
+          <type>double</type>
+          <declname>mapUnitsPerPixel</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dpi</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Give the layer tree model hints about the currently associated map view so that legend nodes that use map units can be scaled currectly. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="256" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="660" bodyend="673"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a1eea04a4a4f8fd9c87e7de5fa1684fcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::setRootGroup</definition>
+        <argsstring>(QgsLayerTree *newRootGroup)</argsstring>
+        <name>setRootGroup</name>
+        <param>
+          <type><ref refid="classQgsLayerTree" kindref="compound">QgsLayerTree</ref> *</type>
+          <declname>newRootGroup</declname>
+        </param>
+        <briefdescription>
+<para>Reset the model and use a new root group node. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="186" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="502" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a80ab76771d2fd6b5ca7b74cc38c3965a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Qt::DropActions</type>
+        <definition>Qt::DropActions QgsLayerTreeModel::supportedDropActions</definition>
+        <argsstring>() const override</argsstring>
+        <name>supportedDropActions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="85" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="991" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1af498b2aaa8553bfae9eeb1f17507db55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayerTreeModel::testFlag</definition>
+        <argsstring>(Flag f) const</argsstring>
+        <name>testFlag</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8" kindref="member">Flag</ref></type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Check whether a flag is enabled. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="117" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1108" bodyend="1111"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ad6fad38140e733f7c699160e777f4fb5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+        <definition>QgsLayerTreeModelLegendNode * QgsLayerTreeModel::index2legendNode</definition>
+        <argsstring>(const QModelIndex &amp;index)</argsstring>
+        <name>index2legendNode</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns legend node for given index. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns null for invalid index <simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="138" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1325" bodyend="1328"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-slot">
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a83949b8ea4c801846277584bc4a340d1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::invalidateLegendMapBasedData</definition>
+        <argsstring>()</argsstring>
+        <name>invalidateLegendMapBasedData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="301" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1509" bodyend="1548"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1af58a937f6a8ace05086f5b242846830c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::layerLegendChanged</definition>
+        <argsstring>()</argsstring>
+        <name>layerLegendChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="295" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="786" bodyend="803"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a381ac3d8ea9783f221416b697b6d1666" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::layerNeedsUpdate</definition>
+        <argsstring>()</argsstring>
+        <name>layerNeedsUpdate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="297" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="805" bodyend="820"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1adc05ab4174eee0a0ddd1e36d46ef0153" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::legendNodeDataChanged</definition>
+        <argsstring>()</argsstring>
+        <name>legendNodeDataChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="299" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="823" bodyend="832"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a5b46d1626d4b974de802c71fc6640714" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeAddedChildren</definition>
+        <argsstring>(QgsLayerTreeNode *node, int indexFrom, int indexTo)</argsstring>
+        <name>nodeAddedChildren</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indexFrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indexTo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="279" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="713" bodyend="721"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a3e16bc24b1372a594eca6219b216f95f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeCustomPropertyChanged</definition>
+        <argsstring>(QgsLayerTreeNode *node, const QString &amp;key)</argsstring>
+        <name>nodeCustomPropertyChanged</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="291" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="757" bodyend="761"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1adc4b0992bfa6b3f87c39af9f7dd367bb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeLayerLoaded</definition>
+        <argsstring>()</argsstring>
+        <name>nodeLayerLoaded</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="293" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="764" bodyend="772"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a1728bca36db5099cacba0b478537838a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeLayerWillBeUnloaded</definition>
+        <argsstring>()</argsstring>
+        <name>nodeLayerWillBeUnloaded</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="294" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="774" bodyend="784"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a76a0cf0994aa872fa58d36f6038674c7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeNameChanged</definition>
+        <argsstring>(QgsLayerTreeNode *node, const QString &amp;name)</argsstring>
+        <name>nodeNameChanged</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Updates model when node&apos;s name has changed. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="289" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="747" bodyend="754"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1aa0f90aa04995b626b8723ab901e6b279" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeRemovedChildren</definition>
+        <argsstring>()</argsstring>
+        <name>nodeRemovedChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="281" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="734" bodyend="737"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1acfac6668a8be7bfacb592eeb4c7c6ef2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeVisibilityChanged</definition>
+        <argsstring>(QgsLayerTreeNode *node)</argsstring>
+        <name>nodeVisibilityChanged</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="283" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="739" bodyend="745"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1ae427209a0cec3eb581c45fccbbcfd5be" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeWillAddChildren</definition>
+        <argsstring>(QgsLayerTreeNode *node, int indexFrom, int indexTo)</argsstring>
+        <name>nodeWillAddChildren</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indexFrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indexTo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="278" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="692" bodyend="696"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayerTreeModel_1a910f38800657859fffac50e252049d21" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::nodeWillRemoveChildren</definition>
+        <argsstring>(QgsLayerTreeNode *node, int indexFrom, int indexTo)</argsstring>
+        <name>nodeWillRemoveChildren</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indexFrom</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>indexTo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="280" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="723" bodyend="732"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aef9faaae863bad4c277b35ef05f54410" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::addLegendToLayer</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeL)</argsstring>
+        <name>addLegendToLayer</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="305" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1190" bodyend="1265"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a09a785b425aeca8480a9a5959f9f5b7e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::connectToLayer</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer)</argsstring>
+        <name>connectToLayer</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="307" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="835" bodyend="873"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a40b20eb0b7a90d6fd6b9dc704ca12ffd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::connectToLayers</definition>
+        <argsstring>(QgsLayerTreeGroup *parentGroup)</argsstring>
+        <name>connectToLayers</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeGroup" kindref="compound">QgsLayerTreeGroup</ref> *</type>
+          <declname>parentGroup</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="310" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="913" bodyend="922"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a93a24557244940057241ff266e0fabd6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::connectToRootNode</definition>
+        <argsstring>()</argsstring>
+        <name>connectToRootNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="312" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="935" bodyend="949"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a6cf8fe5ab7da5bf497ce955806237f04" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::disconnectFromLayer</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer)</argsstring>
+        <name>disconnectFromLayer</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="308" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="894" bodyend="911"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1af4f9a73e17b17c78ba092c5bcebd52b5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::disconnectFromLayers</definition>
+        <argsstring>(QgsLayerTreeGroup *parentGroup)</argsstring>
+        <name>disconnectFromLayers</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeGroup" kindref="compound">QgsLayerTreeGroup</ref> *</type>
+          <declname>parentGroup</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="311" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="924" bodyend="933"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a8141439f6db55b39be2205013624d898" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::disconnectFromRootNode</definition>
+        <argsstring>()</argsstring>
+        <name>disconnectFromRootNode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="313" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="951" bodyend="956"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a29093b7e3acb8f3a31b9366bf362dd0a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> * &gt;</type>
+        <definition>QList&lt; QgsLayerTreeModelLegendNode * &gt; QgsLayerTreeModel::filterLegendNodes</definition>
+        <argsstring>(const QList&lt; QgsLayerTreeModelLegendNode *&gt; &amp;nodes)</argsstring>
+        <name>filterLegendNodes</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *&gt; &amp;</type>
+          <declname>nodes</declname>
+        </param>
+        <briefdescription>
+<para>Filter nodes from <ref refid="classQgsMapLayerLegend" kindref="compound">QgsMapLayerLegend</ref> according to the current filtering rules. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="328" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1118" bodyend="1161"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1af5f321fef0fe362d7ae214e23ac41327" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::indexOfParentLayerTreeNode</definition>
+        <argsstring>(QgsLayerTreeNode *parentNode) const</argsstring>
+        <name>indexOfParentLayerTreeNode</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeNode" kindref="compound">QgsLayerTreeNode</ref> *</type>
+          <declname>parentNode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="330" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="141" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a53fdbb6f76280091a0daa0f037289c7c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::legendCleanup</definition>
+        <argsstring>()</argsstring>
+        <name>legendCleanup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="341" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1168" bodyend="1176"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a659757decd95bfae2251e1abcfaf32a2" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayerTreeModel::legendEmbeddedInParent</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer) const</argsstring>
+        <name>legendEmbeddedInParent</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="339" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1442" bodyend="1445"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a734ce50fb90c8465b8b8bcd00609bcd3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QIcon</type>
+        <definition>QIcon QgsLayerTreeModel::legendIconEmbeddedInParent</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer) const</argsstring>
+        <name>legendIconEmbeddedInParent</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="340" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1453" bodyend="1459"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a08d8cb521fd15ef0cfd59e80f043e5c2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::legendInvalidateMapBasedData</definition>
+        <argsstring>()</argsstring>
+        <name>legendInvalidateMapBasedData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="342" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1501" bodyend="1507"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a1abb742e9788ffe54106f2699dc233ae" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsLayerTreeModel::legendNodeData</definition>
+        <argsstring>(QgsLayerTreeModelLegendNode *node, int role) const</argsstring>
+        <name>legendNodeData</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="337" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1425" bodyend="1430"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aceb6bed27dfca02f06cebc52323ffb0d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Qt::ItemFlags</type>
+        <definition>Qt::ItemFlags QgsLayerTreeModel::legendNodeFlags</definition>
+        <argsstring>(QgsLayerTreeModelLegendNode *node) const</argsstring>
+        <name>legendNodeFlags</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="338" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1433" bodyend="1439"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a8161e3fff5c5b650e1977029203625f9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::legendNodeIndex</definition>
+        <argsstring>(int row, int column, QgsLayerTreeModelLegendNode *node) const</argsstring>
+        <name>legendNodeIndex</name>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="335" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1395" bodyend="1402"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a52d0014c942f5d90cbf4184e88eae825" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::legendNodeRowCount</definition>
+        <argsstring>(QgsLayerTreeModelLegendNode *node) const</argsstring>
+        <name>legendNodeRowCount</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="333" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1360" bodyend="1367"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a4e4b203eaf9c08f886422729544b7222" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::legendParent</definition>
+        <argsstring>(QgsLayerTreeModelLegendNode *legendNode) const</argsstring>
+        <name>legendParent</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *</type>
+          <declname>legendNode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="336" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1405" bodyend="1422"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ad67da7eaec65f8733a86c0a84dc0d665" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex QgsLayerTreeModel::legendRootIndex</definition>
+        <argsstring>(int row, int column, QgsLayerTreeLayer *nL) const</argsstring>
+        <name>legendRootIndex</name>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="334" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1384" bodyend="1392"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aff3cf0f0e12fdba6459c166f3392a988" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayerTreeModel::legendRootRowCount</definition>
+        <argsstring>(QgsLayerTreeLayer *nL) const</argsstring>
+        <name>legendRootRowCount</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nL</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="332" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1370" bodyend="1381"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a656ece4025338c6be0efb7c598d00ed3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::recursivelyEmitDataChanged</definition>
+        <argsstring>(const QModelIndex &amp;index=QModelIndex())</argsstring>
+        <name>recursivelyEmitDataChanged</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+<para>emit dataChanged() for layer tree node items </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="316" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="958" bodyend="970"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1aabf79071907395075b9a539ba585f574" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::refreshScaleBasedLayers</definition>
+        <argsstring>(const QModelIndex &amp;index=QModelIndex())</argsstring>
+        <name>refreshScaleBasedLayers</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+<para>Updates layer data for scale dependent layers, should be called when map scale changes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Emits dataChanged() for all scale dependent layers. <simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="323" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="972" bodyend="989"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1ad672140366ba3ac8c5ff15f384034eee" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayerTreeModel::removeLegendFromLayer</definition>
+        <argsstring>(QgsLayerTreeLayer *nodeLayer)</argsstring>
+        <name>removeLegendFromLayer</name>
+        <param>
+          <type><ref refid="classQgsLayerTreeLayer" kindref="compound">QgsLayerTreeLayer</ref> *</type>
+          <declname>nodeLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="304" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1179" bodyend="1187"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a8b0fcc3e5a2f5abb3a43d51b34db0f56" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structQgsLayerTreeModel_1_1LayerLegendTree" kindref="compound">LayerLegendTree</ref> *</type>
+        <definition>QgsLayerTreeModel::LayerLegendTree * QgsLayerTreeModel::tryBuildLegendTree</definition>
+        <argsstring>(const QList&lt; QgsLayerTreeModelLegendNode *&gt; &amp;nodes)</argsstring>
+        <name>tryBuildLegendTree</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsLayerTreeModelLegendNode" kindref="compound">QgsLayerTreeModelLegendNode</ref> *&gt; &amp;</type>
+          <declname>nodes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="405" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1268" bodyend="1306"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a3b8c714ee5d81d99c8b045b0eacbc344" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QIcon</type>
+        <definition>QIcon QgsLayerTreeModel::iconGroup</definition>
+        <argsstring>()</argsstring>
+        <name>iconGroup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="325" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1113" bodyend="1116"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsLayerTreeModel_1a835691493ecb0b19ac78534c53393335" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> *</type>
+        <definition>QgsRenderContext * QgsLayerTreeModel::createTemporaryRenderContext</definition>
+        <argsstring>() const</argsstring>
+        <name>createTemporaryRenderContext</name>
+        <briefdescription>
+<para>Returns a temporary render context. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="436" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.cpp" bodystart="1308" bodyend="1322"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The <ref refid="classQgsLayerTreeModel" kindref="compound">QgsLayerTreeModel</ref> class is model implementation for Qt item views framework. </para>    </briefdescription>
+    <detaileddescription>
+<para>The model can be used in any QTreeView, it is however recommended to use it with <ref refid="classQgsLayerTreeView" kindref="compound">QgsLayerTreeView</ref> which brings additional functionality specific to layer tree handling.</para><para>The model listens to the changes in the layer tree and signals the changes as appropriate, so that any view that uses the model is updated accordingly.</para><para>Behavior of the model can be customized with flags. For example, whether to show legend or whether to allow changes to the layer tree.</para><para><simplesect kind="see"><para><ref refid="classQgsLayerTreeView" kindref="compound">QgsLayerTreeView</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.4 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="4285">
+        <label>QgsLayerTreeModel</label>
+        <link refid="classQgsLayerTreeModel"/>
+        <childnode refid="4286" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4287">
+        <label>QgsLegendModel</label>
+        <link refid="classQgsLegendModel"/>
+        <childnode refid="4285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4286">
+        <label>QAbstractItemModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4293">
+        <label>QObject</label>
+      </node>
+      <node id="4288">
+        <label>QgsLayerTreeModel</label>
+        <link refid="classQgsLayerTreeModel"/>
+        <childnode refid="4289" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4290" relation="usage">
+          <edgelabel>mRootNode</edgelabel>
+        </childnode>
+      </node>
+      <node id="4292">
+        <label>QgsLayerTreeNode</label>
+        <link refid="classQgsLayerTreeNode"/>
+        <childnode refid="4293" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4292" relation="usage">
+          <edgelabel>mParent</edgelabel>
+        </childnode>
+        <childnode refid="4294" relation="usage">
+          <edgelabel>mProperties</edgelabel>
+        </childnode>
+      </node>
+      <node id="4290">
+        <label>QgsLayerTree</label>
+        <link refid="classQgsLayerTree"/>
+        <childnode refid="4291" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4294">
+        <label>QgsObjectCustomProperties</label>
+        <link refid="classQgsObjectCustomProperties"/>
+      </node>
+      <node id="4291">
+        <label>QgsLayerTreeGroup</label>
+        <link refid="classQgsLayerTreeGroup"/>
+        <childnode refid="4292" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4289">
+        <label>QAbstractItemModel</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" line="54" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layertree/qgslayertreemodel.h" bodystart="53" bodyend="437"/>
+    <listofallmembers>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a0c7e6c7e11ff269ebb57a508113870d0" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>ActionHierarchical</name></member>
+      <member refid="classQgsLayerTreeModel_1aef9faaae863bad4c277b35ef05f54410" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>addLegendToLayer</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8aa626628f11400c5e4a1f9a2c2a1e473d" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>AllowLegendChangeState</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a154c74db1374949de799fd9a0422c070" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>AllowNodeChangeVisibility</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8aa24ea86df2945792c1a9ae671b73218d" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>AllowNodeRename</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a32c3dd5417486d98037068d194a768d2" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>AllowNodeReorder</name></member>
+      <member refid="classQgsLayerTreeModel_1a15010177a229e583cfddc5ca8aac0c35" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>autoCollapseLegendNodes</name></member>
+      <member refid="classQgsLayerTreeModel_1a09d84900338dfa956ee9cafcd470fe31" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>columnCount</name></member>
+      <member refid="classQgsLayerTreeModel_1a09a785b425aeca8480a9a5959f9f5b7e" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>connectToLayer</name></member>
+      <member refid="classQgsLayerTreeModel_1a40b20eb0b7a90d6fd6b9dc704ca12ffd" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>connectToLayers</name></member>
+      <member refid="classQgsLayerTreeModel_1a93a24557244940057241ff266e0fabd6" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>connectToRootNode</name></member>
+      <member refid="classQgsLayerTreeModel_1a835691493ecb0b19ac78534c53393335" prot="private" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>createTemporaryRenderContext</name></member>
+      <member refid="classQgsLayerTreeModel_1a608b2884c69ab4c42326290c91eac815" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>currentIndex</name></member>
+      <member refid="classQgsLayerTreeModel_1a38f313cb0bd233a63b6674551b704a45" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>data</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a6cd11c232df94b1c8ca1411fdc2242c5" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>DeferredLegendInvalidation</name></member>
+      <member refid="classQgsLayerTreeModel_1a6cf8fe5ab7da5bf497ce955806237f04" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>disconnectFromLayer</name></member>
+      <member refid="classQgsLayerTreeModel_1af4f9a73e17b17c78ba092c5bcebd52b5" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>disconnectFromLayers</name></member>
+      <member refid="classQgsLayerTreeModel_1a8141439f6db55b39be2205013624d898" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>disconnectFromRootNode</name></member>
+      <member refid="classQgsLayerTreeModel_1a0d6dc820def90f620b138f6ffd754b8a" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>dropMimeData</name></member>
+      <member refid="classQgsLayerTreeModel_1a29093b7e3acb8f3a31b9366bf362dd0a" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>filterLegendNodes</name></member>
+      <member refid="classQgsLayerTreeModel_1affc331ff7049e742c605b33069b6469a" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>findLegendNode</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>Flag</name></member>
+      <member refid="classQgsLayerTreeModel_1a587c2f40dcb95746a985f4168596cd2e" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>flags</name></member>
+      <member refid="classQgsLayerTreeModel_1a0b747df53d3883d43f63301dad7dc04f" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>flags</name></member>
+      <member refid="classQgsLayerTreeModel_1a3b8c714ee5d81d99c8b045b0eacbc344" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>iconGroup</name></member>
+      <member refid="classQgsLayerTreeModel_1ab4b68fac146d580db1c8d5c9b6091347" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>index</name></member>
+      <member refid="classQgsLayerTreeModel_1ad6fad38140e733f7c699160e777f4fb5" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>index2legendNode</name></member>
+      <member refid="classQgsLayerTreeModel_1a95e27550d139ece4871f2bcf35ea68da" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>index2node</name></member>
+      <member refid="classQgsLayerTreeModel_1ab4a871cb44ba1742461d411e0fd5adf8" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>indexes2nodes</name></member>
+      <member refid="classQgsLayerTreeModel_1af5f321fef0fe362d7ae214e23ac41327" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>indexOfParentLayerTreeNode</name></member>
+      <member refid="classQgsLayerTreeModel_1a83949b8ea4c801846277584bc4a340d1" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>invalidateLegendMapBasedData</name></member>
+      <member refid="classQgsLayerTreeModel_1af58a937f6a8ace05086f5b242846830c" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>layerLegendChanged</name></member>
+      <member refid="classQgsLayerTreeModel_1a0cdf799edb85773e073f7b5f73a63e82" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>layerLegendNodes</name></member>
+      <member refid="classQgsLayerTreeModel_1a381ac3d8ea9783f221416b697b6d1666" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>layerNeedsUpdate</name></member>
+      <member refid="classQgsLayerTreeModel_1ac10ce0512adc3ec2a8dacde919ea529f" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>layerOriginalLegendNodes</name></member>
+      <member refid="classQgsLayerTreeModel_1ac86cc6ce1169e8cd543136ea47023f1d" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>layerStyleOverrides</name></member>
+      <member refid="classQgsLayerTreeModel_1ae57b5fa908a79930dcb8f654d7e63945" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>layerTreeNodeFont</name></member>
+      <member refid="classQgsLayerTreeModel_1a53fdbb6f76280091a0daa0f037289c7c" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendCleanup</name></member>
+      <member refid="classQgsLayerTreeModel_1a659757decd95bfae2251e1abcfaf32a2" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendEmbeddedInParent</name></member>
+      <member refid="classQgsLayerTreeModel_1a19b9eee4250a226b72dbb55377dab13a" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendFilterByScale</name></member>
+      <member refid="classQgsLayerTreeModel_1a7be58023df7b1bd8ec604c523baaaa47" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendFilterMapSettings</name></member>
+      <member refid="classQgsLayerTreeModel_1a734ce50fb90c8465b8b8bcd00609bcd3" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendIconEmbeddedInParent</name></member>
+      <member refid="classQgsLayerTreeModel_1a08d8cb521fd15ef0cfd59e80f043e5c2" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendInvalidateMapBasedData</name></member>
+      <member refid="classQgsLayerTreeModel_1a603d5f38a2a23e5a925ed6541708a223" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendMapViewData</name></member>
+      <member refid="classQgsLayerTreeModel_1a219fd9ae4bb4a081fb5f5ab522b182bc" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNode2index</name></member>
+      <member refid="classQgsLayerTreeModel_1a1abb742e9788ffe54106f2699dc233ae" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNodeData</name></member>
+      <member refid="classQgsLayerTreeModel_1adc05ab4174eee0a0ddd1e36d46ef0153" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNodeDataChanged</name></member>
+      <member refid="classQgsLayerTreeModel_1ab082785bc69d4d12799a564be44bec5d" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNodeEmbeddedInParent</name></member>
+      <member refid="classQgsLayerTreeModel_1aceb6bed27dfca02f06cebc52323ffb0d" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNodeFlags</name></member>
+      <member refid="classQgsLayerTreeModel_1a8161e3fff5c5b650e1977029203625f9" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNodeIndex</name></member>
+      <member refid="classQgsLayerTreeModel_1a52d0014c942f5d90cbf4184e88eae825" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendNodeRowCount</name></member>
+      <member refid="classQgsLayerTreeModel_1a4e4b203eaf9c08f886422729544b7222" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendParent</name></member>
+      <member refid="classQgsLayerTreeModel_1ad67da7eaec65f8733a86c0a84dc0d665" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendRootIndex</name></member>
+      <member refid="classQgsLayerTreeModel_1aff3cf0f0e12fdba6459c166f3392a988" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>legendRootRowCount</name></member>
+      <member refid="classQgsLayerTreeModel_1ac54ec8a70bfed6d3cfdd2d20701a1c1b" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mAutoCollapseLegendNodesCount</name></member>
+      <member refid="classQgsLayerTreeModel_1a7dacf93ce56589e84d12c3af4e31e895" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mCurrentIndex</name></member>
+      <member refid="classQgsLayerTreeModel_1a04bc156f0d2bc5b2aad813a90da32fab" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mDeferLegendInvalidationTimer</name></member>
+      <member refid="classQgsLayerTreeModel_1afd4f503bed47aa3cf58588cef05c0981" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mFlags</name></member>
+      <member refid="classQgsLayerTreeModel_1a873f53ea57d32816550af0b24ae0c2b6" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mFontGroup</name></member>
+      <member refid="classQgsLayerTreeModel_1abb9388eed20a40e8d2012546292928a5" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mFontLayer</name></member>
+      <member refid="classQgsLayerTreeModel_1a9f87f2d1488b7ecd055610ecf0053be7" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mimeData</name></member>
+      <member refid="classQgsLayerTreeModel_1a9ca4b3c6781ecf97bfb6be21f6998ce9" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mimeTypes</name></member>
+      <member refid="classQgsLayerTreeModel_1adc14f6e50c6cb20ce07b49d12fc8cdba" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLayerStyleOverrides</name></member>
+      <member refid="classQgsLayerTreeModel_1a91b6e236789838f7f4745c917f186541" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegend</name></member>
+      <member refid="classQgsLayerTreeModel_1a0c2fe980a4ff00a8b94a800f7eac42ae" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendFilterByScale</name></member>
+      <member refid="classQgsLayerTreeModel_1a4627c9f0f302a559ba82c228da1661f3" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendFilterHitTest</name></member>
+      <member refid="classQgsLayerTreeModel_1a3c944f465e2984e5c785df09ec53e597" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendFilterMapSettings</name></member>
+      <member refid="classQgsLayerTreeModel_1a4b6ae342654f1e745be03126e4c4404e" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendFilterUsesExtent</name></member>
+      <member refid="classQgsLayerTreeModel_1a242e33804f88f9a3e8093b9841642d41" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendMapViewDpi</name></member>
+      <member refid="classQgsLayerTreeModel_1ad841ebcff8712bb98b9ccb13bf329d57" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendMapViewMupp</name></member>
+      <member refid="classQgsLayerTreeModel_1a1c82af7332452d5117a3759f2a7b7828" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mLegendMapViewScale</name></member>
+      <member refid="classQgsLayerTreeModel_1a973e88b46b9c9ac6594e4900f6e4eac8" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>mRootNode</name></member>
+      <member refid="classQgsLayerTreeModel_1a0a5252e51c940365d8cc18b82e4421ce" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>node2index</name></member>
+      <member refid="classQgsLayerTreeModel_1a5b46d1626d4b974de802c71fc6640714" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeAddedChildren</name></member>
+      <member refid="classQgsLayerTreeModel_1a3e16bc24b1372a594eca6219b216f95f" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeCustomPropertyChanged</name></member>
+      <member refid="classQgsLayerTreeModel_1adc4b0992bfa6b3f87c39af9f7dd367bb" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeLayerLoaded</name></member>
+      <member refid="classQgsLayerTreeModel_1a1728bca36db5099cacba0b478537838a" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeLayerWillBeUnloaded</name></member>
+      <member refid="classQgsLayerTreeModel_1a76a0cf0994aa872fa58d36f6038674c7" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeNameChanged</name></member>
+      <member refid="classQgsLayerTreeModel_1aa0f90aa04995b626b8723ab901e6b279" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeRemovedChildren</name></member>
+      <member refid="classQgsLayerTreeModel_1acfac6668a8be7bfacb592eeb4c7c6ef2" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeVisibilityChanged</name></member>
+      <member refid="classQgsLayerTreeModel_1ae427209a0cec3eb581c45fccbbcfd5be" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeWillAddChildren</name></member>
+      <member refid="classQgsLayerTreeModel_1a910f38800657859fffac50e252049d21" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>nodeWillRemoveChildren</name></member>
+      <member refid="classQgsLayerTreeModel_1a482d1bda174260d554027b6c84789793" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>parent</name></member>
+      <member refid="classQgsLayerTreeModel_1a3ed1e6aaa170e73448b88228c2870cc3" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>QgsLayerTreeModel</name></member>
+      <member refid="classQgsLayerTreeModel_1a656ece4025338c6be0efb7c598d00ed3" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>recursivelyEmitDataChanged</name></member>
+      <member refid="classQgsLayerTreeModel_1aeb87ff7eca65f425e451e684c1d009fb" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>refreshLayerLegend</name></member>
+      <member refid="classQgsLayerTreeModel_1aabf79071907395075b9a539ba585f574" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>refreshScaleBasedLayers</name></member>
+      <member refid="classQgsLayerTreeModel_1ad672140366ba3ac8c5ff15f384034eee" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>removeLegendFromLayer</name></member>
+      <member refid="classQgsLayerTreeModel_1aab52c8e9f1c79ac786f1b541eab73b00" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>removeRows</name></member>
+      <member refid="classQgsLayerTreeModel_1a884e38dfb1a075809b64f45081d38f17" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>rootGroup</name></member>
+      <member refid="classQgsLayerTreeModel_1aa217f6124f911ec7aaa6d1a9caecee9a" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>rowCount</name></member>
+      <member refid="classQgsLayerTreeModel_1a5ec2670395922c337632c50098351245" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setAutoCollapseLegendNodes</name></member>
+      <member refid="classQgsLayerTreeModel_1a6da566fba16f1a1be23cf9795ba19b6c" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setCurrentIndex</name></member>
+      <member refid="classQgsLayerTreeModel_1a13a839bb36c790c2510ffa4808d5e37f" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setData</name></member>
+      <member refid="classQgsLayerTreeModel_1a4c4760b9af6b613b79167670d525db21" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setFlag</name></member>
+      <member refid="classQgsLayerTreeModel_1a8644bf1332a1686db50a039d7e6ff5fc" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setFlags</name></member>
+      <member refid="classQgsLayerTreeModel_1acf7bceb345b7e95d90208aa751acfe80" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setLayerStyleOverrides</name></member>
+      <member refid="classQgsLayerTreeModel_1a51e612dd4b4ee4117c27709be948d164" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setLayerTreeNodeFont</name></member>
+      <member refid="classQgsLayerTreeModel_1afe9f6d842619e048ee5ab9b431a30ab7" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setLegendFilter</name></member>
+      <member refid="classQgsLayerTreeModel_1a217e168da9cbd68791226b6e9587256d" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setLegendFilterByMap</name></member>
+      <member refid="classQgsLayerTreeModel_1a296c0f1b7ef5ba02d69fe4f89fa32de5" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setLegendFilterByScale</name></member>
+      <member refid="classQgsLayerTreeModel_1a3d717bafc9f29cf76a837b2090c4b346" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setLegendMapViewData</name></member>
+      <member refid="classQgsLayerTreeModel_1a1eea04a4a4f8fd9c87e7de5fa1684fcb" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>setRootGroup</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a3aff637104414db77d4ceb54db3f8ee0" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>ShowLegend</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8a25d080d7d329e01e0b99aa1e299d6f1e" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>ShowLegendAsTree</name></member>
+      <member refid="classQgsLayerTreeModel_1a80ab76771d2fd6b5ca7b74cc38c3965a" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>supportedDropActions</name></member>
+      <member refid="classQgsLayerTreeModel_1af498b2aaa8553bfae9eeb1f17507db55" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>testFlag</name></member>
+      <member refid="classQgsLayerTreeModel_1a8b0fcc3e5a2f5abb3a43d51b34db0f56" prot="protected" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>tryBuildLegendTree</name></member>
+      <member refid="classQgsLayerTreeModel_1afa5f075d2c17117c6fecef990ff3dbe8ab7cd7daa3dac8b9ecdeb8960e348527d" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>UseEmbeddedWidgets</name></member>
+      <member refid="classQgsLayerTreeModel_1a2d629591d7a629bf794eb702f3015e75" prot="public" virt="non-virtual"><scope>QgsLayerTreeModel</scope><name>~QgsLayerTreeModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

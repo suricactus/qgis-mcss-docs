@@ -1,0 +1,1209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsCoordinateTransform" kind="class" language="C++" prot="public">
+    <compoundname>QgsCoordinateTransform</compoundname>
+    <includes refid="qgscoordinatetransform_8h" local="no">qgscoordinatetransform.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" prot="public" static="no">
+        <name>TransformDirection</name>
+        <enumvalue id="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" prot="public">
+          <name>ForwardTransform</name>
+          <briefdescription>
+<para>Transform from source to destination CRS. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a86faf04e40154edd976b1240e2bdc9bd" prot="public">
+          <name>ReverseTransform</name>
+          <briefdescription>
+<para>Transform from destination to source CRS. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enum used to indicate the direction (forward or inverse) of the transform. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="59" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" bodystart="58" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsCoordinateTransform_1a3ba0336b677888457c684029589817b9" prot="private" static="no" mutable="yes">
+        <type>QExplicitlySharedDataPointer&lt; QgsCoordinateTransformPrivate &gt;</type>
+        <definition>QExplicitlySharedDataPointer&lt;QgsCoordinateTransformPrivate&gt; QgsCoordinateTransform::d</definition>
+        <argsstring></argsstring>
+        <name>d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="421" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" bodystart="421" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsCoordinateTransform_1a7964e86dd37250711cfaad4ef631813a" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref></type>
+        <definition>QgsCoordinateTransformContext QgsCoordinateTransform::mContext</definition>
+        <argsstring></argsstring>
+        <name>mContext</name>
+        <briefdescription>
+<para>Transform context. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="424" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" bodystart="424" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classQgsCoordinateTransform_1ab369f9dd819666cd1849974aa1275112" prot="private" static="yes" mutable="no">
+        <type>QReadWriteLock</type>
+        <definition>QReadWriteLock QgsCoordinateTransform::sCacheLock</definition>
+        <argsstring></argsstring>
+        <name>sCacheLock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="437" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" bodystart="437" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsCoordinateTransform_1a9f3d76644d4ee0adeae197268d1a2fdc" prot="private" static="yes" mutable="no">
+        <type>QMultiHash&lt; QPair&lt; QString, QString &gt;, <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &gt;</type>
+        <definition>QMultiHash&lt; QPair&lt; QString, QString &gt;, QgsCoordinateTransform &gt; QgsCoordinateTransform::sTransforms</definition>
+        <argsstring></argsstring>
+        <name>sTransforms</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="438" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" bodystart="438" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a0c3ea56232b94d295a8193d2821c2c42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsCoordinateTransform::QgsCoordinateTransform</definition>
+        <argsstring>()</argsstring>
+        <name>QgsCoordinateTransform</name>
+        <briefdescription>
+<para>Default constructor, creates an invalid <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="65" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a8c036726885d51e9fdfe1478a063dfcd" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type>Q_DECL_DEPRECATED</type>
+        <definition>QgsCoordinateTransform::QgsCoordinateTransform</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;source, const QgsCoordinateReferenceSystem &amp;destination)</argsstring>
+        <name>QgsCoordinateTransform</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> using <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> objects. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source CRS, typically of the layer&apos;s coordinate system </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destination</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CRS, typically of the map canvas coordinate system correctly handle the user&apos;s datum transform setup. Instead the constructor variant which accepts a <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref> or <ref refid="classQgsProject" kindref="compound">QgsProject</ref> argument should be used instead. It is highly likely that this constructor will be removed in future QGIS versions. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Not available in Python bindings. </para></simplesect>
+<xrefsect id="deprecated_1_deprecated000004"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Use of this constructor is strongly discouraged, as it will not </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="78" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="55" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1aa5ad428819ac020f8f5716e835ab754f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsCoordinateTransform::QgsCoordinateTransform</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;source, const QgsCoordinateReferenceSystem &amp;destination, const QgsCoordinateTransformContext &amp;context)</argsstring>
+        <name>QgsCoordinateTransform</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> to transform from the <emphasis>source</emphasis> to <emphasis>destination</emphasis> coordinate reference system. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>context</emphasis> argument specifies the context under which the transform will be applied, and is used for calculating necessary datum transforms to utilize.</para><para>Python scripts should generally use the constructor variant which accepts a <ref refid="classQgsProject" kindref="compound">QgsProject</ref> instance instead of this constructor.</para><para><simplesect kind="warning"><para>Do NOT use an empty/default constructed <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext()</ref> object when creating <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> objects. This prevents correct datum transform handling and may result in inaccurate transformations. Always ensure that the <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref> object is correctly retrieved based on the current code context, or use the constructor variant which accepts a <ref refid="classQgsProject" kindref="compound">QgsProject</ref> argument instead.</para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="69" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a0716e11c2d1e92d50286210aee6f2800" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsCoordinateTransform::QgsCoordinateTransform</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;source, const QgsCoordinateReferenceSystem &amp;destination, const QgsProject *project)</argsstring>
+        <name>QgsCoordinateTransform</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> to transform from the <emphasis>source</emphasis> to <emphasis>destination</emphasis> coordinate reference system, when used with the given <emphasis>project</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>No reference to <emphasis>project</emphasis> is stored or utilized outside of the constructor, and it is used to retrieve the project&apos;s transform context only.</para><para>Python scripts should utilize the <ref refid="classQgsProject_1a26df6e8516ac9625901108875681803b" kindref="member">QgsProject.instance()</ref> project instance when creating <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref>. This will ensure that any datum transforms defined in the project will be correctly respected during coordinate transforms. E.g.</para><para><programlisting><codeline><highlight class="normal">transform<sp/>=<sp/><ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref>(<ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>(</highlight><highlight class="stringliteral">&quot;EPSG:3111&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>(</highlight><highlight class="stringliteral">&quot;EPSG:4326&quot;</highlight><highlight class="normal">),<sp/><ref refid="classQgsProject_1a26df6e8516ac9625901108875681803b" kindref="member">QgsProject.instance</ref>())</highlight></codeline>
+</programlisting></para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="124" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="87" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a6d8083d97876a010cfd9f9d06a5da581" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsCoordinateTransform::QgsCoordinateTransform</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;source, const QgsCoordinateReferenceSystem &amp;destination, int sourceDatumTransformId, int destinationDatumTransformId)</argsstring>
+        <name>QgsCoordinateTransform</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sourceDatumTransformId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>destinationDatumTransformId</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> to transform from the <emphasis>source</emphasis> to <emphasis>destination</emphasis> coordinate reference system, with the specified datum transforms (see <ref refid="classQgsDatumTransform" kindref="compound">QgsDatumTransform</ref>). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="135" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="106" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a2a104ca0659305aa2ebae8d2615d6723" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsCoordinateTransform::QgsCoordinateTransform</definition>
+        <argsstring>(const QgsCoordinateTransform &amp;o)</argsstring>
+        <name>QgsCoordinateTransform</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="143" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="123" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1ab643c2a3c62ad1812b01c4ef61d4aaac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsCoordinateTransform::~QgsCoordinateTransform</definition>
+        <argsstring>()</argsstring>
+        <name>~QgsCoordinateTransform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="142" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a07014bf094a7515f4f3cfbbcff112e93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref></type>
+        <definition>QgsCoordinateTransformContext QgsCoordinateTransform::context</definition>
+        <argsstring>() const</argsstring>
+        <name>context</name>
+        <briefdescription>
+<para>Returns the context in which the coordinate transform will be calculated. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a3ce28aadd7a1917e5c2d8a40550794a0" kindref="member">setContext()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="189" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="191" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1ac0a2b4857ecdf33a91a20436c3819c9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsCoordinateTransform::destinationCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationCrs</name>
+        <briefdescription>
+<para>Returns the destination coordinate reference system, which the transform will transform coordinates to. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a6a171e1bdd814da1ebedb207fa668000" kindref="member">setDestinationCrs()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a14c73eaf63da37bd89b0c66d57f3d269" kindref="member">sourceCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="205" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="201" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1ac7d8e8852baafe7cb9537e8ad53cfe7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsCoordinateTransform::destinationDatumTransformId</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationDatumTransformId</name>
+        <briefdescription>
+<para>Returns the ID of the datum transform to use when projecting to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually calculated automatically from the transform&apos;s <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref>, but can be manually overwritten by a call to <ref refid="classQgsCoordinateTransform_1a389580a55ed138177b4b902b9f504863" kindref="member">setDestinationDatumTransformId()</ref>.</para><para><simplesect kind="see"><para><ref refid="classQgsDatumTransform" kindref="compound">QgsDatumTransform</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a389580a55ed138177b4b902b9f504863" kindref="member">setDestinationDatumTransformId()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1aeb6bb9d851632f0373b82545779ae372" kindref="member">sourceDatumTransformId()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="385" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="787" bodyend="790"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a777e21a2a399d4b73de2b0295b7833ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsCoordinateTransform::isShortCircuited</definition>
+        <argsstring>() const</argsstring>
+        <name>isShortCircuited</name>
+        <briefdescription>
+<para>Returns true if the transform short circuits because the source and destination are equivalent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="346" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="717" bodyend="720"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1aa3b31ab89bfcac52eb7d850680de686a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsCoordinateTransform::isValid</definition>
+        <argsstring>() const</argsstring>
+        <name>isValid</name>
+        <briefdescription>
+<para>Returns true if the coordinate transform is valid, ie both the source and destination CRS have been set and are valid. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="157" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="712" bodyend="715"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a91cd7ba6a7e2f8b9ac7efedf6f7deab4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+        <definition>QgsCoordinateTransform &amp; QgsCoordinateTransform::operator=</definition>
+        <argsstring>(const QgsCoordinateTransform &amp;o)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="132" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a5e1f2807badfc5ed8ec01b5be8612508" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsCoordinateTransform::scaleFactor</definition>
+        <argsstring>(const QgsRectangle &amp;referenceExtent) const</argsstring>
+        <name>scaleFactor</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>referenceExtent</declname>
+        </param>
+        <briefdescription>
+<para>Computes an <emphasis>estimated</emphasis> conversion factor between source and destination units: </para>        </briefdescription>
+        <detaileddescription>
+<para>sourceUnits * scaleFactor = destinationUnits</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>referenceExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference extent based on which to perform the computation</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="417" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="805" bodyend="814"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a3ce28aadd7a1917e5c2d8a40550794a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::setContext</definition>
+        <argsstring>(const QgsCoordinateTransformContext &amp;context)</argsstring>
+        <name>setContext</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>context</emphasis> in which the coordinate transform should be calculated. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a07014bf094a7515f4f3cfbbcff112e93" kindref="member">context()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="181" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="173" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a6a171e1bdd814da1ebedb207fa668000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::setDestinationCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;crs)</argsstring>
+        <name>setDestinationCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <briefdescription>
+<para>Sets the destination coordinate reference system. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>crs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CRS to transform coordinates to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1ac0a2b4857ecdf33a91a20436c3819c9a" kindref="member">destinationCrs()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a5304c5eb66064ed518108f2a0ebfe03d" kindref="member">setSourceCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="158" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a389580a55ed138177b4b902b9f504863" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::setDestinationDatumTransformId</definition>
+        <argsstring>(int datumId)</argsstring>
+        <name>setDestinationDatumTransformId</name>
+        <param>
+          <type>int</type>
+          <declname>datumId</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>datumId</emphasis> ID of the datum transform to use when projecting to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually calculated automatically from the transform&apos;s <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref>. Calling this method will overwrite any automatically calculated datum transform.</para><para><simplesect kind="see"><para><ref refid="classQgsDatumTransform" kindref="compound">QgsDatumTransform</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1ac7d8e8852baafe7cb9537e8ad53cfe7b" kindref="member">destinationDatumTransformId()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a875c24aa08c973f2a31c6a5ad60cc89b" kindref="member">setSourceDatumTransformId()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="398" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="792" bodyend="796"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a5304c5eb66064ed518108f2a0ebfe03d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::setSourceCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;crs)</argsstring>
+        <name>setSourceCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <briefdescription>
+<para>Sets the source coordinate reference system. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>crs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CRS to transform coordinates from </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a14c73eaf63da37bd89b0c66d57f3d269" kindref="member">sourceCrs()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a6a171e1bdd814da1ebedb207fa668000" kindref="member">setDestinationCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="165" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="144" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a875c24aa08c973f2a31c6a5ad60cc89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::setSourceDatumTransformId</definition>
+        <argsstring>(int datumId)</argsstring>
+        <name>setSourceDatumTransformId</name>
+        <param>
+          <type>int</type>
+          <declname>datumId</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>datumId</emphasis> ID of the datum transform to use when projecting from the source CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually calculated automatically from the transform&apos;s <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref>. Calling this method will overwrite any automatically calculated datum transform.</para><para><simplesect kind="see"><para><ref refid="classQgsDatumTransform" kindref="compound">QgsDatumTransform</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1aeb6bb9d851632f0373b82545779ae372" kindref="member">sourceDatumTransformId()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a389580a55ed138177b4b902b9f504863" kindref="member">setDestinationDatumTransformId()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="372" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="781" bodyend="785"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a14c73eaf63da37bd89b0c66d57f3d269" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsCoordinateTransform::sourceCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>sourceCrs</name>
+        <briefdescription>
+<para>Returns the source coordinate reference system, which the transform will transform coordinates from. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a5304c5eb66064ed518108f2a0ebfe03d" kindref="member">setSourceCrs()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1ac0a2b4857ecdf33a91a20436c3819c9a" kindref="member">destinationCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="196" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1aeb6bb9d851632f0373b82545779ae372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsCoordinateTransform::sourceDatumTransformId</definition>
+        <argsstring>() const</argsstring>
+        <name>sourceDatumTransformId</name>
+        <briefdescription>
+<para>Returns the ID of the datum transform to use when projecting from the source CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually calculated automatically from the transform&apos;s <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref>, but can be manually overwritten by a call to <ref refid="classQgsCoordinateTransform_1a875c24aa08c973f2a31c6a5ad60cc89b" kindref="member">setSourceDatumTransformId()</ref>.</para><para><simplesect kind="see"><para><ref refid="classQgsDatumTransform" kindref="compound">QgsDatumTransform</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1a875c24aa08c973f2a31c6a5ad60cc89b" kindref="member">setSourceDatumTransformId()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransform_1ac7d8e8852baafe7cb9537e8ad53cfe7b" kindref="member">destinationDatumTransformId()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="359" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="776" bodyend="779"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a1c68a75ed7b0751080cadb55cf8b8c3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsCoordinateTransform::transform</definition>
+        <argsstring>(const QgsPointXY &amp;point, TransformDirection direction=ForwardTransform) const SIP_THROW(QgsCsException)</argsstring>
+        <name>transform</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transform the point from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>point</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>point to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>transformed point </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="215" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="206" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a7a7d98c165ad694307f2fa6914272ade" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsCoordinateTransform::transform</definition>
+        <argsstring>(double x, double y, TransformDirection direction=ForwardTransform) const</argsstring>
+        <name>transform</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transform the point specified by x,y from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x coordinate of point to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y coordinate of point to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>transformed point </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="226" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="230" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a852b548cffc428577c8952cfba194ce0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsCoordinateTransform::transform</definition>
+        <argsstring>(const QgsRectangle &amp;rectangle, TransformDirection direction=ForwardTransform) const SIP_THROW(QgsCsException)</argsstring>
+        <name>transform</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>rectangle</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms a rectangle to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rectangle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>rectangle to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>transformed rectangle </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="329" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="244" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a8cc5d64f1438300f231ec9444edbbe67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsCoordinateTransform::transformBoundingBox</definition>
+        <argsstring>(const QgsRectangle &amp;rectangle, TransformDirection direction=ForwardTransform, bool handle180Crossover=false) const SIP_THROW(QgsCsException)</argsstring>
+        <name>transformBoundingBox</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>rectangle</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>handle180Crossover</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Transforms a rectangle from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. This method assumes that the rectangle is a bounding box, and creates a bounding box in the projected CRS, such that all points from the source rectangle are within the returned rectangle. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rectangle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>rectangle to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handle180Crossover</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true if destination CRS is geographic and handling of extents crossing the 180 degree longitude line is required </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>rectangle in destination CRS </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="241" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="474" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a8d87c4b485d594e3918ed92c663c46f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformCoords</definition>
+        <argsstring>(int numPoint, double *x, double *y, double *z, TransformDirection direction=ForwardTransform) const SIP_THROW(QgsCsException)</argsstring>
+        <name>transformCoords</name>
+        <param>
+          <type>int</type>
+          <declname>numPoint</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transform an array of coordinates to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>numPoint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of coordinates in arrays </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of x coordinates to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of y coordinates to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of z coordinates to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="341" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="594" bodyend="710"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a93841a1a5541408dfe6c90d1633f130f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformInPlace</definition>
+        <argsstring>(double &amp;x, double &amp;y, double &amp;z, TransformDirection direction=ForwardTransform) const SIP_THROW(QgsCsException)</argsstring>
+        <name>transformInPlace</name>
+        <param>
+          <type>double &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms an array of x, y and z double coordinates in place, from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of x coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of y coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="254" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="280" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a420a1852a9fd148b3d0f832247686e02" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformInPlace</definition>
+        <argsstring>(float &amp;x, float &amp;y, double &amp;z, TransformDirection direction=ForwardTransform) const</argsstring>
+        <name>transformInPlace</name>
+        <param>
+          <type>float &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms an array of x, y and z float coordinates in place, from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of x coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of y coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="268" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="301" bodyend="308"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a0c71bd051798cd3645b511f89c9d6d93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformInPlace</definition>
+        <argsstring>(float &amp;x, float &amp;y, float &amp;z, TransformDirection direction=ForwardTransform) const</argsstring>
+        <name>transformInPlace</name>
+        <param>
+          <type>float &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms an array of x, y and z float coordinates in place, from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of x coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of y coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>array of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="282" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="310" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a83dbcc8efac1cc50e590ab899a32eed5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformInPlace</definition>
+        <argsstring>(QVector&lt; float &gt; &amp;x, QVector&lt; float &gt; &amp;y, QVector&lt; float &gt; &amp;z, TransformDirection direction=ForwardTransform) const</argsstring>
+        <name>transformInPlace</name>
+        <param>
+          <type>QVector&lt; float &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>QVector&lt; float &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>QVector&lt; float &gt; &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms a vector of x, y and z float coordinates in place, from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vector of x coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vector of y coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vector of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="296" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="413" bodyend="472"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a4b64b01330ea3de1c309747b3c7d8bc1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformInPlace</definition>
+        <argsstring>(QVector&lt; double &gt; &amp;x, QVector&lt; double &gt; &amp;y, QVector&lt; double &gt; &amp;z, TransformDirection direction=ForwardTransform) const</argsstring>
+        <name>transformInPlace</name>
+        <param>
+          <type>QVector&lt; double &gt; &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>QVector&lt; double &gt; &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>QVector&lt; double &gt; &amp;</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms a vector of x, y and z double coordinates in place, from the source CRS to the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the direction is ForwardTransform then coordinates are transformed from source to destination, otherwise points are transformed from destination to source CRS. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vector of x coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vector of y coordinates of points to transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vector of z coordinates of points to transform. The z coordinates of the points must represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and must be expressed in its vertical units (generally meters) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to ForwardTransform) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="311" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="385" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a4689d1514ad18700fbb06536106bae20" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::transformPolygon</definition>
+        <argsstring>(QPolygonF &amp;polygon, TransformDirection direction=ForwardTransform) const SIP_THROW(QgsCsException)</argsstring>
+        <name>transformPolygon</name>
+        <param>
+          <type>QPolygonF &amp;</type>
+          <declname>polygon</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">TransformDirection</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">ForwardTransform</ref></defval>
+        </param>
+        <briefdescription>
+<para>Transforms a polygon to the destination coordinate system. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>polygon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>polygon to transform (occurs in place) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transform direction (defaults to forward transformation) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="319" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="337" bodyend="383"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a5ac962d57af3f4c4a14eeddb60a8582e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::invalidateCache</definition>
+        <argsstring>()</argsstring>
+        <name>invalidateCache</name>
+        <briefdescription>
+<para>Clears the internal cache used to initialize <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> objects. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be called whenever the srs database has been modified in order to ensure that outdated CRS transforms are not created. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="406" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="798" bodyend="803"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsCoordinateTransform_1a5b514b49b31c34920918a69680a3d408" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsCoordinateTransform::addToCache</definition>
+        <argsstring>()</argsstring>
+        <name>addToCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="434" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="766" bodyend="774"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCoordinateTransform_1af5d0a59d2b6aa3eb265f77d595776cbb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsCoordinateTransform::setFromCache</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;src, const QgsCoordinateReferenceSystem &amp;dest, int srcDatumTransform, int destDatumTransform)</argsstring>
+        <name>setFromCache</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>srcDatumTransform</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>destDatumTransform</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="430" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.cpp" bodystart="734" bodyend="764"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class for doing transforms between two map coordinate systems. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class can convert map coordinates to a different coordinate reference system. It is normally associated with a map layer and is used to transform between the layer&apos;s coordinate system and the coordinate system of the map canvas, although it can be used in a more general sense to transform coordinates.</para><para>When used to transform between a layer and the map canvas, all references to source and destination coordinate systems refer to layer and map canvas respectively. All operations are from the perspective of the layer. For example, a forward transformation transforms coordinates from the layer&apos;s coordinate system to the map canvas. <simplesect kind="note"><para>Since QGIS 3.0 <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> objects are implicitly shared.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDatumTransform" kindref="compound">QgsDatumTransform</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref> </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" line="53" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgscoordinatetransform.h" bodystart="52" bodyend="440"/>
+    <listofallmembers>
+      <member refid="classQgsCoordinateTransform_1a5b514b49b31c34920918a69680a3d408" prot="private" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>addToCache</name></member>
+      <member refid="classQgsCoordinateTransform_1a07014bf094a7515f4f3cfbbcff112e93" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>context</name></member>
+      <member refid="classQgsCoordinateTransform_1a3ba0336b677888457c684029589817b9" prot="private" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>d</name></member>
+      <member refid="classQgsCoordinateTransform_1ac0a2b4857ecdf33a91a20436c3819c9a" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>destinationCrs</name></member>
+      <member refid="classQgsCoordinateTransform_1ac7d8e8852baafe7cb9537e8ad53cfe7b" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>destinationDatumTransformId</name></member>
+      <member refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>ForwardTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1a5ac962d57af3f4c4a14eeddb60a8582e" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>invalidateCache</name></member>
+      <member refid="classQgsCoordinateTransform_1a777e21a2a399d4b73de2b0295b7833ff" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>isShortCircuited</name></member>
+      <member refid="classQgsCoordinateTransform_1aa3b31ab89bfcac52eb7d850680de686a" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>isValid</name></member>
+      <member refid="classQgsCoordinateTransform_1a7964e86dd37250711cfaad4ef631813a" prot="private" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>mContext</name></member>
+      <member refid="classQgsCoordinateTransform_1a91cd7ba6a7e2f8b9ac7efedf6f7deab4" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>operator=</name></member>
+      <member refid="classQgsCoordinateTransform_1a0c3ea56232b94d295a8193d2821c2c42" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>QgsCoordinateTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1a8c036726885d51e9fdfe1478a063dfcd" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>QgsCoordinateTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1aa5ad428819ac020f8f5716e835ab754f" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>QgsCoordinateTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1a0716e11c2d1e92d50286210aee6f2800" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>QgsCoordinateTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1a6d8083d97876a010cfd9f9d06a5da581" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>QgsCoordinateTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1a2a104ca0659305aa2ebae8d2615d6723" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>QgsCoordinateTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a86faf04e40154edd976b1240e2bdc9bd" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>ReverseTransform</name></member>
+      <member refid="classQgsCoordinateTransform_1ab369f9dd819666cd1849974aa1275112" prot="private" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>sCacheLock</name></member>
+      <member refid="classQgsCoordinateTransform_1a5e1f2807badfc5ed8ec01b5be8612508" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>scaleFactor</name></member>
+      <member refid="classQgsCoordinateTransform_1a3ce28aadd7a1917e5c2d8a40550794a0" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>setContext</name></member>
+      <member refid="classQgsCoordinateTransform_1a6a171e1bdd814da1ebedb207fa668000" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>setDestinationCrs</name></member>
+      <member refid="classQgsCoordinateTransform_1a389580a55ed138177b4b902b9f504863" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>setDestinationDatumTransformId</name></member>
+      <member refid="classQgsCoordinateTransform_1af5d0a59d2b6aa3eb265f77d595776cbb" prot="private" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>setFromCache</name></member>
+      <member refid="classQgsCoordinateTransform_1a5304c5eb66064ed518108f2a0ebfe03d" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>setSourceCrs</name></member>
+      <member refid="classQgsCoordinateTransform_1a875c24aa08c973f2a31c6a5ad60cc89b" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>setSourceDatumTransformId</name></member>
+      <member refid="classQgsCoordinateTransform_1a14c73eaf63da37bd89b0c66d57f3d269" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>sourceCrs</name></member>
+      <member refid="classQgsCoordinateTransform_1aeb6bb9d851632f0373b82545779ae372" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>sourceDatumTransformId</name></member>
+      <member refid="classQgsCoordinateTransform_1a9f3d76644d4ee0adeae197268d1a2fdc" prot="private" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>sTransforms</name></member>
+      <member refid="classQgsCoordinateTransform_1a1c68a75ed7b0751080cadb55cf8b8c3c" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transform</name></member>
+      <member refid="classQgsCoordinateTransform_1a7a7d98c165ad694307f2fa6914272ade" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transform</name></member>
+      <member refid="classQgsCoordinateTransform_1a852b548cffc428577c8952cfba194ce0" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transform</name></member>
+      <member refid="classQgsCoordinateTransform_1a8cc5d64f1438300f231ec9444edbbe67" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformBoundingBox</name></member>
+      <member refid="classQgsCoordinateTransform_1a8d87c4b485d594e3918ed92c663c46f8" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformCoords</name></member>
+      <member refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>TransformDirection</name></member>
+      <member refid="classQgsCoordinateTransform_1a93841a1a5541408dfe6c90d1633f130f" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformInPlace</name></member>
+      <member refid="classQgsCoordinateTransform_1a420a1852a9fd148b3d0f832247686e02" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformInPlace</name></member>
+      <member refid="classQgsCoordinateTransform_1a0c71bd051798cd3645b511f89c9d6d93" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformInPlace</name></member>
+      <member refid="classQgsCoordinateTransform_1a83dbcc8efac1cc50e590ab899a32eed5" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformInPlace</name></member>
+      <member refid="classQgsCoordinateTransform_1a4b64b01330ea3de1c309747b3c7d8bc1" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformInPlace</name></member>
+      <member refid="classQgsCoordinateTransform_1a4689d1514ad18700fbb06536106bae20" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>transformPolygon</name></member>
+      <member refid="classQgsCoordinateTransform_1ab643c2a3c62ad1812b01c4ef61d4aaac" prot="public" virt="non-virtual"><scope>QgsCoordinateTransform</scope><name>~QgsCoordinateTransform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

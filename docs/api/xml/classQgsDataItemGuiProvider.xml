@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsDataItemGuiProvider" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsDataItemGuiProvider</compoundname>
+    <includes refid="qgsdataitemguiprovider_8h" local="no">qgsdataitemguiprovider.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsDataItemGuiProvider_1a0f2520845e2ca14445b54f3684bfc8b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsDataItemGuiProvider::~QgsDataItemGuiProvider</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsDataItemGuiProvider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.h" line="82" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItemGuiProvider_1a4d2f31869fe44948e6bfb47d65fae16d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsDataItemGuiProvider::handleDoubleClick</definition>
+        <argsstring>(QgsDataItem *item, QgsDataItemGuiContext context)</argsstring>
+        <name>handleDoubleClick</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsDataItemGuiContext" kindref="compound">QgsDataItemGuiContext</ref></type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Called when a user double clicks on an <emphasis>item</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Providers should return true if the double-click was handled and do not want other providers to handle the double-click, and to prevent the default double-click behavior for items. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.h" line="121" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.cpp" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItemGuiProvider_1a38cc243948694a4bff3be937e1c90435" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsDataItemGuiProvider::name</definition>
+        <argsstring>()=0</argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>Returns the provider&apos;s name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItemGuiProvider_1ab911b9bd78574ef0dd137232fd88dbe2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItemGuiProvider::populateContextMenu</definition>
+        <argsstring>(QgsDataItem *item, QMenu *menu, const QList&lt; QgsDataItem *&gt; &amp;selectedItems, QgsDataItemGuiContext context)</argsstring>
+        <name>populateContextMenu</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>QMenu *</type>
+          <declname>menu</declname>
+        </param>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *&gt; &amp;</type>
+          <declname>selectedItems</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsDataItemGuiContext" kindref="compound">QgsDataItemGuiContext</ref></type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Called when the given context <emphasis>menu</emphasis> is being populated for the given <emphasis>item</emphasis>, allowing the provider to add its own actions and submenus to the context menu. </para>        </briefdescription>
+        <detaileddescription>
+<para>Additionally, providers could potentially alter menus and actions added by other providers if desired, or use standard QMenu API to insert their items and submenus into the desired location within the context menu.</para><para>The <emphasis>selectedItems</emphasis> list contains a list of ALL currently selected items within the browser view. Subclasses can utilize this list in order to create actions which operate on multiple items at once, e.g. to allow deletion of multiple layers from a database at once.</para><para>When creating a context menu, this method is called for EVERY <ref refid="classQgsDataItemGuiProvider" kindref="compound">QgsDataItemGuiProvider</ref> within the <ref refid="classQgsDataItemGuiProviderRegistry" kindref="compound">QgsDataItemGuiProviderRegistry</ref>. It is the <ref refid="classQgsDataItemGuiProvider" kindref="compound">QgsDataItemGuiProvider</ref> subclass&apos; responsibility to test the <emphasis>item</emphasis> and <emphasis>selectedItems</emphasis> for their properties and classes and decide what actions (if any) are appropriate to add to the context <emphasis>menu</emphasis>.</para><para>Care must be taken to correctly parent newly created sub menus and actions to the provided <emphasis>menu</emphasis> to avoid memory leaks.</para><para>The <emphasis>context</emphasis> argument gives the wider context under which the context menu is being shown, and contains accessors for useful objects like the application message bar.</para><para>The base class method has no effect. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.h" line="113" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.cpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for providers which affect how <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> items behave within the application GUI. </para>    </briefdescription>
+    <detaileddescription>
+<para>Providers must be registered via <ref refid="classQgsDataItemGuiProviderRegistry" kindref="compound">QgsDataItemGuiProviderRegistry</ref>.</para><para><simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.h" line="79" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsdataitemguiprovider.h" bodystart="78" bodyend="123"/>
+    <listofallmembers>
+      <member refid="classQgsDataItemGuiProvider_1a4d2f31869fe44948e6bfb47d65fae16d" prot="public" virt="virtual"><scope>QgsDataItemGuiProvider</scope><name>handleDoubleClick</name></member>
+      <member refid="classQgsDataItemGuiProvider_1a38cc243948694a4bff3be937e1c90435" prot="public" virt="pure-virtual"><scope>QgsDataItemGuiProvider</scope><name>name</name></member>
+      <member refid="classQgsDataItemGuiProvider_1ab911b9bd78574ef0dd137232fd88dbe2" prot="public" virt="virtual"><scope>QgsDataItemGuiProvider</scope><name>populateContextMenu</name></member>
+      <member refid="classQgsDataItemGuiProvider_1a0f2520845e2ca14445b54f3684bfc8b7" prot="public" virt="virtual"><scope>QgsDataItemGuiProvider</scope><name>~QgsDataItemGuiProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

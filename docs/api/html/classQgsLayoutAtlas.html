@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLayoutAtlas class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLayoutAtlas <span class="m-thin">class</span>
+        </h1>
+        <p>Class used to render <a href="classQgsLayout.html" class="m-doc">QgsLayout</a> as an atlas, by iterating over the features from an associated vector layer.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsLayoutAtlas.html" class="m-doc">QgsLayoutAtlas</a> implement the <a href="classQgsAbstractLayoutIterator.html" class="m-doc">QgsAbstractLayoutIterator</a> interface, allowing them to be used directly with <a href="classQgsLayoutExporter.html" class="m-doc">QgsLayoutExporter</a> to automatically output all pages from the atlas.</p><p>For <a href="classQgsPrintLayout.html" class="m-doc">QgsPrintLayout</a> layouts, it is not necessary to manually construct a <a href="classQgsLayoutAtlas.html" class="m-doc">QgsLayoutAtlas</a> object. Instead, the atlas attached to the print layout should be used. This can be retrieved by calling <a href="classQgsPrintLayout.html#a382fcc21543a28b17e9ca8992418f50c" class="m-doc">QgsPrintLayout::<wbr />atlas()</a>.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsAbstractLayoutIterator.html" class="m-doc">QgsAbstractLayoutIterator</a>
+            </dt>
+            <dd>An abstract base class for <a href="classQgsLayout.html" class="m-doc">QgsLayout</a> based classes which can be exported by <a href="classQgsLayoutExporter.html" class="m-doc">QgsLayoutExporter</a>.</dd>
+            <dt>
+              class <a href="classQgsLayoutSerializableObject.html" class="m-doc">QgsLayoutSerializableObject</a>
+            </dt>
+            <dd>An interface for layout objects which can be stored and read from DOM elements.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aaf8ed5b4e1682d6ee3619fd110901ecf" class="m-doc-self" name="aaf8ed5b4e1682d6ee3619fd110901ecf">QgsLayoutAtlas</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout)</span>
+            </dt>
+            <dd>Constructor for new <a href="classQgsLayoutAtlas.html" class="m-doc">QgsLayoutAtlas</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3250421088066bc7f26067d36d509420" class="m-doc">beginRender</a>(</span><span class="m-doc-wrap">) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Called when rendering begins, before iteration commences.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a70bc6904c4aa7354d315ee537806278e" class="m-doc-self" name="a70bc6904c4aa7354d315ee537806278e">count</a>(</span><span class="m-doc-wrap">) -&gt; int <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the number of features to iterate over.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1bdcecf29abdcf5e11613e3b0eb6566d" class="m-doc">coverageLayer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>Returns the coverage layer used for the atlas features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af79288efc6dcad00a514aea857d5310d" class="m-doc-self" name="af79288efc6dcad00a514aea857d5310d">currentFeatureNumber</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the current feature number, where a value of 0 corresponds to the first feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa5587f66edf8511d7b12fbbb4a80dda7" class="m-doc">currentFilename</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the current feature filename.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a881252364b06bc3a2eab9abe7337cb4c" class="m-doc">enabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the atlas generation is enabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae2f44436986f3f2c429b05fe4b6767a0" class="m-doc-self" name="ae2f44436986f3f2c429b05fe4b6767a0">endRender</a>(</span><span class="m-doc-wrap">) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Ends the render, performing any required cleanup tasks.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a235ac25cd45103925a098f110b2d9044" class="m-doc">filenameExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the filename expression used for generating output filenames for each atlas page.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa47380919d22b45926821c7090b1165c" class="m-doc-self" name="aa47380919d22b45926821c7090b1165c">filePath</a>(</span><span class="m-doc-wrap">const QString&amp; baseFilePath,
+              const QString&amp; extension) -&gt; QString <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the file path for the current feature, based on a specified base file path and extension.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6f8fcc5f5457788a09b86772a05a88a3" class="m-doc">filterExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the expression used for filtering features in the coverage layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ea6adeab725904da898ea3d4930a68a" class="m-doc">filterFeatures</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if features should be filtered in the coverage layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4d1ad567a336bad9ce100a6310e3b7fc" class="m-doc">hideCoverage</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the atlas is set to hide the coverage layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a76db768efceaae6bd45ae45106f30d64" class="m-doc-self" name="a76db768efceaae6bd45ae45106f30d64">layout</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the layout associated with the iterator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a475ec8cdcaa4e27d0203cf2b51a3e9f2" class="m-doc">layout</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>*</span>
+            </dt>
+            <dd>Returns the atlas&#x27; layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0830b03eda67d8f847e2fc03fbdd0f9b" class="m-doc">nameForPage</a>(</span><span class="m-doc-wrap">int page) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the calculated name for a specified atlas <em>page</em> number.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa9a1b4e3f3044b35834f917b9cb24400" class="m-doc">pageNameExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the expression (or field name) used for calculating the page name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa86e5479e4cdc0cee8cb9e3945627206" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; element,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Sets the objects&#x27;s state from a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a30ce96524dfed281d410e3ac1dbe9a7b" class="m-doc">setCoverageLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span>
+            </dt>
+            <dd>Sets the coverage <em>layer</em> to use for the atlas features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a59ce7cce56dcf819b29e0a9e660dba06" class="m-doc">setEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether the atlas is <em>enabled</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8a63864ef6abece3756ef098a2161d0b" class="m-doc">setFilenameExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              QString&amp; errorString) -&gt; bool</span>
+            </dt>
+            <dd>Sets the filename <em>expression</em> used for generating output filenames for each atlas page.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a385864a4666de9fe3b104660736c3c3c" class="m-doc">setFilterExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              QString&amp; errorString) -&gt; bool</span>
+            </dt>
+            <dd>Sets the <em>expression</em> used for filtering features in the coverage layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acb3052609fcff21e4f4cf3f9e93780e0" class="m-doc">setFilterFeatures</a>(</span><span class="m-doc-wrap">bool filtered)</span>
+            </dt>
+            <dd>Sets whether features should be <em>filtered</em> in the coverage layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aff086d46cf2cd2fcfd43dc43243fedfd" class="m-doc">setHideCoverage</a>(</span><span class="m-doc-wrap">bool hide)</span>
+            </dt>
+            <dd>Sets whether the coverage layer should be hidden in map items in the layouts.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6906d1e70b6c55efb71e979f9bbcb93c" class="m-doc">setPageNameExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span>
+            </dt>
+            <dd>Sets the <em>expression</em> (or field name) used for calculating the page name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4cc7d36aee4f995b70df796a664696f7" class="m-doc">setSortAscending</a>(</span><span class="m-doc-wrap">bool ascending)</span>
+            </dt>
+            <dd>Sets whether features should be sorted in an ascending order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac6a86a274c762a5d67b2df3637b4b382" class="m-doc">setSortExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span>
+            </dt>
+            <dd>Sets the <em>expression</em> (or field name) to use for sorting features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa2e9bd90ce9bb3a0b8304e2ae17bb41e" class="m-doc">setSortFeatures</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether features should be sorted in the atlas.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2c9e91e8ec206cd5d99531a3e2fb1741" class="m-doc">sortAscending</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if features should be sorted in an ascending order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1668afbfafd94c071cbe69620370005f" class="m-doc">sortExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the expression (or field name) to use for sorting features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if features should be sorted in the atlas.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afe23b370d92f51f5d7a044c968eab457" class="m-doc">stringType</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the object type as a string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae9f0dc8380805a9331759f39df0acda0" class="m-doc">updateFeatures</a>(</span><span class="m-doc-wrap">) -&gt; int</span>
+            </dt>
+            <dd>Requeries the current atlas coverage layer and applies filtering and sorting.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a210f89386f5e052d6a33ee7dab886c6e" class="m-doc">writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; parentElement,
+              QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Stores the objects&#x27;s state in a DOM element.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#add66f1a2dee4a5c1c6d5200169d9e3f0" class="m-doc-self" name="add66f1a2dee4a5c1c6d5200169d9e3f0">changed</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when one of the atlas parameters changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acab3734f8e501afcc1e6795b9e591c49" class="m-doc-self" name="acab3734f8e501afcc1e6795b9e591c49">coverageLayerChanged</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span>
+            </dt>
+            <dd>Emitted when the coverage layer for the atlas changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a586290485c834160233d40a9d06250ba" class="m-doc-self" name="a586290485c834160233d40a9d06250ba">featureChanged</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature)</span>
+            </dt>
+            <dd>Is emitted when the current atlas <em>feature</em> changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aba3ab0bc6d0e293ee4c3adf313f09a1a" class="m-doc-self" name="aba3ab0bc6d0e293ee4c3adf313f09a1a">messagePushed</a>(</span><span class="m-doc-wrap">const QString&amp; message)</span>
+            </dt>
+            <dd>Is emitted when the atlas has an updated status bar <em>message</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab8c888de9308ac1804984d54c97e5c8d" class="m-doc-self" name="ab8c888de9308ac1804984d54c97e5c8d">numberFeaturesChanged</a>(</span><span class="m-doc-wrap">int numFeatures)</span>
+            </dt>
+            <dd>Emitted when the number of features for the atlas changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad28038d0b8e5361546f29ec9e9cd35bb" class="m-doc-self" name="ad28038d0b8e5361546f29ec9e9cd35bb">renderBegun</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when atlas rendering has begun.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad362d779dd3dc4b55e6cf51eeb92f8f1" class="m-doc-self" name="ad362d779dd3dc4b55e6cf51eeb92f8f1">renderEnded</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when atlas rendering has ended.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4332fa737ac52722e4c414cd126931bc" class="m-doc-self" name="a4332fa737ac52722e4c414cd126931bc">toggled</a>(</span><span class="m-doc-wrap">bool)</span>
+            </dt>
+            <dd>Emitted when atlas is enabled or disabled.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6d7098bd762ff3e80444c413bad7775b" class="m-doc">first</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Seeks to the first feature, returning false if no feature was found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aae1fddeb2a8e9c49e1a423708edca466" class="m-doc">last</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Seeks to the last feature, returning false if no feature was found.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adddfea9df7efd3691240a9a91965494b" class="m-doc">previous</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Iterates to the previous feature, returning false if no previous feature exists.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae1c18cdcaf5b7a9b982454a2874b50b6" class="m-doc-self" name="ae1c18cdcaf5b7a9b982454a2874b50b6">refreshCurrentFeature</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Refreshes the current atlas feature, by refetching its attributes from the vector layer provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a502ed61c3a10870c53d9f4a0dcb288af" class="m-doc">seekTo</a>(</span><span class="m-doc-wrap">int feature) -&gt; bool</span>
+            </dt>
+            <dd>Seeks to the specified <em>feature</em> number.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aca990e878850cd1c72161e45ad2921a3" class="m-doc">seekTo</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) -&gt; bool</span>
+            </dt>
+            <dd>Seeks to the specified <em>feature</em>.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a3250421088066bc7f26067d36d509420"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3250421088066bc7f26067d36d509420" class="m-doc-self">beginRender</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Called when rendering begins, before iteration commences.</p>
+<p>Returns true if successful, false if no iteration is available or required.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#ae2f44436986f3f2c429b05fe4b6767a0" class="m-doc">endRender()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1bdcecf29abdcf5e11613e3b0eb6566d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1bdcecf29abdcf5e11613e3b0eb6566d" class="m-doc-self">coverageLayer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the coverage layer used for the atlas features.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a30ce96524dfed281d410e3ac1dbe9a7b" class="m-doc">setCoverageLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa5587f66edf8511d7b12fbbb4a80dda7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa5587f66edf8511d7b12fbbb4a80dda7" class="m-doc-self">currentFilename</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current feature filename.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a235ac25cd45103925a098f110b2d9044" class="m-doc">filenameExpression()</a></p><p><a href="classQgsLayoutAtlas.html#a8a63864ef6abece3756ef098a2161d0b" class="m-doc">setFilenameExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a881252364b06bc3a2eab9abe7337cb4c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a881252364b06bc3a2eab9abe7337cb4c" class="m-doc-self">enabled</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the atlas generation is enabled.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a59ce7cce56dcf819b29e0a9e660dba06" class="m-doc">setEnabled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a235ac25cd45103925a098f110b2d9044"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a235ac25cd45103925a098f110b2d9044" class="m-doc-self">filenameExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the filename expression used for generating output filenames for each atlas page.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a8a63864ef6abece3756ef098a2161d0b" class="m-doc">setFilenameExpression()</a></p><p><a href="classQgsLayoutAtlas.html#aa5587f66edf8511d7b12fbbb4a80dda7" class="m-doc">currentFilename()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6f8fcc5f5457788a09b86772a05a88a3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6f8fcc5f5457788a09b86772a05a88a3" class="m-doc-self">filterExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the expression used for filtering features in the coverage layer.</p>
+<p>This property has no effect is <a href="classQgsLayoutAtlas.html#a1ea6adeab725904da898ea3d4930a68a" class="m-doc">filterFeatures()</a> is false.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a385864a4666de9fe3b104660736c3c3c" class="m-doc">setFilterExpression()</a></p><p><a href="classQgsLayoutAtlas.html#a1ea6adeab725904da898ea3d4930a68a" class="m-doc">filterFeatures()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1ea6adeab725904da898ea3d4930a68a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1ea6adeab725904da898ea3d4930a68a" class="m-doc-self">filterFeatures</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if features should be filtered in the coverage layer.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a6f8fcc5f5457788a09b86772a05a88a3" class="m-doc">filterExpression()</a></p><p><a href="classQgsLayoutAtlas.html#a385864a4666de9fe3b104660736c3c3c" class="m-doc">setFilterExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4d1ad567a336bad9ce100a6310e3b7fc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4d1ad567a336bad9ce100a6310e3b7fc" class="m-doc-self">hideCoverage</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the atlas is set to hide the coverage layer.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aff086d46cf2cd2fcfd43dc43243fedfd" class="m-doc">setHideCoverage()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a475ec8cdcaa4e27d0203cf2b51a3e9f2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a475ec8cdcaa4e27d0203cf2b51a3e9f2" class="m-doc-self">layout</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the atlas&#x27; layout.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0830b03eda67d8f847e2fc03fbdd0f9b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0830b03eda67d8f847e2fc03fbdd0f9b" class="m-doc-self">nameForPage</a>(</span><span class="m-doc-wrap">int page) const</span></span>
+            </h3>
+            <p>Returns the calculated name for a specified atlas <em>page</em> number.</p>
+<p>Page numbers start at 0.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aa9a1b4e3f3044b35834f917b9cb24400" class="m-doc">pageNameExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa9a1b4e3f3044b35834f917b9cb24400"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa9a1b4e3f3044b35834f917b9cb24400" class="m-doc-self">pageNameExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the expression (or field name) used for calculating the page name.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a6906d1e70b6c55efb71e979f9bbcb93c" class="m-doc">setPageNameExpression()</a></p><p><a href="classQgsLayoutAtlas.html#a0830b03eda67d8f847e2fc03fbdd0f9b" class="m-doc">nameForPage()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa86e5479e4cdc0cee8cb9e3945627206"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa86e5479e4cdc0cee8cb9e3945627206" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; element,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Sets the objects&#x27;s state from a DOM element.</p>
+<p><em>element</em> is the DOM node corresponding to the object.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a210f89386f5e052d6a33ee7dab886c6e" class="m-doc">writeXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a30ce96524dfed281d410e3ac1dbe9a7b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a30ce96524dfed281d410e3ac1dbe9a7b" class="m-doc-self">setCoverageLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer)</span></span>
+            </h3>
+            <p>Sets the coverage <em>layer</em> to use for the atlas features.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a1bdcecf29abdcf5e11613e3b0eb6566d" class="m-doc">coverageLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a59ce7cce56dcf819b29e0a9e660dba06"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a59ce7cce56dcf819b29e0a9e660dba06" class="m-doc-self">setEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Sets whether the atlas is <em>enabled</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a881252364b06bc3a2eab9abe7337cb4c" class="m-doc">enabled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8a63864ef6abece3756ef098a2161d0b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8a63864ef6abece3756ef098a2161d0b" class="m-doc-self">setFilenameExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              QString&amp; errorString)</span></span>
+            </h3>
+            <p>Sets the filename <em>expression</em> used for generating output filenames for each atlas page.</p>
+<p>If an invalid expression is passed, false will be returned and <em>errorString</em> will be set to the expression error.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a235ac25cd45103925a098f110b2d9044" class="m-doc">filenameExpression()</a></p><p><a href="classQgsLayoutAtlas.html#aa5587f66edf8511d7b12fbbb4a80dda7" class="m-doc">currentFilename()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a385864a4666de9fe3b104660736c3c3c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a385864a4666de9fe3b104660736c3c3c" class="m-doc-self">setFilterExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              QString&amp; errorString)</span></span>
+            </h3>
+            <p>Sets the <em>expression</em> used for filtering features in the coverage layer.</p>
+<p>This property has no effect is <a href="classQgsLayoutAtlas.html#a1ea6adeab725904da898ea3d4930a68a" class="m-doc">filterFeatures()</a> is false.</p><p>If an invalid expression is passed, false will be returned and <em>errorString</em> will be set to the expression error.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a6f8fcc5f5457788a09b86772a05a88a3" class="m-doc">filterExpression()</a></p><p><a href="classQgsLayoutAtlas.html#acb3052609fcff21e4f4cf3f9e93780e0" class="m-doc">setFilterFeatures()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acb3052609fcff21e4f4cf3f9e93780e0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acb3052609fcff21e4f4cf3f9e93780e0" class="m-doc-self">setFilterFeatures</a>(</span><span class="m-doc-wrap">bool filtered)</span></span>
+            </h3>
+            <p>Sets whether features should be <em>filtered</em> in the coverage layer.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a1ea6adeab725904da898ea3d4930a68a" class="m-doc">filterFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a385864a4666de9fe3b104660736c3c3c" class="m-doc">setFilterExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aff086d46cf2cd2fcfd43dc43243fedfd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff086d46cf2cd2fcfd43dc43243fedfd" class="m-doc-self">setHideCoverage</a>(</span><span class="m-doc-wrap">bool hide)</span></span>
+            </h3>
+            <p>Sets whether the coverage layer should be hidden in map items in the layouts.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a4d1ad567a336bad9ce100a6310e3b7fc" class="m-doc">hideCoverage()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6906d1e70b6c55efb71e979f9bbcb93c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6906d1e70b6c55efb71e979f9bbcb93c" class="m-doc-self">setPageNameExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span></span>
+            </h3>
+            <p>Sets the <em>expression</em> (or field name) used for calculating the page name.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aa9a1b4e3f3044b35834f917b9cb24400" class="m-doc">pageNameExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4cc7d36aee4f995b70df796a664696f7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4cc7d36aee4f995b70df796a664696f7" class="m-doc-self">setSortAscending</a>(</span><span class="m-doc-wrap">bool ascending)</span></span>
+            </h3>
+            <p>Sets whether features should be sorted in an ascending order.</p>
+<p>This property has no effect is <a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a> is false.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aa2e9bd90ce9bb3a0b8304e2ae17bb41e" class="m-doc">setSortFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a2c9e91e8ec206cd5d99531a3e2fb1741" class="m-doc">sortAscending()</a></p><p><a href="classQgsLayoutAtlas.html#ac6a86a274c762a5d67b2df3637b4b382" class="m-doc">setSortExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac6a86a274c762a5d67b2df3637b4b382"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac6a86a274c762a5d67b2df3637b4b382" class="m-doc-self">setSortExpression</a>(</span><span class="m-doc-wrap">const QString&amp; expression)</span></span>
+            </h3>
+            <p>Sets the <em>expression</em> (or field name) to use for sorting features.</p>
+<p>This property has no effect is <a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a> is false.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aa2e9bd90ce9bb3a0b8304e2ae17bb41e" class="m-doc">setSortFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a4cc7d36aee4f995b70df796a664696f7" class="m-doc">setSortAscending()</a></p><p><a href="classQgsLayoutAtlas.html#a1668afbfafd94c071cbe69620370005f" class="m-doc">sortExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa2e9bd90ce9bb3a0b8304e2ae17bb41e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa2e9bd90ce9bb3a0b8304e2ae17bb41e" class="m-doc-self">setSortFeatures</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Sets whether features should be sorted in the atlas.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a4cc7d36aee4f995b70df796a664696f7" class="m-doc">setSortAscending()</a></p><p><a href="classQgsLayoutAtlas.html#ac6a86a274c762a5d67b2df3637b4b382" class="m-doc">setSortExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2c9e91e8ec206cd5d99531a3e2fb1741"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2c9e91e8ec206cd5d99531a3e2fb1741" class="m-doc-self">sortAscending</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if features should be sorted in an ascending order.</p>
+<p>This property has no effect is <a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a> is false.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a4cc7d36aee4f995b70df796a664696f7" class="m-doc">setSortAscending()</a></p><p><a href="classQgsLayoutAtlas.html#a1668afbfafd94c071cbe69620370005f" class="m-doc">sortExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1668afbfafd94c071cbe69620370005f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1668afbfafd94c071cbe69620370005f" class="m-doc-self">sortExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the expression (or field name) to use for sorting features.</p>
+<p>This property has no effect is <a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a> is false.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#af345a12bf3d084eaff7d343549e055e0" class="m-doc">sortFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a2c9e91e8ec206cd5d99531a3e2fb1741" class="m-doc">sortAscending()</a></p><p><a href="classQgsLayoutAtlas.html#ac6a86a274c762a5d67b2df3637b4b382" class="m-doc">setSortExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af345a12bf3d084eaff7d343549e055e0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af345a12bf3d084eaff7d343549e055e0" class="m-doc-self">sortFeatures</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if features should be sorted in the atlas.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aa2e9bd90ce9bb3a0b8304e2ae17bb41e" class="m-doc">setSortFeatures()</a></p><p><a href="classQgsLayoutAtlas.html#a2c9e91e8ec206cd5d99531a3e2fb1741" class="m-doc">sortAscending()</a></p><p><a href="classQgsLayoutAtlas.html#a1668afbfafd94c071cbe69620370005f" class="m-doc">sortExpression()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afe23b370d92f51f5d7a044c968eab457"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afe23b370d92f51f5d7a044c968eab457" class="m-doc-self">stringType</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the object type as a string.</p>
+<p>This string must be a unique, single word, character only representation of the item type, eg &quot;LayoutScaleBar&quot;</p>
+          </div></section>
+          <section class="m-doc-details" id="ae9f0dc8380805a9331759f39df0acda0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae9f0dc8380805a9331759f39df0acda0" class="m-doc-self">updateFeatures</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Requeries the current atlas coverage layer and applies filtering and sorting.</p>
+<p>Returns number of matching features.</p>
+          </div></section>
+          <section class="m-doc-details" id="a210f89386f5e052d6a33ee7dab886c6e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a210f89386f5e052d6a33ee7dab886c6e" class="m-doc-self">writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; parentElement,
+              QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Stores the objects&#x27;s state in a DOM element.</p>
+<p>The <em>parentElement</em> should refer to the parent layout&#x27;s DOM element.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#aa86e5479e4cdc0cee8cb9e3945627206" class="m-doc">readXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6d7098bd762ff3e80444c413bad7775b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d7098bd762ff3e80444c413bad7775b" class="m-doc-self">first</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Seeks to the first feature, returning false if no feature was found.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#ad11659c0a4435b0cb1b244f2687c13e2" class="m-doc">next()</a></p><p><a href="classQgsLayoutAtlas.html#adddfea9df7efd3691240a9a91965494b" class="m-doc">previous()</a></p><p><a href="classQgsLayoutAtlas.html#aae1fddeb2a8e9c49e1a423708edca466" class="m-doc">last()</a></p><p><a href="classQgsLayoutAtlas.html#a502ed61c3a10870c53d9f4a0dcb288af" class="m-doc">seekTo()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aae1fddeb2a8e9c49e1a423708edca466"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aae1fddeb2a8e9c49e1a423708edca466" class="m-doc-self">last</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Seeks to the last feature, returning false if no feature was found.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#ad11659c0a4435b0cb1b244f2687c13e2" class="m-doc">next()</a></p><p><a href="classQgsLayoutAtlas.html#adddfea9df7efd3691240a9a91965494b" class="m-doc">previous()</a></p><p><a href="classQgsLayoutAtlas.html#a6d7098bd762ff3e80444c413bad7775b" class="m-doc">first()</a></p><p><a href="classQgsLayoutAtlas.html#a502ed61c3a10870c53d9f4a0dcb288af" class="m-doc">seekTo()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adddfea9df7efd3691240a9a91965494b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adddfea9df7efd3691240a9a91965494b" class="m-doc-self">previous</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Iterates to the previous feature, returning false if no previous feature exists.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#ad11659c0a4435b0cb1b244f2687c13e2" class="m-doc">next()</a></p><p><a href="classQgsLayoutAtlas.html#aae1fddeb2a8e9c49e1a423708edca466" class="m-doc">last()</a></p><p><a href="classQgsLayoutAtlas.html#a6d7098bd762ff3e80444c413bad7775b" class="m-doc">first()</a></p><p><a href="classQgsLayoutAtlas.html#a502ed61c3a10870c53d9f4a0dcb288af" class="m-doc">seekTo()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a502ed61c3a10870c53d9f4a0dcb288af"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a502ed61c3a10870c53d9f4a0dcb288af" class="m-doc-self">seekTo</a>(</span><span class="m-doc-wrap">int feature) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Seeks to the specified <em>feature</em> number.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a6d7098bd762ff3e80444c413bad7775b" class="m-doc">first()</a></p><p><a href="classQgsLayoutAtlas.html#adddfea9df7efd3691240a9a91965494b" class="m-doc">previous()</a></p><p><a href="classQgsLayoutAtlas.html#ad11659c0a4435b0cb1b244f2687c13e2" class="m-doc">next()</a></p><p><a href="classQgsLayoutAtlas.html#aae1fddeb2a8e9c49e1a423708edca466" class="m-doc">last()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aca990e878850cd1c72161e45ad2921a3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutAtlas::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aca990e878850cd1c72161e45ad2921a3" class="m-doc-self">seekTo</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Seeks to the specified <em>feature</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutAtlas.html#a6d7098bd762ff3e80444c413bad7775b" class="m-doc">first()</a></p><p><a href="classQgsLayoutAtlas.html#adddfea9df7efd3691240a9a91965494b" class="m-doc">previous()</a></p><p><a href="classQgsLayoutAtlas.html#ad11659c0a4435b0cb1b244f2687c13e2" class="m-doc">next()</a></p><p><a href="classQgsLayoutAtlas.html#aae1fddeb2a8e9c49e1a423708edca466" class="m-doc">last()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

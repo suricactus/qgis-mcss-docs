@@ -1,0 +1,1683 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsRasterDataProvider" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsRasterDataProvider</compoundname>
+    <basecompoundref refid="classQgsDataProvider" prot="public" virt="non-virtual">QgsDataProvider</basecompoundref>
+    <basecompoundref refid="classQgsRasterInterface" prot="public" virt="non-virtual">QgsRasterInterface</basecompoundref>
+    <includes refid="qgsrasterdataprovider_8h" local="no">qgsrasterdataprovider.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12da" prot="public" static="no">
+        <name>ProviderCapability</name>
+        <enumvalue id="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12daa89388955a9828c3fcde729567d67d040" prot="public">
+          <name>NoProviderCapabilities</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Provider has no capabilities. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12daa30ea09201e4d40c0cdcd09681a0e6ae5" prot="public">
+          <name>ReadLayerMetadata</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Provider can read layer metadata from data store. Since QGIS 3.0. See <ref refid="classQgsDataProvider_1a69646da138dc98e9fa605fbed1283bb6" kindref="member">QgsDataProvider::layerMetadata()</ref> </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12daa9579cadc19f66b0e7153dab3c2093165" prot="public">
+          <name>WriteLayerMetadata</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Provider can write layer metadata to the data store. Since QGIS 3.0. See <ref refid="classQgsDataProvider_1ad9277c014467cb8471e3119397f087e9" kindref="member">QgsDataProvider::writeLayerMetadata()</ref> </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration with capabilities that raster providers might implement. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="96" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="95" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsRasterDataProvider_1afb2ff90d0f7a49e0942e3576ccfd215c" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsRasterDataProvider::mDpi</definition>
+        <argsstring></argsstring>
+        <name>mDpi</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>Dots per inch. </para>        </briefdescription>
+        <detaileddescription>
+<para>Extended WMS (e.g. QGIS mapserver) support DPI dependent output and therefore are suited for printing. A value of -1 means it has not been set </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="560" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="560" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterDataProvider_1afd514abd420c871f4e26bb96f090b700" prot="protected" static="no" mutable="yes">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsRasterDataProvider::mExtent</definition>
+        <argsstring></argsstring>
+        <name>mExtent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="584" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="584" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterDataProvider_1ac5ef6484958ba9f29eefd75c6d23ea7c" prot="protected" static="no" mutable="no">
+        <type>QList&lt; bool &gt;</type>
+        <definition>QList&lt;bool&gt; QgsRasterDataProvider::mSrcHasNoDataValue</definition>
+        <argsstring></argsstring>
+        <name>mSrcHasNoDataValue</name>
+        <briefdescription>
+<para>Source no data value exists. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="571" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="571" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterDataProvider_1abb128bd2c6c9812b9903a959d882fac7" prot="protected" static="no" mutable="no">
+        <type>QList&lt; double &gt;</type>
+        <definition>QList&lt;double&gt; QgsRasterDataProvider::mSrcNoDataValue</definition>
+        <argsstring></argsstring>
+        <name>mSrcNoDataValue</name>
+        <briefdescription>
+<para>Source no data value is available and is set to be used or internal no data is available. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used internally only Cell value representing original source no data. e.g. -9999, indexed from 0 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="568" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="568" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterDataProvider_1a564c70e4af0cbf42ad55570e47b6625c" prot="protected" static="no" mutable="no">
+        <type>QList&lt; <ref refid="qgsrasterrange_8h_1aa019f327f8ac3e6a626f33ed9d047d1e" kindref="member">QgsRasterRangeList</ref> &gt;</type>
+        <definition>QList&lt; QgsRasterRangeList &gt; QgsRasterDataProvider::mUserNoDataValue</definition>
+        <argsstring></argsstring>
+        <name>mUserNoDataValue</name>
+        <briefdescription>
+<para>List of lists of user defined additional no data values for each band, indexed from 0. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="582" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="582" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterDataProvider_1a08c89abb85d737f5716f9acd8bf58c7f" prot="protected" static="no" mutable="no">
+        <type>QList&lt; bool &gt;</type>
+        <definition>QList&lt;bool&gt; QgsRasterDataProvider::mUseSrcNoDataValue</definition>
+        <argsstring></argsstring>
+        <name>mUseSrcNoDataValue</name>
+        <briefdescription>
+<para>Use source nodata value. </para>        </briefdescription>
+        <detaileddescription>
+<para>User can disable usage of source nodata value as nodata. It may happen that a value is wrongly given by GDAL as nodata (e.g. 0) and it has to be treated as regular value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="577" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="577" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsRasterDataProvider_1abe2837c4286d5747bf026f8a0b4cd355" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsRasterDataProvider::QgsRasterDataProvider</definition>
+        <argsstring>()</argsstring>
+        <name>QgsRasterDataProvider</name>
+        <briefdescription>
+<para>Provider capabilities. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="208" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a488a5def3bab120ccbf4d0174ccebc50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsRasterDataProvider::QgsRasterDataProvider</definition>
+        <argsstring>(const QString &amp;uri, const QgsDataProvider::ProviderOptions &amp;options=QgsDataProvider::ProviderOptions())</argsstring>
+        <name>QgsRasterDataProvider</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsDataProvider_1_1ProviderOptions" kindref="compound">QgsDataProvider::ProviderOptions</ref> &amp;</type>
+          <declname>options</declname>
+          <defval><ref refid="structQgsDataProvider_1_1ProviderOptions" kindref="compound">QgsDataProvider::ProviderOptions</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsRasterDataProvider" kindref="compound">QgsRasterDataProvider</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>uri</emphasis> argument gives a provider-specific uri indicating the underlying data source and it&apos;s parameters.</para><para>The <emphasis>options</emphasis> argument specifies generic provider options. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="115" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="214" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a21422b090ae4c853223a6a0870314375" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double QgsRasterDataProvider::bandOffset</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>bandOffset</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Read band offset for raster value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.3 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="224" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a9d6e45697f09c3bd95fcd06ee753b31f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double QgsRasterDataProvider::bandScale</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>bandScale</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Read band scale for raster value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.3 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="218" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="218" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1aba9269156264daf04fa6108ba72b43d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsRasterBlock" kindref="compound">QgsRasterBlock</ref> *</type>
+        <definition>QgsRasterBlock * QgsRasterDataProvider::block</definition>
+        <argsstring>(int bandNo, const QgsRectangle &amp;boundingBox, int width, int height, QgsRasterBlockFeedback *feedback=nullptr) override</argsstring>
+        <name>block</name>
+        <reimplements refid="classQgsRasterInterface_1a0f28ed600d4fabd86c88c520652b8ae6">block</reimplements>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>boundingBox</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRasterBlockFeedback" kindref="compound">QgsRasterBlockFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Read block of data using given extent and size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="229" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="44" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a1e7032213973019f148738627316272f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QList&lt; <ref refid="classQgsRasterPyramid" kindref="compound">QgsRasterPyramid</ref> &gt;</type>
+        <definition>virtual QList&lt;QgsRasterPyramid&gt; QgsRasterDataProvider::buildPyramidList</definition>
+        <argsstring>(QList&lt; int &gt; overviewList=QList&lt; int &gt;())</argsstring>
+        <name>buildPyramidList</name>
+        <param>
+          <type>QList&lt; int &gt;</type>
+          <declname>overviewList</declname>
+          <defval>QList&lt; int &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>Returns the raster layers pyramid list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>overviewList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>used to construct the pyramid list (optional), when empty the list is defined by the provider. A pyramid list defines the POTENTIAL pyramids that can be in a raster. To know which of the pyramid layers ACTUALLY exists you need to look at the existsFlag member in each struct stored in the list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="323" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="323" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a08559c375024c7ce55d3069b249c2cc6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsRasterDataProvider::buildPyramids</definition>
+        <argsstring>(const QList&lt; QgsRasterPyramid &gt; &amp;pyramidList, const QString &amp;resamplingMethod=&quot;NEAREST&quot;, QgsRaster::RasterPyramidsFormat format=QgsRaster::PyramidsGTiff, const QStringList &amp;configOptions=QStringList(), QgsRasterBlockFeedback *feedback=nullptr)</argsstring>
+        <name>buildPyramids</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsRasterPyramid" kindref="compound">QgsRasterPyramid</ref> &gt; &amp;</type>
+          <declname>pyramidList</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>resamplingMethod</declname>
+          <defval>&quot;NEAREST&quot;</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsRaster_1a39a8125e4438b3e0064c6036325d5c5a" kindref="member">QgsRaster::RasterPyramidsFormat</ref></type>
+          <declname>format</declname>
+          <defval><ref refid="classQgsRaster_1a39a8125e4438b3e0064c6036325d5c5aaf672d8102b95407005de331aec5f5460" kindref="member">QgsRaster::PyramidsGTiff</ref></defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>configOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsRasterBlockFeedback" kindref="compound">QgsRasterBlockFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Create pyramid overviews. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="301" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="301" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1af1df153c0d64c622568b0ae4be3b14d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsRasterInterface" kindref="compound">QgsRasterInterface</ref> *</type>
+        <definition>QgsRasterInterface* QgsRasterDataProvider::clone</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>clone</name>
+        <reimplements refid="classQgsRasterInterface_1a1cf751088ebc443bb7efb0c0006b442d">clone</reimplements>
+        <briefdescription>
+<para>Clone itself, create deep copy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="117" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a776b438d34af635e49bed4010fc40fe1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int QgsRasterDataProvider::colorInterpretation</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>colorInterpretation</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns data type for the band specified by number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="140" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="140" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a79139a42559e34e396b619a3b2b05b8d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsRasterDataProvider::colorInterpretationName</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>colorInterpretationName</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="209" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="209" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a5022078c516025e9fc7aa1c919591583" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterDataProvider::colorName</definition>
+        <argsstring>(int colorInterpretation) const</argsstring>
+        <name>colorName</name>
+        <param>
+          <type>int</type>
+          <declname>colorInterpretation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="146" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="146" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a0ac6b1b6f39d1991a315bfae64749699" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QList&lt; <ref refid="structQgsColorRampShader_1_1ColorRampItem" kindref="compound">QgsColorRampShader::ColorRampItem</ref> &gt;</type>
+        <definition>virtual QList&lt;QgsColorRampShader::ColorRampItem&gt; QgsRasterDataProvider::colorTable</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>colorTable</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="248" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="248" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1aa5feb08163f509264cd3fcbf8e8305b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QDateTime</type>
+        <definition>QDateTime QgsRasterDataProvider::dataTimestamp</definition>
+        <argsstring>() const override</argsstring>
+        <name>dataTimestamp</name>
+        <reimplements refid="classQgsDataProvider_1a875178949796ab38817744e2da88159e">dataTimestamp</reimplements>
+        <briefdescription>
+<para>Current time stamp of data source. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="414" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="414" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a8c5dcd2b095725610d6755d1c7de5985" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgis_1aeb8e0dfb7dc6eb09e552bf3dff9c84d5" kindref="member">Qgis::DataType</ref></type>
+        <definition>Qgis::DataType QgsRasterDataProvider::dataType</definition>
+        <argsstring>(int bandNo) const override=0</argsstring>
+        <name>dataType</name>
+        <reimplements refid="classQgsRasterInterface_1a3513c5b4cba6f7454b9d801a218ab971">dataType</reimplements>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns data type for the band specified by number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="131" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1aa0d5b8b2bd31283fb20b96a2e8bcaa6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsRasterDataProvider::dpi</definition>
+        <argsstring>() const</argsstring>
+        <name>dpi</name>
+        <briefdescription>
+<para>Returns the dpi of the output device. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="405" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="405" bodyend="405"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a855b75f332cfa88c09d5bfc34f67f6e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsRasterDataProvider::extent</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>extent</name>
+        <reimplements refid="classQgsDataProvider_1aeea803b5b927c0551ec70f06af62971b">extent</reimplements>
+        <briefdescription>
+<para>Returns the extent of the layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> containing the extent of the layer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a53ae1107ebf24d69d5fbf3cee16de5d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QImage</type>
+        <definition>virtual QImage QgsRasterDataProvider::getLegendGraphic</definition>
+        <argsstring>(double scale=0, bool forceRefresh=false, const QgsRectangle *visibleExtent=nullptr)</argsstring>
+        <name>getLegendGraphic</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forceRefresh</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> *</type>
+          <declname>visibleExtent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Returns the legend rendered as pixmap. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is useful for layers which need to get legend layers remotely as WMS.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter that is the Scale of the layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>forceRefresh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional bool parameter to force refresh getLegendGraphic call </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>visibleExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Visible extent for providers supporting contextual legends, in layer CRS </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Parameter visibleExtent added in QGIS 2.8 </para></simplesect>
+<simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="273" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="273" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1afdbce53f38306a93f4aae57109b72e9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classQgsImageFetcher" kindref="compound">QgsImageFetcher</ref> *</type>
+        <definition>virtual QgsImageFetcher* QgsRasterDataProvider::getLegendGraphicFetcher</definition>
+        <argsstring>(const QgsMapSettings *mapSettings)</argsstring>
+        <name>getLegendGraphicFetcher</name>
+        <param>
+          <type>const <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> *</type>
+          <declname>mapSettings</declname>
+        </param>
+        <briefdescription>
+<para>Returns a new image downloader for the raster legend. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mapSettings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map settings for legend providers supporting contextual legends.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a download handler or null if the provider does not support legend at all. Ownership of the returned object is transferred to caller.</para></simplesect>
+<simplesect kind="since"><para>QGIS 2.8 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="294" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="294" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a99af1df7129d1bc0c8c640ac74313370" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsRasterDataProvider::hasPyramids</definition>
+        <argsstring>()</argsstring>
+        <name>hasPyramids</name>
+        <briefdescription>
+<para>Returns true if raster has at least one populated histogram. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="327" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="361" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a444498d02435eee131a0e957b9b2fe6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterDataProvider::htmlMetadata</definition>
+        <argsstring>()=0</argsstring>
+        <name>htmlMetadata</name>
+        <briefdescription>
+<para>Returns metadata in a format suitable for feeding directly into a subset of the GUI raster properties &quot;Metadata&quot; tab. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="333" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="231" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a5b033a4ab93593c8378af8005ed52ccd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsRasterIdentifyResult" kindref="compound">QgsRasterIdentifyResult</ref></type>
+        <definition>QgsRasterIdentifyResult QgsRasterDataProvider::identify</definition>
+        <argsstring>(const QgsPointXY &amp;point, QgsRaster::IdentifyFormat format, const QgsRectangle &amp;boundingBox=QgsRectangle(), int width=0, int height=0, int dpi=96)</argsstring>
+        <name>identify</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6" kindref="member">QgsRaster::IdentifyFormat</ref></type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>boundingBox</declname>
+          <defval><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref>()</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dpi</declname>
+          <defval>96</defval>
+        </param>
+        <briefdescription>
+<para>Identify raster value(s) found on the point position. </para>        </briefdescription>
+        <detaileddescription>
+<para>The context parameters extent, width and height are important to identify on the same zoom level as a displayed map and to do effective caching (WCS). If context params are not specified the highest resolution is used. <ref refid="classQgsRasterInterface_1adb432fe846c0ca47321636f606128b99" kindref="member">capabilities()</ref> may be used to test if format is supported by provider. Values are set to &apos;no data&apos; or empty string if point is outside data source extent.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>point</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>coordinates in data source CRS </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result format </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>boundingBox</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context bounding box </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context width </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context height </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dpi</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>context dpi </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6abddd4a3ccc84c95df83e7bfdd8dbf9fe" kindref="member">QgsRaster::IdentifyFormatValue</ref>: map of values for each band, keys are band numbers (from 1). <ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6a7538309a2a0fd9c74b824ee83b7db8c1" kindref="member">QgsRaster::IdentifyFormatFeature</ref>: map of QgsRasterFeatureList for each sublayer (WMS) - TODO: it is not consistent with <ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6abddd4a3ccc84c95df83e7bfdd8dbf9fe" kindref="member">QgsRaster::IdentifyFormatValue</ref>. <ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6af6aed95d5d8235256871c9f27d126c0d" kindref="member">QgsRaster::IdentifyFormatHtml</ref>: map of HTML strings for each sublayer (WMS). Empty if failed or there are no results (TODO: better error reporting). </para></simplesect>
+<simplesect kind="note"><para>The arbitraryness of the returned document is enforced by WMS standards up to at least v1.3.0 </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1ab3030e805bea2466ef4d684e5d616b32" kindref="member">sample()</ref>, which is much more efficient for simple &quot;value at point&quot; queries. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="360" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="238" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a5f9f6f961e0bd3ddd0bdd6ac6c6f5f57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::isEditable</definition>
+        <argsstring>() const</argsstring>
+        <name>isEditable</name>
+        <briefdescription>
+<para>Checks whether the provider is in editing mode, i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>raster write operations will be accepted. By default providers are not editable. Use <ref refid="classQgsRasterDataProvider_1adc8d1ba70532db8f0a3ab2a5e23679b8" kindref="member">setEditable()</ref> method to enable/disable editing. <simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1adc8d1ba70532db8f0a3ab2a5e23679b8" kindref="member">setEditable()</ref>, <ref refid="classQgsRasterDataProvider_1a7b9cf20ab06b726d140ca18d49e22d1f" kindref="member">writeBlock()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="422" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="422" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a366abf8ecfffc84ec5e80b3fa2643fe5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsRasterDataProvider::lastError</definition>
+        <argsstring>()=0</argsstring>
+        <name>lastError</name>
+        <briefdescription>
+<para>Returns the verbose error text for the last error in this provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>If an operation returns 0 (e.g. draw()), this function returns the text of the error associated with the failure. Interactive users of this provider can then, for example, call a QMessageBox to display the contents. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="399" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a25feae72ad6b390f37d1cacf07193428" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterDataProvider::lastErrorFormat</definition>
+        <argsstring>()</argsstring>
+        <name>lastErrorFormat</name>
+        <briefdescription>
+<para>Returns the format of the error text for the last error in this provider. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="402" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="321" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1aedab20f5ff771c1abb4e7f31e05b0ed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsRasterDataProvider::lastErrorTitle</definition>
+        <argsstring>()=0</argsstring>
+        <name>lastErrorTitle</name>
+        <briefdescription>
+<para>Returns the caption error text for the last error in this provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>If an operation returns 0 (e.g. draw()), this function returns the text of the error associated with the failure. Interactive users of this provider can then, for example, call a QMessageBox to display the contents. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="388" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a5c4b360b60641aead70bf7744982f5fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QgsRasterDataProvider::ProviderCapabilities</type>
+        <definition>QgsRasterDataProvider::ProviderCapabilities QgsRasterDataProvider::providerCapabilities</definition>
+        <argsstring>() const</argsstring>
+        <name>providerCapabilities</name>
+        <briefdescription>
+<para>Returns flags containing the supported capabilities of the data provider. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="123" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="220" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a549cd8846ecc4318459279087bd3bd50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::reload</definition>
+        <argsstring>()</argsstring>
+        <name>reload</name>
+        <briefdescription>
+<para>Reload data (data could change) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="207" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a4e5b507bd35952aa1780073575e22d76" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::remove</definition>
+        <argsstring>()</argsstring>
+        <name>remove</name>
+        <briefdescription>
+<para>Remove dataset. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="484" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="484" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ab3030e805bea2466ef4d684e5d616b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double QgsRasterDataProvider::sample</definition>
+        <argsstring>(const QgsPointXY &amp;point, int band, bool *ok=nullptr, const QgsRectangle &amp;boundingBox=QgsRectangle(), int width=0, int height=0, int dpi=96)</argsstring>
+        <name>sample</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>band</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>ok</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>boundingBox</declname>
+          <defval><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref>()</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dpi</declname>
+          <defval>96</defval>
+        </param>
+        <briefdescription>
+<para>Samples a raster value from the specified <emphasis>band</emphasis> found at the <emphasis>point</emphasis> position. </para>        </briefdescription>
+        <detaileddescription>
+<para>The context parameters <emphasis>boundingBox</emphasis>, <emphasis>width</emphasis> and <emphasis>height</emphasis> are important to identify on the same zoom level as a displayed map and to do effective caching (WCS). If context params are not specified the highest resolution is used.</para><para>If <emphasis>ok</emphasis> is specified and the point is outside data source extent, or an invalid band number was specified, then <emphasis>ok</emphasis> will be set to false. In this case the function will return a NaN value.</para><para><simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1a5b033a4ab93593c8378af8005ed52ccd" kindref="member">identify()</ref>, which is much more flexible but considerably less efficient. </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="376" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="303" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a8299aa87b3489382c420e016a9995893" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsRasterDataProvider::setDpi</definition>
+        <argsstring>(int dpi)</argsstring>
+        <name>setDpi</name>
+        <param>
+          <type>int</type>
+          <declname>dpi</declname>
+        </param>
+        <briefdescription>
+<para>Sets the output device resolution. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="408" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="408" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1adc8d1ba70532db8f0a3ab2a5e23679b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::setEditable</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>setEditable</name>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Turns on/off editing mode of the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>When in editing mode, it is possible to overwrite data of the provider using <ref refid="classQgsRasterDataProvider_1a7b9cf20ab06b726d140ca18d49e22d1f" kindref="member">writeBlock()</ref> calls. <simplesect kind="return"><para>true if the switch to/from editing mode was successful </para></simplesect>
+<simplesect kind="note"><para>Only some providers support editing mode and even those may fail to turn the underlying data source into editing mode, so it is necessary to check the return value whether the operation was successful. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1a5f9f6f961e0bd3ddd0bdd6ac6c6f5f57" kindref="member">isEditable()</ref>, <ref refid="classQgsRasterDataProvider_1a7b9cf20ab06b726d140ca18d49e22d1f" kindref="member">writeBlock()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="434" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="434" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ac59a243c5558c0773098a30d1a75ad4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsRasterDataProvider::setInput</definition>
+        <argsstring>(QgsRasterInterface *input) override</argsstring>
+        <name>setInput</name>
+        <reimplements refid="classQgsRasterInterface_1affa882def3997d2e7aac2662947336c2">setInput</reimplements>
+        <param>
+          <type><ref refid="classQgsRasterInterface" kindref="compound">QgsRasterInterface</ref> *</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Set input. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if set correctly, false if cannot use that input </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a1efeaeef123843a94925110e26f56b68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::setNoDataValue</definition>
+        <argsstring>(int bandNo, double noDataValue)</argsstring>
+        <name>setNoDataValue</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>noDataValue</declname>
+        </param>
+        <briefdescription>
+<para>Set no data value on created dataset. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bandNo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>band number </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>noDataValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>no data value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="481" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="481" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1afac35ba3e4f04668ae25558d0d559643" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsRasterDataProvider::setUserNoDataValue</definition>
+        <argsstring>(int bandNo, const QgsRasterRangeList &amp;noData)</argsstring>
+        <name>setUserNoDataValue</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgsrasterrange_8h_1aa019f327f8ac3e6a626f33ed9d047d1e" kindref="member">QgsRasterRangeList</ref> &amp;</type>
+          <declname>noData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="243" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="381" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a42649c4168017b33f34463ed8c416baa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsRasterDataProvider::setUseSourceNoDataValue</definition>
+        <argsstring>(int bandNo, bool use)</argsstring>
+        <name>setUseSourceNoDataValue</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use</declname>
+        </param>
+        <briefdescription>
+<para>Sets the source nodata value usage. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="238" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="32" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a3ffc3ed0e1e4948e9fb8b993714d787b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgis_1aeb8e0dfb7dc6eb09e552bf3dff9c84d5" kindref="member">Qgis::DataType</ref></type>
+        <definition>Qgis::DataType QgsRasterDataProvider::sourceDataType</definition>
+        <argsstring>(int bandNo) const override=0</argsstring>
+        <name>sourceDataType</name>
+        <reimplements refid="classQgsRasterInterface_1a8c551f46c2eb3908bb407bda3ddd9f97">sourceDataType</reimplements>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns source data type for the band specified by number, source data type may be shorter than dataType. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a1d1b013317d5445c326b2340eb89491e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::sourceHasNoDataValue</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>sourceHasNoDataValue</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if source band has no data value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="232" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a4fcc41a5e29c27c458d690f414dd9a40" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double QgsRasterDataProvider::sourceNoDataValue</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>sourceNoDataValue</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Value representing no data value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="241" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="241" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ad76de7ce8bab4d97bc57945ec59836c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int QgsRasterDataProvider::stepHeight</definition>
+        <argsstring>() const</argsstring>
+        <name>stepHeight</name>
+        <briefdescription>
+<para>Step height for raster iterations. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1ade3ae35fa70ceea7427afaad7626b0c1" kindref="member">stepWidth()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="525" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="525" bodyend="525"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ade3ae35fa70ceea7427afaad7626b0c1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int QgsRasterDataProvider::stepWidth</definition>
+        <argsstring>() const</argsstring>
+        <name>stepWidth</name>
+        <briefdescription>
+<para>Step width for raster iterations. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1ad76de7ce8bab4d97bc57945ec59836c8" kindref="member">stepHeight()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="518" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="518" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a9b2426640429f78b13b6a5fbb9d0f6f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsRasterDataProvider::subLayers</definition>
+        <argsstring>() const override</argsstring>
+        <name>subLayers</name>
+        <reimplements refid="classQgsDataProvider_1ad73997762df861eacb25c553623e14b2">subLayers</reimplements>
+        <briefdescription>
+<para>Returns the sublayers of this layer - useful for providers that manage their own layers, such as WMS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="254" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="254" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1af78ae06ac3e2834deb8b550ef03fa27f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::supportsLegendGraphic</definition>
+        <argsstring>() const</argsstring>
+        <name>supportsLegendGraphic</name>
+        <briefdescription>
+<para>Returns whether the provider supplies a legend graphic. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="260" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a84ae0d3b43181f97eeca04af2fe69f80" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QDateTime</type>
+        <definition>QDateTime QgsRasterDataProvider::timestamp</definition>
+        <argsstring>() const override</argsstring>
+        <name>timestamp</name>
+        <reimplements refid="classQgsDataProvider_1a1ea9dadfd22370ef901f0d4d01039a8c">timestamp</reimplements>
+        <briefdescription>
+<para>Time stamp of data source in the moment when data/metadata were loaded by provider. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="411" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="411" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1acab0cf63182d7071c175cf9bdec38da0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="qgsrasterrange_8h_1aa019f327f8ac3e6a626f33ed9d047d1e" kindref="member">QgsRasterRangeList</ref></type>
+        <definition>virtual QgsRasterRangeList QgsRasterDataProvider::userNoDataValues</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>userNoDataValues</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of user no data value ranges. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="246" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a3277411b3891dba04ce4eb5700347ec8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::useSourceNoDataValue</definition>
+        <argsstring>(int bandNo) const</argsstring>
+        <name>useSourceNoDataValue</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns the source nodata value usage. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="235" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="235" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a33c3d6c124411540817480bbd4323549" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsRasterDataProvider::validateCreationOptions</definition>
+        <argsstring>(const QStringList &amp;createOptions, const QString &amp;format)</argsstring>
+        <name>validateCreationOptions</name>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>createOptions</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+<para>Validates creation options for a specific dataset and destination format. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>used by GDAL provider only </para></simplesect>
+<simplesect kind="note"><para>see also validateCreationOptionsFormat() in gdal provider for validating options based on format only </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="497" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="497" bodyend="498"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1aa4255cf7693c2f440f4ce7d02ce24ae4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsRasterDataProvider::validatePyramidsConfigOptions</definition>
+        <argsstring>(QgsRaster::RasterPyramidsFormat pyramidsFormat, const QStringList &amp;configOptions, const QString &amp;fileFormat)</argsstring>
+        <name>validatePyramidsConfigOptions</name>
+        <param>
+          <type><ref refid="classQgsRaster_1a39a8125e4438b3e0064c6036325d5c5a" kindref="member">QgsRaster::RasterPyramidsFormat</ref></type>
+          <declname>pyramidsFormat</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>configOptions</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileFormat</declname>
+        </param>
+        <briefdescription>
+<para>Validates pyramid creation options for a specific dataset and destination format. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>used by GDAL provider only </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="504" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="504" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1af15b6038b5c59276a4ef87598b919482" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsRasterDataProvider::write</definition>
+        <argsstring>(void *data, int band, int width, int height, int xOffset, int yOffset)</argsstring>
+        <name>write</name>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>band</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>xOffset</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>yOffset</declname>
+        </param>
+        <briefdescription>
+<para>Writes into the provider datasource. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="438" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="438" bodyend="447"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a7b9cf20ab06b726d140ca18d49e22d1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsRasterDataProvider::writeBlock</definition>
+        <argsstring>(QgsRasterBlock *block, int band, int xOffset=0, int yOffset=0)</argsstring>
+        <name>writeBlock</name>
+        <param>
+          <type><ref refid="classQgsRasterBlock" kindref="compound">QgsRasterBlock</ref> *</type>
+          <declname>block</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>band</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>xOffset</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>yOffset</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Writes pixel data from a raster block into the provider data source. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will override previously stored pixel values. It is assumed that cells in the passed raster block are aligned with the cells of the data source. If raster block does not cover the whole area of the data source, only a subset of pixels covered by the raster block will be overwritten. By default, writing of raster data starts from the first cell of the raster - it is possible to set offset in pixels by specifying non-zero xOffset and yOffset values.</para><para>Writing is supported only by some data providers. Provider has to be in editing mode in order to allow write operations. <simplesect kind="see"><para><ref refid="classQgsRasterDataProvider_1a5f9f6f961e0bd3ddd0bdd6ac6c6f5f57" kindref="member">isEditable()</ref>, <ref refid="classQgsRasterDataProvider_1adc8d1ba70532db8f0a3ab2a5e23679b8" kindref="member">setEditable()</ref> </para></simplesect>
+<simplesect kind="return"><para>true on success </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="465" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="326" bodyend="336"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ac8f495269f7afcc20ffa385c96c6d9f6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRasterDataProvider" kindref="compound">QgsRasterDataProvider</ref> *</type>
+        <definition>QgsRasterDataProvider * QgsRasterDataProvider::create</definition>
+        <argsstring>(const QString &amp;providerKey, const QString &amp;uri, const QString &amp;format, int nBands, Qgis::DataType type, int width, int height, double *geoTransform, const QgsCoordinateReferenceSystem &amp;crs, const QStringList &amp;createOptions=QStringList())</argsstring>
+        <name>create</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nBands</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgis_1aeb8e0dfb7dc6eb09e552bf3dff9c84d5" kindref="member">Qgis::DataType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>geoTransform</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>createOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new dataset with mDataSourceURI. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="468" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="419" bodyend="436"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a1d1838ea39bf7a4e327b986e3be9b98f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6" kindref="member">QgsRaster::IdentifyFormat</ref></type>
+        <definition>QgsRaster::IdentifyFormat QgsRasterDataProvider::identifyFormatFromName</definition>
+        <argsstring>(const QString &amp;formatName)</argsstring>
+        <name>identifyFormatFromName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>formatName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="509" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="472" bodyend="479"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ab960495a8feb1372cc90d1d648e273de" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterDataProvider::identifyFormatLabel</definition>
+        <argsstring>(QgsRaster::IdentifyFormat format)</argsstring>
+        <name>identifyFormatLabel</name>
+        <param>
+          <type><ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6" kindref="member">QgsRaster::IdentifyFormat</ref></type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="510" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="455" bodyend="470"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a9f664978aeeda03aadc113583b620351" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterDataProvider::identifyFormatName</definition>
+        <argsstring>(QgsRaster::IdentifyFormat format)</argsstring>
+        <name>identifyFormatName</name>
+        <param>
+          <type><ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6" kindref="member">QgsRaster::IdentifyFormat</ref></type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="508" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="438" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a96ce3265e12f652c846a17a9c66ee94b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05" kindref="member">Capability</ref></type>
+        <definition>QgsRasterInterface::Capability QgsRasterDataProvider::identifyFormatToCapability</definition>
+        <argsstring>(QgsRaster::IdentifyFormat format)</argsstring>
+        <name>identifyFormatToCapability</name>
+        <param>
+          <type><ref refid="classQgsRaster_1a17a81534803b9b5ee1e5cd91aab628c6" kindref="member">QgsRaster::IdentifyFormat</ref></type>
+          <declname>format</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="511" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="481" bodyend="496"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1ad98d92f1388d28429bb6bdf27badab0f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; QPair&lt; QString, QString &gt; &gt;</type>
+        <definition>QList&lt; QPair&lt; QString, QString &gt; &gt; QgsRasterDataProvider::pyramidResamplingMethods</definition>
+        <argsstring>(const QString &amp;providerKey)</argsstring>
+        <name>pyramidResamplingMethods</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of pyramid resampling method name and label pairs for given provider. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="490" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="339" bodyend="359"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsRasterDataProvider_1ac7f0ac3ac02c2dc4dd546a7883fcc745" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsRasterDataProvider::statusChanged</definition>
+        <argsstring>(const QString &amp;) const</argsstring>
+        <name>statusChanged</name>
+        <param>
+          <type>const QString &amp;</type>
+        </param>
+        <briefdescription>
+<para>Emit a message to be displayed on status bar, usually used by network providers (WMS,WCS) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="533" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a6b70f0739a4e3387cd5e9c089b4a503f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsRasterDataProvider::copyBaseSettings</definition>
+        <argsstring>(const QgsRasterDataProvider &amp;other)</argsstring>
+        <name>copyBaseSettings</name>
+        <param>
+          <type>const <ref refid="classQgsRasterDataProvider" kindref="compound">QgsRasterDataProvider</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy member variables from other raster data provider. Useful for implementation of <ref refid="classQgsRasterDataProvider_1af1df153c0d64c622568b0ae4be3b14d9" kindref="member">clone()</ref> method in subclasses. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="555" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="504" bodyend="512"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a8f7c71c008db953aa1769d690b411c7b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsRasterDataProvider::readBlock</definition>
+        <argsstring>(int bandNo, int xBlock, int yBlock, void *data)</argsstring>
+        <name>readBlock</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>xBlock</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>yBlock</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Read block of data. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="541" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="541" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a0b876df12606337ddef68aa53b3543a8" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsRasterDataProvider::readBlock</definition>
+        <argsstring>(int bandNo, QgsRectangle const &amp;viewExtent, int width, int height, void *data, QgsRasterBlockFeedback *feedback=nullptr)</argsstring>
+        <name>readBlock</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> const &amp;</type>
+          <declname>viewExtent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRasterBlockFeedback" kindref="compound">QgsRasterBlockFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Read block of data using give extent and size. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="548" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="548" bodyend="549"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterDataProvider_1a70f490456b4bad0a2375b8e7a4c51b98" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsRasterDataProvider::userNoDataValuesContains</definition>
+        <argsstring>(int bandNo, double value) const</argsstring>
+        <name>userNoDataValuesContains</name>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if user no data contains value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="552" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.cpp" bodystart="498" bodyend="502"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for raster data providers. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7494">
+        <label>QObject</label>
+      </node>
+      <node id="7492">
+        <label>QgsRasterDataProvider</label>
+        <link refid="classQgsRasterDataProvider"/>
+        <childnode refid="7493" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7495" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7493">
+        <label>QgsDataProvider</label>
+        <link refid="classQgsDataProvider"/>
+        <childnode refid="7494" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7495">
+        <label>QgsRasterInterface</label>
+        <link refid="classQgsRasterInterface"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7499">
+        <label>QgsError</label>
+        <link refid="classQgsError"/>
+      </node>
+      <node id="7498">
+        <label>QObject</label>
+      </node>
+      <node id="7496">
+        <label>QgsRasterDataProvider</label>
+        <link refid="classQgsRasterDataProvider"/>
+        <childnode refid="7497" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7500" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7501" relation="usage">
+          <edgelabel>mExtent</edgelabel>
+        </childnode>
+      </node>
+      <node id="7501">
+        <label>QgsRectangle</label>
+        <link refid="classQgsRectangle"/>
+      </node>
+      <node id="7497">
+        <label>QgsDataProvider</label>
+        <link refid="classQgsDataProvider"/>
+        <childnode refid="7498" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7499" relation="usage">
+          <edgelabel>mError</edgelabel>
+        </childnode>
+      </node>
+      <node id="7500">
+        <label>QgsRasterInterface</label>
+        <link refid="classQgsRasterInterface"/>
+        <childnode refid="7500" relation="usage">
+          <edgelabel>mInput</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" line="86" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterdataprovider.h" bodystart="85" bodyend="586"/>
+    <listofallmembers>
+      <member refid="classQgsDataProvider_1aff7aa0a18bcb7170f17cb2d5b073d8ce" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>appendError</name></member>
+      <member refid="classQgsRasterInterface_1a93c7eda09b19f57e73f27d52272ebf1c" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>bandCount</name></member>
+      <member refid="classQgsRasterDataProvider_1a21422b090ae4c853223a6a0870314375" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>bandOffset</name></member>
+      <member refid="classQgsRasterDataProvider_1a9d6e45697f09c3bd95fcd06ee753b31f" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>bandScale</name></member>
+      <member refid="classQgsRasterInterface_1aaa39473935ac32b7b38970fed2ffaaac" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>bandStatistics</name></member>
+      <member refid="classQgsRasterDataProvider_1aba9269156264daf04fa6108ba72b43d3" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>block</name></member>
+      <member refid="classQgsRasterDataProvider_1a1e7032213973019f148738627316272f" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>buildPyramidList</name></member>
+      <member refid="classQgsRasterDataProvider_1a08559c375024c7ce55d3069b249c2cc6" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>buildPyramids</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a1089f3b5f33d01c4b60a89d7f62fed6c" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>BuildPyramids</name></member>
+      <member refid="classQgsRasterInterface_1adb432fe846c0ca47321636f606128b99" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>capabilities</name></member>
+      <member refid="classQgsRasterInterface_1a473e08e19842141c0502065b91ce807b" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>capabilitiesString</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Capability</name></member>
+      <member refid="classQgsRasterDataProvider_1af1df153c0d64c622568b0ae4be3b14d9" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>clone</name></member>
+      <member refid="classQgsRasterDataProvider_1a776b438d34af635e49bed4010fc40fe1" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>colorInterpretation</name></member>
+      <member refid="classQgsRasterDataProvider_1a79139a42559e34e396b619a3b2b05b8d" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>colorInterpretationName</name></member>
+      <member refid="classQgsRasterDataProvider_1a5022078c516025e9fc7aa1c919591583" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>colorName</name></member>
+      <member refid="classQgsRasterDataProvider_1a0ac6b1b6f39d1991a315bfae64749699" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>colorTable</name></member>
+      <member refid="classQgsRasterDataProvider_1a6b70f0739a4e3387cd5e9c089b4a503f" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>copyBaseSettings</name></member>
+      <member refid="classQgsRasterDataProvider_1ac8f495269f7afcc20ffa385c96c6d9f6" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>create</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a584740055ac9d887a713d013243b62a2" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Create</name></member>
+      <member refid="classQgsDataProvider_1a390a2d77b871763209396167d5558d18" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>crs</name></member>
+      <member refid="classQgsRasterInterface_1a0754453f6588941a102e9c5effb7423c" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>cumulativeCut</name></member>
+      <member refid="classQgsDataProvider_1a5b7c15ef49dfa659b23b81c4b0893cddafe3bb20221731e6f855d22ed0993e78d" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>CustomData</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153a2895dc708693161d3d6316e1feeb4194" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Database</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>DataCapability</name></member>
+      <member refid="classQgsDataProvider_1a3ef3fe56a79c3a56fccb2cbb528aa886" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>dataChanged</name></member>
+      <member refid="classQgsDataProvider_1a94c4cce6651e60b9245989ba4bffd625" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>dataSourceUri</name></member>
+      <member refid="classQgsRasterDataProvider_1aa5feb08163f509264cd3fcbf8e8305b8" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>dataTimestamp</name></member>
+      <member refid="classQgsRasterDataProvider_1a8c5dcd2b095725610d6755d1c7de5985" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>dataType</name></member>
+      <member refid="classQgsRasterInterface_1a2d7445619ea7fd798907f1d30d52ffee" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>dataTypeSize</name></member>
+      <member refid="classQgsDataProvider_1aa735b1c007dd7becc218de07177afe3f" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>description</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153ac6c219f067db2e6eab688b6550d64e7e" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Dir</name></member>
+      <member refid="classQgsRasterDataProvider_1aa0d5b8b2bd31283fb20b96a2e8bcaa6e" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>dpi</name></member>
+      <member refid="classQgsDataProvider_1aee77f143f485b6d792dec21b03e9dec1" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>enterUpdateMode</name></member>
+      <member refid="classQgsDataProvider_1a77e9159d97d4276753cbaf54b89da6d0" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>error</name></member>
+      <member refid="classQgsDataProvider_1a5b7c15ef49dfa659b23b81c4b0893cddabcccdb5e52717ca90a42d83bb247d306" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>EvaluateDefaultValues</name></member>
+      <member refid="classQgsRasterDataProvider_1a855b75f332cfa88c09d5bfc34f67f6e6" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>extent</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153a4527edddfa87acc2f0e13e76e9bef573" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>File</name></member>
+      <member refid="classQgsDataProvider_1a77c62f534a2dccc65b963e03805c5b55" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>fileRasterFilters</name></member>
+      <member refid="classQgsDataProvider_1ac24f20e109d01676c79f8a903a22d7f8" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>fileVectorFilters</name></member>
+      <member refid="classQgsDataProvider_1a584aad1c83ef7873a4cefa3d337c391e" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>fullExtentCalculated</name></member>
+      <member refid="classQgsRasterInterface_1a6fd95d26a509c3855900518b5411b193" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>generateBandName</name></member>
+      <member refid="classQgsRasterDataProvider_1a53ae1107ebf24d69d5fbf3cee16de5d0" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>getLegendGraphic</name></member>
+      <member refid="classQgsRasterDataProvider_1afdbce53f38306a93f4aae57109b72e9a" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>getLegendGraphicFetcher</name></member>
+      <member refid="classQgsRasterInterface_1a96e3b90944051463689fd94291f64d59" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>hasHistogram</name></member>
+      <member refid="classQgsRasterDataProvider_1a99af1df7129d1bc0c8c640ac74313370" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>hasPyramids</name></member>
+      <member refid="classQgsRasterInterface_1ad14d9430addc4dc547f157b11b1b2765" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>hasStatistics</name></member>
+      <member refid="classQgsRasterInterface_1af8aecc430f757bbfd2a3ad19640f0bff" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>histogram</name></member>
+      <member refid="classQgsRasterDataProvider_1a444498d02435eee131a0e957b9b2fe6e" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>htmlMetadata</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a395b13b3e726868979d953dce4e359ba" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Identify</name></member>
+      <member refid="classQgsRasterDataProvider_1a5b033a4ab93593c8378af8005ed52ccd" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>identify</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05aa107514876635dc1aa1812e4c00b1cbd" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>IdentifyFeature</name></member>
+      <member refid="classQgsRasterDataProvider_1a1d1838ea39bf7a4e327b986e3be9b98f" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>identifyFormatFromName</name></member>
+      <member refid="classQgsRasterDataProvider_1ab960495a8feb1372cc90d1d648e273de" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>identifyFormatLabel</name></member>
+      <member refid="classQgsRasterDataProvider_1a9f664978aeeda03aadc113583b620351" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>identifyFormatName</name></member>
+      <member refid="classQgsRasterDataProvider_1a96ce3265e12f652c846a17a9c66ee94b" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>identifyFormatToCapability</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05acb26e48d27a087df228b73e542b1f1d2" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>IdentifyHtml</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05aec5ee874e5e3a63ec621f5bb76a399f0" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>IdentifyText</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a3289d821c3ce98cc0152d083c040ab2e" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>IdentifyValue</name></member>
+      <member refid="classQgsRasterInterface_1a5676bc47dd66917d489d1aa1857943d1" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>initHistogram</name></member>
+      <member refid="classQgsRasterInterface_1a9068892452454f5437f4f4d159a956e1" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>initStatistics</name></member>
+      <member refid="classQgsRasterInterface_1a5133e64fa9b646ba44ba970e58ba7de1" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>input</name></member>
+      <member refid="classQgsDataProvider_1a037199bfafba24782f2ea7f07a133876" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>invalidateConnections</name></member>
+      <member refid="classQgsRasterDataProvider_1a5f9f6f961e0bd3ddd0bdd6ac6c6f5f57" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>isEditable</name></member>
+      <member refid="classQgsDataProvider_1a6d034edbd7af7a7b02a642d241aa61fd" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>isValid</name></member>
+      <member refid="classQgsRasterDataProvider_1a366abf8ecfffc84ec5e80b3fa2643fe5" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>lastError</name></member>
+      <member refid="classQgsRasterDataProvider_1a25feae72ad6b390f37d1cacf07193428" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>lastErrorFormat</name></member>
+      <member refid="classQgsRasterDataProvider_1aedab20f5ff771c1abb4e7f31e05b0ed9" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>lastErrorTitle</name></member>
+      <member refid="classQgsDataProvider_1a69646da138dc98e9fa605fbed1283bb6" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>layerMetadata</name></member>
+      <member refid="classQgsDataProvider_1a06aa48e59fe6cd5aa6584c6bbb7891f2" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>leaveUpdateMode</name></member>
+      <member refid="classQgsRasterDataProvider_1afb2ff90d0f7a49e0942e3576ccfd215c" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mDpi</name></member>
+      <member refid="classQgsDataProvider_1a739f3d6e8264888cfd9b9acfb89187c5" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mError</name></member>
+      <member refid="classQgsRasterDataProvider_1afd514abd420c871f4e26bb96f090b700" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mExtent</name></member>
+      <member refid="classQgsRasterInterface_1ae62adab6db8d26dc8e04ba136ba819c8" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mHistograms</name></member>
+      <member refid="classQgsRasterInterface_1ad9ac7504d704cf5681691da269fc7a98" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mInput</name></member>
+      <member refid="classQgsRasterInterface_1a8b7d50f46de894b81abee6451723f7dc" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mOn</name></member>
+      <member refid="classQgsRasterDataProvider_1ac5ef6484958ba9f29eefd75c6d23ea7c" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mSrcHasNoDataValue</name></member>
+      <member refid="classQgsRasterDataProvider_1abb128bd2c6c9812b9903a959d882fac7" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mSrcNoDataValue</name></member>
+      <member refid="classQgsRasterInterface_1a462c9ae3fde5e7896deb047ff78cfa2c" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mStatistics</name></member>
+      <member refid="classQgsDataProvider_1a709da4f1f8f9a3ff272a0a6e24fca062" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mTimestamp</name></member>
+      <member refid="classQgsRasterDataProvider_1a564c70e4af0cbf42ad55570e47b6625c" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mUserNoDataValue</name></member>
+      <member refid="classQgsRasterDataProvider_1a08c89abb85d737f5716f9acd8bf58c7f" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>mUseSrcNoDataValue</name></member>
+      <member refid="classQgsDataProvider_1a167a2d18c5824e4d5b69455b031546bd" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>name</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153ab2188dfa40f0cd2198972b7c771dd97c" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Net</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a444d11298cdd17320df4af97558e5718" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>NoCapabilities</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153a1f81315186e62435cff393022d4afac2" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>NoDataCapabilities</name></member>
+      <member refid="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12daa89388955a9828c3fcde729567d67d040" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>NoProviderCapabilities</name></member>
+      <member refid="classQgsDataProvider_1abdb764c89cc99ccaa418178c26d84c32" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>notify</name></member>
+      <member refid="classQgsRasterInterface_1a97f3f96ee9376c7bce4fa5098e680adc" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>on</name></member>
+      <member refid="classQgsRasterDataProvider_1a5c4b360b60641aead70bf7744982f5fc" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>providerCapabilities</name></member>
+      <member refid="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12da" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>ProviderCapability</name></member>
+      <member refid="classQgsDataProvider_1a5b7c15ef49dfa659b23b81c4b0893cdd" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>ProviderProperty</name></member>
+      <member refid="classQgsDataProvider_1ac244176fc16f6b0c8f10735da6d52118" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>providerProperty</name></member>
+      <member refid="classQgsDataProvider_1adaa3e78c2635798ad3f98c97102d03d4" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>providerProperty</name></member>
+      <member refid="classQgsRasterDataProvider_1ad98d92f1388d28429bb6bdf27badab0f" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>pyramidResamplingMethods</name></member>
+      <member refid="classQgsDataProvider_1a01ff4330b3a2b2df1cdd6d27603e04e9" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>QgsDataProvider</name></member>
+      <member refid="classQgsRasterDataProvider_1abe2837c4286d5747bf026f8a0b4cd355" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>QgsRasterDataProvider</name></member>
+      <member refid="classQgsRasterDataProvider_1a488a5def3bab120ccbf4d0174ccebc50" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>QgsRasterDataProvider</name></member>
+      <member refid="classQgsRasterInterface_1a82a99df2f1820281227aed8a3545679c" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>QgsRasterInterface</name></member>
+      <member refid="classQgsRasterDataProvider_1a8f7c71c008db953aa1769d690b411c7b" prot="protected" virt="virtual"><scope>QgsRasterDataProvider</scope><name>readBlock</name></member>
+      <member refid="classQgsRasterDataProvider_1a0b876df12606337ddef68aa53b3543a8" prot="protected" virt="virtual"><scope>QgsRasterDataProvider</scope><name>readBlock</name></member>
+      <member refid="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12daa30ea09201e4d40c0cdcd09681a0e6ae5" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>ReadLayerMetadata</name></member>
+      <member refid="classQgsRasterInterface_1ad9f3a115ec5d9039d57260bdfeed5295" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>readXml</name></member>
+      <member refid="classQgsRasterDataProvider_1a549cd8846ecc4318459279087bd3bd50" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>reload</name></member>
+      <member refid="classQgsDataProvider_1aea143a6723ae49ca0a10061ec52322d0" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>reloadData</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a167967c4e816c3601a3b5e0b44fff2f4" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Remove</name></member>
+      <member refid="classQgsRasterDataProvider_1a4e5b507bd35952aa1780073575e22d76" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>remove</name></member>
+      <member refid="classQgsDataProvider_1ade08d99b8d4d08052d3911de3e3c081f" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>renderInPreview</name></member>
+      <member refid="classQgsRasterDataProvider_1ab3030e805bea2466ef4d684e5d616b32" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>sample</name></member>
+      <member refid="classQgsDataProvider_1a73a6ca365cde3bcd37ff9c7d931b3d75" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setDataSourceUri</name></member>
+      <member refid="classQgsRasterDataProvider_1a8299aa87b3489382c420e016a9995893" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>setDpi</name></member>
+      <member refid="classQgsRasterDataProvider_1adc8d1ba70532db8f0a3ab2a5e23679b8" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setEditable</name></member>
+      <member refid="classQgsDataProvider_1a1e7a5b46dcf07d146f257e9a08bde197" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>setError</name></member>
+      <member refid="classQgsRasterDataProvider_1ac59a243c5558c0773098a30d1a75ad4c" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setInput</name></member>
+      <member refid="classQgsDataProvider_1a0cf28542bcea779cb93d3fd67cd623c0" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setLayerOrder</name></member>
+      <member refid="classQgsDataProvider_1a2765050355390ae652f50eef6e47c35a" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setListening</name></member>
+      <member refid="classQgsRasterDataProvider_1a1efeaeef123843a94925110e26f56b68" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setNoDataValue</name></member>
+      <member refid="classQgsRasterInterface_1a71a9a54722582c331239ab5efd31822d" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setOn</name></member>
+      <member refid="classQgsDataProvider_1a3012970e7ff3fd790f45d5b680431c8f" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>setProviderProperty</name></member>
+      <member refid="classQgsDataProvider_1a3fc28217167326c71ecb68547d971036" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>setProviderProperty</name></member>
+      <member refid="classQgsDataProvider_1af1e9e5f613bc26aad36321e789801366" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setSubLayerVisibility</name></member>
+      <member refid="classQgsDataProvider_1ad52e4c2dab80e6125e1c07f13c725cc6" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setSubsetString</name></member>
+      <member refid="classQgsDataProvider_1a07f39172fc273ba241d0f8e483ef6b2b" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>setUri</name></member>
+      <member refid="classQgsRasterDataProvider_1afac35ba3e4f04668ae25558d0d559643" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setUserNoDataValue</name></member>
+      <member refid="classQgsRasterDataProvider_1a42649c4168017b33f34463ed8c416baa" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>setUseSourceNoDataValue</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05aadc59abc8f2b2c71d9297613e18261b5" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>Size</name></member>
+      <member refid="classQgsRasterDataProvider_1a3ffc3ed0e1e4948e9fb8b993714d787b" prot="public" virt="pure-virtual"><scope>QgsRasterDataProvider</scope><name>sourceDataType</name></member>
+      <member refid="classQgsRasterDataProvider_1a1d1b013317d5445c326b2340eb89491e" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>sourceHasNoDataValue</name></member>
+      <member refid="classQgsRasterInterface_1a8f18bf422730b3ad42f16efd5860df0c" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>sourceInput</name></member>
+      <member refid="classQgsRasterInterface_1a303711d66ff2c648ab69d3f9c7fb84bb" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>sourceInput</name></member>
+      <member refid="classQgsRasterDataProvider_1a4fcc41a5e29c27c458d690f414dd9a40" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>sourceNoDataValue</name></member>
+      <member refid="classQgsRasterDataProvider_1ac7f0ac3ac02c2dc4dd546a7883fcc745" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>statusChanged</name></member>
+      <member refid="classQgsRasterDataProvider_1ad76de7ce8bab4d97bc57945ec59836c8" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>stepHeight</name></member>
+      <member refid="classQgsRasterDataProvider_1ade3ae35fa70ceea7427afaad7626b0c1" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>stepWidth</name></member>
+      <member refid="classQgsDataProvider_1acfd848673de93ad11abb901f23bcc03b" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>SUBLAYER_SEPARATOR</name></member>
+      <member refid="classQgsDataProvider_1ad54e0150e07dc310f75068543d40e141" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>subLayerCount</name></member>
+      <member refid="classQgsRasterDataProvider_1a9b2426640429f78b13b6a5fbb9d0f6f7" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>subLayers</name></member>
+      <member refid="classQgsDataProvider_1ac37f7be01d016aa85624d80ab94d6f32" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>subLayerStyles</name></member>
+      <member refid="classQgsDataProvider_1a63173ed93bfc521d3ed3f50e2c1a046b" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>subsetString</name></member>
+      <member refid="classQgsRasterDataProvider_1af78ae06ac3e2834deb8b550ef03fa27f" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>supportsLegendGraphic</name></member>
+      <member refid="classQgsDataProvider_1a92eaf65492a9162be2583a94f2a3d7df" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>supportsSubsetString</name></member>
+      <member refid="classQgsRasterDataProvider_1a84ae0d3b43181f97eeca04af2fe69f80" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>timestamp</name></member>
+      <member refid="classQgsDataProvider_1acb454ad6003885cfb6f38908e6b31e76" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>updateExtents</name></member>
+      <member refid="classQgsDataProvider_1aace8571ba2a6c0fd1beb972b60cc6741" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>uri</name></member>
+      <member refid="classQgsRasterDataProvider_1acab0cf63182d7071c175cf9bdec38da0" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>userNoDataValues</name></member>
+      <member refid="classQgsRasterDataProvider_1a70f490456b4bad0a2375b8e7a4c51b98" prot="protected" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>userNoDataValuesContains</name></member>
+      <member refid="classQgsRasterDataProvider_1a3277411b3891dba04ce4eb5700347ec8" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>useSourceNoDataValue</name></member>
+      <member refid="classQgsRasterDataProvider_1a33c3d6c124411540817480bbd4323549" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>validateCreationOptions</name></member>
+      <member refid="classQgsRasterDataProvider_1aa4255cf7693c2f440f4ce7d02ce24ae4" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>validatePyramidsConfigOptions</name></member>
+      <member refid="classQgsRasterDataProvider_1af15b6038b5c59276a4ef87598b919482" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>write</name></member>
+      <member refid="classQgsRasterDataProvider_1a7b9cf20ab06b726d140ca18d49e22d1f" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>writeBlock</name></member>
+      <member refid="classQgsDataProvider_1ad9277c014467cb8471e3119397f087e9" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>writeLayerMetadata</name></member>
+      <member refid="classQgsRasterDataProvider_1aa0417bf62ab0164d5a5ed1801e7f12daa9579cadc19f66b0e7153dab3c2093165" prot="public" virt="non-virtual"><scope>QgsRasterDataProvider</scope><name>WriteLayerMetadata</name></member>
+      <member refid="classQgsRasterInterface_1ae9547759099c137dea230259f1f06bac" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>writeXml</name></member>
+      <member refid="classQgsRasterInterface_1a8e8027c88f4f0ab5bc634da41a588edf" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>xBlockSize</name></member>
+      <member refid="classQgsRasterInterface_1a6024da23ab7abf219925b505a956526b" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>xSize</name></member>
+      <member refid="classQgsRasterInterface_1a212328b3ab8c1eeeca03785c0a38c715" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>yBlockSize</name></member>
+      <member refid="classQgsRasterInterface_1ae1812389c8815fae851ca3eaffef5265" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>ySize</name></member>
+      <member refid="classQgsRasterInterface_1aab63e6c02337fe78aac563aeb34db150" prot="public" virt="virtual"><scope>QgsRasterDataProvider</scope><name>~QgsRasterInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

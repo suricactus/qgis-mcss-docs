@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLayoutObject class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLayoutObject <span class="m-thin">class</span>
+        </h1>
+        <p>A base class for objects which belong to a layout.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsExpressionContextGenerator.html" class="m-doc">QgsExpressionContextGenerator</a>
+            </dt>
+            <dd>Abstract interface for generating an expression context.</dd>
+          </dl>
+        </section>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>
+            </dt>
+            <dd>Base class for graphical items within a <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>.</dd>
+            <dt>
+              class <a href="classQgsLayoutItemMapItem.html" class="m-doc">QgsLayoutItemMapItem</a>
+            </dt>
+            <dd>An item which is drawn inside a <a href="classQgsLayoutItemMap.html" class="m-doc">QgsLayoutItemMap</a>, e.g., a grid or map overview.</dd>
+            <dt>
+              class <a href="classQgsLayoutMultiFrame.html" class="m-doc">QgsLayoutMultiFrame</a>
+            </dt>
+            <dd>Abstract base class for layout items with the ability to distribute the content to several frames (<a href="classQgsLayoutFrame.html" class="m-doc">QgsLayoutFrame</a> items).</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a76eb9873bc7087e3c3ce43acce0dbad0" class="m-doc">DataDefinedProperty</a> { </span><span class="m-doc-wrap"><a href="#a76eb9873bc7087e3c3ce43acce0dbad0ad2f753f2a5fd9cd01884a74dcdf30581" class="m-doc">NoProperty</a> = 0,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a607b21034d5aa5270e410a0179feffca" class="m-doc">AllProperties</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a00411b895e2e42762fb007d5a9e2f8f4" class="m-doc">TestProperty</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0ae6e749f94e114e2521fffe3cd7350c80" class="m-doc">PresetPaperSize</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0ad968e380d2c9efa280ea36de9d1c7e24" class="m-doc">PaperWidth</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a32cad4df9f9aca96db05a5a5843e5250" class="m-doc">PaperHeight</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aefd4819c5d82a5ccd2d892431fbfe91f" class="m-doc">NumPages</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a0d3fa9a224e8c4efd68da11ed28338a0" class="m-doc">PaperOrientation</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8aec1505682fa9b0efefe2afb79309cb" class="m-doc">PageNumber</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0ae75285b6755ec937241633ffc0f3a4c8" class="m-doc">PositionX</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a65f4698b882592f96a9ab2e8b9f28d9b" class="m-doc">PositionY</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a272630d99c5ef7689a4254c59f143f3f" class="m-doc">ItemWidth</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a396a374ac672c934e1b0420a67615491" class="m-doc">ItemHeight</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa711676e5e311231eee99060da4573d9" class="m-doc">ItemRotation</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a72191f49489ec21628b1aff603219fef" class="m-doc">Transparency</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a18c4ba918cd1a2de78fbe2dc4b548d9d" class="m-doc">Opacity</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4c8aaa81d12f413ad5c09ce4deea8eea" class="m-doc">BlendMode</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8c08d116637d49b6f18dd514f900e376" class="m-doc">ExcludeFromExports</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aecef78cb2bbef20401b755e54310696b" class="m-doc">FrameColor</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa2b623d97732f6f500cf7fb3588fd08a" class="m-doc">BackgroundColor</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0afa8565f3fa9391aa60f2cbd2245599db" class="m-doc">MapRotation</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa2febebc9f33cfb092a8cb804fd0643a" class="m-doc">MapScale</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8b6fe2e155c053376e46b6a90cdcd305" class="m-doc">MapXMin</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a04f96ed7f947365154082c774a2456ee" class="m-doc">MapYMin</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4141a8badf860d75a4844dac6ba3f57e" class="m-doc">MapXMax</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a88af9499bb0399bd14f7b466b8503bdb" class="m-doc">MapYMax</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a83ae4f0b48de6182c82e4ef0d1b26b97" class="m-doc">MapAtlasMargin</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aac2cd3d53998bac72701447192ea6162" class="m-doc">MapLayers</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a1f8f24b051fa6119fed9471604900a1c" class="m-doc">MapStylePreset</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa42d600bb53ba16bc49ecfc51153280d" class="m-doc">MapLabelMargin</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0ad06234cdabbb9a9d6d07b95370fcbfb0" class="m-doc">PictureSource</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0abd45277e0db71abfecc3658a1c7d9861" class="m-doc">PictureSvgBackgroundColor</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a0c82656c4c9db685669f433b60184dea" class="m-doc">PictureSvgStrokeColor</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8f0cce732900179d825460bb64de39ff" class="m-doc">PictureSvgStrokeWidth</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a6d9c0ef9553e2b2b6c82b21e8265b8b9" class="m-doc">SourceUrl</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a13e1017d71a0aa69335138986b859402" class="m-doc">LegendTitle</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa4034a28dc4aeca423ce34c45dcc0f15" class="m-doc">LegendColumnCount</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a7466184b12322ec8bc66b02a34059947" class="m-doc">ScalebarFillColor</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4d8d3f8fc9786365c4ee044508fce999" class="m-doc">ScalebarFillColor2</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0aaea90c17d5f0313b08e6856706ed510e" class="m-doc">ScalebarLineColor</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4ef7176ae3bb6d3c8f8252bada365f75" class="m-doc">ScalebarLineWidth</a>,
+              <a href="#a76eb9873bc7087e3c3ce43acce0dbad0a26e0a415fbe8c5690868088342e019a8" class="m-doc">AttributeTableSourceLayer</a> }</span>
+            </dt>
+            <dd>Data defined properties for different item types.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#af5a44ba76312a7dc4c998bf2001a96be" class="m-doc">PropertyValueType</a> { </span><span class="m-doc-wrap"><a href="#af5a44ba76312a7dc4c998bf2001a96bea6c2be104b240adf840fb8cf4c8a8c34a" class="m-doc">EvaluatedValue</a> = 0,
+              <a href="#af5a44ba76312a7dc4c998bf2001a96bea0a68679ca04e4528d1f2875d0d641847" class="m-doc">OriginalValue</a> }</span>
+            </dt>
+            <dd>Specifies whether the value returned by a function should be the original, user set value, or the current evaluated value for the property.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a31cf38a52dcfef37d1158cef141f73d4" class="m-doc-self" name="a31cf38a52dcfef37d1158cef141f73d4">propertyDefinitions</a>(</span><span class="m-doc-wrap">) -&gt; const <a href="qgspropertycollection_8h.html#a55b05677f78795114fa12c8fe7356db6" class="m-doc">QgsPropertiesDefinition</a>&amp;</span>
+            </dt>
+            <dd>Returns the layout object property definitions.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ac285fa34d1af638fed24d1f7f7410dac" class="m-doc">QgsLayoutObject</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructor for <a href="classQgsLayoutObject.html" class="m-doc">QgsLayoutObject</a>, with the specified parent <em>layout</em>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a813d0158de4aea8adcc6d9946be1dab3" class="m-doc">createExpressionContext</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a> <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Creates an expression context relating to the objects&#x27; current state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a006d4bec3ed3b591289a4e0f55197318" class="m-doc">customProperties</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns list of keys stored in custom properties for the object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1f1d97a03aa0d6789c09b67e460b4257" class="m-doc">customProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant()) const -&gt; QVariant</span>
+            </dt>
+            <dd>Read a custom property from the object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeec6cfc2fdb1f0be6753955e622fe0c8" class="m-doc">dataDefinedProperties</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsPropertyCollection.html" class="m-doc">QgsPropertyCollection</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the object&#x27;s property collection, used for data defined overrides.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af9b0f79cb73a058f45d35678fbe46276" class="m-doc">dataDefinedProperties</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsPropertyCollection.html" class="m-doc">QgsPropertyCollection</a>&amp;</span>
+            </dt>
+            <dd>Returns a reference to the object&#x27;s property collection, used for data defined overrides.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5c2685de76a13b24f034dac8efc895eb" class="m-doc-self" name="a5c2685de76a13b24f034dac8efc895eb">layout</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>*</span>
+            </dt>
+            <dd>Returns the layout the object is attached to.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa54a8d2f4bf51c50f091b1d5290e5d6c" class="m-doc-self" name="aa54a8d2f4bf51c50f091b1d5290e5d6c">layout</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>*</span>
+            </dt>
+            <dd>Returns the layout the object is attached to.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8207598f6a2b6f54f6cdaacc0430567f" class="m-doc">removeCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key)</span>
+            </dt>
+            <dd>Remove a custom property from the object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5d3f15eb11a3715c3449027cea38bced" class="m-doc">setCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value)</span>
+            </dt>
+            <dd>Set a custom property for the object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa8b7a6d6ce0fcfcd42788aca05a3264b" class="m-doc">setDataDefinedProperties</a>(</span><span class="m-doc-wrap">const <a href="classQgsPropertyCollection.html" class="m-doc">QgsPropertyCollection</a>&amp; collection)</span>
+            </dt>
+            <dd>Sets the objects&#x27;s property collection, used for data defined overrides.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a616de52c6aae52217a3a4e5b8a61c758" class="m-doc-self" name="a616de52c6aae52217a3a4e5b8a61c758">changed</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the object&#x27;s properties change.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a686ed2ebe1708e8df64badddad1bfe78" class="m-doc-self" name="a686ed2ebe1708e8df64badddad1bfe78">refresh</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Refreshes the object, causing a recalculation of any property overrides.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a57043429761448c8c2963c334616debf" class="m-doc">readObjectPropertiesFromElement</a>(</span><span class="m-doc-wrap">const QDomElement&amp; parentElement,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) -&gt; bool</span>
+            </dt>
+            <dd>Sets object properties from a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aec1cff215521090f1b22d88f95858bd1" class="m-doc">writeObjectPropertiesToElement</a>(</span><span class="m-doc-wrap">QDomElement&amp; parentElement,
+              QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const -&gt; bool</span>
+            </dt>
+            <dd>Stores object properties within an XML DOM element.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <a href="classQgsObjectCustomProperties.html" class="m-doc">QgsObjectCustomProperties</a> <a href="#a3edd413c3af897fd2c01070b7b7938e2" class="m-doc-self" name="a3edd413c3af897fd2c01070b7b7938e2">mCustomProperties</a>
+            </dt>
+            <dd>Custom properties for object.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a76eb9873bc7087e3c3ce43acce0dbad0"><div>
+            <h3>
+              enum QgsLayoutObject::<wbr /><a href="#a76eb9873bc7087e3c3ce43acce0dbad0" class="m-doc-self">DataDefinedProperty</a>
+            </h3>
+            <p>Data defined properties for different item types.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0ad2f753f2a5fd9cd01884a74dcdf30581" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0ad2f753f2a5fd9cd01884a74dcdf30581">NoProperty</a></td>
+                  <td>
+                  <p>No property.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a607b21034d5aa5270e410a0179feffca" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a607b21034d5aa5270e410a0179feffca">AllProperties</a></td>
+                  <td>
+                  <p>All properties for item.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a00411b895e2e42762fb007d5a9e2f8f4" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a00411b895e2e42762fb007d5a9e2f8f4">TestProperty</a></td>
+                  <td>
+                  <p>Dummy property with no effect on item.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0ae6e749f94e114e2521fffe3cd7350c80" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0ae6e749f94e114e2521fffe3cd7350c80">PresetPaperSize</a></td>
+                  <td>
+                  <p>Preset paper size for composition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0ad968e380d2c9efa280ea36de9d1c7e24" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0ad968e380d2c9efa280ea36de9d1c7e24">PaperWidth</a></td>
+                  <td>
+                  <p>Paper width (deprecated)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a32cad4df9f9aca96db05a5a5843e5250" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a32cad4df9f9aca96db05a5a5843e5250">PaperHeight</a></td>
+                  <td>
+                  <p>Paper height (deprecated)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aefd4819c5d82a5ccd2d892431fbfe91f" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aefd4819c5d82a5ccd2d892431fbfe91f">NumPages</a></td>
+                  <td>
+                  <p>Number of pages in composition (deprecated)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a0d3fa9a224e8c4efd68da11ed28338a0" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a0d3fa9a224e8c4efd68da11ed28338a0">PaperOrientation</a></td>
+                  <td>
+                  <p>Paper orientation.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8aec1505682fa9b0efefe2afb79309cb" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a8aec1505682fa9b0efefe2afb79309cb">PageNumber</a></td>
+                  <td>
+                  <p>Page number for item placement.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0ae75285b6755ec937241633ffc0f3a4c8" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0ae75285b6755ec937241633ffc0f3a4c8">PositionX</a></td>
+                  <td>
+                  <p>X position on page.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a65f4698b882592f96a9ab2e8b9f28d9b" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a65f4698b882592f96a9ab2e8b9f28d9b">PositionY</a></td>
+                  <td>
+                  <p>Y position on page.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a272630d99c5ef7689a4254c59f143f3f" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a272630d99c5ef7689a4254c59f143f3f">ItemWidth</a></td>
+                  <td>
+                  <p>Width of item.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a396a374ac672c934e1b0420a67615491" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a396a374ac672c934e1b0420a67615491">ItemHeight</a></td>
+                  <td>
+                  <p>Height of item.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa711676e5e311231eee99060da4573d9" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aa711676e5e311231eee99060da4573d9">ItemRotation</a></td>
+                  <td>
+                  <p>Rotation of item.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a72191f49489ec21628b1aff603219fef" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a72191f49489ec21628b1aff603219fef">Transparency</a></td>
+                  <td>
+                  <p>Item transparency (deprecated)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a18c4ba918cd1a2de78fbe2dc4b548d9d" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a18c4ba918cd1a2de78fbe2dc4b548d9d">Opacity</a></td>
+                  <td>
+                  <p>Item opacity.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4c8aaa81d12f413ad5c09ce4deea8eea" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a4c8aaa81d12f413ad5c09ce4deea8eea">BlendMode</a></td>
+                  <td>
+                  <p>Item blend mode.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8c08d116637d49b6f18dd514f900e376" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a8c08d116637d49b6f18dd514f900e376">ExcludeFromExports</a></td>
+                  <td>
+                  <p>Exclude item from exports.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aecef78cb2bbef20401b755e54310696b" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aecef78cb2bbef20401b755e54310696b">FrameColor</a></td>
+                  <td>
+                  <p>Item frame color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa2b623d97732f6f500cf7fb3588fd08a" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aa2b623d97732f6f500cf7fb3588fd08a">BackgroundColor</a></td>
+                  <td>
+                  <p>Item background color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0afa8565f3fa9391aa60f2cbd2245599db" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0afa8565f3fa9391aa60f2cbd2245599db">MapRotation</a></td>
+                  <td>
+                  <p>Map rotation.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa2febebc9f33cfb092a8cb804fd0643a" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aa2febebc9f33cfb092a8cb804fd0643a">MapScale</a></td>
+                  <td>
+                  <p>Map scale.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8b6fe2e155c053376e46b6a90cdcd305" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a8b6fe2e155c053376e46b6a90cdcd305">MapXMin</a></td>
+                  <td>
+                  <p>Map extent x minimum.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a04f96ed7f947365154082c774a2456ee" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a04f96ed7f947365154082c774a2456ee">MapYMin</a></td>
+                  <td>
+                  <p>Map extent y minimum.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4141a8badf860d75a4844dac6ba3f57e" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a4141a8badf860d75a4844dac6ba3f57e">MapXMax</a></td>
+                  <td>
+                  <p>Map extent x maximum.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a88af9499bb0399bd14f7b466b8503bdb" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a88af9499bb0399bd14f7b466b8503bdb">MapYMax</a></td>
+                  <td>
+                  <p>Map extent y maximum.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a83ae4f0b48de6182c82e4ef0d1b26b97" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a83ae4f0b48de6182c82e4ef0d1b26b97">MapAtlasMargin</a></td>
+                  <td>
+                  <p>Map atlas margin.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aac2cd3d53998bac72701447192ea6162" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aac2cd3d53998bac72701447192ea6162">MapLayers</a></td>
+                  <td>
+                  <p>Map layer set.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a1f8f24b051fa6119fed9471604900a1c" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a1f8f24b051fa6119fed9471604900a1c">MapStylePreset</a></td>
+                  <td>
+                  <p>Layer and style map theme.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa42d600bb53ba16bc49ecfc51153280d" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aa42d600bb53ba16bc49ecfc51153280d">MapLabelMargin</a></td>
+                  <td>
+                  <p>Map label margin.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0ad06234cdabbb9a9d6d07b95370fcbfb0" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0ad06234cdabbb9a9d6d07b95370fcbfb0">PictureSource</a></td>
+                  <td>
+                  <p>Picture source url.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0abd45277e0db71abfecc3658a1c7d9861" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0abd45277e0db71abfecc3658a1c7d9861">PictureSvgBackgroundColor</a></td>
+                  <td>
+                  <p>SVG background color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a0c82656c4c9db685669f433b60184dea" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a0c82656c4c9db685669f433b60184dea">PictureSvgStrokeColor</a></td>
+                  <td>
+                  <p>SVG stroke color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a8f0cce732900179d825460bb64de39ff" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a8f0cce732900179d825460bb64de39ff">PictureSvgStrokeWidth</a></td>
+                  <td>
+                  <p>SVG stroke width.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a6d9c0ef9553e2b2b6c82b21e8265b8b9" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a6d9c0ef9553e2b2b6c82b21e8265b8b9">SourceUrl</a></td>
+                  <td>
+                  <p>Html source url.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a13e1017d71a0aa69335138986b859402" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a13e1017d71a0aa69335138986b859402">LegendTitle</a></td>
+                  <td>
+                  <p>Legend title.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aa4034a28dc4aeca423ce34c45dcc0f15" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aa4034a28dc4aeca423ce34c45dcc0f15">LegendColumnCount</a></td>
+                  <td>
+                  <p>Legend column count.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a7466184b12322ec8bc66b02a34059947" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a7466184b12322ec8bc66b02a34059947">ScalebarFillColor</a></td>
+                  <td>
+                  <p>Scalebar fill color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4d8d3f8fc9786365c4ee044508fce999" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a4d8d3f8fc9786365c4ee044508fce999">ScalebarFillColor2</a></td>
+                  <td>
+                  <p>Scalebar secondary fill color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0aaea90c17d5f0313b08e6856706ed510e" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0aaea90c17d5f0313b08e6856706ed510e">ScalebarLineColor</a></td>
+                  <td>
+                  <p>Scalebar line color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a4ef7176ae3bb6d3c8f8252bada365f75" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a4ef7176ae3bb6d3c8f8252bada365f75">ScalebarLineWidth</a></td>
+                  <td>
+                  <p>Scalebar line width,.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a76eb9873bc7087e3c3ce43acce0dbad0a26e0a415fbe8c5690868088342e019a8" class="m-doc-self" name="a76eb9873bc7087e3c3ce43acce0dbad0a26e0a415fbe8c5690868088342e019a8">AttributeTableSourceLayer</a></td>
+                  <td>
+                  <p>Attribute table source layer.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af5a44ba76312a7dc4c998bf2001a96be"><div>
+            <h3>
+              enum QgsLayoutObject::<wbr /><a href="#af5a44ba76312a7dc4c998bf2001a96be" class="m-doc-self">PropertyValueType</a>
+            </h3>
+            <p>Specifies whether the value returned by a function should be the original, user set value, or the current evaluated value for the property.</p>
+<p>This may differ if a property has a data defined expression active.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#af5a44ba76312a7dc4c998bf2001a96bea6c2be104b240adf840fb8cf4c8a8c34a" class="m-doc-self" name="af5a44ba76312a7dc4c998bf2001a96bea6c2be104b240adf840fb8cf4c8a8c34a">EvaluatedValue</a></td>
+                  <td>
+                  <p>Return the current evaluated value for the property.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af5a44ba76312a7dc4c998bf2001a96bea0a68679ca04e4528d1f2875d0d641847" class="m-doc-self" name="af5a44ba76312a7dc4c998bf2001a96bea0a68679ca04e4528d1f2875d0d641847">OriginalValue</a></td>
+                  <td>
+                  <p>Return the original, user set value.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ac285fa34d1af638fed24d1f7f7410dac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac285fa34d1af638fed24d1f7f7410dac" class="m-doc-self">QgsLayoutObject</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsLayoutObject.html" class="m-doc">QgsLayoutObject</a>, with the specified parent <em>layout</em>.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>While ownership of a <a href="classQgsLayoutObject.html" class="m-doc">QgsLayoutObject</a> is not passed to the layout, classes which are derived from <a href="classQgsLayoutObject.html" class="m-doc">QgsLayoutObject</a> (such as <a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>) may transfer their ownership to a layout upon construction.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a813d0158de4aea8adcc6d9946be1dab3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a> QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a813d0158de4aea8adcc6d9946be1dab3" class="m-doc-self">createExpressionContext</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Creates an expression context relating to the objects&#x27; current state.</p>
+<p>The context includes scopes for global, project and layout properties.</p>
+          </div></section>
+          <section class="m-doc-details" id="a006d4bec3ed3b591289a4e0f55197318"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a006d4bec3ed3b591289a4e0f55197318" class="m-doc-self">customProperties</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns list of keys stored in custom properties for the object.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#a5d3f15eb11a3715c3449027cea38bced" class="m-doc">setCustomProperty()</a></p><p><a href="classQgsLayoutObject.html#a1f1d97a03aa0d6789c09b67e460b4257" class="m-doc">customProperty()</a></p><p><a href="classQgsLayoutObject.html#a8207598f6a2b6f54f6cdaacc0430567f" class="m-doc">removeCustomProperty()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1f1d97a03aa0d6789c09b67e460b4257"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1f1d97a03aa0d6789c09b67e460b4257" class="m-doc-self">customProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant()) const</span></span>
+            </h3>
+            <p>Read a custom property from the object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>property key</td>
+                </tr>
+                <tr>
+                  <td>defaultValue</td>
+                  <td>default value to return if property with matching key does not exist</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>value of matching property</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#a5d3f15eb11a3715c3449027cea38bced" class="m-doc">setCustomProperty()</a></p><p><a href="classQgsLayoutObject.html#a8207598f6a2b6f54f6cdaacc0430567f" class="m-doc">removeCustomProperty()</a></p><p><a href="classQgsLayoutObject.html#a006d4bec3ed3b591289a4e0f55197318" class="m-doc">customProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeec6cfc2fdb1f0be6753955e622fe0c8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPropertyCollection.html" class="m-doc">QgsPropertyCollection</a>&amp; QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeec6cfc2fdb1f0be6753955e622fe0c8" class="m-doc-self">dataDefinedProperties</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns a reference to the object&#x27;s property collection, used for data defined overrides.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#aa8b7a6d6ce0fcfcd42788aca05a3264b" class="m-doc">setDataDefinedProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af9b0f79cb73a058f45d35678fbe46276"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsPropertyCollection.html" class="m-doc">QgsPropertyCollection</a>&amp; QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af9b0f79cb73a058f45d35678fbe46276" class="m-doc-self">dataDefinedProperties</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a reference to the object&#x27;s property collection, used for data defined overrides.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#aa8b7a6d6ce0fcfcd42788aca05a3264b" class="m-doc">setDataDefinedProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8207598f6a2b6f54f6cdaacc0430567f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8207598f6a2b6f54f6cdaacc0430567f" class="m-doc-self">removeCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key)</span></span>
+            </h3>
+            <p>Remove a custom property from the object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>property key</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#a5d3f15eb11a3715c3449027cea38bced" class="m-doc">setCustomProperty()</a></p><p><a href="classQgsLayoutObject.html#a1f1d97a03aa0d6789c09b67e460b4257" class="m-doc">customProperty()</a></p><p><a href="classQgsLayoutObject.html#a006d4bec3ed3b591289a4e0f55197318" class="m-doc">customProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5d3f15eb11a3715c3449027cea38bced"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d3f15eb11a3715c3449027cea38bced" class="m-doc-self">setCustomProperty</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value)</span></span>
+            </h3>
+            <p>Set a custom property for the object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>property key. If a property with the same key already exists it will be overwritten.</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>property value</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#a1f1d97a03aa0d6789c09b67e460b4257" class="m-doc">customProperty()</a></p><p><a href="classQgsLayoutObject.html#a8207598f6a2b6f54f6cdaacc0430567f" class="m-doc">removeCustomProperty()</a></p><p><a href="classQgsLayoutObject.html#a006d4bec3ed3b591289a4e0f55197318" class="m-doc">customProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa8b7a6d6ce0fcfcd42788aca05a3264b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa8b7a6d6ce0fcfcd42788aca05a3264b" class="m-doc-self">setDataDefinedProperties</a>(</span><span class="m-doc-wrap">const <a href="classQgsPropertyCollection.html" class="m-doc">QgsPropertyCollection</a>&amp; collection)</span></span>
+            </h3>
+            <p>Sets the objects&#x27;s property collection, used for data defined overrides.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">collection</td>
+                  <td>property collection. Existing properties will be replaced.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#aeec6cfc2fdb1f0be6753955e622fe0c8" class="m-doc">dataDefinedProperties()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a57043429761448c8c2963c334616debf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a57043429761448c8c2963c334616debf" class="m-doc-self">readObjectPropertiesFromElement</a>(</span><span class="m-doc-wrap">const QDomElement&amp; parentElement,
+              const QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Sets object properties from a DOM element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parentElement</td>
+                  <td>is the parent DOM element for the object</td>
+                </tr>
+                <tr>
+                  <td>document</td>
+                  <td>DOM document</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>read write context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if read was successful</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#aec1cff215521090f1b22d88f95858bd1" class="m-doc">writeObjectPropertiesToElement()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aec1cff215521090f1b22d88f95858bd1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutObject::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aec1cff215521090f1b22d88f95858bd1" class="m-doc-self">writeObjectPropertiesToElement</a>(</span><span class="m-doc-wrap">QDomElement&amp; parentElement,
+              QDomDocument&amp; document,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Stores object properties within an XML DOM element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parentElement</td>
+                  <td>is the parent DOM element to store the object&#x27;s properties in</td>
+                </tr>
+                <tr>
+                  <td>document</td>
+                  <td>DOM document</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>read write context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if write was successful</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutObject.html#a57043429761448c8c2963c334616debf" class="m-doc">readObjectPropertiesFromElement()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsRaster class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsRaster <span class="m-thin">class</span>
+        </h1>
+        <p>Raster namespace.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a94cc43355c657fab44bd147d82b2c2f1" class="m-doc">ColorInterpretation</a> { </span><span class="m-doc-wrap"><a href="#a94cc43355c657fab44bd147d82b2c2f1a19c41f38945f9d75f97a37853ee68533" class="m-doc">UndefinedColorInterpretation</a> = 0,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1ab38e658eff4c6e3d23cf42bccfcc76c1" class="m-doc">GrayIndex</a> = 1,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a4784f83c87a6158e9bff0aae49d0ed8a" class="m-doc">PaletteIndex</a> = 2,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a056e39a5d51a07a53b9a1592357da1b0" class="m-doc">RedBand</a> = 3,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a9034d54d09c4b99c5924e8efdd1ac505" class="m-doc">GreenBand</a> = 4,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a409392889da0f05fd49bb1e324704827" class="m-doc">BlueBand</a> = 5,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a6673fecadf2baea9635f1c1dcb748f1a" class="m-doc">AlphaBand</a> = 6,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a4a3284db1c6e1f262740f25e9e61524b" class="m-doc">HueBand</a> = 7,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1aa65179bc1c4d07fbab0f9d152d6ed1fd" class="m-doc">SaturationBand</a> = 8,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a636c533b53619f701367a7e2d6d7ba65" class="m-doc">LightnessBand</a> = 9,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a92c35571a6f36d8cc1a9115d4b0085c6" class="m-doc">CyanBand</a> = 10,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1adc2bc7d623260a0274daaf9c0812fd43" class="m-doc">MagentaBand</a> = 11,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a32b40abeb80b4fb1fb7acae1c1ee0524" class="m-doc">YellowBand</a> = 12,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a8869c0d8ec774f8b73993b87c3eb514a" class="m-doc">BlackBand</a> = 13,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a22fc5534f57bc1887aea8a169890a319" class="m-doc">YCbCr_YBand</a> = 14,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1a33ac372bbcaf21d56b5ccfb7a0f74661" class="m-doc">YCbCr_CbBand</a> = 15,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1af77670cf3deffab0c78392d420bd5846" class="m-doc">YCbCr_CrBand</a> = 16,
+              <a href="#a94cc43355c657fab44bd147d82b2c2f1ae787e73fa31f37ffb064f72715f01b19" class="m-doc">ContinuousPalette</a> = 17 }</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#aa7defa62bd87b1b5fd11a09228372bcf" class="m-doc-self" name="aa7defa62bd87b1b5fd11a09228372bcf">DrawingStyle</a> { </span><span class="m-doc-wrap"><a href="#aa7defa62bd87b1b5fd11a09228372bcfacfb55e2f7cd4d57cd36b89f9e434e4e4" class="m-doc">UndefinedDrawingStyle</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfac061b14942593ac8d041e1c045c9df7f" class="m-doc">SingleBandGray</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfa5f86fa83c40452c66c90466eac486d5a" class="m-doc">SingleBandPseudoColor</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfa5d8948d0e4bec49614e7105dd51dcc5c" class="m-doc">PalettedColor</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfa875fdb87d7f67b7a5f763e534d9e907d" class="m-doc">PalettedSingleBandGray</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfa69b2ce94fcf5af0d97a8c158691ee7ef" class="m-doc">PalettedSingleBandPseudoColor</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfac968f5e07cd6519d73a4ae7b91ca2350" class="m-doc">PalettedMultiBandColor</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfac831158aa87ef2dca53a197f45de6470" class="m-doc">MultiBandSingleBandGray</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfaf2619083d7c6b9516e5af5c6c60377e7" class="m-doc">MultiBandSingleBandPseudoColor</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfa4b62535b72aaab42c18b044d5a54394c" class="m-doc">MultiBandColor</a>,
+              <a href="#aa7defa62bd87b1b5fd11a09228372bcfa024f07c19ee4fb3b42d1d53ba23151a9" class="m-doc">SingleBandColorDataStyle</a> }</span>
+            </dt>
+            <dd>This enumerator describes the different kinds of drawing we can do.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a52e98feded11dc69c233a1e91dcbfa3c" class="m-doc">isRepresentableValue</a>(</span><span class="m-doc-wrap">double value,
+              <a href="classQgis.html#aeb8e0dfb7dc6eb09e552bf3dff9c84d5" class="m-doc">Qgis::<wbr />DataType</a> dataType) -&gt; bool</span>
+            </dt>
+            <dd>Check if the specified value is representable in the given data type.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae299525d4ff61a6d1289d25be7c3005d" class="m-doc">representableValue</a>(</span><span class="m-doc-wrap">double value,
+              <a href="classQgis.html#aeb8e0dfb7dc6eb09e552bf3dff9c84d5" class="m-doc">Qgis::<wbr />DataType</a> dataType) -&gt; double</span>
+            </dt>
+            <dd>Gets value representable by given data type.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a94cc43355c657fab44bd147d82b2c2f1"><div>
+            <h3>
+              enum QgsRaster::<wbr /><a href="#a94cc43355c657fab44bd147d82b2c2f1" class="m-doc-self">ColorInterpretation</a>
+            </h3>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a19c41f38945f9d75f97a37853ee68533" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a19c41f38945f9d75f97a37853ee68533">UndefinedColorInterpretation</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1ab38e658eff4c6e3d23cf42bccfcc76c1" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1ab38e658eff4c6e3d23cf42bccfcc76c1">GrayIndex</a></td>
+                  <td>
+                  <p>Greyscale.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a4784f83c87a6158e9bff0aae49d0ed8a" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a4784f83c87a6158e9bff0aae49d0ed8a">PaletteIndex</a></td>
+                  <td>
+                  <p>Paletted (see associated color table)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a056e39a5d51a07a53b9a1592357da1b0" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a056e39a5d51a07a53b9a1592357da1b0">RedBand</a></td>
+                  <td>
+                  <p>Red band of RGBA image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a9034d54d09c4b99c5924e8efdd1ac505" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a9034d54d09c4b99c5924e8efdd1ac505">GreenBand</a></td>
+                  <td>
+                  <p>Green band of RGBA image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a409392889da0f05fd49bb1e324704827" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a409392889da0f05fd49bb1e324704827">BlueBand</a></td>
+                  <td>
+                  <p>Blue band of RGBA image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a6673fecadf2baea9635f1c1dcb748f1a" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a6673fecadf2baea9635f1c1dcb748f1a">AlphaBand</a></td>
+                  <td>
+                  <p>Alpha (0=transparent, 255=opaque)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a4a3284db1c6e1f262740f25e9e61524b" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a4a3284db1c6e1f262740f25e9e61524b">HueBand</a></td>
+                  <td>
+                  <p>Hue band of HLS image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1aa65179bc1c4d07fbab0f9d152d6ed1fd" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1aa65179bc1c4d07fbab0f9d152d6ed1fd">SaturationBand</a></td>
+                  <td>
+                  <p>Saturation band of HLS image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a636c533b53619f701367a7e2d6d7ba65" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a636c533b53619f701367a7e2d6d7ba65">LightnessBand</a></td>
+                  <td>
+                  <p>Lightness band of HLS image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a92c35571a6f36d8cc1a9115d4b0085c6" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a92c35571a6f36d8cc1a9115d4b0085c6">CyanBand</a></td>
+                  <td>
+                  <p>Cyan band of CMYK image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1adc2bc7d623260a0274daaf9c0812fd43" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1adc2bc7d623260a0274daaf9c0812fd43">MagentaBand</a></td>
+                  <td>
+                  <p>Magenta band of CMYK image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a32b40abeb80b4fb1fb7acae1c1ee0524" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a32b40abeb80b4fb1fb7acae1c1ee0524">YellowBand</a></td>
+                  <td>
+                  <p>Yellow band of CMYK image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a8869c0d8ec774f8b73993b87c3eb514a" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a8869c0d8ec774f8b73993b87c3eb514a">BlackBand</a></td>
+                  <td>
+                  <p>Black band of CMLY image.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a22fc5534f57bc1887aea8a169890a319" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a22fc5534f57bc1887aea8a169890a319">YCbCr_YBand</a></td>
+                  <td>
+                  <p>Y Luminance.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1a33ac372bbcaf21d56b5ccfb7a0f74661" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1a33ac372bbcaf21d56b5ccfb7a0f74661">YCbCr_CbBand</a></td>
+                  <td>
+                  <p>Cb Chroma.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1af77670cf3deffab0c78392d420bd5846" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1af77670cf3deffab0c78392d420bd5846">YCbCr_CrBand</a></td>
+                  <td>
+                  <p>Cr Chroma.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a94cc43355c657fab44bd147d82b2c2f1ae787e73fa31f37ffb064f72715f01b19" class="m-doc-self" name="a94cc43355c657fab44bd147d82b2c2f1ae787e73fa31f37ffb064f72715f01b19">ContinuousPalette</a></td>
+                  <td>
+                  <p>Continuous palette, QGIS addition, GRASS.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a52e98feded11dc69c233a1e91dcbfa3c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsRaster::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52e98feded11dc69c233a1e91dcbfa3c" class="m-doc-self">isRepresentableValue</a>(</span><span class="m-doc-wrap">double value,
+              <a href="classQgis.html#aeb8e0dfb7dc6eb09e552bf3dff9c84d5" class="m-doc">Qgis::<wbr />DataType</a> dataType)</span></span>
+            </h3>
+            <p>Check if the specified value is representable in the given data type.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>dataType</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p>Supported are numerical types Byte, UInt16, Int16, UInt32, Int32, Float32, Float64.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae299525d4ff61a6d1289d25be7c3005d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static double QgsRaster::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae299525d4ff61a6d1289d25be7c3005d" class="m-doc-self">representableValue</a>(</span><span class="m-doc-wrap">double value,
+              <a href="classQgis.html#aeb8e0dfb7dc6eb09e552bf3dff9c84d5" class="m-doc">Qgis::<wbr />DataType</a> dataType)</span></span>
+            </h3>
+            <p>Gets value representable by given data type.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>dataType</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+<p>Supported are numerical types Byte, UInt16, Int16, UInt32, Int32, Float32, Float64. This is done through C casting, so you have to be sure that the provided value is representable in the output data type. This can be checked with <a href="classQgsRaster.html#a52e98feded11dc69c233a1e91dcbfa3c" class="m-doc">isRepresentableValue()</a>.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.1</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

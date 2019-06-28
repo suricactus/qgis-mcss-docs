@@ -1,0 +1,755 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsPropertyDefinition" kind="class" language="C++" prot="public">
+    <compoundname>QgsPropertyDefinition</compoundname>
+    <includes refid="qgsproperty_8h" local="no">qgsproperty.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812c" prot="public" static="no">
+        <name>DataType</name>
+        <enumvalue id="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812ca2507bab58e6ee6898a70f410d229a746" prot="public">
+          <name>DataTypeString</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Property requires a string value. </para>          </briefdescription>
+          <detaileddescription>
+<para>No numeric values are acceptable by the property. Use this for properties which require a string value such as &apos;dashed&apos; which cannot be stored in a non-string field. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812cac458302ba9258685e86253343113a26f" prot="public">
+          <name>DataTypeNumeric</name>
+          <briefdescription>
+<para>Property requires a numeric value. </para>          </briefdescription>
+          <detaileddescription>
+<para>Note that setting DataTypeNumeric as the required type means that the property also accepts string fields and inputs, as those may be convertible to a numeric value (Eg &quot;1.0&quot; -&gt; 1.0) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812ca410b62943352b55b252d65043c434154" prot="public">
+          <name>DataTypeBoolean</name>
+          <briefdescription>
+<para>Property requires a boolean value. </para>          </briefdescription>
+          <detaileddescription>
+<para>Note that setting DataTypeBoolean as the required type means that the property also accepts string and numeric fields, as those may be convertible to a boolean value (Eg &quot;1.0&quot; -&gt; true) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Valid data types required by property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="84" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="83" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfc" prot="public" static="no">
+        <name>StandardPropertyTemplate</name>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca8df940455b8767b409387c54e355cd63" prot="public">
+          <name>Boolean</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Boolean value. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca301d35ef482b1ca26fe15b214d796f52" prot="public">
+          <name>Integer</name>
+          <briefdescription>
+<para>Integer value (including negative values) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcab30f1b95a7d0b8b918af743e5df72aed" prot="public">
+          <name>IntegerPositive</name>
+          <briefdescription>
+<para>Positive integer values (including 0) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcaa0aeb791ec858d06ff127609f45716e8" prot="public">
+          <name>IntegerPositiveGreaterZero</name>
+          <briefdescription>
+<para>Non-zero positive integer values. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca171e9b68bf97c4592bc302ac956fcc86" prot="public">
+          <name>Double</name>
+          <briefdescription>
+<para>Double value (including negative values) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcaf1aed469f6dc6bb96e9ae09a164a0ad7" prot="public">
+          <name>DoublePositive</name>
+          <briefdescription>
+<para>Positive double value (including 0) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1a3fd94d516005f071f1e5185bc49e64" prot="public">
+          <name>Double0To1</name>
+          <briefdescription>
+<para>Double value between 0-1 (inclusive) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcadc3eb7bc20fbf21dee090a638359aa2b" prot="public">
+          <name>Rotation</name>
+          <briefdescription>
+<para>Rotation (value between 0-360 degrees) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca629aeb3544a07459e590bedbe219d0dc" prot="public">
+          <name>String</name>
+          <briefdescription>
+<para>Any string value. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcab8ebf9349fdbbbd1e51772d2747c67dc" prot="public">
+          <name>Opacity</name>
+          <briefdescription>
+<para>Opacity (0-100) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca90da62597bcb383409e722281ddc086e" prot="public">
+          <name>RenderUnits</name>
+          <briefdescription>
+<para>Render units (eg mm/pixels/map units) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcaec239aae3f0ef8f025eb4496710f4902" prot="public">
+          <name>ColorWithAlpha</name>
+          <briefdescription>
+<para>Color with alpha channel. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcad872e818b3f0e1f60de74c3eee2798f7" prot="public">
+          <name>ColorNoAlpha</name>
+          <briefdescription>
+<para>Color with no alpha channel. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca99bfe4829ef0c86e14fc17c558ce667e" prot="public">
+          <name>PenJoinStyle</name>
+          <briefdescription>
+<para>Pen join style. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca7c552610eb8f8a828d6bd3cb3598b0ad" prot="public">
+          <name>BlendMode</name>
+          <briefdescription>
+<para>Blend mode. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca77a9cfee579c27e6522bb1310d5fd4cd" prot="public">
+          <name>Point</name>
+          <briefdescription>
+<para>2D point </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcae92f6b764b888c2109dfad34711e8c01" prot="public">
+          <name>Size</name>
+          <briefdescription>
+<para>1D size (eg marker radius, or square marker height/width) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcafbc3ae2ad8fb749d23bc11b7e7fa0129" prot="public">
+          <name>Size2D</name>
+          <briefdescription>
+<para>2D size (width/height different) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca2198798a33031cf67b01e70411f56efb" prot="public">
+          <name>LineStyle</name>
+          <briefdescription>
+<para>Line style (eg solid/dashed) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1f4d07b08c9516a2253ba559017ea8b3" prot="public">
+          <name>StrokeWidth</name>
+          <briefdescription>
+<para>Line stroke width. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1ce3102d7b0d5aabcda4365b509dc116" prot="public">
+          <name>FillStyle</name>
+          <briefdescription>
+<para>Fill style (eg solid, lines) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcad6b0cbc5fc29204d88ba8c3571ff3938" prot="public">
+          <name>CapStyle</name>
+          <briefdescription>
+<para>Line cap style (eg round) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca0556a49917b738f911e6c5a1f267489c" prot="public">
+          <name>HorizontalAnchor</name>
+          <briefdescription>
+<para>Horizontal anchor point. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1a1bf3d60d1663241a5071214a9bcac0" prot="public">
+          <name>VerticalAnchor</name>
+          <briefdescription>
+<para>Vertical anchor point. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca9fd2e65127d4e23f1e745b01da023f46" prot="public">
+          <name>SvgPath</name>
+          <briefdescription>
+<para>Path to an SVG file. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcab47d081b7093d33872a55dcf4388a15c" prot="public">
+          <name>Offset</name>
+          <briefdescription>
+<para>2D offset </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcae12ee5cba5031d0b2a8bc633f18ac063" prot="public">
+          <name>Custom</name>
+          <initializer>= 3000</initializer>
+          <briefdescription>
+<para>Custom property types. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Predefined standard property templates. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="51" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1a57db102468ff4ae8af5bf2ac5ea552c7" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::mComment</definition>
+        <argsstring></argsstring>
+        <name>mComment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="209" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1adaf9885189ba4ee2363f54e42a0f6de5" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::mDescription</definition>
+        <argsstring></argsstring>
+        <name>mDescription</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="204" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1aca13f5c6d61fa4e7e14d238ebaa7a85f" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::mHelpText</definition>
+        <argsstring></argsstring>
+        <name>mHelpText</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="206" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1a57868fd7a7300bb53801f650f32a3fa5" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::mName</definition>
+        <argsstring></argsstring>
+        <name>mName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="203" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1afbe53ed8b0cb8e084a7602172157bd01" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::mOrigin</definition>
+        <argsstring></argsstring>
+        <name>mOrigin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="208" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1a6ea4d3f2fff7879313138e848d118567" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfc" kindref="member">StandardPropertyTemplate</ref></type>
+        <definition>StandardPropertyTemplate QgsPropertyDefinition::mStandardType</definition>
+        <argsstring></argsstring>
+        <name>mStandardType</name>
+        <initializer>= <ref refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcae12ee5cba5031d0b2a8bc633f18ac063" kindref="member">Custom</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="207" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPropertyDefinition_1a23d4be16e830ddd305b7d29bb097e036" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812c" kindref="member">DataType</ref></type>
+        <definition>DataType QgsPropertyDefinition::mTypes</definition>
+        <argsstring></argsstring>
+        <name>mTypes</name>
+        <initializer>= <ref refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812ca2507bab58e6ee6898a70f410d229a746" kindref="member">DataTypeString</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="205" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsPropertyDefinition_1aa8769b8fe94211635bf2ad31e42b7db6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsPropertyDefinition::QgsPropertyDefinition</definition>
+        <argsstring>()=default</argsstring>
+        <name>QgsPropertyDefinition</name>
+        <briefdescription>
+<para>Constructs an empty property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="111" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1ab3e46b6b3df7449f66dd09e71d2ba146" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsPropertyDefinition::QgsPropertyDefinition</definition>
+        <argsstring>(const QString &amp;name, const QString &amp;description, StandardPropertyTemplate type, const QString &amp;origin=QString(), const QString &amp;comment=QString())</argsstring>
+        <name>QgsPropertyDefinition</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfc" kindref="member">StandardPropertyTemplate</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>origin</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>comment</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsPropertyDefinition" kindref="compound">QgsPropertyDefinition</ref>, using a standard property template. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is used internally and should be a unique, alphanumeric string. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>can be any localised string describing what the property is used for. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>one of the predefined standard property template </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin of the property </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A free comment for the property </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="121" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.cpp" bodystart="24" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a0e46ac67ea300231d236b37b55b94c81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsPropertyDefinition::QgsPropertyDefinition</definition>
+        <argsstring>(const QString &amp;name, DataType dataType, const QString &amp;description, const QString &amp;helpText, const QString &amp;origin=QString(), const QString &amp;comment=QString())</argsstring>
+        <name>QgsPropertyDefinition</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812c" kindref="member">DataType</ref></type>
+          <declname>dataType</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>helpText</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>origin</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>comment</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for custom QgsPropertyDefinitions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is used internally and should be a unique, alphanumeric string. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the data type for the property </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>can be any localised string describing what the property is used for. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>helpText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parameter should specify a descriptive string for users outlining the types of value acceptable by the property (eg &apos;dashed&apos; or &apos;solid&apos; for a line style property). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>origin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The origin of the property </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>comment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A free comment for the property </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="133" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.cpp" bodystart="174" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a54f7b2cb644b774bc97fa9213ba55347" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::comment</definition>
+        <argsstring>() const</argsstring>
+        <name>comment</name>
+        <briefdescription>
+<para>Returns the comment of the property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="167" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="167" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a5ee1551815073f11e403023c70d90223" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812c" kindref="member">DataType</ref></type>
+        <definition>DataType QgsPropertyDefinition::dataType</definition>
+        <argsstring>() const</argsstring>
+        <name>dataType</name>
+        <briefdescription>
+<para>Returns the allowable field/value data type for the property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="187" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="187" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a63c1a17bf35f79d5de4fa0a5f626069a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::description</definition>
+        <argsstring>() const</argsstring>
+        <name>description</name>
+        <briefdescription>
+<para>Descriptive name of the property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="162" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="162" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a345b290e7f106dc7b29ee0f00859c131" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::helpText</definition>
+        <argsstring>() const</argsstring>
+        <name>helpText</name>
+        <briefdescription>
+<para>Helper text for using the property, including a description of the valid values for the property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="177" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="177" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a8cd4fb5ed9f3572da9731c31735926c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::name</definition>
+        <argsstring>() const</argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>Returns the name of the property. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is used internally and should be a unique, alphanumeric string. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="138" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="138" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1abf62c8d54402d4d2904d61fa3aaedfc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::origin</definition>
+        <argsstring>() const</argsstring>
+        <name>origin</name>
+        <briefdescription>
+<para>Returns the origin of the property. </para>        </briefdescription>
+        <detaileddescription>
+<para>For example, a PAL property has an origin set to &quot;labeling&quot; while a diagram property has an origin set to &quot;diagram&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1ac909e8b1e71904118ffc60410feda97c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPropertyDefinition::setComment</definition>
+        <argsstring>(const QString &amp;comment)</argsstring>
+        <name>setComment</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>comment</declname>
+        </param>
+        <briefdescription>
+<para>Sets comment of the property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="172" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="172" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1aabec4608c12ea8abdc973fbbe1ef34bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPropertyDefinition::setDataType</definition>
+        <argsstring>(DataType type)</argsstring>
+        <name>setDataType</name>
+        <param>
+          <type><ref refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812c" kindref="member">DataType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Sets the data type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="182" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1ab323e4cfc63a123acc352d57939b6aea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPropertyDefinition::setName</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>setName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Sets the name of the property. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="143" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="143" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a615ceeda8523244e18efddda1c019c08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPropertyDefinition::setOrigin</definition>
+        <argsstring>(const QString &amp;origin)</argsstring>
+        <name>setOrigin</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>origin</declname>
+        </param>
+        <briefdescription>
+<para>Sets the origin of the property. </para>        </briefdescription>
+        <detaileddescription>
+<para>For example, a PAL property has an origin set to &quot;labeling&quot; while a diagram property has an origin set to &quot;diagram&quot;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="157" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="157" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a3313cf48beccd9afaeb0dd197aad5c6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfc" kindref="member">StandardPropertyTemplate</ref></type>
+        <definition>StandardPropertyTemplate QgsPropertyDefinition::standardTemplate</definition>
+        <argsstring>() const</argsstring>
+        <name>standardTemplate</name>
+        <briefdescription>
+<para>Returns the property&apos;s standard template, if applicable. </para>        </briefdescription>
+        <detaileddescription>
+<para>Non standard types will return the Custom template. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="193" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="193" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a9c04fcf36e2145196f257eeaa23ae8d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsPropertyDefinition::supportsAssistant</definition>
+        <argsstring>() const</argsstring>
+        <name>supportsAssistant</name>
+        <briefdescription>
+<para>Returns true if the property is of a type which is compatible with property override assistants. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="199" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.cpp" bodystart="183" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsPropertyDefinition_1a5aacce60339d7c6a9d8fcfa002b6d496" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPropertyDefinition::trString</definition>
+        <argsstring>()</argsstring>
+        <name>trString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="211" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.cpp" bodystart="189" bodyend="193"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definition for a property. </para>    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classQgsPropertyDefinition" kindref="compound">QgsPropertyDefinition</ref> defines the type of values allowed for a property, and handles descriptive names and help text for using the property. Definitions can use one of the predefined standard templates to simplify definition of commonly used property types, such as colors and blend modes. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" line="47" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproperty.h" bodystart="46" bodyend="212"/>
+    <listofallmembers>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca7c552610eb8f8a828d6bd3cb3598b0ad" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>BlendMode</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca8df940455b8767b409387c54e355cd63" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Boolean</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcad6b0cbc5fc29204d88ba8c3571ff3938" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>CapStyle</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcad872e818b3f0e1f60de74c3eee2798f7" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>ColorNoAlpha</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcaec239aae3f0ef8f025eb4496710f4902" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>ColorWithAlpha</name></member>
+      <member refid="classQgsPropertyDefinition_1a54f7b2cb644b774bc97fa9213ba55347" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>comment</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcae12ee5cba5031d0b2a8bc633f18ac063" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Custom</name></member>
+      <member refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812c" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>DataType</name></member>
+      <member refid="classQgsPropertyDefinition_1a5ee1551815073f11e403023c70d90223" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>dataType</name></member>
+      <member refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812ca410b62943352b55b252d65043c434154" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>DataTypeBoolean</name></member>
+      <member refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812cac458302ba9258685e86253343113a26f" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>DataTypeNumeric</name></member>
+      <member refid="classQgsPropertyDefinition_1aeea51361bd1099ae07bdf9e8b775812ca2507bab58e6ee6898a70f410d229a746" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>DataTypeString</name></member>
+      <member refid="classQgsPropertyDefinition_1a63c1a17bf35f79d5de4fa0a5f626069a" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>description</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca171e9b68bf97c4592bc302ac956fcc86" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Double</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1a3fd94d516005f071f1e5185bc49e64" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Double0To1</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcaf1aed469f6dc6bb96e9ae09a164a0ad7" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>DoublePositive</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1ce3102d7b0d5aabcda4365b509dc116" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>FillStyle</name></member>
+      <member refid="classQgsPropertyDefinition_1a345b290e7f106dc7b29ee0f00859c131" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>helpText</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca0556a49917b738f911e6c5a1f267489c" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>HorizontalAnchor</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca301d35ef482b1ca26fe15b214d796f52" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Integer</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcab30f1b95a7d0b8b918af743e5df72aed" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>IntegerPositive</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcaa0aeb791ec858d06ff127609f45716e8" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>IntegerPositiveGreaterZero</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca2198798a33031cf67b01e70411f56efb" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>LineStyle</name></member>
+      <member refid="classQgsPropertyDefinition_1a57db102468ff4ae8af5bf2ac5ea552c7" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mComment</name></member>
+      <member refid="classQgsPropertyDefinition_1adaf9885189ba4ee2363f54e42a0f6de5" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mDescription</name></member>
+      <member refid="classQgsPropertyDefinition_1aca13f5c6d61fa4e7e14d238ebaa7a85f" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mHelpText</name></member>
+      <member refid="classQgsPropertyDefinition_1a57868fd7a7300bb53801f650f32a3fa5" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mName</name></member>
+      <member refid="classQgsPropertyDefinition_1afbe53ed8b0cb8e084a7602172157bd01" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mOrigin</name></member>
+      <member refid="classQgsPropertyDefinition_1a6ea4d3f2fff7879313138e848d118567" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mStandardType</name></member>
+      <member refid="classQgsPropertyDefinition_1a23d4be16e830ddd305b7d29bb097e036" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>mTypes</name></member>
+      <member refid="classQgsPropertyDefinition_1a8cd4fb5ed9f3572da9731c31735926c6" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>name</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcab47d081b7093d33872a55dcf4388a15c" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Offset</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcab8ebf9349fdbbbd1e51772d2747c67dc" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Opacity</name></member>
+      <member refid="classQgsPropertyDefinition_1abf62c8d54402d4d2904d61fa3aaedfc9" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>origin</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca99bfe4829ef0c86e14fc17c558ce667e" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>PenJoinStyle</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca77a9cfee579c27e6522bb1310d5fd4cd" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Point</name></member>
+      <member refid="classQgsPropertyDefinition_1aa8769b8fe94211635bf2ad31e42b7db6" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>QgsPropertyDefinition</name></member>
+      <member refid="classQgsPropertyDefinition_1ab3e46b6b3df7449f66dd09e71d2ba146" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>QgsPropertyDefinition</name></member>
+      <member refid="classQgsPropertyDefinition_1a0e46ac67ea300231d236b37b55b94c81" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>QgsPropertyDefinition</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca90da62597bcb383409e722281ddc086e" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>RenderUnits</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcadc3eb7bc20fbf21dee090a638359aa2b" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Rotation</name></member>
+      <member refid="classQgsPropertyDefinition_1ac909e8b1e71904118ffc60410feda97c" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>setComment</name></member>
+      <member refid="classQgsPropertyDefinition_1aabec4608c12ea8abdc973fbbe1ef34bf" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>setDataType</name></member>
+      <member refid="classQgsPropertyDefinition_1ab323e4cfc63a123acc352d57939b6aea" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>setName</name></member>
+      <member refid="classQgsPropertyDefinition_1a615ceeda8523244e18efddda1c019c08" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>setOrigin</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcae92f6b764b888c2109dfad34711e8c01" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Size</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfcafbc3ae2ad8fb749d23bc11b7e7fa0129" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>Size2D</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfc" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>StandardPropertyTemplate</name></member>
+      <member refid="classQgsPropertyDefinition_1a3313cf48beccd9afaeb0dd197aad5c6b" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>standardTemplate</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca629aeb3544a07459e590bedbe219d0dc" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>String</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1f4d07b08c9516a2253ba559017ea8b3" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>StrokeWidth</name></member>
+      <member refid="classQgsPropertyDefinition_1a9c04fcf36e2145196f257eeaa23ae8d1" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>supportsAssistant</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca9fd2e65127d4e23f1e745b01da023f46" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>SvgPath</name></member>
+      <member refid="classQgsPropertyDefinition_1a5aacce60339d7c6a9d8fcfa002b6d496" prot="private" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>trString</name></member>
+      <member refid="classQgsPropertyDefinition_1a780c10d9241052f1be74e9759436abfca1a1bf3d60d1663241a5071214a9bcac0" prot="public" virt="non-virtual"><scope>QgsPropertyDefinition</scope><name>VerticalAnchor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

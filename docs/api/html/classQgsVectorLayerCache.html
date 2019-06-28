@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsVectorLayerCache class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsVectorLayerCache <span class="m-thin">class</span>
+        </h1>
+        <p>This class caches features of a given <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>The cached features can be indexed by <a href="classQgsAbstractCacheIndex.html" class="m-doc">QgsAbstractCacheIndex</a>.</p><p>Proper indexing for a given use-case may speed up performance substantially.</p>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac6e2933e8344dcf386b732b43890ba0c" class="m-doc">addCacheIndex</a>(</span><span class="m-doc-wrap"><a href="classQgsAbstractCacheIndex.html" class="m-doc">QgsAbstractCacheIndex</a>* cacheIndex)</span>
+            </dt>
+            <dd>Adds a <a href="classQgsAbstractCacheIndex.html" class="m-doc">QgsAbstractCacheIndex</a> to this cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a99fc4cf9e055c29a95b9088ade4bd154" class="m-doc">cachedFeatureIds</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a></span>
+            </dt>
+            <dd>Returns the set of feature IDs for features which are cached.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa950c48659c496a678c4b2e6a3baf198" class="m-doc">cacheGeometry</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the cache will fetch and cache feature geometries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aaa3b290d534c5801115b7e5dbef44c1a" class="m-doc">cacheSize</a>(</span><span class="m-doc-wrap">) -&gt; int</span>
+            </dt>
+            <dd>Returns the maximum number of features this cache will hold.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#affc9061685c254f8df6cf8d7d5b53fbf" class="m-doc">featureAtId</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> featureId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              bool skipCache = false) -&gt; bool</span>
+            </dt>
+            <dd>Gets the feature at the given feature id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aca1ac9b8ea6d52a8f65b4f265c3c1052" class="m-doc-self" name="aca1ac9b8ea6d52a8f65b4f265c3c1052">featureCount</a>(</span><span class="m-doc-wrap">) const -&gt; long</span>
+            </dt>
+            <dd>Returns the number of features contained in the source, or -1 if the feature count is unknown.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4b3e34cc7fb2b8e9a328ec38ff1b0646" class="m-doc-self" name="a4b3e34cc7fb2b8e9a328ec38ff1b0646">fields</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsFields.html" class="m-doc">QgsFields</a></span>
+            </dt>
+            <dd>Returns the fields associated with features in the cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4dfae3cc859ec6ca428145a4d1e96bff" class="m-doc">getFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) -&gt; <a href="classQgsFeature.html" class="m-doc">QgsFeature</a></span>
+            </dt>
+            <dd>Query the layer for the feature with the given id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae8bb2c22c803d430cdcb57c88e3abb84" class="m-doc">getFeatures</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; featureRequest = <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>()) -&gt; <a href="classQgsFeatureIterator.html" class="m-doc">QgsFeatureIterator</a></span>
+            </dt>
+            <dd>Query this VectorLayerCache for features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a171455fc5ca4dbadef23248ddafb4a8e" class="m-doc-self" name="a171455fc5ca4dbadef23248ddafb4a8e">getFeatures</a>(</span><span class="m-doc-wrap">const QString&amp; expression) -&gt; <a href="classQgsFeatureIterator.html" class="m-doc">QgsFeatureIterator</a></span>
+            </dt>
+            <dd>Query the layer for features matching a given expression.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4d7ff8a2b5ba086cbc7cfd69b8f553c8" class="m-doc-self" name="a4d7ff8a2b5ba086cbc7cfd69b8f553c8">getFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) -&gt; <a href="classQgsFeatureIterator.html" class="m-doc">QgsFeatureIterator</a></span>
+            </dt>
+            <dd>Query the layer for the features with the given ids.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a31e2b0253e174f57235d5fb56a03fa47" class="m-doc-self" name="a31e2b0253e174f57235d5fb56a03fa47">getFeatures</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rectangle) -&gt; <a href="classQgsFeatureIterator.html" class="m-doc">QgsFeatureIterator</a></span>
+            </dt>
+            <dd>Query the layer for the features which intersect the specified rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a170b75ee0e767fae9433ca6ea8ba3653" class="m-doc">hasFullCache</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the cache is complete, ie it contains all features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a02b1322593db08350614dcd548d4861a" class="m-doc">isFidCached</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) const -&gt; bool</span>
+            </dt>
+            <dd>Check if a certain feature id is cached.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a84cd021103ad6108865d1bfa673b19a3" class="m-doc-self" name="a84cd021103ad6108865d1bfa673b19a3">layer</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>Returns the layer to which this cache belongs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69534a1470b29ad13aea3e509313109e" class="m-doc">removeCachedFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) -&gt; bool</span>
+            </dt>
+            <dd>Removes the feature identified by fid from the cache if present.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1c5f3e6e93ff9dbaba8343569052cc18" class="m-doc">setCacheAddedAttributes</a>(</span><span class="m-doc-wrap">bool cacheAddedAttributes)</span>
+            </dt>
+            <dd>If this is enabled, the subset of cached attributes will automatically be extended to also include newly added attributes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae3be09b6f82b89d10bd31ac3ea43e827" class="m-doc">setCacheGeometry</a>(</span><span class="m-doc-wrap">bool cacheGeometry)</span>
+            </dt>
+            <dd>Enable or disable the caching of geometries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a235e4d388bbd12519c23f2c4b7d14db5" class="m-doc">setCacheSize</a>(</span><span class="m-doc-wrap">int cacheSize)</span>
+            </dt>
+            <dd>Sets the maximum number of features to keep in the cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2384f5133d60a1228170f926d4b62fd2" class="m-doc">setCacheSubsetOfAttributes</a>(</span><span class="m-doc-wrap">const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span>
+            </dt>
+            <dd>Set the subset of attributes to be cached.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0e90f126e4a15bff662ce4c4f842fb75" class="m-doc">setFullCache</a>(</span><span class="m-doc-wrap">bool fullCache)</span>
+            </dt>
+            <dd>This enables or disables full caching.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a93a5ef6f655588ebca0c08d86b82ee8c" class="m-doc-self" name="a93a5ef6f655588ebca0c08d86b82ee8c">sourceCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the coordinate reference system for features in the cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5e3bfc7f36914d0860e28bffb3655e91" class="m-doc-self" name="a5e3bfc7f36914d0860e28bffb3655e91">wkbType</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a></span>
+            </dt>
+            <dd>Returns the geometry type for features in the cache.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a646d0c81b7ce8aaf4182153e2a6cec5f" class="m-doc">attributeValueChanged</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              int field,
+              const QVariant&amp; value)</span>
+            </dt>
+            <dd>Is emitted when an attribute is changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5c7df0e6390474871d09f8cd2e5f149d" class="m-doc">cachedLayerDeleted</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Is emitted when the cached layer is deleted.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a39a6147bd68cd9ba3b619d0848011c0b" class="m-doc">featureAdded</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid)</span>
+            </dt>
+            <dd>Is emitted, when a new feature has been added to the layer and this cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a19a8fd661eb0b0df5f8c9b648fcb00a6" class="m-doc-self" name="a19a8fd661eb0b0df5f8c9b648fcb00a6">finished</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>When filling the cache, this signal gets emitted once the cache is fully initialized.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2264fbfbcdf0b6b14cfc899ca9653871" class="m-doc">invalidated</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>The cache has been invalidated and cleared.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6aeec3f829c14ce716b645dc3bff869e" class="m-doc">progress</a>(</span><span class="m-doc-wrap">int i,
+              bool&amp; cancel)</span>
+            </dt>
+            <dd>When filling the cache, this signal gets emitted periodically to notify about the progress and to be able to cancel an operation.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a99237ab074d6e3e5137c877dc57e83a6" class="m-doc">checkInformationCovered</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; featureRequest) -&gt; bool</span>
+            </dt>
+            <dd>Checks if the information required to complete the request is cached.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1be323b40a5b3ce08a9a8dee3e1c70fb" class="m-doc">featureRemoved</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid)</span>
+            </dt>
+            <dd>Gets called, whenever a feature has been removed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a632e0a2521e7286fd54c9f0f06b89ddc" class="m-doc">requestCompleted</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; featureRequest,
+              const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids)</span>
+            </dt>
+            <dd>Gets called, whenever the full list of feature ids for a certain request is known.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ac6e2933e8344dcf386b732b43890ba0c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac6e2933e8344dcf386b732b43890ba0c" class="m-doc-self">addCacheIndex</a>(</span><span class="m-doc-wrap"><a href="classQgsAbstractCacheIndex.html" class="m-doc">QgsAbstractCacheIndex</a>* cacheIndex)</span></span>
+            </h3>
+            <p>Adds a <a href="classQgsAbstractCacheIndex.html" class="m-doc">QgsAbstractCacheIndex</a> to this cache.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cacheIndex</td>
+                  <td>The cache index to add.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Cache indices know about features present in this cache and decide, if enough information is present in the cache to respond to a <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>. The layer cache will take ownership of the index.</p>
+          </div></section>
+          <section class="m-doc-details" id="a99fc4cf9e055c29a95b9088ade4bd154"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a> QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a99fc4cf9e055c29a95b9088ade4bd154" class="m-doc-self">cachedFeatureIds</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the set of feature IDs for features which are cached.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorLayerCache.html#a02b1322593db08350614dcd548d4861a" class="m-doc">isFidCached()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa950c48659c496a678c4b2e6a3baf198"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa950c48659c496a678c4b2e6a3baf198" class="m-doc-self">cacheGeometry</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the cache will fetch and cache feature geometries.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorLayerCache.html#ae3be09b6f82b89d10bd31ac3ea43e827" class="m-doc">setCacheGeometry()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aaa3b290d534c5801115b7e5dbef44c1a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaa3b290d534c5801115b7e5dbef44c1a" class="m-doc-self">cacheSize</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the maximum number of features this cache will hold.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>int</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>In case full caching is enabled, this number can change, as new features get added.</p>
+          </div></section>
+          <section class="m-doc-details" id="affc9061685c254f8df6cf8d7d5b53fbf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#affc9061685c254f8df6cf8d7d5b53fbf" class="m-doc-self">featureAtId</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> featureId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              bool skipCache = false)</span></span>
+            </h3>
+            <p>Gets the feature at the given feature id.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">featureId</td>
+                  <td>The id of the feature to query</td>
+                </tr>
+                <tr>
+                  <td>feature</td>
+                  <td>The result of the operation will be written to this feature</td>
+                </tr>
+                <tr>
+                  <td>skipCache</td>
+                  <td>Will query the layer regardless if the feature is in the cache already</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true in case of success</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Considers the changed, added, deleted and permanent features</p>
+          </div></section>
+          <section class="m-doc-details" id="a4dfae3cc859ec6ca428145a4d1e96bff"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a> QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4dfae3cc859ec6ca428145a4d1e96bff" class="m-doc-self">getFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid)</span></span>
+            </h3>
+            <p>Query the layer for the feature with the given id.</p>
+<p>If there is no such feature, the returned feature will be invalid.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae8bb2c22c803d430cdcb57c88e3abb84"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeatureIterator.html" class="m-doc">QgsFeatureIterator</a> QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae8bb2c22c803d430cdcb57c88e3abb84" class="m-doc-self">getFeatures</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; featureRequest = <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>())</span></span>
+            </h3>
+            <p>Query this VectorLayerCache for features.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">featureRequest</td>
+                  <td>The request specifying filter and required data.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>An iterator over the requested data.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the VectorLayerCache (and moreover any of its indices) is able to satisfy the request, the returned <a href="classQgsFeatureIterator.html" class="m-doc">QgsFeatureIterator</a> will iterate over cached features. If it&#x27;s not possible to fully satisfy the request from the cache, part or all of the features will be requested from the data provider.</p>
+          </div></section>
+          <section class="m-doc-details" id="a170b75ee0e767fae9433ca6ea8ba3653"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a170b75ee0e767fae9433ca6ea8ba3653" class="m-doc-self">hasFullCache</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the cache is complete, ie it contains all features.</p>
+<p>This may happen as a result of a call to <a href="classQgsVectorLayerCache.html#a0e90f126e4a15bff662ce4c4f842fb75" class="m-doc">setFullCache()</a> or by through a feature request which resulted in all available features being cached.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorLayerCache.html#a0e90f126e4a15bff662ce4c4f842fb75" class="m-doc">setFullCache()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a02b1322593db08350614dcd548d4861a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a02b1322593db08350614dcd548d4861a" class="m-doc-self">isFidCached</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) const</span></span>
+            </h3>
+            <p>Check if a certain feature id is cached.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The feature id to look for</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True if this id is in the cache</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorLayerCache.html#a99fc4cf9e055c29a95b9088ade4bd154" class="m-doc">cachedFeatureIds()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a69534a1470b29ad13aea3e509313109e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69534a1470b29ad13aea3e509313109e" class="m-doc-self">removeCachedFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid)</span></span>
+            </h3>
+            <p>Removes the feature identified by fid from the cache if present.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The id of the feature to delete</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if the feature was removed, false if the feature id was not found in the cache</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1c5f3e6e93ff9dbaba8343569052cc18"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c5f3e6e93ff9dbaba8343569052cc18" class="m-doc-self">setCacheAddedAttributes</a>(</span><span class="m-doc-wrap">bool cacheAddedAttributes)</span></span>
+            </h3>
+            <p>If this is enabled, the subset of cached attributes will automatically be extended to also include newly added attributes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cacheAddedAttributes</td>
+                  <td>Automatically cache new attributes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae3be09b6f82b89d10bd31ac3ea43e827"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae3be09b6f82b89d10bd31ac3ea43e827" class="m-doc-self">setCacheGeometry</a>(</span><span class="m-doc-wrap">bool cacheGeometry)</span></span>
+            </h3>
+            <p>Enable or disable the caching of geometries.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cacheGeometry</td>
+                  <td>Enable or disable the caching of geometries</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorLayerCache.html#aa950c48659c496a678c4b2e6a3baf198" class="m-doc">cacheGeometry()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a235e4d388bbd12519c23f2c4b7d14db5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a235e4d388bbd12519c23f2c4b7d14db5" class="m-doc-self">setCacheSize</a>(</span><span class="m-doc-wrap">int cacheSize)</span></span>
+            </h3>
+            <p>Sets the maximum number of features to keep in the cache.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cacheSize</td>
+                  <td>indicates the maximum number of features to keep in the cache</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Some features will be removed from the cache if the number is smaller than the previous size of the cache.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2384f5133d60a1228170f926d4b62fd2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2384f5133d60a1228170f926d4b62fd2" class="m-doc-self">setCacheSubsetOfAttributes</a>(</span><span class="m-doc-wrap">const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span></span>
+            </h3>
+            <p>Set the subset of attributes to be cached.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">attributes</td>
+                  <td>The attributes to be cached</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a0e90f126e4a15bff662ce4c4f842fb75"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0e90f126e4a15bff662ce4c4f842fb75" class="m-doc-self">setFullCache</a>(</span><span class="m-doc-wrap">bool fullCache)</span></span>
+            </h3>
+            <p>This enables or disables full caching.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fullCache</td>
+                  <td>True: enable full caching, False: disable full caching</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If enabled, all features will be held in the cache. The cache size will incrementally be increased to offer space for all features. When enabled, all features will be read into cache. As this feature will most likely be used for slow data sources, be aware, that the call to this method might take a long time.</p><aside class="m-note m-info"><h4>Note</h4><p>when a cache is <a href="classQgsVectorLayerCache.html#a2264fbfbcdf0b6b14cfc899ca9653871" class="m-doc">invalidated()</a> (e.g. by adding an attribute to a layer) this setting is reset. A full cache rebuild must be performed by calling setFullCache( true ) again.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorLayerCache.html#a170b75ee0e767fae9433ca6ea8ba3653" class="m-doc">hasFullCache()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a646d0c81b7ce8aaf4182153e2a6cec5f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a646d0c81b7ce8aaf4182153e2a6cec5f" class="m-doc-self">attributeValueChanged</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              int field,
+              const QVariant&amp; value) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted when an attribute is changed.</p>
+<p>Is re-emitted after the layer itself emits this signal. You should connect to this signal, to be sure, to not get a cached value if querying the cache.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5c7df0e6390474871d09f8cd2e5f149d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5c7df0e6390474871d09f8cd2e5f149d" class="m-doc-self">cachedLayerDeleted</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted when the cached layer is deleted.</p>
+<p>Is emitted when the cached layers layerDelete() signal is being emitted, but before the local reference to it has been set to NULL. So call to <a href="classQgsVectorLayerCache.html#a84cd021103ad6108865d1bfa673b19a3" class="m-doc">layer()</a> will still return a valid pointer for cleanup purpose.</p>
+          </div></section>
+          <section class="m-doc-details" id="a39a6147bd68cd9ba3b619d0848011c0b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a39a6147bd68cd9ba3b619d0848011c0b" class="m-doc-self">featureAdded</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted, when a new feature has been added to the layer and this cache.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The featureid of the changed feature</td>
+                </tr>
+              </tbody>
+            </table>
+<p>You should connect to this signal instead of the layers&#x27;, if you want to be sure that this cache has updated information for the new feature</p>
+          </div></section>
+          <section class="m-doc-details" id="a2264fbfbcdf0b6b14cfc899ca9653871"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2264fbfbcdf0b6b14cfc899ca9653871" class="m-doc-self">invalidated</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>The cache has been invalidated and cleared.</p>
+<p>Note that when a cache is invalidated the fullCache() setting will be cleared, and a full cache rebuild via setFullCache( true ) will need to be performed.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6aeec3f829c14ce716b645dc3bff869e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6aeec3f829c14ce716b645dc3bff869e" class="m-doc-self">progress</a>(</span><span class="m-doc-wrap">int i,
+              bool&amp; cancel) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>When filling the cache, this signal gets emitted periodically to notify about the progress and to be able to cancel an operation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">i</td>
+                  <td>The number of already fetched features</td>
+                </tr>
+                <tr>
+                  <td>cancel</td>
+                  <td>A reference to a boolean variable. Set to true and the operation will be canceled.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a99237ab074d6e3e5137c877dc57e83a6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a99237ab074d6e3e5137c877dc57e83a6" class="m-doc-self">checkInformationCovered</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; featureRequest) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Checks if the information required to complete the request is cached.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">featureRequest</td>
+                  <td>The <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a> to be answered</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True if the information is being cached, false if not</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>i.e. If all attributes required and the geometry is held in the cache. Please note, that this does not check, if the requested features are cached.</p>
+          </div></section>
+          <section class="m-doc-details" id="a1be323b40a5b3ce08a9a8dee3e1c70fb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1be323b40a5b3ce08a9a8dee3e1c70fb" class="m-doc-self">featureRemoved</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Gets called, whenever a feature has been removed.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The feature id of the removed feature.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Broadcasts this information to indices, so they can invalidate their cache if required.</p>
+          </div></section>
+          <section class="m-doc-details" id="a632e0a2521e7286fd54c9f0f06b89ddc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerCache::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a632e0a2521e7286fd54c9f0f06b89ddc" class="m-doc-self">requestCompleted</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; featureRequest,
+              const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Gets called, whenever the full list of feature ids for a certain request is known.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">featureRequest</td>
+                  <td>The feature request that was answered</td>
+                </tr>
+                <tr>
+                  <td>fids</td>
+                  <td>The feature ids that have been returned</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Broadcasts this information to indices, so they can update their tables.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

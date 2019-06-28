@@ -1,0 +1,652 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classNormVecDecorator" kind="class" language="C++" prot="public">
+    <compoundname>NormVecDecorator</compoundname>
+    <basecompoundref refid="classTriDecorator" prot="public" virt="non-virtual">TriDecorator</basecompoundref>
+    <includes refid="NormVecDecorator_8h" local="no">NormVecDecorator.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" prot="public" static="no">
+        <name>PointState</name>
+        <enumvalue id="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337acb6173ec1f71200168bb805778b9ee00" prot="public">
+          <name>Normal</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337a420cd52e08ad918ff1e168c3e692e677" prot="public">
+          <name>BreakLine</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337a0589ed5785216ec182fa3f4dad6fffcd" prot="public">
+          <name>EndPoint</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration for the state of a point. Normal means, that the point is not on a BreakLine, BreakLine means that the point is on a breakline (but not an end point of it) and EndPoint means, that it is an endpoint of a breakline. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="41" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classNormVecDecorator_1a2bc439f091b7693a3a21f7e456418f12" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::alreadyestimated</definition>
+        <argsstring></argsstring>
+        <name>alreadyestimated</name>
+        <briefdescription>
+<para>Is true, if the normals already have been estimated. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="74" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNormVecDecorator_1a6b4cb34d88bc478276a0af583f23df3f" prot="protected" static="no" mutable="no">
+        <type><ref refid="classTriangleInterpolator" kindref="compound">TriangleInterpolator</ref> *</type>
+        <definition>TriangleInterpolator* NormVecDecorator::mInterpolator</definition>
+        <argsstring></argsstring>
+        <name>mInterpolator</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Association with an interpolator object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNormVecDecorator_1a8cfbd28dfc9109fd5f1c073c85953a18" prot="protected" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classVector3D" kindref="compound">Vector3D</ref> * &gt; *</type>
+        <definition>QVector&lt;Vector3D *&gt;* NormVecDecorator::mNormVec</definition>
+        <argsstring></argsstring>
+        <name>mNormVec</name>
+        <briefdescription>
+<para>Vector that stores the normals for the points. If &apos;<ref refid="classNormVecDecorator_1adbb6b1fe2b6bab1a929337e359d609f2" kindref="member">estimateFirstDerivatives()</ref>&apos; was called and there is a null pointer, this means, that the triangle point is on a breakline. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="79" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classNormVecDecorator_1a2482a2b84ba07633bd13870d8168e9c8" prot="protected" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" kindref="member">PointState</ref> &gt; *</type>
+        <definition>QVector&lt;PointState&gt;* NormVecDecorator::mPointState</definition>
+        <argsstring></argsstring>
+        <name>mPointState</name>
+        <briefdescription>
+<para>Vector who stores, it a point is not on a breakline, if it is a normal point of the breakline or if it is an endpoint of a breakline. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classNormVecDecorator_1a5c443191e595f506e69c297d4d3c79d5" prot="protected" static="yes" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int NormVecDecorator::DEFAULT_STORAGE_FOR_NORMALS</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_STORAGE_FOR_NORMALS</name>
+        <initializer>= 100000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="75" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classNormVecDecorator_1a890de3da68973ef3a3c898a8f9723217" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>NormVecDecorator::NormVecDecorator</definition>
+        <argsstring>()</argsstring>
+        <name>NormVecDecorator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="42" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="88" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1aa0fa5aad93235f869ca2d4d0f626ddd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>NormVecDecorator::NormVecDecorator</definition>
+        <argsstring>(Triangulation *tin)</argsstring>
+        <name>NormVecDecorator</name>
+        <param>
+          <type><ref refid="classTriangulation" kindref="compound">Triangulation</ref> *</type>
+          <declname>tin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="43" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="95" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a55004f773358aee895d1c7493083facb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NormVecDecorator::~NormVecDecorator</definition>
+        <argsstring>() override</argsstring>
+        <name>~NormVecDecorator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="44" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="27" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1af6c7c88358a1906dddc276a1eb81a152" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int NormVecDecorator::addPoint</definition>
+        <argsstring>(const QgsPoint &amp;p) override</argsstring>
+        <name>addPoint</name>
+        <reimplements refid="classTriangulation_1a0d17ecf5db958ac13c7e7ed2d97168eb">addPoint</reimplements>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Adds a <emphasis>point</emphasis> to the triangulation. </para>        </briefdescription>
+        <detaileddescription>
+<para>The point should have a z-value matching the value to interpolate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="45" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="43" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a571738bc9fef8c46dd0ec48e6bf12c35" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::calcNormal</definition>
+        <argsstring>(double x, double y, Vector3D *result) override</argsstring>
+        <name>calcNormal</name>
+        <reimplements refid="classTriangulation_1aa9ee556c46cadd40d6b8f6bc3423fa01">calcNormal</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the normal at a point on the surface and assigns it to &apos;result&apos;. Returns true in case of success and false in case of failure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="47" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="83" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1ab68136a70cf1a4b2c61da9f4c2d0c5e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::calcNormalForPoint</definition>
+        <argsstring>(double x, double y, int point, Vector3D *result)</argsstring>
+        <name>calcNormalForPoint</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the normal of a triangle-point for the point with coordinates x and y. This is needed, if a point is on a break line and there is no unique normal stored in &apos;mNormVec&apos;. Returns false, it something went wrong and true otherwise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="49" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="103" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a5a51d6b2d83fa689ee6dc8bbebfb6fb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::calcPoint</definition>
+        <argsstring>(double x, double y, QgsPoint &amp;result) override</argsstring>
+        <name>calcPoint</name>
+        <reimplements refid="classTriangulation_1a51951fbe164a241e8d1e64051c666b30">calcPoint</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Calculates x-, y and z-value of the point on the surface and assigns it to &apos;result&apos;. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true in case of success and flase in case of failure </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="50" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="228" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a590ea619e3aa35db0962237a7d8791fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void NormVecDecorator::eliminateHorizontalTriangles</definition>
+        <argsstring>() override</argsstring>
+        <name>eliminateHorizontalTriangles</name>
+        <reimplements refid="classTriangulation_1ac007a071c6a826712077bec466f095ca">eliminateHorizontalTriangles</reimplements>
+        <briefdescription>
+<para>Eliminates the horizontal triangles by swapping or by insertion of new points. If alreadyestimated is true, a re-estimation of the normals will be done. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="509" bodyend="527"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1adc008e4e2feb2c63505e088260f1e3b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::estimateFirstDerivative</definition>
+        <argsstring>(int pointno)</argsstring>
+        <name>estimateFirstDerivative</name>
+        <param>
+          <type>int</type>
+          <declname>pointno</declname>
+        </param>
+        <briefdescription>
+<para>Estimates the first derivative a point. Return true in case of success and false otherwise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="54" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="346" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1adbb6b1fe2b6bab1a929337e359d609f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::estimateFirstDerivatives</definition>
+        <argsstring>(QgsFeedback *feedback=nullptr)</argsstring>
+        <name>estimateFirstDerivatives</name>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>This method adds the functionality of estimating normals at the data points. Return true in the case of success and false otherwise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="56" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="494" bodyend="507"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a3761ed65d8ffc2dc28717f2b10b9c02c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+        <definition>Vector3D * NormVecDecorator::getNormal</definition>
+        <argsstring>(int n) const</argsstring>
+        <name>getNormal</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+<para>Returns a pointer to the normal vector for the point with the number n. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="58" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="108" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1aa923675d1b956893c88721bc62b8526f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" kindref="member">PointState</ref></type>
+        <definition>NormVecDecorator::PointState NormVecDecorator::getState</definition>
+        <argsstring>(int pointno) const</argsstring>
+        <name>getState</name>
+        <param>
+          <type>int</type>
+          <declname>pointno</declname>
+        </param>
+        <briefdescription>
+<para>Returns the state of the point with the number &apos;pointno&apos;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="64" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="293" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a215d84734a98250ad868959adac59c9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::getTriangle</definition>
+        <argsstring>(double x, double y, QgsPoint &amp;p1, Vector3D *v1, QgsPoint &amp;p2, Vector3D *v2, QgsPoint &amp;p3, Vector3D *v3)</argsstring>
+        <name>getTriangle</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>v2</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p3</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>v3</declname>
+        </param>
+        <briefdescription>
+<para>Finds out, in which triangle a point with coordinates x and y is and assigns the triangle points to p1, p2, p3 and the estimated normals to v1, v2, v3. The vectors are normally taken from &apos;mNormVec&apos;, except if p1, p2 or p3 is a point on a breakline. In this case, the normal is calculated on-the-fly. Returns false, if something went wrong and true otherwise. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="60" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="249" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a2b726d25ae7a828372813f0dead0fadb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::getTriangle</definition>
+        <argsstring>(double x, double y, QgsPoint &amp;p1, int &amp;ptn1, Vector3D *v1, PointState *state1, QgsPoint &amp;p2, int &amp;ptn2, Vector3D *v2, PointState *state2, QgsPoint &amp;p3, int &amp;ptn3, Vector3D *v3, PointState *state3)</argsstring>
+        <name>getTriangle</name>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>ptn1</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>v1</declname>
+        </param>
+        <param>
+          <type><ref refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" kindref="member">PointState</ref> *</type>
+          <declname>state1</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>ptn2</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>v2</declname>
+        </param>
+        <param>
+          <type><ref refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" kindref="member">PointState</ref> *</type>
+          <declname>state2</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p3</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>ptn3</declname>
+        </param>
+        <param>
+          <type><ref refid="classVector3D" kindref="compound">Vector3D</ref> *</type>
+          <declname>v3</declname>
+        </param>
+        <param>
+          <type><ref refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" kindref="member">PointState</ref> *</type>
+          <declname>state3</declname>
+        </param>
+        <briefdescription>
+<para>This function behaves similar to the one above. Additionally, the numbers of the points are returned (ptn1, ptn2, ptn3) as well as the PointStates of the triangle points (state1, state2, state3) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="307" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a530951628c6a30912667c556690782ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::saveTriangulation</definition>
+        <argsstring>(QgsFeatureSink *sink, QgsFeedback *feedback=nullptr) const override</argsstring>
+        <name>saveTriangulation</name>
+        <reimplements refid="classTriangulation_1ab1a75337497178053d129e5ea9782838">saveTriangulation</reimplements>
+        <param>
+          <type><ref refid="classQgsFeatureSink" kindref="compound">QgsFeatureSink</ref> *</type>
+          <declname>sink</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Saves the triangulation features to a feature <emphasis>sink</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The sink must be setup to accept LineString features, with fields matching those returned by <ref refid="classTriangulation_1a1a34ead0d4a8b74fd1dbea0362316ea4" kindref="member">triangulationFields()</ref>.</para><para><simplesect kind="return"><para>true in case of success</para></simplesect>
+<simplesect kind="see"><para><ref refid="classTriangulation_1a1a34ead0d4a8b74fd1dbea0362316ea4" kindref="member">triangulationFields()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="70" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="573" bodyend="580"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a18b4e1cee3d9d25d79cfbff9a139b158" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void NormVecDecorator::setTriangleInterpolator</definition>
+        <argsstring>(TriangleInterpolator *inter) override</argsstring>
+        <name>setTriangleInterpolator</name>
+        <reimplements refid="classTriangulation_1ad9a666e04a02c1e1aaf0fdffda56a9a7">setTriangleInterpolator</reimplements>
+        <param>
+          <type><ref refid="classTriangleInterpolator" kindref="compound">TriangleInterpolator</ref> *</type>
+          <declname>inter</declname>
+        </param>
+        <briefdescription>
+<para>Sets an interpolator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="66" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classNormVecDecorator_1a9a64d8cd62aec3596b389c0b9f234b60" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool NormVecDecorator::swapEdge</definition>
+        <argsstring>(double x, double y) override</argsstring>
+        <name>swapEdge</name>
+        <reimplements refid="classTriangulation_1a82285eb39eda3dd76fa921b25a2317df">swapEdge</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Swaps the edge which is closest to the point with x and y coordinates (if this is possible) and forces recalculation of the concerned normals (if alreadyestimated is true) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="68" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="541" bodyend="571"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classNormVecDecorator_1a8cb6fa7c42ee1a794f025019c6b97d7f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void NormVecDecorator::setState</definition>
+        <argsstring>(int pointno, PointState s)</argsstring>
+        <name>setState</name>
+        <param>
+          <type>int</type>
+          <declname>pointno</declname>
+        </param>
+        <param>
+          <type><ref refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" kindref="member">PointState</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Sets the state (BreakLine, Normal, EndPoint) of a point. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="83" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.cpp" bodystart="529" bodyend="539"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Decorator class which adds the functionality of estimating normals at the data points. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings. </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="747">
+        <label>TriDecorator</label>
+        <link refid="classTriDecorator"/>
+        <childnode refid="748" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="746">
+        <label>NormVecDecorator</label>
+        <link refid="classNormVecDecorator"/>
+        <childnode refid="747" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="748">
+        <label>Triangulation</label>
+        <link refid="classTriangulation"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="750">
+        <label>TriDecorator</label>
+        <link refid="classTriDecorator"/>
+        <childnode refid="751" relation="public-inheritance">
+        </childnode>
+        <childnode refid="751" relation="usage">
+          <edgelabel>mTIN</edgelabel>
+        </childnode>
+      </node>
+      <node id="749">
+        <label>NormVecDecorator</label>
+        <link refid="classNormVecDecorator"/>
+        <childnode refid="750" relation="public-inheritance">
+        </childnode>
+        <childnode refid="752" relation="usage">
+          <edgelabel>mInterpolator</edgelabel>
+        </childnode>
+      </node>
+      <node id="752">
+        <label>TriangleInterpolator</label>
+        <link refid="classTriangleInterpolator"/>
+      </node>
+      <node id="751">
+        <label>Triangulation</label>
+        <link refid="classTriangulation"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" line="38" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/NormVecDecorator.h" bodystart="37" bodyend="84"/>
+    <listofallmembers>
+      <member refid="classTriDecorator_1a85071736f25e85579b4d062edf3f2f5d" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>addLine</name></member>
+      <member refid="classNormVecDecorator_1af6c7c88358a1906dddc276a1eb81a152" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>addPoint</name></member>
+      <member refid="classTriDecorator_1ab68ee1d0e688eb301836341aab0c107d" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>addTriangulation</name></member>
+      <member refid="classNormVecDecorator_1a2bc439f091b7693a3a21f7e456418f12" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>alreadyestimated</name></member>
+      <member refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337a420cd52e08ad918ff1e168c3e692e677" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>BreakLine</name></member>
+      <member refid="classNormVecDecorator_1a571738bc9fef8c46dd0ec48e6bf12c35" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>calcNormal</name></member>
+      <member refid="classNormVecDecorator_1ab68136a70cf1a4b2c61da9f4c2d0c5e0" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>calcNormalForPoint</name></member>
+      <member refid="classNormVecDecorator_1a5a51d6b2d83fa689ee6dc8bbebfb6fb7" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>calcPoint</name></member>
+      <member refid="classNormVecDecorator_1a5c443191e595f506e69c297d4d3c79d5" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>DEFAULT_STORAGE_FOR_NORMALS</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aa560416e991c80889a0751d3e05cd5d6" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>DeleteFirst</name></member>
+      <member refid="classNormVecDecorator_1a590ea619e3aa35db0962237a7d8791fe" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>eliminateHorizontalTriangles</name></member>
+      <member refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337a0589ed5785216ec182fa3f4dad6fffcd" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>EndPoint</name></member>
+      <member refid="classNormVecDecorator_1adc008e4e2feb2c63505e088260f1e3b4" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>estimateFirstDerivative</name></member>
+      <member refid="classNormVecDecorator_1adbb6b1fe2b6bab1a929337e359d609f2" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>estimateFirstDerivatives</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>ForcedCrossBehavior</name></member>
+      <member refid="classNormVecDecorator_1a3761ed65d8ffc2dc28717f2b10b9c02c" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>getNormal</name></member>
+      <member refid="classTriDecorator_1a041e7001af079726e88646cc0b2f8ff4" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getNumberOfPoints</name></member>
+      <member refid="classTriDecorator_1a51972cf0cee52d92a66905da03694429" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getOppositePoint</name></member>
+      <member refid="classTriDecorator_1a5c35ffcac37b8c685683462a68b71cd7" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getPoint</name></member>
+      <member refid="classTriDecorator_1ad7e52dcdf08e765e3f9bd204c8140ebf" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getPointsAroundEdge</name></member>
+      <member refid="classNormVecDecorator_1aa923675d1b956893c88721bc62b8526f" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>getState</name></member>
+      <member refid="classTriDecorator_1a8435abb814ebe8e8ebc19ef22c2422c7" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getSurroundingTriangles</name></member>
+      <member refid="classNormVecDecorator_1a215d84734a98250ad868959adac59c9d" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>getTriangle</name></member>
+      <member refid="classNormVecDecorator_1a2b726d25ae7a828372813f0dead0fadb" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>getTriangle</name></member>
+      <member refid="classTriDecorator_1ab68eac29cbfc2c33f338221cef5081cb" prot="public" virt="virtual" ambiguityscope="TriDecorator::"><scope>NormVecDecorator</scope><name>getTriangle</name></member>
+      <member refid="classTriDecorator_1a67598b0b97af7a1a2e80de563b2efc1b" prot="public" virt="virtual" ambiguityscope="TriDecorator::"><scope>NormVecDecorator</scope><name>getTriangle</name></member>
+      <member refid="classTriDecorator_1a36e7e5f550e18afe31bcc7021100d347" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getXMax</name></member>
+      <member refid="classTriDecorator_1ac66eb2816a96e21bddbc61f96a42f20b" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getXMin</name></member>
+      <member refid="classTriDecorator_1a8469b2766af6ddd56c33c9e66a1a306a" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getYMax</name></member>
+      <member refid="classTriDecorator_1a589baf17476f0eb665f8566107ca47d5" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>getYMin</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aa60878fb5905d503f9537994c397c5c1" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>InsertVertex</name></member>
+      <member refid="classNormVecDecorator_1a6b4cb34d88bc478276a0af583f23df3f" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>mInterpolator</name></member>
+      <member refid="classNormVecDecorator_1a8cfbd28dfc9109fd5f1c073c85953a18" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>mNormVec</name></member>
+      <member refid="classNormVecDecorator_1a2482a2b84ba07633bd13870d8168e9c8" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>mPointState</name></member>
+      <member refid="classTriDecorator_1a159ed5f89371a4af47f938e47514f4d4" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>mTIN</name></member>
+      <member refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337acb6173ec1f71200168bb805778b9ee00" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>Normal</name></member>
+      <member refid="classNormVecDecorator_1a890de3da68973ef3a3c898a8f9723217" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>NormVecDecorator</name></member>
+      <member refid="classNormVecDecorator_1aa0fa5aad93235f869ca2d4d0f626ddd1" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>NormVecDecorator</name></member>
+      <member refid="classTriDecorator_1a46f66b5f76e6764508b41856d292691a" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>performConsistencyTest</name></member>
+      <member refid="classTriDecorator_1a879560412ec6e55e457b1bd918b0453d" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>pointInside</name></member>
+      <member refid="classNormVecDecorator_1af5f5f0b4a0975d79af48e06ddbbe7337" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>PointState</name></member>
+      <member refid="classTriDecorator_1a33589a9d16acb2bfd4333e406a9ea40c" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>ruppertRefinement</name></member>
+      <member refid="classNormVecDecorator_1a530951628c6a30912667c556690782ed" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>saveTriangulation</name></member>
+      <member refid="classTriDecorator_1a06f67f56817ff1e7c5d3e880d8f6bd85" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>setBreakEdgeColor</name></member>
+      <member refid="classTriDecorator_1a6abccf9e7f67f067b30a864e3352fa05" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>setEdgeColor</name></member>
+      <member refid="classTriDecorator_1a0bb2380dd0769a644155e2e60302e01c" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>setForcedCrossBehavior</name></member>
+      <member refid="classTriDecorator_1ac8b3ba093a39e9bfa91d2c8b11516224" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>setForcedEdgeColor</name></member>
+      <member refid="classNormVecDecorator_1a8cb6fa7c42ee1a794f025019c6b97d7f" prot="protected" virt="non-virtual"><scope>NormVecDecorator</scope><name>setState</name></member>
+      <member refid="classNormVecDecorator_1a18b4e1cee3d9d25d79cfbff9a139b158" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>setTriangleInterpolator</name></member>
+      <member refid="classTriangulation_1ab0d77a7723f3dec85caa69106a6df413aeaadcebf3abc9ed8808490d773ca0dc9" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>SnappingTypeVertex</name></member>
+      <member refid="classNormVecDecorator_1a9a64d8cd62aec3596b389c0b9f234b60" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>swapEdge</name></member>
+      <member refid="classTriangulation_1a1a34ead0d4a8b74fd1dbea0362316ea4" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>triangulationFields</name></member>
+      <member refid="classTriDecorator_1a7bfe590b18e34ee04e45a0b46b5aaffd" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>TriDecorator</name></member>
+      <member refid="classTriDecorator_1a0af9cc407bdfc87d2de2504b07fd3ef3" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>TriDecorator</name></member>
+      <member refid="classNormVecDecorator_1a55004f773358aee895d1c7493083facb" prot="public" virt="non-virtual"><scope>NormVecDecorator</scope><name>~NormVecDecorator</name></member>
+      <member refid="classTriangulation_1a6651d84a634771ff6f1cd1de45ee6131" prot="public" virt="virtual"><scope>NormVecDecorator</scope><name>~Triangulation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsColorWidget class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsColorWidget <span class="m-thin">class</span>
+        </h1>
+        <p>A base class for interactive color widgets.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Widgets can either allow setting a single component of a color (e.g., the red or green components), or an entire color. The <a href="classQgsColorWidget.html" class="m-doc">QgsColorWidget</a> also keeps track of any explicitly set hue for the color, so that this information is not lost when the widget is set to a color with an ambiguous hue (e.g., black or white shades).</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.5</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsColorBox.html" class="m-doc">QgsColorBox</a>
+            </dt>
+            <dd>A color box widget.</dd>
+            <dt>
+              class <a href="classQgsColorPreviewWidget.html" class="m-doc">QgsColorPreviewWidget</a>
+            </dt>
+            <dd>A preview box which displays one or two colors as swatches.</dd>
+            <dt>
+              class <a href="classQgsColorRampWidget.html" class="m-doc">QgsColorRampWidget</a>
+            </dt>
+            <dd>A color ramp widget.</dd>
+            <dt>
+              class <a href="classQgsColorSliderWidget.html" class="m-doc">QgsColorSliderWidget</a>
+            </dt>
+            <dd>A composite horizontal color ramp widget and associated spinbox for manual value entry.</dd>
+            <dt>
+              class <a href="classQgsColorTextWidget.html" class="m-doc">QgsColorTextWidget</a>
+            </dt>
+            <dd>A line edit widget which displays colors as text and accepts string representations of colors.</dd>
+            <dt>
+              class <a href="classQgsColorWheel.html" class="m-doc">QgsColorWheel</a>
+            </dt>
+            <dd>A color wheel widget.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> { </span><span class="m-doc-wrap"><a href="#ae5c3cc477cd1c27d19188a5e984a7627ab9892ddc5046dc437345ed86c0e3db1e" class="m-doc">Multiple</a> = 0,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627a42394c52b55a065847f32c5e9e700c7d" class="m-doc">Red</a>,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627a36fbe2c2b3fbbf4ad087fdf60ed80bae" class="m-doc">Green</a>,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627aa49f7a96d968a0c2632183b65e5e3733" class="m-doc">Blue</a>,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627a25b2e1218f787330e73bb9ca8116f557" class="m-doc">Hue</a>,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627a4d18343926e25e31265ba5179605a281" class="m-doc">Saturation</a>,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627ab2a990f12a7b734ae7be8b7e37ed8ec1" class="m-doc">Value</a>,
+              <a href="#ae5c3cc477cd1c27d19188a5e984a7627a36f8cc045d8847bf161caa08a254176a" class="m-doc">Alpha</a> }</span>
+            </dt>
+            <dd>Specifies the color component which the widget alters.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a906fb47e02b528afaf7b8247aad92c4f" class="m-doc">createDragIcon</a>(</span><span class="m-doc-wrap">const QColor&amp; color) -&gt; QPixmap</span>
+            </dt>
+            <dd>Create an icon for dragging colors.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a3987839a636887227aa0c8a3412a28c9" class="m-doc">QgsColorWidget</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr,
+              <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> component = <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627ab9892ddc5046dc437345ed86c0e3db1e" class="m-doc">Multiple</a>)</span>
+            </dt>
+            <dd>Construct a new color widget.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5b01fa090830f2baecdd39cd9b848623" class="m-doc">color</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Returns the current color for the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4ff1f9a435f0c248c46847d34fbb1c00" class="m-doc">component</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a></span>
+            </dt>
+            <dd>Returns the color component which the widget controls.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a88836d4b43852cce28ae8bcc06375ad3" class="m-doc">componentValue</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the current value of the widget&#x27;s color component.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a68916db25eeff6605901f153d8f5993f" class="m-doc">colorChanged</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Emitted when the widget&#x27;s color changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a344d08463366991db38a812d4dccccee" class="m-doc">hovered</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when mouse hovers over widget.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad684d5eeffec84f343612c5d1b1b79dd" class="m-doc">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color,
+              bool emitSignals = false) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets the color for the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aab4521ec7b2607aa953575918d3c36a3" class="m-doc">setComponent</a>(</span><span class="m-doc-wrap"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">QgsColorWidget::<wbr />ColorComponent</a> component) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets the color component which the widget controls.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a776239000be6eb3fb0b98745dee158cf" class="m-doc">setComponentValue</a>(</span><span class="m-doc-wrap">int value) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Alters the widget&#x27;s color by setting the value for the widget&#x27;s color component.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#adc314022d5078e98932b4252060542c3" class="m-doc">transparentBackground</a>(</span><span class="m-doc-wrap">) -&gt; const QPixmap&amp;</span>
+            </dt>
+            <dd>Generates a checkboard pattern pixmap for use as a background to transparent colors.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7b9d1c96b2f1fbb35282c204068d6e07" class="m-doc">alterColor</a>(</span><span class="m-doc-wrap">QColor&amp; color,
+              <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">QgsColorWidget::<wbr />ColorComponent</a> component,
+              int newValue) const</span>
+            </dt>
+            <dd>Alters a color by modifiying the value of a specific color component.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac3b362ab0be9d85c887e236197c876bb" class="m-doc">componentRange</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the range of valid values for the color widget&#x27;s component.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a069fbed72905ce7224c84ddcfa349406" class="m-doc">componentRange</a>(</span><span class="m-doc-wrap"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> component) const -&gt; int</span>
+            </dt>
+            <dd>Returns the range of valid values a color component.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1f9750c67185518afebd5c5c6ec07997" class="m-doc">componentValue</a>(</span><span class="m-doc-wrap"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> component) const -&gt; int</span>
+            </dt>
+            <dd>Returns the value of a component of the widget&#x27;s current color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad3a1c9e8cb9d0535b23d0827f9e7ee69" class="m-doc">hue</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the hue for the widget.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              int <a href="#a745081b1873bbdb04917b8ffd23ad1b1" class="m-doc">mExplicitHue</a>
+            </dt>
+            <dd>QColor wipes the hue information when it is ambiguous (e.g., for saturation = 0).</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="ae5c3cc477cd1c27d19188a5e984a7627"><div>
+            <h3>
+              enum QgsColorWidget::<wbr /><a href="#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc-self">ColorComponent</a>
+            </h3>
+            <p>Specifies the color component which the widget alters.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627ab9892ddc5046dc437345ed86c0e3db1e" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627ab9892ddc5046dc437345ed86c0e3db1e">Multiple</a></td>
+                  <td>
+                  <p>Widget alters multiple color components.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627a42394c52b55a065847f32c5e9e700c7d" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627a42394c52b55a065847f32c5e9e700c7d">Red</a></td>
+                  <td>
+                  <p>Red component of color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627a36fbe2c2b3fbbf4ad087fdf60ed80bae" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627a36fbe2c2b3fbbf4ad087fdf60ed80bae">Green</a></td>
+                  <td>
+                  <p>Green component of color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627aa49f7a96d968a0c2632183b65e5e3733" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627aa49f7a96d968a0c2632183b65e5e3733">Blue</a></td>
+                  <td>
+                  <p>Blue component of color.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627a25b2e1218f787330e73bb9ca8116f557" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627a25b2e1218f787330e73bb9ca8116f557">Hue</a></td>
+                  <td>
+                  <p>Hue component of color (based on HSV model)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627a4d18343926e25e31265ba5179605a281" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627a4d18343926e25e31265ba5179605a281">Saturation</a></td>
+                  <td>
+                  <p>Saturation component of color (based on HSV model)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627ab2a990f12a7b734ae7be8b7e37ed8ec1" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627ab2a990f12a7b734ae7be8b7e37ed8ec1">Value</a></td>
+                  <td>
+                  <p>Value component of color (based on HSV model)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ae5c3cc477cd1c27d19188a5e984a7627a36f8cc045d8847bf161caa08a254176a" class="m-doc-self" name="ae5c3cc477cd1c27d19188a5e984a7627a36f8cc045d8847bf161caa08a254176a">Alpha</a></td>
+                  <td>
+                  <p>Alpha component (opacity) of color.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a906fb47e02b528afaf7b8247aad92c4f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QPixmap QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a906fb47e02b528afaf7b8247aad92c4f" class="m-doc-self">createDragIcon</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span></span>
+            </h3>
+            <p>Create an icon for dragging colors.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>for icon</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a3987839a636887227aa0c8a3412a28c9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3987839a636887227aa0c8a3412a28c9" class="m-doc-self">QgsColorWidget</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr,
+              <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> component = <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627ab9892ddc5046dc437345ed86c0e3db1e" class="m-doc">Multiple</a>)</span></span>
+            </h3>
+            <p>Construct a new color widget.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parent</td>
+                  <td>parent QWidget for the widget</td>
+                </tr>
+                <tr>
+                  <td>component</td>
+                  <td>color component the widget alters</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5b01fa090830f2baecdd39cd9b848623"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5b01fa090830f2baecdd39cd9b848623" class="m-doc-self">color</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current color for the widget.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>current widget color</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#ad684d5eeffec84f343612c5d1b1b79dd" class="m-doc">setColor</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4ff1f9a435f0c248c46847d34fbb1c00"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ff1f9a435f0c248c46847d34fbb1c00" class="m-doc-self">component</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the color component which the widget controls.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>color component for widget</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#aab4521ec7b2607aa953575918d3c36a3" class="m-doc">setComponent</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a88836d4b43852cce28ae8bcc06375ad3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a88836d4b43852cce28ae8bcc06375ad3" class="m-doc-self">componentValue</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current value of the widget&#x27;s color component.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>value of color component, or -1 if widget has multiple components or an invalid color set</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#a776239000be6eb3fb0b98745dee158cf" class="m-doc">setComponentValue</a></p><p><a href="classQgsColorWidget.html#a4ff1f9a435f0c248c46847d34fbb1c00" class="m-doc">component</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a68916db25eeff6605901f153d8f5993f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68916db25eeff6605901f153d8f5993f" class="m-doc-self">colorChanged</a>(</span><span class="m-doc-wrap">const QColor&amp; color) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the widget&#x27;s color changes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>new widget color</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a344d08463366991db38a812d4dccccee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a344d08463366991db38a812d4dccccee" class="m-doc-self">hovered</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when mouse hovers over widget.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad684d5eeffec84f343612c5d1b1b79dd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad684d5eeffec84f343612c5d1b1b79dd" class="m-doc-self">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color,
+              bool emitSignals = false) <span class="m-label m-warning">virtual</span> <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets the color for the widget.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>widget color</td>
+                </tr>
+                <tr>
+                  <td>emitSignals</td>
+                  <td>set to true to emit the colorChanged signal after setting color</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#a5b01fa090830f2baecdd39cd9b848623" class="m-doc">color</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aab4521ec7b2607aa953575918d3c36a3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab4521ec7b2607aa953575918d3c36a3" class="m-doc-self">setComponent</a>(</span><span class="m-doc-wrap"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">QgsColorWidget::<wbr />ColorComponent</a> component) <span class="m-label m-warning">virtual</span> <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets the color component which the widget controls.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">component</td>
+                  <td>color component for widget</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#a4ff1f9a435f0c248c46847d34fbb1c00" class="m-doc">component</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a776239000be6eb3fb0b98745dee158cf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a776239000be6eb3fb0b98745dee158cf" class="m-doc-self">setComponentValue</a>(</span><span class="m-doc-wrap">int value) <span class="m-label m-warning">virtual</span> <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Alters the widget&#x27;s color by setting the value for the widget&#x27;s color component.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td>value for widget&#x27;s color component. This value is automatically clipped to the range of valid values for the color component.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#a88836d4b43852cce28ae8bcc06375ad3" class="m-doc">componentValue</a></p><p><a href="classQgsColorWidget.html#aab4521ec7b2607aa953575918d3c36a3" class="m-doc">setComponent</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>this method has no effect if the widget is set to the <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627ab9892ddc5046dc437345ed86c0e3db1e" class="m-doc">QgsColorWidget::<wbr />Multiple</a> component</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adc314022d5078e98932b4252060542c3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static const QPixmap&amp; QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc314022d5078e98932b4252060542c3" class="m-doc-self">transparentBackground</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Generates a checkboard pattern pixmap for use as a background to transparent colors.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>checkerboard pixmap</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7b9d1c96b2f1fbb35282c204068d6e07"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7b9d1c96b2f1fbb35282c204068d6e07" class="m-doc-self">alterColor</a>(</span><span class="m-doc-wrap">QColor&amp; color,
+              <a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">QgsColorWidget::<wbr />ColorComponent</a> component,
+              int newValue) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Alters a color by modifiying the value of a specific color component.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>color to alter</td>
+                </tr>
+                <tr>
+                  <td>component</td>
+                  <td>color component to alter</td>
+                </tr>
+                <tr>
+                  <td>newValue</td>
+                  <td>new value of color component. Values are automatically clipped to a valid range for the color component.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac3b362ab0be9d85c887e236197c876bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3b362ab0be9d85c887e236197c876bb" class="m-doc-self">componentRange</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the range of valid values for the color widget&#x27;s component.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>maximum value allowed for color component, or -1 if widget has multiple components</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a069fbed72905ce7224c84ddcfa349406"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a069fbed72905ce7224c84ddcfa349406" class="m-doc-self">componentRange</a>(</span><span class="m-doc-wrap"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> component) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the range of valid values a color component.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>maximum value allowed for color component</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1f9750c67185518afebd5c5c6ec07997"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1f9750c67185518afebd5c5c6ec07997" class="m-doc-self">componentValue</a>(</span><span class="m-doc-wrap"><a href="classQgsColorWidget.html#ae5c3cc477cd1c27d19188a5e984a7627" class="m-doc">ColorComponent</a> component) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the value of a component of the widget&#x27;s current color.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">component</td>
+                  <td>color component to return</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>value of color component, or -1 if widget has an invalid color set</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This method correctly handles hue values when the color has an ambiguous hue (e.g., black or white shades)</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorWidget.html#ad3a1c9e8cb9d0535b23d0827f9e7ee69" class="m-doc">hue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad3a1c9e8cb9d0535b23d0827f9e7ee69"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsColorWidget::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad3a1c9e8cb9d0535b23d0827f9e7ee69" class="m-doc-self">hue</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the hue for the widget.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>explicitly set hue for widget</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This may differ from the hue for the QColor returned by <a href="classQgsColorWidget.html#a5b01fa090830f2baecdd39cd9b848623" class="m-doc">color()</a>, as QColor returns a hue of -1 if the color&#x27;s hue is ambiguous (e.g., if the saturation is zero).</p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Variable documentation</h2>
+          <section class="m-doc-details" id="a745081b1873bbdb04917b8ffd23ad1b1"><div>
+            <h3>
+              int QgsColorWidget::<wbr /><a href="#a745081b1873bbdb04917b8ffd23ad1b1" class="m-doc-self">mExplicitHue</a> <span class="m-label m-warning">protected</span>
+            </h3>
+            <p>QColor wipes the hue information when it is ambiguous (e.g., for saturation = 0).</p>
+<p>So the hue is stored in mExplicit hue to keep it around, as it is useful when modifying colors</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

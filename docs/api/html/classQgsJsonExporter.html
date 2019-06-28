@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsJsonExporter class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsJsonExporter <span class="m-thin">class</span>
+        </h1>
+        <p>Handles exporting <a href="classQgsFeature.html" class="m-doc">QgsFeature</a> features to GeoJSON features.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Note that geometries will be automatically reprojected to WGS84 to match GeoJSON spec if either the source vector layer or source CRS is set.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ad020342399b63856894616b67e3c8c25" class="m-doc">QgsJsonExporter</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* vectorLayer = nullptr,
+              int precision = 6)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsJsonExporter.html" class="m-doc">QgsJsonExporter</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a83d660f0a13c039e19132076f000981c" class="m-doc">attributes</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a></span>
+            </dt>
+            <dd>Returns the list of attributes which will be included in the JSON exports, or an empty list if all attributes will be included.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2b1464bf413374c00006474641684ddb" class="m-doc">excludedAttributes</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a></span>
+            </dt>
+            <dd>Returns a list of attributes which will be specifically excluded from the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae2a3d9ebf9b777900df637f72051278d" class="m-doc">exportFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              const QVariantMap&amp; extraProperties = QVariantMap(),
+              const QVariant&amp; id = QVariant()) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a GeoJSON string representation of a feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a85b499637774470b12121405e3ddc129" class="m-doc">exportFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeature_8h.html#ae0f922f3469155bc17dfc96729f1c1cc" class="m-doc">QgsFeatureList</a>&amp; features) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a GeoJSON string representation of a list of features (feature collection).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9b6de003970d9292315990e08c3cb849" class="m-doc">includeAttributes</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether attributes will be included in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeea82a327834c3c8e0a26344b8c44fb1" class="m-doc">includeGeometry</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether geometry will be included in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab00d6ac38d5f74d87e044c21f4f370db" class="m-doc">includeRelated</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether attributes of related (child) features will be included in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9ced625dda3ed9501461dc05d8c855ef" class="m-doc">precision</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the maximum number of decimal places to use in geometry coordinates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a24a02c2bb3c6f8fbf6d8fd8f6db71b7f" class="m-doc">setAttributes</a>(</span><span class="m-doc-wrap">const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span>
+            </dt>
+            <dd>Sets the list of attributes to include in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8a93534f7bca02bd129b7c66097bbea2" class="m-doc">setExcludedAttributes</a>(</span><span class="m-doc-wrap">const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span>
+            </dt>
+            <dd>Sets a list of attributes to specifically exclude from the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a57a678575de8b411d22236bdabb204d3" class="m-doc">setIncludeAttributes</a>(</span><span class="m-doc-wrap">bool includeAttributes)</span>
+            </dt>
+            <dd>Sets whether to include attributes in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0afbd3703c66e72a83182b6a95a4f9d6" class="m-doc">setIncludeGeometry</a>(</span><span class="m-doc-wrap">bool includeGeometry)</span>
+            </dt>
+            <dd>Sets whether to include geometry in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0f573ec80505a9c9d9f22f5fe249c497" class="m-doc">setIncludeRelated</a>(</span><span class="m-doc-wrap">bool includeRelated)</span>
+            </dt>
+            <dd>Sets whether to include attributes of features linked via references in the JSON exports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a128e7a7334938df21360ff83821482bc" class="m-doc">setPrecision</a>(</span><span class="m-doc-wrap">int precision)</span>
+            </dt>
+            <dd>Sets the maximum number of decimal places to use in geometry coordinates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a44a8c6978fb19692735a2a0705be3c69" class="m-doc">setSourceCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span>
+            </dt>
+            <dd>Sets the source CRS for feature geometries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abf39f2f2ddf455085eca50e337e21c8b" class="m-doc">setVectorLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* vectorLayer)</span>
+            </dt>
+            <dd>Sets the associated vector layer (required for related attribute export).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac03081488d910b6b9ebd4cdbefb0feb0" class="m-doc">sourceCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the source CRS for feature geometries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6d4e333ae7dd874d637a7a7779cfdc8c" class="m-doc">vectorLayer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>Returns the associated vector layer, if set.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ad020342399b63856894616b67e3c8c25"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad020342399b63856894616b67e3c8c25" class="m-doc-self">QgsJsonExporter</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* vectorLayer = nullptr,
+              int precision = 6)</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsJsonExporter.html" class="m-doc">QgsJsonExporter</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">vectorLayer</td>
+                  <td>associated vector layer (required for related attribute export)</td>
+                </tr>
+                <tr>
+                  <td>precision</td>
+                  <td>maximum number of decimal places to use for geometry coordinates, the RFC 7946 GeoJSON specification recommends limiting coordinate precision to 6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a83d660f0a13c039e19132076f000981c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a> QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83d660f0a13c039e19132076f000981c" class="m-doc-self">attributes</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the list of attributes which will be included in the JSON exports, or an empty list if all attributes will be included.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a24a02c2bb3c6f8fbf6d8fd8f6db71b7f" class="m-doc">setAttributes()</a></p><p><a href="classQgsJsonExporter.html#a2b1464bf413374c00006474641684ddb" class="m-doc">excludedAttributes()</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>Attributes excluded via <a href="classQgsJsonExporter.html#a2b1464bf413374c00006474641684ddb" class="m-doc">excludedAttributes()</a> take precedence over attributes returned by this method.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2b1464bf413374c00006474641684ddb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a> QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2b1464bf413374c00006474641684ddb" class="m-doc-self">excludedAttributes</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of attributes which will be specifically excluded from the JSON exports.</p>
+<p>Excluded attributes take precedence over attributes included via <a href="classQgsJsonExporter.html#a83d660f0a13c039e19132076f000981c" class="m-doc">attributes()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a8a93534f7bca02bd129b7c66097bbea2" class="m-doc">setExcludedAttributes()</a></p><p><a href="classQgsJsonExporter.html#a83d660f0a13c039e19132076f000981c" class="m-doc">attributes()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae2a3d9ebf9b777900df637f72051278d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae2a3d9ebf9b777900df637f72051278d" class="m-doc-self">exportFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              const QVariantMap&amp; extraProperties = QVariantMap(),
+              const QVariant&amp; id = QVariant()) const</span></span>
+            </h3>
+            <p>Returns a GeoJSON string representation of a feature.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">feature</td>
+                  <td>feature to convert</td>
+                </tr>
+                <tr>
+                  <td>extraProperties</td>
+                  <td>map of extra attributes to include in feature&#x27;s properties</td>
+                </tr>
+                <tr>
+                  <td>id</td>
+                  <td>optional ID to use as GeoJSON feature&#x27;s ID instead of input feature&#x27;s ID. If omitted, feature&#x27;s ID is used.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>GeoJSON string</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a85b499637774470b12121405e3ddc129" class="m-doc">exportFeatures()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a85b499637774470b12121405e3ddc129"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a85b499637774470b12121405e3ddc129" class="m-doc-self">exportFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeature_8h.html#ae0f922f3469155bc17dfc96729f1c1cc" class="m-doc">QgsFeatureList</a>&amp; features) const</span></span>
+            </h3>
+            <p>Returns a GeoJSON string representation of a list of features (feature collection).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">features</td>
+                  <td>features to convert</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>GeoJSON string</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#ae2a3d9ebf9b777900df637f72051278d" class="m-doc">exportFeature()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9b6de003970d9292315990e08c3cb849"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9b6de003970d9292315990e08c3cb849" class="m-doc-self">includeAttributes</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether attributes will be included in the JSON exports.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a57a678575de8b411d22236bdabb204d3" class="m-doc">setIncludeAttributes()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeea82a327834c3c8e0a26344b8c44fb1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeea82a327834c3c8e0a26344b8c44fb1" class="m-doc-self">includeGeometry</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether geometry will be included in the JSON exports.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a0afbd3703c66e72a83182b6a95a4f9d6" class="m-doc">setIncludeGeometry()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab00d6ac38d5f74d87e044c21f4f370db"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab00d6ac38d5f74d87e044c21f4f370db" class="m-doc-self">includeRelated</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether attributes of related (child) features will be included in the JSON exports.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a0f573ec80505a9c9d9f22f5fe249c497" class="m-doc">setIncludeRelated()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9ced625dda3ed9501461dc05d8c855ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ced625dda3ed9501461dc05d8c855ef" class="m-doc-self">precision</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the maximum number of decimal places to use in geometry coordinates.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a128e7a7334938df21360ff83821482bc" class="m-doc">setPrecision()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a24a02c2bb3c6f8fbf6d8fd8f6db71b7f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a24a02c2bb3c6f8fbf6d8fd8f6db71b7f" class="m-doc-self">setAttributes</a>(</span><span class="m-doc-wrap">const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span></span>
+            </h3>
+            <p>Sets the list of attributes to include in the JSON exports.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">attributes</td>
+                  <td>list of attribute indexes, or an empty list to include all attributes</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a83d660f0a13c039e19132076f000981c" class="m-doc">attributes()</a></p><p><a href="classQgsJsonExporter.html#a8a93534f7bca02bd129b7c66097bbea2" class="m-doc">setExcludedAttributes()</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>Attributes excluded via <a href="classQgsJsonExporter.html#a8a93534f7bca02bd129b7c66097bbea2" class="m-doc">setExcludedAttributes()</a> take precedence over attributes specified by this method.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8a93534f7bca02bd129b7c66097bbea2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8a93534f7bca02bd129b7c66097bbea2" class="m-doc-self">setExcludedAttributes</a>(</span><span class="m-doc-wrap">const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span></span>
+            </h3>
+            <p>Sets a list of attributes to specifically exclude from the JSON exports.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">attributes</td>
+                  <td>list of attribute indexes to exclude</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Excluded attributes take precedence over attributes included via <a href="classQgsJsonExporter.html#a24a02c2bb3c6f8fbf6d8fd8f6db71b7f" class="m-doc">setAttributes()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a2b1464bf413374c00006474641684ddb" class="m-doc">excludedAttributes()</a></p><p><a href="classQgsJsonExporter.html#a24a02c2bb3c6f8fbf6d8fd8f6db71b7f" class="m-doc">setAttributes()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a57a678575de8b411d22236bdabb204d3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a57a678575de8b411d22236bdabb204d3" class="m-doc-self">setIncludeAttributes</a>(</span><span class="m-doc-wrap">bool includeAttributes)</span></span>
+            </h3>
+            <p>Sets whether to include attributes in the JSON exports.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">includeAttributes</td>
+                  <td>set to false to prevent attribute inclusion</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a9b6de003970d9292315990e08c3cb849" class="m-doc">includeAttributes()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0afbd3703c66e72a83182b6a95a4f9d6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0afbd3703c66e72a83182b6a95a4f9d6" class="m-doc-self">setIncludeGeometry</a>(</span><span class="m-doc-wrap">bool includeGeometry)</span></span>
+            </h3>
+            <p>Sets whether to include geometry in the JSON exports.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">includeGeometry</td>
+                  <td>set to false to prevent geometry inclusion</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#aeea82a327834c3c8e0a26344b8c44fb1" class="m-doc">includeGeometry()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0f573ec80505a9c9d9f22f5fe249c497"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0f573ec80505a9c9d9f22f5fe249c497" class="m-doc-self">setIncludeRelated</a>(</span><span class="m-doc-wrap">bool includeRelated)</span></span>
+            </h3>
+            <p>Sets whether to include attributes of features linked via references in the JSON exports.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">includeRelated</td>
+                  <td>set to true to include attributes for any related child features within the exported properties element.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>associated vector layer must be set with <a href="classQgsJsonExporter.html#abf39f2f2ddf455085eca50e337e21c8b" class="m-doc">setVectorLayer()</a></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#ab00d6ac38d5f74d87e044c21f4f370db" class="m-doc">includeRelated()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a128e7a7334938df21360ff83821482bc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a128e7a7334938df21360ff83821482bc" class="m-doc-self">setPrecision</a>(</span><span class="m-doc-wrap">int precision)</span></span>
+            </h3>
+            <p>Sets the maximum number of decimal places to use in geometry coordinates.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">precision</td>
+                  <td>number of decimal places</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The RFC 7946 GeoJSON specification recommends limiting coordinate precision to 6</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a9ced625dda3ed9501461dc05d8c855ef" class="m-doc">precision()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a44a8c6978fb19692735a2a0705be3c69"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a44a8c6978fb19692735a2a0705be3c69" class="m-doc-self">setSourceCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span></span>
+            </h3>
+            <p>Sets the source CRS for feature geometries.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">crs</td>
+                  <td>source CRS for input feature geometries</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The source CRS must be set if geometries are to be correctly automatically reprojected to WGS 84, to match GeoJSON specifications.</p><aside class="m-note m-info"><h4>Note</h4><p>the source CRS will be overwritten when a vector layer is specified via <a href="classQgsJsonExporter.html#abf39f2f2ddf455085eca50e337e21c8b" class="m-doc">setVectorLayer()</a></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#ac03081488d910b6b9ebd4cdbefb0feb0" class="m-doc">sourceCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abf39f2f2ddf455085eca50e337e21c8b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abf39f2f2ddf455085eca50e337e21c8b" class="m-doc-self">setVectorLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* vectorLayer)</span></span>
+            </h3>
+            <p>Sets the associated vector layer (required for related attribute export).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">vectorLayer</td>
+                  <td>vector layer</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This will automatically update the <a href="classQgsJsonExporter.html#ac03081488d910b6b9ebd4cdbefb0feb0" class="m-doc">sourceCrs()</a> to match.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a6d4e333ae7dd874d637a7a7779cfdc8c" class="m-doc">vectorLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac03081488d910b6b9ebd4cdbefb0feb0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac03081488d910b6b9ebd4cdbefb0feb0" class="m-doc-self">sourceCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the source CRS for feature geometries.</p>
+<p>The source CRS must be set if geometries are to be correctly automatically reprojected to WGS 84, to match GeoJSON specifications.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#a44a8c6978fb19692735a2a0705be3c69" class="m-doc">setSourceCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6d4e333ae7dd874d637a7a7779cfdc8c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* QgsJsonExporter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d4e333ae7dd874d637a7a7779cfdc8c" class="m-doc-self">vectorLayer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the associated vector layer, if set.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsJsonExporter.html#abf39f2f2ddf455085eca50e337e21c8b" class="m-doc">setVectorLayer()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

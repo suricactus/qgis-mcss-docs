@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsProcessingAlgorithm class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsProcessingAlgorithm <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for processing algorithms.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsProcessingFeatureBasedAlgorithm.html" class="m-doc">QgsProcessingFeatureBasedAlgorithm</a>
+            </dt>
+            <dd>An abstract <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a> base class for processing algorithms which operate &quot;feature-by-feature&quot;.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3" class="m-doc">Flag</a> { </span><span class="m-doc-wrap"><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a62f2a83f05f962a56b928c23d899962d" class="m-doc">FlagHideFromToolbox</a> = 1 &lt;&lt; 1,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a80148880fad1e4e0d3613f243497de5b" class="m-doc">FlagHideFromModeler</a> = 1 &lt;&lt; 2,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a6e2a0e3fac445e639157e0b0bc9a0931" class="m-doc">FlagSupportsBatch</a> = 1 &lt;&lt; 3,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a4c550fc5bb7df816465e47678895aa99" class="m-doc">FlagCanCancel</a> = 1 &lt;&lt; 4,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a94d0eeee061e1c4a44f250b36a651148" class="m-doc">FlagRequiresMatchingCrs</a> = 1 &lt;&lt; 5,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a229dea6cedf8c59132196dee09d4f2f6" class="m-doc">FlagNoThreading</a> = 1 &lt;&lt; 6,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3ae6b58d23dd713e5957bab067f202cf8b" class="m-doc">FlagDisplayNameIsLiteral</a> = 1 &lt;&lt; 7,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a344d854c1895f74972c28602980da674" class="m-doc">FlagSupportsInPlaceEdits</a> = 1 &lt;&lt; 8,
+              <a href="#a6a8c21fab75e03f50f45e41a9d67dbc3ab5d43ba462b9ef5b3e66c51686dfa9db" class="m-doc">FlagDeprecated</a> = FlagHideFromToolbox | FlagHideFromModeler }</span>
+            </dt>
+            <dd>Flags indicating how and when an algorithm operates and should be exposed to users.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a924e41ef98c41904e177189e9d26649b" class="m-doc">QgsProcessingAlgorithm</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Constructor for <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a30eb6bb68b6e29f782d03646a14c9cbb" class="m-doc-self" name="a30eb6bb68b6e29f782d03646a14c9cbb">QgsProcessingAlgorithm</a>(</span><span class="m-doc-wrap">const <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>&amp; other) <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd>Algorithms cannot be copied - <a href="classQgsProcessingAlgorithm.html#ad190b383961aeb7215af3626955852db" class="m-doc">create()</a> should be used instead.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acd0a1eab59679270bda1bd6e5e2078f4" class="m-doc">asPythonCommand</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a Python command string which can be executed to run the algorithm using the specified <em>parameters</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0640971083463eb847fb6eb8622c501" class="m-doc">canExecute</a>(</span><span class="m-doc-wrap">QString* errorMessage = nullptr) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns true if the algorithm can execute.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae3991f84be1b939144df415bec29d3fd" class="m-doc">checkParameterValues</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              QString* message = nullptr) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Checks the supplied <em>parameter</em> values to verify that they satisfy the requirements of this algorithm in the supplied <em>context</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a55f228fcac6d55ada3d124386ca45c0b" class="m-doc-self" name="a55f228fcac6d55ada3d124386ca45c0b">countVisibleParameters</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the number of visible (non-hidden) parameters defined by this algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad190b383961aeb7215af3626955852db" class="m-doc">create</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; configuration = QVariantMap()) const -&gt; <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>*</span>
+            </dt>
+            <dd>Creates a copy of the algorithm, ready for execution.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab8c8eb508bd422c98a662eb5f904563d" class="m-doc">createCustomParametersWidget</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr) const -&gt; QWidget* <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>If an algorithm subclass implements a custom parameters widget, a copy of this widget should be constructed and returned by this method.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a870fb43ba74a0e6706071f1e01134b2b" class="m-doc">createExpressionContext</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeatureSource.html" class="m-doc">QgsProcessingFeatureSource</a>* source = nullptr) const -&gt; <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a></span>
+            </dt>
+            <dd>Creates an expression context relating to the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8756b505dbef21c4f5c14380d59764a5" class="m-doc">destinationParameterDefinitions</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsprocessingparameters_8h.html#a2701e5777eb6e3a579d31b7a4f8a6629" class="m-doc">QgsProcessingParameterDefinitions</a></span>
+            </dt>
+            <dd>Returns a list of destination parameters definitions utilized by the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7b315c390929a904a0a63cdad9d45869" class="m-doc">displayName</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the translated algorithm name, which should be used for any user-visible display of the algorithm name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f052a9a0f0ee438afdf6eacb48795cb" class="m-doc">flags</a>(</span><span class="m-doc-wrap">) const -&gt; Flags <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the flags indicating how and when the algorithm operates and should be exposed to users.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a258c0bbdb36fb19512226804fd948bbb" class="m-doc">group</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the name of the group this algorithm belongs to.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2b976f38c1ff648152d7872a8b887ac2" class="m-doc">groupId</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the unique ID of the group this algorithm belongs to.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8918adc434de43cd430cbc52b2f789d4" class="m-doc-self" name="a8918adc434de43cd430cbc52b2f789d4">hasHtmlOutputs</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if this algorithm generates HTML outputs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aae9c981f348ccf5ab45d3cb92bb9958a" class="m-doc">helpString</a>(</span><span class="m-doc-wrap">) const -&gt; Q_DECL_DEPRECATED QString <span class="m-label m-danger">deprecated</span> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a localised help string for the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a35f891fb3210f3521c4e7527d909479b" class="m-doc">helpUrl</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a url pointing to the algorithm&#x27;s help page.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4272266b913c16756cf7a8c8b588fa5f" class="m-doc">icon</a>(</span><span class="m-doc-wrap">) const -&gt; QIcon <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns an icon for the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5ca92c590bec71b303e062496dc13823" class="m-doc">id</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the unique ID for the algorithm, which is a combination of the algorithm provider&#x27;s ID and the algorithms unique name (e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad9eb6365281f92799f1a4562ec386127" class="m-doc">name</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the algorithm name, used for identifying the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a37d99f115b643fdf83fa5c9ddfec7e7a" class="m-doc-self" name="a37d99f115b643fdf83fa5c9ddfec7e7a">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>&amp; other) -&gt; <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>&amp; <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd>Algorithms cannot be copied- <a href="classQgsProcessingAlgorithm.html#ad190b383961aeb7215af3626955852db" class="m-doc">create()</a> should be used instead.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a06ded33ee1a9200135806bdf8f514e01" class="m-doc">outputDefinition</a>(</span><span class="m-doc-wrap">const QString&amp; name) const -&gt; const <a href="classQgsProcessingOutputDefinition.html" class="m-doc">QgsProcessingOutputDefinition</a>*</span>
+            </dt>
+            <dd>Returns a matching output by <em>name</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0a1b7ab5b4cd285fafda3def029bf4eb" class="m-doc">outputDefinitions</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsprocessingoutputs_8h.html#a199be0964e7178afbca5ded157a1f398" class="m-doc">QgsProcessingOutputDefinitions</a></span>
+            </dt>
+            <dd>Returns an ordered list of output definitions utilized by the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9baa78fa74712abff92b1f45d9b8ba2d" class="m-doc">parameterDefinition</a>(</span><span class="m-doc-wrap">const QString&amp; name) const -&gt; const <a href="classQgsProcessingParameterDefinition.html" class="m-doc">QgsProcessingParameterDefinition</a>*</span>
+            </dt>
+            <dd>Returns a matching parameter by <em>name</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a52751b5318eb077aaa5e475c7a3e82ef" class="m-doc">parameterDefinitions</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsprocessingparameters_8h.html#a2701e5777eb6e3a579d31b7a4f8a6629" class="m-doc">QgsProcessingParameterDefinitions</a></span>
+            </dt>
+            <dd>Returns an ordered list of parameter definitions utilized by the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8cfe93b703357bb38247424af323a951" class="m-doc">postProcess</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) -&gt; QVariantMap</span>
+            </dt>
+            <dd>Should be called in the main thread following the completion of <a href="classQgsProcessingAlgorithm.html#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared()</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) -&gt; bool</span>
+            </dt>
+            <dd>Prepares the algorithm for execution.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5e07c0377eb04819e2b667bef5a4237e" class="m-doc">preprocessParameters</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters) -&gt; QVariantMap <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Pre-processes a set of <em>parameters</em>, allowing the algorithm to clean their values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0ba1a020a2ddd33953d82dfca732893" class="m-doc-self" name="ad0ba1a020a2ddd33953d82dfca732893">provider</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>*</span>
+            </dt>
+            <dd>Returns the provider to which this algorithm belongs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a824e128ff93b51f17488d770f5eb7fa8" class="m-doc">run</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback,
+              bool* ok = nullptr,
+              const QVariantMap&amp; configuration = QVariantMap()) const -&gt; QVariantMap</span>
+            </dt>
+            <dd>Executes the algorithm using the specified <em>parameters</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) -&gt; QVariantMap</span>
+            </dt>
+            <dd>Runs the algorithm, which has been prepared by an earlier call to <a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3f13bae47bd4daf90575e91bb97af2e5" class="m-doc">setProvider</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>* provider)</span>
+            </dt>
+            <dd>Associates this algorithm with its provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5259bda1835282ab29ad6ec7b0c8df09" class="m-doc">shortDescription</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns an optional translated short description of the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a42eddbb1b445d4dd1879499b3ebfd0ba" class="m-doc">shortHelpString</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a localised short helper string for the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9f6af182d75eb96a91430f576616dbbd" class="m-doc">svgIconPath</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a path to an SVG version of the algorithm&#x27;s icon.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a92f23a6ed99ddce530fd4e1e8e7d8756" class="m-doc">tags</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns a list of tags which relate to the algorithm, and are used to assist users in searching for suitable algorithms.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a46b98e40f5181fede74f89aeb5407722" class="m-doc">validateInputCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Checks whether the coordinate reference systems for the specified set of <em>parameters</em> are valid for the algorithm.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a626c97e8548831e668ac53f281138dae" class="m-doc">invalidRasterError</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name) -&gt; QString</span>
+            </dt>
+            <dd>Returns a user-friendly string to use as an error when a raster layer input could not be loaded.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a887fe00bc77891b01f06f5af9eb41dbf" class="m-doc">invalidSinkError</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name) -&gt; QString</span>
+            </dt>
+            <dd>Returns a user-friendly string to use as an error when a sink parameter could not be created.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae9fd1f30da55212b80d2f2193bad8074" class="m-doc">invalidSourceError</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name) -&gt; QString</span>
+            </dt>
+            <dd>Returns a user-friendly string to use as an error when a source parameter could not be loaded.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a89cbc2c2248a3300d0366de34f3d766a" class="m-doc">addOutput</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingOutputDefinition.html" class="m-doc">QgsProcessingOutputDefinition</a>* outputDefinition) -&gt; bool</span>
+            </dt>
+            <dd>Adds an output <em>definition</em> to the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc">addParameter</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingParameterDefinition.html" class="m-doc">QgsProcessingParameterDefinition</a>* parameterDefinition,
+              bool createOutput = true) -&gt; bool</span>
+            </dt>
+            <dd>Adds a parameter <em>definition</em> to the algorithm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a88271da5a2b0e9609ea50aef72ec2eac" class="m-doc">createInstance</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Creates a new instance of the algorithm class.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; configuration = QVariantMap()) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Initializes the algorithm using the specified <em>configuration</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad8f3de369d3082a2da9498f6de838698" class="m-doc-self" name="ad8f3de369d3082a2da9498f6de838698">parameterAsBool</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; bool</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a static boolean value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0553a084a94050d245f8fc66563803b1" class="m-doc">parameterAsCompatibleSourceLayerPath</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const QStringList&amp; compatibleFormats,
+              const QString&amp; preferredFormat = QString(&quot;shp&quot;),
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback = nullptr) -&gt; QString</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a source vector layer file path of compatible format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9600e69139a0498a4bf52fa7b24fd024" class="m-doc-self" name="a9600e69139a0498a4bf52fa7b24fd024">parameterAsCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a coordinate reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8b145f2517eeb2ce5e778ba87277ca48" class="m-doc-self" name="a8b145f2517eeb2ce5e778ba87277ca48">parameterAsDouble</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; double</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a static double value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3a8055149c379064107c753b631a066a" class="m-doc-self" name="a3a8055149c379064107c753b631a066a">parameterAsEnum</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; int</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a enum value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adefea407e069065a1fb3490afa199fd7" class="m-doc-self" name="adefea407e069065a1fb3490afa199fd7">parameterAsEnums</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QList&lt;int&gt;</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to list of enum values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a73f0953fefbb7e8b6413b25b3b88549a" class="m-doc-self" name="a73f0953fefbb7e8b6413b25b3b88549a">parameterAsExpression</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QString</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to an expression.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8dcb01d3175dfc710e3b819fcc666f86" class="m-doc">parameterAsExtent</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>()) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a rectangular extent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a274428c88a5fe979ad1b4a4efc13d355" class="m-doc">parameterAsExtentCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the coordinate reference system associated with an extent parameter value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad00fb487460ebc1d94e92945f48d37aa" class="m-doc">parameterAsExtentGeometry</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>()) -&gt; <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a></span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a rectangular extent, and returns a geometry covering this extent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a533d86089c6f99daabaa53ae08a9b934" class="m-doc-self" name="a533d86089c6f99daabaa53ae08a9b934">parameterAsFields</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QStringList</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a list of fields.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5b892c72fa566d1654358b1f4f7c1350" class="m-doc-self" name="a5b892c72fa566d1654358b1f4f7c1350">parameterAsFile</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QString</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a file/folder name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a96e1ffb21ebdf1549de3b99a266335bb" class="m-doc-self" name="a96e1ffb21ebdf1549de3b99a266335bb">parameterAsFileOutput</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QString</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a file based output destination.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e144277ee0d8f024bef0c69aa619ab9" class="m-doc-self" name="a2e144277ee0d8f024bef0c69aa619ab9">parameterAsInt</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; int</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a static integer value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5b6029a76423eb98c8cb586e19189b3" class="m-doc">parameterAsInts</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QList&lt;int&gt;</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a list of integer values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a19d79ea06073d5c3d84e2f91818636a3" class="m-doc">parameterAsLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a map layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abbba867d1e52dadfabb33c59fb70cce9" class="m-doc-self" name="abbba867d1e52dadfabb33c59fb70cce9">parameterAsLayerList</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a list of map layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8211f58dbfd389f86f43a08020e22a41" class="m-doc">parameterAsMatrix</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QVariantList</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a matrix/table of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac3980808a501fb7cf7464c1da69be751" class="m-doc">parameterAsMeshLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; <a href="classQgsMeshLayer.html" class="m-doc">QgsMeshLayer</a>*</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a mesh layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afa6471892e6e6eff93775283badc3ef9" class="m-doc-self" name="afa6471892e6e6eff93775283badc3ef9">parameterAsOutputLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QString</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a output layer destination.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab76855abbc0d0f7960df45d2c11df83b" class="m-doc">parameterAsPoint</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>()) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae23d5c022c3083097001194bce54b222" class="m-doc">parameterAsPointCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the coordinate reference system associated with an point parameter value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7fdc858c2943eb143e01ac96aa71ff1d" class="m-doc-self" name="a7fdc858c2943eb143e01ac96aa71ff1d">parameterAsRange</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QList&lt;double&gt;</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a range of values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1acf6b180a53e944a81881a0d1f21d4c" class="m-doc">parameterAsRasterLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; <a href="classQgsRasterLayer.html" class="m-doc">QgsRasterLayer</a>*</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a raster layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6a6c42b8773f360db0e98c687b8d0636" class="m-doc">parameterAsSink</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              QString&amp; destinationIdentifier,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> geometryType = <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11a4d5a4986629f537e7494bbb96892b807" class="m-doc">QgsWkbTypes::<wbr />NoGeometry</a>,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>(),
+              QgsFeatureSink::SinkFlags sinkFlags = nullptr) const -&gt; <a href="classQgsFeatureSink.html" class="m-doc">QgsFeatureSink</a>*</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a feature sink.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a545f024775b04ebe57b2dd0c0828d564" class="m-doc">parameterAsSource</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; <a href="classQgsProcessingFeatureSource.html" class="m-doc">QgsProcessingFeatureSource</a>*</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a feature source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8d0cc2e0cf232c20cf81cbf177aed185" class="m-doc-self" name="a8d0cc2e0cf232c20cf81cbf177aed185">parameterAsString</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; QString</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a static string value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6419a3d4c2c2e47d85304c586b736590" class="m-doc">parameterAsVectorLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>Evaluates the parameter with matching <em>name</em> to a vector layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac0162e2a5eccc253c5bcd3590010c4e9" class="m-doc">postProcessAlgorithm</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) -&gt; QVariantMap <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Allows the algorithm to perform any required cleanup tasks.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc">prepareAlgorithm</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Prepares the algorithm to run using the specified <em>parameters</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) -&gt; QVariantMap <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Runs the algorithm using the specified <em>parameters</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a75099bd6bb7898e450d332cc275e4e55" class="m-doc-self" name="a75099bd6bb7898e450d332cc275e4e55">removeParameter</a>(</span><span class="m-doc-wrap">const QString&amp; name)</span>
+            </dt>
+            <dd>Removes the parameter with matching <em>name</em> from the algorithm, and deletes any existing definition.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5da49d627f0e467f7147ace4bfa7254" class="m-doc">supportInPlaceEdit</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Checks whether this algorithm supports in-place editing on the given <em>layer</em> Default implementation returns false.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a6a8c21fab75e03f50f45e41a9d67dbc3"><div>
+            <h3>
+              enum QgsProcessingAlgorithm::<wbr /><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3" class="m-doc-self">Flag</a>
+            </h3>
+            <p>Flags indicating how and when an algorithm operates and should be exposed to users.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a62f2a83f05f962a56b928c23d899962d" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a62f2a83f05f962a56b928c23d899962d">FlagHideFromToolbox</a></td>
+                  <td>
+                  <p>Algorithm should be hidden from the toolbox.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a80148880fad1e4e0d3613f243497de5b" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a80148880fad1e4e0d3613f243497de5b">FlagHideFromModeler</a></td>
+                  <td>
+                  <p>Algorithm should be hidden from the modeler.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a6e2a0e3fac445e639157e0b0bc9a0931" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a6e2a0e3fac445e639157e0b0bc9a0931">FlagSupportsBatch</a></td>
+                  <td>
+                  <p>Algorithm supports batch mode.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a4c550fc5bb7df816465e47678895aa99" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a4c550fc5bb7df816465e47678895aa99">FlagCanCancel</a></td>
+                  <td>
+                  <p>Algorithm can be canceled.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a94d0eeee061e1c4a44f250b36a651148" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a94d0eeee061e1c4a44f250b36a651148">FlagRequiresMatchingCrs</a></td>
+                  <td>
+                  <p>Algorithm requires that all input layers have matching coordinate reference systems.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a229dea6cedf8c59132196dee09d4f2f6" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a229dea6cedf8c59132196dee09d4f2f6">FlagNoThreading</a></td>
+                  <td>
+                  <p>Algorithm is not thread safe and cannot be run in a background thread, e.g. for algorithms which manipulate the current project, layer selections, or with external dependencies which are not thread-safe.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3ae6b58d23dd713e5957bab067f202cf8b" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3ae6b58d23dd713e5957bab067f202cf8b">FlagDisplayNameIsLiteral</a></td>
+                  <td>
+                  <p>Algorithm&#x27;s display name is a static literal string, and should not be translated or automatically formatted. For use with algorithms named after commands, e.g. GRASS &#x27;v.in.ogr&#x27;.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3a344d854c1895f74972c28602980da674" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3a344d854c1895f74972c28602980da674">FlagSupportsInPlaceEdits</a></td>
+                  <td>
+                  <p>Algorithm supports in-place editing.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6a8c21fab75e03f50f45e41a9d67dbc3ab5d43ba462b9ef5b3e66c51686dfa9db" class="m-doc-self" name="a6a8c21fab75e03f50f45e41a9d67dbc3ab5d43ba462b9ef5b3e66c51686dfa9db">FlagDeprecated</a></td>
+                  <td>
+                  <p>Algorithm is deprecated.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a924e41ef98c41904e177189e9d26649b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a924e41ef98c41904e177189e9d26649b" class="m-doc-self">QgsProcessingAlgorithm</a>(</span><span class="m-doc-wrap">) <span class="m-label m-info">defaulted</span></span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>.</p>
+<p><a href="classQgsProcessingAlgorithm.html#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm()</a> should be called after creating an algorithm to ensure it can correctly configure its <a href="classQgsProcessingAlgorithm.html#a52751b5318eb077aaa5e475c7a3e82ef" class="m-doc">parameterDefinitions()</a> and <a href="classQgsProcessingAlgorithm.html#a0a1b7ab5b4cd285fafda3def029bf4eb" class="m-doc">outputDefinitions()</a>. Alternatively, calling <a href="classQgsProcessingAlgorithm.html#ad190b383961aeb7215af3626955852db" class="m-doc">create()</a> will return a pre-initialized copy of the algorithm.</p>
+          </div></section>
+          <section class="m-doc-details" id="acd0a1eab59679270bda1bd6e5e2078f4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acd0a1eab59679270bda1bd6e5e2078f4" class="m-doc-self">asPythonCommand</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a Python command string which can be executed to run the algorithm using the specified <em>parameters</em>.</p>
+<p>Algorithms which cannot be run from a Python command should return an empty string.</p>
+          </div></section>
+          <section class="m-doc-details" id="ad0640971083463eb847fb6eb8622c501"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0640971083463eb847fb6eb8622c501" class="m-doc-self">canExecute</a>(</span><span class="m-doc-wrap">QString* errorMessage = nullptr) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns true if the algorithm can execute.</p>
+<p>Algorithm subclasses can return false here to indicate that they are not able to execute, e.g. as a result of unmet external dependencies. If specified, the <em>errorMessage</em> argument will be filled with a localised error message describing why the algorithm cannot execute.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae3991f84be1b939144df415bec29d3fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae3991f84be1b939144df415bec29d3fd" class="m-doc-self">checkParameterValues</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              QString* message = nullptr) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Checks the supplied <em>parameter</em> values to verify that they satisfy the requirements of this algorithm in the supplied <em>context</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if parameters are acceptable for the algorithm.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The <em>message</em> parameter will be filled with explanatory text if validation fails. Overridden implementations should also check this base class implementation.</p>
+          </div></section>
+          <section class="m-doc-details" id="ad190b383961aeb7215af3626955852db"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad190b383961aeb7215af3626955852db" class="m-doc-self">create</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; configuration = QVariantMap()) const</span></span>
+            </h3>
+            <p>Creates a copy of the algorithm, ready for execution.</p>
+<p>This method returns a new, preinitialized copy of the algorithm, ready for executing.</p><p>The <em>configuration</em> argument allows passing of a map of configuration settings to the algorithm, allowing it to dynamically adjust its initialized parameters and outputs according to this configuration. This is generally used only for algorithms in a model, allowing them to adjust their behavior at run time according to some user configuration.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab8c8eb508bd422c98a662eb5f904563d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QWidget* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab8c8eb508bd422c98a662eb5f904563d" class="m-doc-self">createCustomParametersWidget</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>If an algorithm subclass implements a custom parameters widget, a copy of this widget should be constructed and returned by this method.</p>
+<p>The base class implementation returns nullptr, which indicates that an autogenerated parameters widget should be used.</p>
+          </div></section>
+          <section class="m-doc-details" id="a870fb43ba74a0e6706071f1e01134b2b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a870fb43ba74a0e6706071f1e01134b2b" class="m-doc-self">createExpressionContext</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeatureSource.html" class="m-doc">QgsProcessingFeatureSource</a>* source = nullptr) const</span></span>
+            </h3>
+            <p>Creates an expression context relating to the algorithm.</p>
+<p>This can be called by algorithms to create a new expression context ready for evaluating expressions within the algorithm. Optionally, a <em>source</em> can be specified which will be used to populate the context if it implements the <a href="classQgsExpressionContextGenerator.html" class="m-doc">QgsExpressionContextGenerator</a> interface.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8756b505dbef21c4f5c14380d59764a5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsprocessingparameters_8h.html#a2701e5777eb6e3a579d31b7a4f8a6629" class="m-doc">QgsProcessingParameterDefinitions</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8756b505dbef21c4f5c14380d59764a5" class="m-doc-self">destinationParameterDefinitions</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of destination parameters definitions utilized by the algorithm.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingParameterDefinition.html#a75ac4d96ab49f9f317d42e09f53aeb5d" class="m-doc">QgsProcessingParameterDefinition::<wbr />isDestination()</a></p><p><a href="classQgsProcessingAlgorithm.html#a52751b5318eb077aaa5e475c7a3e82ef" class="m-doc">parameterDefinitions()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7b315c390929a904a0a63cdad9d45869"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7b315c390929a904a0a63cdad9d45869" class="m-doc-self">displayName</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the translated algorithm name, which should be used for any user-visible display of the algorithm name.</p>
+<p>Algorithm display names should be short, e.g. ideally no more than 3 or 4 words. The name should use sentence case (e.g. &quot;Raster layer statistics&quot;, not &quot;Raster Layer Statistics&quot;).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ad9eb6365281f92799f1a4562ec386127" class="m-doc">name()</a></p><p><a href="classQgsProcessingAlgorithm.html#a5259bda1835282ab29ad6ec7b0c8df09" class="m-doc">shortDescription()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3f052a9a0f0ee438afdf6eacb48795cb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Flags QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f052a9a0f0ee438afdf6eacb48795cb" class="m-doc-self">flags</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the flags indicating how and when the algorithm operates and should be exposed to users.</p>
+<p>Default flags are FlagSupportsBatch and FlagCanCancel.</p>
+          </div></section>
+          <section class="m-doc-details" id="a258c0bbdb36fb19512226804fd948bbb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a258c0bbdb36fb19512226804fd948bbb" class="m-doc-self">group</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the name of the group this algorithm belongs to.</p>
+<p>This string should be localised.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a2b976f38c1ff648152d7872a8b887ac2" class="m-doc">groupId()</a></p><p><a href="classQgsProcessingAlgorithm.html#a92f23a6ed99ddce530fd4e1e8e7d8756" class="m-doc">tags()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2b976f38c1ff648152d7872a8b887ac2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2b976f38c1ff648152d7872a8b887ac2" class="m-doc-self">groupId</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the unique ID of the group this algorithm belongs to.</p>
+<p>This string should be fixed for the algorithm, and must not be localised. The group id should be unique within each provider. Group id should contain lowercase alphanumeric characters only and no spaces or other formatting characters.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a258c0bbdb36fb19512226804fd948bbb" class="m-doc">group()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aae9c981f348ccf5ab45d3cb92bb9958a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Q_DECL_DEPRECATED QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aae9c981f348ccf5ab45d3cb92bb9958a" class="m-doc-self">helpString</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a localised help string for the algorithm.</p>
+<p>Algorithm subclasses should implement either <a href="classQgsProcessingAlgorithm.html#aae9c981f348ccf5ab45d3cb92bb9958a" class="m-doc">helpString()</a> or <a href="classQgsProcessingAlgorithm.html#a35f891fb3210f3521c4e7527d909479b" class="m-doc">helpUrl()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a35f891fb3210f3521c4e7527d909479b" class="m-doc">helpUrl()</a></p><p><a href="classQgsProcessingAlgorithm.html#a42eddbb1b445d4dd1879499b3ebfd0ba" class="m-doc">shortHelpString()</a></p></aside><aside class="m-note m-danger"><h4><a href="deprecated.html#_deprecated000025" class="m-doc">Deprecated</a></h4><p>Unused, will be removed in QGIS 4.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a35f891fb3210f3521c4e7527d909479b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a35f891fb3210f3521c4e7527d909479b" class="m-doc-self">helpUrl</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a url pointing to the algorithm&#x27;s help page.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#aae9c981f348ccf5ab45d3cb92bb9958a" class="m-doc">helpString()</a></p><p><a href="classQgsProcessingAlgorithm.html#a42eddbb1b445d4dd1879499b3ebfd0ba" class="m-doc">shortHelpString()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4272266b913c16756cf7a8c8b588fa5f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QIcon QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4272266b913c16756cf7a8c8b588fa5f" class="m-doc-self">icon</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns an icon for the algorithm.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a9f6af182d75eb96a91430f576616dbbd" class="m-doc">svgIconPath()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5ca92c590bec71b303e062496dc13823"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ca92c590bec71b303e062496dc13823" class="m-doc-self">id</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the unique ID for the algorithm, which is a combination of the algorithm provider&#x27;s ID and the algorithms unique name (e.g.</p>
+<p>&quot;qgis:mergelayers&quot; ).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ad9eb6365281f92799f1a4562ec386127" class="m-doc">name()</a></p><p><a href="classQgsProcessingAlgorithm.html#ad0ba1a020a2ddd33953d82dfca732893" class="m-doc">provider()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad9eb6365281f92799f1a4562ec386127"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad9eb6365281f92799f1a4562ec386127" class="m-doc-self">name</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the algorithm name, used for identifying the algorithm.</p>
+<p>This string should be fixed for the algorithm, and must not be localised. The name should be unique within each provider. Names should contain lowercase alphanumeric characters only and no spaces or other formatting characters.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a7b315c390929a904a0a63cdad9d45869" class="m-doc">displayName()</a></p><p><a href="classQgsProcessingAlgorithm.html#a258c0bbdb36fb19512226804fd948bbb" class="m-doc">group()</a></p><p><a href="classQgsProcessingAlgorithm.html#a92f23a6ed99ddce530fd4e1e8e7d8756" class="m-doc">tags()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a06ded33ee1a9200135806bdf8f514e01"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsProcessingOutputDefinition.html" class="m-doc">QgsProcessingOutputDefinition</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a06ded33ee1a9200135806bdf8f514e01" class="m-doc-self">outputDefinition</a>(</span><span class="m-doc-wrap">const QString&amp; name) const</span></span>
+            </h3>
+            <p>Returns a matching output by <em>name</em>.</p>
+<p>Matching is done in a case-insensitive manner.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a0a1b7ab5b4cd285fafda3def029bf4eb" class="m-doc">outputDefinitions()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0a1b7ab5b4cd285fafda3def029bf4eb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsprocessingoutputs_8h.html#a199be0964e7178afbca5ded157a1f398" class="m-doc">QgsProcessingOutputDefinitions</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0a1b7ab5b4cd285fafda3def029bf4eb" class="m-doc-self">outputDefinitions</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns an ordered list of output definitions utilized by the algorithm.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a89cbc2c2248a3300d0366de34f3d766a" class="m-doc">addOutput()</a></p><p><a href="classQgsProcessingAlgorithm.html#a06ded33ee1a9200135806bdf8f514e01" class="m-doc">outputDefinition()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9baa78fa74712abff92b1f45d9b8ba2d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsProcessingParameterDefinition.html" class="m-doc">QgsProcessingParameterDefinition</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9baa78fa74712abff92b1f45d9b8ba2d" class="m-doc-self">parameterDefinition</a>(</span><span class="m-doc-wrap">const QString&amp; name) const</span></span>
+            </h3>
+            <p>Returns a matching parameter by <em>name</em>.</p>
+<p>Matching is done in a case-insensitive manner, but exact case matches will be preferred.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a52751b5318eb077aaa5e475c7a3e82ef" class="m-doc">parameterDefinitions()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a52751b5318eb077aaa5e475c7a3e82ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsprocessingparameters_8h.html#a2701e5777eb6e3a579d31b7a4f8a6629" class="m-doc">QgsProcessingParameterDefinitions</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52751b5318eb077aaa5e475c7a3e82ef" class="m-doc-self">parameterDefinitions</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns an ordered list of parameter definitions utilized by the algorithm.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc">addParameter()</a></p><p><a href="classQgsProcessingAlgorithm.html#a9baa78fa74712abff92b1f45d9b8ba2d" class="m-doc">parameterDefinition()</a></p><p><a href="classQgsProcessingAlgorithm.html#a8756b505dbef21c4f5c14380d59764a5" class="m-doc">destinationParameterDefinitions()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8cfe93b703357bb38247424af323a951"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8cfe93b703357bb38247424af323a951" class="m-doc-self">postProcess</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback)</span></span>
+            </h3>
+            <p>Should be called in the main thread following the completion of <a href="classQgsProcessingAlgorithm.html#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared()</a>.</p>
+<p>This method allows the algorithm to perform any required cleanup tasks. The returned variant map includes the results evaluated by the algorithm.</p><aside class="m-note m-info"><h4>Note</h4><p>This method modifies the algorithm instance, so it is not safe to call on algorithms directly retrieved from <a href="classQgsProcessingRegistry.html" class="m-doc">QgsProcessingRegistry</a> and <a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>. Instead, a copy of the algorithm should be created with clone() and <a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a>/runPrepared() called on the copy.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6f1a762b458af3c3c3ed84298fa6ccdf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc-self">prepare</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback)</span></span>
+            </h3>
+            <p>Prepares the algorithm for execution.</p>
+<p>This must be run in the main thread, and allows the algorithm to pre-evaluate input parameters in a thread-safe manner. This must be called before calling <a href="classQgsProcessingAlgorithm.html#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared()</a> (which is safe to do in any thread).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared()</a></p><p><a href="classQgsProcessingAlgorithm.html#a8cfe93b703357bb38247424af323a951" class="m-doc">postProcess()</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>This method modifies the algorithm instance, so it is not safe to call on algorithms directly retrieved from <a href="classQgsProcessingRegistry.html" class="m-doc">QgsProcessingRegistry</a> and <a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>. Instead, a copy of the algorithm should be created with clone() and <a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a>/runPrepared() called on the copy.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5e07c0377eb04819e2b667bef5a4237e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5e07c0377eb04819e2b667bef5a4237e" class="m-doc-self">preprocessParameters</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Pre-processes a set of <em>parameters</em>, allowing the algorithm to clean their values.</p>
+<p>This method is automatically called after users enter parameters, e.g. via the algorithm dialog. This method should NOT be called manually by algorithms.</p>
+          </div></section>
+          <section class="m-doc-details" id="a824e128ff93b51f17488d770f5eb7fa8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a824e128ff93b51f17488d770f5eb7fa8" class="m-doc-self">run</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback,
+              bool* ok = nullptr,
+              const QVariantMap&amp; configuration = QVariantMap()) const</span></span>
+            </h3>
+            <p>Executes the algorithm using the specified <em>parameters</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This method internally creates a copy of the algorithm before running it, so it is safe to call on algorithms directly retrieved from <a href="classQgsProcessingRegistry.html" class="m-doc">QgsProcessingRegistry</a> and <a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>.</p><p>The <em>context</em> argument specifies the context in which the algorithm is being run.</p><p>Algorithm progress should be reported using the supplied <em>feedback</em> object.</p><p>If specified, <em>ok</em> will be set to true if algorithm was successfully run.</p><aside class="m-note m-info"><h4>Note</h4><p>this method can only be called from the main thread. Use <a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a>, <a href="classQgsProcessingAlgorithm.html#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared()</a> and <a href="classQgsProcessingAlgorithm.html#a8cfe93b703357bb38247424af323a951" class="m-doc">postProcess()</a> if you need to run algorithms from a background thread, or use the <a href="classQgsProcessingAlgRunnerTask.html" class="m-doc">QgsProcessingAlgRunnerTask</a> class.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a06a244d3a80f7ddb3196d912fcbaa81d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc-self">runPrepared</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback)</span></span>
+            </h3>
+            <p>Runs the algorithm, which has been prepared by an earlier call to <a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a>.</p>
+<p>This method is safe to call from any thread. Returns true if the algorithm was successfully executed. After <a href="classQgsProcessingAlgorithm.html#a06a244d3a80f7ddb3196d912fcbaa81d" class="m-doc">runPrepared()</a> has finished, the <a href="classQgsProcessingAlgorithm.html#a8cfe93b703357bb38247424af323a951" class="m-doc">postProcess()</a> method should be called from the main thread to allow the algorithm to perform any required cleanup tasks and return its final result.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a></p><p><a href="classQgsProcessingAlgorithm.html#a8cfe93b703357bb38247424af323a951" class="m-doc">postProcess()</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>This method modifies the algorithm instance, so it is not safe to call on algorithms directly retrieved from <a href="classQgsProcessingRegistry.html" class="m-doc">QgsProcessingRegistry</a> and <a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>. Instead, a copy of the algorithm should be created with clone() and <a href="classQgsProcessingAlgorithm.html#a6f1a762b458af3c3c3ed84298fa6ccdf" class="m-doc">prepare()</a>/runPrepared() called on the copy.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3f13bae47bd4daf90575e91bb97af2e5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f13bae47bd4daf90575e91bb97af2e5" class="m-doc-self">setProvider</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingProvider.html" class="m-doc">QgsProcessingProvider</a>* provider)</span></span>
+            </h3>
+            <p>Associates this algorithm with its provider.</p>
+<p>No transfer of ownership is involved.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5259bda1835282ab29ad6ec7b0c8df09"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5259bda1835282ab29ad6ec7b0c8df09" class="m-doc-self">shortDescription</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns an optional translated short description of the algorithm.</p>
+<p>This should be at most a single sentence, e.g. &quot;Converts 2D features to 3D by sampling a DEM raster.&quot;</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a42eddbb1b445d4dd1879499b3ebfd0ba"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a42eddbb1b445d4dd1879499b3ebfd0ba" class="m-doc-self">shortHelpString</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a localised short helper string for the algorithm.</p>
+<p>This string should provide a basic description about what the algorithm does and the parameters and outputs associated with it.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#aae9c981f348ccf5ab45d3cb92bb9958a" class="m-doc">helpString()</a></p><p><a href="classQgsProcessingAlgorithm.html#a35f891fb3210f3521c4e7527d909479b" class="m-doc">helpUrl()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9f6af182d75eb96a91430f576616dbbd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9f6af182d75eb96a91430f576616dbbd" class="m-doc-self">svgIconPath</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a path to an SVG version of the algorithm&#x27;s icon.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a4272266b913c16756cf7a8c8b588fa5f" class="m-doc">icon()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a92f23a6ed99ddce530fd4e1e8e7d8756"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a92f23a6ed99ddce530fd4e1e8e7d8756" class="m-doc-self">tags</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns a list of tags which relate to the algorithm, and are used to assist users in searching for suitable algorithms.</p>
+<p>These tags should be localised.</p>
+          </div></section>
+          <section class="m-doc-details" id="a46b98e40f5181fede74f89aeb5407722"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a46b98e40f5181fede74f89aeb5407722" class="m-doc-self">validateInputCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Checks whether the coordinate reference systems for the specified set of <em>parameters</em> are valid for the algorithm.</p>
+<p>For instance, the base implementation performs checks to ensure that all input CRS are equal Returns true if <em>parameters</em> have passed the CRS check.</p>
+          </div></section>
+          <section class="m-doc-details" id="a626c97e8548831e668ac53f281138dae"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a626c97e8548831e668ac53f281138dae" class="m-doc-self">invalidRasterError</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns a user-friendly string to use as an error when a raster layer input could not be loaded.</p>
+<p>The <em>parameters</em> argument should give the algorithms parameter map, and the <em>name</em> should correspond to the invalid source parameter name.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ae9fd1f30da55212b80d2f2193bad8074" class="m-doc">invalidSourceError()</a></p><p><a href="classQgsProcessingAlgorithm.html#a887fe00bc77891b01f06f5af9eb41dbf" class="m-doc">invalidSinkError()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a887fe00bc77891b01f06f5af9eb41dbf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a887fe00bc77891b01f06f5af9eb41dbf" class="m-doc-self">invalidSinkError</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns a user-friendly string to use as an error when a sink parameter could not be created.</p>
+<p>The <em>parameters</em> argument should give the algorithms parameter map, and the <em>name</em> should correspond to the invalid source parameter name.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ae9fd1f30da55212b80d2f2193bad8074" class="m-doc">invalidSourceError()</a></p><p><a href="classQgsProcessingAlgorithm.html#a626c97e8548831e668ac53f281138dae" class="m-doc">invalidRasterError()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae9fd1f30da55212b80d2f2193bad8074"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae9fd1f30da55212b80d2f2193bad8074" class="m-doc-self">invalidSourceError</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns a user-friendly string to use as an error when a source parameter could not be loaded.</p>
+<p>The <em>parameters</em> argument should give the algorithms parameter map, and the <em>name</em> should correspond to the invalid source parameter name.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a626c97e8548831e668ac53f281138dae" class="m-doc">invalidRasterError()</a></p><p><a href="classQgsProcessingAlgorithm.html#a887fe00bc77891b01f06f5af9eb41dbf" class="m-doc">invalidSinkError()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a89cbc2c2248a3300d0366de34f3d766a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a89cbc2c2248a3300d0366de34f3d766a" class="m-doc-self">addOutput</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingOutputDefinition.html" class="m-doc">QgsProcessingOutputDefinition</a>* outputDefinition) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Adds an output <em>definition</em> to the algorithm.</p>
+<p>Ownership of the definition is transferred to the algorithm. Returns true if the output could be successfully added, or false if the output could not be added (e.g. as a result of a duplicate name).</p><p>This should usually be called from a subclass&#x27; <a href="classQgsProcessingAlgorithm.html#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm()</a> implementation.</p><p>Note that in some cases output creation can be automatically performed when calling <a href="classQgsProcessingAlgorithm.html#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc">addParameter()</a>. See the notes in <a href="classQgsProcessingAlgorithm.html#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc">addParameter()</a> for a description of when this occurs.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc">addParameter()</a></p><p><a href="classQgsProcessingAlgorithm.html#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7ca95d2cfe38a82cfc36b19ca9e5abed"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc-self">addParameter</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingParameterDefinition.html" class="m-doc">QgsProcessingParameterDefinition</a>* parameterDefinition,
+              bool createOutput = true) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Adds a parameter <em>definition</em> to the algorithm.</p>
+<p>Ownership of the definition is transferred to the algorithm. Returns true if parameter could be successfully added, or false if the parameter could not be added (e.g. as a result of a duplicate name).</p><p>This should usually be called from a subclass&#x27; <a href="classQgsProcessingAlgorithm.html#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm()</a> implementation.</p><p>If the <em>createOutput</em> argument is true, then a corresponding output definition will also be created (and added to the algorithm) where appropriate. E.g. when adding a <a href="classQgsProcessingParameterVectorDestination.html" class="m-doc">QgsProcessingParameterVectorDestination</a> and <em>createOutput</em> is true, then a <a href="classQgsProcessingOutputVectorLayer.html" class="m-doc">QgsProcessingOutputVectorLayer</a> output will be created and added to the algorithm. There is no need to call <a href="classQgsProcessingAlgorithm.html#a89cbc2c2248a3300d0366de34f3d766a" class="m-doc">addOutput()</a> to manually add a corresponding output for this vector. If <em>createOutput</em> is false then this automatic output creation will not occur.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc">initAlgorithm()</a></p><p><a href="classQgsProcessingAlgorithm.html#a89cbc2c2248a3300d0366de34f3d766a" class="m-doc">addOutput()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a88271da5a2b0e9609ea50aef72ec2eac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsProcessingAlgorithm.html" class="m-doc">QgsProcessingAlgorithm</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a88271da5a2b0e9609ea50aef72ec2eac" class="m-doc-self">createInstance</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Creates a new instance of the algorithm class.</p>
+<p>This method should return a &#x27;pristine&#x27; instance of the algorithm class.</p>
+          </div></section>
+          <section class="m-doc-details" id="abf1fd824abeccc74297edb26fe7d0d67"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abf1fd824abeccc74297edb26fe7d0d67" class="m-doc-self">initAlgorithm</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; configuration = QVariantMap()) <span class="m-label m-warning">pure virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Initializes the algorithm using the specified <em>configuration</em>.</p>
+<p>This should be called directly after creating algorithms and before retrieving any <a href="classQgsProcessingAlgorithm.html#a52751b5318eb077aaa5e475c7a3e82ef" class="m-doc">parameterDefinitions()</a> or <a href="classQgsProcessingAlgorithm.html#a0a1b7ab5b4cd285fafda3def029bf4eb" class="m-doc">outputDefinitions()</a>.</p><p>Subclasses should use their implementations to add all required input parameter and output definitions (which can be dynamically adjusted according to <em>configuration</em>).</p><p>Dynamic configuration can be used by algorithms which alter their behavior when used inside processing models. For instance, a &quot;feature router&quot; type algorithm which sends input features to one of any number of outputs sinks based on some preconfigured filter parameters can use the init method to create these outputs based on the specified <em>configuration</em>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a7ca95d2cfe38a82cfc36b19ca9e5abed" class="m-doc">addParameter()</a></p><p><a href="classQgsProcessingAlgorithm.html#a89cbc2c2248a3300d0366de34f3d766a" class="m-doc">addOutput()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0553a084a94050d245f8fc66563803b1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0553a084a94050d245f8fc66563803b1" class="m-doc-self">parameterAsCompatibleSourceLayerPath</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const QStringList&amp; compatibleFormats,
+              const QString&amp; preferredFormat = QString(&quot;shp&quot;),
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback = nullptr) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a source vector layer file path of compatible format.</p>
+<p>If the parameter is evaluated to an existing layer, and that layer is not of the format listed in the <em>compatibleFormats</em> argument, then the layer will first be exported to a compatible format in a temporary location. The function will then return the path to that temporary file.</p><p><em>compatibleFormats</em> should consist entirely of lowercase file extensions, e.g. &#x27;shp&#x27;.</p><p>The <em>preferredFormat</em> argument is used to specify to desired file extension to use when a temporary layer export is required.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8dcb01d3175dfc710e3b819fcc666f86"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8dcb01d3175dfc710e3b819fcc666f86" class="m-doc-self">parameterAsExtent</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>()) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a rectangular extent.</p>
+<p>If <em>crs</em> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically reprojected so that it is in the specified <em>crs</em>. In this case the extent of the reproject rectangle will be returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ad00fb487460ebc1d94e92945f48d37aa" class="m-doc">parameterAsExtentGeometry()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a274428c88a5fe979ad1b4a4efc13d355"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a274428c88a5fe979ad1b4a4efc13d355" class="m-doc-self">parameterAsExtentCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the coordinate reference system associated with an extent parameter value.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a8dcb01d3175dfc710e3b819fcc666f86" class="m-doc">parameterAsExtent()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad00fb487460ebc1d94e92945f48d37aa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad00fb487460ebc1d94e92945f48d37aa" class="m-doc-self">parameterAsExtentGeometry</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>()) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a rectangular extent, and returns a geometry covering this extent.</p>
+<p>If <em>crs</em> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically reprojected so that it is in the specified <em>crs</em>. Unlike <a href="classQgsProcessingAlgorithm.html#a8dcb01d3175dfc710e3b819fcc666f86" class="m-doc">parameterAsExtent()</a>, the reprojected rectangle returned by this function will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while <a href="classQgsProcessingAlgorithm.html#a8dcb01d3175dfc710e3b819fcc666f86" class="m-doc">parameterAsExtent()</a> returns just the extent of the reprojected rectangle).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a8dcb01d3175dfc710e3b819fcc666f86" class="m-doc">parameterAsExtent()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5b6029a76423eb98c8cb586e19189b3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;int&gt; QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5b6029a76423eb98c8cb586e19189b3" class="m-doc-self">parameterAsInts</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              const <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a list of integer values.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a19d79ea06073d5c3d84e2f91818636a3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a19d79ea06073d5c3d84e2f91818636a3" class="m-doc-self">parameterAsLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a map layer.</p>
+<p>Layers will either be taken from <em>context&#x27;s</em> active project, or loaded from external sources and stored temporarily in the <em>context</em>. In either case, callers do not need to handle deletion of the returned layer.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8211f58dbfd389f86f43a08020e22a41"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantList QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8211f58dbfd389f86f43a08020e22a41" class="m-doc-self">parameterAsMatrix</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a matrix/table of values.</p>
+<p>Tables are collapsed to a 1 dimensional list.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac3980808a501fb7cf7464c1da69be751"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsMeshLayer.html" class="m-doc">QgsMeshLayer</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3980808a501fb7cf7464c1da69be751" class="m-doc-self">parameterAsMeshLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a mesh layer.</p>
+<p>Layers will either be taken from <em>context&#x27;s</em> active project, or loaded from external sources and stored temporarily in the <em>context</em>. In either case, callers do not need to handle deletion of the returned layer.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab76855abbc0d0f7960df45d2c11df83b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab76855abbc0d0f7960df45d2c11df83b" class="m-doc-self">parameterAsPoint</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>()) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a point.</p>
+<p>If <em>crs</em> is set then the point will be automatically reprojected so that it is in the specified <em>crs</em>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ae23d5c022c3083097001194bce54b222" class="m-doc">parameterAsPointCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae23d5c022c3083097001194bce54b222"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae23d5c022c3083097001194bce54b222" class="m-doc-self">parameterAsPointCrs</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the coordinate reference system associated with an point parameter value.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#ab76855abbc0d0f7960df45d2c11df83b" class="m-doc">parameterAsPoint()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1acf6b180a53e944a81881a0d1f21d4c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRasterLayer.html" class="m-doc">QgsRasterLayer</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1acf6b180a53e944a81881a0d1f21d4c" class="m-doc-self">parameterAsRasterLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a raster layer.</p>
+<p>Layers will either be taken from <em>context&#x27;s</em> active project, or loaded from external sources and stored temporarily in the <em>context</em>. In either case, callers do not need to handle deletion of the returned layer.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6a6c42b8773f360db0e98c687b8d0636"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeatureSink.html" class="m-doc">QgsFeatureSink</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6a6c42b8773f360db0e98c687b8d0636" class="m-doc-self">parameterAsSink</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              QString&amp; destinationIdentifier,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> geometryType = <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11a4d5a4986629f537e7494bbb96892b807" class="m-doc">QgsWkbTypes::<wbr />NoGeometry</a>,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>(),
+              QgsFeatureSink::SinkFlags sinkFlags = nullptr) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a feature sink.</p>
+<p>Sinks will either be taken from <em>context&#x27;s</em> active project, or created from external providers and stored temporarily in the <em>context</em>.</p><p>The <em>fields</em>, <em>geometryType</em> and <em>crs</em> parameters dictate the properties of the resulting feature sink.</p><p>The <em>destinationIdentifier</em> argument will be set to a string which can be used to retrieve the layer corresponding to the sink, e.g. via calling <a href="classQgsProcessingUtils.html#a4ae097e24153b9ebaa503939c956b1ca" class="m-doc">QgsProcessingUtils::<wbr />mapLayerFromString()</a>.</p><p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
+          </div></section>
+          <section class="m-doc-details" id="a545f024775b04ebe57b2dd0c0828d564"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsProcessingFeatureSource.html" class="m-doc">QgsProcessingFeatureSource</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a545f024775b04ebe57b2dd0c0828d564" class="m-doc-self">parameterAsSource</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a feature source.</p>
+<p>Sources will either be taken from <em>context&#x27;s</em> active project, or loaded from external sources and stored temporarily in the <em>context</em>.</p><p>This function creates a new object and the caller takes responsibility for deleting the returned object.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6419a3d4c2c2e47d85304c586b736590"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6419a3d4c2c2e47d85304c586b736590" class="m-doc-self">parameterAsVectorLayer</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              const QString&amp; name,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Evaluates the parameter with matching <em>name</em> to a vector layer.</p>
+<p>Layers will either be taken from <em>context&#x27;s</em> active project, or loaded from external sources and stored temporarily in the <em>context</em>. In either case, callers do not need to handle deletion of the returned layer.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac0162e2a5eccc253c5bcd3590010c4e9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac0162e2a5eccc253c5bcd3590010c4e9" class="m-doc-self">postProcessAlgorithm</a>(</span><span class="m-doc-wrap"><a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Allows the algorithm to perform any required cleanup tasks.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations. Implementations which return a non-empty map will override any results returned by <a href="classQgsProcessingAlgorithm.html#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The returned variant map includes the results evaluated by the algorithm. These may be output layer references, or calculated values such as statistical calculations.</p><p>The <em>context</em> argument specifies the context in which the algorithm was run.</p><p>Postprocess progress should be reported using the supplied <em>feedback</em> object. Additionally, well-behaved algorithms should periodically check <em>feedback</em> to determine whether the post processing should be canceled and exited early.</p><p>postProcessAlgorithm should be used to handle any thread-sensitive cleanup which is required by the algorithm. It will always be called from the same thread that <em>context</em> has thread affinity with. While this will generally be the main thread, it is not guaranteed. For instance, algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm will call postProcessAlgorithm from the same thread as that model/script it being executed in.</p><p>postProcessAlgorithm will not be called if the <a href="classQgsProcessingAlgorithm.html#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc">prepareAlgorithm()</a> step failed (returned false), or if an exception was raised by the <a href="classQgsProcessingAlgorithm.html#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm()</a> step.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc">prepareAlgorithm()</a></p><p><a href="classQgsProcessingAlgorithm.html#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a84c59d63850ab86c6f77b271be82e3a1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc-self">prepareAlgorithm</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Prepares the algorithm to run using the specified <em>parameters</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if preparation was successful.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Algorithms should implement their logic for evaluating parameter values here. The evaluated parameter results should be stored in member variables ready for a call to <a href="classQgsProcessingAlgorithm.html#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm()</a>.</p><p>The <em>context</em> argument specifies the context in which the algorithm is being run.</p><p>prepareAlgorithm should be used to handle any thread-sensitive preparation which is required by the algorithm. It will always be called from the same thread that <em>context</em> has thread affinity with. While this will generally be the main thread, it is not guaranteed. For instance, algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm will call prepareAlgorithm from the same thread as that model/script it being executed in.</p><p>Note that the processAlgorithm step uses a temporary context with affinity for the thread in which the algorithm is executed, making it safe for processAlgorithm implementations to load sources and sinks without issue. Implementing prepareAlgorithm is only required if special thread safe handling is required by the algorithm.</p><p>Algorithm preparation progress should be reported using the supplied <em>feedback</em> object. Additionally, well-behaved algorithms should periodically check <em>feedback</em> to determine whether the algorithm should be canceled and exited early.</p><p>If the preparation was successful algorithms must return true. If a false value is returned this indicates that the preparation could not be completed, and the algorithm execution will be canceled.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm()</a></p><p><a href="classQgsProcessingAlgorithm.html#ac0162e2a5eccc253c5bcd3590010c4e9" class="m-doc">postProcessAlgorithm()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6c69050186f3673eb2f933e34cce6a3a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariantMap QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc-self">processAlgorithm</a>(</span><span class="m-doc-wrap">const QVariantMap&amp; parameters,
+              <a href="classQgsProcessingContext.html" class="m-doc">QgsProcessingContext</a>&amp; context,
+              <a href="classQgsProcessingFeedback.html" class="m-doc">QgsProcessingFeedback</a>* feedback) <span class="m-label m-warning">pure virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Runs the algorithm using the specified <em>parameters</em>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations. Unless the algorithm subclass overrides the <a href="classQgsProcessingAlgorithm.html#ac0162e2a5eccc253c5bcd3590010c4e9" class="m-doc">postProcessAlgorithm()</a> step this returned map will be used as the output for the algorithm.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Algorithms should implement their custom processing logic here.</p><p>The <em>context</em> argument gives a temporary context with thread affinity matching the thread in which the algorithm is being run. This is a cut-back copy of the context passed to the <a href="classQgsProcessingAlgorithm.html#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc">prepareAlgorithm()</a> and <a href="classQgsProcessingAlgorithm.html#ac0162e2a5eccc253c5bcd3590010c4e9" class="m-doc">postProcessAlgorithm()</a> steps, but it is generally safe for most algorithms to utilize this context for loading layers and creating sinks. Any loaded layers or sinks created within this temporary context will be transferred back to the main execution context upon successful completion of the <a href="classQgsProcessingAlgorithm.html#a6c69050186f3673eb2f933e34cce6a3a" class="m-doc">processAlgorithm()</a> step.</p><p>Algorithm progress should be reported using the supplied <em>feedback</em> object. Additionally, well-behaved algorithms should periodically check <em>feedback</em> to determine whether the algorithm should be canceled and exited early.</p><p>This method will not be called if the <a href="classQgsProcessingAlgorithm.html#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc">prepareAlgorithm()</a> step failed (returned false).</p><p>c++ implementations of processAlgorithm can throw the <a href="classQgsProcessingException.html" class="m-doc">QgsProcessingException</a> exception to indicate that a fatal error occurred within the execution. Python based subclasses should raise GeoAlgorithmExecutionException for the same purpose.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsProcessingAlgorithm.html#a84c59d63850ab86c6f77b271be82e3a1" class="m-doc">prepareAlgorithm()</a></p><p><a href="classQgsProcessingAlgorithm.html#ac0162e2a5eccc253c5bcd3590010c4e9" class="m-doc">postProcessAlgorithm()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5da49d627f0e467f7147ace4bfa7254"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsProcessingAlgorithm::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5da49d627f0e467f7147ace4bfa7254" class="m-doc-self">supportInPlaceEdit</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer) const <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Checks whether this algorithm supports in-place editing on the given <em>layer</em> Default implementation returns false.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if the algorithm supports in-place editing</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

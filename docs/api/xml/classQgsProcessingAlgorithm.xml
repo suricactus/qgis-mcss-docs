@@ -1,0 +1,2083 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProcessingAlgorithm" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsProcessingAlgorithm</compoundname>
+    <derivedcompoundref refid="classQgsProcessingFeatureBasedAlgorithm" prot="public" virt="non-virtual">QgsProcessingFeatureBasedAlgorithm</derivedcompoundref>
+    <includes refid="qgsprocessingalgorithm_8h" local="no">qgsprocessingalgorithm.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a62f2a83f05f962a56b928c23d899962d" prot="public">
+          <name>FlagHideFromToolbox</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Algorithm should be hidden from the toolbox. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a80148880fad1e4e0d3613f243497de5b" prot="public">
+          <name>FlagHideFromModeler</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Algorithm should be hidden from the modeler. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a6e2a0e3fac445e639157e0b0bc9a0931" prot="public">
+          <name>FlagSupportsBatch</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+<para>Algorithm supports batch mode. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a4c550fc5bb7df816465e47678895aa99" prot="public">
+          <name>FlagCanCancel</name>
+          <initializer>= 1 &lt;&lt; 4</initializer>
+          <briefdescription>
+<para>Algorithm can be canceled. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a94d0eeee061e1c4a44f250b36a651148" prot="public">
+          <name>FlagRequiresMatchingCrs</name>
+          <initializer>= 1 &lt;&lt; 5</initializer>
+          <briefdescription>
+<para>Algorithm requires that all input layers have matching coordinate reference systems. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a229dea6cedf8c59132196dee09d4f2f6" prot="public">
+          <name>FlagNoThreading</name>
+          <initializer>= 1 &lt;&lt; 6</initializer>
+          <briefdescription>
+<para>Algorithm is not thread safe and cannot be run in a background thread, e.g. for algorithms which manipulate the current project, layer selections, or with external dependencies which are not thread-safe. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3ae6b58d23dd713e5957bab067f202cf8b" prot="public">
+          <name>FlagDisplayNameIsLiteral</name>
+          <initializer>= 1 &lt;&lt; 7</initializer>
+          <briefdescription>
+<para>Algorithm&apos;s display name is a static literal string, and should not be translated or automatically formatted. For use with algorithms named after commands, e.g. GRASS &apos;v.in.ogr&apos;. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a344d854c1895f74972c28602980da674" prot="public">
+          <name>FlagSupportsInPlaceEdits</name>
+          <initializer>= 1 &lt;&lt; 8</initializer>
+          <briefdescription>
+<para>Algorithm supports in-place editing. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3ab5d43ba462b9ef5b3e66c51686dfa9db" prot="public">
+          <name>FlagDeprecated</name>
+          <initializer>= FlagHideFromToolbox | FlagHideFromModeler</initializer>
+          <briefdescription>
+<para>Algorithm is deprecated. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flags indicating how and when an algorithm operates and should be exposed to users. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="69" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="68" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1a917f7fc4070c3828ac77f5c11d68e7bb" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::mHasExecuted</definition>
+        <argsstring></argsstring>
+        <name>mHasExecuted</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="836" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="836" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1a368c3b083f6eb7b8ce00d205783c4264" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::mHasPostProcessed</definition>
+        <argsstring></argsstring>
+        <name>mHasPostProcessed</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="837" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="837" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1a25dea99b398109e234715fc0c7b9edd2" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::mHasPrepared</definition>
+        <argsstring></argsstring>
+        <name>mHasPrepared</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="835" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="835" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1adf4cf671fc72678edbc35a5dba919c30" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsProcessingContext &gt; QgsProcessingAlgorithm::mLocalContext</definition>
+        <argsstring></argsstring>
+        <name>mLocalContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="838" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="838" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1a61336d736997dfd05932fbf7ceb544af" prot="private" static="no" mutable="no">
+        <type><ref refid="qgsprocessingoutputs_8h_1a199be0964e7178afbca5ded157a1f398" kindref="member">QgsProcessingOutputDefinitions</ref></type>
+        <definition>QgsProcessingOutputDefinitions QgsProcessingAlgorithm::mOutputs</definition>
+        <argsstring></argsstring>
+        <name>mOutputs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="834" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="834" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1a68e6aa7ca4eed2d2284e4842863508e8" prot="private" static="no" mutable="no">
+        <type><ref refid="qgsprocessingparameters_8h_1a2701e5777eb6e3a579d31b7a4f8a6629" kindref="member">QgsProcessingParameterDefinitions</ref></type>
+        <definition>QgsProcessingParameterDefinitions QgsProcessingAlgorithm::mParameters</definition>
+        <argsstring></argsstring>
+        <name>mParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="833" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="833" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProcessingAlgorithm_1ae3b1e09dcfc81f0a01151250ae9fdffb" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref> *</type>
+        <definition>QgsProcessingProvider* QgsProcessingAlgorithm::mProvider</definition>
+        <argsstring></argsstring>
+        <name>mProvider</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="832" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="832" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsProcessingAlgorithm_1a6a7e302d6dd3ab0b0d064c826f383ed3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsProcessingModelAlgorithm</definition>
+        <argsstring></argsstring>
+        <name>QgsProcessingModelAlgorithm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="845" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="845" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsProcessingAlgorithm_1ab24210e27a8491cb85cf259c9b16e000" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsProcessingProvider</definition>
+        <argsstring></argsstring>
+        <name>QgsProcessingProvider</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="843" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="843" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsProcessingAlgorithm_1a069b21d671f4c6a906675189795d3f7e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsProcessingToolboxProxyModel</definition>
+        <argsstring></argsstring>
+        <name>QgsProcessingToolboxProxyModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="846" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="846" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsProcessingAlgorithm_1a0ebf9a4f54b7d70b52f696b33d8e0f77" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsProcessing</definition>
+        <argsstring></argsstring>
+        <name>TestQgsProcessing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="844" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="844" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a924e41ef98c41904e177189e9d26649b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsProcessingAlgorithm::QgsProcessingAlgorithm</definition>
+        <argsstring>()=default</argsstring>
+        <name>QgsProcessingAlgorithm</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" kindref="member">initAlgorithm()</ref> should be called after creating an algorithm to ensure it can correctly configure its <ref refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" kindref="member">parameterDefinitions()</ref> and <ref refid="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" kindref="member">outputDefinitions()</ref>. Alternatively, calling <ref refid="classQgsProcessingAlgorithm_1ad190b383961aeb7215af3626955852db" kindref="member">create()</ref> will return a pre-initialized copy of the algorithm. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a30eb6bb68b6e29f782d03646a14c9cbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsProcessingAlgorithm::QgsProcessingAlgorithm</definition>
+        <argsstring>(const QgsProcessingAlgorithm &amp;other)=delete</argsstring>
+        <name>QgsProcessingAlgorithm</name>
+        <param>
+          <type>const <ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Algorithms cannot be copied - <ref refid="classQgsProcessingAlgorithm_1ad190b383961aeb7215af3626955852db" kindref="member">create()</ref> should be used instead. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a556068a168e2c8a1a75e18d58b4e1ff5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>QgsProcessingAlgorithm::~QgsProcessingAlgorithm</definition>
+        <argsstring>()</argsstring>
+        <name>~QgsProcessingAlgorithm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="91" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="32" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1acd0a1eab59679270bda1bd6e5e2078f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::asPythonCommand</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context) const</argsstring>
+        <name>asPythonCommand</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns a Python command string which can be executed to run the algorithm using the specified <emphasis>parameters</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithms which cannot be run from a Python command should return an empty string. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="398" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="269" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad0640971083463eb847fb6eb8622c501" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::canExecute</definition>
+        <argsstring>(QString *errorMessage=nullptr) const</argsstring>
+        <name>canExecute</name>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Returns true if the algorithm can execute. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithm subclasses can return false here to indicate that they are not able to execute, e.g. as a result of unmet external dependencies. If specified, the <emphasis>errorMessage</emphasis> argument will be filled with a localised error message describing why the algorithm cannot execute. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="238" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="89" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ae3991f84be1b939144df415bec29d3fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::checkParameterValues</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QString *message=nullptr) const</argsstring>
+        <name>checkParameterValues</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>message</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Checks the supplied <emphasis>parameter</emphasis> values to verify that they satisfy the requirements of this algorithm in the supplied <emphasis>context</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>message</emphasis> parameter will be filled with explanatory text if validation fails. Overridden implementations should also check this base class implementation. <simplesect kind="return"><para>true if parameters are acceptable for the algorithm. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="247" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="94" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a55f228fcac6d55ada3d124386ca45c0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsProcessingAlgorithm::countVisibleParameters</definition>
+        <argsstring>() const</argsstring>
+        <name>countVisibleParameters</name>
+        <briefdescription>
+<para>Returns the number of visible (non-hidden) parameters defined by this algorithm. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="283" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="374" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad190b383961aeb7215af3626955852db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> *</type>
+        <definition>QgsProcessingAlgorithm * QgsProcessingAlgorithm::create</definition>
+        <argsstring>(const QVariantMap &amp;configuration=QVariantMap()) const</argsstring>
+        <name>create</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a copy of the algorithm, ready for execution. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method returns a new, preinitialized copy of the algorithm, ready for executing.</para><para>The <emphasis>configuration</emphasis> argument allows passing of a map of configuration settings to the algorithm, allowing it to dynamically adjust its initialized parameters and outputs according to this configuration. This is generally used only for algorithms in a model, allowing them to adjust their behavior at run time according to some user configuration.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" kindref="member">initAlgorithm()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="127" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="38" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ab8c8eb508bd422c98a662eb5f904563d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QWidget *</type>
+        <definition>QWidget * QgsProcessingAlgorithm::createCustomParametersWidget</definition>
+        <argsstring>(QWidget *parent=nullptr) const</argsstring>
+        <name>createCustomParametersWidget</name>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>If an algorithm subclass implements a custom parameters widget, a copy of this widget should be constructed and returned by this method. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation returns nullptr, which indicates that an autogenerated parameters widget should be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="371" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="147" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a870fb43ba74a0e6706071f1e01134b2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContext" kindref="compound">QgsExpressionContext</ref></type>
+        <definition>QgsExpressionContext QgsProcessingAlgorithm::createExpressionContext</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeatureSource *source=nullptr) const</argsstring>
+        <name>createExpressionContext</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeatureSource" kindref="compound">QgsProcessingFeatureSource</ref> *</type>
+          <declname>source</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Creates an expression context relating to the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can be called by algorithms to create a new expression context ready for evaluating expressions within the algorithm. Optionally, a <emphasis>source</emphasis> can be specified which will be used to populate the context if it implements the <ref refid="classQgsExpressionContextGenerator" kindref="compound">QgsExpressionContextGenerator</ref> interface. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="379" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="152" bodyend="174"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8756b505dbef21c4f5c14380d59764a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="qgsprocessingparameters_8h_1a2701e5777eb6e3a579d31b7a4f8a6629" kindref="member">QgsProcessingParameterDefinitions</ref></type>
+        <definition>QgsProcessingParameterDefinitions QgsProcessingAlgorithm::destinationParameterDefinitions</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationParameterDefinitions</name>
+        <briefdescription>
+<para>Returns a list of destination parameters definitions utilized by the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingParameterDefinition_1a75ac4d96ab49f9f317d42e09f53aeb5d" kindref="member">QgsProcessingParameterDefinition::isDestination()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" kindref="member">parameterDefinitions()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="290" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="385" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a7b315c390929a904a0a63cdad9d45869" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProcessingAlgorithm::displayName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>displayName</name>
+        <briefdescription>
+<para>Returns the translated algorithm name, which should be used for any user-visible display of the algorithm name. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithm display names should be short, e.g. ideally no more than 3 or 4 words. The name should use sentence case (e.g. &quot;Raster layer statistics&quot;, not &quot;Raster Layer Statistics&quot;).</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ad9eb6365281f92799f1a4562ec386127" kindref="member">name()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a5259bda1835282ab29ad6ec7b0c8df09" kindref="member">shortDescription()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="158" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a3f052a9a0f0ee438afdf6eacb48795cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Flags</type>
+        <definition>QgsProcessingAlgorithm::Flags QgsProcessingAlgorithm::flags</definition>
+        <argsstring>() const</argsstring>
+        <name>flags</name>
+        <reimplementedby refid="classQgsProcessingFeatureBasedAlgorithm_1ad4884c782db9abe9e50e83bde9fcba2a">flags</reimplementedby>
+        <briefdescription>
+<para>Returns the flags indicating how and when the algorithm operates and should be exposed to users. </para>        </briefdescription>
+        <detaileddescription>
+<para>Default flags are FlagSupportsBatch and FlagCanCancel. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="230" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="84" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a258c0bbdb36fb19512226804fd948bbb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProcessingAlgorithm::group</definition>
+        <argsstring>() const</argsstring>
+        <name>group</name>
+        <briefdescription>
+<para>Returns the name of the group this algorithm belongs to. </para>        </briefdescription>
+        <detaileddescription>
+<para>This string should be localised. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a2b976f38c1ff648152d7872a8b887ac2" kindref="member">groupId()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a92f23a6ed99ddce530fd4e1e8e7d8756" kindref="member">tags()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="215" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="215" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a2b976f38c1ff648152d7872a8b887ac2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProcessingAlgorithm::groupId</definition>
+        <argsstring>() const</argsstring>
+        <name>groupId</name>
+        <briefdescription>
+<para>Returns the unique ID of the group this algorithm belongs to. </para>        </briefdescription>
+        <detaileddescription>
+<para>This string should be fixed for the algorithm, and must not be localised. The group id should be unique within each provider. Group id should contain lowercase alphanumeric characters only and no spaces or other formatting characters. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a258c0bbdb36fb19512226804fd948bbb" kindref="member">group()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="224" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="224" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8918adc434de43cd430cbc52b2f789d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::hasHtmlOutputs</definition>
+        <argsstring>() const</argsstring>
+        <name>hasHtmlOutputs</name>
+        <briefdescription>
+<para>Returns true if this algorithm generates HTML outputs. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="309" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="406" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1aae9c981f348ccf5ab45d3cb92bb9958a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>Q_DECL_DEPRECATED QString</type>
+        <definition>QString QgsProcessingAlgorithm::helpString</definition>
+        <argsstring>() const</argsstring>
+        <name>helpString</name>
+        <briefdescription>
+<para>Returns a localised help string for the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithm subclasses should implement either <ref refid="classQgsProcessingAlgorithm_1aae9c981f348ccf5ab45d3cb92bb9958a" kindref="member">helpString()</ref> or <ref refid="classQgsProcessingAlgorithm_1a35f891fb3210f3521c4e7527d909479b" kindref="member">helpUrl()</ref>. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a35f891fb3210f3521c4e7527d909479b" kindref="member">helpUrl()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a42eddbb1b445d4dd1879499b3ebfd0ba" kindref="member">shortHelpString()</ref> </para></simplesect>
+<xrefsect id="deprecated_1_deprecated000025"><xreftitle>Deprecated</xreftitle><xrefdescription><para>Unused, will be removed in QGIS 4.0 </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="188" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a35f891fb3210f3521c4e7527d909479b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::helpUrl</definition>
+        <argsstring>() const</argsstring>
+        <name>helpUrl</name>
+        <briefdescription>
+<para>Returns a url pointing to the algorithm&apos;s help page. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1aae9c981f348ccf5ab45d3cb92bb9958a" kindref="member">helpString()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a42eddbb1b445d4dd1879499b3ebfd0ba" kindref="member">shortHelpString()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="195" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a4272266b913c16756cf7a8c8b588fa5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QIcon</type>
+        <definition>QIcon QgsProcessingAlgorithm::icon</definition>
+        <argsstring>() const</argsstring>
+        <name>icon</name>
+        <briefdescription>
+<para>Returns an icon for the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a9f6af182d75eb96a91430f576616dbbd" kindref="member">svgIconPath()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="201" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a5ca92c590bec71b303e062496dc13823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::id</definition>
+        <argsstring>() const</argsstring>
+        <name>id</name>
+        <briefdescription>
+<para>Returns the unique ID for the algorithm, which is a combination of the algorithm provider&apos;s ID and the algorithms unique name (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>&quot;qgis:mergelayers&quot; ). <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ad9eb6365281f92799f1a4562ec386127" kindref="member">name()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ad0ba1a020a2ddd33953d82dfca732893" kindref="member">provider()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="146" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="46" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad9eb6365281f92799f1a4562ec386127" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProcessingAlgorithm::name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>Returns the algorithm name, used for identifying the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>This string should be fixed for the algorithm, and must not be localised. The name should be unique within each provider. Names should contain lowercase alphanumeric characters only and no spaces or other formatting characters. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a7b315c390929a904a0a63cdad9d45869" kindref="member">displayName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a258c0bbdb36fb19512226804fd948bbb" kindref="member">group()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a92f23a6ed99ddce530fd4e1e8e7d8756" kindref="member">tags()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="138" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a37d99f115b643fdf83fa5c9ddfec7e7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> &amp;</type>
+        <definition>QgsProcessingAlgorithm&amp; QgsProcessingAlgorithm::operator=</definition>
+        <argsstring>(const QgsProcessingAlgorithm &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Algorithms cannot be copied- <ref refid="classQgsProcessingAlgorithm_1ad190b383961aeb7215af3626955852db" kindref="member">create()</ref> should be used instead. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="96" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a06ded33ee1a9200135806bdf8f514e01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classQgsProcessingOutputDefinition" kindref="compound">QgsProcessingOutputDefinition</ref> *</type>
+        <definition>const QgsProcessingOutputDefinition * QgsProcessingAlgorithm::outputDefinition</definition>
+        <argsstring>(const QString &amp;name) const</argsstring>
+        <name>outputDefinition</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns a matching output by <emphasis>name</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Matching is done in a case-insensitive manner. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" kindref="member">outputDefinitions()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="304" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="396" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="qgsprocessingoutputs_8h_1a199be0964e7178afbca5ded157a1f398" kindref="member">QgsProcessingOutputDefinitions</ref></type>
+        <definition>QgsProcessingOutputDefinitions QgsProcessingAlgorithm::outputDefinitions</definition>
+        <argsstring>() const</argsstring>
+        <name>outputDefinitions</name>
+        <briefdescription>
+<para>Returns an ordered list of output definitions utilized by the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" kindref="member">addOutput()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a06ded33ee1a9200135806bdf8f514e01" kindref="member">outputDefinition()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="297" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="297" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a9baa78fa74712abff92b1f45d9b8ba2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classQgsProcessingParameterDefinition" kindref="compound">QgsProcessingParameterDefinition</ref> *</type>
+        <definition>const QgsProcessingParameterDefinition * QgsProcessingAlgorithm::parameterDefinition</definition>
+        <argsstring>(const QString &amp;name) const</argsstring>
+        <name>parameterDefinition</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns a matching parameter by <emphasis>name</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Matching is done in a case-insensitive manner, but exact case matches will be preferred. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" kindref="member">parameterDefinitions()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="277" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="356" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="qgsprocessingparameters_8h_1a2701e5777eb6e3a579d31b7a4f8a6629" kindref="member">QgsProcessingParameterDefinitions</ref></type>
+        <definition>QgsProcessingParameterDefinitions QgsProcessingAlgorithm::parameterDefinitions</definition>
+        <argsstring>() const</argsstring>
+        <name>parameterDefinitions</name>
+        <briefdescription>
+<para>Returns an ordered list of parameter definitions utilized by the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" kindref="member">addParameter()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a9baa78fa74712abff92b1f45d9b8ba2d" kindref="member">parameterDefinition()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a8756b505dbef21c4f5c14380d59764a5" kindref="member">destinationParameterDefinitions()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="270" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="270" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProcessingAlgorithm::postProcess</definition>
+        <argsstring>(QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback)</argsstring>
+        <name>postProcess</name>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Should be called in the main thread following the completion of <ref refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" kindref="member">runPrepared()</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method allows the algorithm to perform any required cleanup tasks. The returned variant map includes the results evaluated by the algorithm. <simplesect kind="note"><para>This method modifies the algorithm instance, so it is not safe to call on algorithms directly retrieved from <ref refid="classQgsProcessingRegistry" kindref="compound">QgsProcessingRegistry</ref> and <ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref>. Instead, a copy of the algorithm should be created with clone() and <ref refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" kindref="member">prepare()</ref>/runPrepared() called on the copy. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="363" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="521" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::prepare</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback)</argsstring>
+        <name>prepare</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Prepares the algorithm for execution. </para>        </briefdescription>
+        <detaileddescription>
+<para>This must be run in the main thread, and allows the algorithm to pre-evaluate input parameters in a thread-safe manner. This must be called before calling <ref refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" kindref="member">runPrepared()</ref> (which is safe to do in any thread). <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" kindref="member">runPrepared()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" kindref="member">postProcess()</ref> </para></simplesect>
+<simplesect kind="note"><para>This method modifies the algorithm instance, so it is not safe to call on algorithms directly retrieved from <ref refid="classQgsProcessingRegistry" kindref="compound">QgsProcessingRegistry</ref> and <ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref>. Instead, a copy of the algorithm should be created with clone() and <ref refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" kindref="member">prepare()</ref>/runPrepared() called on the copy. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="340" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="448" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a5e07c0377eb04819e2b667bef5a4237e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProcessingAlgorithm::preprocessParameters</definition>
+        <argsstring>(const QVariantMap &amp;parameters)</argsstring>
+        <name>preprocessParameters</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+<para>Pre-processes a set of <emphasis>parameters</emphasis>, allowing the algorithm to clean their values. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is automatically called after users enter parameters, e.g. via the algorithm dialog. This method should NOT be called manually by algorithms. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="257" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="119" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad0ba1a020a2ddd33953d82dfca732893" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref> *</type>
+        <definition>QgsProcessingProvider * QgsProcessingAlgorithm::provider</definition>
+        <argsstring>() const</argsstring>
+        <name>provider</name>
+        <briefdescription>
+<para>Returns the provider to which this algorithm belongs. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="262" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="124" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a824e128ff93b51f17488d770f5eb7fa8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProcessingAlgorithm::run</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback, bool *ok=nullptr, const QVariantMap &amp;configuration=QVariantMap()) const</argsstring>
+        <name>run</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>ok</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Executes the algorithm using the specified <emphasis>parameters</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method internally creates a copy of the algorithm before running it, so it is safe to call on algorithms directly retrieved from <ref refid="classQgsProcessingRegistry" kindref="compound">QgsProcessingRegistry</ref> and <ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref>.</para><para>The <emphasis>context</emphasis> argument specifies the context in which the algorithm is being run.</para><para>Algorithm progress should be reported using the supplied <emphasis>feedback</emphasis> object.</para><para>If specified, <emphasis>ok</emphasis> will be set to true if algorithm was successfully run.</para><para><simplesect kind="return"><para>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations.</para></simplesect>
+<simplesect kind="note"><para>this method can only be called from the main thread. Use <ref refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" kindref="member">prepare()</ref>, <ref refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" kindref="member">runPrepared()</ref> and <ref refid="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" kindref="member">postProcess()</ref> if you need to run algorithms from a background thread, or use the <ref refid="classQgsProcessingAlgRunnerTask" kindref="compound">QgsProcessingAlgRunnerTask</ref> class. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="328" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="416" bodyend="446"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProcessingAlgorithm::runPrepared</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback) SIP_THROW(QgsProcessingException)</argsstring>
+        <name>runPrepared</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Runs the algorithm, which has been prepared by an earlier call to <ref refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" kindref="member">prepare()</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is safe to call from any thread. Returns true if the algorithm was successfully executed. After <ref refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" kindref="member">runPrepared()</ref> has finished, the <ref refid="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" kindref="member">postProcess()</ref> method should be called from the main thread to allow the algorithm to perform any required cleanup tasks and return its final result. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" kindref="member">prepare()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" kindref="member">postProcess()</ref> </para></simplesect>
+<simplesect kind="note"><para>This method modifies the algorithm instance, so it is not safe to call on algorithms directly retrieved from <ref refid="classQgsProcessingRegistry" kindref="compound">QgsProcessingRegistry</ref> and <ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref>. Instead, a copy of the algorithm should be created with clone() and <ref refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" kindref="member">prepare()</ref>/runPrepared() called on the copy. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="353" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="465" bodyend="519"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a3f13bae47bd4daf90575e91bb97af2e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProcessingAlgorithm::setProvider</definition>
+        <argsstring>(QgsProcessingProvider *provider)</argsstring>
+        <name>setProvider</name>
+        <param>
+          <type><ref refid="classQgsProcessingProvider" kindref="compound">QgsProcessingProvider</ref> *</type>
+          <declname>provider</declname>
+        </param>
+        <briefdescription>
+<para>Associates this algorithm with its provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>No transfer of ownership is involved. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="403" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="129" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a5259bda1835282ab29ad6ec7b0c8df09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::shortDescription</definition>
+        <argsstring>() const</argsstring>
+        <name>shortDescription</name>
+        <briefdescription>
+<para>Returns an optional translated short description of the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be at most a single sentence, e.g. &quot;Converts 2D features to 3D by sampling a DEM raster.&quot; <simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="165" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a42eddbb1b445d4dd1879499b3ebfd0ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::shortHelpString</definition>
+        <argsstring>() const</argsstring>
+        <name>shortHelpString</name>
+        <briefdescription>
+<para>Returns a localised short helper string for the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>This string should provide a basic description about what the algorithm does and the parameters and outputs associated with it. <simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1aae9c981f348ccf5ab45d3cb92bb9958a" kindref="member">helpString()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a35f891fb3210f3521c4e7527d909479b" kindref="member">helpUrl()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="179" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a9f6af182d75eb96a91430f576616dbbd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::svgIconPath</definition>
+        <argsstring>() const</argsstring>
+        <name>svgIconPath</name>
+        <briefdescription>
+<para>Returns a path to an SVG version of the algorithm&apos;s icon. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a4272266b913c16756cf7a8c8b588fa5f" kindref="member">icon()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="207" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="79" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a92f23a6ed99ddce530fd4e1e8e7d8756" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList QgsProcessingAlgorithm::tags</definition>
+        <argsstring>() const</argsstring>
+        <name>tags</name>
+        <briefdescription>
+<para>Returns a list of tags which relate to the algorithm, and are used to assist users in searching for suitable algorithms. </para>        </briefdescription>
+        <detaileddescription>
+<para>These tags should be localised. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a46b98e40f5181fede74f89aeb5407722" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::validateInputCrs</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context) const</argsstring>
+        <name>validateInputCrs</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether the coordinate reference systems for the specified set of <emphasis>parameters</emphasis> are valid for the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, the base implementation performs checks to ensure that all input CRS are equal Returns true if <emphasis>parameters</emphasis> have passed the CRS check. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="388" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="176" bodyend="267"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::addOutput</definition>
+        <argsstring>(QgsProcessingOutputDefinition *outputDefinition)</argsstring>
+        <name>addOutput</name>
+        <param>
+          <type><ref refid="classQgsProcessingOutputDefinition" kindref="compound">QgsProcessingOutputDefinition</ref> *</type>
+          <declname>outputDefinition</declname>
+        </param>
+        <briefdescription>
+<para>Adds an output <emphasis>definition</emphasis> to the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the definition is transferred to the algorithm. Returns true if the output could be successfully added, or false if the output could not be added (e.g. as a result of a duplicate name).</para><para>This should usually be called from a subclass&apos; <ref refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" kindref="member">initAlgorithm()</ref> implementation.</para><para>Note that in some cases output creation can be automatically performed when calling <ref refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" kindref="member">addParameter()</ref>. See the notes in <ref refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" kindref="member">addParameter()</ref> for a description of when this occurs.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" kindref="member">addParameter()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" kindref="member">initAlgorithm()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="472" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="329" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::addParameter</definition>
+        <argsstring>(QgsProcessingParameterDefinition *parameterDefinition, bool createOutput=true)</argsstring>
+        <name>addParameter</name>
+        <param>
+          <type><ref refid="classQgsProcessingParameterDefinition" kindref="compound">QgsProcessingParameterDefinition</ref> *</type>
+          <declname>parameterDefinition</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>createOutput</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Adds a parameter <emphasis>definition</emphasis> to the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the definition is transferred to the algorithm. Returns true if parameter could be successfully added, or false if the parameter could not be added (e.g. as a result of a duplicate name).</para><para>This should usually be called from a subclass&apos; <ref refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" kindref="member">initAlgorithm()</ref> implementation.</para><para>If the <emphasis>createOutput</emphasis> argument is true, then a corresponding output definition will also be created (and added to the algorithm) where appropriate. E.g. when adding a <ref refid="classQgsProcessingParameterVectorDestination" kindref="compound">QgsProcessingParameterVectorDestination</ref> and <emphasis>createOutput</emphasis> is true, then a <ref refid="classQgsProcessingOutputVectorLayer" kindref="compound">QgsProcessingOutputVectorLayer</ref> output will be created and added to the algorithm. There is no need to call <ref refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" kindref="member">addOutput()</ref> to manually add a corresponding output for this vector. If <emphasis>createOutput</emphasis> is false then this automatic output creation will not occur.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" kindref="member">initAlgorithm()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" kindref="member">addOutput()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="451" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="289" bodyend="317"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a88271da5a2b0e9609ea50aef72ec2eac" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> *</type>
+        <definition>virtual QgsProcessingAlgorithm* QgsProcessingAlgorithm::createInstance</definition>
+        <argsstring>() const =0</argsstring>
+        <name>createInstance</name>
+        <briefdescription>
+<para>Creates a new instance of the algorithm class. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method should return a &apos;pristine&apos; instance of the algorithm class. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="412" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsProcessingAlgorithm::initAlgorithm</definition>
+        <argsstring>(const QVariantMap &amp;configuration=QVariantMap())=0</argsstring>
+        <name>initAlgorithm</name>
+        <reimplementedby refid="classQgsProcessingFeatureBasedAlgorithm_1acdd5208149b6df54144adc36a72b17f9">initAlgorithm</reimplementedby>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Initializes the algorithm using the specified <emphasis>configuration</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be called directly after creating algorithms and before retrieving any <ref refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" kindref="member">parameterDefinitions()</ref> or <ref refid="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" kindref="member">outputDefinitions()</ref>.</para><para>Subclasses should use their implementations to add all required input parameter and output definitions (which can be dynamically adjusted according to <emphasis>configuration</emphasis>).</para><para>Dynamic configuration can be used by algorithms which alter their behavior when used inside processing models. For instance, a &quot;feature router&quot; type algorithm which sends input features to one of any number of outputs sinks based on some preconfigured filter parameters can use the init method to create these outputs based on the specified <emphasis>configuration</emphasis>.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" kindref="member">addParameter()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" kindref="member">addOutput()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="432" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad8f3de369d3082a2da9498f6de838698" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::parameterAsBool</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsBool</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a static boolean value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="606" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="585" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a0553a084a94050d245f8fc66563803b1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::parameterAsCompatibleSourceLayerPath</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context, const QStringList &amp;compatibleFormats, const QString &amp;preferredFormat=QString(&quot;shp&quot;), QgsProcessingFeedback *feedback=nullptr)</argsstring>
+        <name>parameterAsCompatibleSourceLayerPath</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>compatibleFormats</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>preferredFormat</declname>
+          <defval>QString(&quot;shp&quot;)</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a source vector layer file path of compatible format. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the parameter is evaluated to an existing layer, and that layer is not of the format listed in the <emphasis>compatibleFormats</emphasis> argument, then the layer will first be exported to a compatible format in a temporary location. The function will then return the path to that temporary file.</para><para><emphasis>compatibleFormats</emphasis> should consist entirely of lowercase file extensions, e.g. &apos;shp&apos;.</para><para>The <emphasis>preferredFormat</emphasis> argument is used to specify to desired file extension to use when a temporary layer export is required. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="647" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="600" bodyend="603"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a9600e69139a0498a4bf52fa7b24fd024" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsProcessingAlgorithm::parameterAsCrs</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsCrs</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a coordinate reference system. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="702" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="635" bodyend="638"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8b145f2517eeb2ce5e778ba87277ca48" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsProcessingAlgorithm::parameterAsDouble</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsDouble</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a static double value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="580" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="560" bodyend="563"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a3a8055149c379064107c753b631a066a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsProcessingAlgorithm::parameterAsEnum</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsEnum</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a enum value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="596" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="575" bodyend="578"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1adefea407e069065a1fb3490afa199fd7" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; int &gt;</type>
+        <definition>QList&lt; int &gt; QgsProcessingAlgorithm::parameterAsEnums</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsEnums</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to list of enum values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="601" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="580" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a73f0953fefbb7e8b6413b25b3b88549a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::parameterAsExpression</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsExpression</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to an expression. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="575" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="555" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsProcessingAlgorithm::parameterAsExtent</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context, const QgsCoordinateReferenceSystem &amp;crs=QgsCoordinateReferenceSystem()) const</argsstring>
+        <name>parameterAsExtent</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a rectangular extent. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>crs</emphasis> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically reprojected so that it is in the specified <emphasis>crs</emphasis>. In this case the extent of the reproject rectangle will be returned.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ad00fb487460ebc1d94e92945f48d37aa" kindref="member">parameterAsExtentGeometry()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="712" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="645" bodyend="648"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a274428c88a5fe979ad1b4a4efc13d355" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsProcessingAlgorithm::parameterAsExtentCrs</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context)</argsstring>
+        <name>parameterAsExtentCrs</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns the coordinate reference system associated with an extent parameter value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" kindref="member">parameterAsExtent()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="733" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="640" bodyend="643"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad00fb487460ebc1d94e92945f48d37aa" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsProcessingAlgorithm::parameterAsExtentGeometry</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context, const QgsCoordinateReferenceSystem &amp;crs=QgsCoordinateReferenceSystem())</argsstring>
+        <name>parameterAsExtentGeometry</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a rectangular extent, and returns a geometry covering this extent. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>crs</emphasis> is set, and the original coordinate reference system of the parameter can be determined, then the extent will be automatically reprojected so that it is in the specified <emphasis>crs</emphasis>. Unlike <ref refid="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" kindref="member">parameterAsExtent()</ref>, the reprojected rectangle returned by this function will no longer be a rectangle itself (i.e. this method returns the geometry of the actual reprojected rectangle, while <ref refid="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" kindref="member">parameterAsExtent()</ref> returns just the extent of the reprojected rectangle).</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" kindref="member">parameterAsExtent()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="725" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="650" bodyend="653"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a533d86089c6f99daabaa53ae08a9b934" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsProcessingAlgorithm::parameterAsFields</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsFields</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a list of fields. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="777" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="685" bodyend="688"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a5b892c72fa566d1654358b1f4f7c1350" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::parameterAsFile</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsFile</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a file/folder name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="756" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="665" bodyend="668"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a96e1ffb21ebdf1549de3b99a266335bb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::parameterAsFileOutput</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsFileOutput</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a file based output destination. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="688" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="625" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a2e144277ee0d8f024bef0c69aa619ab9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsProcessingAlgorithm::parameterAsInt</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsInt</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a static integer value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="585" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="565" bodyend="568"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad5b6029a76423eb98c8cb586e19189b3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; int &gt;</type>
+        <definition>QList&lt; int &gt; QgsProcessingAlgorithm::parameterAsInts</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsInts</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a list of integer values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="591" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="570" bodyend="573"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a19d79ea06073d5c3d84e2f91818636a3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>QgsMapLayer * QgsProcessingAlgorithm::parameterAsLayer</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsLayer</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a map layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Layers will either be taken from <emphasis>context&apos;s</emphasis> active project, or loaded from external sources and stored temporarily in the <emphasis>context</emphasis>. In either case, callers do not need to handle deletion of the returned layer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="657" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="605" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1abbba867d1e52dadfabb33c59fb70cce9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> * &gt;</type>
+        <definition>QList&lt; QgsMapLayer * &gt; QgsProcessingAlgorithm::parameterAsLayerList</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsLayerList</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a list of map layers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="767" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="675" bodyend="678"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8211f58dbfd389f86f43a08020e22a41" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariantList</type>
+        <definition>QVariantList QgsProcessingAlgorithm::parameterAsMatrix</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsMatrix</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a matrix/table of values. </para>        </briefdescription>
+        <detaileddescription>
+<para>Tables are collapsed to a 1 dimensional list. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="762" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="670" bodyend="673"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ac3980808a501fb7cf7464c1da69be751" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMeshLayer" kindref="compound">QgsMeshLayer</ref> *</type>
+        <definition>QgsMeshLayer * QgsProcessingAlgorithm::parameterAsMeshLayer</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsMeshLayer</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a mesh layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Layers will either be taken from <emphasis>context&apos;s</emphasis> active project, or loaded from external sources and stored temporarily in the <emphasis>context</emphasis>. In either case, callers do not need to handle deletion of the returned layer.</para><para><simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="677" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="615" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1afa6471892e6e6eff93775283badc3ef9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::parameterAsOutputLayer</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsOutputLayer</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a output layer destination. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="683" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="620" bodyend="623"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ab76855abbc0d0f7960df45d2c11df83b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsProcessingAlgorithm::parameterAsPoint</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context, const QgsCoordinateReferenceSystem &amp;crs=QgsCoordinateReferenceSystem()) const</argsstring>
+        <name>parameterAsPoint</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a point. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>crs</emphasis> is set then the point will be automatically reprojected so that it is in the specified <emphasis>crs</emphasis>.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ae23d5c022c3083097001194bce54b222" kindref="member">parameterAsPointCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="743" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="655" bodyend="658"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ae23d5c022c3083097001194bce54b222" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsProcessingAlgorithm::parameterAsPointCrs</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context)</argsstring>
+        <name>parameterAsPointCrs</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns the coordinate reference system associated with an point parameter value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ab76855abbc0d0f7960df45d2c11df83b" kindref="member">parameterAsPoint()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="751" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="660" bodyend="663"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a7fdc858c2943eb143e01ac96aa71ff1d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; double &gt;</type>
+        <definition>QList&lt; double &gt; QgsProcessingAlgorithm::parameterAsRange</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsRange</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a range of values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="772" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="680" bodyend="683"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a1acf6b180a53e944a81881a0d1f21d4c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRasterLayer" kindref="compound">QgsRasterLayer</ref> *</type>
+        <definition>QgsRasterLayer * QgsProcessingAlgorithm::parameterAsRasterLayer</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsRasterLayer</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a raster layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Layers will either be taken from <emphasis>context&apos;s</emphasis> active project, or loaded from external sources and stored temporarily in the <emphasis>context</emphasis>. In either case, callers do not need to handle deletion of the returned layer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="666" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="610" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a6a6c42b8773f360db0e98c687b8d0636" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFeatureSink" kindref="compound">QgsFeatureSink</ref> *</type>
+        <definition>QgsFeatureSink * QgsProcessingAlgorithm::parameterAsSink</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context, QString &amp;destinationIdentifier, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType=QgsWkbTypes::NoGeometry, const QgsCoordinateReferenceSystem &amp;crs=QgsCoordinateReferenceSystem(), QgsFeatureSink::SinkFlags sinkFlags=nullptr) const</argsstring>
+        <name>parameterAsSink</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>destinationIdentifier</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+          <defval><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11a4d5a4986629f537e7494bbb96892b807" kindref="member">QgsWkbTypes::NoGeometry</ref></defval>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <param>
+          <type>QgsFeatureSink::SinkFlags</type>
+          <declname>sinkFlags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a feature sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sinks will either be taken from <emphasis>context&apos;s</emphasis> active project, or created from external providers and stored temporarily in the <emphasis>context</emphasis>.</para><para>The <emphasis>fields</emphasis>, <emphasis>geometryType</emphasis> and <emphasis>crs</emphasis> parameters dictate the properties of the resulting feature sink.</para><para>The <emphasis>destinationIdentifier</emphasis> argument will be set to a string which can be used to retrieve the layer corresponding to the sink, e.g. via calling <ref refid="classQgsProcessingUtils_1a4ae097e24153b9ebaa503939c956b1ca" kindref="member">QgsProcessingUtils::mapLayerFromString()</ref>.</para><para>This function creates a new object and the caller takes responsibility for deleting the returned object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="622" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="590" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a545f024775b04ebe57b2dd0c0828d564" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsProcessingFeatureSource" kindref="compound">QgsProcessingFeatureSource</ref> *</type>
+        <definition>QgsProcessingFeatureSource * QgsProcessingAlgorithm::parameterAsSource</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsSource</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a feature source. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sources will either be taken from <emphasis>context&apos;s</emphasis> active project, or loaded from external sources and stored temporarily in the <emphasis>context</emphasis>.</para><para>This function creates a new object and the caller takes responsibility for deleting the returned object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="633" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="595" bodyend="598"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a8d0cc2e0cf232c20cf81cbf177aed185" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::parameterAsString</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, const QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsString</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a static string value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="570" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="550" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a6419a3d4c2c2e47d85304c586b736590" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+        <definition>QgsVectorLayer * QgsProcessingAlgorithm::parameterAsVectorLayer</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name, QgsProcessingContext &amp;context) const</argsstring>
+        <name>parameterAsVectorLayer</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Evaluates the parameter with matching <emphasis>name</emphasis> to a vector layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Layers will either be taken from <emphasis>context&apos;s</emphasis> active project, or loaded from external sources and stored temporarily in the <emphasis>context</emphasis>. In either case, callers do not need to handle deletion of the returned layer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="697" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="630" bodyend="633"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProcessingAlgorithm::postProcessAlgorithm</definition>
+        <argsstring>(QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback) SIP_THROW(QgsProcessingException)</argsstring>
+        <name>postProcessAlgorithm</name>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Allows the algorithm to perform any required cleanup tasks. </para>        </briefdescription>
+        <detaileddescription>
+<para>The returned variant map includes the results evaluated by the algorithm. These may be output layer references, or calculated values such as statistical calculations.</para><para>The <emphasis>context</emphasis> argument specifies the context in which the algorithm was run.</para><para>Postprocess progress should be reported using the supplied <emphasis>feedback</emphasis> object. Additionally, well-behaved algorithms should periodically check <emphasis>feedback</emphasis> to determine whether the post processing should be canceled and exited early.</para><para>postProcessAlgorithm should be used to handle any thread-sensitive cleanup which is required by the algorithm. It will always be called from the same thread that <emphasis>context</emphasis> has thread affinity with. While this will generally be the main thread, it is not guaranteed. For instance, algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm will call postProcessAlgorithm from the same thread as that model/script it being executed in.</para><para>postProcessAlgorithm will not be called if the <ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> step failed (returned false), or if an exception was raised by the <ref refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" kindref="member">processAlgorithm()</ref> step.</para><para><simplesect kind="return"><para>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations. Implementations which return a non-empty map will override any results returned by <ref refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" kindref="member">processAlgorithm()</ref>.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" kindref="member">processAlgorithm()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="565" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="351" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::prepareAlgorithm</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback) SIP_THROW(QgsProcessingException)</argsstring>
+        <name>prepareAlgorithm</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Prepares the algorithm to run using the specified <emphasis>parameters</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithms should implement their logic for evaluating parameter values here. The evaluated parameter results should be stored in member variables ready for a call to <ref refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" kindref="member">processAlgorithm()</ref>.</para><para>The <emphasis>context</emphasis> argument specifies the context in which the algorithm is being run.</para><para>prepareAlgorithm should be used to handle any thread-sensitive preparation which is required by the algorithm. It will always be called from the same thread that <emphasis>context</emphasis> has thread affinity with. While this will generally be the main thread, it is not guaranteed. For instance, algorithms which are run as a step in a larger model or as a subcomponent of a script-based algorithm will call prepareAlgorithm from the same thread as that model/script it being executed in.</para><para>Note that the processAlgorithm step uses a temporary context with affinity for the thread in which the algorithm is executed, making it safe for processAlgorithm implementations to load sources and sinks without issue. Implementing prepareAlgorithm is only required if special thread safe handling is required by the algorithm.</para><para>Algorithm preparation progress should be reported using the supplied <emphasis>feedback</emphasis> object. Additionally, well-behaved algorithms should periodically check <emphasis>feedback</emphasis> to determine whether the algorithm should be canceled and exited early.</para><para>If the preparation was successful algorithms must return true. If a false value is returned this indicates that the preparation could not be completed, and the algorithm execution will be canceled.</para><para><simplesect kind="return"><para>true if preparation was successful. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" kindref="member">processAlgorithm()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="504" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="346" bodyend="349"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QVariantMap</type>
+        <definition>virtual QVariantMap QgsProcessingAlgorithm::processAlgorithm</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback) SIP_THROW(QgsProcessingException)=0</argsstring>
+        <name>processAlgorithm</name>
+        <reimplementedby refid="classQgsProcessingFeatureBasedAlgorithm_1a6d34f3c0380d76694a9fd0daf3a6557a">processAlgorithm</reimplementedby>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Runs the algorithm using the specified <emphasis>parameters</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithms should implement their custom processing logic here.</para><para>The <emphasis>context</emphasis> argument gives a temporary context with thread affinity matching the thread in which the algorithm is being run. This is a cut-back copy of the context passed to the <ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> and <ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> steps, but it is generally safe for most algorithms to utilize this context for loading layers and creating sinks. Any loaded layers or sinks created within this temporary context will be transferred back to the main execution context upon successful completion of the <ref refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" kindref="member">processAlgorithm()</ref> step.</para><para>Algorithm progress should be reported using the supplied <emphasis>feedback</emphasis> object. Additionally, well-behaved algorithms should periodically check <emphasis>feedback</emphasis> to determine whether the algorithm should be canceled and exited early.</para><para>This method will not be called if the <ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> step failed (returned false).</para><para>c++ implementations of processAlgorithm can throw the <ref refid="classQgsProcessingException" kindref="compound">QgsProcessingException</ref> exception to indicate that a fatal error occurred within the execution. Python based subclasses should raise GeoAlgorithmExecutionException for the same purpose.</para><para><simplesect kind="return"><para>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations. Unless the algorithm subclass overrides the <ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> step this returned map will be used as the output for the algorithm.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="536" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a75099bd6bb7898e450d332cc275e4e55" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProcessingAlgorithm::removeParameter</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>removeParameter</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Removes the parameter with matching <emphasis>name</emphasis> from the algorithm, and deletes any existing definition. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="457" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="319" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ad5da49d627f0e467f7147ace4bfa7254" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::supportInPlaceEdit</definition>
+        <argsstring>(const QgsMapLayer *layer) const</argsstring>
+        <name>supportInPlaceEdit</name>
+        <reimplementedby refid="classQgsProcessingFeatureBasedAlgorithm_1a0f32a4e08be18509004a263f80cee886">supportInPlaceEdit</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether this algorithm supports in-place editing on the given <emphasis>layer</emphasis> Default implementation returns false. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the algorithm supports in-place editing </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="828" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="771" bodyend="775"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a626c97e8548831e668ac53f281138dae" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::invalidRasterError</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name)</argsstring>
+        <name>invalidRasterError</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns a user-friendly string to use as an error when a raster layer input could not be loaded. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>parameters</emphasis> argument should give the algorithms parameter map, and the <emphasis>name</emphasis> should correspond to the invalid source parameter name.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ae9fd1f30da55212b80d2f2193bad8074" kindref="member">invalidSourceError()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a887fe00bc77891b01f06f5af9eb41dbf" kindref="member">invalidSinkError()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="805" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="722" bodyend="742"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a887fe00bc77891b01f06f5af9eb41dbf" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::invalidSinkError</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name)</argsstring>
+        <name>invalidSinkError</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns a user-friendly string to use as an error when a sink parameter could not be created. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>parameters</emphasis> argument should give the algorithms parameter map, and the <emphasis>name</emphasis> should correspond to the invalid source parameter name.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ae9fd1f30da55212b80d2f2193bad8074" kindref="member">invalidSourceError()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a626c97e8548831e668ac53f281138dae" kindref="member">invalidRasterError()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="819" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="744" bodyend="769"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1ae9fd1f30da55212b80d2f2193bad8074" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingAlgorithm::invalidSourceError</definition>
+        <argsstring>(const QVariantMap &amp;parameters, const QString &amp;name)</argsstring>
+        <name>invalidSourceError</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns a user-friendly string to use as an error when a source parameter could not be loaded. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>parameters</emphasis> argument should give the algorithms parameter map, and the <emphasis>name</emphasis> should correspond to the invalid source parameter name.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a626c97e8548831e668ac53f281138dae" kindref="member">invalidRasterError()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a887fe00bc77891b01f06f5af9eb41dbf" kindref="member">invalidSinkError()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="791" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="690" bodyend="720"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsProcessingAlgorithm_1a0ae1556c86bcf3c9e82017ab5dd87e82" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingAlgorithm::createAutoOutputForParameter</definition>
+        <argsstring>(QgsProcessingParameterDefinition *parameter)</argsstring>
+        <name>createAutoOutputForParameter</name>
+        <param>
+          <type><ref refid="classQgsProcessingParameterDefinition" kindref="compound">QgsProcessingParameterDefinition</ref> *</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="840" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="778" bodyend="797"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for processing algorithms. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6737">
+        <label>QgsProcessingAlgorithm</label>
+        <link refid="classQgsProcessingAlgorithm"/>
+      </node>
+      <node id="6738">
+        <label>QgsProcessingFeatureBasedAlgorithm</label>
+        <link refid="classQgsProcessingFeatureBasedAlgorithm"/>
+        <childnode refid="6737" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="51" bodyend="852"/>
+    <listofallmembers>
+      <member refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>addOutput</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>addParameter</name></member>
+      <member refid="classQgsProcessingAlgorithm_1acd0a1eab59679270bda1bd6e5e2078f4" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>asPythonCommand</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad0640971083463eb847fb6eb8622c501" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>canExecute</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae3991f84be1b939144df415bec29d3fd" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>checkParameterValues</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a55f228fcac6d55ada3d124386ca45c0b" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>countVisibleParameters</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad190b383961aeb7215af3626955852db" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>create</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a0ae1556c86bcf3c9e82017ab5dd87e82" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>createAutoOutputForParameter</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ab8c8eb508bd422c98a662eb5f904563d" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>createCustomParametersWidget</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a870fb43ba74a0e6706071f1e01134b2b" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>createExpressionContext</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a88271da5a2b0e9609ea50aef72ec2eac" prot="protected" virt="pure-virtual"><scope>QgsProcessingAlgorithm</scope><name>createInstance</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8756b505dbef21c4f5c14380d59764a5" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>destinationParameterDefinitions</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a7b315c390929a904a0a63cdad9d45869" prot="public" virt="pure-virtual"><scope>QgsProcessingAlgorithm</scope><name>displayName</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>Flag</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a4c550fc5bb7df816465e47678895aa99" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagCanCancel</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3ab5d43ba462b9ef5b3e66c51686dfa9db" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagDeprecated</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3ae6b58d23dd713e5957bab067f202cf8b" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagDisplayNameIsLiteral</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a80148880fad1e4e0d3613f243497de5b" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagHideFromModeler</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a62f2a83f05f962a56b928c23d899962d" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagHideFromToolbox</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a229dea6cedf8c59132196dee09d4f2f6" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagNoThreading</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a94d0eeee061e1c4a44f250b36a651148" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagRequiresMatchingCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a3f052a9a0f0ee438afdf6eacb48795cb" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>flags</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a6e2a0e3fac445e639157e0b0bc9a0931" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagSupportsBatch</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a344d854c1895f74972c28602980da674" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>FlagSupportsInPlaceEdits</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a258c0bbdb36fb19512226804fd948bbb" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>group</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a2b976f38c1ff648152d7872a8b887ac2" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>groupId</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8918adc434de43cd430cbc52b2f789d4" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>hasHtmlOutputs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1aae9c981f348ccf5ab45d3cb92bb9958a" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>helpString</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a35f891fb3210f3521c4e7527d909479b" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>helpUrl</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a4272266b913c16756cf7a8c8b588fa5f" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>icon</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5ca92c590bec71b303e062496dc13823" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>id</name></member>
+      <member refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67" prot="protected" virt="pure-virtual"><scope>QgsProcessingAlgorithm</scope><name>initAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a626c97e8548831e668ac53f281138dae" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>invalidRasterError</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a887fe00bc77891b01f06f5af9eb41dbf" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>invalidSinkError</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae9fd1f30da55212b80d2f2193bad8074" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>invalidSourceError</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a917f7fc4070c3828ac77f5c11d68e7bb" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mHasExecuted</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a368c3b083f6eb7b8ce00d205783c4264" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mHasPostProcessed</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a25dea99b398109e234715fc0c7b9edd2" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mHasPrepared</name></member>
+      <member refid="classQgsProcessingAlgorithm_1adf4cf671fc72678edbc35a5dba919c30" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mLocalContext</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a61336d736997dfd05932fbf7ceb544af" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mOutputs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a68e6aa7ca4eed2d2284e4842863508e8" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mParameters</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae3b1e09dcfc81f0a01151250ae9fdffb" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>mProvider</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad9eb6365281f92799f1a4562ec386127" prot="public" virt="pure-virtual"><scope>QgsProcessingAlgorithm</scope><name>name</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a37d99f115b643fdf83fa5c9ddfec7e7a" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>operator=</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a06ded33ee1a9200135806bdf8f514e01" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>outputDefinition</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>outputDefinitions</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad8f3de369d3082a2da9498f6de838698" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsBool</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a0553a084a94050d245f8fc66563803b1" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsCompatibleSourceLayerPath</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a9600e69139a0498a4bf52fa7b24fd024" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8b145f2517eeb2ce5e778ba87277ca48" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsDouble</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a3a8055149c379064107c753b631a066a" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsEnum</name></member>
+      <member refid="classQgsProcessingAlgorithm_1adefea407e069065a1fb3490afa199fd7" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsEnums</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a73f0953fefbb7e8b6413b25b3b88549a" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsExpression</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsExtent</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a274428c88a5fe979ad1b4a4efc13d355" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsExtentCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad00fb487460ebc1d94e92945f48d37aa" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsExtentGeometry</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a533d86089c6f99daabaa53ae08a9b934" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsFields</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5b892c72fa566d1654358b1f4f7c1350" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsFile</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a96e1ffb21ebdf1549de3b99a266335bb" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsFileOutput</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a2e144277ee0d8f024bef0c69aa619ab9" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsInt</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad5b6029a76423eb98c8cb586e19189b3" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsInts</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a19d79ea06073d5c3d84e2f91818636a3" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1abbba867d1e52dadfabb33c59fb70cce9" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsLayerList</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8211f58dbfd389f86f43a08020e22a41" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsMatrix</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ac3980808a501fb7cf7464c1da69be751" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsMeshLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1afa6471892e6e6eff93775283badc3ef9" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsOutputLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ab76855abbc0d0f7960df45d2c11df83b" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsPoint</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae23d5c022c3083097001194bce54b222" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsPointCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a7fdc858c2943eb143e01ac96aa71ff1d" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsRange</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a1acf6b180a53e944a81881a0d1f21d4c" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsRasterLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a6c42b8773f360db0e98c687b8d0636" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsSink</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a545f024775b04ebe57b2dd0c0828d564" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsSource</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8d0cc2e0cf232c20cf81cbf177aed185" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsString</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6419a3d4c2c2e47d85304c586b736590" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterAsVectorLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a9baa78fa74712abff92b1f45d9b8ba2d" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterDefinition</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>parameterDefinitions</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>postProcess</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" prot="protected" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>postProcessAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>prepare</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" prot="protected" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>prepareAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5e07c0377eb04819e2b667bef5a4237e" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>preprocessParameters</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a" prot="protected" virt="pure-virtual"><scope>QgsProcessingAlgorithm</scope><name>processAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad0ba1a020a2ddd33953d82dfca732893" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>provider</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a924e41ef98c41904e177189e9d26649b" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>QgsProcessingAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a30eb6bb68b6e29f782d03646a14c9cbb" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>QgsProcessingAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a7e302d6dd3ab0b0d064c826f383ed3" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>QgsProcessingModelAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ab24210e27a8491cb85cf259c9b16e000" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>QgsProcessingProvider</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a069b21d671f4c6a906675189795d3f7e" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>QgsProcessingToolboxProxyModel</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a75099bd6bb7898e450d332cc275e4e55" prot="protected" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>removeParameter</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a824e128ff93b51f17488d770f5eb7fa8" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>run</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>runPrepared</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a3f13bae47bd4daf90575e91bb97af2e5" prot="public" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>setProvider</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5259bda1835282ab29ad6ec7b0c8df09" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>shortDescription</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a42eddbb1b445d4dd1879499b3ebfd0ba" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>shortHelpString</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad5da49d627f0e467f7147ace4bfa7254" prot="protected" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>supportInPlaceEdit</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a9f6af182d75eb96a91430f576616dbbd" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>svgIconPath</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a92f23a6ed99ddce530fd4e1e8e7d8756" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>tags</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a0ebf9a4f54b7d70b52f696b33d8e0f77" prot="private" virt="non-virtual"><scope>QgsProcessingAlgorithm</scope><name>TestQgsProcessing</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a46b98e40f5181fede74f89aeb5407722" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>validateInputCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a556068a168e2c8a1a75e18d58b4e1ff5" prot="public" virt="virtual"><scope>QgsProcessingAlgorithm</scope><name>~QgsProcessingAlgorithm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

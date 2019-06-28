@@ -1,0 +1,979 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsGeometryCheck" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsGeometryCheck</compoundname>
+    <derivedcompoundref refid="classQgsGeometryAngleCheck" prot="public" virt="non-virtual">QgsGeometryAngleCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryAreaCheck" prot="public" virt="non-virtual">QgsGeometryAreaCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryContainedCheck" prot="public" virt="non-virtual">QgsGeometryContainedCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryDangleCheck" prot="public" virt="non-virtual">QgsGeometryDangleCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryDegeneratePolygonCheck" prot="public" virt="non-virtual">QgsGeometryDegeneratePolygonCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryDuplicateCheck" prot="public" virt="non-virtual">QgsGeometryDuplicateCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryDuplicateNodesCheck" prot="public" virt="non-virtual">QgsGeometryDuplicateNodesCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryFollowBoundariesCheck" prot="public" virt="non-virtual">QgsGeometryFollowBoundariesCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryGapCheck" prot="public" virt="non-virtual">QgsGeometryGapCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryHoleCheck" prot="public" virt="non-virtual">QgsGeometryHoleCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryLineIntersectionCheck" prot="public" virt="non-virtual">QgsGeometryLineIntersectionCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryLineLayerIntersectionCheck" prot="public" virt="non-virtual">QgsGeometryLineLayerIntersectionCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryMissingVertexCheck" prot="public" virt="non-virtual">QgsGeometryMissingVertexCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryOverlapCheck" prot="public" virt="non-virtual">QgsGeometryOverlapCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryPointCoveredByLineCheck" prot="public" virt="non-virtual">QgsGeometryPointCoveredByLineCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryPointInPolygonCheck" prot="public" virt="non-virtual">QgsGeometryPointInPolygonCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometrySegmentLengthCheck" prot="public" virt="non-virtual">QgsGeometrySegmentLengthCheck</derivedcompoundref>
+    <derivedcompoundref refid="classQgsSingleGeometryCheck" prot="public" virt="non-virtual">QgsSingleGeometryCheck</derivedcompoundref>
+    <includes refid="qgsgeometrycheck_8h" local="no">qgsgeometrycheck.h</includes>
+    <innerclass refid="structQgsGeometryCheck_1_1Change" prot="public">QgsGeometryCheck::Change</innerclass>
+    <innerclass refid="structQgsGeometryCheck_1_1LayerFeatureIds" prot="public">QgsGeometryCheck::LayerFeatureIds</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classQgsGeometryCheck_1a0dee120422a42789a44079d735b456ee" prot="public" static="no">
+        <type>QMap&lt; QString, QMap&lt; <ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref>, QList&lt; <ref refid="structQgsGeometryCheck_1_1Change" kindref="compound">QgsGeometryCheck::Change</ref> &gt; &gt; &gt;</type>
+        <definition>typedef QMap&lt;QString, QMap&lt;QgsFeatureId, QList&lt;QgsGeometryCheck::Change&gt; &gt; &gt; QgsGeometryCheck::Changes</definition>
+        <argsstring></argsstring>
+        <name>Changes</name>
+        <briefdescription>
+<para>A collection of changes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Grouped by layer id and feature id. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="248" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3" prot="public" static="no">
+        <name>ChangeType</name>
+        <enumvalue id="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3ac86b1c170be77a24a8a834704e87d09f" prot="public">
+          <name>ChangeAdded</name>
+          <briefdescription>
+<para>Something has been added. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3ae45df7c68f38ed45fc1fc6dbced4b4c5" prot="public">
+          <name>ChangeRemoved</name>
+          <briefdescription>
+<para>Something has been removed. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3a0d6677addd344807b9a5cd231bd5f2a8" prot="public">
+          <name>ChangeChanged</name>
+          <briefdescription>
+<para>Something has been updated. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Description of the type of a change. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>Python bindings since QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="178" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="177" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653c" prot="public" static="no">
+        <name>ChangeWhat</name>
+        <enumvalue id="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653ca9046cebece86eb101fbf87cc8c083b8a" prot="public">
+          <name>ChangeFeature</name>
+          <briefdescription>
+<para>This change happens on feature level. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653cad319ee63359166653ea0d890af0f51d0" prot="public">
+          <name>ChangePart</name>
+          <briefdescription>
+<para>This change happens on part level. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653ca49d2608918455c31a8911467a8e0d447" prot="public">
+          <name>ChangeRing</name>
+          <briefdescription>
+<para>This change happens on ring level. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653ca3a6df43b826e38d734053157925d23f5" prot="public">
+          <name>ChangeNode</name>
+          <briefdescription>
+<para>This change happens on node level. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Description of a change to indicate at which level a change occurred. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>Python bindings since QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="165" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="164" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3" prot="public" static="no">
+        <name>CheckType</name>
+        <enumvalue id="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac" prot="public">
+          <name>FeatureNodeCheck</name>
+          <briefdescription>
+<para>The check controls individual nodes. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46" prot="public">
+          <name>FeatureCheck</name>
+          <briefdescription>
+<para>The check controls geometries as a whole. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e" prot="public">
+          <name>LayerCheck</name>
+          <briefdescription>
+<para>The check controls a whole layer (topology checks) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The type of a check. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>Python bindings since QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="190" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="189" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsGeometryCheck_1a5a70060933147c9bda6d1cdb195edc40" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsGeometryCheck_1a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b" prot="public">
+          <name>AvailableInValidation</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>This geometry check should be available in layer validation on the vector layer peroperties. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flags for geometry checks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="200" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="199" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsGeometryCheck_1a87d1e212f06f380f3571dd28782797b1" prot="protected" static="no" mutable="no">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsGeometryCheck::mConfiguration</definition>
+        <argsstring></argsstring>
+        <name>mConfiguration</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="376" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGeometryCheck_1a46e329a6d3c705f0695ef81d683a10cd" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="structQgsGeometryCheckContext" kindref="compound">QgsGeometryCheckContext</ref> *</type>
+        <definition>const QgsGeometryCheckContext* QgsGeometryCheck::mContext</definition>
+        <argsstring></argsstring>
+        <name>mContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="375" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsGeometryCheck_1ae0440691019211c3e45c5c76c486320b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsGeometryCheck::QgsGeometryCheck</definition>
+        <argsstring>(const QgsGeometryCheckContext *context, const QVariantMap &amp;configuration)</argsstring>
+        <name>QgsGeometryCheck</name>
+        <param>
+          <type>const <ref refid="structQgsGeometryCheckContext" kindref="compound">QgsGeometryCheckContext</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+        </param>
+        <briefdescription>
+<para>Create a new geometry check. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="253" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1aa476a4d6d5a3d9d6cd7e14b30aa899ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsGeometryCheck::~QgsGeometryCheck</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsGeometryCheck</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="254" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a98b4cb94c365697457473cb492e0a679" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3" kindref="member">CheckType</ref></type>
+        <definition>virtual CheckType QgsGeometryCheck::checkType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>checkType</name>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1a2fa1caf0839e63a39c1d4d11740b1d5c">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfContactCheck_1ae27bfe2b96ba4c7bd3d14657f15dda41">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1ac9162fb73b7c5bc7d510cf20b21c1975">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1ae098438d20476c9b0861d6afde442353">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1a0e46ad59217bc2d353d7d7bb8877dcf2">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1a519763f7a12919ea3457fc57f38868a0">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1aff767e66ede9f0834959ed0e58a98aba">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMultipartCheck_1a45f0f56efd48d2c00f91773c8320ea8d">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1a7882a3f2594862cfff3eb02346174078">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1abe2373d16f6356251de11e8088fced6a">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1ac3e6ff070b69528c5956b6e5f5b634e5">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1ad6777d81e9fb05d6b5897c5f483f8921">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1a2c8bad6b3002b47ed27176e155b84f6f">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a317433a8b8c35138804c8a156a61c547">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryTypeCheck_1a1eac6f802dec9afb493dd28cedb03af6">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1ac081efbb5efbd857a8feed9f53e4dc32">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryIsValidCheck_1a2a2867a4c19c4d7229c12cc243f54cbb">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1a426669ee6b4dc1638d6a95d530d9c228">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1a2a4dce0d8d4de3f6c99ffd75fed2ced2">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1ab9880ac7b971e5308d53b8e768687493">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1a628500c3be9652115accd7e7adc550b1">checkType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1ac61bb9145253b642b15fb57524d4f6b6">checkType</reimplementedby>
+        <briefdescription>
+<para>Returns the check type. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="332" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a38f46d10fb219d6418c0e66835477e3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsGeometryCheck::collectErrors</definition>
+        <argsstring>(const QMap&lt; QString, QgsFeaturePool *&gt; &amp;featurePools, QList&lt; QgsGeometryCheckError *&gt; &amp;errors, QStringList &amp;messages, QgsFeedback *feedback, const LayerFeatureIds &amp;ids=QgsGeometryCheck::LayerFeatureIds()) const =0</argsstring>
+        <name>collectErrors</name>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1a7bd9697bc2b2bc7138a3aafc8cee2566">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1a4068b241942ad9236a711a2dedf91f6e">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1aec51faa51ecf2e33bca5ea9082fd57dc">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1a86609c21682af7cf99c26858d9711557">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1a23c32f595bced15136fe5451f859c7d8">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1ada8b72be5b59c60211a8f0ad3f17f7a0">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1a2eaa96a76864a8f81c666abe5c81c153">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1aaa6c79ccab198dc0826c89f62f1e2305">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1ab388547fa0d3f0fbad0c9c3314bba605">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1ad373d5b3ad64276e763b1d97adfc88ac">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1add27bc2446907b709d944926cef404f4">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a5000af2de22d4f12762f2a538c8997cd">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1a2e96a04b3165a573d9a8ae17f35a29cb">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1a8aa7020525e5ea733f899dd225300486">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1aa76c27ba3142f763b460f54972ea0b5b">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1a07da0618b4c1563b519edebfe5156235">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1a95db2fba7c2afbf00644b2c8c50221c3">collectErrors</reimplementedby>
+        <reimplementedby refid="classQgsSingleGeometryCheck_1ac14f641176e7d9bde2f64e82d7d44ed7">collectErrors</reimplementedby>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsFeaturePool" kindref="compound">QgsFeaturePool</ref> *&gt; &amp;</type>
+          <declname>featurePools</declname>
+        </param>
+        <param>
+          <type>QList&lt; <ref refid="classQgsGeometryCheckError" kindref="compound">QgsGeometryCheckError</ref> *&gt; &amp;</type>
+          <declname>errors</declname>
+        </param>
+        <param>
+          <type>QStringList &amp;</type>
+          <declname>messages</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsGeometryCheck_1_1LayerFeatureIds" kindref="compound">LayerFeatureIds</ref> &amp;</type>
+          <declname>ids</declname>
+          <defval><ref refid="structQgsGeometryCheck_1_1LayerFeatureIds" kindref="compound">QgsGeometryCheck::LayerFeatureIds</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>The main worker method. </para>        </briefdescription>
+        <detaileddescription>
+<para>Check all features available from <emphasis>featurePools</emphasis> and write errors found to <emphasis>errors</emphasis>. Other status messages can be written to <emphasis>messages</emphasis>. Progress should be reported to <emphasis>feedback</emphasis>. Only features and layers listed in <emphasis>ids</emphasis> should be checked.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="297" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a77dd5eeacbce9fca7d357e2f190d84b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; <ref refid="classQgsWkbTypes_1a60e72c2f73cb07fdbcdbc2d5068b5d9c" kindref="member">QgsWkbTypes::GeometryType</ref> &gt;</type>
+        <definition>virtual QList&lt;QgsWkbTypes::GeometryType&gt; QgsGeometryCheck::compatibleGeometryTypes</definition>
+        <argsstring>() const =0</argsstring>
+        <name>compatibleGeometryTypes</name>
+        <reimplementedby refid="classQgsGeometrySelfContactCheck_1ac15f921f0ab172791c850f68fedebf5f">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1aa3c12dae1bc82194ee923be12cb95b42">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1abde3cab0a08509763b09203726dce289">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1acf8e3da3f5f41904128fcb37d1faa5e5">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1a0ba312ab90fba3bd181c92672b602364">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMultipartCheck_1a8c0c6fd4999eac77bf9ac1db9f4beb0b">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1a931c7fdee1d7081c208486d3fdd54f5e">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1ac879e5315e5aeb10ceda7b164be535df">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1ae8a93f2b9a733aac3ac52d1b1b9e0fe1">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1ae6a0eb1b71bb72b8935ad0d88398b68f">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1a54f65a86b84f70589eeac9efdfce653a">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1a7678638173954db247df01be05f2b9e9">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1acf6d52d810fa9c2a24012bd659af824e">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a7fb2315fdc078254891958206f4e8334">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryTypeCheck_1a4e784a3105684fb6f88b1b53e86b55a5">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1a8f08d9e67fb0c6d55f75cff1b9cad5dd">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1aeb5732385ae70d9eda7306d1820a4275">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryIsValidCheck_1acfbf1fedd8f82fdae5ebdc9caefb61f5">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1a29e75e81881c77a09364f06e3f28c886">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1a392b5fd1408582e0f21072c6e890f000">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1ab9150001292767ed8d682bc74bb6c849">compatibleGeometryTypes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1aca742978064e45fbb9058895f3417d25">compatibleGeometryTypes</reimplementedby>
+        <briefdescription>
+<para>A list of geometry types for which this check can be performed. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="282" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a1c9767dd69811d6d0ae6b398c3081e1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type>T</type>
+        <definition>T QgsGeometryCheck::configurationValue</definition>
+        <argsstring>(const QString &amp;name, const QVariant &amp;defaultValue=QVariant())</argsstring>
+        <name>configurationValue</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>defaultValue</declname>
+          <defval>QVariant()</defval>
+        </param>
+        <briefdescription>
+<para>Returns the configuration value with the <emphasis>name</emphasis>, saved in the QGIS settings for this geometry check. </para>        </briefdescription>
+        <detaileddescription>
+<para>If no configuration could be found, <emphasis>defaultValue</emphasis> is returned. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="263" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="263" bodyend="266"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1ab8b239f8793bf2af23246aa45157aae9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structQgsGeometryCheckContext" kindref="compound">QgsGeometryCheckContext</ref> *</type>
+        <definition>const QgsGeometryCheckContext* QgsGeometryCheck::context</definition>
+        <argsstring>() const</argsstring>
+        <name>context</name>
+        <briefdescription>
+<para>Returns the context. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="339" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="339" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1aa7b3c69d0c5e4f1feb174f791c835260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsGeometryCheck::description</definition>
+        <argsstring>() const =0</argsstring>
+        <name>description</name>
+        <reimplementedby refid="classQgsGeometrySliverPolygonCheck_1a1cc1f27da74344b12f288ecc928323d7">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1ab00b52b40c495281ffbf509643427b6b">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfContactCheck_1afaa82f9d6fa4ba7fa9b9847875b4305c">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1a7d8dd648e462111b4b2fd177dbf5d041">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1a33cfd5132bec3c27de28dcc35b224077">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1a22ca7b2b6ad6d6002b7a2d48ddddcf5a">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1a19865dbab3df391649fe87acebd682a8">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMultipartCheck_1a4cc87099fc376c83aee127d482d079e2">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1a40d358250b3658196429d3f1e622fa5a">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1af4cfca67a4ee68461dd5dbd02bcd967e">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1a5b9020e20d567374b8b812f8f552e52c">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1af868301bd0032b8267b6190ebcb88a54">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1af90ee9d1b4632640186661efad8ca06d">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a36eecb27b426225356758c9b3cb0d38f">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1a4e66ebacf89b9225f14d83bf752ef33a">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1a353f4626d4821405277d1db53e2fbdbf">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryTypeCheck_1ac31f96b8750506c8b25d8c437d960aa7">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryIsValidCheck_1aaa20bde07dca9cb28db9efb3b08fb0c2">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1a191178ec137e9feffb1bd5fb0f2c0796">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1a2954021523d9735dffea6f470962b6bf">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1ad6e0350230e21d1f62b73088852f4809">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1a534e4540e8a9b8fb52efed8cf2328296">description</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1aec0cdabad1f42beca3ff80f52f0e7ec7">description</reimplementedby>
+        <briefdescription>
+<para>Returns a human readable description for this check. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="318" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a74faa34590d7f4ae69dc55848c5a6006" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsGeometryCheck::fixError</definition>
+        <argsstring>(const QMap&lt; QString, QgsFeaturePool *&gt; &amp;featurePools, QgsGeometryCheckError *error, int method, const QMap&lt; QString, int &gt; &amp;mergeAttributeIndices, Changes &amp;changes) const</argsstring>
+        <name>fixError</name>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1a056a4cf1fa8787b9a810e7e2cb41a8ce">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfContactCheck_1ae8f47a5933ee92da18c96b9bb53cb54f">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1a0771477efdb1480c0d461d5aac22d103">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1ac22d05d1815aaab5d77faf2dcc4533fa">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1a009cf5ff9f4dc099fef67afc9ebe4739">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1a3519345f46cf364d9e1052c7bd55397d">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1a338933ffb9617cf484f62855cbf2b782">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMultipartCheck_1a333c7f43bd9fa7cf06e3959e91566c2f">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1ae70f60144f3865b85a1c7f16cfeee4a0">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1a5ab3dca000c2361e4afa08e87886eeed">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1a897e6bc843bb47ba9cb02192f0f62cad">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1ac43d3560118fec9639da1dd0cb891375">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1a9a5704c6f1e1c41af15845f38e8d50c0">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a8dd9e31b7885c1c99528e0cf8ca431a6">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1ac9b248bfee54d0d2bf9d08b82f095efd">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryTypeCheck_1a61c28be067fbec0891aaa465f05fed0e">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1a99cc8048a2b4cd57267d24ac981f4cb7">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1ac65050c7031700341d554e51cd5841e2">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1ae5df3a45d77b3924740ba2007fdcac98">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1abec472de03e68219e6d400fa11dad85d">fixError</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1a7b41196d00f169e4d1e1c92ddd9c8131">fixError</reimplementedby>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsFeaturePool" kindref="compound">QgsFeaturePool</ref> *&gt; &amp;</type>
+          <declname>featurePools</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometryCheckError" kindref="compound">QgsGeometryCheckError</ref> *</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>method</declname>
+        </param>
+        <param>
+          <type>const QMap&lt; QString, int &gt; &amp;</type>
+          <declname>mergeAttributeIndices</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometryCheck_1a0dee120422a42789a44079d735b456ee" kindref="member">Changes</ref> &amp;</type>
+          <declname>changes</declname>
+        </param>
+        <briefdescription>
+<para>Fix the error <emphasis>error</emphasis> with the specified <emphasis>method</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="304" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="44" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1abb92d8bc14440c7a33e08547f37a6f13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QgsGeometryCheck::Flags</type>
+        <definition>QgsGeometryCheck::Flags QgsGeometryCheck::flags</definition>
+        <argsstring>() const</argsstring>
+        <name>flags</name>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1a2b535bb967de179cb862e76fdcdcb7d9">flags</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1a0c19f3a2ccd5d96c01f47c89e8538d38">flags</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1afc2ccfd87ca488200da32db7edd0afb4">flags</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1a9f4d657fff015ddc0764097bf98825ef">flags</reimplementedby>
+        <briefdescription>
+<para>Flags for this geometry check. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="287" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a6955bf434c11fe157b8ffa58549b0bf1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsGeometryCheck::id</definition>
+        <argsstring>() const =0</argsstring>
+        <name>id</name>
+        <reimplementedby refid="classQgsGeometrySliverPolygonCheck_1a09f242b4742eddb71dfa40277e056eb9">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1a04908a2107222e7f7e4650d1e7ceb88e">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfContactCheck_1ace68f1273e726e2158adce28ffc64e9f">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1ad6d8cb48e7f5b3d0a24dfb2ca64b884c">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1a4e8eb891f4689024170601384b2eb28d">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1ada9a9537cd7094468299c75f091c6570">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1a434a224105124927a196b3fef56c04fc">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1a12c0227496f8c25c8fc03ff93f76c9c1">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMultipartCheck_1afa36e0eaf7562fd216613dacb647d853">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1a849da33941fcd6ca8d242d5223606cc7">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1a6df50eb392c3a137c8ef23dad37ddee0">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1ac8bf52fa70360cad857452c4c467a81c">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1a094b39300b343d245a876b1591423fed">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1adaaf04769068ec7f6214b3740016c736">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a6b8c06d0ff1e2d01a4fcecb8342b0afe">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1aaf3006f46e27a2b4238316d8024ba392">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryTypeCheck_1a5f9cdd372ac17e63f9ddbeccefa61ecf">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1a32b56c01a4f5a732caf0b18715f73f00">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryIsValidCheck_1a1180efe08ed0f478c1d069d4514eefe3">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1a37ac18b742190cbfb056a8954a778dec">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1ac6868e3cc64ab52dfd35f2c12c701140">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1abc1af2abdb7979bd3dcddc0cb168d279">id</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1ad47f04447d5f7413316517ee729b9acf">id</reimplementedby>
+        <briefdescription>
+<para>Returns an id for this check. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="325" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1aeafbce06f090de57f9634866f39d0ac2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsGeometryCheck::isCompatible</definition>
+        <argsstring>(QgsVectorLayer *layer) const</argsstring>
+        <name>isCompatible</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Returns if this geometry check is compatible with <emphasis>layer</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>By default it checks for the geometry type in <emphasis><ref refid="classQgsGeometryCheck_1a77dd5eeacbce9fca7d357e2f190d84b9" kindref="member">compatibleGeometryTypes()</ref></emphasis>.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="275" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a9299e644f9cc31edfa02a40f1329955b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList QgsGeometryCheck::resolutionMethods</definition>
+        <argsstring>() const =0</argsstring>
+        <name>resolutionMethods</name>
+        <reimplementedby refid="classQgsGeometrySelfContactCheck_1ad1b1be3374c284ccf8a6449241fee742">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryHoleCheck_1ab8412eb61162d96f7790bc15b8bd724c">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateNodesCheck_1a455d0c21467fe8d7ed53d21d65b39990">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDangleCheck_1adcf97fb82116e41d56b0a554b5efdd9d">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointInPolygonCheck_1acd7b4e3fed1d13e11781e93e7523a3a3">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryPointCoveredByLineCheck_1aeb04e825bd4a241015c93ffadc18d74a">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMultipartCheck_1aa5f73e582d30fb4cec3b673e4f54d0cf">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineIntersectionCheck_1a87ba330e06a5f774f01919b7c7caedc1">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySegmentLengthCheck_1a6a2a7fd564609c399581865b235c9298">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryLineLayerIntersectionCheck_1a2e78b2e2afe4ec159b1381e9385a8d3d">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDegeneratePolygonCheck_1a3f3aad96dba76a3405d418a1e5604133">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryFollowBoundariesCheck_1a7ff4a1c0269cc47a7f1082f0f0839a8b">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAreaCheck_1a016e5ceb159acba0217a9c96af226de6">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryAngleCheck_1a0b1a00edec910fc766a24545e3755428">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryMissingVertexCheck_1aac723928af82be58106da5498b41e36a">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryTypeCheck_1a1551eae22686fc994cd46462023946a7">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryIsValidCheck_1a2916a9f7fe91110e7267cb56a5b66267">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryContainedCheck_1a610da7155aa1d9ba1a5d7b67df2d3c5e">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometrySelfIntersectionCheck_1af9cf6f0e53f92b219a2df55f011b2d66">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryDuplicateCheck_1a7e9414d5d4d96b9d2e038d7b3f705a08">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryGapCheck_1a3fa0fb678c190bddb4b6acf5540bef74">resolutionMethods</reimplementedby>
+        <reimplementedby refid="classQgsGeometryOverlapCheck_1a939a67e42fac4937954d139b27c92313">resolutionMethods</reimplementedby>
+        <briefdescription>
+<para>Returns a list of descriptions for available resolutions for errors. </para>        </briefdescription>
+        <detaileddescription>
+<para>The index will be passed as <computeroutput>method</computeroutput> to <simplesect kind="see"><para><ref refid="classQgsGeometryCheck_1a74faa34590d7f4ae69dc55848c5a6006" kindref="member">fixError()</ref>.</para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="311" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsGeometryCheck_1a6588300b1c3945a736b0859370cb866e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QMap&lt; QString, <ref refid="qgsfeatureid_8h_1a443917048a2ef75006fdeba30f1549f3" kindref="member">QgsFeatureIds</ref> &gt;</type>
+        <definition>QMap&lt; QString, QgsFeatureIds &gt; QgsGeometryCheck::allLayerFeatureIds</definition>
+        <argsstring>(const QMap&lt; QString, QgsFeaturePool *&gt; &amp;featurePools) const</argsstring>
+        <name>allLayerFeatureIds</name>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsFeaturePool" kindref="compound">QgsFeaturePool</ref> *&gt; &amp;</type>
+          <declname>featurePools</declname>
+        </param>
+        <briefdescription>
+<para>Returns all layers and feature ids. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="349" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="53" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a07b8422e25ab12b6515e7ab7ec3b4c4a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGeometryCheck::deleteFeatureGeometryPart</definition>
+        <argsstring>(const QMap&lt; QString, QgsFeaturePool *&gt; &amp;featurePools, const QString &amp;layerId, QgsFeature &amp;feature, int partIdx, Changes &amp;changes) const</argsstring>
+        <name>deleteFeatureGeometryPart</name>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsFeaturePool" kindref="compound">QgsFeaturePool</ref> *&gt; &amp;</type>
+          <declname>featurePools</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>partIdx</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometryCheck_1a0dee120422a42789a44079d735b456ee" kindref="member">Changes</ref> &amp;</type>
+          <declname>changes</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a part of a feature geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="365" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="86" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a7cc77f1f308fbcdfa11b52ae66aa08fb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGeometryCheck::deleteFeatureGeometryRing</definition>
+        <argsstring>(const QMap&lt; QString, QgsFeaturePool *&gt; &amp;featurePools, const QString &amp;layerId, QgsFeature &amp;feature, int partIdx, int ringIdx, Changes &amp;changes) const</argsstring>
+        <name>deleteFeatureGeometryRing</name>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsFeaturePool" kindref="compound">QgsFeaturePool</ref> *&gt; &amp;</type>
+          <declname>featurePools</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>partIdx</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ringIdx</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometryCheck_1a0dee120422a42789a44079d735b456ee" kindref="member">Changes</ref> &amp;</type>
+          <declname>changes</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a ring in a feature geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="373" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="113" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1a2a7ae087ad3612d307c61820d2525d08" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGeometryCheck::replaceFeatureGeometryPart</definition>
+        <argsstring>(const QMap&lt; QString, QgsFeaturePool *&gt; &amp;featurePools, const QString &amp;layerId, QgsFeature &amp;feature, int partIdx, QgsAbstractGeometry *newPartGeom, Changes &amp;changes) const</argsstring>
+        <name>replaceFeatureGeometryPart</name>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsFeaturePool" kindref="compound">QgsFeaturePool</ref> *&gt; &amp;</type>
+          <declname>featurePools</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>partIdx</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>newPartGeom</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGeometryCheck_1a0dee120422a42789a44079d735b456ee" kindref="member">Changes</ref> &amp;</type>
+          <declname>changes</declname>
+        </param>
+        <briefdescription>
+<para>Replaces a part in a feature geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="357" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="63" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGeometryCheck_1ab1ce45e7073a0ca796a318841ffe82db" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsGeometryCheck::scaleFactor</definition>
+        <argsstring>(const QPointer&lt; QgsVectorLayer &gt; &amp;layer) const</argsstring>
+        <name>scaleFactor</name>
+        <param>
+          <type>const QPointer&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> &gt; &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Determines the scale factor of a layer to the map coordinate reference system. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="384" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.cpp" bodystart="142" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class implements a geometry check. </para>    </briefdescription>
+    <detaileddescription>
+<para>Geometry checks run over a set of features and can detect errors like topological or other issues which are reported in the geometry validation panel in QGIS and help a user to create valid geometries.</para><para>Implementing a custom geometry check consists of the following parts</para><para><heading level="3">Writing the check</heading>
+</para><para>A new subclass of <ref refid="classQgsGeometryCheck" kindref="compound">QgsGeometryCheck</ref> needs to be written and at least the following abstract methods need to be implemented:</para><para><itemizedlist>
+<listitem><para><computeroutput><ref refid="classQgsGeometryCheck_1a77dd5eeacbce9fca7d357e2f190d84b9" kindref="member">compatibleGeometryTypes()</ref></computeroutput></para><para>A list of geometry types to which this check applies</para></listitem><listitem><para><computeroutput><ref refid="classQgsGeometryCheck_1a9299e644f9cc31edfa02a40f1329955b" kindref="member">resolutionMethods()</ref></computeroutput></para><para>A list of names for (automated) resolution methods that can be used to fix errors of this type</para></listitem><listitem><para><computeroutput><ref refid="classQgsGeometryCheck_1aa7b3c69d0c5e4f1feb174f791c835260" kindref="member">description()</ref></computeroutput></para><para>A description for the geometry check.</para></listitem><listitem><para><computeroutput><ref refid="classQgsGeometryCheck_1a6955bf434c11fe157b8ffa58549b0bf1" kindref="member">id()</ref></computeroutput></para><para>A unique id for this check.</para></listitem><listitem><para><computeroutput><ref refid="classQgsGeometryCheck_1a98b4cb94c365697457473cb492e0a679" kindref="member">checkType()</ref></computeroutput></para><para>One of <ref refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e" kindref="member">QgsGeometryCheck.LayerCheck</ref>, <ref refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46" kindref="member">QgsGeometryCheck.FeatureCheck</ref>,<ref refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac" kindref="member">QgsGeometryCheck.FeatureNodeCheck</ref></para></listitem><listitem><para><ref refid="classQgsGeometryCheck_1a38f46d10fb219d6418c0e66835477e3d" kindref="member"><computeroutput>collectErrors(featurePools, errors, messages, feedback, ids)</computeroutput></ref></para><para>This method will be called to validate geometries. All geometries which should be validated are passed into this method with the parameter ids and should be retrieved from the available featurePools to make use of caching. New errors should be appended to the error list and other message strings to messages. The method needs to return a tuple (errors, messages).</para></listitem></itemizedlist>
+</para><para><heading level="3">Creating a geometry check factory</heading>
+</para><para>A Geometry check factory manages meta information for checks. There will always be one single geometry check factory created per check type, but it&apos;s possible that multiple <ref refid="classQgsGeometryCheck" kindref="compound">QgsGeometryCheck</ref> instances are created and used in parallel.</para><para>A new subclass of <ref refid="classQgsGeometryCheckFactory" kindref="compound">QgsGeometryCheckFactory</ref> needs to be written and at least the following abstract methods need to be implemented:</para><para><itemizedlist>
+<listitem><para><ref refid="classQgsGeometryCheckFactory_1a7264835526053299c69861e2d1babb63" kindref="member"><computeroutput>createGeometryCheck(context, configuration)</computeroutput></ref></para><para>Needs to return a new subclassed <ref refid="classQgsGeometryCheck" kindref="compound">QgsGeometryCheck</ref> object that has been written in the previous step.</para></listitem><listitem><para><ref refid="classQgsGeometryCheckFactory_1ab0a4122bcf7693f185df0c4fb5547f41" kindref="member">`id()</ref></para><para>A unique id for this geometry check.</para></listitem><listitem><para><ref refid="classQgsGeometryCheckFactory_1afea7c34eaa970f7dea450089483e4575" kindref="member">`description()</ref></para><para>A description for this geometry check that can be presented to the user for more explanation.</para></listitem><listitem><para><ref refid="classQgsGeometryCheckFactory_1a0179928a8485f97adfbeaa5da35ea9be" kindref="member"><computeroutput>QgsGeometryCheckFactory::isCompatible(layer)</computeroutput></ref></para><para>Returns a boolean that determines if this check is available for a given layer. This often checks for the geometry type of the layer.</para></listitem><listitem><para><ref refid="classQgsGeometryCheckFactory_1adf4c6e980b254611544f942b18a6b571" kindref="member"><computeroutput>flags()</computeroutput></ref></para><para>Returns additional flags for a geometry check. If unsure return <ref refid="classQgsGeometryCheck_1a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b" kindref="member">QgsGeometryCheck.AvailableInValidation</ref>.</para></listitem><listitem><para><ref refid="classQgsGeometryCheckFactory_1aad06ba2663a06432e757a2d53b1df2a4" kindref="member"><computeroutput>checkType()</computeroutput></ref></para><para>Returns the type of this geometry check.</para></listitem></itemizedlist>
+</para><para><heading level="3">Registering the geometry check</heading>
+</para><para>Finally the geometry check factory needs to be registered in QGIS, so the system is aware of the available geometry checks.</para><para><programlisting><codeline><highlight class="comment">#<sp/>Make<sp/>sure<sp/>you<sp/>always<sp/>keep<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">checkFactory<sp/>=<sp/>MyGeometryCheckFactory()</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classQgsAnalysis_1ad4003ae6cc74615bb878b4605a0b19af" kindref="member">QgsAnalysis.geometryCheckRegistry</ref>().registerGeometryCheck(checkFactory)</highlight></codeline>
+</programlisting></para><para><simplesect kind="note"><para>This class is a technology preview and unstable API. </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3342">
+        <label>QgsGeometryLineLayerIntersectionCheck</label>
+        <link refid="classQgsGeometryLineLayerIntersectionCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3329">
+        <label>QgsGeometryCheck</label>
+        <link refid="classQgsGeometryCheck"/>
+      </node>
+      <node id="3344">
+        <label>QgsGeometryOverlapCheck</label>
+        <link refid="classQgsGeometryOverlapCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3339">
+        <label>QgsGeometryGapCheck</label>
+        <link refid="classQgsGeometryGapCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3349">
+        <label>QgsGeometryIsValidCheck</label>
+        <link refid="classQgsGeometryIsValidCheck"/>
+        <childnode refid="3348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3334">
+        <label>QgsGeometryDangleCheck</label>
+        <link refid="classQgsGeometryDangleCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3340">
+        <label>QgsGeometryHoleCheck</label>
+        <link refid="classQgsGeometryHoleCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3347">
+        <label>QgsGeometrySegmentLengthCheck</label>
+        <link refid="classQgsGeometrySegmentLengthCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3335">
+        <label>QgsGeometryDegeneratePolygonCheck</label>
+        <link refid="classQgsGeometryDegeneratePolygonCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3338">
+        <label>QgsGeometryFollowBoundariesCheck</label>
+        <link refid="classQgsGeometryFollowBoundariesCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3332">
+        <label>QgsGeometrySliverPolygonCheck</label>
+        <link refid="classQgsGeometrySliverPolygonCheck"/>
+        <childnode refid="3331" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3352">
+        <label>QgsGeometrySelfIntersectionCheck</label>
+        <link refid="classQgsGeometrySelfIntersectionCheck"/>
+        <childnode refid="3348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3333">
+        <label>QgsGeometryContainedCheck</label>
+        <link refid="classQgsGeometryContainedCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3337">
+        <label>QgsGeometryDuplicateNodesCheck</label>
+        <link refid="classQgsGeometryDuplicateNodesCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3353">
+        <label>QgsGeometryTypeCheck</label>
+        <link refid="classQgsGeometryTypeCheck"/>
+        <childnode refid="3348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3330">
+        <label>QgsGeometryAngleCheck</label>
+        <link refid="classQgsGeometryAngleCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3351">
+        <label>QgsGeometrySelfContactCheck</label>
+        <link refid="classQgsGeometrySelfContactCheck"/>
+        <childnode refid="3348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3345">
+        <label>QgsGeometryPointCoveredByLineCheck</label>
+        <link refid="classQgsGeometryPointCoveredByLineCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3336">
+        <label>QgsGeometryDuplicateCheck</label>
+        <link refid="classQgsGeometryDuplicateCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3348">
+        <label>QgsSingleGeometryCheck</label>
+        <link refid="classQgsSingleGeometryCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3341">
+        <label>QgsGeometryLineIntersectionCheck</label>
+        <link refid="classQgsGeometryLineIntersectionCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3343">
+        <label>QgsGeometryMissingVertexCheck</label>
+        <link refid="classQgsGeometryMissingVertexCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3350">
+        <label>QgsGeometryMultipartCheck</label>
+        <link refid="classQgsGeometryMultipartCheck"/>
+        <childnode refid="3348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3331">
+        <label>QgsGeometryAreaCheck</label>
+        <link refid="classQgsGeometryAreaCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3346">
+        <label>QgsGeometryPointInPolygonCheck</label>
+        <link refid="classQgsGeometryPointInPolygonCheck"/>
+        <childnode refid="3329" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3355">
+        <label>QgsGeometryCheckContext</label>
+        <link refid="structQgsGeometryCheckContext"/>
+        <childnode refid="3356" relation="usage">
+          <edgelabel>mapCrs</edgelabel>
+        </childnode>
+        <childnode refid="3357" relation="usage">
+          <edgelabel>transformContext</edgelabel>
+        </childnode>
+      </node>
+      <node id="3354">
+        <label>QgsGeometryCheck</label>
+        <link refid="classQgsGeometryCheck"/>
+        <childnode refid="3355" relation="usage">
+          <edgelabel>mContext</edgelabel>
+        </childnode>
+      </node>
+      <node id="3357">
+        <label>QgsCoordinateTransformContext</label>
+        <link refid="classQgsCoordinateTransformContext"/>
+      </node>
+      <node id="3356">
+        <label>QgsCoordinateReferenceSystem</label>
+        <link refid="classQgsCoordinateReferenceSystem"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/vector/geometry_checker/qgsgeometrycheck.h" bodystart="125" bodyend="385"/>
+    <listofallmembers>
+      <member refid="classQgsGeometryCheck_1a6588300b1c3945a736b0859370cb866e" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>allLayerFeatureIds</name></member>
+      <member refid="classQgsGeometryCheck_1a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>AvailableInValidation</name></member>
+      <member refid="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3ac86b1c170be77a24a8a834704e87d09f" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeAdded</name></member>
+      <member refid="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3a0d6677addd344807b9a5cd231bd5f2a8" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeChanged</name></member>
+      <member refid="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653ca9046cebece86eb101fbf87cc8c083b8a" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeFeature</name></member>
+      <member refid="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653ca3a6df43b826e38d734053157925d23f5" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeNode</name></member>
+      <member refid="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653cad319ee63359166653ea0d890af0f51d0" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangePart</name></member>
+      <member refid="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3ae45df7c68f38ed45fc1fc6dbced4b4c5" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeRemoved</name></member>
+      <member refid="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653ca49d2608918455c31a8911467a8e0d447" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeRing</name></member>
+      <member refid="classQgsGeometryCheck_1a0dee120422a42789a44079d735b456ee" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>Changes</name></member>
+      <member refid="classQgsGeometryCheck_1a8fcc860dd19792a6d4ebf671deb10cc3" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeType</name></member>
+      <member refid="classQgsGeometryCheck_1a59d881b4b3c77d8620d143d02ece653c" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>ChangeWhat</name></member>
+      <member refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>CheckType</name></member>
+      <member refid="classQgsGeometryCheck_1a98b4cb94c365697457473cb492e0a679" prot="public" virt="pure-virtual"><scope>QgsGeometryCheck</scope><name>checkType</name></member>
+      <member refid="classQgsGeometryCheck_1a38f46d10fb219d6418c0e66835477e3d" prot="public" virt="pure-virtual"><scope>QgsGeometryCheck</scope><name>collectErrors</name></member>
+      <member refid="classQgsGeometryCheck_1a77dd5eeacbce9fca7d357e2f190d84b9" prot="public" virt="pure-virtual"><scope>QgsGeometryCheck</scope><name>compatibleGeometryTypes</name></member>
+      <member refid="classQgsGeometryCheck_1a1c9767dd69811d6d0ae6b398c3081e1f" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>configurationValue</name></member>
+      <member refid="classQgsGeometryCheck_1ab8b239f8793bf2af23246aa45157aae9" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>context</name></member>
+      <member refid="classQgsGeometryCheck_1a07b8422e25ab12b6515e7ab7ec3b4c4a" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>deleteFeatureGeometryPart</name></member>
+      <member refid="classQgsGeometryCheck_1a7cc77f1f308fbcdfa11b52ae66aa08fb" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>deleteFeatureGeometryRing</name></member>
+      <member refid="classQgsGeometryCheck_1aa7b3c69d0c5e4f1feb174f791c835260" prot="public" virt="pure-virtual"><scope>QgsGeometryCheck</scope><name>description</name></member>
+      <member refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>FeatureCheck</name></member>
+      <member refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>FeatureNodeCheck</name></member>
+      <member refid="classQgsGeometryCheck_1a74faa34590d7f4ae69dc55848c5a6006" prot="public" virt="virtual"><scope>QgsGeometryCheck</scope><name>fixError</name></member>
+      <member refid="classQgsGeometryCheck_1a5a70060933147c9bda6d1cdb195edc40" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>Flag</name></member>
+      <member refid="classQgsGeometryCheck_1abb92d8bc14440c7a33e08547f37a6f13" prot="public" virt="virtual"><scope>QgsGeometryCheck</scope><name>flags</name></member>
+      <member refid="classQgsGeometryCheck_1a6955bf434c11fe157b8ffa58549b0bf1" prot="public" virt="pure-virtual"><scope>QgsGeometryCheck</scope><name>id</name></member>
+      <member refid="classQgsGeometryCheck_1aeafbce06f090de57f9634866f39d0ac2" prot="public" virt="virtual"><scope>QgsGeometryCheck</scope><name>isCompatible</name></member>
+      <member refid="classQgsGeometryCheck_1a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>LayerCheck</name></member>
+      <member refid="classQgsGeometryCheck_1a87d1e212f06f380f3571dd28782797b1" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>mConfiguration</name></member>
+      <member refid="classQgsGeometryCheck_1a46e329a6d3c705f0695ef81d683a10cd" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>mContext</name></member>
+      <member refid="classQgsGeometryCheck_1ae0440691019211c3e45c5c76c486320b" prot="public" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>QgsGeometryCheck</name></member>
+      <member refid="classQgsGeometryCheck_1a2a7ae087ad3612d307c61820d2525d08" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>replaceFeatureGeometryPart</name></member>
+      <member refid="classQgsGeometryCheck_1a9299e644f9cc31edfa02a40f1329955b" prot="public" virt="pure-virtual"><scope>QgsGeometryCheck</scope><name>resolutionMethods</name></member>
+      <member refid="classQgsGeometryCheck_1ab1ce45e7073a0ca796a318841ffe82db" prot="protected" virt="non-virtual"><scope>QgsGeometryCheck</scope><name>scaleFactor</name></member>
+      <member refid="classQgsGeometryCheck_1aa476a4d6d5a3d9d6cd7e14b30aa899ed" prot="public" virt="virtual"><scope>QgsGeometryCheck</scope><name>~QgsGeometryCheck</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

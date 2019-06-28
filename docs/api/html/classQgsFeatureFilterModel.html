@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsFeatureFilterModel class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsFeatureFilterModel <span class="m-thin">class</span>
+        </h1>
+        <p>Provides a list of features based on filter conditions.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Features are fetched asynchronously.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a3ab5e7356530d3625bcc1eace46361cd" class="m-doc">Role</a> { </span><span class="m-doc-wrap"><a href="#a3ab5e7356530d3625bcc1eace46361cda86ca97cdb0f950d07342122d61d328ef" class="m-doc">IdentifierValueRole</a> = Qt::UserRole,
+              <a href="#a3ab5e7356530d3625bcc1eace46361cda4e2c3f76c21758a6754fce4ba445395e" class="m-doc">ValueRole</a> }</span>
+            </dt>
+            <dd>Extra roles that can be used to fetch data from this model.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a762cc4968e915498b995ad93cd42a9cc" class="m-doc-self" name="a762cc4968e915498b995ad93cd42a9cc">QgsFeatureFilterModel</a>(</span><span class="m-doc-wrap">QObject* parent = nullptr) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Create a new <a href="classQgsFeatureFilterModel.html" class="m-doc">QgsFeatureFilterModel</a>, optionally specifying a <em>parent</em>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a98d69936f751053995717644bb0617e1" class="m-doc-self" name="a98d69936f751053995717644bb0617e1">allowNull</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Add a NULL entry to the list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa3c309757e722a24ff44d68cbadb0746" class="m-doc">displayExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>The display expression will be used for.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2584ceb6f797f75c0ba04e88c32a5de8" class="m-doc-self" name="a2584ceb6f797f75c0ba04e88c32a5de8">extraIdentifierValue</a>(</span><span class="m-doc-wrap">) const -&gt; QVariant</span>
+            </dt>
+            <dd>Allows specifying one value that does not need to match the filter criteria but will still be available in the model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a21a89ba929a44ebf88d3a9e1b8055ab1" class="m-doc-self" name="a21a89ba929a44ebf88d3a9e1b8055ab1">extraIdentifierValueIndex</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>The index at which the extra identifier value is available within the model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a528fc6ebe8b299a4f25651d53e3480ab" class="m-doc-self" name="a528fc6ebe8b299a4f25651d53e3480ab">extraValueDoesNotExist</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Flag indicating that the extraIdentifierValue does not exist in the data.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a54e82e7bf8c7a0827f31be8316ecb41b" class="m-doc">filterExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>An additional filter expression to apply, next to the filterValue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1c993f2546ca6e2c2dd005dda6c01f1b" class="m-doc">filterValue</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>This value will be used to filter the features available from this model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5452970f36f49aa1e03d0d8aa8c9c1a2" class="m-doc">identifierField</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>The identifier field should be a unique field that can be used to identify individual features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a887e1a6a946d1435a619ab524b48a52a" class="m-doc-self" name="a887e1a6a946d1435a619ab524b48a52a">isLoading</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Indicator if the model is currently performing any feature iteration in the background.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a627f65a4a4a3e46fe95c512f9815c3a3" class="m-doc-self" name="a627f65a4a4a3e46fe95c512f9815c3a3">setAllowNull</a>(</span><span class="m-doc-wrap">bool allowNull)</span>
+            </dt>
+            <dd>Add a NULL entry to the list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a62f5ea00735e9dcb690a426df80571c6" class="m-doc">setDisplayExpression</a>(</span><span class="m-doc-wrap">const QString&amp; displayExpression)</span>
+            </dt>
+            <dd>The display expression will be used for.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af379d99e00d61e35a64ea126459755c1" class="m-doc-self" name="af379d99e00d61e35a64ea126459755c1">setExtraIdentifierValue</a>(</span><span class="m-doc-wrap">const QVariant&amp; extraIdentifierValue)</span>
+            </dt>
+            <dd>Allows specifying one value that does not need to match the filter criteria but will still be available in the model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8b915284b4583985b1aca64321e13b4d" class="m-doc">setFilterExpression</a>(</span><span class="m-doc-wrap">const QString&amp; filterExpression)</span>
+            </dt>
+            <dd>An additional filter expression to apply, next to the filterValue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7e55548ac05b48f22f964bf708260f53" class="m-doc">setFilterValue</a>(</span><span class="m-doc-wrap">const QString&amp; filterValue)</span>
+            </dt>
+            <dd>This value will be used to filter the features available from this model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab07c144b25f874b22097faa18e6db438" class="m-doc">setIdentifierField</a>(</span><span class="m-doc-wrap">const QString&amp; identifierField)</span>
+            </dt>
+            <dd>The identifier field should be a unique field that can be used to identify individual features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7f00ea7e14123b83cc579917b86acdce" class="m-doc-self" name="a7f00ea7e14123b83cc579917b86acdce">setSourceLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* sourceLayer)</span>
+            </dt>
+            <dd>The source layer from which features will be fetched.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acca3fbe56f5c36968b913d55579f79c5" class="m-doc-self" name="acca3fbe56f5c36968b913d55579f79c5">sourceLayer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>The source layer from which features will be fetched.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a13b63077093d7707036d104e3ed588f2" class="m-doc-self" name="a13b63077093d7707036d104e3ed588f2">allowNullChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Add a NULL entry to the list.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afd10ba2355c04c3179a99c8fa44d8ad6" class="m-doc-self" name="afd10ba2355c04c3179a99c8fa44d8ad6">beginUpdate</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Notification that the model is about to be changed because a job was completed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a778bfac11a071bf7b2f54b4725d631f6" class="m-doc">displayExpressionChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>The display expression will be used for.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3e6bb7b903756b941c4f9aac684b0319" class="m-doc">endUpdate</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Notification that the model change is finished.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2d9d717cde2d5efee9cdc022fd5cbe4a" class="m-doc-self" name="a2d9d717cde2d5efee9cdc022fd5cbe4a">extraIdentifierValueChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Allows specifying one value that does not need to match the filter criteria but will still be available in the model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abfaf414ff0a82a04812eb67ba909b98c" class="m-doc-self" name="abfaf414ff0a82a04812eb67ba909b98c">extraIdentifierValueIndexChanged</a>(</span><span class="m-doc-wrap">int index)</span>
+            </dt>
+            <dd>The index at which the extra identifier value is available within the model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3be10ba74d0989c79d3fafc069525032" class="m-doc-self" name="a3be10ba74d0989c79d3fafc069525032">extraValueDoesNotExistChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Flag indicating that the extraIdentifierValue does not exist in the data.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab7ae98362cb373882ab8b01923c37527" class="m-doc">filterExpressionChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>An additional filter expression to apply, next to the filterValue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a48bac458ec584786ac2f84583af50334" class="m-doc-self" name="a48bac458ec584786ac2f84583af50334">filterJobCompleted</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Indicates that a filter job has been completed and new data may be available.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0d9ba4e4a0e85411e255348c5edbcf31" class="m-doc">filterValueChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>This value will be used to filter the features available from this model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3fe7a047321b6f4d1f5903a36ea1a9f7" class="m-doc">identifierFieldChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>The identifier field should be a unique field that can be used to identify individual features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a75028ca3194e6a0112af02549bf29859" class="m-doc-self" name="a75028ca3194e6a0112af02549bf29859">isLoadingChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Indicator if the model is currently performing any feature iteration in the background.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3ae20871466cba2accde91a9b2e6ec34" class="m-doc-self" name="a3ae20871466cba2accde91a9b2e6ec34">sourceLayerChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>The source layer from which features will be fetched.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a3ab5e7356530d3625bcc1eace46361cd"><div>
+            <h3>
+              enum QgsFeatureFilterModel::<wbr /><a href="#a3ab5e7356530d3625bcc1eace46361cd" class="m-doc-self">Role</a>
+            </h3>
+            <p>Extra roles that can be used to fetch data from this model.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a3ab5e7356530d3625bcc1eace46361cda86ca97cdb0f950d07342122d61d328ef" class="m-doc-self" name="a3ab5e7356530d3625bcc1eace46361cda86ca97cdb0f950d07342122d61d328ef">IdentifierValueRole</a></td>
+                  <td>
+                  <p>Used to retrieve the identifierValue (primary key) of a feature.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3ab5e7356530d3625bcc1eace46361cda4e2c3f76c21758a6754fce4ba445395e" class="m-doc-self" name="a3ab5e7356530d3625bcc1eace46361cda4e2c3f76c21758a6754fce4ba445395e">ValueRole</a></td>
+                  <td>
+                  <p>Used to retrieve the displayExpression of a feature.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="aa3c309757e722a24ff44d68cbadb0746"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa3c309757e722a24ff44d68cbadb0746" class="m-doc-self">displayExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>The display expression will be used for.</p>
+<ul><li>displaying values in the combobox</li><li>filtering based on filterValue</li></ul>
+          </div></section>
+          <section class="m-doc-details" id="a54e82e7bf8c7a0827f31be8316ecb41b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a54e82e7bf8c7a0827f31be8316ecb41b" class="m-doc-self">filterExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>An additional filter expression to apply, next to the filterValue.</p>
+<p>Can be used for spatial filtering etc.</p>
+          </div></section>
+          <section class="m-doc-details" id="a1c993f2546ca6e2c2dd005dda6c01f1b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c993f2546ca6e2c2dd005dda6c01f1b" class="m-doc-self">filterValue</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>This value will be used to filter the features available from this model.</p>
+<p>Whenever a substring of the displayExpression of a feature matches the filter value, it will be accessible by this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="a5452970f36f49aa1e03d0d8aa8c9c1a2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5452970f36f49aa1e03d0d8aa8c9c1a2" class="m-doc-self">identifierField</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>The identifier field should be a unique field that can be used to identify individual features.</p>
+<p>It is normally set to the primary key of the layer.</p>
+          </div></section>
+          <section class="m-doc-details" id="a62f5ea00735e9dcb690a426df80571c6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a62f5ea00735e9dcb690a426df80571c6" class="m-doc-self">setDisplayExpression</a>(</span><span class="m-doc-wrap">const QString&amp; displayExpression)</span></span>
+            </h3>
+            <p>The display expression will be used for.</p>
+<ul><li>displaying values in the combobox</li><li>filtering based on filterValue</li></ul>
+          </div></section>
+          <section class="m-doc-details" id="a8b915284b4583985b1aca64321e13b4d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8b915284b4583985b1aca64321e13b4d" class="m-doc-self">setFilterExpression</a>(</span><span class="m-doc-wrap">const QString&amp; filterExpression)</span></span>
+            </h3>
+            <p>An additional filter expression to apply, next to the filterValue.</p>
+<p>Can be used for spatial filtering etc.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7e55548ac05b48f22f964bf708260f53"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7e55548ac05b48f22f964bf708260f53" class="m-doc-self">setFilterValue</a>(</span><span class="m-doc-wrap">const QString&amp; filterValue)</span></span>
+            </h3>
+            <p>This value will be used to filter the features available from this model.</p>
+<p>Whenever a substring of the displayExpression of a feature matches the filter value, it will be accessible by this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab07c144b25f874b22097faa18e6db438"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab07c144b25f874b22097faa18e6db438" class="m-doc-self">setIdentifierField</a>(</span><span class="m-doc-wrap">const QString&amp; identifierField)</span></span>
+            </h3>
+            <p>The identifier field should be a unique field that can be used to identify individual features.</p>
+<p>It is normally set to the primary key of the layer.</p>
+          </div></section>
+          <section class="m-doc-details" id="a778bfac11a071bf7b2f54b4725d631f6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a778bfac11a071bf7b2f54b4725d631f6" class="m-doc-self">displayExpressionChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>The display expression will be used for.</p>
+<ul><li>displaying values in the combobox</li><li>filtering based on filterValue</li></ul>
+          </div></section>
+          <section class="m-doc-details" id="a3e6bb7b903756b941c4f9aac684b0319"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3e6bb7b903756b941c4f9aac684b0319" class="m-doc-self">endUpdate</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Notification that the model change is finished.</p>
+<p>Will always be emitted in sync with beginUpdate.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab7ae98362cb373882ab8b01923c37527"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab7ae98362cb373882ab8b01923c37527" class="m-doc-self">filterExpressionChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>An additional filter expression to apply, next to the filterValue.</p>
+<p>Can be used for spatial filtering etc.</p>
+          </div></section>
+          <section class="m-doc-details" id="a0d9ba4e4a0e85411e255348c5edbcf31"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0d9ba4e4a0e85411e255348c5edbcf31" class="m-doc-self">filterValueChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>This value will be used to filter the features available from this model.</p>
+<p>Whenever a substring of the displayExpression of a feature matches the filter value, it will be accessible by this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="a3fe7a047321b6f4d1f5903a36ea1a9f7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeatureFilterModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3fe7a047321b6f4d1f5903a36ea1a9f7" class="m-doc-self">identifierFieldChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>The identifier field should be a unique field that can be used to identify individual features.</p>
+<p>It is normally set to the primary key of the layer.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

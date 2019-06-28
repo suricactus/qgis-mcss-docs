@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLocatorFilter class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLocatorFilter <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for filters which collect locator results.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-info"><h4>Note</h4><p>If the configuration of the filter is changed outside of the main application settings, one needs to invalidate current results of the locator widget:</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgisInterface.html#a2c37cfd61c8507ece2284cb7509fd83f" class="m-doc">QgisInterface::<wbr />invalidateLocatorResults</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a4948560479398a9532fb659dbba821b5" class="m-doc">Flag</a> { </span><span class="m-doc-wrap"><a href="#a4948560479398a9532fb659dbba821b5af3ccf4dc817f76c13edcdb870df69f6f" class="m-doc">FlagFast</a> = 1 &lt;&lt; 1 }</span>
+            </dt>
+            <dd>Flags for locator behavior.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a60feef8399b5b4d16e2a33f2e635169b" class="m-doc">Priority</a> { </span><span class="m-doc-wrap"><a href="#a60feef8399b5b4d16e2a33f2e635169ba9f2b99e8c3229836f7c71f7ec8139ce1" class="m-doc">Highest</a>,
+              <a href="#a60feef8399b5b4d16e2a33f2e635169baf1358f1d27ab93a8cad051956867df97" class="m-doc">High</a>,
+              <a href="#a60feef8399b5b4d16e2a33f2e635169baac30dc05e0f2ee6eda25b5655891fec2" class="m-doc">Medium</a>,
+              <a href="#a60feef8399b5b4d16e2a33f2e635169ba904c346e8336e5f26fbc69663705612b" class="m-doc">Low</a>,
+              <a href="#a60feef8399b5b4d16e2a33f2e635169ba56a3602e050a6127ae22056b2f299b6c" class="m-doc">Lowest</a> }</span>
+            </dt>
+            <dd>Filter priority. Controls the order of results in the locator.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3f00cdb42b810c0f29d495073741c307" class="m-doc">stringMatches</a>(</span><span class="m-doc-wrap">const QString&amp; candidate,
+              const QString&amp; search) -&gt; bool</span>
+            </dt>
+            <dd>Tests a <em>candidate</em> string to see if it should be considered a match for a specified <em>search</em> string.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aa5854414f6cb299ab9dbfb1e66146bf5" class="m-doc-self" name="aa5854414f6cb299ab9dbfb1e66146bf5">QgsLocatorFilter</a>(</span><span class="m-doc-wrap">QObject* parent = nullptr)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsLocatorFilter.html" class="m-doc">QgsLocatorFilter</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9bd01e7eafe7e90c4d998a2e9cc6428f" class="m-doc">activePrefix</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the prefix in use in the locator is entered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acb3782f0e24e71809a53db274c2cb3a1" class="m-doc">clearPreviousResults</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>This method will be called on main thread on the original filter (not a clone) before fetching results or before triggering a result to clear any change made by a former call to triggerResult.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a406bf315baf645291f378601790beee3" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLocatorFilter.html" class="m-doc">QgsLocatorFilter</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Creates a clone of the filter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7cefc8fb387cf7660d9e7acafb60329b" class="m-doc">displayName</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns a translated, user-friendly name for the filter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8a7e7c4a54f459921e0ec39a132fe7f8" class="m-doc">enabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the filter is enabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae86db1ab8020dccaa0e8a92efa45fdb2" class="m-doc">fetchResults</a>(</span><span class="m-doc-wrap">const QString&amp; string,
+              const <a href="classQgsLocatorContext.html" class="m-doc">QgsLocatorContext</a>&amp; context,
+              <a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Retrieves the filter results for a specified search <em>string</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1bb40eb01d876f0f95fe80db5a7ed76d" class="m-doc-self" name="a1bb40eb01d876f0f95fe80db5a7ed76d">flags</a>(</span><span class="m-doc-wrap">) const -&gt; QgsLocatorFilter::Flags <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns flags which specify the filter&#x27;s behavior.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac56c5a9e1a7c562aecd39b62d66b26f0" class="m-doc">hasConfigWidget</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Should return true if the filter has a configuration widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9051f619d128d2ef3276405c525d16ef" class="m-doc">logMessage</a>(</span><span class="m-doc-wrap">const QString&amp; message,
+              <a href="classQgis.html#a60c079f4d8b7c479498be3d42ec96257" class="m-doc">Qgis::<wbr />MessageLevel</a> level = <a href="classQgis.html#a60c079f4d8b7c479498be3d42ec96257afce4aaf1d34b0afcf7629e6567ff125b" class="m-doc">Qgis::<wbr />Info</a>)</span>
+            </dt>
+            <dd>Logs a <em>message</em> to the log panel.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9e6eae24340fe36d6983ff98783eb156" class="m-doc">name</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the unique name for the filter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8c646ca4ade1ade38167d765e201664c" class="m-doc">openConfigWidget</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Opens the configuration widget for the filter (if it has one), with the specified <em>parent</em> widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2571551384dedcb6e57ddeebb9c14979" class="m-doc">prefix</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the search prefix character(s) for this filter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a57cb5acbe296611b472bf16dd37b5d0d" class="m-doc">prepare</a>(</span><span class="m-doc-wrap">const QString&amp; string,
+              const <a href="classQgsLocatorContext.html" class="m-doc">QgsLocatorContext</a>&amp; context) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Prepares the filter instance for an upcoming search for the specified <em>string</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8da2d818ca682d569219cb4665877ccf" class="m-doc-self" name="a8da2d818ca682d569219cb4665877ccf">priority</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLocatorFilter.html#a60feef8399b5b4d16e2a33f2e635169b" class="m-doc">Priority</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the priority for the filter, which controls how results are ordered in the locator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0cb17210c9115d898ca3501536a9b356" class="m-doc">setActivePrefix</a>(</span><span class="m-doc-wrap">const QString&amp; activePrefix)</span>
+            </dt>
+            <dd>Sets the prefix as being used by the locator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a052e61cddf54136e2770100b00224741" class="m-doc">setEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether the filter is <em>enabled</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a60a29a8c948f65a44f1277d93c70f19d" class="m-doc">setUseWithoutPrefix</a>(</span><span class="m-doc-wrap">bool useWithoutPrefix)</span>
+            </dt>
+            <dd>Sets whether the filter should be used when no prefix is entered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aae0841a0dfffcd08864de69e46b5b589" class="m-doc">triggerResult</a>(</span><span class="m-doc-wrap">const <a href="classQgsLocatorResult.html" class="m-doc">QgsLocatorResult</a>&amp; result) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Triggers a filter <em>result</em> from this filter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a542011be1049ba21af2f503620ced5cf" class="m-doc">triggerResultFromAction</a>(</span><span class="m-doc-wrap">const <a href="classQgsLocatorResult.html" class="m-doc">QgsLocatorResult</a>&amp; result,
+              const int actionId) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Triggers a filter <em>result</em> from this filter for an entry in the context menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3f44ae6d605b63b271133a0629c786c4" class="m-doc">useWithoutPrefix</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the filter should be used when no prefix is entered.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6effa66757276a3f8a38e97b44c54d82" class="m-doc-self" name="a6effa66757276a3f8a38e97b44c54d82">finished</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the filter finishes fetching results.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae39ac5afb27063afb2d61d5193804a82" class="m-doc-self" name="ae39ac5afb27063afb2d61d5193804a82">resultFetched</a>(</span><span class="m-doc-wrap">const <a href="classQgsLocatorResult.html" class="m-doc">QgsLocatorResult</a>&amp; result)</span>
+            </dt>
+            <dd>Should be emitted by filters whenever they encounter a matching result during within their <a href="classQgsLocatorFilter.html#ae86db1ab8020dccaa0e8a92efa45fdb2" class="m-doc">fetchResults()</a> implementation.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a4948560479398a9532fb659dbba821b5"><div>
+            <h3>
+              enum QgsLocatorFilter::<wbr /><a href="#a4948560479398a9532fb659dbba821b5" class="m-doc-self">Flag</a>
+            </h3>
+            <p>Flags for locator behavior.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a4948560479398a9532fb659dbba821b5af3ccf4dc817f76c13edcdb870df69f6f" class="m-doc-self" name="a4948560479398a9532fb659dbba821b5af3ccf4dc817f76c13edcdb870df69f6f">FlagFast</a></td>
+                  <td>
+                  <p>Filter finds results quickly and can be safely run in the main thread.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a60feef8399b5b4d16e2a33f2e635169b"><div>
+            <h3>
+              enum QgsLocatorFilter::<wbr /><a href="#a60feef8399b5b4d16e2a33f2e635169b" class="m-doc-self">Priority</a>
+            </h3>
+            <p>Filter priority. Controls the order of results in the locator.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a60feef8399b5b4d16e2a33f2e635169ba9f2b99e8c3229836f7c71f7ec8139ce1" class="m-doc-self" name="a60feef8399b5b4d16e2a33f2e635169ba9f2b99e8c3229836f7c71f7ec8139ce1">Highest</a></td>
+                  <td>
+                  <p>Highest priority.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a60feef8399b5b4d16e2a33f2e635169baf1358f1d27ab93a8cad051956867df97" class="m-doc-self" name="a60feef8399b5b4d16e2a33f2e635169baf1358f1d27ab93a8cad051956867df97">High</a></td>
+                  <td>
+                  <p>High priority.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a60feef8399b5b4d16e2a33f2e635169baac30dc05e0f2ee6eda25b5655891fec2" class="m-doc-self" name="a60feef8399b5b4d16e2a33f2e635169baac30dc05e0f2ee6eda25b5655891fec2">Medium</a></td>
+                  <td>
+                  <p>Medium priority.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a60feef8399b5b4d16e2a33f2e635169ba904c346e8336e5f26fbc69663705612b" class="m-doc-self" name="a60feef8399b5b4d16e2a33f2e635169ba904c346e8336e5f26fbc69663705612b">Low</a></td>
+                  <td>
+                  <p>Low priority.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a60feef8399b5b4d16e2a33f2e635169ba56a3602e050a6127ae22056b2f299b6c" class="m-doc-self" name="a60feef8399b5b4d16e2a33f2e635169ba56a3602e050a6127ae22056b2f299b6c">Lowest</a></td>
+                  <td>
+                  <p>Lowest priority.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a3f00cdb42b810c0f29d495073741c307"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f00cdb42b810c0f29d495073741c307" class="m-doc-self">stringMatches</a>(</span><span class="m-doc-wrap">const QString&amp; candidate,
+              const QString&amp; search)</span></span>
+            </h3>
+            <p>Tests a <em>candidate</em> string to see if it should be considered a match for a specified <em>search</em> string.</p>
+<p>Filter subclasses should use this method when comparing strings instead of directly using QString::contains() or Python &#x27;in&#x27; checks.</p>
+          </div></section>
+          <section class="m-doc-details" id="a9bd01e7eafe7e90c4d998a2e9cc6428f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9bd01e7eafe7e90c4d998a2e9cc6428f" class="m-doc-self">activePrefix</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the prefix in use in the locator is entered.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a0cb17210c9115d898ca3501536a9b356" class="m-doc">setActivePrefix()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acb3782f0e24e71809a53db274c2cb3a1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acb3782f0e24e71809a53db274c2cb3a1" class="m-doc-self">clearPreviousResults</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>This method will be called on main thread on the original filter (not a clone) before fetching results or before triggering a result to clear any change made by a former call to triggerResult.</p>
+<p>For instance, this can be used to remove any on-canvas rubber bands which have been created when a previous search result was triggered.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a406bf315baf645291f378601790beee3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLocatorFilter.html" class="m-doc">QgsLocatorFilter</a>* QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a406bf315baf645291f378601790beee3" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Creates a clone of the filter.</p>
+<p>New requests are always executed in a clone of the original filter.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7cefc8fb387cf7660d9e7acafb60329b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7cefc8fb387cf7660d9e7acafb60329b" class="m-doc-self">displayName</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns a translated, user-friendly name for the filter.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a9e6eae24340fe36d6983ff98783eb156" class="m-doc">name()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8a7e7c4a54f459921e0ec39a132fe7f8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8a7e7c4a54f459921e0ec39a132fe7f8" class="m-doc-self">enabled</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the filter is enabled.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a052e61cddf54136e2770100b00224741" class="m-doc">setEnabled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae86db1ab8020dccaa0e8a92efa45fdb2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae86db1ab8020dccaa0e8a92efa45fdb2" class="m-doc-self">fetchResults</a>(</span><span class="m-doc-wrap">const QString&amp; string,
+              const <a href="classQgsLocatorContext.html" class="m-doc">QgsLocatorContext</a>&amp; context,
+              <a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Retrieves the filter results for a specified search <em>string</em>.</p>
+<p>The <em>context</em> argument encapsulates the context relating to the search (such as a map extent to prioritize).</p><p>Implementations of <a href="classQgsLocatorFilter.html#ae86db1ab8020dccaa0e8a92efa45fdb2" class="m-doc">fetchResults()</a> should emit the <a href="classQgsLocatorFilter.html#ae39ac5afb27063afb2d61d5193804a82" class="m-doc">resultFetched()</a> signal whenever they encounter a matching result.</p><p>Subclasses should periodically check the <em>feedback</em> object to determine whether the query has been canceled. If so, the subclass should return from this method as soon as possible.</p><p>This will be called from a background thread unless <a href="classQgsLocatorFilter.html#a1bb40eb01d876f0f95fe80db5a7ed76d" class="m-doc">flags()</a> returns the <a href="classQgsLocatorFilter.html#a4948560479398a9532fb659dbba821b5af3ccf4dc817f76c13edcdb870df69f6f" class="m-doc">QgsLocatorFilter::<wbr />FlagFast</a> flag.</p>
+          </div></section>
+          <section class="m-doc-details" id="ac56c5a9e1a7c562aecd39b62d66b26f0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac56c5a9e1a7c562aecd39b62d66b26f0" class="m-doc-self">hasConfigWidget</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Should return true if the filter has a configuration widget.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a8c646ca4ade1ade38167d765e201664c" class="m-doc">openConfigWidget()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9051f619d128d2ef3276405c525d16ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9051f619d128d2ef3276405c525d16ef" class="m-doc-self">logMessage</a>(</span><span class="m-doc-wrap">const QString&amp; message,
+              <a href="classQgis.html#a60c079f4d8b7c479498be3d42ec96257" class="m-doc">Qgis::<wbr />MessageLevel</a> level = <a href="classQgis.html#a60c079f4d8b7c479498be3d42ec96257afce4aaf1d34b0afcf7629e6567ff125b" class="m-doc">Qgis::<wbr />Info</a>)</span></span>
+            </h3>
+            <p>Logs a <em>message</em> to the log panel.</p>
+<aside class="m-note m-danger"><h4>Warning</h4><p>in Python, do not use print() method as it might result in crashes since fetching results does not happen in the main thread.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9e6eae24340fe36d6983ff98783eb156"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e6eae24340fe36d6983ff98783eb156" class="m-doc-self">name</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the unique name for the filter.</p>
+<p>This should be an untranslated string identifying the filter.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a7cefc8fb387cf7660d9e7acafb60329b" class="m-doc">displayName()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8c646ca4ade1ade38167d765e201664c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8c646ca4ade1ade38167d765e201664c" class="m-doc-self">openConfigWidget</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Opens the configuration widget for the filter (if it has one), with the specified <em>parent</em> widget.</p>
+<p>The base class implementation does nothing. Subclasses can override this to show their own custom configuration widget.</p><aside class="m-note m-info"><h4>Note</h4><p><a href="classQgsLocatorFilter.html#ac56c5a9e1a7c562aecd39b62d66b26f0" class="m-doc">hasConfigWidget()</a> must return true to indicate that the filter supports configuration.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2571551384dedcb6e57ddeebb9c14979"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2571551384dedcb6e57ddeebb9c14979" class="m-doc-self">prefix</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the search prefix character(s) for this filter.</p>
+<p>Prefix a search with these characters will restrict the locator search to only include results from this filter.</p><aside class="m-note m-info"><h4>Note</h4><p>Plugins are not permitted to utilize prefixes with &lt; 3 characters, as these are reserved for core QGIS functions. If a plugin registers a filter with a prefix shorter than 3 characters then the prefix will be ignored.</p><p>Prefixes might be overridden by user preferences.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a9bd01e7eafe7e90c4d998a2e9cc6428f" class="m-doc">activePrefix()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a57cb5acbe296611b472bf16dd37b5d0d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a57cb5acbe296611b472bf16dd37b5d0d" class="m-doc-self">prepare</a>(</span><span class="m-doc-wrap">const QString&amp; string,
+              const <a href="classQgsLocatorContext.html" class="m-doc">QgsLocatorContext</a>&amp; context) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Prepares the filter instance for an upcoming search for the specified <em>string</em>.</p>
+<p>This method is always called from the main thread, and individual filter subclasses should perform whatever tasks are required in order to allow a subsequent search to safely execute on a background thread.</p>
+          </div></section>
+          <section class="m-doc-details" id="a0cb17210c9115d898ca3501536a9b356"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0cb17210c9115d898ca3501536a9b356" class="m-doc-self">setActivePrefix</a>(</span><span class="m-doc-wrap">const QString&amp; activePrefix)</span></span>
+            </h3>
+            <p>Sets the prefix as being used by the locator.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a9bd01e7eafe7e90c4d998a2e9cc6428f" class="m-doc">activePrefix()</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>If activePrefix is empty, no prefix is used. If activePrefix is NULL, the default prefix is used.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a052e61cddf54136e2770100b00224741"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a052e61cddf54136e2770100b00224741" class="m-doc-self">setEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Sets whether the filter is <em>enabled</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a8a7e7c4a54f459921e0ec39a132fe7f8" class="m-doc">enabled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a60a29a8c948f65a44f1277d93c70f19d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60a29a8c948f65a44f1277d93c70f19d" class="m-doc-self">setUseWithoutPrefix</a>(</span><span class="m-doc-wrap">bool useWithoutPrefix)</span></span>
+            </h3>
+            <p>Sets whether the filter should be used when no prefix is entered.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a3f44ae6d605b63b271133a0629c786c4" class="m-doc">useWithoutPrefix()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aae0841a0dfffcd08864de69e46b5b589"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aae0841a0dfffcd08864de69e46b5b589" class="m-doc-self">triggerResult</a>(</span><span class="m-doc-wrap">const <a href="classQgsLocatorResult.html" class="m-doc">QgsLocatorResult</a>&amp; result) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Triggers a filter <em>result</em> from this filter.</p>
+<p>This is called when one of the results obtained by a call to <a href="classQgsLocatorFilter.html#ae86db1ab8020dccaa0e8a92efa45fdb2" class="m-doc">fetchResults()</a> is triggered by a user. The filter subclass must implement logic here to perform the desired operation for the search result. E.g. a file search filter would open file associated with the triggered result.</p>
+          </div></section>
+          <section class="m-doc-details" id="a542011be1049ba21af2f503620ced5cf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a542011be1049ba21af2f503620ced5cf" class="m-doc-self">triggerResultFromAction</a>(</span><span class="m-doc-wrap">const <a href="classQgsLocatorResult.html" class="m-doc">QgsLocatorResult</a>&amp; result,
+              const int actionId) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Triggers a filter <em>result</em> from this filter for an entry in the context menu.</p>
+<p>The entry is identified by its <em>actionId</em> as specified in the result of this filter.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#aae0841a0dfffcd08864de69e46b5b589" class="m-doc">triggerResult()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3f44ae6d605b63b271133a0629c786c4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLocatorFilter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3f44ae6d605b63b271133a0629c786c4" class="m-doc-self">useWithoutPrefix</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the filter should be used when no prefix is entered.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLocatorFilter.html#a60a29a8c948f65a44f1277d93c70f19d" class="m-doc">setUseWithoutPrefix()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

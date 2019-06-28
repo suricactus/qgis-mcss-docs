@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsTracer class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsTracer <span class="m-thin">class</span>
+        </h1>
+        <p>Utility class that construct a planar graph from the input vector layers and provides shortest path search for tracing of existing features.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-slots">Protected slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsMapCanvasTracer.html" class="m-doc">QgsMapCanvasTracer</a>
+            </dt>
+            <dd>Extension of <a href="classQgsTracer.html" class="m-doc">QgsTracer</a> that provides extra functionality:</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a6c9cabb58eb3c0bfbd83e52962b80017" class="m-doc">PathError</a> { </span><span class="m-doc-wrap"><a href="#a6c9cabb58eb3c0bfbd83e52962b80017abe45625012acdd72e104344f03a31a7a" class="m-doc">ErrNone</a>,
+              <a href="#a6c9cabb58eb3c0bfbd83e52962b80017ac3d82e33af22b963fa82e0102730a348" class="m-doc">ErrTooManyFeatures</a>,
+              <a href="#a6c9cabb58eb3c0bfbd83e52962b80017a8f989c28799eff8ba2baf7c7140fdfbc" class="m-doc">ErrPoint1</a>,
+              <a href="#a6c9cabb58eb3c0bfbd83e52962b80017a87172c076cde1403ec223836e750fd2e" class="m-doc">ErrPoint2</a>,
+              <a href="#a6c9cabb58eb3c0bfbd83e52962b80017a2432b2d0cd6be7dd6891eddb0625de0c" class="m-doc">ErrNoPath</a> }</span>
+            </dt>
+            <dd>Possible errors that may happen when calling <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a8a718263a601b20a4a2be0c46225b16f" class="m-doc-self" name="a8a718263a601b20a4a2be0c46225b16f">QgsTracer</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsTracer.html" class="m-doc">QgsTracer</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae972009b2310f713e7e8632099a1261b" class="m-doc">destinationCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the CRS used for tracing.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8e7ca7bf42f849aa1d0b7eae9296007c" class="m-doc-self" name="a8e7ca7bf42f849aa1d0b7eae9296007c">extent</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Gets extent to which graph&#x27;s features will be limited (empty extent means no limit)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2,
+              <a href="classQgsTracer.html#a6c9cabb58eb3c0bfbd83e52962b80017" class="m-doc">PathError</a>* error = nullptr) -&gt; QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;</span>
+            </dt>
+            <dd>Given two points, find the shortest path and return points on the way.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3516a43145831901d3380eebd6c039c4" class="m-doc">hasTopologyProblem</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Whether there was an error during graph creation due to noding exception, indicating some input data topology problems.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac83491d1e7954d41c113fe7872b1fb52" class="m-doc">init</a>(</span><span class="m-doc-wrap">) -&gt; bool</span>
+            </dt>
+            <dd>Build the internal data structures.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af43d99a517d8ff0e9e484cb7e69bb52f" class="m-doc-self" name="af43d99a517d8ff0e9e484cb7e69bb52f">isInitialized</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Whether the internal data structures have been initialized.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a51e2857c0e99e8baea576b0950d0073c" class="m-doc-self" name="a51e2857c0e99e8baea576b0950d0073c">isPointSnapped</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; pt) -&gt; bool</span>
+            </dt>
+            <dd>Find out whether the point is snapped to a vertex or edge (i.e. it can be used for tracing start/stop)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab9950da04c0941e8ea65feead4a076dc" class="m-doc-self" name="ab9950da04c0941e8ea65feead4a076dc">layers</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*&gt;</span>
+            </dt>
+            <dd>Gets layers used for tracing.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a95e831eb6d67ad8cea149fc5abade15f" class="m-doc-self" name="a95e831eb6d67ad8cea149fc5abade15f">maxFeatureCount</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Gets maximum possible number of features in graph. If the number is exceeded, graph is not created.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab2d1add51b5761a14cd1c37541441115" class="m-doc">offset</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Gets offset in map units that should be applied to the traced paths returned from <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac6ecb7040218472fa4043ca412bfc19d" class="m-doc">offsetParameters</a>(</span><span class="m-doc-wrap">int&amp; quadSegments,
+              int&amp; joinStyle,
+              double&amp; miterLimit)</span>
+            </dt>
+            <dd>Gets extra parameters for offset curve algorithm (used when offset is non-zero)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afb326b0d881d7f517c08ec90396fba86" class="m-doc">setDestinationCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs,
+              const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span>
+            </dt>
+            <dd>Sets the <em>crs</em> and transform <em>context</em> used for tracing.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4f40ce0f7a8316c93d34c0e4564efc36" class="m-doc-self" name="a4f40ce0f7a8316c93d34c0e4564efc36">setExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; extent)</span>
+            </dt>
+            <dd>Sets extent to which graph&#x27;s features will be limited (empty extent means no limit)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6d9a633d13c394265391e9b45963a6d6" class="m-doc-self" name="a6d9a633d13c394265391e9b45963a6d6">setLayers</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*&gt;&amp; layers)</span>
+            </dt>
+            <dd>Sets layers used for tracing.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0336e83882a6b91118d6e22786939c93" class="m-doc-self" name="a0336e83882a6b91118d6e22786939c93">setMaxFeatureCount</a>(</span><span class="m-doc-wrap">int count)</span>
+            </dt>
+            <dd>Gets maximum possible number of features in graph. If the number is exceeded, graph is not created.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6d6f464b0cf44a485697066bd6cbfd14" class="m-doc">setOffset</a>(</span><span class="m-doc-wrap">double offset)</span>
+            </dt>
+            <dd>Set offset in map units that should be applied to the traced paths returned from <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac9c8ac510a7c870b4075a09a691ad43c" class="m-doc">setOffsetParameters</a>(</span><span class="m-doc-wrap">int quadSegments,
+              int joinStyle,
+              double miterLimit)</span>
+            </dt>
+            <dd>Set extra parameters for offset curve algorithm (used when offset is non-zero)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a183132114fc07d7d85a91c49fb594c7f" class="m-doc">setRenderContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>* renderContext)</span>
+            </dt>
+            <dd>Sets the <em>renderContext</em> used for tracing only on visible features.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aef806df1e32d95a44f86e892bc16a5c0" class="m-doc">configure</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Allows derived classes to setup the settings just before the tracer is initialized.</dd>
+          </dl>
+        </section>
+        <section id="pro-slots">
+          <h2><a href="#pro-slots">Protected slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae7df9b5112ae618ec3c787fa72e2c425" class="m-doc-self" name="ae7df9b5112ae618ec3c787fa72e2c425">invalidateGraph</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Destroy the existing graph structure if any (de-initialize)</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a6c9cabb58eb3c0bfbd83e52962b80017"><div>
+            <h3>
+              enum QgsTracer::<wbr /><a href="#a6c9cabb58eb3c0bfbd83e52962b80017" class="m-doc-self">PathError</a>
+            </h3>
+            <p>Possible errors that may happen when calling <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a></p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a6c9cabb58eb3c0bfbd83e52962b80017abe45625012acdd72e104344f03a31a7a" class="m-doc-self" name="a6c9cabb58eb3c0bfbd83e52962b80017abe45625012acdd72e104344f03a31a7a">ErrNone</a></td>
+                  <td>
+                  <p>No error.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6c9cabb58eb3c0bfbd83e52962b80017ac3d82e33af22b963fa82e0102730a348" class="m-doc-self" name="a6c9cabb58eb3c0bfbd83e52962b80017ac3d82e33af22b963fa82e0102730a348">ErrTooManyFeatures</a></td>
+                  <td>
+                  <p>Max feature count threshold was reached while reading features.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6c9cabb58eb3c0bfbd83e52962b80017a8f989c28799eff8ba2baf7c7140fdfbc" class="m-doc-self" name="a6c9cabb58eb3c0bfbd83e52962b80017a8f989c28799eff8ba2baf7c7140fdfbc">ErrPoint1</a></td>
+                  <td>
+                  <p>Start point cannot be joined to the graph.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6c9cabb58eb3c0bfbd83e52962b80017a87172c076cde1403ec223836e750fd2e" class="m-doc-self" name="a6c9cabb58eb3c0bfbd83e52962b80017a87172c076cde1403ec223836e750fd2e">ErrPoint2</a></td>
+                  <td>
+                  <p>End point cannot be joined to the graph.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a6c9cabb58eb3c0bfbd83e52962b80017a2432b2d0cd6be7dd6891eddb0625de0c" class="m-doc-self" name="a6c9cabb58eb3c0bfbd83e52962b80017a2432b2d0cd6be7dd6891eddb0625de0c">ErrNoPath</a></td>
+                  <td>
+                  <p>Points are not connected in the graph.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ae972009b2310f713e7e8632099a1261b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae972009b2310f713e7e8632099a1261b" class="m-doc-self">destinationCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the CRS used for tracing.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTracer.html#afb326b0d881d7f517c08ec90396fba86" class="m-doc">setDestinationCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5cd2f7ba30d12fdefe1babce9afc57b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt; QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc-self">findShortestPath</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2,
+              <a href="classQgsTracer.html#a6c9cabb58eb3c0bfbd83e52962b80017" class="m-doc">PathError</a>* error = nullptr)</span></span>
+            </h3>
+            <p>Given two points, find the shortest path and return points on the way.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>array of points - trace of linestrings of other features (empty array one error)</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The optional &quot;error&quot; argument may receive error code (PathError enum) if it is not null</p>
+          </div></section>
+          <section class="m-doc-details" id="a3516a43145831901d3380eebd6c039c4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3516a43145831901d3380eebd6c039c4" class="m-doc-self">hasTopologyProblem</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Whether there was an error during graph creation due to noding exception, indicating some input data topology problems.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac83491d1e7954d41c113fe7872b1fb52"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac83491d1e7954d41c113fe7872b1fb52" class="m-doc-self">init</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Build the internal data structures.</p>
+<p>This may take some time depending on how big the input layers are. It is not necessary to call this method explicitly - it will be called by <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a> if necessary.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab2d1add51b5761a14cd1c37541441115"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2d1add51b5761a14cd1c37541441115" class="m-doc-self">offset</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets offset in map units that should be applied to the traced paths returned from <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a>.</p>
+<p>Positive offset for right side, negative offset for left side.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac6ecb7040218472fa4043ca412bfc19d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac6ecb7040218472fa4043ca412bfc19d" class="m-doc-self">offsetParameters</a>(</span><span class="m-doc-wrap">int&amp; quadSegments,
+              int&amp; joinStyle,
+              double&amp; miterLimit)</span></span>
+            </h3>
+            <p>Gets extra parameters for offset curve algorithm (used when offset is non-zero)</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afb326b0d881d7f517c08ec90396fba86"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afb326b0d881d7f517c08ec90396fba86" class="m-doc-self">setDestinationCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs,
+              const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Sets the <em>crs</em> and transform <em>context</em> used for tracing.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsTracer.html#ae972009b2310f713e7e8632099a1261b" class="m-doc">destinationCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6d6f464b0cf44a485697066bd6cbfd14"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d6f464b0cf44a485697066bd6cbfd14" class="m-doc-self">setOffset</a>(</span><span class="m-doc-wrap">double offset)</span></span>
+            </h3>
+            <p>Set offset in map units that should be applied to the traced paths returned from <a href="classQgsTracer.html#a5cd2f7ba30d12fdefe1babce9afc57b2" class="m-doc">findShortestPath()</a>.</p>
+<p>Positive offset for right side, negative offset for left side.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac9c8ac510a7c870b4075a09a691ad43c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac9c8ac510a7c870b4075a09a691ad43c" class="m-doc-self">setOffsetParameters</a>(</span><span class="m-doc-wrap">int quadSegments,
+              int joinStyle,
+              double miterLimit)</span></span>
+            </h3>
+            <p>Set extra parameters for offset curve algorithm (used when offset is non-zero)</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a183132114fc07d7d85a91c49fb594c7f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a183132114fc07d7d85a91c49fb594c7f" class="m-doc-self">setRenderContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>* renderContext)</span></span>
+            </h3>
+            <p>Sets the <em>renderContext</em> used for tracing only on visible features.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aef806df1e32d95a44f86e892bc16a5c0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsTracer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aef806df1e32d95a44f86e892bc16a5c0" class="m-doc-self">configure</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Allows derived classes to setup the settings just before the tracer is initialized.</p>
+<p>This allows the configuration to be set in a lazy way only when it is really necessary. Default implementation does nothing.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsDistanceArea class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsDistanceArea <span class="m-thin">class</span>
+        </h1>
+        <p>A general purpose distance and area calculator, capable of performing ellipsoid based calculations.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Measurements can either be performed on existing <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a> objects, or using lists of points.</p><p>If a valid <a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a> has been set for the <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a>, all calculations will be performed using ellipsoidal algorithms (e.g. using Vincenty&#x27;s formulas). If no ellipsoid has been set, all calculations will be performed using Cartesian formulas only. The behavior can be determined by calling <a href="classQgsDistanceArea.html#abd0d7a667e169b7b5de22894030dcbcc" class="m-doc">willUseEllipsoid()</a>.</p><p>In order to perform accurate calculations, the source coordinate reference system of all measured geometries must first be specified using <a href="classQgsDistanceArea.html#a836191959392b8bbe2fa82ec2aa28ce3" class="m-doc">setSourceCrs()</a>.</p><p>Usually, the measurements returned by <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> are in meters. If no valid ellipsoid is set, then the units may not be meters. The units can be retrieved by calling <a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a> and <a href="classQgsDistanceArea.html#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc">areaUnits()</a>.</p>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a8c12312b1a367bf00006ee578ce9e92b" class="m-doc">formatArea</a>(</span><span class="m-doc-wrap">double area,
+              int decimals,
+              <a href="classQgsUnitTypes.html#ab05b10caef047c173a83a5c8838a061a" class="m-doc">QgsUnitTypes::<wbr />AreaUnit</a> unit,
+              bool keepBaseUnit = false) -&gt; QString</span>
+            </dt>
+            <dd>Returns an area formatted as a friendly string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1b7047210b8cb04dca75cea41ff1d0fc" class="m-doc">formatDistance</a>(</span><span class="m-doc-wrap">double distance,
+              int decimals,
+              <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> unit,
+              bool keepBaseUnit = false) -&gt; QString</span>
+            </dt>
+            <dd>Returns an distance formatted as a friendly string.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ab5df963766f6a9a2a04ae7fcba947b00" class="m-doc-self" name="ab5df963766f6a9a2a04ae7fcba947b00">QgsDistanceArea</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Constructor.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc">areaUnits</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#ab05b10caef047c173a83a5c8838a061a" class="m-doc">QgsUnitTypes::<wbr />AreaUnit</a></span>
+            </dt>
+            <dd>Returns the units of area for areal calculations made by this object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a60e46cdcc7541568e2c06787451722a2" class="m-doc-self" name="a60e46cdcc7541568e2c06787451722a2">bearing</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2) const -&gt; double</span>
+            </dt>
+            <dd>Computes the bearing (in radians) between two points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab6f714c5ca21a254a191dd2dfc087bd3" class="m-doc">computeSpheroidProject</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              double distance = 1,
+              double azimuth = M_PI_2) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>Given a location, an azimuth and a distance, computes the location of the projected point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae14adb8602153a8dfabb8dd49920d2be" class="m-doc">convertAreaMeasurement</a>(</span><span class="m-doc-wrap">double area,
+              <a href="classQgsUnitTypes.html#ab05b10caef047c173a83a5c8838a061a" class="m-doc">QgsUnitTypes::<wbr />AreaUnit</a> toUnits) const -&gt; double</span>
+            </dt>
+            <dd>Takes an area measurement calculated by this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object and converts it to a different areal unit.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae39189a0bf2243c67ba14c5126d162cb" class="m-doc">convertLengthMeasurement</a>(</span><span class="m-doc-wrap">double length,
+              <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> toUnits) const -&gt; double</span>
+            </dt>
+            <dd>Takes a length measurement calculated by this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object and converts it to a different distance unit.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns ellipsoid&#x27;s acronym.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a090697cacf8718c260d5117d8a71aeac" class="m-doc">ellipsoidCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the ellipsoid (destination) spatial reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ab3bb44060d0dd68914ddfd7337ef83" class="m-doc">ellipsoidInverseFlattening</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns ellipsoid&#x27;s inverse flattening.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a78e81db6e309289725263492a2b557a6" class="m-doc">ellipsoidSemiMajor</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the ellipsoid&#x27;s semi major axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af00fcac0be9a1bb4aa8b1ff649dc300d" class="m-doc">ellipsoidSemiMinor</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns ellipsoid&#x27;s semi minor axis.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4126080d5fd750b201d6726d70945109" class="m-doc">geodesicLine</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2,
+              double interval,
+              bool breakLine = false) const -&gt; QVector&lt;QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&gt;</span>
+            </dt>
+            <dd>Calculates the geodesic line between <em>p1</em> and <em>p2</em>, which represents the shortest path on the ellipsoid between these two points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2839b6c546e83eb952c7b7bd1a5ef668" class="m-doc">latitudeGeodesicCrossesAntimeridian</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2,
+              double&amp; fractionAlongLine) const -&gt; double</span>
+            </dt>
+            <dd>Calculates the latitude at which the geodesic line joining <em>p1</em> and <em>p2</em> crosses the antimeridian (longitude +/- 180 degrees).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a></span>
+            </dt>
+            <dd>Returns the units of distance for length calculations made by this object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a33628d70a50bb5992bba6a3452a8dc43" class="m-doc">measureArea</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const -&gt; double</span>
+            </dt>
+            <dd>Measures the area of a geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5ed38172b3b32f7120ef5588c9509442" class="m-doc">measureLength</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const -&gt; double</span>
+            </dt>
+            <dd>Measures the length of a geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a732e4348b96388df6255f981a2bc0ca4" class="m-doc">measureLine</a>(</span><span class="m-doc-wrap">const QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; points) const -&gt; double</span>
+            </dt>
+            <dd>Measures the length of a line with multiple segments.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d50cf1ca660d27aeccd969849ead67e" class="m-doc">measureLine</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2) const -&gt; double</span>
+            </dt>
+            <dd>Measures the distance between two points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9a02351b01e97c8ed9f153bd742c138b" class="m-doc">measureLineProjected</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              double distance = 1,
+              double azimuth = M_PI_2,
+              <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>* projectedPoint = nullptr) const -&gt; double</span>
+            </dt>
+            <dd>Calculates the distance from one point with distance in meters and azimuth (direction) When the <a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a> is geographic, <a href="classQgsDistanceArea.html#ab6f714c5ca21a254a191dd2dfc087bd3" class="m-doc">computeSpheroidProject()</a> will be called otherwise <a href="classQgsPoint.html#ae5b591ac604024fdb873e4ca4a209e1f" class="m-doc">QgsPoint.project()</a> will be called after <a href="classQgsUnitTypes.html#a4ac00365e7d4b2dd3754e2bea5aa8e9a" class="m-doc">QgsUnitTypes::<wbr />fromUnitToUnitFactor()</a> has been applied to the distance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a532493d8ecfc136a170a590388b18281" class="m-doc">measurePerimeter</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const -&gt; double</span>
+            </dt>
+            <dd>Measures the perimeter of a polygon geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a987a2f263125a66932313ce1ee77a3df" class="m-doc-self" name="a987a2f263125a66932313ce1ee77a3df">measurePolygon</a>(</span><span class="m-doc-wrap">const QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; points) const -&gt; double</span>
+            </dt>
+            <dd>Measures the area of the polygon described by a set of points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa8616be62f778a3d9a7aa604611d5549" class="m-doc">setEllipsoid</a>(</span><span class="m-doc-wrap">const QString&amp; ellipsoid) -&gt; bool</span>
+            </dt>
+            <dd>Sets the <em>ellipsoid</em> by its acronym.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ace024551d677ee268ef3678fe954039e" class="m-doc">setEllipsoid</a>(</span><span class="m-doc-wrap">double semiMajor,
+              double semiMinor) -&gt; bool</span>
+            </dt>
+            <dd>Sets ellipsoid by supplied radii.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a836191959392b8bbe2fa82ec2aa28ce3" class="m-doc">setSourceCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs,
+              const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span>
+            </dt>
+            <dd>Sets source spatial reference system <em>crs</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the source spatial reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a95d001e97a7307e00537ff10d5ac34ca" class="m-doc">splitGeometryAtAntimeridian</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const -&gt; <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a></span>
+            </dt>
+            <dd>Splits a (Multi)LineString <em>geometry</em> at the antimeridian (longitude +/- 180 degrees).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abd0d7a667e169b7b5de22894030dcbcc" class="m-doc">willUseEllipsoid</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether calculations will use the ellipsoid.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a8c12312b1a367bf00006ee578ce9e92b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8c12312b1a367bf00006ee578ce9e92b" class="m-doc-self">formatArea</a>(</span><span class="m-doc-wrap">double area,
+              int decimals,
+              <a href="classQgsUnitTypes.html#ab05b10caef047c173a83a5c8838a061a" class="m-doc">QgsUnitTypes::<wbr />AreaUnit</a> unit,
+              bool keepBaseUnit = false)</span></span>
+            </h3>
+            <p>Returns an area formatted as a friendly string.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">area</td>
+                  <td>area to format</td>
+                </tr>
+                <tr>
+                  <td>decimals</td>
+                  <td>number of decimal places to show</td>
+                </tr>
+                <tr>
+                  <td>unit</td>
+                  <td>unit of area</td>
+                </tr>
+                <tr>
+                  <td>keepBaseUnit</td>
+                  <td>set to false to allow conversion of large areas to more suitable units, e.g., square meters to square kilometers</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>formatted area string</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a1b7047210b8cb04dca75cea41ff1d0fc" class="m-doc">formatDistance()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1b7047210b8cb04dca75cea41ff1d0fc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1b7047210b8cb04dca75cea41ff1d0fc" class="m-doc-self">formatDistance</a>(</span><span class="m-doc-wrap">double distance,
+              int decimals,
+              <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> unit,
+              bool keepBaseUnit = false)</span></span>
+            </h3>
+            <p>Returns an distance formatted as a friendly string.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">distance</td>
+                  <td>distance to format</td>
+                </tr>
+                <tr>
+                  <td>decimals</td>
+                  <td>number of decimal places to show</td>
+                </tr>
+                <tr>
+                  <td>unit</td>
+                  <td>unit of distance</td>
+                </tr>
+                <tr>
+                  <td>keepBaseUnit</td>
+                  <td>set to false to allow conversion of large distances to more suitable units, e.g., meters to kilometers</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>formatted distance string</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a8c12312b1a367bf00006ee578ce9e92b" class="m-doc">formatArea()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa1e90309bdcb65b399a3f96648a0b43a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#ab05b10caef047c173a83a5c8838a061a" class="m-doc">QgsUnitTypes::<wbr />AreaUnit</a> QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc-self">areaUnits</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units of area for areal calculations made by this object.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab6f714c5ca21a254a191dd2dfc087bd3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab6f714c5ca21a254a191dd2dfc087bd3" class="m-doc-self">computeSpheroidProject</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              double distance = 1,
+              double azimuth = M_PI_2) const</span></span>
+            </h3>
+            <p>Given a location, an azimuth and a distance, computes the location of the projected point.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">p1</td>
+                  <td>- location of first geographic (latitude/longitude) point as degrees.</td>
+                </tr>
+                <tr>
+                  <td>distance</td>
+                  <td>- distance in meters.</td>
+                </tr>
+                <tr>
+                  <td>azimuth</td>
+                  <td>- azimuth in radians, clockwise from North</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>p2 - location of projected point as longitude/latitude.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Based on Vincenty&#x27;s formula for the geodetic direct problem as described in &quot;Geocentric
+Datum of Australia Technical Manual&quot;, Chapter 4.</p><aside class="m-note m-info"><h4>Note</h4><p>code (and documentation) taken from rttopo project <a href="https://git.osgeo.org/gogs/rttopo/librttopo">https:/<wbr />/<wbr />git.osgeo.org/<wbr />gogs/<wbr />rttopo/<wbr />librttopo</a></p><ul><li>spheroid_project.spheroid_project(...)</li><li>Valid bounds checking for degrees (latitude=+- 85.05115) is based values used for -&gt; &#x27;WGS84 Web Mercator (Auxiliary Sphere)&#x27; calculations &ndash;&gt; latitudes outside these bounds cause the calculations to become unstable and can return invalid results</li></ul></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae14adb8602153a8dfabb8dd49920d2be"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae14adb8602153a8dfabb8dd49920d2be" class="m-doc-self">convertAreaMeasurement</a>(</span><span class="m-doc-wrap">double area,
+              <a href="classQgsUnitTypes.html#ab05b10caef047c173a83a5c8838a061a" class="m-doc">QgsUnitTypes::<wbr />AreaUnit</a> toUnits) const</span></span>
+            </h3>
+            <p>Takes an area measurement calculated by this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object and converts it to a different areal unit.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">area</td>
+                  <td>area value calculated by this class to convert. It is assumed that the area was calculated by this class, ie that its unit of area is equal to <a href="classQgsDistanceArea.html#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc">areaUnits()</a>.</td>
+                </tr>
+                <tr>
+                  <td>toUnits</td>
+                  <td>area unit to convert measurement to</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>converted area</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#ae39189a0bf2243c67ba14c5126d162cb" class="m-doc">convertLengthMeasurement()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae39189a0bf2243c67ba14c5126d162cb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae39189a0bf2243c67ba14c5126d162cb" class="m-doc-self">convertLengthMeasurement</a>(</span><span class="m-doc-wrap">double length,
+              <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> toUnits) const</span></span>
+            </h3>
+            <p>Takes a length measurement calculated by this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object and converts it to a different distance unit.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">length</td>
+                  <td>length value calculated by this class to convert. It is assumed that the length was calculated by this class, ie that its unit of length is equal to <a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a>.</td>
+                </tr>
+                <tr>
+                  <td>toUnits</td>
+                  <td>distance unit to convert measurement to</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>converted distance</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#ae14adb8602153a8dfabb8dd49920d2be" class="m-doc">convertAreaMeasurement()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6bba1f9539a6f48a9d256bb809803038"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6bba1f9539a6f48a9d256bb809803038" class="m-doc-self">ellipsoid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns ellipsoid&#x27;s acronym.</p>
+<p>Calculations will only use the ellipsoid if a valid ellipsoid has been set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#aa8616be62f778a3d9a7aa604611d5549" class="m-doc">setEllipsoid()</a></p><p><a href="classQgsDistanceArea.html#abd0d7a667e169b7b5de22894030dcbcc" class="m-doc">willUseEllipsoid()</a></p><p><a href="classQgsDistanceArea.html#a090697cacf8718c260d5117d8a71aeac" class="m-doc">ellipsoidCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a090697cacf8718c260d5117d8a71aeac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a090697cacf8718c260d5117d8a71aeac" class="m-doc-self">ellipsoidCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the ellipsoid (destination) spatial reference system.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a></p><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6ab3bb44060d0dd68914ddfd7337ef83"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6ab3bb44060d0dd68914ddfd7337ef83" class="m-doc-self">ellipsoidInverseFlattening</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns ellipsoid&#x27;s inverse flattening.</p>
+<p>The inverse flattening is calculated with invf = a/(a-b).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p><p><a href="classQgsDistanceArea.html#a78e81db6e309289725263492a2b557a6" class="m-doc">ellipsoidSemiMajor()</a></p><p><a href="classQgsDistanceArea.html#af00fcac0be9a1bb4aa8b1ff649dc300d" class="m-doc">ellipsoidSemiMinor()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a78e81db6e309289725263492a2b557a6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a78e81db6e309289725263492a2b557a6" class="m-doc-self">ellipsoidSemiMajor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the ellipsoid&#x27;s semi major axis.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p><p><a href="classQgsDistanceArea.html#af00fcac0be9a1bb4aa8b1ff649dc300d" class="m-doc">ellipsoidSemiMinor()</a></p><p><a href="classQgsDistanceArea.html#a6ab3bb44060d0dd68914ddfd7337ef83" class="m-doc">ellipsoidInverseFlattening()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af00fcac0be9a1bb4aa8b1ff649dc300d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af00fcac0be9a1bb4aa8b1ff649dc300d" class="m-doc-self">ellipsoidSemiMinor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns ellipsoid&#x27;s semi minor axis.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p><p><a href="classQgsDistanceArea.html#a78e81db6e309289725263492a2b557a6" class="m-doc">ellipsoidSemiMajor()</a></p><p><a href="classQgsDistanceArea.html#a6ab3bb44060d0dd68914ddfd7337ef83" class="m-doc">ellipsoidInverseFlattening()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4126080d5fd750b201d6726d70945109"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVector&lt;QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&gt; QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4126080d5fd750b201d6726d70945109" class="m-doc-self">geodesicLine</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2,
+              double interval,
+              bool breakLine = false) const</span></span>
+            </h3>
+            <p>Calculates the geodesic line between <em>p1</em> and <em>p2</em>, which represents the shortest path on the ellipsoid between these two points.</p>
+<p>The ellipsoid settings defined on this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object will be used during the calculations.</p><p><em>p1</em> and <em>p2</em> must be in the <a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a> of this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object. The returned line will also be in this same CRS.</p><p>The <em>interval</em> parameter gives the maximum distance between points on the computed line. This argument is always specified in meters. A shorter distance results in a denser line, at the cost of extra computing time.</p><p>If the geodesic line crosses the antimeridian (+/- 180 degrees longitude) and <em>breakLine</em> is true, then the line will be split into two parts, broken at the antimeridian. In this case the function will return two lines, corresponding to the portions at either side of the antimeridian.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2839b6c546e83eb952c7b7bd1a5ef668"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2839b6c546e83eb952c7b7bd1a5ef668" class="m-doc-self">latitudeGeodesicCrossesAntimeridian</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2,
+              double&amp; fractionAlongLine) const</span></span>
+            </h3>
+            <p>Calculates the latitude at which the geodesic line joining <em>p1</em> and <em>p2</em> crosses the antimeridian (longitude +/- 180 degrees).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">p1</td>
+                  <td>Starting point, in <a href="classQgsDistanceArea.html#a090697cacf8718c260d5117d8a71aeac" class="m-doc">ellipsoidCrs()</a></td>
+                </tr>
+                <tr>
+                  <td>p2</td>
+                  <td>Ending point, in <a href="classQgsDistanceArea.html#a090697cacf8718c260d5117d8a71aeac" class="m-doc">ellipsoidCrs()</a></td>
+                </tr>
+                <tr>
+                  <td>fractionAlongLine</td>
+                  <td>will be set to the fraction along the geodesic line joining <em>p1</em> to <em>p2</em> at which the antimeridian crossing occurs.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>the latitude at which the geodesic crosses the antimeridian</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The ellipsoid settings defined on this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object will be used during the calculations.</p><p><em>p1</em> and <em>p2</em> must be in the <a href="classQgsDistanceArea.html#a090697cacf8718c260d5117d8a71aeac" class="m-doc">ellipsoidCrs()</a> of this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object. The returned latitude will also be in this same CRS.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a95d001e97a7307e00537ff10d5ac34ca" class="m-doc">splitGeometryAtAntimeridian()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abce86a368fff8ffb4507a57d70dcb262"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abce86a368fff8ffb4507a57d70dcb262" class="m-doc-self">lengthUnits</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the units of distance for length calculations made by this object.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc">areaUnits()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a33628d70a50bb5992bba6a3452a8dc43"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33628d70a50bb5992bba6a3452a8dc43" class="m-doc-self">measureArea</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const</span></span>
+            </h3>
+            <p>Measures the area of a geometry.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">geometry</td>
+                  <td>geometry to measure</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>area of geometry. For geometry collections, non surface geometries will be ignored. The units for the returned area can be retrieved by calling <a href="classQgsDistanceArea.html#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc">areaUnits()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a5ed38172b3b32f7120ef5588c9509442" class="m-doc">measureLength()</a></p><p><a href="classQgsDistanceArea.html#a532493d8ecfc136a170a590388b18281" class="m-doc">measurePerimeter()</a></p><p><a href="classQgsDistanceArea.html#aa1e90309bdcb65b399a3f96648a0b43a" class="m-doc">areaUnits()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5ed38172b3b32f7120ef5588c9509442"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ed38172b3b32f7120ef5588c9509442" class="m-doc-self">measureLength</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const</span></span>
+            </h3>
+            <p>Measures the length of a geometry.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">geometry</td>
+                  <td>geometry to measure</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>length of geometry. For geometry collections, non curve geometries will be ignored. The units for the returned distance can be retrieved by calling <a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a></p><p><a href="classQgsDistanceArea.html#a33628d70a50bb5992bba6a3452a8dc43" class="m-doc">measureArea()</a></p><p><a href="classQgsDistanceArea.html#a532493d8ecfc136a170a590388b18281" class="m-doc">measurePerimeter()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a732e4348b96388df6255f981a2bc0ca4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a732e4348b96388df6255f981a2bc0ca4" class="m-doc-self">measureLine</a>(</span><span class="m-doc-wrap">const QVector&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; points) const</span></span>
+            </h3>
+            <p>Measures the length of a line with multiple segments.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">points</td>
+                  <td>list of points in line</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>length of line. The units for the returned length can be retrieved by calling <a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2d50cf1ca660d27aeccd969849ead67e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d50cf1ca660d27aeccd969849ead67e" class="m-doc-self">measureLine</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2) const</span></span>
+            </h3>
+            <p>Measures the distance between two points.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">p1</td>
+                  <td>start of line</td>
+                </tr>
+                <tr>
+                  <td>p2</td>
+                  <td>end of line</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>distance between points. The units for the returned distance can be retrieved by calling <a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9a02351b01e97c8ed9f153bd742c138b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9a02351b01e97c8ed9f153bd742c138b" class="m-doc-self">measureLineProjected</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              double distance = 1,
+              double azimuth = M_PI_2,
+              <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>* projectedPoint = nullptr) const</span></span>
+            </h3>
+            <p>Calculates the distance from one point with distance in meters and azimuth (direction) When the <a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a> is geographic, <a href="classQgsDistanceArea.html#ab6f714c5ca21a254a191dd2dfc087bd3" class="m-doc">computeSpheroidProject()</a> will be called otherwise <a href="classQgsPoint.html#ae5b591ac604024fdb873e4ca4a209e1f" class="m-doc">QgsPoint.project()</a> will be called after <a href="classQgsUnitTypes.html#a4ac00365e7d4b2dd3754e2bea5aa8e9a" class="m-doc">QgsUnitTypes::<wbr />fromUnitToUnitFactor()</a> has been applied to the distance.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">p1</td>
+                  <td>start point [can be Cartesian or Geographic]</td>
+                </tr>
+                <tr>
+                  <td>distance</td>
+                  <td>must be in meters</td>
+                </tr>
+                <tr>
+                  <td>azimuth</td>
+                  <td>- azimuth in radians, clockwise from North</td>
+                </tr>
+                <tr>
+                  <td>projectedPoint</td>
+                  <td>calculated projected point</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>distance in mapUnits</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a></p><p><a href="classQgsDistanceArea.html#ab6f714c5ca21a254a191dd2dfc087bd3" class="m-doc">computeSpheroidProject()</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>The input Point must be in the coordinate reference system being used</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a532493d8ecfc136a170a590388b18281"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a532493d8ecfc136a170a590388b18281" class="m-doc-self">measurePerimeter</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const</span></span>
+            </h3>
+            <p>Measures the perimeter of a polygon geometry.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">geometry</td>
+                  <td>geometry to measure</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>perimeter of geometry. For geometry collections, any non-polygon geometries will be ignored. The units for the returned perimeter can be retrieved by calling <a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a>.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#abce86a368fff8ffb4507a57d70dcb262" class="m-doc">lengthUnits()</a></p><p><a href="classQgsDistanceArea.html#a33628d70a50bb5992bba6a3452a8dc43" class="m-doc">measureArea()</a></p><p><a href="classQgsDistanceArea.html#a532493d8ecfc136a170a590388b18281" class="m-doc">measurePerimeter()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa8616be62f778a3d9a7aa604611d5549"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa8616be62f778a3d9a7aa604611d5549" class="m-doc-self">setEllipsoid</a>(</span><span class="m-doc-wrap">const QString&amp; ellipsoid)</span></span>
+            </h3>
+            <p>Sets the <em>ellipsoid</em> by its acronym.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if ellipsoid was successfully set</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Known ellipsoid acronyms can be retrieved using <a href="classQgsEllipsoidUtils.html#aceb3f98ed69ed54fc9693ce552243655" class="m-doc">QgsEllipsoidUtils::<wbr />acronyms()</a>. Calculations will only use the ellipsoid if a valid ellipsoid has been set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p><p><a href="classQgsDistanceArea.html#abd0d7a667e169b7b5de22894030dcbcc" class="m-doc">willUseEllipsoid()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ace024551d677ee268ef3678fe954039e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ace024551d677ee268ef3678fe954039e" class="m-doc-self">setEllipsoid</a>(</span><span class="m-doc-wrap">double semiMajor,
+              double semiMinor)</span></span>
+            </h3>
+            <p>Sets ellipsoid by supplied radii.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if ellipsoid was successfully set</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Calculations will only use the ellipsoid if a valid ellipsoid been set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p><p><a href="classQgsDistanceArea.html#abd0d7a667e169b7b5de22894030dcbcc" class="m-doc">willUseEllipsoid()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a836191959392b8bbe2fa82ec2aa28ce3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a836191959392b8bbe2fa82ec2aa28ce3" class="m-doc-self">setSourceCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs,
+              const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Sets source spatial reference system <em>crs</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3041a94abe36367906f4ad8aa5a1ada6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc-self">sourceCrs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the source spatial reference system.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a836191959392b8bbe2fa82ec2aa28ce3" class="m-doc">setSourceCrs()</a></p><p><a href="classQgsDistanceArea.html#a090697cacf8718c260d5117d8a71aeac" class="m-doc">ellipsoidCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a95d001e97a7307e00537ff10d5ac34ca"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a> QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a95d001e97a7307e00537ff10d5ac34ca" class="m-doc-self">splitGeometryAtAntimeridian</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry) const</span></span>
+            </h3>
+            <p>Splits a (Multi)LineString <em>geometry</em> at the antimeridian (longitude +/- 180 degrees).</p>
+<p>The returned geometry will always be a multi-part geometry.</p><p>Whenever line segments in the input geometry cross the antimeridian, they will be split into two segments, with the latitude of the breakpoint being determined using a geodesic line connecting the points either side of this segment.</p><p>The ellipsoid settings defined on this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object will be used during the calculations.</p><p><em>geometry</em> must be in the <a href="classQgsDistanceArea.html#a3041a94abe36367906f4ad8aa5a1ada6" class="m-doc">sourceCrs()</a> of this <a href="classQgsDistanceArea.html" class="m-doc">QgsDistanceArea</a> object. The returned geometry will also be in this same CRS.</p><p>If <em>geometry</em> contains M or Z values, these will be linearly interpolated for the new vertices created at the antimeridian.</p><aside class="m-note m-info"><h4>Note</h4><p>Non-(Multi)LineString geometries will be returned unchanged.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a2839b6c546e83eb952c7b7bd1a5ef668" class="m-doc">latitudeGeodesicCrossesAntimeridian()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abd0d7a667e169b7b5de22894030dcbcc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDistanceArea::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abd0d7a667e169b7b5de22894030dcbcc" class="m-doc-self">willUseEllipsoid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether calculations will use the ellipsoid.</p>
+<p>Calculations will only use the ellipsoid if a valid <a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a> has been set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDistanceArea.html#a6bba1f9539a6f48a9d256bb809803038" class="m-doc">ellipsoid()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

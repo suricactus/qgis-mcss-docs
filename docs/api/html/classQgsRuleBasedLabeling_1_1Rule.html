@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsRuleBasedLabeling::Rule class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="classQgsRuleBasedLabeling.html">QgsRuleBasedLabeling</a>::<wbr/></span>Rule <span class="m-thin">class</span>
+        </h1>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a73737c47214144ae4177985bce52bf9e" class="m-doc">RegisterResult</a> { </span><span class="m-doc-wrap"><a href="#a73737c47214144ae4177985bce52bf9eadc590d6808454938b1e2076fe244a4f1" class="m-doc">Filtered</a> = 0,
+              <a href="#a73737c47214144ae4177985bce52bf9ea85cb78ac37cb785bed20c965131515b9" class="m-doc">Inactive</a>,
+              <a href="#a73737c47214144ae4177985bce52bf9eaee547d7c0fe498d21ef3b69ee37df44e" class="m-doc">Registered</a> }</span>
+            </dt>
+            <dd>The result of registering a rule.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a95124ea115a77f288e9dc369b5b5130b" class="m-doc">create</a>(</span><span class="m-doc-wrap">const QDomElement&amp; ruleElem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) -&gt; <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>*</span>
+            </dt>
+            <dd>Create a rule from an XML definition.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ac496af5be9571bdaf0c83c0151afbaa7" class="m-doc-self" name="ac496af5be9571bdaf0c83c0151afbaa7">Rule</a>(</span><span class="m-doc-wrap"><a href="classQgsPalLayerSettings.html" class="m-doc">QgsPalLayerSettings</a>* settings,
+              double maximumScale = 0,
+              double minimumScale = 0,
+              const QString&amp; filterExp = QString(),
+              const QString&amp; description = QString(),
+              bool elseRule = false)</span>
+            </dt>
+            <dd>takes ownership of settings, settings may be nullptr</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2c35cf229c64299d26e3611a6f728fb1" class="m-doc-self" name="a2c35cf229c64299d26e3611a6f728fb1">Rule</a>(</span><span class="m-doc-wrap">const <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">Rule</a>&amp; rh) <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd>Rules cannot be copied.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6b7a03cdbbdb156696c593d82e5d6f99" class="m-doc">active</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns if this rule is active.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aff79ce7683b336188e01145c5bb6f496" class="m-doc-self" name="aff79ce7683b336188e01145c5bb6f496">appendChild</a>(</span><span class="m-doc-wrap"><a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>* rule)</span>
+            </dt>
+            <dd>add child rule, take ownership, sets this as parent</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a09e81916a749bd122aae7abcb94e8703" class="m-doc">children</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsRuleBasedLabeling.html#a0ac804478eaa77b250539682be5c0282" class="m-doc">QgsRuleBasedLabeling::<wbr />RuleList</a>&amp;</span>
+            </dt>
+            <dd>Returns all children rules of this rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2e680752d70b5abc3fe77827e96b09de" class="m-doc">children</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsRuleBasedLabeling.html#a0ac804478eaa77b250539682be5c0282" class="m-doc">QgsRuleBasedLabeling::<wbr />RuleList</a>&amp;</span>
+            </dt>
+            <dd>Returns all children rules of this rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a229ed87e32f57fca6263743452ca593f" class="m-doc-self" name="a229ed87e32f57fca6263743452ca593f">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>*</span>
+            </dt>
+            <dd>clone this rule, return new instance</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abc2772e6fd8f05af36dd5218b81867e8" class="m-doc">createSubProviders</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              <a href="classQgsRuleBasedLabeling.html#a8b87a229f59f0cc0d13f7038337edb81" class="m-doc">RuleToProviderMap</a>&amp; subProviders,
+              <a href="classQgsRuleBasedLabelProvider.html" class="m-doc">QgsRuleBasedLabelProvider</a>* provider)</span>
+            </dt>
+            <dd>add providers</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4a713327279e24fae098432a5813488d" class="m-doc">dependsOnScale</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Determines if scale based labeling is active.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab836a07cc194b99b83aec9067e550a95" class="m-doc">descendants</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRuleBasedLabeling.html#a0ac804478eaa77b250539682be5c0282" class="m-doc">QgsRuleBasedLabeling::<wbr />RuleList</a></span>
+            </dt>
+            <dd>Returns all children, grand-children, grand-grand-children, grand-gra...</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#affdb35a4f9ca75f9ffd2290100417e14" class="m-doc">description</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>A human readable description for this rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5ea33f6852fac075dcf8748290baa7dd" class="m-doc">filterExpression</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>A filter that will check if this rule applies.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aff56fb4b238e4c57e2cd049c183257b8" class="m-doc-self" name="aff56fb4b238e4c57e2cd049c183257b8">findRuleByKey</a>(</span><span class="m-doc-wrap">const QString&amp; key) const -&gt; const <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>*</span>
+            </dt>
+            <dd>Try to find a rule given its unique key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5475ce2bf2b1f88cea9066c2a4b7476d" class="m-doc">findRuleByKey</a>(</span><span class="m-doc-wrap">const QString&amp; key) -&gt; <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>*</span>
+            </dt>
+            <dd>Find a labeling rule thanks to its key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acd48b82f70ac3394c5a15a1e17bdf114" class="m-doc-self" name="acd48b82f70ac3394c5a15a1e17bdf114">insertChild</a>(</span><span class="m-doc-wrap">int i,
+              <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>* rule)</span>
+            </dt>
+            <dd>add child rule, take ownership, sets this as parent</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab6625c9bac699e4009f528fc6cff64b6" class="m-doc">isElse</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Check if this rule is an ELSE rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a309038f92e5d87bfd35ee890625bd535" class="m-doc">maximumScale</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the maximum map scale (i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aedbafabb71a4d9f3a91e9fa5d23f2103" class="m-doc">minimumScale</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the minimum map scale (i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#add4e56bb0f9c5d0796b3a2148ee90779" class="m-doc-self" name="add4e56bb0f9c5d0796b3a2148ee90779">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">Rule</a>&amp; rh) -&gt; <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">Rule</a>&amp; <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd>Rules cannot be copied.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adfd1a5e01fb9f1d3f13a6f91a5d9c7ab" class="m-doc">parent</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>*</span>
+            </dt>
+            <dd>The parent rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a123e7d82368d24c7377a689a7b13fb8e" class="m-doc">parent</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>*</span>
+            </dt>
+            <dd>The parent rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac8794a5c97034ad390ad67294b889f3f" class="m-doc">prepare</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              QSet&lt;QString&gt;&amp; attributeNames,
+              <a href="classQgsRuleBasedLabeling.html#a8b87a229f59f0cc0d13f7038337edb81" class="m-doc">RuleToProviderMap</a>&amp; subProviders)</span>
+            </dt>
+            <dd>call <a href="classQgsRuleBasedLabeling_1_1Rule.html#ac8794a5c97034ad390ad67294b889f3f" class="m-doc">prepare()</a> on sub-providers and populate attributeNames</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad014ec3085c4fd27b33f995ed494ef06" class="m-doc">registerFeature</a>(</span><span class="m-doc-wrap"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              <a href="classQgsRuleBasedLabeling.html#a8b87a229f59f0cc0d13f7038337edb81" class="m-doc">RuleToProviderMap</a>&amp; subProviders,
+              const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; obstacleGeometry = <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>()) -&gt; <a href="classQgsRuleBasedLabeling_1_1Rule.html#a73737c47214144ae4177985bce52bf9e" class="m-doc">RegisterResult</a></span>
+            </dt>
+            <dd>register individual features</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9e569021a636d2140d0b73035d2e530e" class="m-doc-self" name="a9e569021a636d2140d0b73035d2e530e">removeChildAt</a>(</span><span class="m-doc-wrap">int i)</span>
+            </dt>
+            <dd>delete child rule</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9e4ec44b91c2deb11c51ddd1edd87c29" class="m-doc-self" name="a9e4ec44b91c2deb11c51ddd1edd87c29">requiresAdvancedEffects</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if this rule or any of its children requires advanced composition effects to render.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afc1a1c6d51ee6568c80e41a794374359" class="m-doc-self" name="afc1a1c6d51ee6568c80e41a794374359">ruleKey</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Unique rule identifier (for identification of rule within labeling, used as provider ID)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aaf8517dcfb0f5774aafad433a6f5a102" class="m-doc-self" name="aaf8517dcfb0f5774aafad433a6f5a102">save</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context) const -&gt; QDomElement</span>
+            </dt>
+            <dd>store labeling info to XML element</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa79d92d7ec516f48f5a24a56091a72bb" class="m-doc">setActive</a>(</span><span class="m-doc-wrap">bool state)</span>
+            </dt>
+            <dd>Sets if this rule is active.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a380f8a7e1713364db56167428c12e60b" class="m-doc">setDescription</a>(</span><span class="m-doc-wrap">const QString&amp; description)</span>
+            </dt>
+            <dd>Set a human readable description for this rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aed0f41ddf78ef24ddd82d58146cd5fe4" class="m-doc">setFilterExpression</a>(</span><span class="m-doc-wrap">const QString&amp; filterExp)</span>
+            </dt>
+            <dd>Set the expression used to check if a given feature shall be rendered with this rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af5965530b01489c73524aec522af51da" class="m-doc">setIsElse</a>(</span><span class="m-doc-wrap">bool iselse)</span>
+            </dt>
+            <dd>Sets if this rule is an ELSE rule.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a22a75f30bf4012328b116dc8f35c456d" class="m-doc">setMaximumScale</a>(</span><span class="m-doc-wrap">double scale)</span>
+            </dt>
+            <dd>Sets the maximum map <em>scale</em> (i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad15316111c63c0f6ec32df946dd2f489" class="m-doc">setMinimumScale</a>(</span><span class="m-doc-wrap">double scale)</span>
+            </dt>
+            <dd>Sets the minimum map <em>scale</em> (i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0741d5b761693c6f85a33819fcaf8ef3" class="m-doc-self" name="a0741d5b761693c6f85a33819fcaf8ef3">setRuleKey</a>(</span><span class="m-doc-wrap">const QString&amp; key)</span>
+            </dt>
+            <dd>Override the assigned rule key (should be used just internally by rule-based labeling)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab088f93ed1cfb591eddbcf57078dae28" class="m-doc-self" name="ab088f93ed1cfb591eddbcf57078dae28">setSettings</a>(</span><span class="m-doc-wrap"><a href="classQgsPalLayerSettings.html" class="m-doc">QgsPalLayerSettings</a>* settings)</span>
+            </dt>
+            <dd>Sets new settings (or NULL). Deletes old settings if any.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a522941973e8552d2b6165497a1d26f6c" class="m-doc">settings</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsPalLayerSettings.html" class="m-doc">QgsPalLayerSettings</a>*</span>
+            </dt>
+            <dd>Gets the labeling settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9d391e11a7d244d106debd5422d2dd86" class="m-doc">subProviderIds</a>(</span><span class="m-doc-wrap">QStringList&amp; list) const</span>
+            </dt>
+            <dd>append rule keys of descendants that contain valid settings (i.e.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a73737c47214144ae4177985bce52bf9e"><div>
+            <h3>
+              enum QgsRuleBasedLabeling::<wbr />Rule::<wbr /><a href="#a73737c47214144ae4177985bce52bf9e" class="m-doc-self">RegisterResult</a>
+            </h3>
+            <p>The result of registering a rule.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a73737c47214144ae4177985bce52bf9eadc590d6808454938b1e2076fe244a4f1" class="m-doc-self" name="a73737c47214144ae4177985bce52bf9eadc590d6808454938b1e2076fe244a4f1">Filtered</a></td>
+                  <td>
+                  <p>The rule does not apply.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a73737c47214144ae4177985bce52bf9ea85cb78ac37cb785bed20c965131515b9" class="m-doc-self" name="a73737c47214144ae4177985bce52bf9ea85cb78ac37cb785bed20c965131515b9">Inactive</a></td>
+                  <td>
+                  <p>The rule is inactive.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a73737c47214144ae4177985bce52bf9eaee547d7c0fe498d21ef3b69ee37df44e" class="m-doc-self" name="a73737c47214144ae4177985bce52bf9eaee547d7c0fe498d21ef3b69ee37df44e">Registered</a></td>
+                  <td>
+                  <p>Something was registered.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a95124ea115a77f288e9dc369b5b5130b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>* QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a95124ea115a77f288e9dc369b5b5130b" class="m-doc-self">create</a>(</span><span class="m-doc-wrap">const QDomElement&amp; ruleElem,
+              const <a href="classQgsReadWriteContext.html" class="m-doc">QgsReadWriteContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Create a rule from an XML definition.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ruleElem</td>
+                  <td>The XML rule element</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>reading context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A new rule</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6b7a03cdbbdb156696c593d82e5d6f99"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6b7a03cdbbdb156696c593d82e5d6f99" class="m-doc-self">active</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns if this rule is active.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if the rule is active</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a09e81916a749bd122aae7abcb94e8703"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsRuleBasedLabeling.html#a0ac804478eaa77b250539682be5c0282" class="m-doc">QgsRuleBasedLabeling::<wbr />RuleList</a>&amp; QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a09e81916a749bd122aae7abcb94e8703" class="m-doc-self">children</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns all children rules of this rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A list of rules</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2e680752d70b5abc3fe77827e96b09de"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRuleBasedLabeling.html#a0ac804478eaa77b250539682be5c0282" class="m-doc">QgsRuleBasedLabeling::<wbr />RuleList</a>&amp; QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e680752d70b5abc3fe77827e96b09de" class="m-doc-self">children</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns all children rules of this rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A list of rules</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="abc2772e6fd8f05af36dd5218b81867e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc2772e6fd8f05af36dd5218b81867e8" class="m-doc-self">createSubProviders</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              <a href="classQgsRuleBasedLabeling.html#a8b87a229f59f0cc0d13f7038337edb81" class="m-doc">RuleToProviderMap</a>&amp; subProviders,
+              <a href="classQgsRuleBasedLabelProvider.html" class="m-doc">QgsRuleBasedLabelProvider</a>* provider)</span></span>
+            </h3>
+            <p>add providers</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4a713327279e24fae098432a5813488d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4a713327279e24fae098432a5813488d" class="m-doc-self">dependsOnScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Determines if scale based labeling is active.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if scale based labeling is active</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab836a07cc194b99b83aec9067e550a95"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRuleBasedLabeling.html#a0ac804478eaa77b250539682be5c0282" class="m-doc">QgsRuleBasedLabeling::<wbr />RuleList</a> QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab836a07cc194b99b83aec9067e550a95" class="m-doc-self">descendants</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns all children, grand-children, grand-grand-children, grand-gra...</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A list of descendant rules</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>you get it</p>
+          </div></section>
+          <section class="m-doc-details" id="affdb35a4f9ca75f9ffd2290100417e14"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#affdb35a4f9ca75f9ffd2290100417e14" class="m-doc-self">description</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>A human readable description for this rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Description</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5ea33f6852fac075dcf8748290baa7dd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ea33f6852fac075dcf8748290baa7dd" class="m-doc-self">filterExpression</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>A filter that will check if this rule applies.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>An expression</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5475ce2bf2b1f88cea9066c2a4b7476d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>* QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5475ce2bf2b1f88cea9066c2a4b7476d" class="m-doc-self">findRuleByKey</a>(</span><span class="m-doc-wrap">const QString&amp; key)</span></span>
+            </h3>
+            <p>Find a labeling rule thanks to its key.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">key</td>
+                  <td>The key of the rule to find</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The rule or a nullptr if not found</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab6625c9bac699e4009f528fc6cff64b6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab6625c9bac699e4009f528fc6cff64b6" class="m-doc-self">isElse</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Check if this rule is an ELSE rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if this rule is an else rule</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a309038f92e5d87bfd35ee890625bd535"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a309038f92e5d87bfd35ee890625bd535" class="m-doc-self">maximumScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the maximum map scale (i.e.</p>
+<p>most &quot;zoomed in&quot; scale) at which the label rule will be active. The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. A scale of 0 indicates no maximum scale visibility.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#aedbafabb71a4d9f3a91e9fa5d23f2103" class="m-doc">minimumScale()</a></p><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#a22a75f30bf4012328b116dc8f35c456d" class="m-doc">setMaximumScale()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aedbafabb71a4d9f3a91e9fa5d23f2103"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aedbafabb71a4d9f3a91e9fa5d23f2103" class="m-doc-self">minimumScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the minimum map scale (i.e.</p>
+<p>most &quot;zoomed out&quot; scale) at which the label rule will be active. The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. A scale of 0 indicates no minimum scale visibility.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#a309038f92e5d87bfd35ee890625bd535" class="m-doc">maximumScale()</a></p><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#ad15316111c63c0f6ec32df946dd2f489" class="m-doc">setMinimumScale()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adfd1a5e01fb9f1d3f13a6f91a5d9c7ab"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>* QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adfd1a5e01fb9f1d3f13a6f91a5d9c7ab" class="m-doc-self">parent</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>The parent rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Parent rule</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a123e7d82368d24c7377a689a7b13fb8e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRuleBasedLabeling_1_1Rule.html" class="m-doc">QgsRuleBasedLabeling::<wbr />Rule</a>* QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a123e7d82368d24c7377a689a7b13fb8e" class="m-doc-self">parent</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>The parent rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Parent rule</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac8794a5c97034ad390ad67294b889f3f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac8794a5c97034ad390ad67294b889f3f" class="m-doc-self">prepare</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              QSet&lt;QString&gt;&amp; attributeNames,
+              <a href="classQgsRuleBasedLabeling.html#a8b87a229f59f0cc0d13f7038337edb81" class="m-doc">RuleToProviderMap</a>&amp; subProviders)</span></span>
+            </h3>
+            <p>call <a href="classQgsRuleBasedLabeling_1_1Rule.html#ac8794a5c97034ad390ad67294b889f3f" class="m-doc">prepare()</a> on sub-providers and populate attributeNames</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad014ec3085c4fd27b33f995ed494ef06"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRuleBasedLabeling_1_1Rule.html#a73737c47214144ae4177985bce52bf9e" class="m-doc">RegisterResult</a> QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad014ec3085c4fd27b33f995ed494ef06" class="m-doc-self">registerFeature</a>(</span><span class="m-doc-wrap"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context,
+              <a href="classQgsRuleBasedLabeling.html#a8b87a229f59f0cc0d13f7038337edb81" class="m-doc">RuleToProviderMap</a>&amp; subProviders,
+              const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; obstacleGeometry = <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>())</span></span>
+            </h3>
+            <p>register individual features</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa79d92d7ec516f48f5a24a56091a72bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa79d92d7ec516f48f5a24a56091a72bb" class="m-doc-self">setActive</a>(</span><span class="m-doc-wrap">bool state)</span></span>
+            </h3>
+            <p>Sets if this rule is active.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">state</td>
+                  <td>Determines if the rule should be activated or deactivated</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a380f8a7e1713364db56167428c12e60b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a380f8a7e1713364db56167428c12e60b" class="m-doc-self">setDescription</a>(</span><span class="m-doc-wrap">const QString&amp; description)</span></span>
+            </h3>
+            <p>Set a human readable description for this rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">description</td>
+                  <td>Description</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aed0f41ddf78ef24ddd82d58146cd5fe4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aed0f41ddf78ef24ddd82d58146cd5fe4" class="m-doc-self">setFilterExpression</a>(</span><span class="m-doc-wrap">const QString&amp; filterExp)</span></span>
+            </h3>
+            <p>Set the expression used to check if a given feature shall be rendered with this rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">filterExp</td>
+                  <td>An expression</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af5965530b01489c73524aec522af51da"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af5965530b01489c73524aec522af51da" class="m-doc-self">setIsElse</a>(</span><span class="m-doc-wrap">bool iselse)</span></span>
+            </h3>
+            <p>Sets if this rule is an ELSE rule.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">iselse</td>
+                  <td>If true, this rule is an ELSE rule</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a22a75f30bf4012328b116dc8f35c456d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a22a75f30bf4012328b116dc8f35c456d" class="m-doc-self">setMaximumScale</a>(</span><span class="m-doc-wrap">double scale)</span></span>
+            </h3>
+            <p>Sets the maximum map <em>scale</em> (i.e.</p>
+<p>most &quot;zoomed in&quot; scale) at which the rule will be active. The <em>scale</em> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. A <em>scale</em> of 0 indicates no maximum scale visibility.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#a309038f92e5d87bfd35ee890625bd535" class="m-doc">maximumScale()</a></p><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#ad15316111c63c0f6ec32df946dd2f489" class="m-doc">setMinimumScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad15316111c63c0f6ec32df946dd2f489"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad15316111c63c0f6ec32df946dd2f489" class="m-doc-self">setMinimumScale</a>(</span><span class="m-doc-wrap">double scale)</span></span>
+            </h3>
+            <p>Sets the minimum map <em>scale</em> (i.e.</p>
+<p>most &quot;zoomed out&quot; scale) at which the label rule will be active. The <em>scale</em> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. A <em>scale</em> of 0 indicates no minimum scale visibility.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#aedbafabb71a4d9f3a91e9fa5d23f2103" class="m-doc">minimumScale()</a></p><p><a href="classQgsRuleBasedLabeling_1_1Rule.html#a22a75f30bf4012328b116dc8f35c456d" class="m-doc">setMaximumScale()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a522941973e8552d2b6165497a1d26f6c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPalLayerSettings.html" class="m-doc">QgsPalLayerSettings</a>* QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a522941973e8552d2b6165497a1d26f6c" class="m-doc-self">settings</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets the labeling settings.</p>
+<p>May return a null pointer.</p>
+          </div></section>
+          <section class="m-doc-details" id="a9d391e11a7d244d106debd5422d2dd86"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRuleBasedLabeling::<wbr />Rule::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9d391e11a7d244d106debd5422d2dd86" class="m-doc-self">subProviderIds</a>(</span><span class="m-doc-wrap">QStringList&amp; list) const</span></span>
+            </h3>
+            <p>append rule keys of descendants that contain valid settings (i.e.</p>
+<p>they will be sub-providers)</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

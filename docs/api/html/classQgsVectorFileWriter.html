@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsVectorFileWriter class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsVectorFileWriter <span class="m-thin">class</span>
+        </h1>
+        <p>A convenience class for writing vector files to disk.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>There are two possibilities how to use this class:</p><ol><li>static call to <a href="classQgsVectorFileWriter.html#abb1879ababb5d662ff95d7374d742008" class="m-doc">QgsVectorFileWriter::<wbr />writeAsVectorFormat</a>(...) which saves the whole vector layer</li><li>create an instance of the class and issue calls to addFeature(...)</li></ol>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsFeatureSink.html" class="m-doc">QgsFeatureSink</a>
+            </dt>
+            <dd>An interface for objects which accept features via addFeature(s) methods.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsVectorFileWriter_1_1DriverDetails.html" class="m-doc">DriverDetails</a>
+            </dt>
+            <dd>Details of available driver formats.</dd>
+            <dt>
+              class <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">FieldValueConverter</a>
+            </dt>
+            <dd>Interface to convert raw field values to their user-friendly value.</dd>
+            <dt>
+              struct <a href="structQgsVectorFileWriter_1_1FilterFormatDetails.html" class="m-doc">FilterFormatDetails</a>
+            </dt>
+            <dd>Details of available filters and formats.</dd>
+            <dt>
+              class <a href="classQgsVectorFileWriter_1_1SaveVectorOptions.html" class="m-doc">SaveVectorOptions</a>
+            </dt>
+            <dd>Options to pass to <a href="classQgsVectorFileWriter.html#abb1879ababb5d662ff95d7374d742008" class="m-doc">writeAsVectorFormat()</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#afda86eff21ac1da7dc42cbdde424acb1" class="m-doc">ActionOnExistingFile</a> { </span><span class="m-doc-wrap"><a href="#afda86eff21ac1da7dc42cbdde424acb1ad724e253787e753035c3706a33f34cc1" class="m-doc">CreateOrOverwriteFile</a>,
+              <a href="#afda86eff21ac1da7dc42cbdde424acb1ac227f6e0f2382b000dd59c2d24639b67" class="m-doc">CreateOrOverwriteLayer</a>,
+              <a href="#afda86eff21ac1da7dc42cbdde424acb1ae26480cef1cad2bd5d5e02f1f94dbd11" class="m-doc">AppendToLayerNoNewFields</a>,
+              <a href="#afda86eff21ac1da7dc42cbdde424acb1af665f771ac6426f4d7520d213b69187c" class="m-doc">AppendToLayerAddFields</a> }</span>
+            </dt>
+            <dd>Combination of CanAddNewLayer, CanAppendToExistingLayer, CanAddNewFieldsToExistingLayer or CanDeleteLayer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a108df7127b36c4cf469dea1d3b0b8e9c" class="m-doc">EditionCapability</a> { </span><span class="m-doc-wrap"><a href="#a108df7127b36c4cf469dea1d3b0b8e9ca5a296f7865fbd3a78046ecda0b57fa59" class="m-doc">CanAddNewLayer</a> = 1 &lt;&lt; 0,
+              <a href="#a108df7127b36c4cf469dea1d3b0b8e9ca20f38cbd7ce55674c1c0257af48ac8d6" class="m-doc">CanAppendToExistingLayer</a> = 1 &lt;&lt; 1,
+              <a href="#a108df7127b36c4cf469dea1d3b0b8e9ca1d9c8f0ee225ee5d0e959e5c70defa7a" class="m-doc">CanAddNewFieldsToExistingLayer</a> = 1 &lt;&lt; 2,
+              <a href="#a108df7127b36c4cf469dea1d3b0b8e9caa480afe1d12bdaabde36bd75f862a548" class="m-doc">CanDeleteLayer</a> = 1 &lt;&lt; 3 }</span>
+            </dt>
+            <dd>Edition capability flags.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#aa42e9897c4b1cbdabbdc08002550108e" class="m-doc">VectorFormatOption</a> { </span><span class="m-doc-wrap"><a href="#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a> = 1 &lt;&lt; 1,
+              <a href="#aa42e9897c4b1cbdabbdc08002550108ea5c74f6095ec7ea850cc65f0fd1bb87bd" class="m-doc">SkipNonSpatialFormats</a> = 1 &lt;&lt; 2 }</span>
+            </dt>
+            <dd>Options for sorting and filtering vector formats.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">WriterError</a> { </span><span class="m-doc-wrap"><a href="#a3a4405a59d8f8ac147878cae5bd9badea895defb2f533770206caa176cbd59827" class="m-doc">NoError</a> = 0,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badeafec6f47c5429ffc6103cfca2a5d9b97b" class="m-doc">ErrDriverNotFound</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badea8f6198e7d3dd13809470f7f0bd6ff3e7" class="m-doc">ErrCreateDataSource</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badea087f8c320f0ddf4cae140317ae561804" class="m-doc">ErrCreateLayer</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badea29a40fd2d2cf2d3296faafd4132fc593" class="m-doc">ErrAttributeTypeUnsupported</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badea48f85a36399ab200328052e214ee5859" class="m-doc">ErrAttributeCreationFailed</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badea4ee01040c52ee8713deee39b92a26852" class="m-doc">ErrProjection</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badeac36653e2c87f8d17bbb73fc9c5dedcf9" class="m-doc">ErrFeatureWriteFailed</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badeaec3f8283f829d1c98e7e6060c627aded" class="m-doc">ErrInvalidLayer</a>,
+              <a href="#a3a4405a59d8f8ac147878cae5bd9badea449f6fdf156a18ff00fb03fb0cb6d29f" class="m-doc">Canceled</a> }</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ab4ee564d053a608025a7d304423003ce" class="m-doc">areThereNewFieldsToCreate</a>(</span><span class="m-doc-wrap">const QString&amp; datasetName,
+              const QString&amp; layerName,
+              <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes) -&gt; bool</span>
+            </dt>
+            <dd>Returns whether there are among the attributes specified some that do not exist yet in the layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae77e9b23fc9e48612d7e36a71b03cc56" class="m-doc-self" name="ae77e9b23fc9e48612d7e36a71b03cc56">convertCodecNameForEncodingOption</a>(</span><span class="m-doc-wrap">const QString&amp; codecName) -&gt; QString</span>
+            </dt>
+            <dd>Converts codec name to string passed to ENCODING layer creation option of OGR Shapefile.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ad92f30d3cfca5a3fccb686da36ec6622" class="m-doc">defaultDatasetOptions</a>(</span><span class="m-doc-wrap">const QString&amp; driverName) -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of the default dataset options for a specified driver.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5d92da9f2991542faca7bf809286ff6f" class="m-doc">defaultLayerOptions</a>(</span><span class="m-doc-wrap">const QString&amp; driverName) -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of the default layer options for a specified driver.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a853b8ecddf91890523c61aa3e27b97e3" class="m-doc">deleteShapeFile</a>(</span><span class="m-doc-wrap">const QString&amp; fileName) -&gt; bool</span>
+            </dt>
+            <dd>Delete a shapefile (and its accompanying shx / dbf / prf)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a61f47207b1959d021ef2eb4b45c6d88e" class="m-doc">driverForExtension</a>(</span><span class="m-doc-wrap">const QString&amp; extension) -&gt; QString</span>
+            </dt>
+            <dd>Returns the OGR driver name for a specified file <em>extension</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1129392e0f083f6fffb6f702f7c6b2d5" class="m-doc">editionCapabilities</a>(</span><span class="m-doc-wrap">const QString&amp; datasetName) -&gt; QgsVectorFileWriter::EditionCapabilities</span>
+            </dt>
+            <dd>Returns edition capabilities for an existing dataset name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#af61aeb4efd85caecb0c244ce911a2bb0" class="m-doc">fileFilterString</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>) -&gt; QString</span>
+            </dt>
+            <dd>Returns filter string that can be used for dialogs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a89827e931a1d174437ceb9d7fca28cf2" class="m-doc-self" name="a89827e931a1d174437ceb9d7fca28cf2">filterForDriver</a>(</span><span class="m-doc-wrap">const QString&amp; driverName) -&gt; QString</span>
+            </dt>
+            <dd>Creates a filter for an OGR driver key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ab959cfe625a8dc4a3528d0451af5929d" class="m-doc">ogrDriverList</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>) -&gt; QList&lt;<a href="structQgsVectorFileWriter_1_1DriverDetails.html" class="m-doc">QgsVectorFileWriter::<wbr />DriverDetails</a>&gt;</span>
+            </dt>
+            <dd>Returns the driver list that can be used for dialogs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a97a688ee0c92903fde254174d6b85db6" class="m-doc">ogrTypeFromWkbType</a>(</span><span class="m-doc-wrap"><a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> type) -&gt; OGRwkbGeometryType</span>
+            </dt>
+            <dd>Gets the ogr geometry type from an internal QGIS wkb type enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a6e64aa45103dad8fb7fe86fed1f83360" class="m-doc">supportedFiltersAndFormats</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>) -&gt; QList&lt;<a href="structQgsVectorFileWriter_1_1FilterFormatDetails.html" class="m-doc">QgsVectorFileWriter::<wbr />FilterFormatDetails</a>&gt;</span>
+            </dt>
+            <dd>Returns a list or pairs, with format filter string as first element and OGR format key as second element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae4028dfc2ffa72b3e8f4508a9af96e4a" class="m-doc">supportedFormatExtensions</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>) -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of file extensions for supported formats, e.g &quot;shp&quot;, &quot;gpkg&quot;.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1f582af055260a8ba3b1997d7698cd8c" class="m-doc">supportsFeatureStyles</a>(</span><span class="m-doc-wrap">const QString&amp; driverName) -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the specified <em>driverName</em> supports feature styles.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a565439cc1c93a7bc85090d4a9e7ce1fd" class="m-doc">targetLayerExists</a>(</span><span class="m-doc-wrap">const QString&amp; datasetName,
+              const QString&amp; layerName) -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the target layer already exists.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#abb1879ababb5d662ff95d7374d742008" class="m-doc">writeAsVectorFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const QString&amp; fileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destCRS = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>(),
+              const QString&amp; driverName = &quot;GPKG&quot;,
+              bool onlySelected = false,
+              QString* errorMessage = nullptr,
+              const QStringList&amp; datasourceOptions = QStringList(),
+              const QStringList&amp; layerOptions = QStringList(),
+              bool skipAttributeCreation = false,
+              QString* newFilename = nullptr,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport = <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" class="m-doc">QgsVectorFileWriter::<wbr />NoSymbology</a>,
+              double symbologyScale = 1.0,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>* filterExtent = nullptr,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> overrideGeometryType = <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" class="m-doc">QgsWkbTypes::<wbr />Unknown</a>,
+              bool forceMulti = false,
+              bool includeZ = false,
+              const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes = <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>(),
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">QgsVectorFileWriter::<wbr />FieldValueConverter</a>* fieldValueConverter = nullptr,
+              QString* newLayer = nullptr) -&gt; <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a></span>
+            </dt>
+            <dd>Write contents of vector layer to an (OGR supported) vector format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa69d7084007503269158d425d2709a2e" class="m-doc">writeAsVectorFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const QString&amp; fileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>&amp; ct,
+              const QString&amp; driverName = &quot;GPKG&quot;,
+              bool onlySelected = false,
+              QString* errorMessage = nullptr,
+              const QStringList&amp; datasourceOptions = QStringList(),
+              const QStringList&amp; layerOptions = QStringList(),
+              bool skipAttributeCreation = false,
+              QString* newFilename = nullptr,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport = <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" class="m-doc">QgsVectorFileWriter::<wbr />NoSymbology</a>,
+              double symbologyScale = 1.0,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>* filterExtent = nullptr,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> overrideGeometryType = <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" class="m-doc">QgsWkbTypes::<wbr />Unknown</a>,
+              bool forceMulti = false,
+              bool includeZ = false,
+              const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes = <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>(),
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">QgsVectorFileWriter::<wbr />FieldValueConverter</a>* fieldValueConverter = nullptr,
+              QString* newLayer = nullptr) -&gt; <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a></span>
+            </dt>
+            <dd>Writes a layer out to a vector file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0fb1b773dbe4030890a04310aff4728b" class="m-doc">writeAsVectorFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const QString&amp; fileName,
+              const <a href="classQgsVectorFileWriter_1_1SaveVectorOptions.html" class="m-doc">QgsVectorFileWriter::<wbr />SaveVectorOptions</a>&amp; options,
+              QString* newFilename = nullptr,
+              QString* errorMessage = nullptr,
+              QString* newLayer = nullptr) -&gt; <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a></span>
+            </dt>
+            <dd>Writes a layer out to a vector file.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#af738739713ee2c1f35764124a55f1050" class="m-doc-self" name="af738739713ee2c1f35764124a55f1050">QgsVectorFileWriter</a>(</span><span class="m-doc-wrap">const QString&amp; vectorFileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> geometryType,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>(),
+              const QString&amp; driverName = &quot;GPKG&quot;,
+              const QStringList&amp; datasourceOptions = QStringList(),
+              const QStringList&amp; layerOptions = QStringList(),
+              QString* newFilename = nullptr,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport = <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" class="m-doc">QgsVectorFileWriter::<wbr />NoSymbology</a>,
+              QgsFeatureSink::SinkFlags sinkFlags = nullptr,
+              QString* newLayer = nullptr)</span>
+            </dt>
+            <dd>Create a new vector file writer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2d931c0625d83c70eabcbb531330f087" class="m-doc">QgsVectorFileWriter</a>(</span><span class="m-doc-wrap">const QString&amp; vectorFileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> geometryType,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs,
+              const QString&amp; driverName,
+              const QStringList&amp; datasourceOptions,
+              const QStringList&amp; layerOptions,
+              QString* newFilename,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport,
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">QgsVectorFileWriter::<wbr />FieldValueConverter</a>* fieldValueConverter,
+              const QString&amp; layerName,
+              <a href="classQgsVectorFileWriter.html#afda86eff21ac1da7dc42cbdde424acb1" class="m-doc">QgsVectorFileWriter::<wbr />ActionOnExistingFile</a> action,
+              QString* newLayer = nullptr)</span>
+            </dt>
+            <dd>Create a new vector file writer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a56a66685610ab855a5b23c87dbb910bd" class="m-doc-self" name="a56a66685610ab855a5b23c87dbb910bd">QgsVectorFileWriter</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorFileWriter.html" class="m-doc">QgsVectorFileWriter</a>&amp; rh) <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd><a href="classQgsVectorFileWriter.html" class="m-doc">QgsVectorFileWriter</a> cannot be copied.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a564a24719c660809393abae67fb3093d" class="m-doc-self" name="a564a24719c660809393abae67fb3093d">~QgsVectorFileWriter</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Close opened shapefile for writing.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a037c91a3018bfcb6c5e350bdbbae99f4" class="m-doc">addFeature</a>(</span><span class="m-doc-wrap"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              QgsFeatureSink::Flags flags = nullptr) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Adds a single <em>feature</em> to the sink.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa7a2e60585dc1bf76b6dd54f44a153ac" class="m-doc">addFeatures</a>(</span><span class="m-doc-wrap"><a href="qgsfeature_8h.html#ae0f922f3469155bc17dfc96729f1c1cc" class="m-doc">QgsFeatureList</a>&amp; features,
+              QgsFeatureSink::Flags flags = nullptr) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Adds a list of <em>features</em> to the sink.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aed15a1c03d4be7a1f9ac5a8427ba3433" class="m-doc">addFeatureWithStyle</a>(</span><span class="m-doc-wrap"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>* renderer,
+              <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> outputUnit = <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50da0c409a69a5ab55af7765ec7a6b8d574b" class="m-doc">QgsUnitTypes::<wbr />DistanceMeters</a>) -&gt; bool</span>
+            </dt>
+            <dd>Adds a <em>feature</em> to the currently opened data source, using the style from a specified <em>renderer</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab84c5dacd6ceae95d8a17755b7bae80d" class="m-doc">attrIdxToOgrIdx</a>(</span><span class="m-doc-wrap">) -&gt; QMap&lt;int, int&gt;</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae637bbb1ca61f065eeb643c30b65ee26" class="m-doc-self" name="ae637bbb1ca61f065eeb643c30b65ee26">errorMessage</a>(</span><span class="m-doc-wrap">) -&gt; QString</span>
+            </dt>
+            <dd>Retrieves error message.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a74e50619e6d313df983e6d3ffa6f1cfb" class="m-doc-self" name="a74e50619e6d313df983e6d3ffa6f1cfb">hasError</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a></span>
+            </dt>
+            <dd>Checks whether there were any errors in constructor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac44cba650bf8c30be5ee757af76bee4e" class="m-doc-self" name="ac44cba650bf8c30be5ee757af76bee4e">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorFileWriter.html" class="m-doc">QgsVectorFileWriter</a>&amp; rh) -&gt; <a href="classQgsVectorFileWriter.html" class="m-doc">QgsVectorFileWriter</a>&amp; <span class="m-label m-flat m-danger">deleted</span></span>
+            </dt>
+            <dd><a href="classQgsVectorFileWriter.html" class="m-doc">QgsVectorFileWriter</a> cannot be copied.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aef2f0ea401dae23e657a6977110722dc" class="m-doc">setSymbologyScale</a>(</span><span class="m-doc-wrap">double scale)</span>
+            </dt>
+            <dd>Set reference <em>scale</em> for output.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a56b0201c92365ba91a5277a9bdbe8809" class="m-doc">symbologyScale</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the reference scale for output.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2a24310d633da326bdc9268662009403" class="m-doc">createEmptyGeometry</a>(</span><span class="m-doc-wrap"><a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> wkbType) -&gt; OGRGeometryH</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QMap&lt;int, int&gt; <a href="#a3178de40584c63951609a528c5dceec0" class="m-doc-self" name="a3178de40584c63951609a528c5dceec0">mAttrIdxToOgrIdx</a>
+            </dt>
+            <dd>Map attribute indizes to OGR field indexes.</dd>
+            <dt>
+              <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">WriterError</a> <a href="#acb9ed0bb93a9ca56251f7bc48b0b576f" class="m-doc-self" name="acb9ed0bb93a9ca56251f7bc48b0b576f">mError</a>
+            </dt>
+            <dd>Contains error value if construction was not successful.</dd>
+            <dt>
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">FieldValueConverter</a>* <a href="#aed06d15562b8249d3c038953e9f6085e" class="m-doc-self" name="aed06d15562b8249d3c038953e9f6085e">mFieldValueConverter</a>
+            </dt>
+            <dd>Field value converter.</dd>
+            <dt>
+              double <a href="#a21f80fa13ba5dcc63c516dc4085f35f7" class="m-doc-self" name="a21f80fa13ba5dcc63c516dc4085f35f7">mSymbologyScale</a>
+            </dt>
+            <dd>Scale for symbology export (e.g. for symbols units in map units)</dd>
+            <dt>
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> <a href="#a90f774daaa18ab2cb1199435d5e28ec6" class="m-doc-self" name="a90f774daaa18ab2cb1199435d5e28ec6">mWkbType</a>
+            </dt>
+            <dd>Geometry type which is being used.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="afda86eff21ac1da7dc42cbdde424acb1"><div>
+            <h3>
+              enum QgsVectorFileWriter::<wbr /><a href="#afda86eff21ac1da7dc42cbdde424acb1" class="m-doc-self">ActionOnExistingFile</a>
+            </h3>
+            <p>Combination of CanAddNewLayer, CanAppendToExistingLayer, CanAddNewFieldsToExistingLayer or CanDeleteLayer.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0 Enumeration to describe how to handle existing files</p><p>QGIS 3.0</p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#afda86eff21ac1da7dc42cbdde424acb1ad724e253787e753035c3706a33f34cc1" class="m-doc-self" name="afda86eff21ac1da7dc42cbdde424acb1ad724e253787e753035c3706a33f34cc1">CreateOrOverwriteFile</a></td>
+                  <td>
+                  <p>Create or overwrite file.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#afda86eff21ac1da7dc42cbdde424acb1ac227f6e0f2382b000dd59c2d24639b67" class="m-doc-self" name="afda86eff21ac1da7dc42cbdde424acb1ac227f6e0f2382b000dd59c2d24639b67">CreateOrOverwriteLayer</a></td>
+                  <td>
+                  <p>Create or overwrite layer.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#afda86eff21ac1da7dc42cbdde424acb1ae26480cef1cad2bd5d5e02f1f94dbd11" class="m-doc-self" name="afda86eff21ac1da7dc42cbdde424acb1ae26480cef1cad2bd5d5e02f1f94dbd11">AppendToLayerNoNewFields</a></td>
+                  <td>
+                  <p>Append features to existing layer, but do not create new fields.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#afda86eff21ac1da7dc42cbdde424acb1af665f771ac6426f4d7520d213b69187c" class="m-doc-self" name="afda86eff21ac1da7dc42cbdde424acb1af665f771ac6426f4d7520d213b69187c">AppendToLayerAddFields</a></td>
+                  <td>
+                  <p>Append features to existing layer, and create new fields if needed.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a108df7127b36c4cf469dea1d3b0b8e9c"><div>
+            <h3>
+              enum QgsVectorFileWriter::<wbr /><a href="#a108df7127b36c4cf469dea1d3b0b8e9c" class="m-doc-self">EditionCapability</a>
+            </h3>
+            <p>Edition capability flags.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a108df7127b36c4cf469dea1d3b0b8e9ca5a296f7865fbd3a78046ecda0b57fa59" class="m-doc-self" name="a108df7127b36c4cf469dea1d3b0b8e9ca5a296f7865fbd3a78046ecda0b57fa59">CanAddNewLayer</a></td>
+                  <td>
+                  <p>Flag to indicate that a new layer can be added to the dataset.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a108df7127b36c4cf469dea1d3b0b8e9ca20f38cbd7ce55674c1c0257af48ac8d6" class="m-doc-self" name="a108df7127b36c4cf469dea1d3b0b8e9ca20f38cbd7ce55674c1c0257af48ac8d6">CanAppendToExistingLayer</a></td>
+                  <td>
+                  <p>Flag to indicate that new features can be added to an existing layer.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a108df7127b36c4cf469dea1d3b0b8e9ca1d9c8f0ee225ee5d0e959e5c70defa7a" class="m-doc-self" name="a108df7127b36c4cf469dea1d3b0b8e9ca1d9c8f0ee225ee5d0e959e5c70defa7a">CanAddNewFieldsToExistingLayer</a></td>
+                  <td>
+                  <p>Flag to indicate that new fields can be added to an existing layer. Imply CanAppendToExistingLayer.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a108df7127b36c4cf469dea1d3b0b8e9caa480afe1d12bdaabde36bd75f862a548" class="m-doc-self" name="a108df7127b36c4cf469dea1d3b0b8e9caa480afe1d12bdaabde36bd75f862a548">CanDeleteLayer</a></td>
+                  <td>
+                  <p>Flag to indicate that an existing layer can be deleted.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa42e9897c4b1cbdabbdc08002550108e"><div>
+            <h3>
+              enum QgsVectorFileWriter::<wbr /><a href="#aa42e9897c4b1cbdabbdc08002550108e" class="m-doc-self">VectorFormatOption</a>
+            </h3>
+            <p>Options for sorting and filtering vector formats.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc-self" name="aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf">SortRecommended</a></td>
+                  <td>
+                  <p>Use recommended sort order, with extremely commonly used formats listed first.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aa42e9897c4b1cbdabbdc08002550108ea5c74f6095ec7ea850cc65f0fd1bb87bd" class="m-doc-self" name="aa42e9897c4b1cbdabbdc08002550108ea5c74f6095ec7ea850cc65f0fd1bb87bd">SkipNonSpatialFormats</a></td>
+                  <td>
+                  <p>Filter out any formats which do not have spatial support (e.g. those which cannot save geometries)</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a3a4405a59d8f8ac147878cae5bd9bade"><div>
+            <h3>
+              enum QgsVectorFileWriter::<wbr /><a href="#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc-self">WriterError</a>
+            </h3>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea895defb2f533770206caa176cbd59827" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea895defb2f533770206caa176cbd59827">NoError</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badeafec6f47c5429ffc6103cfca2a5d9b97b" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badeafec6f47c5429ffc6103cfca2a5d9b97b">ErrDriverNotFound</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea8f6198e7d3dd13809470f7f0bd6ff3e7" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea8f6198e7d3dd13809470f7f0bd6ff3e7">ErrCreateDataSource</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea087f8c320f0ddf4cae140317ae561804" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea087f8c320f0ddf4cae140317ae561804">ErrCreateLayer</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea29a40fd2d2cf2d3296faafd4132fc593" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea29a40fd2d2cf2d3296faafd4132fc593">ErrAttributeTypeUnsupported</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea48f85a36399ab200328052e214ee5859" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea48f85a36399ab200328052e214ee5859">ErrAttributeCreationFailed</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea4ee01040c52ee8713deee39b92a26852" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea4ee01040c52ee8713deee39b92a26852">ErrProjection</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badeac36653e2c87f8d17bbb73fc9c5dedcf9" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badeac36653e2c87f8d17bbb73fc9c5dedcf9">ErrFeatureWriteFailed</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badeaec3f8283f829d1c98e7e6060c627aded" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badeaec3f8283f829d1c98e7e6060c627aded">ErrInvalidLayer</a></td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a3a4405a59d8f8ac147878cae5bd9badea449f6fdf156a18ff00fb03fb0cb6d29f" class="m-doc-self" name="a3a4405a59d8f8ac147878cae5bd9badea449f6fdf156a18ff00fb03fb0cb6d29f">Canceled</a></td>
+                  <td>
+                  <p>Writing was interrupted by manual cancelation.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ab4ee564d053a608025a7d304423003ce"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab4ee564d053a608025a7d304423003ce" class="m-doc-self">areThereNewFieldsToCreate</a>(</span><span class="m-doc-wrap">const QString&amp; datasetName,
+              const QString&amp; layerName,
+              <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes)</span></span>
+            </h3>
+            <p>Returns whether there are among the attributes specified some that do not exist yet in the layer.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad92f30d3cfca5a3fccb686da36ec6622"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad92f30d3cfca5a3fccb686da36ec6622" class="m-doc-self">defaultDatasetOptions</a>(</span><span class="m-doc-wrap">const QString&amp; driverName)</span></span>
+            </h3>
+            <p>Returns a list of the default dataset options for a specified driver.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">driverName</td>
+                  <td>name of OGR driver</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#a5d92da9f2991542faca7bf809286ff6f" class="m-doc">defaultLayerOptions()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5d92da9f2991542faca7bf809286ff6f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d92da9f2991542faca7bf809286ff6f" class="m-doc-self">defaultLayerOptions</a>(</span><span class="m-doc-wrap">const QString&amp; driverName)</span></span>
+            </h3>
+            <p>Returns a list of the default layer options for a specified driver.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">driverName</td>
+                  <td>name of OGR driver</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#ad92f30d3cfca5a3fccb686da36ec6622" class="m-doc">defaultDatasetOptions()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a853b8ecddf91890523c61aa3e27b97e3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a853b8ecddf91890523c61aa3e27b97e3" class="m-doc-self">deleteShapeFile</a>(</span><span class="m-doc-wrap">const QString&amp; fileName)</span></span>
+            </h3>
+            <p>Delete a shapefile (and its accompanying shx / dbf / prf)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fileName</td>
+                  <td>/path/to/file.shp</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>bool true if the file was deleted successfully</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a61f47207b1959d021ef2eb4b45c6d88e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a61f47207b1959d021ef2eb4b45c6d88e" class="m-doc-self">driverForExtension</a>(</span><span class="m-doc-wrap">const QString&amp; extension)</span></span>
+            </h3>
+            <p>Returns the OGR driver name for a specified file <em>extension</em>.</p>
+<p>E.g. the driver name for the &quot;.shp&quot; extension is &quot;ESRI Shapefile&quot;. If no suitable drivers are found then an empty string is returned.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1129392e0f083f6fffb6f702f7c6b2d5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QgsVectorFileWriter::EditionCapabilities QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1129392e0f083f6fffb6f702f7c6b2d5" class="m-doc-self">editionCapabilities</a>(</span><span class="m-doc-wrap">const QString&amp; datasetName)</span></span>
+            </h3>
+            <p>Returns edition capabilities for an existing dataset name.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af61aeb4efd85caecb0c244ce911a2bb0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af61aeb4efd85caecb0c244ce911a2bb0" class="m-doc-self">fileFilterString</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>)</span></span>
+            </h3>
+            <p>Returns filter string that can be used for dialogs.</p>
+<p>The <em>options</em> argument can be used to control the sorting and filtering of returned drivers.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab959cfe625a8dc4a3528d0451af5929d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;<a href="structQgsVectorFileWriter_1_1DriverDetails.html" class="m-doc">QgsVectorFileWriter::<wbr />DriverDetails</a>&gt; QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab959cfe625a8dc4a3528d0451af5929d" class="m-doc-self">ogrDriverList</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>)</span></span>
+            </h3>
+            <p>Returns the driver list that can be used for dialogs.</p>
+<p>It contains all OGR drivers plus some additional internal QGIS driver names to distinguish between more supported formats of the same OGR driver.</p><p>The returned list consists of structs containing the driver long name (e.g. user-friendly display name for the format) and internal driver short name.</p><p>The <em>options</em> argument can be used to control the sorting and filtering of returned drivers.</p>
+          </div></section>
+          <section class="m-doc-details" id="a97a688ee0c92903fde254174d6b85db6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static OGRwkbGeometryType QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a97a688ee0c92903fde254174d6b85db6" class="m-doc-self">ogrTypeFromWkbType</a>(</span><span class="m-doc-wrap"><a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> type)</span></span>
+            </h3>
+            <p>Gets the ogr geometry type from an internal QGIS wkb type enum.</p>
+<p>Will drop M values and convert Z to 2.5D where required.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6e64aa45103dad8fb7fe86fed1f83360"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;<a href="structQgsVectorFileWriter_1_1FilterFormatDetails.html" class="m-doc">QgsVectorFileWriter::<wbr />FilterFormatDetails</a>&gt; QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6e64aa45103dad8fb7fe86fed1f83360" class="m-doc-self">supportedFiltersAndFormats</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>)</span></span>
+            </h3>
+            <p>Returns a list or pairs, with format filter string as first element and OGR format key as second element.</p>
+<p>The <em>options</em> argument can be used to control the sorting and filtering of returned formats.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#ae4028dfc2ffa72b3e8f4508a9af96e4a" class="m-doc">supportedFormatExtensions()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae4028dfc2ffa72b3e8f4508a9af96e4a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae4028dfc2ffa72b3e8f4508a9af96e4a" class="m-doc-self">supportedFormatExtensions</a>(</span><span class="m-doc-wrap">VectorFormatOptions options = <a href="classQgsVectorFileWriter.html#aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" class="m-doc">SortRecommended</a>)</span></span>
+            </h3>
+            <p>Returns a list of file extensions for supported formats, e.g &quot;shp&quot;, &quot;gpkg&quot;.</p>
+<p>The <em>options</em> argument can be used to control the sorting and filtering of returned formats.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#a6e64aa45103dad8fb7fe86fed1f83360" class="m-doc">supportedFiltersAndFormats()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1f582af055260a8ba3b1997d7698cd8c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1f582af055260a8ba3b1997d7698cd8c" class="m-doc-self">supportsFeatureStyles</a>(</span><span class="m-doc-wrap">const QString&amp; driverName)</span></span>
+            </h3>
+            <p>Returns true if the specified <em>driverName</em> supports feature styles.</p>
+<p>The <em>driverName</em> argument must be a valid GDAL driver name.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a565439cc1c93a7bc85090d4a9e7ce1fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a565439cc1c93a7bc85090d4a9e7ce1fd" class="m-doc-self">targetLayerExists</a>(</span><span class="m-doc-wrap">const QString&amp; datasetName,
+              const QString&amp; layerName)</span></span>
+            </h3>
+            <p>Returns whether the target layer already exists.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abb1879ababb5d662ff95d7374d742008"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a> QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abb1879ababb5d662ff95d7374d742008" class="m-doc-self">writeAsVectorFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const QString&amp; fileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; destCRS = <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>(),
+              const QString&amp; driverName = &quot;GPKG&quot;,
+              bool onlySelected = false,
+              QString* errorMessage = nullptr,
+              const QStringList&amp; datasourceOptions = QStringList(),
+              const QStringList&amp; layerOptions = QStringList(),
+              bool skipAttributeCreation = false,
+              QString* newFilename = nullptr,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport = <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" class="m-doc">QgsVectorFileWriter::<wbr />NoSymbology</a>,
+              double symbologyScale = 1.0,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>* filterExtent = nullptr,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> overrideGeometryType = <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" class="m-doc">QgsWkbTypes::<wbr />Unknown</a>,
+              bool forceMulti = false,
+              bool includeZ = false,
+              const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes = <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>(),
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">QgsVectorFileWriter::<wbr />FieldValueConverter</a>* fieldValueConverter = nullptr,
+              QString* newLayer = nullptr)</span></span>
+            </h3>
+            <p>Write contents of vector layer to an (OGR supported) vector format.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>layer to write</td>
+                </tr>
+                <tr>
+                  <td>fileName</td>
+                  <td>file name to write to</td>
+                </tr>
+                <tr>
+                  <td>fileEncoding</td>
+                  <td>encoding to use</td>
+                </tr>
+                <tr>
+                  <td>destCRS</td>
+                  <td>CRS to reproject exported geometries to, or invalid CRS for no reprojection</td>
+                </tr>
+                <tr>
+                  <td>driverName</td>
+                  <td>OGR driver to use</td>
+                </tr>
+                <tr>
+                  <td>onlySelected</td>
+                  <td>write only selected features of layer</td>
+                </tr>
+                <tr>
+                  <td>errorMessage</td>
+                  <td>pointer to buffer fo error message</td>
+                </tr>
+                <tr>
+                  <td>datasourceOptions</td>
+                  <td>list of OGR data source creation options</td>
+                </tr>
+                <tr>
+                  <td>layerOptions</td>
+                  <td>list of OGR layer creation options</td>
+                </tr>
+                <tr>
+                  <td>skipAttributeCreation</td>
+                  <td>only write geometries</td>
+                </tr>
+                <tr>
+                  <td>newFilename</td>
+                  <td>QString pointer which will contain the new file name created (in case it is different to fileName).</td>
+                </tr>
+                <tr>
+                  <td>symbologyExport</td>
+                  <td>symbology to export</td>
+                </tr>
+                <tr>
+                  <td>symbologyScale</td>
+                  <td>scale of symbology</td>
+                </tr>
+                <tr>
+                  <td>filterExtent</td>
+                  <td>if not a null pointer, only features intersecting the extent will be saved (added in QGIS 2.4)</td>
+                </tr>
+                <tr>
+                  <td>overrideGeometryType</td>
+                  <td>set to a valid geometry type to override the default geometry type for the layer. This parameter allows for conversion of geometryless tables to null geometries, etc (added in QGIS 2.14)</td>
+                </tr>
+                <tr>
+                  <td>forceMulti</td>
+                  <td>set to true to force creation of multi* geometries (added in QGIS 2.14)</td>
+                </tr>
+                <tr>
+                  <td>includeZ</td>
+                  <td>set to true to include z dimension in output. This option is only valid if overrideGeometryType is set. (added in QGIS 2.14)</td>
+                </tr>
+                <tr>
+                  <td>attributes</td>
+                  <td>attributes to export (empty means all unless skipAttributeCreation is set)</td>
+                </tr>
+                <tr>
+                  <td>fieldValueConverter</td>
+                  <td>field value converter (added in QGIS 2.16)</td>
+                </tr>
+                <tr>
+                  <td>newLayer</td>
+                  <td>QString pointer which will contain the new layer name created (in case it is different to the provided layer name) (added in QGIS 3.4, not available in python)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa69d7084007503269158d425d2709a2e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a> QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa69d7084007503269158d425d2709a2e" class="m-doc-self">writeAsVectorFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const QString&amp; fileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a>&amp; ct,
+              const QString&amp; driverName = &quot;GPKG&quot;,
+              bool onlySelected = false,
+              QString* errorMessage = nullptr,
+              const QStringList&amp; datasourceOptions = QStringList(),
+              const QStringList&amp; layerOptions = QStringList(),
+              bool skipAttributeCreation = false,
+              QString* newFilename = nullptr,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport = <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" class="m-doc">QgsVectorFileWriter::<wbr />NoSymbology</a>,
+              double symbologyScale = 1.0,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>* filterExtent = nullptr,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> overrideGeometryType = <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" class="m-doc">QgsWkbTypes::<wbr />Unknown</a>,
+              bool forceMulti = false,
+              bool includeZ = false,
+              const <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>&amp; attributes = <a href="qgsfield_8h.html#a00f27df80eac3fb534923fefaed2181d" class="m-doc">QgsAttributeList</a>(),
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">QgsVectorFileWriter::<wbr />FieldValueConverter</a>* fieldValueConverter = nullptr,
+              QString* newLayer = nullptr)</span></span>
+            </h3>
+            <p>Writes a layer out to a vector file.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>layer to write</td>
+                </tr>
+                <tr>
+                  <td>fileName</td>
+                  <td>file name to write to</td>
+                </tr>
+                <tr>
+                  <td>fileEncoding</td>
+                  <td>encoding to use</td>
+                </tr>
+                <tr>
+                  <td>ct</td>
+                  <td>coordinate transform to reproject exported geometries with, or invalid transform for no transformation</td>
+                </tr>
+                <tr>
+                  <td>driverName</td>
+                  <td>OGR driver to use</td>
+                </tr>
+                <tr>
+                  <td>onlySelected</td>
+                  <td>write only selected features of layer</td>
+                </tr>
+                <tr>
+                  <td>errorMessage</td>
+                  <td>pointer to buffer fo error message</td>
+                </tr>
+                <tr>
+                  <td>datasourceOptions</td>
+                  <td>list of OGR data source creation options</td>
+                </tr>
+                <tr>
+                  <td>layerOptions</td>
+                  <td>list of OGR layer creation options</td>
+                </tr>
+                <tr>
+                  <td>skipAttributeCreation</td>
+                  <td>only write geometries</td>
+                </tr>
+                <tr>
+                  <td>newFilename</td>
+                  <td>QString pointer which will contain the new file name created (in case it is different to fileName).</td>
+                </tr>
+                <tr>
+                  <td>symbologyExport</td>
+                  <td>symbology to export</td>
+                </tr>
+                <tr>
+                  <td>symbologyScale</td>
+                  <td>scale of symbology</td>
+                </tr>
+                <tr>
+                  <td>filterExtent</td>
+                  <td>if not a null pointer, only features intersecting the extent will be saved (added in QGIS 2.4)</td>
+                </tr>
+                <tr>
+                  <td>overrideGeometryType</td>
+                  <td>set to a valid geometry type to override the default geometry type for the layer. This parameter allows for conversion of geometryless tables to null geometries, etc (added in QGIS 2.14)</td>
+                </tr>
+                <tr>
+                  <td>forceMulti</td>
+                  <td>set to true to force creation of multi* geometries (added in QGIS 2.14)</td>
+                </tr>
+                <tr>
+                  <td>includeZ</td>
+                  <td>set to true to include z dimension in output. This option is only valid if overrideGeometryType is set. (added in QGIS 2.14)</td>
+                </tr>
+                <tr>
+                  <td>attributes</td>
+                  <td>attributes to export (empty means all unless skipAttributeCreation is set)</td>
+                </tr>
+                <tr>
+                  <td>fieldValueConverter</td>
+                  <td>field value converter (added in QGIS 2.16)</td>
+                </tr>
+                <tr>
+                  <td>newLayer</td>
+                  <td>QString pointer which will contain the new layer name created (in case it is different to the provided layer name) (added in QGIS 3.4, not available in python)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0fb1b773dbe4030890a04310aff4728b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade" class="m-doc">QgsVectorFileWriter::<wbr />WriterError</a> QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0fb1b773dbe4030890a04310aff4728b" class="m-doc-self">writeAsVectorFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer,
+              const QString&amp; fileName,
+              const <a href="classQgsVectorFileWriter_1_1SaveVectorOptions.html" class="m-doc">QgsVectorFileWriter::<wbr />SaveVectorOptions</a>&amp; options,
+              QString* newFilename = nullptr,
+              QString* errorMessage = nullptr,
+              QString* newLayer = nullptr)</span></span>
+            </h3>
+            <p>Writes a layer out to a vector file.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>source layer to write</td>
+                </tr>
+                <tr>
+                  <td>fileName</td>
+                  <td>file name to write to</td>
+                </tr>
+                <tr>
+                  <td>options</td>
+                  <td>options.</td>
+                </tr>
+                <tr>
+                  <td>newFilename</td>
+                  <td>QString pointer which will contain the new file name created (in case it is different to fileName).</td>
+                </tr>
+                <tr>
+                  <td>errorMessage</td>
+                  <td>pointer to buffer fo error message</td>
+                </tr>
+                <tr>
+                  <td>newLayer</td>
+                  <td>QString pointer which will contain the new layer name created (in case it is different to the provided layer name) (added in QGIS 3.4, not available in python)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2d931c0625d83c70eabcbb531330f087"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d931c0625d83c70eabcbb531330f087" class="m-doc-self">QgsVectorFileWriter</a>(</span><span class="m-doc-wrap">const QString&amp; vectorFileName,
+              const QString&amp; fileEncoding,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> geometryType,
+              const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs,
+              const QString&amp; driverName,
+              const QStringList&amp; datasourceOptions,
+              const QStringList&amp; layerOptions,
+              QString* newFilename,
+              <a href="classQgsVectorFileWriter.html#a1aac90d30d811d2888d1aab4098ad63c" class="m-doc">QgsVectorFileWriter::<wbr />SymbologyExport</a> symbologyExport,
+              <a href="classQgsVectorFileWriter_1_1FieldValueConverter.html" class="m-doc">QgsVectorFileWriter::<wbr />FieldValueConverter</a>* fieldValueConverter,
+              const QString&amp; layerName,
+              <a href="classQgsVectorFileWriter.html#afda86eff21ac1da7dc42cbdde424acb1" class="m-doc">QgsVectorFileWriter::<wbr />ActionOnExistingFile</a> action,
+              QString* newLayer = nullptr)</span></span>
+            </h3>
+            <p>Create a new vector file writer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">vectorFileName</td>
+                  <td>file name to write to</td>
+                </tr>
+                <tr>
+                  <td>fileEncoding</td>
+                  <td>encoding to use</td>
+                </tr>
+                <tr>
+                  <td>fields</td>
+                  <td>fields to write</td>
+                </tr>
+                <tr>
+                  <td>geometryType</td>
+                  <td>geometry type of output file</td>
+                </tr>
+                <tr>
+                  <td>srs</td>
+                  <td>spatial reference system of output file</td>
+                </tr>
+                <tr>
+                  <td>driverName</td>
+                  <td>OGR driver to use</td>
+                </tr>
+                <tr>
+                  <td>datasourceOptions</td>
+                  <td>list of OGR data source creation options</td>
+                </tr>
+                <tr>
+                  <td>layerOptions</td>
+                  <td>list of OGR layer creation options</td>
+                </tr>
+                <tr>
+                  <td>newFilename</td>
+                  <td>potentially modified file name (output parameter)</td>
+                </tr>
+                <tr>
+                  <td>symbologyExport</td>
+                  <td>symbology to export</td>
+                </tr>
+                <tr>
+                  <td>fieldValueConverter</td>
+                  <td>field value converter (added in QGIS 2.16)</td>
+                </tr>
+                <tr>
+                  <td>layerName</td>
+                  <td>layer name. If let empty, it will be derived from the filename (added in QGIS 3.0)</td>
+                </tr>
+                <tr>
+                  <td>action</td>
+                  <td>action on existing file (added in QGIS 3.0)</td>
+                </tr>
+                <tr>
+                  <td>newLayer</td>
+                  <td>potentially modified layer name (output parameter) (added in QGIS 3.4)</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a037c91a3018bfcb6c5e350bdbbae99f4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a037c91a3018bfcb6c5e350bdbbae99f4" class="m-doc-self">addFeature</a>(</span><span class="m-doc-wrap"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              QgsFeatureSink::Flags flags = nullptr) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Adds a single <em>feature</em> to the sink.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true in case of success and false in case of failure</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Feature addition behavior is controlled by the specified <em>flags</em>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#aa7a2e60585dc1bf76b6dd54f44a153ac" class="m-doc">addFeatures()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa7a2e60585dc1bf76b6dd54f44a153ac"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7a2e60585dc1bf76b6dd54f44a153ac" class="m-doc-self">addFeatures</a>(</span><span class="m-doc-wrap"><a href="qgsfeature_8h.html#ae0f922f3469155bc17dfc96729f1c1cc" class="m-doc">QgsFeatureList</a>&amp; features,
+              QgsFeatureSink::Flags flags = nullptr) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Adds a list of <em>features</em> to the sink.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true in case of success and false in case of failure</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Feature addition behavior is controlled by the specified <em>flags</em>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#a037c91a3018bfcb6c5e350bdbbae99f4" class="m-doc">addFeature()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aed15a1c03d4be7a1f9ac5a8427ba3433"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aed15a1c03d4be7a1f9ac5a8427ba3433" class="m-doc-self">addFeatureWithStyle</a>(</span><span class="m-doc-wrap"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              <a href="classQgsFeatureRenderer.html" class="m-doc">QgsFeatureRenderer</a>* renderer,
+              <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a> outputUnit = <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50da0c409a69a5ab55af7765ec7a6b8d574b" class="m-doc">QgsUnitTypes::<wbr />DistanceMeters</a>)</span></span>
+            </h3>
+            <p>Adds a <em>feature</em> to the currently opened data source, using the style from a specified <em>renderer</em>.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab84c5dacd6ceae95d8a17755b7bae80d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QMap&lt;int, int&gt; QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab84c5dacd6ceae95d8a17755b7bae80d" class="m-doc-self">attrIdxToOgrIdx</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aef2f0ea401dae23e657a6977110722dc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aef2f0ea401dae23e657a6977110722dc" class="m-doc-self">setSymbologyScale</a>(</span><span class="m-doc-wrap">double scale)</span></span>
+            </h3>
+            <p>Set reference <em>scale</em> for output.</p>
+<p>The <em>scale</em> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#a56b0201c92365ba91a5277a9bdbe8809" class="m-doc">symbologyScale()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a56b0201c92365ba91a5277a9bdbe8809"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a56b0201c92365ba91a5277a9bdbe8809" class="m-doc-self">symbologyScale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the reference scale for output.</p>
+<p>The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsVectorFileWriter.html#aef2f0ea401dae23e657a6977110722dc" class="m-doc">setSymbologyScale()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2a24310d633da326bdc9268662009403"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">OGRGeometryH QgsVectorFileWriter::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2a24310d633da326bdc9268662009403" class="m-doc-self">createEmptyGeometry</a>(</span><span class="m-doc-wrap"><a href="classQgsWkbTypes.html#a70dff7aceefd4b16909f038e32aece11" class="m-doc">QgsWkbTypes::<wbr />Type</a> wkbType) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

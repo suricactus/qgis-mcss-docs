@@ -1,0 +1,743 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProcessingUtils" kind="class" language="C++" prot="public">
+    <compoundname>QgsProcessingUtils</compoundname>
+    <includes refid="qgsprocessingutils_8h" local="no">qgsprocessingutils.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710" prot="public" static="no">
+        <name>LayerHint</name>
+        <enumvalue id="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a50da5804d7d222f41d4666591e4b66cb" prot="public">
+          <name>UnknownType</name>
+          <briefdescription>
+<para>Unknown layer type. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a25359b236d3a23cf229e7b7c6622f477" prot="public">
+          <name>Vector</name>
+          <briefdescription>
+<para>Vector layer type. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a38477dfe2feb648cf05b64ddf407e078" prot="public">
+          <name>Raster</name>
+          <briefdescription>
+<para>Raster layer type. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a240c8c331fccc4b9f062666242c603be" prot="public">
+          <name>Mesh</name>
+          <briefdescription>
+<para>Mesh layer type. </para>          </briefdescription>
+          <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Layer type hints. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="112" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" bodystart="111" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsProcessingUtils_1a0ebf9a4f54b7d70b52f696b33d8e0f77" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsProcessing</definition>
+        <argsstring></argsstring>
+        <name>TestQgsProcessing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="312" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsProcessingUtils_1a00db55f32fef06433589552394e6f2b8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsProcessingUtils::combineFields</definition>
+        <argsstring>(const QgsFields &amp;fieldsA, const QgsFields &amp;fieldsB)</argsstring>
+        <name>combineFields</name>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fieldsA</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fieldsB</declname>
+        </param>
+        <briefdescription>
+<para>Combines two field lists, avoiding duplicate field names (in a case-insensitive manner). </para>        </briefdescription>
+        <detaileddescription>
+<para>Duplicate field names will be altered to &quot;name_2&quot;, &quot;name_3&quot;, etc, finding the first non-duplicate name.</para><para><simplesect kind="note"><para>Some output file formats (e.g. shapefiles) have restrictions on the maximum length of field names, so be aware that the results of calling this method may be truncated when saving to these formats. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="269" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="746" bodyend="779"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a7a3d531eee3a982224408b3cd51647f3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsProcessingUtils::combineLayerExtents</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;layers, const QgsCoordinateReferenceSystem &amp;crs=QgsCoordinateReferenceSystem())</argsstring>
+        <name>combineLayerExtents</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Combines the extent of several map <emphasis>layers</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>If specified, the target <emphasis>crs</emphasis> will be used to transform the layer&apos;s extent to the desired output reference system. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="209" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="546" bodyend="578"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1aad859c29378ee2d4d732c615277c43c8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt;</type>
+        <definition>QList&lt; QgsMapLayer * &gt; QgsProcessingUtils::compatibleLayers</definition>
+        <argsstring>(QgsProject *project, bool sort=true)</argsstring>
+        <name>compatibleLayers</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sort</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns a list of map layers from a <emphasis>project</emphasis> which are compatible with the processing framework. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the <emphasis>sort</emphasis> argument is true then the layers will be sorted by their <ref refid="classQgsMapLayer_1a0594da1ee92c9fc9e15659fc39522f97" kindref="member">QgsMapLayer::name()</ref> value. <simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a5997b6c18d7a5d6db53a34c09e0c1b23" kindref="member">compatibleRasterLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a82d74018a8e2db6c4000c44c41bcab94" kindref="member">compatibleVectorLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="105" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1af5baa33215718b2c4db7117c4ad6bb53" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMeshLayer" kindref="compound">QgsMeshLayer</ref> * &gt;</type>
+        <definition>QList&lt; QgsMeshLayer * &gt; QgsProcessingUtils::compatibleMeshLayers</definition>
+        <argsstring>(QgsProject *project, bool sort=true)</argsstring>
+        <name>compatibleMeshLayers</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sort</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns a list of mesh layers from a <emphasis>project</emphasis> which are compatible with the processing framework. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the <emphasis>sort</emphasis> argument is true then the layers will be sorted by their <ref refid="classQgsMapLayer_1a0594da1ee92c9fc9e15659fc39522f97" kindref="member">QgsMapLayer::name()</ref> value.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a5997b6c18d7a5d6db53a34c09e0c1b23" kindref="member">compatibleRasterLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a82d74018a8e2db6c4000c44c41bcab94" kindref="member">compatibleVectorLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1aad859c29378ee2d4d732c615277c43c8" kindref="member">compatibleLayers()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="82" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a5997b6c18d7a5d6db53a34c09e0c1b23" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsRasterLayer" kindref="compound">QgsRasterLayer</ref> *&gt;</type>
+        <definition>QList&lt; QgsRasterLayer * &gt; QgsProcessingUtils::compatibleRasterLayers</definition>
+        <argsstring>(QgsProject *project, bool sort=true)</argsstring>
+        <name>compatibleRasterLayers</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sort</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns a list of raster layers from a <emphasis>project</emphasis> which are compatible with the processing framework. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the <emphasis>sort</emphasis> argument is true then the layers will be sorted by their <ref refid="classQgsMapLayer_1a0594da1ee92c9fc9e15659fc39522f97" kindref="member">QgsMapLayer::name()</ref> value. <simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a82d74018a8e2db6c4000c44c41bcab94" kindref="member">compatibleVectorLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1af5baa33215718b2c4db7117c4ad6bb53" kindref="member">compatibleMeshLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1aad859c29378ee2d4d732c615277c43c8" kindref="member">compatibleLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="60" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="35" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a82d74018a8e2db6c4000c44c41bcab94" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *&gt;</type>
+        <definition>QList&lt; QgsVectorLayer * &gt; QgsProcessingUtils::compatibleVectorLayers</definition>
+        <argsstring>(QgsProject *project, const QList&lt; int &gt; &amp;sourceTypes=QList&lt; int &gt;(), bool sort=true)</argsstring>
+        <name>compatibleVectorLayers</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>const QList&lt; int &gt; &amp;</type>
+          <declname>sourceTypes</declname>
+          <defval>QList&lt; int &gt;()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>sort</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns a list of vector layers from a <emphasis>project</emphasis> which are compatible with the processing framework. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>sourceTypes</emphasis> list should be filled with a list of <ref refid="classQgsProcessing_1acad4d2322342455b53eee5701e2b3115" kindref="member">QgsProcessing::SourceType</ref> values. If the <emphasis>sourceTypes</emphasis> list is non-empty then the layers will be sorted so that only layers with the specified source type included in the list will be returned. Leaving the <emphasis>sourceTypes</emphasis> list empty will cause all vector layers, regardless of their geometry type, to be returned.</para><para>If the <emphasis>sort</emphasis> argument is true then the layers will be sorted by their <ref refid="classQgsMapLayer_1a0594da1ee92c9fc9e15659fc39522f97" kindref="member">QgsMapLayer::name()</ref> value. <simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a5997b6c18d7a5d6db53a34c09e0c1b23" kindref="member">compatibleRasterLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1af5baa33215718b2c4db7117c4ad6bb53" kindref="member">compatibleMeshLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1aad859c29378ee2d4d732c615277c43c8" kindref="member">compatibleLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="59" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1abdddc0670f854a5cb5f4998484f5550a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingUtils::convertToCompatibleFormat</definition>
+        <argsstring>(const QgsVectorLayer *layer, bool selectedFeaturesOnly, const QString &amp;baseName, const QStringList &amp;compatibleFormats, const QString &amp;preferredFormat, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback)</argsstring>
+        <name>convertToCompatibleFormat</name>
+        <param>
+          <type>const <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>selectedFeaturesOnly</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>baseName</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>compatibleFormats</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>preferredFormat</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Converts a source vector <emphasis>layer</emphasis> to a file path to a vector layer of compatible format. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the specified <emphasis>layer</emphasis> is not of the format listed in the <emphasis>compatibleFormats</emphasis> argument, then the layer will first be exported to a compatible format in a temporary location using <emphasis>baseName</emphasis>. The function will then return the path to that temporary file.</para><para><emphasis>compatibleFormats</emphasis> should consist entirely of lowercase file extensions, e.g. &apos;shp&apos;.</para><para>The <emphasis>preferredFormat</emphasis> argument is used to specify to desired file extension to use when a temporary layer export is required. This defaults to shapefiles. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="251" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="687" bodyend="744"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a8bda219b405a67116ec27cb6ab0af296" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFeatureSink" kindref="compound">QgsFeatureSink</ref> *</type>
+        <definition>QgsFeatureSink * QgsProcessingUtils::createFeatureSink</definition>
+        <argsstring>(QString &amp;destination, QgsProcessingContext &amp;context, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType, const QgsCoordinateReferenceSystem &amp;crs, const QVariantMap &amp;createOptions=QVariantMap(), QgsFeatureSink::SinkFlags sinkFlags=nullptr)</argsstring>
+        <name>createFeatureSink</name>
+        <param>
+          <type>QString &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>createOptions</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <param>
+          <type>QgsFeatureSink::SinkFlags</type>
+          <declname>sinkFlags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Creates a feature sink ready for adding features. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>destination</emphasis> specifies a destination URI for the resultant layer. It may be updated in place to reflect the actual destination for the layer.</para><para>Sink parameters such as desired <emphasis>encoding</emphasis>, <emphasis>fields</emphasis>, <emphasis>geometryType</emphasis> and <emphasis>crs</emphasis> must be specified.</para><para>The <emphasis>createOptions</emphasis> map can be used to specify additional sink creation options, which are passed to the underlying provider when creating new layers. Known options also include &apos;fileEncoding&apos;, which is used to specify a file encoding to use for created files. If &apos;fileEncoding&apos; is not specified, the default encoding from the <emphasis>context</emphasis> will be used.</para><para>If a layer is created for the feature sink, the layer will automatically be added to the <emphasis>context&apos;s</emphasis> temporary layer store.</para><para>The caller takes responsibility for deleting the returned sink. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="175" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="458" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a59c4de560073c1603bf41919488954fe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProcessingUtils::createFeatureSinkPython</definition>
+        <argsstring>(QgsFeatureSink **sink, QString &amp;destination, QgsProcessingContext &amp;context, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType, const QgsCoordinateReferenceSystem &amp;crs, const QVariantMap &amp;createOptions=QVariantMap()) SIP_THROW(QgsProcessingException)</argsstring>
+        <name>createFeatureSinkPython</name>
+        <param>
+          <type><ref refid="classQgsFeatureSink" kindref="compound">QgsFeatureSink</ref> **</type>
+          <declname>sink</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>createOptions</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a feature sink ready for adding features. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>destination</emphasis> specifies a destination URI for the resultant layer. It may be updated in place to reflect the actual destination for the layer.</para><para>Sink parameters such as desired <emphasis>fields</emphasis>, <emphasis>geometryType</emphasis> and <emphasis>crs</emphasis> must be specified.</para><para>The <emphasis>createOptions</emphasis> map can be used to specify additional sink creation options, which are passed to the underlying provider when creating new layers. Known options also include &apos;fileEncoding&apos;, which is used to specify a file encoding to use for created files. If &apos;fileEncoding&apos; is not specified, the default encoding from the <emphasis>context</emphasis> will be used.</para><para>If a layer is created for the feature sink, the layer will automatically be added to the <emphasis>context&apos;s</emphasis> temporary layer store.</para><para><simplesect kind="note"><para>this version of the <ref refid="classQgsProcessingUtils_1a8bda219b405a67116ec27cb6ab0af296" kindref="member">createFeatureSink()</ref> function has an API designed around use from the SIP bindings. c++ code should call the other <ref refid="classQgsProcessingUtils_1a8bda219b405a67116ec27cb6ab0af296" kindref="member">createFeatureSink()</ref> version. </para></simplesect>
+<simplesect kind="note"><para>available in Python bindings as <ref refid="classQgsProcessingUtils_1a8bda219b405a67116ec27cb6ab0af296" kindref="member">createFeatureSink()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="203" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="540" bodyend="543"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a21ce59b8601519e12508074e1af225d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; int &gt;</type>
+        <definition>QList&lt; int &gt; QgsProcessingUtils::fieldNamesToIndices</definition>
+        <argsstring>(const QStringList &amp;fieldNames, const QgsFields &amp;fields)</argsstring>
+        <name>fieldNamesToIndices</name>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>fieldNames</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of field indices parsed from the given list of field names. </para>        </briefdescription>
+        <detaileddescription>
+<para>Unknown field names are ignored. If the list of field names is empty, it is assumed that all fields are required. <simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="276" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="782" bodyend="802"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a3f7e06668b5ef7c540d090846b03c071" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingUtils::formatHelpMapAsHtml</definition>
+        <argsstring>(const QVariantMap &amp;map, const QgsProcessingAlgorithm *algorithm)</argsstring>
+        <name>formatHelpMapAsHtml</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>map</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> *</type>
+          <declname>algorithm</declname>
+        </param>
+        <briefdescription>
+<para>Returns a HTML formatted version of the help text encoded in a variant <emphasis>map</emphasis> for a specified <emphasis>algorithm</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="237" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="642" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a1b373e1f8416db5e3ecc55b5d7bcdaf6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsProcessingUtils::generateIteratingDestination</definition>
+        <argsstring>(const QVariant &amp;input, const QVariant &amp;id, QgsProcessingContext &amp;context)</argsstring>
+        <name>generateIteratingDestination</name>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Converts an <emphasis>input</emphasis> parameter value for use in source iterating mode, where one individual sink is created per input feature. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>id</emphasis> parameter represents the unique ID for this output, which is embedded into the resulting parameter value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="217" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="580" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a532c337cdfce9e7aa6204f4e0c1247cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingUtils::generateTempFilename</definition>
+        <argsstring>(const QString &amp;basename)</argsstring>
+        <name>generateTempFilename</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>basename</declname>
+        </param>
+        <briefdescription>
+<para>Returns a temporary filename for a given file, putting it into a temporary folder (creating that folder in the process), but not changing the <emphasis>basename</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a4a82c158a69f0517b469055533f01d40" kindref="member">tempFolder()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="231" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="630" bodyend="640"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a1d64060a5e97d0d841abb927f9bc0e70" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsProcessingUtils::indicesToFields</definition>
+        <argsstring>(const QList&lt; int &gt; &amp;indices, const QgsFields &amp;fields)</argsstring>
+        <name>indicesToFields</name>
+        <param>
+          <type>const QList&lt; int &gt; &amp;</type>
+          <declname>indices</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <briefdescription>
+<para>Returns a subset of fields based on the indices of desired fields. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="282" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="805" bodyend="811"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a4ae097e24153b9ebaa503939c956b1ca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>QgsMapLayer * QgsProcessingUtils::mapLayerFromString</definition>
+        <argsstring>(const QString &amp;string, QgsProcessingContext &amp;context, bool allowLoadingNewLayers=true, LayerHint typeHint=UnknownType)</argsstring>
+        <name>mapLayerFromString</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allowLoadingNewLayers</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710" kindref="member">LayerHint</ref></type>
+          <declname>typeHint</declname>
+          <defval><ref refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a50da5804d7d222f41d4666591e4b66cb" kindref="member">UnknownType</ref></defval>
+        </param>
+        <briefdescription>
+<para>Interprets a string as a map layer within the supplied <emphasis>context</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The method will attempt to load a layer matching the passed <emphasis>string</emphasis>. E.g. if the string matches a layer ID or name within the context&apos;s project or temporary layer store then this layer will be returned. If the string is a file path and <emphasis>allowLoadingNewLayers</emphasis> is true, then the layer at this file path will be loaded and added to the context&apos;s temporary layer store. Ownership of the layer remains with the <emphasis>context</emphasis> or the context&apos;s current project.</para><para>The <emphasis>typeHint</emphasis> can be used to dictate the type of map layer expected. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="131" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="269" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a352f239ecb6254c7396299b9cd3ac53d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingUtils::normalizeLayerSource</definition>
+        <argsstring>(const QString &amp;source)</argsstring>
+        <name>normalizeLayerSource</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Normalizes a layer <emphasis>source</emphasis> string for safe comparison across different operating system environments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="385" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a0da94e4659d51c0c5eac1935a4c31fdf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingUtils::stringToPythonLiteral</definition>
+        <argsstring>(const QString &amp;string)</argsstring>
+        <name>stringToPythonLiteral</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>Converts a string to a Python string literal. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. by replacing &apos; with \&apos;. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="155" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="392" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a4a82c158a69f0517b469055533f01d40" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProcessingUtils::tempFolder</definition>
+        <argsstring>()</argsstring>
+        <name>tempFolder</name>
+        <briefdescription>
+<para>Returns a session specific processing temporary folder for use in processing algorithms. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a532c337cdfce9e7aa6204f4e0c1247cd" kindref="member">generateTempFilename()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="223" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="614" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a5956e3136329b9425d747ab57ae1e574" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsProcessingFeatureSource" kindref="compound">QgsProcessingFeatureSource</ref> *</type>
+        <definition>QgsProcessingFeatureSource * QgsProcessingUtils::variantToSource</definition>
+        <argsstring>(const QVariant &amp;value, QgsProcessingContext &amp;context, const QVariant &amp;fallbackValue=QVariant())</argsstring>
+        <name>variantToSource</name>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>fallbackValue</declname>
+          <defval>QVariant()</defval>
+        </param>
+        <briefdescription>
+<para>Converts a variant <emphasis>value</emphasis> to a new feature source. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sources will either be taken from <emphasis>context&apos;s</emphasis> active project, or loaded from external sources and stored temporarily in the <emphasis>context</emphasis>.</para><para>The optional <emphasis>fallbackValue</emphasis> can be used to specify a &quot;default&quot; value which is used if <emphasis>value</emphasis> cannot be successfully converted to a source.</para><para>This function creates a new object and the caller takes responsibility for deleting the returned object. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="144" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="302" bodyend="360"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsProcessingUtils_1ad3f8fa6888fb6aecbd86bdebe4602649" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingUtils::canUseLayer</definition>
+        <argsstring>(const QgsRasterLayer *layer)</argsstring>
+        <name>canUseLayer</name>
+        <param>
+          <type>const <ref refid="classQgsRasterLayer" kindref="compound">QgsRasterLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="285" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="367" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1aa17243359ec6a6a4af3528fc767190ea" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingUtils::canUseLayer</definition>
+        <argsstring>(const QgsMeshLayer *layer)</argsstring>
+        <name>canUseLayer</name>
+        <param>
+          <type>const <ref refid="classQgsMeshLayer" kindref="compound">QgsMeshLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="286" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="362" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1ade98dbdaa837531e5afa76168de6c818" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingUtils::canUseLayer</definition>
+        <argsstring>(const QgsVectorLayer *layer, const QList&lt; int &gt; &amp;sourceTypes=QList&lt; int &gt;())</argsstring>
+        <name>canUseLayer</name>
+        <param>
+          <type>const <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QList&lt; int &gt; &amp;</type>
+          <declname>sourceTypes</declname>
+          <defval>QList&lt; int &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="287" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="373" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a70711781183b84d8a010ecec11362346" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>PRIVATE QgsMapLayer * QgsProcessingUtils::loadMapLayerFromString</definition>
+        <argsstring>(const QString &amp;string, LayerHint typeHint=UnknownType)</argsstring>
+        <name>loadMapLayerFromString</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710" kindref="member">LayerHint</ref></type>
+          <declname>typeHint</declname>
+          <defval><ref refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a50da5804d7d222f41d4666591e4b66cb" kindref="member">UnknownType</ref></defval>
+        </param>
+        <briefdescription>
+<para>Interprets a string as a map layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The method will attempt to load a layer matching the passed <emphasis>string</emphasis>. E.g. if the string is a file path, then the layer at this file path will be loaded. The caller takes responsibility for deleting the returned map layer. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="308" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="216" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a5b2b37f64aeb7b5f4e284e6ffd5e1a83" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>QgsMapLayer * QgsProcessingUtils::mapLayerFromStore</definition>
+        <argsstring>(const QString &amp;string, QgsMapLayerStore *store, LayerHint typeHint=UnknownType)</argsstring>
+        <name>mapLayerFromStore</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsMapLayerStore" kindref="compound">QgsMapLayerStore</ref> *</type>
+          <declname>store</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710" kindref="member">LayerHint</ref></type>
+          <declname>typeHint</declname>
+          <defval><ref refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a50da5804d7d222f41d4666591e4b66cb" kindref="member">UnknownType</ref></defval>
+        </param>
+        <briefdescription>
+<para>Interprets a <emphasis>string</emphasis> as a map layer from a store. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method attempts to match a string to a store map layer, using first the layer ID, then layer names, and finally layer source. If the string matches a normalized version of any layer source for layers in the specified <emphasis>store</emphasis>, then those matching layers will be returned. <simplesect kind="see"><para><ref refid="classQgsProcessingUtils_1a4ae097e24153b9ebaa503939c956b1ca" kindref="member">mapLayerFromString()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="300" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="134" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingUtils_1a75bf7920d5023c2ab38a8fab6c72466a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProcessingUtils::parseDestinationString</definition>
+        <argsstring>(QString &amp;destination, QString &amp;providerKey, QString &amp;uri, QString &amp;layerName, QString &amp;format, QMap&lt; QString, QVariant &gt; &amp;options, bool &amp;useWriter)</argsstring>
+        <name>parseDestinationString</name>
+        <param>
+          <type>QString &amp;</type>
+          <declname>destination</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>layerName</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>QMap&lt; QString, QVariant &gt; &amp;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>useWriter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="310" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.cpp" bodystart="405" bodyend="456"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Utility functions for use with processing classes. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" line="47" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingutils.h" bodystart="46" bodyend="314"/>
+    <listofallmembers>
+      <member refid="classQgsProcessingUtils_1ad3f8fa6888fb6aecbd86bdebe4602649" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>canUseLayer</name></member>
+      <member refid="classQgsProcessingUtils_1aa17243359ec6a6a4af3528fc767190ea" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>canUseLayer</name></member>
+      <member refid="classQgsProcessingUtils_1ade98dbdaa837531e5afa76168de6c818" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>canUseLayer</name></member>
+      <member refid="classQgsProcessingUtils_1a00db55f32fef06433589552394e6f2b8" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>combineFields</name></member>
+      <member refid="classQgsProcessingUtils_1a7a3d531eee3a982224408b3cd51647f3" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>combineLayerExtents</name></member>
+      <member refid="classQgsProcessingUtils_1aad859c29378ee2d4d732c615277c43c8" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>compatibleLayers</name></member>
+      <member refid="classQgsProcessingUtils_1af5baa33215718b2c4db7117c4ad6bb53" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>compatibleMeshLayers</name></member>
+      <member refid="classQgsProcessingUtils_1a5997b6c18d7a5d6db53a34c09e0c1b23" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>compatibleRasterLayers</name></member>
+      <member refid="classQgsProcessingUtils_1a82d74018a8e2db6c4000c44c41bcab94" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>compatibleVectorLayers</name></member>
+      <member refid="classQgsProcessingUtils_1abdddc0670f854a5cb5f4998484f5550a" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>convertToCompatibleFormat</name></member>
+      <member refid="classQgsProcessingUtils_1a8bda219b405a67116ec27cb6ab0af296" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>createFeatureSink</name></member>
+      <member refid="classQgsProcessingUtils_1a59c4de560073c1603bf41919488954fe" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>createFeatureSinkPython</name></member>
+      <member refid="classQgsProcessingUtils_1a21ce59b8601519e12508074e1af225d0" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>fieldNamesToIndices</name></member>
+      <member refid="classQgsProcessingUtils_1a3f7e06668b5ef7c540d090846b03c071" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>formatHelpMapAsHtml</name></member>
+      <member refid="classQgsProcessingUtils_1a1b373e1f8416db5e3ecc55b5d7bcdaf6" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>generateIteratingDestination</name></member>
+      <member refid="classQgsProcessingUtils_1a532c337cdfce9e7aa6204f4e0c1247cd" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>generateTempFilename</name></member>
+      <member refid="classQgsProcessingUtils_1a1d64060a5e97d0d841abb927f9bc0e70" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>indicesToFields</name></member>
+      <member refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>LayerHint</name></member>
+      <member refid="classQgsProcessingUtils_1a70711781183b84d8a010ecec11362346" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>loadMapLayerFromString</name></member>
+      <member refid="classQgsProcessingUtils_1a5b2b37f64aeb7b5f4e284e6ffd5e1a83" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>mapLayerFromStore</name></member>
+      <member refid="classQgsProcessingUtils_1a4ae097e24153b9ebaa503939c956b1ca" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>mapLayerFromString</name></member>
+      <member refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a240c8c331fccc4b9f062666242c603be" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>Mesh</name></member>
+      <member refid="classQgsProcessingUtils_1a352f239ecb6254c7396299b9cd3ac53d" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>normalizeLayerSource</name></member>
+      <member refid="classQgsProcessingUtils_1a75bf7920d5023c2ab38a8fab6c72466a" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>parseDestinationString</name></member>
+      <member refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a38477dfe2feb648cf05b64ddf407e078" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>Raster</name></member>
+      <member refid="classQgsProcessingUtils_1a0da94e4659d51c0c5eac1935a4c31fdf" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>stringToPythonLiteral</name></member>
+      <member refid="classQgsProcessingUtils_1a4a82c158a69f0517b469055533f01d40" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>tempFolder</name></member>
+      <member refid="classQgsProcessingUtils_1a0ebf9a4f54b7d70b52f696b33d8e0f77" prot="private" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>TestQgsProcessing</name></member>
+      <member refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a50da5804d7d222f41d4666591e4b66cb" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>UnknownType</name></member>
+      <member refid="classQgsProcessingUtils_1a5956e3136329b9425d747ab57ae1e574" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>variantToSource</name></member>
+      <member refid="classQgsProcessingUtils_1a9fc147173037c7a2f29e84fb8f6f3710a25359b236d3a23cf229e7b7c6622f477" prot="public" virt="non-virtual"><scope>QgsProcessingUtils</scope><name>Vector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

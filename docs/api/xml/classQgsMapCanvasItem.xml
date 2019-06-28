@@ -1,0 +1,409 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsMapCanvasItem" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsMapCanvasItem</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QGraphicsItem</basecompoundref>
+    <derivedcompoundref refid="classQgsAdvancedDigitizingCanvasItem" prot="public" virt="non-virtual">QgsAdvancedDigitizingCanvasItem</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryRubberBand" prot="public" virt="non-virtual">QgsGeometryRubberBand</derivedcompoundref>
+    <derivedcompoundref refid="classQgsHighlight" prot="public" virt="non-virtual">QgsHighlight</derivedcompoundref>
+    <derivedcompoundref refid="classQgsMapCanvasAnnotationItem" prot="public" virt="non-virtual">QgsMapCanvasAnnotationItem</derivedcompoundref>
+    <derivedcompoundref refid="classQgsRubberBand" prot="public" virt="non-virtual">QgsRubberBand</derivedcompoundref>
+    <derivedcompoundref refid="classQgsSnapToGridCanvasItem" prot="public" virt="non-virtual">QgsSnapToGridCanvasItem</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVertexMarker" prot="public" virt="non-virtual">QgsVertexMarker</derivedcompoundref>
+    <includes refid="qgsmapcanvasitem_8h" local="no">qgsmapcanvasitem.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsMapCanvasItem_1a492ccc86ec7b5399ca7fe4d3a9969033" prot="protected" static="no" mutable="no">
+        <type>QSizeF</type>
+        <definition>QSizeF QgsMapCanvasItem::mItemSize</definition>
+        <argsstring></argsstring>
+        <name>mItemSize</name>
+        <briefdescription>
+<para>cached size of the item (to return in <ref refid="classQgsMapCanvasItem_1a10aa852e9de1caf47e6df0d8aa71b39b" kindref="member">boundingRect()</ref>) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="98" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapCanvasItem_1a9538571e8161b6d21eef0f6cded233dc" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsMapCanvas" kindref="compound">QgsMapCanvas</ref> *</type>
+        <definition>QgsMapCanvas* QgsMapCanvasItem::mMapCanvas</definition>
+        <argsstring></argsstring>
+        <name>mMapCanvas</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>pointer to map canvas </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapCanvasItem_1a78bd8f2731c3c2bd60458787b8ac63c5" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsMapCanvasItem::mRect</definition>
+        <argsstring></argsstring>
+        <name>mRect</name>
+        <briefdescription>
+<para>cached canvas item rectangle in map coordinates encodes position (xmin,ymax) and size (width/height) used to re-position and re-size the item on zoom/pan while waiting for the renderer to complete. </para>        </briefdescription>
+        <detaileddescription>
+<para>NOTE: does not include rotation information, so cannot be used to correctly present pre-rendered map on rotation change </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="93" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsMapCanvasItem_1a80ce259a77eac80df82f7d362a94274f" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsMapCanvasItem::mRectRotation</definition>
+        <argsstring></argsstring>
+        <name>mRectRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="95" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsMapCanvasItem_1ac44a63faacfbd45b8f6088e4b49560bd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsMapCanvasItem::QgsMapCanvasItem</definition>
+        <argsstring>(QgsMapCanvas *mapCanvas)</argsstring>
+        <name>QgsMapCanvasItem</name>
+        <param>
+          <type><ref refid="classQgsMapCanvas" kindref="compound">QgsMapCanvas</ref> *</type>
+          <declname>mapCanvas</declname>
+        </param>
+        <briefdescription>
+<para>protected constructor: cannot be constructed directly </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="38" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="28" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1ad52081904f13d1b978a302ef2a7120cc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsMapCanvasItem::~QgsMapCanvasItem</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsMapCanvasItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="40" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1a1704b7124a9b3e8113697358a606dbd7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsMapCanvasItem::paint</definition>
+        <argsstring>(QPainter *painter)=0</argsstring>
+        <name>paint</name>
+        <reimplementedby refid="classQgsAdvancedDigitizingCanvasItem_1a4ff9661e1bc05876aa2afcd91fd601a6">paint</reimplementedby>
+        <reimplementedby refid="classQgsSnapToGridCanvasItem_1aaf536d4ed5f961a76cbd1a03d6523e52">paint</reimplementedby>
+        <reimplementedby refid="classQgsMapCanvasAnnotationItem_1a81c39209e840362e3d2193be994e2fe0">paint</reimplementedby>
+        <reimplementedby refid="classQgsGeometryRubberBand_1a85968400666a4be3cb8f82cf1bb722ef">paint</reimplementedby>
+        <reimplementedby refid="classQgsVertexMarker_1acb474fe7248a2e39da4e123344e703a9">paint</reimplementedby>
+        <reimplementedby refid="classQgsHighlight_1adc7385c2e861c5d4e01f36dbb091e6b5">paint</reimplementedby>
+        <reimplementedby refid="classQgsRubberBand_1a3d7d36ad4e96022161302e674c900110">paint</reimplementedby>
+        <param>
+          <type>QPainter *</type>
+          <declname>painter</declname>
+        </param>
+        <briefdescription>
+<para>function to be implemented by derived classes </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1a6e56fdf9339bb1dfa3c347f2a4d014c1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapCanvasItem::paint</definition>
+        <argsstring>(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget=nullptr) override</argsstring>
+        <name>paint</name>
+        <param>
+          <type>QPainter *</type>
+          <declname>painter</declname>
+        </param>
+        <param>
+          <type>const QStyleOptionGraphicsItem *</type>
+          <declname>option</declname>
+        </param>
+        <param>
+          <type>QWidget *</type>
+          <declname>widget</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="45" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="42" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1ae04c974bcdd476a5a0db95c7030d444f" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsMapCanvasItem::setRenderContextVariables</definition>
+        <argsstring>(QPainter *p, QgsRenderContext &amp;context) const</argsstring>
+        <name>setRenderContextVariables</name>
+        <param>
+          <type>QPainter *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Sets render context parameters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>painter for rendering </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>out: configured context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="57" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="119" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1ac99df81c37212c2ec781539dc2218107" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapCanvasItem::updateCanvas</definition>
+        <argsstring>()</argsstring>
+        <name>updateCanvas</name>
+        <briefdescription>
+<para>schedules map canvas for repaint </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="50" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="112" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsMapCanvasItem_1a10aa852e9de1caf47e6df0d8aa71b39b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QRectF</type>
+        <definition>QRectF QgsMapCanvasItem::boundingRect</definition>
+        <argsstring>() const override</argsstring>
+        <name>boundingRect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="64" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1a65d869c9b4632970368210bcf99af3c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsMapCanvasItem::rect</definition>
+        <argsstring>() const</argsstring>
+        <name>rect</name>
+        <briefdescription>
+<para>returns canvas item rectangle in map units </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="67" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1aa96d69f07745b0a3d91fa48a88c7d333" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapCanvasItem::setRect</definition>
+        <argsstring>(const QgsRectangle &amp;r, bool resetRotation=true)</argsstring>
+        <name>setRect</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>resetRotation</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>sets canvas item rectangle in map units </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="70" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="74" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1a8f115389d9ce64e48a7ede866af0bb00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QPointF</type>
+        <definition>QPointF QgsMapCanvasItem::toCanvasCoordinates</definition>
+        <argsstring>(const QgsPointXY &amp;point) const</argsstring>
+        <name>toCanvasCoordinates</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from map coordinates to screen coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="76" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="61" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1afc0d0527e55a4509892578cfccc428b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref></type>
+        <definition>QgsPointXY QgsMapCanvasItem::toMapCoordinates</definition>
+        <argsstring>(QPoint point) const</argsstring>
+        <name>toMapCoordinates</name>
+        <param>
+          <type>QPoint</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>transformation from screen coordinates to map coordinates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="73" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapCanvasItem_1af1da629dae54e0ca64c603d7e7e3b95f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsMapCanvasItem::updatePosition</definition>
+        <argsstring>()</argsstring>
+        <name>updatePosition</name>
+        <reimplementedby refid="classQgsMapCanvasAnnotationItem_1adc55f1a276b84235b316ea40cb62a789">updatePosition</reimplementedby>
+        <reimplementedby refid="classQgsVertexMarker_1ab6c8e47f24a566f9b164ac14567823f9">updatePosition</reimplementedby>
+        <reimplementedby refid="classQgsHighlight_1a064e2deca4b035f71e30bb33ebd3673c">updatePosition</reimplementedby>
+        <reimplementedby refid="classQgsRubberBand_1abfde0a92e1837f2070893bec66cb06d5">updatePosition</reimplementedby>
+        <briefdescription>
+<para>called on changed extent or resize event to update position of the item </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.cpp" bodystart="135" bodyend="140"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract class for items that can be placed on the map canvas. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5374">
+        <label>QgsMapCanvasItem</label>
+        <link refid="classQgsMapCanvasItem"/>
+        <childnode refid="5375" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5381">
+        <label>QgsSnapToGridCanvasItem</label>
+        <link refid="classQgsSnapToGridCanvasItem"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5376">
+        <label>QgsAdvancedDigitizingCanvasItem</label>
+        <link refid="classQgsAdvancedDigitizingCanvasItem"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5375">
+        <label>QGraphicsItem</label>
+      </node>
+      <node id="5379">
+        <label>QgsMapCanvasAnnotationItem</label>
+        <link refid="classQgsMapCanvasAnnotationItem"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5377">
+        <label>QgsGeometryRubberBand</label>
+        <link refid="classQgsGeometryRubberBand"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5378">
+        <label>QgsHighlight</label>
+        <link refid="classQgsHighlight"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5382">
+        <label>QgsVertexMarker</label>
+        <link refid="classQgsVertexMarker"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5380">
+        <label>QgsRubberBand</label>
+        <link refid="classQgsRubberBand"/>
+        <childnode refid="5374" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5383">
+        <label>QgsMapCanvasItem</label>
+        <link refid="classQgsMapCanvasItem"/>
+        <childnode refid="5384" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5385" relation="usage">
+          <edgelabel>mRect</edgelabel>
+        </childnode>
+        <childnode refid="5386" relation="usage">
+          <edgelabel>mMapCanvas</edgelabel>
+        </childnode>
+      </node>
+      <node id="5387">
+        <label>QGraphicsView</label>
+      </node>
+      <node id="5385">
+        <label>QgsRectangle</label>
+        <link refid="classQgsRectangle"/>
+      </node>
+      <node id="5384">
+        <label>QGraphicsItem</label>
+      </node>
+      <node id="5386">
+        <label>QgsMapCanvas</label>
+        <link refid="classQgsMapCanvas"/>
+        <childnode refid="5387" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" line="34" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgsmapcanvasitem.h" bodystart="33" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classQgsMapCanvasItem_1a10aa852e9de1caf47e6df0d8aa71b39b" prot="public" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>boundingRect</name></member>
+      <member refid="classQgsMapCanvasItem_1a492ccc86ec7b5399ca7fe4d3a9969033" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>mItemSize</name></member>
+      <member refid="classQgsMapCanvasItem_1a9538571e8161b6d21eef0f6cded233dc" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>mMapCanvas</name></member>
+      <member refid="classQgsMapCanvasItem_1a78bd8f2731c3c2bd60458787b8ac63c5" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>mRect</name></member>
+      <member refid="classQgsMapCanvasItem_1a80ce259a77eac80df82f7d362a94274f" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>mRectRotation</name></member>
+      <member refid="classQgsMapCanvasItem_1a1704b7124a9b3e8113697358a606dbd7" prot="protected" virt="pure-virtual"><scope>QgsMapCanvasItem</scope><name>paint</name></member>
+      <member refid="classQgsMapCanvasItem_1a6e56fdf9339bb1dfa3c347f2a4d014c1" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>paint</name></member>
+      <member refid="classQgsMapCanvasItem_1ac44a63faacfbd45b8f6088e4b49560bd" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>QgsMapCanvasItem</name></member>
+      <member refid="classQgsMapCanvasItem_1a65d869c9b4632970368210bcf99af3c0" prot="public" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>rect</name></member>
+      <member refid="classQgsMapCanvasItem_1aa96d69f07745b0a3d91fa48a88c7d333" prot="public" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>setRect</name></member>
+      <member refid="classQgsMapCanvasItem_1ae04c974bcdd476a5a0db95c7030d444f" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>setRenderContextVariables</name></member>
+      <member refid="classQgsMapCanvasItem_1a8f115389d9ce64e48a7ede866af0bb00" prot="public" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>toCanvasCoordinates</name></member>
+      <member refid="classQgsMapCanvasItem_1afc0d0527e55a4509892578cfccc428b2" prot="public" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>toMapCoordinates</name></member>
+      <member refid="classQgsMapCanvasItem_1ac99df81c37212c2ec781539dc2218107" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>updateCanvas</name></member>
+      <member refid="classQgsMapCanvasItem_1af1da629dae54e0ca64c603d7e7e3b95f" prot="public" virt="virtual"><scope>QgsMapCanvasItem</scope><name>updatePosition</name></member>
+      <member refid="classQgsMapCanvasItem_1ad52081904f13d1b978a302ef2a7120cc" prot="protected" virt="non-virtual"><scope>QgsMapCanvasItem</scope><name>~QgsMapCanvasItem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

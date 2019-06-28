@@ -1,0 +1,1784 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsGmlStreamingParser" kind="class" language="C++" prot="public">
+    <compoundname>QgsGmlStreamingParser</compoundname>
+    <includes refid="qgsgml_8h" local="no">qgsgml.h</includes>
+    <innerclass refid="classQgsGmlStreamingParser_1_1LayerProperties" prot="public">QgsGmlStreamingParser::LayerProperties</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740" prot="public" static="no">
+        <name>AxisOrientationLogic</name>
+        <enumvalue id="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740ac7c8e749af53b93e85276241785217c5" prot="public">
+          <name>Honour_EPSG_if_urn</name>
+          <briefdescription>
+<para>Honour EPSG axis order only if srsName is of the form urn:ogc:def:crs:EPSG: *. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740a8f74ba8a22f9037d9ea066719eb4196b" prot="public">
+          <name>Honour_EPSG</name>
+          <briefdescription>
+<para>Honour EPSG axis order. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740a043e14492f33253530c55837e6df21c9" prot="public">
+          <name>Ignore_EPSG</name>
+          <briefdescription>
+<para>Ignore EPSG axis order. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Axis orientation logic. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="72" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="71" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classQgsGmlStreamingParser_1a31ce55860bee8ab70356dfdc37d13768" prot="public" static="no">
+        <type>QPair&lt; <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> *, QString &gt;</type>
+        <definition>typedef QPair&lt;QgsFeature *, QString&gt; QgsGmlStreamingParser::QgsGmlFeaturePtrGmlIdPair</definition>
+        <argsstring></argsstring>
+        <name>QgsGmlFeaturePtrGmlIdPair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2df" prot="private" static="no">
+        <name>ParseMode</name>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfad53f62a2fbd8dbea33c61444d15ffc92" prot="private">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa8cf0d93aab33e9b075bc07dbc7961ae2" prot="private">
+          <name>BoundingBox</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaeb5a152b4b6e9d0b2b08f396e2668949" prot="private">
+          <name>Null</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa5900b6402f2d5e0e98c691d86722c136" prot="private">
+          <name>Envelope</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa797d48666ce15802e6325bdf18ebf230" prot="private">
+          <name>LowerCorner</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfac7d5bd7f437290607d51ff2cf08a50e6" prot="private">
+          <name>UpperCorner</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaae47dfc72a6e901dd35d3aa4e2ec34db" prot="private">
+          <name>Feature</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaeb82ded4b979c44e51f78869a3385ce4" prot="private">
+          <name>Attribute</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa3dd15f9fb2a340a567055fbdbe8d79de" prot="private">
+          <name>Tuple</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfae4835023b41f7c1d8228cdf87c0941b6" prot="private">
+          <name>FeatureTuple</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa50dcbef55e7fa9ad4ee01e7869db570a" prot="private">
+          <name>AttributeTuple</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa3826392320a1a9b7bfc029b0626a7808" prot="private">
+          <name>Geometry</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa5f5572554cf167fff5e7ff1760ca00b4" prot="private">
+          <name>Coordinate</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaa7b7874a867905a2d3a9516194c9f586" prot="private">
+          <name>PosList</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa0d9941722baa446e23231e2642ca9997" prot="private">
+          <name>MultiPoint</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa26e4f1a66cd47eade54bd6b1a0e0618e" prot="private">
+          <name>MultiLine</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfab92c247416c441ba5634bd0b1a368185" prot="private">
+          <name>MultiPolygon</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa5cc26d38913cf57f78103d0829e03f6e" prot="private">
+          <name>ExceptionReport</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaa085951267da067bf261a7ba2cffeceb" prot="private">
+          <name>ExceptionText</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="147" bodyend="168"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ae75190d486591feef85f8608739fd8b1" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mAttributeName</definition>
+        <argsstring></argsstring>
+        <name>mAttributeName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="306" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a7f751942d46686a6ec0436fe0455bd99" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740" kindref="member">AxisOrientationLogic</ref></type>
+        <definition>AxisOrientationLogic QgsGmlStreamingParser::mAxisOrientationLogic</definition>
+        <argsstring></argsstring>
+        <name>mAxisOrientationLogic</name>
+        <briefdescription>
+<para>Axis orientation logic. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="328" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a06fbb1562ecec19c185bb9e711e63567" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::mBoundedByNullFound</definition>
+        <argsstring></argsstring>
+        <name>mBoundedByNullFound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="298" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ad0599b38478646c731ee5b8754b240dc" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mCoordinateSeparator</definition>
+        <argsstring></argsstring>
+        <name>mCoordinateSeparator</name>
+        <briefdescription>
+<para>Coordinate separator for coordinate strings. Usually &quot;,&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="309" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a17aec7d9d97567329937c0b67099ff30" prot="private" static="no" mutable="no">
+        <type>ParseMode</type>
+        <definition>ParseMode QgsGmlStreamingParser::mCoorMode</definition>
+        <argsstring></argsstring>
+        <name>mCoorMode</name>
+        <briefdescription>
+<para>Coordinates mode, coordinate or posList. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="317" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ab5dfe5b5b8e43069e3c588134fec97b6" prot="private" static="no" mutable="no">
+        <type>QVector&lt; QVariant &gt;</type>
+        <definition>QVector&lt;QVariant&gt; QgsGmlStreamingParser::mCurrentAttributes</definition>
+        <argsstring></argsstring>
+        <name>mCurrentAttributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="292" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1aa667535660116c18105529f47a8fd907" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsGmlStreamingParser::mCurrentExtent</definition>
+        <argsstring></argsstring>
+        <name>mCurrentExtent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="297" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a1180acbdc9bdaff786f1d1a1beb04f50" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> *</type>
+        <definition>QgsFeature* QgsGmlStreamingParser::mCurrentFeature</definition>
+        <argsstring></argsstring>
+        <name>mCurrentFeature</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="291" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a9e7355d4f00c9eddcd8acd50fcc10188" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mCurrentFeatureId</definition>
+        <argsstring></argsstring>
+        <name>mCurrentFeatureId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="293" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a1373ecd9ffbd2998a141426be5cff9d6" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mCurrentTypename</definition>
+        <argsstring></argsstring>
+        <name>mCurrentTypename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="286" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1aa6b88040bbd1447ead7689a605b06221" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsWkbPtr" kindref="compound">QgsWkbPtr</ref></type>
+        <definition>QgsWkbPtr QgsGmlStreamingParser::mCurrentWKB</definition>
+        <argsstring></argsstring>
+        <name>mCurrentWKB</name>
+        <briefdescription>
+<para>The total WKB for a feature. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="296" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a803463182e1c7ab367ef33452cdc2ae0" prot="private" static="no" mutable="no">
+        <type>QList&lt; QList&lt; <ref refid="classQgsWkbPtr" kindref="compound">QgsWkbPtr</ref> &gt; &gt;</type>
+        <definition>QList&lt; QList&lt;QgsWkbPtr&gt; &gt; QgsGmlStreamingParser::mCurrentWKBFragments</definition>
+        <argsstring></argsstring>
+        <name>mCurrentWKBFragments</name>
+        <briefdescription>
+<para>WKB intermediate storage during parsing. </para>        </briefdescription>
+        <detaileddescription>
+<para>For points and lines, no intermediate WKB is stored at all. For multipoints and multilines and polygons, only one nested list is used. For multipolygons, both nested lists are used </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="305" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a391101e3fca66909c1174ef64a3434e3" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mDimension</definition>
+        <argsstring></argsstring>
+        <name>mDimension</name>
+        <briefdescription>
+<para>Number of dimensions in pos or posList for the current geometry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="315" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1af1c649fe14a658155a1efe496f2009a3" prot="private" static="no" mutable="no">
+        <type>QStack&lt; int &gt;</type>
+        <definition>QStack&lt;int&gt; QgsGmlStreamingParser::mDimensionStack</definition>
+        <argsstring></argsstring>
+        <name>mDimensionStack</name>
+        <briefdescription>
+<para>Keep track about number of dimensions in pos or posList. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="313" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ae7a19a32b2ab5486f2d07847c34e3304" prot="private" static="no" mutable="no">
+        <type>char</type>
+        <definition>char QgsGmlStreamingParser::mEndian</definition>
+        <argsstring></argsstring>
+        <name>mEndian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="307" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1aba8d2c518135752d94b30e85b88848c3" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mEpsg</definition>
+        <argsstring></argsstring>
+        <name>mEpsg</name>
+        <briefdescription>
+<para>EPSG of parsed features geometries. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="319" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ab4c4192941de8b535bb1ca5bec14307b" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mExceptionText</definition>
+        <argsstring></argsstring>
+        <name>mExceptionText</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="281" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ac3e863983b0e5dd87c2dd7d037575e9a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mFeatureCount</definition>
+        <argsstring></argsstring>
+        <name>mFeatureCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="294" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1aa4b8e558cea7106b1a04acc154507629" prot="private" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classQgsGmlStreamingParser_1a31ce55860bee8ab70356dfdc37d13768" kindref="member">QgsGmlFeaturePtrGmlIdPair</ref> &gt;</type>
+        <definition>QVector&lt;QgsGmlFeaturePtrGmlIdPair&gt; QgsGmlStreamingParser::mFeatureList</definition>
+        <argsstring></argsstring>
+        <name>mFeatureList</name>
+        <briefdescription>
+<para>List of (feature, gml_id) pairs. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="255" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1af67606a68a93920d966163112aa791ba" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mFeatureTupleDepth</definition>
+        <argsstring></argsstring>
+        <name>mFeatureTupleDepth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="285" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1abf90ec3c6678703b336673530cc15f8a" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsGmlStreamingParser::mFields</definition>
+        <argsstring></argsstring>
+        <name>mFields</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="277" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1adf440aba4937044419c8f28ae63cbf60" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::mFoundUnhandledGeometryElement</definition>
+        <argsstring></argsstring>
+        <name>mFoundUnhandledGeometryElement</name>
+        <briefdescription>
+<para>Whether we found a unhandled geometry element. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="340" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a367a032e90fc200110f9a7599ff0ee2f" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mGeometryAttribute</definition>
+        <argsstring></argsstring>
+        <name>mGeometryAttribute</name>
+        <briefdescription>
+<para>Name of geometry attribute. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="272" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a1b8ffff4dd833a953bc5e647f725a8e3" prot="private" static="no" mutable="no">
+        <type>QByteArray</type>
+        <definition>QByteArray QgsGmlStreamingParser::mGeometryAttributeBA</definition>
+        <argsstring></argsstring>
+        <name>mGeometryAttributeBA</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="273" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a4af417801f2f2153c00103f22af22743" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* QgsGmlStreamingParser::mGeometryAttributePtr</definition>
+        <argsstring></argsstring>
+        <name>mGeometryAttributePtr</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="274" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a7d2d234f72625c3965f16065ef938058" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t QgsGmlStreamingParser::mGeometryAttributeUTF8Len</definition>
+        <argsstring></argsstring>
+        <name>mGeometryAttributeUTF8Len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="275" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a8a05c1469a0632a0af100b44c8b03439" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string QgsGmlStreamingParser::mGeometryString</definition>
+        <argsstring></argsstring>
+        <name>mGeometryString</name>
+        <briefdescription>
+<para>XML blob containing geometry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="338" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="338" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a7dd3674b2896fa3d1724d91f3085bb73" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mGMLNameSpaceURI</definition>
+        <argsstring></argsstring>
+        <name>mGMLNameSpaceURI</name>
+        <briefdescription>
+<para>GML namespace URI. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="325" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a16590d52f374b9232aeacd626784bb4a" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* QgsGmlStreamingParser::mGMLNameSpaceURIPtr</definition>
+        <argsstring></argsstring>
+        <name>mGMLNameSpaceURIPtr</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="326" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1af3babce696acec446d9d8543142a95e1" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::mInvertAxisOrientation</definition>
+        <argsstring></argsstring>
+        <name>mInvertAxisOrientation</name>
+        <briefdescription>
+<para>Whether to invert axis orientation: result of mAxisOrientationLogic, mInvertAxisOrientationRequest and what is inferred from data and mAxisOrientationLogic. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="332" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a3547030d272e98f3270f6e32be192024" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::mInvertAxisOrientationRequest</definition>
+        <argsstring></argsstring>
+        <name>mInvertAxisOrientationRequest</name>
+        <briefdescription>
+<para>Whether to invert axis orientation. This value is immutable, but combined with what is inferred from data and mAxisOrientationLogic, is used to compute mInvertAxisOrientation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="330" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a0f95d77c152087449d14402c649e4ea4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::mIsException</definition>
+        <argsstring></argsstring>
+        <name>mIsException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="280" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a28aa4b835de931a284b8361da1bcb194" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsGmlStreamingParser::mLayerExtent</definition>
+        <argsstring></argsstring>
+        <name>mLayerExtent</name>
+        <briefdescription>
+<para>Layer bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="323" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a6c74b7e61978d7409d4865040d7269d8" prot="private" static="no" mutable="no">
+        <type>QList&lt; <ref refid="classQgsGmlStreamingParser_1_1LayerProperties" kindref="compound">LayerProperties</ref> &gt;</type>
+        <definition>QList&lt;LayerProperties&gt; QgsGmlStreamingParser::mLayerProperties</definition>
+        <argsstring></argsstring>
+        <name>mLayerProperties</name>
+        <briefdescription>
+<para>Describe the various feature types of a join layer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="258" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1af480dd9d6d394acef7c5d9f448ee1e42" prot="private" static="no" mutable="no">
+        <type>QMap&lt; QString, <ref refid="classQgsGmlStreamingParser_1_1LayerProperties" kindref="compound">LayerProperties</ref> &gt;</type>
+        <definition>QMap&lt; QString, LayerProperties &gt; QgsGmlStreamingParser::mMapTypeNameToProperties</definition>
+        <argsstring></argsstring>
+        <name>mMapTypeNameToProperties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="259" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ad396838f9819b700886f570a7141934a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mNumberMatched</definition>
+        <argsstring></argsstring>
+        <name>mNumberMatched</name>
+        <briefdescription>
+<para>WFS 2.0 &quot;numberMatched&quot; attribute, or -1 if invalid/not found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="336" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="336" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1af17efdc0761b90213660edd4243bed1f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mNumberReturned</definition>
+        <argsstring></argsstring>
+        <name>mNumberReturned</name>
+        <briefdescription>
+<para>WFS 2.0 &quot;numberReturned&quot; or WFS 1.1 &quot;numberOfFeatures&quot; attribute, or -1 if invalid/not found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="334" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a17031a3829ec6833fb113dc7e7b20c32" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::mParseDepth</definition>
+        <argsstring></argsstring>
+        <name>mParseDepth</name>
+        <briefdescription>
+<para>Parsing depth. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="284" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a66e04fcf9d4caa34d9e2dec552f079aa" prot="private" static="no" mutable="no">
+        <type>QStack&lt; ParseMode &gt;</type>
+        <definition>QStack&lt;ParseMode&gt; QgsGmlStreamingParser::mParseModeStack</definition>
+        <argsstring></argsstring>
+        <name>mParseModeStack</name>
+        <briefdescription>
+<para>Used to track the current (unprefixed) typename for wfs:Member in join layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Keep track about the most important nested elements </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="288" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a9451aa591b31b951ab5faa35bb1fcb70" prot="private" static="no" mutable="no">
+        <type>XML_Parser</type>
+        <definition>XML_Parser QgsGmlStreamingParser::mParser</definition>
+        <argsstring></argsstring>
+        <name>mParser</name>
+        <briefdescription>
+<para>Expat parser. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="252" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1aaec773748133da074bfe7fda23a29119" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mSrsName</definition>
+        <argsstring></argsstring>
+        <name>mSrsName</name>
+        <briefdescription>
+<para>Literal srsName attribute. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="321" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1aa7138ddedc64a205b20b922fcfa8c9ed" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mStringCash</definition>
+        <argsstring></argsstring>
+        <name>mStringCash</name>
+        <briefdescription>
+<para>This contains the character data if an important element has been encountered. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="290" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a7c7f5eaea284f5dd8fc41ad3d3129fd3" prot="private" static="no" mutable="no">
+        <type>QMap&lt; QString, QPair&lt; int, <ref refid="classQgsField" kindref="compound">QgsField</ref> &gt; &gt;</type>
+        <definition>QMap&lt;QString, QPair&lt;int, QgsField&gt; &gt; QgsGmlStreamingParser::mThematicAttributes</definition>
+        <argsstring></argsstring>
+        <name>mThematicAttributes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="278" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ab4cee7beb6076587c471f3b41ed5da9c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::mTruncatedResponse</definition>
+        <argsstring></argsstring>
+        <name>mTruncatedResponse</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="282" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1afa31854f2f05afb3191ce69886aea1e2" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mTupleSeparator</definition>
+        <argsstring></argsstring>
+        <name>mTupleSeparator</name>
+        <briefdescription>
+<para>Tuple separator for coordinate strings. Usually &quot; &quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="311" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a28a11029d45740df51f631dccfe97cfa" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::mTypeName</definition>
+        <argsstring></argsstring>
+        <name>mTypeName</name>
+        <briefdescription>
+<para>Typename without namespace prefix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="262" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a1683cd22f5fb02de003f9ba68b2f7f09" prot="private" static="no" mutable="no">
+        <type>QByteArray</type>
+        <definition>QByteArray QgsGmlStreamingParser::mTypeNameBA</definition>
+        <argsstring></argsstring>
+        <name>mTypeNameBA</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="263" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a166d9d5c507d4c180c4f575c4fbe2b95" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* QgsGmlStreamingParser::mTypeNamePtr</definition>
+        <argsstring></argsstring>
+        <name>mTypeNamePtr</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="264" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1ad7b772e02b2dbf222546af9facac0d1a" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t QgsGmlStreamingParser::mTypeNameUTF8Len</definition>
+        <argsstring></argsstring>
+        <name>mTypeNameUTF8Len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="265" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsGmlStreamingParser_1a38c76cc9c88cc5f0d85a34b3dcb2304b" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsGmlStreamingParser::mWkbType</definition>
+        <argsstring></argsstring>
+        <name>mWkbType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="267" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a9ba699c55691ad30915064dfe822071b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsGmlStreamingParser::QgsGmlStreamingParser</definition>
+        <argsstring>(const QString &amp;typeName, const QString &amp;geometryAttribute, const QgsFields &amp;fields, AxisOrientationLogic axisOrientationLogic=Honour_EPSG_if_urn, bool invertAxisOrientation=false)</argsstring>
+        <name>QgsGmlStreamingParser</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>typeName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>geometryAttribute</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740" kindref="member">AxisOrientationLogic</ref></type>
+          <declname>axisOrientationLogic</declname>
+          <defval><ref refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740ac7c8e749af53b93e85276241785217c5" kindref="member">Honour_EPSG_if_urn</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>invertAxisOrientation</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="271" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a44f3189a95f521b39538438e62364986" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsGmlStreamingParser::QgsGmlStreamingParser</definition>
+        <argsstring>(const QList&lt; LayerProperties &gt; &amp;layerProperties, const QgsFields &amp;fields, const QMap&lt; QString, QPair&lt; QString, QString &gt; &gt; &amp;mapFieldNameToSrcLayerNameFieldName, AxisOrientationLogic axisOrientationLogic=Honour_EPSG_if_urn, bool invertAxisOrientation=false)</argsstring>
+        <name>QgsGmlStreamingParser</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsGmlStreamingParser_1_1LayerProperties" kindref="compound">LayerProperties</ref> &gt; &amp;</type>
+          <declname>layerProperties</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type>const QMap&lt; QString, QPair&lt; QString, QString &gt; &gt; &amp;</type>
+          <declname>mapFieldNameToSrcLayerNameFieldName</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740" kindref="member">AxisOrientationLogic</ref></type>
+          <declname>axisOrientationLogic</declname>
+          <defval><ref refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740ac7c8e749af53b93e85276241785217c5" kindref="member">Honour_EPSG_if_urn</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>invertAxisOrientation</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for a join layer, or dealing with renamed fields. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="89" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="336" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1aadfaa8c9f8bd302ad5c68be7bd9606da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsGmlStreamingParser::QgsGmlStreamingParser</definition>
+        <argsstring>(const QgsGmlStreamingParser &amp;other)=delete</argsstring>
+        <name>QgsGmlStreamingParser</name>
+        <param>
+          <type>const <ref refid="classQgsGmlStreamingParser" kindref="compound">QgsGmlStreamingParser</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsGmlStreamingParser" kindref="compound">QgsGmlStreamingParser</ref> cannot be copied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="97" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a1ac1f4b0d470320833d1096c26ca7450" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsGmlStreamingParser::~QgsGmlStreamingParser</definition>
+        <argsstring>()</argsstring>
+        <name>~QgsGmlStreamingParser</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="418" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ace15f3be9e03f9fdc3d2744d0503f6ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::exceptionText</definition>
+        <argsstring>() const</argsstring>
+        <name>exceptionText</name>
+        <briefdescription>
+<para>Returns the exception text. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="140" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="140" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1af2193ab17533fe060f5cdd9121250203" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVector&lt; <ref refid="classQgsGmlStreamingParser_1a31ce55860bee8ab70356dfdc37d13768" kindref="member">QgsGmlFeaturePtrGmlIdPair</ref> &gt;</type>
+        <definition>QVector&lt; QgsGmlStreamingParser::QgsGmlFeaturePtrGmlIdPair &gt; QgsGmlStreamingParser::getAndStealReadyFeatures</definition>
+        <argsstring>()</argsstring>
+        <name>getAndStealReadyFeatures</name>
+        <briefdescription>
+<para>Returns the list of features that have been completely parsed. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can be called at any point. This will empty the list maintained internally by the parser, so that features already returned will no longer be returned by later calls. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="116" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="458" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ae3a813bd3f82dc7f905041830c13a3da" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::getEPSGCode</definition>
+        <argsstring>() const</argsstring>
+        <name>getEPSGCode</name>
+        <briefdescription>
+<para>Returns the EPSG code, or 0 if unknown. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="119" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="119" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a67832d74088c6d8ec73d8df216d64238" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::isException</definition>
+        <argsstring>() const</argsstring>
+        <name>isException</name>
+        <briefdescription>
+<para>Returns whether the document parser is a OGC exception. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="137" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="137" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1aca13284ab480fef80cb4fc98e70dbb8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::isTruncatedResponse</definition>
+        <argsstring>() const</argsstring>
+        <name>isTruncatedResponse</name>
+        <briefdescription>
+<para>Returns whether a &quot;truncatedResponse&quot; element is found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="143" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="143" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1af83ba7f4b4537bcb659f1d8d741439ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+        <definition>const QgsRectangle&amp; QgsGmlStreamingParser::layerExtent</definition>
+        <argsstring>() const</argsstring>
+        <name>layerExtent</name>
+        <briefdescription>
+<para>Returns layer bounding box. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="125" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="125" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a96ebb4d37ba0d9892bbf7990bcf091cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::numberMatched</definition>
+        <argsstring>() const</argsstring>
+        <name>numberMatched</name>
+        <briefdescription>
+<para>Returns WFS 2.0 &quot;numberMatched&quot; attribute, or -1 if invalid/not found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="131" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="131" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a7895486aa22bbad9665c0c820f01fb01" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::numberReturned</definition>
+        <argsstring>() const</argsstring>
+        <name>numberReturned</name>
+        <briefdescription>
+<para>Returns WFS 2.0 &quot;numberReturned&quot; or WFS 1.1 &quot;numberOfFeatures&quot; attribute, or -1 if invalid/not found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="134" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a961b5f44a3f3fcd4a051aea1b5931d9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGmlStreamingParser" kindref="compound">QgsGmlStreamingParser</ref> &amp;</type>
+        <definition>QgsGmlStreamingParser&amp; QgsGmlStreamingParser::operator=</definition>
+        <argsstring>(const QgsGmlStreamingParser &amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsGmlStreamingParser" kindref="compound">QgsGmlStreamingParser</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsGmlStreamingParser" kindref="compound">QgsGmlStreamingParser</ref> cannot be copied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1acdd513ca23666f1f906c610d78f468a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::processData</definition>
+        <argsstring>(const QByteArray &amp;data, bool atEnd, QString &amp;errorMsg)</argsstring>
+        <name>processData</name>
+        <param>
+          <type>const QByteArray &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>atEnd</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>errorMsg</declname>
+        </param>
+        <briefdescription>
+<para>Process a new chunk of data. </para>        </briefdescription>
+        <detaileddescription>
+<para>atEnd must be set to true when this is the last chunk of data. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="442" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1aad6e6e759d0ab43aa038183777808a92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::processData</definition>
+        <argsstring>(const QByteArray &amp;data, bool atEnd)</argsstring>
+        <name>processData</name>
+        <param>
+          <type>const QByteArray &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>atEnd</declname>
+        </param>
+        <briefdescription>
+<para>Process a new chunk of data. </para>        </briefdescription>
+        <detaileddescription>
+<para>atEnd must be set to true when this is the last chunk of data. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="109" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="431" bodyend="440"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1afdc9c89bcaed969f599ea5a5225d19ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::srsName</definition>
+        <argsstring>() const</argsstring>
+        <name>srsName</name>
+        <briefdescription>
+<para>Returns the value of the srsName attribute. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="122" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a16e7e2e962704cebce6b191a6055fd5e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsGmlStreamingParser::wkbType</definition>
+        <argsstring>() const</argsstring>
+        <name>wkbType</name>
+        <briefdescription>
+<para>Returns the geometry type. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="128" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="128" bodyend="128"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a0661f475cc35b2c17b5ca62890defe93" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGmlStreamingParser::characters</definition>
+        <argsstring>(const XML_Char *chars, int len)</argsstring>
+        <name>characters</name>
+        <param>
+          <type>const XML_Char *</type>
+          <declname>chars</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1139" bodyend="1163"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a856fc983511285f027cf1e0f85938f13" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsGmlStreamingParser::createBBoxFromCoordinateString</definition>
+        <argsstring>(QgsRectangle &amp;bb, const QString &amp;coordString) const</argsstring>
+        <name>createBBoxFromCoordinateString</name>
+        <param>
+          <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>bb</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>coordString</declname>
+        </param>
+        <briefdescription>
+<para>Creates a rectangle from a coordinate string. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="208" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1260" bodyend="1276"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1afe0a87a40bd89d566dfabff002b4d5dc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::createMultiLineFromFragments</definition>
+        <argsstring>()</argsstring>
+        <name>createMultiLineFromFragments</name>
+        <briefdescription>
+<para>Creates a multiline from the information in mCurrentWKBFragments and mCurrentWKBFragmentSizes. </para>        </briefdescription>
+        <detaileddescription>
+<para>Assign the result. The multiline is in mCurrentWKB. The function deletes the memory in mCurrentWKBFragments. Returns 0 in case of success. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="238" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1398" bodyend="1419"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a0590bfdd19f04a20b2a9693ed9a456c0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::createMultiPointFromFragments</definition>
+        <argsstring>()</argsstring>
+        <name>createMultiPointFromFragments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="239" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1421" bodyend="1440"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1aecb518eeff13106e5339fb5665a4c1a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::createMultiPolygonFromFragments</definition>
+        <argsstring>()</argsstring>
+        <name>createMultiPolygonFromFragments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="241" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1464" bodyend="1496"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ad76aec411d428f1f0974747608f9ac98" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::createPolygonFromFragments</definition>
+        <argsstring>()</argsstring>
+        <name>createPolygonFromFragments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="240" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1443" bodyend="1462"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a9bcda254a5849d91a009aac04d99c2ea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGmlStreamingParser::endElement</definition>
+        <argsstring>(const XML_Char *el)</argsstring>
+        <name>endElement</name>
+        <param>
+          <type>const XML_Char *</type>
+          <declname>el</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="172" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="836" bodyend="1137"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ae6678a39a52124a302d02d543533d6d8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::getLineWKB</definition>
+        <argsstring>(QgsWkbPtr &amp;wkbPtr, const QList&lt; QgsPointXY &gt; &amp;lineCoordinates) const</argsstring>
+        <name>getLineWKB</name>
+        <param>
+          <type><ref refid="classQgsWkbPtr" kindref="compound">QgsWkbPtr</ref> &amp;</type>
+          <declname>wkbPtr</declname>
+        </param>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt; &amp;</type>
+          <declname>lineCoordinates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="229" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1362" bodyend="1378"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ae71214b7cbc139464e75a6f0bc5ad7bc" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::getPointWKB</definition>
+        <argsstring>(QgsWkbPtr &amp;wkbPtr, const QgsPointXY &amp;) const</argsstring>
+        <name>getPointWKB</name>
+        <param>
+          <type><ref refid="classQgsWkbPtr" kindref="compound">QgsWkbPtr</ref> &amp;</type>
+          <declname>wkbPtr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <defname>point</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="228" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1351" bodyend="1360"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a715b64dcf561bec163e0162f79fa9c8e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::getRingWKB</definition>
+        <argsstring>(QgsWkbPtr &amp;wkbPtr, const QList&lt; QgsPointXY &gt; &amp;ringCoordinates) const</argsstring>
+        <name>getRingWKB</name>
+        <param>
+          <type><ref refid="classQgsWkbPtr" kindref="compound">QgsWkbPtr</ref> &amp;</type>
+          <declname>wkbPtr</declname>
+        </param>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt; &amp;</type>
+          <declname>ringCoordinates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="230" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1380" bodyend="1396"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a7e5c75061f5749b64be75c4c8bdfd99c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ParseMode</type>
+        <definition>ParseMode QgsGmlStreamingParser::modeStackPop</definition>
+        <argsstring>()</argsstring>
+        <name>modeStackPop</name>
+        <briefdescription>
+<para>Safely (if empty) pop from mode stack. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="249" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="249" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a83fdd547c5e638dfea41c1fb7ce09954" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ParseMode</type>
+        <definition>ParseMode QgsGmlStreamingParser::modeStackTop</definition>
+        <argsstring>()</argsstring>
+        <name>modeStackTop</name>
+        <briefdescription>
+<para>Gets safely (if empty) top from mode stack. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="246" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="246" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1aa1c0a9d38a03a5564f2727f1d10708bb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::pointsFromCoordinateString</definition>
+        <argsstring>(QList&lt; QgsPointXY &gt; &amp;points, const QString &amp;coordString) const</argsstring>
+        <name>pointsFromCoordinateString</name>
+        <param>
+          <type>QList&lt; <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>coordString</declname>
+        </param>
+        <briefdescription>
+<para>Creates a set of points from a coordinate string. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>points</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list that will contain the created points </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>coordString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the text containing the coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="216" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1278" bodyend="1307"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a5561ac38274f05e7a5cfdd057e484f9f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::pointsFromPosListString</definition>
+        <argsstring>(QList&lt; QgsPointXY &gt; &amp;points, const QString &amp;coordString, int dimension) const</argsstring>
+        <name>pointsFromPosListString</name>
+        <param>
+          <type>QList&lt; <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>coordString</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dimension</declname>
+        </param>
+        <briefdescription>
+<para>Creates a set of points from a gml:posList or gml:pos coordinate string. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>points</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list that will contain the created points </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>coordString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the text containing the coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dimension</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of dimensions </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="225" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1309" bodyend="1336"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ae3933b6401fda1c16f28bb61ab234cd6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::pointsFromString</definition>
+        <argsstring>(QList&lt; QgsPointXY &gt; &amp;points, const QString &amp;coordString) const</argsstring>
+        <name>pointsFromString</name>
+        <param>
+          <type>QList&lt; <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt; &amp;</type>
+          <declname>points</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>coordString</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="227" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1338" bodyend="1349"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a13a81cc0c19be98ca4f97ac9a43d486a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsGmlStreamingParser::readAttribute</definition>
+        <argsstring>(const QString &amp;attributeName, const XML_Char **attr) const</argsstring>
+        <name>readAttribute</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>attributeName</declname>
+        </param>
+        <param>
+          <type>const XML_Char **</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+<para>Reads attribute as string. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attributeName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>attribute value or an empty string if no such attribute </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="206" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1246" bodyend="1258"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a9a96d55fcb4045301eaa07cef4e59779" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::readEpsgFromAttribute</definition>
+        <argsstring>(int &amp;epsgNr, const XML_Char **attr)</argsstring>
+        <name>readEpsgFromAttribute</name>
+        <param>
+          <type>int &amp;</type>
+          <declname>epsgNr</declname>
+        </param>
+        <param>
+          <type>const XML_Char **</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+<para>Reads attribute srsName=&quot;EpsgCrsId:...&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>epsgNr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>result </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>attribute strings </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="198" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1195" bodyend="1244"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1af489a67d5059f6425aac0b96935e3607" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGmlStreamingParser::setAttribute</definition>
+        <argsstring>(const QString &amp;name, const QString &amp;value)</argsstring>
+        <name>setAttribute</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="188" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1165" bodyend="1193"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a7acb5daa9acad4c8c3244feabaede81a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsGmlStreamingParser::startElement</definition>
+        <argsstring>(const XML_Char *el, const XML_Char **attr)</argsstring>
+        <name>startElement</name>
+        <param>
+          <type>const XML_Char *</type>
+          <declname>el</declname>
+        </param>
+        <param>
+          <type>const XML_Char **</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+<para>XML handler methods. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="468" bodyend="834"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a6cff196f0693e75157fa4b037aae5d1c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsGmlStreamingParser::totalWKBFragmentSize</definition>
+        <argsstring>() const</argsstring>
+        <name>totalWKBFragmentSize</name>
+        <briefdescription>
+<para>Adds all the integers contained in mCurrentWKBFragmentSizes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="243" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.cpp" bodystart="1498" bodyend="1509"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a6c888d9e73b69c448e41ffa8f13340fc" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void QgsGmlStreamingParser::chars</definition>
+        <argsstring>(void *data, const XML_Char *chars, int len)</argsstring>
+        <name>chars</name>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const XML_Char *</type>
+          <declname>chars</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1ad728fc152c8df2b8abdb9f4ae28f8481" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void QgsGmlStreamingParser::end</definition>
+        <argsstring>(void *data, const XML_Char *el)</argsstring>
+        <name>end</name>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const XML_Char *</type>
+          <declname>el</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="178" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsGmlStreamingParser_1a612a6af66ccc3a59ab6811b175e51910" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void QgsGmlStreamingParser::start</definition>
+        <argsstring>(void *data, const XML_Char *el, const XML_Char **attr)</argsstring>
+        <name>start</name>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const XML_Char *</type>
+          <declname>el</declname>
+        </param>
+        <param>
+          <type>const XML_Char **</type>
+          <declname>attr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="174" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="174" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This class builds features from GML data in a streaming way. </para>    </briefdescription>
+    <detaileddescription>
+<para>The caller must call <ref refid="classQgsGmlStreamingParser_1acdd513ca23666f1f906c610d78f468a8" kindref="member">processData()</ref> as soon it has new content from the source. At any point, it can call <ref refid="classQgsGmlStreamingParser_1af2193ab17533fe060f5cdd9121250203" kindref="member">getAndStealReadyFeatures()</ref> to collect the features that have been completely parsed. <simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" line="49" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsgml.h" bodystart="48" bodyend="341"/>
+    <listofallmembers>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaeb82ded4b979c44e51f78869a3385ce4" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Attribute</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa50dcbef55e7fa9ad4ee01e7869db570a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>AttributeTuple</name></member>
+      <member refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>AxisOrientationLogic</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa8cf0d93aab33e9b075bc07dbc7961ae2" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>BoundingBox</name></member>
+      <member refid="classQgsGmlStreamingParser_1a0661f475cc35b2c17b5ca62890defe93" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>characters</name></member>
+      <member refid="classQgsGmlStreamingParser_1a6c888d9e73b69c448e41ffa8f13340fc" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>chars</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa5f5572554cf167fff5e7ff1760ca00b4" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Coordinate</name></member>
+      <member refid="classQgsGmlStreamingParser_1a856fc983511285f027cf1e0f85938f13" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>createBBoxFromCoordinateString</name></member>
+      <member refid="classQgsGmlStreamingParser_1afe0a87a40bd89d566dfabff002b4d5dc" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>createMultiLineFromFragments</name></member>
+      <member refid="classQgsGmlStreamingParser_1a0590bfdd19f04a20b2a9693ed9a456c0" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>createMultiPointFromFragments</name></member>
+      <member refid="classQgsGmlStreamingParser_1aecb518eeff13106e5339fb5665a4c1a7" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>createMultiPolygonFromFragments</name></member>
+      <member refid="classQgsGmlStreamingParser_1ad76aec411d428f1f0974747608f9ac98" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>createPolygonFromFragments</name></member>
+      <member refid="classQgsGmlStreamingParser_1ad728fc152c8df2b8abdb9f4ae28f8481" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>end</name></member>
+      <member refid="classQgsGmlStreamingParser_1a9bcda254a5849d91a009aac04d99c2ea" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>endElement</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa5900b6402f2d5e0e98c691d86722c136" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Envelope</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa5cc26d38913cf57f78103d0829e03f6e" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>ExceptionReport</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaa085951267da067bf261a7ba2cffeceb" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>ExceptionText</name></member>
+      <member refid="classQgsGmlStreamingParser_1ace15f3be9e03f9fdc3d2744d0503f6ca" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>exceptionText</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaae47dfc72a6e901dd35d3aa4e2ec34db" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Feature</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfae4835023b41f7c1d8228cdf87c0941b6" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>FeatureTuple</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa3826392320a1a9b7bfc029b0626a7808" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Geometry</name></member>
+      <member refid="classQgsGmlStreamingParser_1af2193ab17533fe060f5cdd9121250203" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>getAndStealReadyFeatures</name></member>
+      <member refid="classQgsGmlStreamingParser_1ae3a813bd3f82dc7f905041830c13a3da" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>getEPSGCode</name></member>
+      <member refid="classQgsGmlStreamingParser_1ae6678a39a52124a302d02d543533d6d8" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>getLineWKB</name></member>
+      <member refid="classQgsGmlStreamingParser_1ae71214b7cbc139464e75a6f0bc5ad7bc" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>getPointWKB</name></member>
+      <member refid="classQgsGmlStreamingParser_1a715b64dcf561bec163e0162f79fa9c8e" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>getRingWKB</name></member>
+      <member refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740a8f74ba8a22f9037d9ea066719eb4196b" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Honour_EPSG</name></member>
+      <member refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740ac7c8e749af53b93e85276241785217c5" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Honour_EPSG_if_urn</name></member>
+      <member refid="classQgsGmlStreamingParser_1a96113b4926ec66a67946401431aac740a043e14492f33253530c55837e6df21c9" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Ignore_EPSG</name></member>
+      <member refid="classQgsGmlStreamingParser_1a67832d74088c6d8ec73d8df216d64238" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>isException</name></member>
+      <member refid="classQgsGmlStreamingParser_1aca13284ab480fef80cb4fc98e70dbb8c" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>isTruncatedResponse</name></member>
+      <member refid="classQgsGmlStreamingParser_1af83ba7f4b4537bcb659f1d8d741439ee" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>layerExtent</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa797d48666ce15802e6325bdf18ebf230" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>LowerCorner</name></member>
+      <member refid="classQgsGmlStreamingParser_1ae75190d486591feef85f8608739fd8b1" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mAttributeName</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7f751942d46686a6ec0436fe0455bd99" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mAxisOrientationLogic</name></member>
+      <member refid="classQgsGmlStreamingParser_1a06fbb1562ecec19c185bb9e711e63567" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mBoundedByNullFound</name></member>
+      <member refid="classQgsGmlStreamingParser_1ad0599b38478646c731ee5b8754b240dc" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCoordinateSeparator</name></member>
+      <member refid="classQgsGmlStreamingParser_1a17aec7d9d97567329937c0b67099ff30" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCoorMode</name></member>
+      <member refid="classQgsGmlStreamingParser_1ab5dfe5b5b8e43069e3c588134fec97b6" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentAttributes</name></member>
+      <member refid="classQgsGmlStreamingParser_1aa667535660116c18105529f47a8fd907" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentExtent</name></member>
+      <member refid="classQgsGmlStreamingParser_1a1180acbdc9bdaff786f1d1a1beb04f50" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentFeature</name></member>
+      <member refid="classQgsGmlStreamingParser_1a9e7355d4f00c9eddcd8acd50fcc10188" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentFeatureId</name></member>
+      <member refid="classQgsGmlStreamingParser_1a1373ecd9ffbd2998a141426be5cff9d6" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentTypename</name></member>
+      <member refid="classQgsGmlStreamingParser_1aa6b88040bbd1447ead7689a605b06221" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentWKB</name></member>
+      <member refid="classQgsGmlStreamingParser_1a803463182e1c7ab367ef33452cdc2ae0" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mCurrentWKBFragments</name></member>
+      <member refid="classQgsGmlStreamingParser_1a391101e3fca66909c1174ef64a3434e3" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mDimension</name></member>
+      <member refid="classQgsGmlStreamingParser_1af1c649fe14a658155a1efe496f2009a3" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mDimensionStack</name></member>
+      <member refid="classQgsGmlStreamingParser_1ae7a19a32b2ab5486f2d07847c34e3304" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mEndian</name></member>
+      <member refid="classQgsGmlStreamingParser_1aba8d2c518135752d94b30e85b88848c3" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mEpsg</name></member>
+      <member refid="classQgsGmlStreamingParser_1ab4c4192941de8b535bb1ca5bec14307b" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mExceptionText</name></member>
+      <member refid="classQgsGmlStreamingParser_1ac3e863983b0e5dd87c2dd7d037575e9a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mFeatureCount</name></member>
+      <member refid="classQgsGmlStreamingParser_1aa4b8e558cea7106b1a04acc154507629" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mFeatureList</name></member>
+      <member refid="classQgsGmlStreamingParser_1af67606a68a93920d966163112aa791ba" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mFeatureTupleDepth</name></member>
+      <member refid="classQgsGmlStreamingParser_1abf90ec3c6678703b336673530cc15f8a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mFields</name></member>
+      <member refid="classQgsGmlStreamingParser_1adf440aba4937044419c8f28ae63cbf60" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mFoundUnhandledGeometryElement</name></member>
+      <member refid="classQgsGmlStreamingParser_1a367a032e90fc200110f9a7599ff0ee2f" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGeometryAttribute</name></member>
+      <member refid="classQgsGmlStreamingParser_1a1b8ffff4dd833a953bc5e647f725a8e3" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGeometryAttributeBA</name></member>
+      <member refid="classQgsGmlStreamingParser_1a4af417801f2f2153c00103f22af22743" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGeometryAttributePtr</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7d2d234f72625c3965f16065ef938058" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGeometryAttributeUTF8Len</name></member>
+      <member refid="classQgsGmlStreamingParser_1a8a05c1469a0632a0af100b44c8b03439" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGeometryString</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7dd3674b2896fa3d1724d91f3085bb73" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGMLNameSpaceURI</name></member>
+      <member refid="classQgsGmlStreamingParser_1a16590d52f374b9232aeacd626784bb4a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mGMLNameSpaceURIPtr</name></member>
+      <member refid="classQgsGmlStreamingParser_1af3babce696acec446d9d8543142a95e1" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mInvertAxisOrientation</name></member>
+      <member refid="classQgsGmlStreamingParser_1a3547030d272e98f3270f6e32be192024" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mInvertAxisOrientationRequest</name></member>
+      <member refid="classQgsGmlStreamingParser_1a0f95d77c152087449d14402c649e4ea4" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mIsException</name></member>
+      <member refid="classQgsGmlStreamingParser_1a28aa4b835de931a284b8361da1bcb194" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mLayerExtent</name></member>
+      <member refid="classQgsGmlStreamingParser_1a6c74b7e61978d7409d4865040d7269d8" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mLayerProperties</name></member>
+      <member refid="classQgsGmlStreamingParser_1af480dd9d6d394acef7c5d9f448ee1e42" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mMapTypeNameToProperties</name></member>
+      <member refid="classQgsGmlStreamingParser_1ad396838f9819b700886f570a7141934a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mNumberMatched</name></member>
+      <member refid="classQgsGmlStreamingParser_1af17efdc0761b90213660edd4243bed1f" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mNumberReturned</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7e5c75061f5749b64be75c4c8bdfd99c" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>modeStackPop</name></member>
+      <member refid="classQgsGmlStreamingParser_1a83fdd547c5e638dfea41c1fb7ce09954" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>modeStackTop</name></member>
+      <member refid="classQgsGmlStreamingParser_1a17031a3829ec6833fb113dc7e7b20c32" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mParseDepth</name></member>
+      <member refid="classQgsGmlStreamingParser_1a66e04fcf9d4caa34d9e2dec552f079aa" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mParseModeStack</name></member>
+      <member refid="classQgsGmlStreamingParser_1a9451aa591b31b951ab5faa35bb1fcb70" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mParser</name></member>
+      <member refid="classQgsGmlStreamingParser_1aaec773748133da074bfe7fda23a29119" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mSrsName</name></member>
+      <member refid="classQgsGmlStreamingParser_1aa7138ddedc64a205b20b922fcfa8c9ed" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mStringCash</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7c7f5eaea284f5dd8fc41ad3d3129fd3" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mThematicAttributes</name></member>
+      <member refid="classQgsGmlStreamingParser_1ab4cee7beb6076587c471f3b41ed5da9c" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mTruncatedResponse</name></member>
+      <member refid="classQgsGmlStreamingParser_1afa31854f2f05afb3191ce69886aea1e2" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mTupleSeparator</name></member>
+      <member refid="classQgsGmlStreamingParser_1a28a11029d45740df51f631dccfe97cfa" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mTypeName</name></member>
+      <member refid="classQgsGmlStreamingParser_1a1683cd22f5fb02de003f9ba68b2f7f09" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mTypeNameBA</name></member>
+      <member refid="classQgsGmlStreamingParser_1a166d9d5c507d4c180c4f575c4fbe2b95" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mTypeNamePtr</name></member>
+      <member refid="classQgsGmlStreamingParser_1ad7b772e02b2dbf222546af9facac0d1a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mTypeNameUTF8Len</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa26e4f1a66cd47eade54bd6b1a0e0618e" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>MultiLine</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa0d9941722baa446e23231e2642ca9997" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>MultiPoint</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfab92c247416c441ba5634bd0b1a368185" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>MultiPolygon</name></member>
+      <member refid="classQgsGmlStreamingParser_1a38c76cc9c88cc5f0d85a34b3dcb2304b" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>mWkbType</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfad53f62a2fbd8dbea33c61444d15ffc92" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>None</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaeb5a152b4b6e9d0b2b08f396e2668949" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Null</name></member>
+      <member refid="classQgsGmlStreamingParser_1a96ebb4d37ba0d9892bbf7990bcf091cb" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>numberMatched</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7895486aa22bbad9665c0c820f01fb01" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>numberReturned</name></member>
+      <member refid="classQgsGmlStreamingParser_1a961b5f44a3f3fcd4a051aea1b5931d9a" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>operator=</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2df" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>ParseMode</name></member>
+      <member refid="classQgsGmlStreamingParser_1aa1c0a9d38a03a5564f2727f1d10708bb" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>pointsFromCoordinateString</name></member>
+      <member refid="classQgsGmlStreamingParser_1a5561ac38274f05e7a5cfdd057e484f9f" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>pointsFromPosListString</name></member>
+      <member refid="classQgsGmlStreamingParser_1ae3933b6401fda1c16f28bb61ab234cd6" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>pointsFromString</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfaa7b7874a867905a2d3a9516194c9f586" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>PosList</name></member>
+      <member refid="classQgsGmlStreamingParser_1acdd513ca23666f1f906c610d78f468a8" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>processData</name></member>
+      <member refid="classQgsGmlStreamingParser_1aad6e6e759d0ab43aa038183777808a92" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>processData</name></member>
+      <member refid="classQgsGmlStreamingParser_1a31ce55860bee8ab70356dfdc37d13768" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>QgsGmlFeaturePtrGmlIdPair</name></member>
+      <member refid="classQgsGmlStreamingParser_1a9ba699c55691ad30915064dfe822071b" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>QgsGmlStreamingParser</name></member>
+      <member refid="classQgsGmlStreamingParser_1a44f3189a95f521b39538438e62364986" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>QgsGmlStreamingParser</name></member>
+      <member refid="classQgsGmlStreamingParser_1aadfaa8c9f8bd302ad5c68be7bd9606da" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>QgsGmlStreamingParser</name></member>
+      <member refid="classQgsGmlStreamingParser_1a13a81cc0c19be98ca4f97ac9a43d486a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>readAttribute</name></member>
+      <member refid="classQgsGmlStreamingParser_1a9a96d55fcb4045301eaa07cef4e59779" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>readEpsgFromAttribute</name></member>
+      <member refid="classQgsGmlStreamingParser_1af489a67d5059f6425aac0b96935e3607" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>setAttribute</name></member>
+      <member refid="classQgsGmlStreamingParser_1afdc9c89bcaed969f599ea5a5225d19ee" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>srsName</name></member>
+      <member refid="classQgsGmlStreamingParser_1a612a6af66ccc3a59ab6811b175e51910" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>start</name></member>
+      <member refid="classQgsGmlStreamingParser_1a7acb5daa9acad4c8c3244feabaede81a" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>startElement</name></member>
+      <member refid="classQgsGmlStreamingParser_1a6cff196f0693e75157fa4b037aae5d1c" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>totalWKBFragmentSize</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfa3dd15f9fb2a340a567055fbdbe8d79de" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>Tuple</name></member>
+      <member refid="classQgsGmlStreamingParser_1a30b90b35be9a7c60b275769dd70ff2dfac7d5bd7f437290607d51ff2cf08a50e6" prot="private" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>UpperCorner</name></member>
+      <member refid="classQgsGmlStreamingParser_1a16e7e2e962704cebce6b191a6055fd5e" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>wkbType</name></member>
+      <member refid="classQgsGmlStreamingParser_1a1ac1f4b0d470320833d1096c26ca7450" prot="public" virt="non-virtual"><scope>QgsGmlStreamingParser</scope><name>~QgsGmlStreamingParser</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

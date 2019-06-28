@@ -1,0 +1,434 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsFieldConstraints" kind="class" language="C++" prot="public">
+    <compoundname>QgsFieldConstraints</compoundname>
+    <includes refid="qgsfieldconstraints_8h" local="no">qgsfieldconstraints.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" prot="public" static="no">
+        <name>Constraint</name>
+        <enumvalue id="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cca01fcc6ad26c4511bef9617a87a648f14" prot="public">
+          <name>ConstraintNotNull</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Field may not be null. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cca59d7dd3bd596516323e05789af050147" prot="public">
+          <name>ConstraintUnique</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Field must have a unique value. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32ccaa641e030d8f7c43db10c7aac0e52550b" prot="public">
+          <name>ConstraintExpression</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Field has an expression constraint set. See <ref refid="classQgsFieldConstraints_1a6a01d9858115b3d1a81531e9a60571de" kindref="member">constraintExpression()</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Constraints which may be present on a field. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="44" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="43" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3" prot="public" static="no">
+        <name>ConstraintOrigin</name>
+        <enumvalue id="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3a8befae9864c309ce37ed84b2282ba79b" prot="public">
+          <name>ConstraintOriginNotSet</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Constraint is not set. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3addd12182ce17f7c774f3bbdca77c19b2" prot="public">
+          <name>ConstraintOriginProvider</name>
+          <briefdescription>
+<para>Constraint was set at data provider. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3afd810175a2b3dbc344cf809eb4f705a6" prot="public">
+          <name>ConstraintOriginLayer</name>
+          <briefdescription>
+<para>Constraint was set by layer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Origin of constraints. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="55" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="54" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dca" prot="public" static="no">
+        <name>ConstraintStrength</name>
+        <enumvalue id="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dcaa3363576bcb35da808eb7cfa672dadf2c" prot="public">
+          <name>ConstraintStrengthNotSet</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Constraint is not set. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dcaacd9cad1bbd2adcbc05cc97d106ba2e32" prot="public">
+          <name>ConstraintStrengthHard</name>
+          <briefdescription>
+<para>Constraint must be honored before feature can be accepted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dcaaa9e3b222e965ae12f4f9eec60bc7e7b6" prot="public">
+          <name>ConstraintStrengthSoft</name>
+          <briefdescription>
+<para>User is warned if constraint is violated but feature can still be accepted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Strength of constraints. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="65" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="64" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Constraints</type>
+        <definition>Constraints QgsFieldConstraints::constraints</definition>
+        <argsstring></argsstring>
+        <name>constraints</name>
+        <read>constraints</read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="34" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsFieldConstraints_1a9210d8ef2ff6fc72704e08e713f95da8" prot="private" static="no" mutable="no">
+        <type>QHash&lt; <ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref>, <ref refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3" kindref="member">ConstraintOrigin</ref> &gt;</type>
+        <definition>QHash&lt; Constraint, ConstraintOrigin &gt; QgsFieldConstraints::mConstraintOrigins</definition>
+        <argsstring></argsstring>
+        <name>mConstraintOrigins</name>
+        <briefdescription>
+<para>Origin of field constraints. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="153" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFieldConstraints_1a3ce2c83582509554e0d7db493e13c97d" prot="private" static="no" mutable="no">
+        <type>Constraints</type>
+        <definition>Constraints QgsFieldConstraints::mConstraints</definition>
+        <argsstring></argsstring>
+        <name>mConstraints</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Constraints. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFieldConstraints_1a918edcd104516d54cf564cccfd602917" prot="private" static="no" mutable="no">
+        <type>QHash&lt; <ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref>, <ref refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dca" kindref="member">ConstraintStrength</ref> &gt;</type>
+        <definition>QHash&lt; Constraint, ConstraintStrength &gt; QgsFieldConstraints::mConstraintStrengths</definition>
+        <argsstring></argsstring>
+        <name>mConstraintStrengths</name>
+        <briefdescription>
+<para>Strength of field constraints. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFieldConstraints_1a9bdcf90be263892f8e63a0b381739027" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsFieldConstraints::mExpressionConstraint</definition>
+        <argsstring></argsstring>
+        <name>mExpressionConstraint</name>
+        <briefdescription>
+<para>Expression constraint. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="159" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFieldConstraints_1a83dd1816dff6e54123c1808b9e1e2d0a" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsFieldConstraints::mExpressionConstraintDescription</definition>
+        <argsstring></argsstring>
+        <name>mExpressionConstraintDescription</name>
+        <briefdescription>
+<para>Expression constraint descriptive name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="162" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsFieldConstraints_1af4e209ce61501cd615742e12bee99e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsFieldConstraints::QgsFieldConstraints</definition>
+        <argsstring>()</argsstring>
+        <name>QgsFieldConstraints</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsFieldConstraints" kindref="compound">QgsFieldConstraints</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="74" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1aa482f1eb3204faed038b6633faa2d62e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsFieldConstraints::constraintDescription</definition>
+        <argsstring>() const</argsstring>
+        <name>constraintDescription</name>
+        <briefdescription>
+<para>Returns the descriptive name for the constraint expression. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a6a01d9858115b3d1a81531e9a60571de" kindref="member">constraintExpression()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a2c48f962528796a56ee39d82f5c921c2" kindref="member">setConstraintExpression()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="134" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a6a01d9858115b3d1a81531e9a60571de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsFieldConstraints::constraintExpression</definition>
+        <argsstring>() const</argsstring>
+        <name>constraintExpression</name>
+        <briefdescription>
+<para>Returns the constraint expression for the field, if set. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1aa482f1eb3204faed038b6633faa2d62e" kindref="member">constraintDescription()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a2c48f962528796a56ee39d82f5c921c2" kindref="member">setConstraintExpression()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="72" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a611638d50c4db9393ca3e6bb992ff796" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3" kindref="member">ConstraintOrigin</ref></type>
+        <definition>QgsFieldConstraints::ConstraintOrigin QgsFieldConstraints::constraintOrigin</definition>
+        <argsstring>(Constraint constraint) const</argsstring>
+        <name>constraintOrigin</name>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+<para>Returns the origin of a field constraint, or ConstraintOriginNotSet if the constraint is not present on this field. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="88" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="19" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a957c511cfc26e616811fbe8685a7bb4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Constraints</type>
+        <definition>Constraints QgsFieldConstraints::constraints</definition>
+        <argsstring>() const</argsstring>
+        <name>constraints</name>
+        <briefdescription>
+<para>Returns any constraints which are present for the field. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ad58a3220cc6ff64e7f7fa4217cd9a081" kindref="member">setConstraint()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a611638d50c4db9393ca3e6bb992ff796" kindref="member">constraintOrigin()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a59aaff3104b50abef869d348cc3d7fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dca" kindref="member">ConstraintStrength</ref></type>
+        <definition>QgsFieldConstraints::ConstraintStrength QgsFieldConstraints::constraintStrength</definition>
+        <argsstring>(Constraint constraint) const</argsstring>
+        <name>constraintStrength</name>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+<para>Returns the strength of a field constraint, or ConstraintStrengthNotSet if the constraint is not present on this field. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a1f93c505030a531da54024228e1110d8" kindref="member">setConstraintStrength()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="96" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="27" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a6b3eed5952ae76723a8481e9e444c55c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsFieldConstraints::operator==</definition>
+        <argsstring>(const QgsFieldConstraints &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classQgsFieldConstraints" kindref="compound">QgsFieldConstraints</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="145" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="91" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a9690904f23a0b1866abdb1eb404765ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFieldConstraints::removeConstraint</definition>
+        <argsstring>(Constraint constraint)</argsstring>
+        <name>removeConstraint</name>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+<para>Removes a constraint from the field. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ad58a3220cc6ff64e7f7fa4217cd9a081" kindref="member">setConstraint()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="118" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="118" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1ad58a3220cc6ff64e7f7fa4217cd9a081" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFieldConstraints::setConstraint</definition>
+        <argsstring>(Constraint constraint, ConstraintOrigin origin=ConstraintOriginLayer)</argsstring>
+        <name>setConstraint</name>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3" kindref="member">ConstraintOrigin</ref></type>
+          <declname>origin</declname>
+          <defval><ref refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3afd810175a2b3dbc344cf809eb4f705a6" kindref="member">ConstraintOriginLayer</ref></defval>
+        </param>
+        <briefdescription>
+<para>Sets a constraint on the field. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a9690904f23a0b1866abdb1eb404765ee" kindref="member">removeConstraint()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="53" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a2c48f962528796a56ee39d82f5c921c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFieldConstraints::setConstraintExpression</definition>
+        <argsstring>(const QString &amp;expression, const QString &amp;description=QString())</argsstring>
+        <name>setConstraintExpression</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>expression</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>description</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Set the constraint expression for the field. </para>        </briefdescription>
+        <detaileddescription>
+<para>An optional descriptive name for the constraint can also be set. Setting an empty expression will clear any existing expression constraint. <simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a6a01d9858115b3d1a81531e9a60571de" kindref="member">constraintExpression()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1aa482f1eb3204faed038b6633faa2d62e" kindref="member">constraintDescription()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" kindref="member">constraints()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="143" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="77" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFieldConstraints_1a1f93c505030a531da54024228e1110d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFieldConstraints::setConstraintStrength</definition>
+        <argsstring>(Constraint constraint, ConstraintStrength strength)</argsstring>
+        <name>setConstraintStrength</name>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">Constraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dca" kindref="member">ConstraintStrength</ref></type>
+          <declname>strength</declname>
+        </param>
+        <briefdescription>
+<para>Sets the strength of a constraint. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note that the strength of constraints which originate from a provider cannot be changed. Constraints default to ConstraintStrengthHard unless explicitly changed. <simplesect kind="see"><para><ref refid="classQgsFieldConstraints_1a59aaff3104b50abef869d348cc3d7fe9" kindref="member">constraintStrength()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.cpp" bodystart="36" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Stores information about constraints which may be present on a field. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" line="33" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfieldconstraints.h" bodystart="32" bodyend="163"/>
+    <listofallmembers>
+      <member refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>Constraint</name></member>
+      <member refid="classQgsFieldConstraints_1aa482f1eb3204faed038b6633faa2d62e" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>constraintDescription</name></member>
+      <member refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32ccaa641e030d8f7c43db10c7aac0e52550b" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintExpression</name></member>
+      <member refid="classQgsFieldConstraints_1a6a01d9858115b3d1a81531e9a60571de" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>constraintExpression</name></member>
+      <member refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cca01fcc6ad26c4511bef9617a87a648f14" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintNotNull</name></member>
+      <member refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintOrigin</name></member>
+      <member refid="classQgsFieldConstraints_1a611638d50c4db9393ca3e6bb992ff796" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>constraintOrigin</name></member>
+      <member refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3afd810175a2b3dbc344cf809eb4f705a6" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintOriginLayer</name></member>
+      <member refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3a8befae9864c309ce37ed84b2282ba79b" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintOriginNotSet</name></member>
+      <member refid="classQgsFieldConstraints_1a583a3a85ec7aa50fceadd3f56da6b8b3addd12182ce17f7c774f3bbdca77c19b2" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintOriginProvider</name></member>
+      <member refid="classQgsFieldConstraints_1ae3d874bbe45e53e2f248786adce43ee5" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>constraints</name></member>
+      <member refid="classQgsFieldConstraints_1a957c511cfc26e616811fbe8685a7bb4b" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>constraints</name></member>
+      <member refid="classQgsFieldConstraints_1a59aaff3104b50abef869d348cc3d7fe9" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>constraintStrength</name></member>
+      <member refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dca" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintStrength</name></member>
+      <member refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dcaacd9cad1bbd2adcbc05cc97d106ba2e32" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintStrengthHard</name></member>
+      <member refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dcaa3363576bcb35da808eb7cfa672dadf2c" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintStrengthNotSet</name></member>
+      <member refid="classQgsFieldConstraints_1a1c3f236d5bdf714a3ba819e8b6b50dcaaa9e3b222e965ae12f4f9eec60bc7e7b6" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintStrengthSoft</name></member>
+      <member refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cca59d7dd3bd596516323e05789af050147" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>ConstraintUnique</name></member>
+      <member refid="classQgsFieldConstraints_1a9210d8ef2ff6fc72704e08e713f95da8" prot="private" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>mConstraintOrigins</name></member>
+      <member refid="classQgsFieldConstraints_1a3ce2c83582509554e0d7db493e13c97d" prot="private" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>mConstraints</name></member>
+      <member refid="classQgsFieldConstraints_1a918edcd104516d54cf564cccfd602917" prot="private" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>mConstraintStrengths</name></member>
+      <member refid="classQgsFieldConstraints_1a9bdcf90be263892f8e63a0b381739027" prot="private" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>mExpressionConstraint</name></member>
+      <member refid="classQgsFieldConstraints_1a83dd1816dff6e54123c1808b9e1e2d0a" prot="private" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>mExpressionConstraintDescription</name></member>
+      <member refid="classQgsFieldConstraints_1a6b3eed5952ae76723a8481e9e444c55c" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>operator==</name></member>
+      <member refid="classQgsFieldConstraints_1af4e209ce61501cd615742e12bee99e2b" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>QgsFieldConstraints</name></member>
+      <member refid="classQgsFieldConstraints_1a9690904f23a0b1866abdb1eb404765ee" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>removeConstraint</name></member>
+      <member refid="classQgsFieldConstraints_1ad58a3220cc6ff64e7f7fa4217cd9a081" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>setConstraint</name></member>
+      <member refid="classQgsFieldConstraints_1a2c48f962528796a56ee39d82f5c921c2" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>setConstraintExpression</name></member>
+      <member refid="classQgsFieldConstraints_1a1f93c505030a531da54024228e1110d8" prot="public" virt="non-virtual"><scope>QgsFieldConstraints</scope><name>setConstraintStrength</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,330 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsDerivativeFilter" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsDerivativeFilter</compoundname>
+    <basecompoundref refid="classQgsNineCellFilter" prot="public" virt="non-virtual">QgsNineCellFilter</basecompoundref>
+    <derivedcompoundref refid="classQgsAspectFilter" prot="public" virt="non-virtual">QgsAspectFilter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsHillshadeFilter" prot="public" virt="non-virtual">QgsHillshadeFilter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsSlopeFilter" prot="public" virt="non-virtual">QgsSlopeFilter</derivedcompoundref>
+    <includes refid="qgsderivativefilter_8h" local="no">qgsderivativefilter.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsDerivativeFilter_1a347bb8f49675cba05d3535c5862081ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsDerivativeFilter::QgsDerivativeFilter</definition>
+        <argsstring>(const QString &amp;inputFile, const QString &amp;outputFile, const QString &amp;outputFormat)</argsstring>
+        <name>QgsDerivativeFilter</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>inputFile</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>outputFile</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>outputFormat</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.h" line="30" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.cpp" bodystart="20" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDerivativeFilter_1a9f71a50775d8721da20208f6df3ef6a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>float QgsDerivativeFilter::processNineCellWindow</definition>
+        <argsstring>(float *x11, float *x21, float *x31, float *x12, float *x22, float *x32, float *x13, float *x23, float *x33) override=0</argsstring>
+        <name>processNineCellWindow</name>
+        <reimplements refid="classQgsNineCellFilter_1a187b367acd4264a01071048522f099db">processNineCellWindow</reimplements>
+        <reimplementedby refid="classQgsSlopeFilter_1a2a9d5ce7ee2d0385d2972f2753136a01">processNineCellWindow</reimplementedby>
+        <reimplementedby refid="classQgsAspectFilter_1aaf87f433c133a097efddbf16db4883b3">processNineCellWindow</reimplementedby>
+        <reimplementedby refid="classQgsHillshadeFilter_1a34a9cfd62c649111aa03e7ed7b559502">processNineCellWindow</reimplementedby>
+        <param>
+          <type>float *</type>
+          <declname>x11</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x21</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x31</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x12</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x22</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x32</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x13</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x23</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x33</declname>
+        </param>
+        <briefdescription>
+<para>Calculates output value from nine input values. </para>        </briefdescription>
+        <detaileddescription>
+<para>The input values and the output value can be equal to the nodata value if not present or outside of the border. Must be implemented by subclasses.</para><para>First index of the input cell is the row, second index is the column</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x11</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell top left </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x21</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell central left </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x31</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell bottom left </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x12</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell top central </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x22</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the central cell for which the value will be calculated </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x32</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell bottom central </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x13</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell top right </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x23</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell central right </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x33</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>surrounding cell bottom right </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the calculated cell value for the central cell x22 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.h" line="33" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsDerivativeFilter_1af1a1c4887b9fdae7690bfa8aee6b93bc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float QgsDerivativeFilter::calcFirstDerX</definition>
+        <argsstring>(float *x11, float *x21, float *x31, float *x12, float *x22, float *x32, float *x13, float *x23, float *x33)</argsstring>
+        <name>calcFirstDerX</name>
+        <param>
+          <type>float *</type>
+          <declname>x11</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x21</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x31</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x12</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x22</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x32</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x13</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x23</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x33</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the first order derivative in x-direction according to Horn (1981) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.h" line="39" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.cpp" bodystart="26" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDerivativeFilter_1a1bfb6c9857f315b840339d0660819bad" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float QgsDerivativeFilter::calcFirstDerY</definition>
+        <argsstring>(float *x11, float *x21, float *x31, float *x12, float *x22, float *x32, float *x13, float *x23, float *x33)</argsstring>
+        <name>calcFirstDerY</name>
+        <param>
+          <type>float *</type>
+          <declname>x11</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x21</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x31</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x12</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x22</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x32</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x13</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x23</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x33</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the first order derivative in y-direction according to Horn (1981) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.h" line="41" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.cpp" bodystart="93" bodyend="158"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Adds the ability to calculate derivatives in x- and y-directions. </para>    </briefdescription>
+    <detaileddescription>
+<para>Needs to be subclassed (e.g. for slope and aspect) </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2352">
+        <label>QgsSlopeFilter</label>
+        <link refid="classQgsSlopeFilter"/>
+        <childnode refid="2348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2351">
+        <label>QgsHillshadeFilter</label>
+        <link refid="classQgsHillshadeFilter"/>
+        <childnode refid="2348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2349">
+        <label>QgsNineCellFilter</label>
+        <link refid="classQgsNineCellFilter"/>
+      </node>
+      <node id="2350">
+        <label>QgsAspectFilter</label>
+        <link refid="classQgsAspectFilter"/>
+        <childnode refid="2348" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2348">
+        <label>QgsDerivativeFilter</label>
+        <link refid="classQgsDerivativeFilter"/>
+        <childnode refid="2349" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2354">
+        <label>QgsNineCellFilter</label>
+        <link refid="classQgsNineCellFilter"/>
+      </node>
+      <node id="2353">
+        <label>QgsDerivativeFilter</label>
+        <link refid="classQgsDerivativeFilter"/>
+        <childnode refid="2354" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.h" line="28" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsderivativefilter.h" bodystart="27" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classQgsDerivativeFilter_1af1a1c4887b9fdae7690bfa8aee6b93bc" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>calcFirstDerX</name></member>
+      <member refid="classQgsDerivativeFilter_1a1bfb6c9857f315b840339d0660819bad" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>calcFirstDerY</name></member>
+      <member refid="classQgsNineCellFilter_1a31eb7ec93b9c7adfe481fa38bf17a49d" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>cellSizeX</name></member>
+      <member refid="classQgsNineCellFilter_1abc0cc0bd71392ca53d0c363b50456b27" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>cellSizeY</name></member>
+      <member refid="classQgsNineCellFilter_1aa8b0c9f1b7a478a7af40e7f6946a1f20" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>inputNodataValue</name></member>
+      <member refid="classQgsNineCellFilter_1acdbfe881da11964ee4a440b399a2c605" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mCellSizeX</name></member>
+      <member refid="classQgsNineCellFilter_1a7ce8411ce396d2fdac5ea471a061b964" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mCellSizeY</name></member>
+      <member refid="classQgsNineCellFilter_1a9ec4b72aebf55130e549fd396b823934" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mInputFile</name></member>
+      <member refid="classQgsNineCellFilter_1a0f98f7c602acd23fd6a2d4be3b59cc02" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mInputNodataValue</name></member>
+      <member refid="classQgsNineCellFilter_1a3c946e58c4168f45ca80721905f26e6a" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mOutputFile</name></member>
+      <member refid="classQgsNineCellFilter_1a1b373a83ad76f200188d2c682c3e2446" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mOutputFormat</name></member>
+      <member refid="classQgsNineCellFilter_1a308dfeea9081b6b46923cdd8ce40051d" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mOutputNodataValue</name></member>
+      <member refid="classQgsNineCellFilter_1ab8ffbac7d955fcfe73ff955194bba1bb" prot="protected" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>mZFactor</name></member>
+      <member refid="classQgsNineCellFilter_1ae0d2578636389cce7a8614a6183f185d" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>outputNodataValue</name></member>
+      <member refid="classQgsDerivativeFilter_1a9f71a50775d8721da20208f6df3ef6a9" prot="public" virt="pure-virtual"><scope>QgsDerivativeFilter</scope><name>processNineCellWindow</name></member>
+      <member refid="classQgsNineCellFilter_1a0ab13389803bdfa9d114cb725fca688f" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>processRaster</name></member>
+      <member refid="classQgsDerivativeFilter_1a347bb8f49675cba05d3535c5862081ae" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>QgsDerivativeFilter</name></member>
+      <member refid="classQgsNineCellFilter_1a2d64cafc4278781b8072a366a285ed62" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>QgsNineCellFilter</name></member>
+      <member refid="classQgsNineCellFilter_1a51d8e80594791062935d7f4fa2739707" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>setCellSizeX</name></member>
+      <member refid="classQgsNineCellFilter_1aa26965f48f1bd581810834c45a792530" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>setCellSizeY</name></member>
+      <member refid="classQgsNineCellFilter_1a846c9778f8913db710b7d1b79f96441e" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>setInputNodataValue</name></member>
+      <member refid="classQgsNineCellFilter_1a6ab4e7b6ae02d6eb87d7c5f866282e90" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>setOutputNodataValue</name></member>
+      <member refid="classQgsNineCellFilter_1a890a01a27494a6978596798ad01a0e9b" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>setZFactor</name></member>
+      <member refid="classQgsNineCellFilter_1ad02ad35d9bce320e55330b348cc85f6f" prot="public" virt="non-virtual"><scope>QgsDerivativeFilter</scope><name>zFactor</name></member>
+      <member refid="classQgsNineCellFilter_1a3cc91c958cca01f4a2668296e327dbfe" prot="public" virt="virtual"><scope>QgsDerivativeFilter</scope><name>~QgsNineCellFilter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

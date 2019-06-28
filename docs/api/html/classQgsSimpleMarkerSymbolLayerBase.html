@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsSimpleMarkerSymbolLayerBase class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsSimpleMarkerSymbolLayerBase <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for simple marker symbol layers.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+                <li><a href="#pri-methods">Private functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Handles creation of the symbol shapes but leaves the actual drawing of the symbols to subclasses.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsMarkerSymbolLayer.html" class="m-doc">QgsMarkerSymbolLayer</a>
+            </dt>
+            <dd>Abstract base class for marker symbol layers.</dd>
+          </dl>
+        </section>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsFilledMarkerSymbolLayer.html" class="m-doc">QgsFilledMarkerSymbolLayer</a>
+            </dt>
+            <dd>Filled marker symbol layer, consisting of a shape which is rendered using a <a href="classQgsFillSymbol.html" class="m-doc">QgsFillSymbol</a>.</dd>
+            <dt>
+              class <a href="classQgsSimpleMarkerSymbolLayer.html" class="m-doc">QgsSimpleMarkerSymbolLayer</a>
+            </dt>
+            <dd>Simple marker symbol layer, consisting of a rendered shape with solid fill color and an stroke.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">Shape</a> { </span><span class="m-doc-wrap"><a href="#af8d976b7bb349cc3fb182e0ff295a81dab37ba1731366db497d5cf468c8e87aa2" class="m-doc">Square</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da35c4a9e7a585c2f4c406d358203df229" class="m-doc">Diamond</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da2374febb974b12dfa31e6211095f78eb" class="m-doc">Pentagon</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81daaea828565b2ddea1ee1f80ef6b26a6d1" class="m-doc">Hexagon</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da39a4576fcaa88f2dffa3c52e4a1a7493" class="m-doc">Triangle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81dab42aa4cf4bb049d6628b4b93dac2aa23" class="m-doc">EquilateralTriangle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da46eb578763d6a68a65620481e8467054" class="m-doc">Star</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da3b977b2032cc4d90f677b3c81010cd7b" class="m-doc">Arrow</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da6337c4da06856e08e4643f7febba2a77" class="m-doc">Circle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81daa8428babd3af5297094d0b8e0910f8c1" class="m-doc">Cross</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da3cd184339b0cd2026613d5fe36dfb886" class="m-doc">CrossFill</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da92eda90c128126a4989a78417962ff8e" class="m-doc">Cross2</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81dac09dac62555f89ba58eef0b59e7f465a" class="m-doc">Line</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da0ac02d94858c2c8db7fa72c84569ad94" class="m-doc">ArrowHead</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da92de3a3f4928beed107bcdcb9b4d4722" class="m-doc">ArrowHeadFilled</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81dac9fd2aad192008b0fa778152062c1ec5" class="m-doc">SemiCircle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da22bb950ceff397ebadb508277651f7c2" class="m-doc">ThirdCircle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81dac80f8b36a642a554e974f80a654bbcfb" class="m-doc">QuarterCircle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da9113c7c7b318c7924a11f7638a7aee21" class="m-doc">QuarterSquare</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81dabc84bf4c34006c0a7c8cfda4efd5a238" class="m-doc">HalfSquare</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81dae36bedf2544d7b1f1ef91ffc89056ba6" class="m-doc">DiagonalHalfSquare</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da3d56406249ef2a6b8266ba322c60017b" class="m-doc">RightHalfTriangle</a>,
+              <a href="#af8d976b7bb349cc3fb182e0ff295a81da7979b7ffd978dedd317759d01ce2a4a8" class="m-doc">LeftHalfTriangle</a> }</span>
+            </dt>
+            <dd>Marker symbol shapes.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a4b284d4ebb701bd4a761d01fcffafe2c" class="m-doc-self" name="a4b284d4ebb701bd4a761d01fcffafe2c">availableShapes</a>(</span><span class="m-doc-wrap">) -&gt; QList&lt;<a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a>&gt;</span>
+            </dt>
+            <dd>Returns a list of all available shape types.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a9d38e11307210c2b8ba89871a167dd18" class="m-doc">decodeShape</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              bool* ok = nullptr) -&gt; <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a></span>
+            </dt>
+            <dd>Attempts to decode a string representation of a shape name to the corresponding shape.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac8f8e6f8c7e47ef980dde1adf0e379c4" class="m-doc">encodeShape</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape) -&gt; QString</span>
+            </dt>
+            <dd>Encodes a shape to its string representation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a4ad581d26073ac665bfedfd39042672d" class="m-doc">shapeIsFilled</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape) -&gt; bool</span>
+            </dt>
+            <dd>Returns true if a symbol shape has a fill.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a75fbf19ee2c5d5d387df6b7637941be4" class="m-doc">QgsSimpleMarkerSymbolLayerBase</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape = <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81da6337c4da06856e08e4643f7febba2a77" class="m-doc">Circle</a>,
+              double size = <a href="qgsmarkersymbollayer_8h.html#a7df68c1ac71fc920b1650bee491df080" class="m-doc">DEFAULT_<wbr />SIMPLEMARKER_<wbr />SIZE</a>,
+              double angle = <a href="qgsmarkersymbollayer_8h.html#a887133f30a77e87629a97031374ed706" class="m-doc">DEFAULT_<wbr />SIMPLEMARKER_<wbr />ANGLE</a>,
+              <a href="classQgsSymbol.html#a437af6ef98bf56bec257fc238cbd590d" class="m-doc">QgsSymbol::<wbr />ScaleMethod</a> scaleMethod = <a href="qgssymbollayer_8h.html#accf27261d92ff298cd2ac247408f5261" class="m-doc">DEFAULT_<wbr />SCALE_<wbr />METHOD</a>)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsSimpleMarkerSymbolLayerBase.html" class="m-doc">QgsSimpleMarkerSymbolLayerBase</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a85fec8ccebe5912ef0e42d4d9be0885e" class="m-doc">bounds</a>(</span><span class="m-doc-wrap">QPointF point,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context) -&gt; QRectF <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the approximate bounding box of the marker symbol layer, taking into account any data defined overrides and offsets which are set for the marker layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a03936c109792d136ec7364f2e858b6d0" class="m-doc">renderPoint</a>(</span><span class="m-doc-wrap">QPointF point,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Renders a marker at the specified point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6c5bd9683ee63932df61b0302027cb46" class="m-doc">setShape</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape)</span>
+            </dt>
+            <dd>Sets the rendered marker shape.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4e021c8973fa65efa4ed88f1462e1a1b" class="m-doc">shape</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a></span>
+            </dt>
+            <dd>Returns the shape for the rendered marker symbol.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0cd3be285c95db527e66825d60efef69" class="m-doc">calculateOffsetAndRotation</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              double scaledSize,
+              bool&amp; hasDataDefinedRotation,
+              QPointF&amp; offset,
+              double&amp; angle) const</span>
+            </dt>
+            <dd>Calculates the marker offset and rotation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae58f1d4104459bda2bc3a342891f6105" class="m-doc">calculateSize</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              bool&amp; hasDataDefinedSize) const -&gt; double</span>
+            </dt>
+            <dd>Calculates the desired size of the marker, considering data defined size overrides.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5b55dd727828d31f8be275835e78d366" class="m-doc-self" name="a5b55dd727828d31f8be275835e78d366">prepareMarkerPath</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">Shape</a> symbol) -&gt; bool</span>
+            </dt>
+            <dd>Prepares the layer for drawing the specified shape (QPainterPath version)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0ed12e425517e33c2ffbc6b7a2630bea" class="m-doc-self" name="a0ed12e425517e33c2ffbc6b7a2630bea">prepareMarkerShape</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">Shape</a> shape) -&gt; bool</span>
+            </dt>
+            <dd>Prepares the layer for drawing the specified shape (QPolygonF version)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a587e49659a1f4fb4226ee20f72d6491c" class="m-doc">shapeToPolygon</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">Shape</a> shape,
+              QPolygonF&amp; polygon) const -&gt; bool</span>
+            </dt>
+            <dd>Creates a polygon representing the specified shape.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QPainterPath <a href="#a4198f6b62de529dcecd436e2af343ccf" class="m-doc-self" name="a4198f6b62de529dcecd436e2af343ccf">mPath</a>
+            </dt>
+            <dd>Painter path representing shape. If mPolygon is empty then the shape is stored in mPath.</dd>
+            <dt>
+              QPolygonF <a href="#a7776bf422c9b366e7eecc43c9ba24240" class="m-doc-self" name="a7776bf422c9b366e7eecc43c9ba24240">mPolygon</a>
+            </dt>
+            <dd>Polygon of points in shape. If polygon is empty then shape is using mPath.</dd>
+            <dt>
+              <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">Shape</a> <a href="#a06311c6f0ba2566d2daaadf242d48f90" class="m-doc-self" name="a06311c6f0ba2566d2daaadf242d48f90">mShape</a>
+            </dt>
+            <dd>Symbol shape.</dd>
+          </dl>
+        </section>
+        <section id="pri-methods">
+          <h2><a href="#pri-methods">Private functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7d05108a004cc2d47bbb1d95773c4c72" class="m-doc">draw</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape,
+              const QPolygonF&amp; polygon,
+              const QPainterPath&amp; path) =0SIP_FORCE <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Derived classes must implement draw() to handle drawing the generated shape onto the painter surface.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="af8d976b7bb349cc3fb182e0ff295a81d"><div>
+            <h3>
+              enum QgsSimpleMarkerSymbolLayerBase::<wbr /><a href="#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc-self">Shape</a>
+            </h3>
+            <p>Marker symbol shapes.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dab37ba1731366db497d5cf468c8e87aa2" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dab37ba1731366db497d5cf468c8e87aa2">Square</a></td>
+                  <td>
+                  <p>Square.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da35c4a9e7a585c2f4c406d358203df229" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da35c4a9e7a585c2f4c406d358203df229">Diamond</a></td>
+                  <td>
+                  <p>Diamond.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da2374febb974b12dfa31e6211095f78eb" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da2374febb974b12dfa31e6211095f78eb">Pentagon</a></td>
+                  <td>
+                  <p>Pentagon.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81daaea828565b2ddea1ee1f80ef6b26a6d1" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81daaea828565b2ddea1ee1f80ef6b26a6d1">Hexagon</a></td>
+                  <td>
+                  <p>Hexagon.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da39a4576fcaa88f2dffa3c52e4a1a7493" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da39a4576fcaa88f2dffa3c52e4a1a7493">Triangle</a></td>
+                  <td>
+                  <p>Triangle.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dab42aa4cf4bb049d6628b4b93dac2aa23" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dab42aa4cf4bb049d6628b4b93dac2aa23">EquilateralTriangle</a></td>
+                  <td>
+                  <p>Equilateral triangle.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da46eb578763d6a68a65620481e8467054" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da46eb578763d6a68a65620481e8467054">Star</a></td>
+                  <td>
+                  <p>Star.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da3b977b2032cc4d90f677b3c81010cd7b" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da3b977b2032cc4d90f677b3c81010cd7b">Arrow</a></td>
+                  <td>
+                  <p>Arrow.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da6337c4da06856e08e4643f7febba2a77" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da6337c4da06856e08e4643f7febba2a77">Circle</a></td>
+                  <td>
+                  <p>Circle.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81daa8428babd3af5297094d0b8e0910f8c1" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81daa8428babd3af5297094d0b8e0910f8c1">Cross</a></td>
+                  <td>
+                  <p>Cross (lines only)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da3cd184339b0cd2026613d5fe36dfb886" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da3cd184339b0cd2026613d5fe36dfb886">CrossFill</a></td>
+                  <td>
+                  <p>Solid filled cross.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da92eda90c128126a4989a78417962ff8e" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da92eda90c128126a4989a78417962ff8e">Cross2</a></td>
+                  <td>
+                  <p>Rotated cross (lines only), &quot;x&quot; shape.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dac09dac62555f89ba58eef0b59e7f465a" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dac09dac62555f89ba58eef0b59e7f465a">Line</a></td>
+                  <td>
+                  <p>Vertical line.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da0ac02d94858c2c8db7fa72c84569ad94" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da0ac02d94858c2c8db7fa72c84569ad94">ArrowHead</a></td>
+                  <td>
+                  <p>Right facing arrow head (unfilled, lines only)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da92de3a3f4928beed107bcdcb9b4d4722" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da92de3a3f4928beed107bcdcb9b4d4722">ArrowHeadFilled</a></td>
+                  <td>
+                  <p>Right facing filled arrow head.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dac9fd2aad192008b0fa778152062c1ec5" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dac9fd2aad192008b0fa778152062c1ec5">SemiCircle</a></td>
+                  <td>
+                  <p>Semi circle (top half)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da22bb950ceff397ebadb508277651f7c2" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da22bb950ceff397ebadb508277651f7c2">ThirdCircle</a></td>
+                  <td>
+                  <p>One third circle (top left third)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dac80f8b36a642a554e974f80a654bbcfb" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dac80f8b36a642a554e974f80a654bbcfb">QuarterCircle</a></td>
+                  <td>
+                  <p>Quarter circle (top left quarter)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da9113c7c7b318c7924a11f7638a7aee21" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da9113c7c7b318c7924a11f7638a7aee21">QuarterSquare</a></td>
+                  <td>
+                  <p>Quarter square (top left quarter)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dabc84bf4c34006c0a7c8cfda4efd5a238" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dabc84bf4c34006c0a7c8cfda4efd5a238">HalfSquare</a></td>
+                  <td>
+                  <p>Half square (left half)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81dae36bedf2544d7b1f1ef91ffc89056ba6" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81dae36bedf2544d7b1f1ef91ffc89056ba6">DiagonalHalfSquare</a></td>
+                  <td>
+                  <p>Diagonal half square (bottom left half)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da3d56406249ef2a6b8266ba322c60017b" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da3d56406249ef2a6b8266ba322c60017b">RightHalfTriangle</a></td>
+                  <td>
+                  <p>Right half of triangle.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#af8d976b7bb349cc3fb182e0ff295a81da7979b7ffd978dedd317759d01ce2a4a8" class="m-doc-self" name="af8d976b7bb349cc3fb182e0ff295a81da7979b7ffd978dedd317759d01ce2a4a8">LeftHalfTriangle</a></td>
+                  <td>
+                  <p>Left half of triangle.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a9d38e11307210c2b8ba89871a167dd18"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9d38e11307210c2b8ba89871a167dd18" class="m-doc-self">decodeShape</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              bool* ok = nullptr)</span></span>
+            </h3>
+            <p>Attempts to decode a string representation of a shape name to the corresponding shape.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>encoded shape name</td>
+                </tr>
+                <tr>
+                  <td>ok</td>
+                  <td>if specified, will be set to true if shape was successfully decoded</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>decoded name</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSimpleMarkerSymbolLayerBase.html#ac8f8e6f8c7e47ef980dde1adf0e379c4" class="m-doc">encodeShape()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac8f8e6f8c7e47ef980dde1adf0e379c4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac8f8e6f8c7e47ef980dde1adf0e379c4" class="m-doc-self">encodeShape</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape)</span></span>
+            </h3>
+            <p>Encodes a shape to its string representation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shape</td>
+                  <td>shape to encode</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>encoded string</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSimpleMarkerSymbolLayerBase.html#a9d38e11307210c2b8ba89871a167dd18" class="m-doc">decodeShape()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4ad581d26073ac665bfedfd39042672d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ad581d26073ac665bfedfd39042672d" class="m-doc-self">shapeIsFilled</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape)</span></span>
+            </h3>
+            <p>Returns true if a symbol shape has a fill.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shape</td>
+                  <td>shape to test</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if shape uses a fill, or false if shape uses lines only</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a75fbf19ee2c5d5d387df6b7637941be4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a75fbf19ee2c5d5d387df6b7637941be4" class="m-doc-self">QgsSimpleMarkerSymbolLayerBase</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape = <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81da6337c4da06856e08e4643f7febba2a77" class="m-doc">Circle</a>,
+              double size = <a href="qgsmarkersymbollayer_8h.html#a7df68c1ac71fc920b1650bee491df080" class="m-doc">DEFAULT_<wbr />SIMPLEMARKER_<wbr />SIZE</a>,
+              double angle = <a href="qgsmarkersymbollayer_8h.html#a887133f30a77e87629a97031374ed706" class="m-doc">DEFAULT_<wbr />SIMPLEMARKER_<wbr />ANGLE</a>,
+              <a href="classQgsSymbol.html#a437af6ef98bf56bec257fc238cbd590d" class="m-doc">QgsSymbol::<wbr />ScaleMethod</a> scaleMethod = <a href="qgssymbollayer_8h.html#accf27261d92ff298cd2ac247408f5261" class="m-doc">DEFAULT_<wbr />SCALE_<wbr />METHOD</a>)</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsSimpleMarkerSymbolLayerBase.html" class="m-doc">QgsSimpleMarkerSymbolLayerBase</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shape</td>
+                  <td>symbol shape for markers</td>
+                </tr>
+                <tr>
+                  <td>size</td>
+                  <td>symbol size (in mm)</td>
+                </tr>
+                <tr>
+                  <td>angle</td>
+                  <td>symbol rotation angle</td>
+                </tr>
+                <tr>
+                  <td>scaleMethod</td>
+                  <td>scaling method for data defined scaling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a85fec8ccebe5912ef0e42d4d9be0885e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QRectF QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a85fec8ccebe5912ef0e42d4d9be0885e" class="m-doc-self">bounds</a>(</span><span class="m-doc-wrap">QPointF point,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the approximate bounding box of the marker symbol layer, taking into account any data defined overrides and offsets which are set for the marker layer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>approximate symbol bounds, in painter units</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.14</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a03936c109792d136ec7364f2e858b6d0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a03936c109792d136ec7364f2e858b6d0" class="m-doc-self">renderPoint</a>(</span><span class="m-doc-wrap">QPointF point,
+              <a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Renders a marker at the specified point.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">point</td>
+                  <td>position at which to render point, in painter units</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>symbol render context</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Derived classes must implement this to handle drawing the point.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6c5bd9683ee63932df61b0302027cb46"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6c5bd9683ee63932df61b0302027cb46" class="m-doc-self">setShape</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape)</span></span>
+            </h3>
+            <p>Sets the rendered marker shape.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shape</td>
+                  <td>new marker shape</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSimpleMarkerSymbolLayerBase.html#a4e021c8973fa65efa4ed88f1462e1a1b" class="m-doc">shape()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4e021c8973fa65efa4ed88f1462e1a1b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4e021c8973fa65efa4ed88f1462e1a1b" class="m-doc-self">shape</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the shape for the rendered marker symbol.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSimpleMarkerSymbolLayerBase.html#a6c5bd9683ee63932df61b0302027cb46" class="m-doc">setShape()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0cd3be285c95db527e66825d60efef69"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0cd3be285c95db527e66825d60efef69" class="m-doc-self">calculateOffsetAndRotation</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              double scaledSize,
+              bool&amp; hasDataDefinedRotation,
+              QPointF&amp; offset,
+              double&amp; angle) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Calculates the marker offset and rotation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>symbol render context</td>
+                </tr>
+                <tr>
+                  <td>scaledSize</td>
+                  <td>size of symbol to render</td>
+                </tr>
+                <tr>
+                  <td>hasDataDefinedRotation</td>
+                  <td>will be set to true if marker has data defined rotation</td>
+                </tr>
+                <tr>
+                  <td>offset</td>
+                  <td>will be set to calculated marker offset (in painter units)</td>
+                </tr>
+                <tr>
+                  <td>angle</td>
+                  <td>will be set to calculated marker angle</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae58f1d4104459bda2bc3a342891f6105"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae58f1d4104459bda2bc3a342891f6105" class="m-doc-self">calculateSize</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              bool&amp; hasDataDefinedSize) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Calculates the desired size of the marker, considering data defined size overrides.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>symbol render context</td>
+                </tr>
+                <tr>
+                  <td>hasDataDefinedSize</td>
+                  <td>will be set to true if marker uses data defined sizes</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>marker size, in original size units</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a587e49659a1f4fb4226ee20f72d6491c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a587e49659a1f4fb4226ee20f72d6491c" class="m-doc-self">shapeToPolygon</a>(</span><span class="m-doc-wrap"><a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">Shape</a> shape,
+              QPolygonF&amp; polygon) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Creates a polygon representing the specified shape.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">shape</td>
+                  <td>shape to create</td>
+                </tr>
+                <tr>
+                  <td>polygon</td>
+                  <td>destination polygon for shape</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if shape was successfully stored in polygon</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7d05108a004cc2d47bbb1d95773c4c72"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSimpleMarkerSymbolLayerBase::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7d05108a004cc2d47bbb1d95773c4c72" class="m-doc-self">draw</a>(</span><span class="m-doc-wrap"><a href="classQgsSymbolRenderContext.html" class="m-doc">QgsSymbolRenderContext</a>&amp; context,
+              <a href="classQgsSimpleMarkerSymbolLayerBase.html#af8d976b7bb349cc3fb182e0ff295a81d" class="m-doc">QgsSimpleMarkerSymbolLayerBase::<wbr />Shape</a> shape,
+              const QPolygonF&amp; polygon,
+              const QPainterPath&amp; path) =0SIP_FORCE <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
+            </h3>
+            <p>Derived classes must implement draw() to handle drawing the generated shape onto the painter surface.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>symbol render context</td>
+                </tr>
+                <tr>
+                  <td>shape</td>
+                  <td>shape to draw</td>
+                </tr>
+                <tr>
+                  <td>polygon</td>
+                  <td>polygon representing transformed marker shape. May be empty, in which case the shape will be specified in the path argument.</td>
+                </tr>
+                <tr>
+                  <td>path</td>
+                  <td>transformed painter path representing shape to draw</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

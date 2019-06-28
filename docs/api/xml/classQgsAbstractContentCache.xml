@@ -1,0 +1,425 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsAbstractContentCache" kind="class" language="C++" prot="public">
+    <compoundname>QgsAbstractContentCache</compoundname>
+    <basecompoundref refid="classQgsAbstractContentCacheBase" prot="public" virt="non-virtual">QgsAbstractContentCacheBase</basecompoundref>
+    <includes refid="qgsabstractcontentcache_8h" local="no">qgsabstractcontentcache.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1a18e966f7c5c31ffbf97e1ddf4d2d9aca" prot="protected" static="no" mutable="no">
+        <type>long</type>
+        <definition>long QgsAbstractContentCache&lt; T &gt;::mMaxCacheSize</definition>
+        <argsstring></argsstring>
+        <name>mMaxCacheSize</name>
+        <initializer>= 20000000</initializer>
+        <briefdescription>
+<para>Maximum cache size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="464" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="464" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1aaf09d85762a13df57b8bfa26e574c6e5" prot="protected" static="no" mutable="yes">
+        <type>QMutex</type>
+        <definition>QMutex QgsAbstractContentCache&lt; T &gt;::mMutex</definition>
+        <argsstring></argsstring>
+        <name>mMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="459" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="459" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1a6703853a23c0d227136d0b6a30043637" prot="protected" static="no" mutable="no">
+        <type>long</type>
+        <definition>long QgsAbstractContentCache&lt; T &gt;::mTotalSize</definition>
+        <argsstring></argsstring>
+        <name>mTotalSize</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Estimated total size of all cached content. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="461" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="461" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1a5b640f3124a12c8e0b99d02e8edae01e" prot="private" static="no" mutable="no">
+        <type>QMultiHash&lt; QString, T *&gt;</type>
+        <definition>QMultiHash&lt; QString, T * &gt; QgsAbstractContentCache&lt; T &gt;::mEntryLookup</definition>
+        <argsstring></argsstring>
+        <name>mEntryLookup</name>
+        <briefdescription>
+<para>Entry pointers accessible by file name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="545" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="545" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1aac9a1a9548346ce30441c8d8271e6139" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsAbstractContentCache&lt; T &gt;::mFileModifiedCheckTimeout</definition>
+        <argsstring></argsstring>
+        <name>mFileModifiedCheckTimeout</name>
+        <initializer>= 30000</initializer>
+        <briefdescription>
+<para>Minimum time (in ms) between consecutive file modified time checks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="548" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="548" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1a35263dc8ee7db2f557cf65468e8f1557" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* QgsAbstractContentCache&lt; T &gt;::mLeastRecentEntry</definition>
+        <argsstring></argsstring>
+        <name>mLeastRecentEntry</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="552" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="552" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1a6ce59b927e2c809f77fa2b5efaef2674" prot="private" static="no" mutable="no">
+        <type>T *</type>
+        <definition>T* QgsAbstractContentCache&lt; T &gt;::mMostRecentEntry</definition>
+        <argsstring></argsstring>
+        <name>mMostRecentEntry</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="553" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="553" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1a515fc85e13a8814767d29ff26b81e8a9" prot="private" static="no" mutable="yes">
+        <type>QSet&lt; QString &gt;</type>
+        <definition>QSet&lt; QString &gt; QgsAbstractContentCache&lt; T &gt;::mPendingRemoteUrls</definition>
+        <argsstring></argsstring>
+        <name>mPendingRemoteUrls</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="556" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="556" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1afc34ca739b0289dba30b96800a0622d1" prot="private" static="no" mutable="yes">
+        <type>QCache&lt; QString, QByteArray &gt;</type>
+        <definition>QCache&lt; QString, QByteArray &gt; QgsAbstractContentCache&lt; T &gt;::mRemoteContentCache</definition>
+        <argsstring></argsstring>
+        <name>mRemoteContentCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="555" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="555" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractContentCache_1ac8b89128331972757f77d037bd17f5a2" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsAbstractContentCache&lt; T &gt;::mTypeString</definition>
+        <argsstring></argsstring>
+        <name>mTypeString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="558" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="558" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsAbstractContentCache_1a36fd1d4d27bedca3cc7cf6e2afe4f1d9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsImageCache</definition>
+        <argsstring></argsstring>
+        <name>TestQgsImageCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="561" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="561" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsAbstractContentCache_1af7d0b1d8148b0f23f4d15e6db57cb9c3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsSvgCache</definition>
+        <argsstring></argsstring>
+        <name>TestQgsSvgCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="560" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="560" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a5d4fc48a2b5b9ca5efec3a5e9f2c8ca6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>QgsAbstractContentCache&lt; T &gt;::QgsAbstractContentCache</definition>
+        <argsstring>(QObject *parent=nullptr, const QString &amp;typeString=QString(), long maxCacheSize=20000000, int fileModifiedCheckTimeout=30000)</argsstring>
+        <name>QgsAbstractContentCache</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>typeString</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>maxCacheSize</declname>
+          <defval>20000000</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fileModifiedCheckTimeout</declname>
+          <defval>30000</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsAbstractContentCache" kindref="compound">QgsAbstractContentCache</ref>, with the specified <emphasis>parent</emphasis> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>maxCacheSize</emphasis> argument dictates the maximum allowable total size of the cache, in bytes. This in turn dictates the maximum allowable size for caching individual entries.</para><para>The <emphasis>fileModifiedCheckTimeout</emphasis> dictates the minimum time (in milliseconds) between consecutive checks of whether a file&apos;s content has been modified (and existing cache entries should be discarded). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="206" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="206" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a4e597e7d5e081ecb0760cfd856fbce42" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>QgsAbstractContentCache&lt; T &gt;::~QgsAbstractContentCache</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsAbstractContentCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="218" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="218" bodyend="221"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a0f7f46aaeb38fa212bbbcb79713babcd" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T* QgsAbstractContentCache&lt; T &gt;::findExistingEntry</definition>
+        <argsstring>(T *entryTemplate)</argsstring>
+        <name>findExistingEntry</name>
+        <param>
+          <type>T *</type>
+          <declname>entryTemplate</declname>
+        </param>
+        <briefdescription>
+<para>Returns the existing entry from the cache which matches <emphasis>entryTemplate</emphasis> (deleting entryTemplate when done), or if no existing entry is found then <emphasis>entryTemplate</emphasis> is transferred to the cache and returned. </para>        </briefdescription>
+        <detaileddescription>
+<para>I.e. either way ownership of <emphasis>entryTemplate</emphasis> is transferred by calling this method.</para><para>If an existing entry was found, then the corresponding file MAY be rechecked for changes (only if a suitable time has occurred since the last check). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="405" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="405" bodyend="457"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractContentCache_1ae759708e1a09ef888bfb0672238aaffb" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QByteArray</type>
+        <definition>QByteArray QgsAbstractContentCache&lt; T &gt;::getContent</definition>
+        <argsstring>(const QString &amp;path, const QByteArray &amp;missingContent, const QByteArray &amp;fetchingContent) const</argsstring>
+        <name>getContent</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const QByteArray &amp;</type>
+          <declname>missingContent</declname>
+        </param>
+        <param>
+          <type>const QByteArray &amp;</type>
+          <declname>fetchingContent</declname>
+        </param>
+        <briefdescription>
+<para>Gets the file content corresponding to the given <emphasis>path</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><emphasis>path</emphasis> may be a local file, remote (HTTP) url, or a base 64 encoded string (with a &quot;base64:&quot; prefix).</para><para>The <emphasis>missingContent</emphasis> byte array is returned if the <emphasis>path</emphasis> could not be resolved or is broken. If the <emphasis>path</emphasis> corresponds to a remote URL, then <emphasis>fetchingContent</emphasis> will be returned while the content is in the process of being fetched. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="257" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="257" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a52a1d38ed9104b8eda759f6d647d4f6b" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void QgsAbstractContentCache&lt; T &gt;::onRemoteContentFetched</definition>
+        <argsstring>(const QString &amp;url, bool success) override</argsstring>
+        <name>onRemoteContentFetched</name>
+        <reimplements refid="classQgsAbstractContentCacheBase_1a83bd0f1efe095e361825e917ac020d4b">onRemoteContentFetched</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>url</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+<para>Triggered after remote content (i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>HTTP linked content at the given <emphasis>url</emphasis>) has been fetched.</para><para>The <emphasis>success</emphasis> argument will be true if the content was successfully fetched, or false if it was not fetched successfully. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="374" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="374" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a7826c63eec1b04d2777ca784bd5ed458" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractContentCache&lt; T &gt;::trimToMaximumSize</definition>
+        <argsstring>()</argsstring>
+        <name>trimToMaximumSize</name>
+        <briefdescription>
+<para>Removes the least used cache entries until the maximum cache size is under the predefined size limit. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="228" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="228" bodyend="246"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a45a7161a31eebcda3030673e9c259c0d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T *</type>
+        <definition>T* QgsAbstractContentCache&lt; T &gt;::insertCacheEntry</definition>
+        <argsstring>(T *entry)</argsstring>
+        <name>insertCacheEntry</name>
+        <param>
+          <type>T *</type>
+          <declname>entry</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a new <emphasis>entry</emphasis> into the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of <emphasis>entry</emphasis> is transferred to the cache. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="473" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="473" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a835a9835288348574cf3a2923b098953" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractContentCache&lt; T &gt;::printEntryList</definition>
+        <argsstring>()</argsstring>
+        <name>printEntryList</name>
+        <briefdescription>
+<para>Prints a list of all entries in the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para>For debugging purposes only. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="531" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="531" bodyend="542"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractContentCache_1a96b34ddb8e8afab30dded884601ae3a2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractContentCache&lt; T &gt;::takeEntryFromList</definition>
+        <argsstring>(T *entry)</argsstring>
+        <name>takeEntryFromList</name>
+        <param>
+          <type>T *</type>
+          <declname>entry</declname>
+        </param>
+        <briefdescription>
+<para>Removes an <emphasis>entry</emphasis> from the ordered list (but does not delete the entry itself). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="503" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="503" bodyend="526"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for file content caches, such as SVG or raster image caches. </para>    </briefdescription>
+    <detaileddescription>
+<para>Handles trimming the maximum cached content size to a desired limit, fetching remote content (via HTTP), and automatically invalidating cached content when the corresponding file is changed.</para><para><simplesect kind="note"><para>Not available in Python bindings. </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="952">
+        <label>QObject</label>
+      </node>
+      <node id="951">
+        <label>QgsAbstractContentCacheBase</label>
+        <link refid="classQgsAbstractContentCacheBase"/>
+        <childnode refid="952" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="950">
+        <label>QgsAbstractContentCache&lt; T &gt;</label>
+        <link refid="classQgsAbstractContentCache"/>
+        <childnode refid="951" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="955">
+        <label>QObject</label>
+      </node>
+      <node id="954">
+        <label>QgsAbstractContentCacheBase</label>
+        <link refid="classQgsAbstractContentCacheBase"/>
+        <childnode refid="955" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="953">
+        <label>QgsAbstractContentCache&lt; T &gt;</label>
+        <link refid="classQgsAbstractContentCache"/>
+        <childnode refid="954" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" line="191" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsabstractcontentcache.h" bodystart="190" bodyend="562"/>
+    <listofallmembers>
+      <member refid="classQgsAbstractContentCacheBase_1a59291b956cbd573b846d1bf58fce2050" prot="protected" virt="virtual"><scope>QgsAbstractContentCache</scope><name>checkReply</name></member>
+      <member refid="classQgsAbstractContentCache_1a0f7f46aaeb38fa212bbbcb79713babcd" prot="protected" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>findExistingEntry</name></member>
+      <member refid="classQgsAbstractContentCache_1ae759708e1a09ef888bfb0672238aaffb" prot="protected" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>getContent</name></member>
+      <member refid="classQgsAbstractContentCache_1a45a7161a31eebcda3030673e9c259c0d" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>insertCacheEntry</name></member>
+      <member refid="classQgsAbstractContentCache_1a5b640f3124a12c8e0b99d02e8edae01e" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mEntryLookup</name></member>
+      <member refid="classQgsAbstractContentCache_1aac9a1a9548346ce30441c8d8271e6139" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mFileModifiedCheckTimeout</name></member>
+      <member refid="classQgsAbstractContentCache_1a35263dc8ee7db2f557cf65468e8f1557" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mLeastRecentEntry</name></member>
+      <member refid="classQgsAbstractContentCache_1a18e966f7c5c31ffbf97e1ddf4d2d9aca" prot="protected" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mMaxCacheSize</name></member>
+      <member refid="classQgsAbstractContentCache_1a6ce59b927e2c809f77fa2b5efaef2674" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mMostRecentEntry</name></member>
+      <member refid="classQgsAbstractContentCache_1aaf09d85762a13df57b8bfa26e574c6e5" prot="protected" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mMutex</name></member>
+      <member refid="classQgsAbstractContentCache_1a515fc85e13a8814767d29ff26b81e8a9" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mPendingRemoteUrls</name></member>
+      <member refid="classQgsAbstractContentCache_1afc34ca739b0289dba30b96800a0622d1" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mRemoteContentCache</name></member>
+      <member refid="classQgsAbstractContentCache_1a6703853a23c0d227136d0b6a30043637" prot="protected" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mTotalSize</name></member>
+      <member refid="classQgsAbstractContentCache_1ac8b89128331972757f77d037bd17f5a2" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>mTypeString</name></member>
+      <member refid="classQgsAbstractContentCache_1a52a1d38ed9104b8eda759f6d647d4f6b" prot="protected" virt="virtual"><scope>QgsAbstractContentCache</scope><name>onRemoteContentFetched</name></member>
+      <member refid="classQgsAbstractContentCache_1a835a9835288348574cf3a2923b098953" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>printEntryList</name></member>
+      <member refid="classQgsAbstractContentCache_1a5d4fc48a2b5b9ca5efec3a5e9f2c8ca6" prot="public" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>QgsAbstractContentCache</name></member>
+      <member refid="classQgsAbstractContentCacheBase_1abc4f90a71c3df675e8d7b82b6829aefc" prot="public" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>QgsAbstractContentCacheBase</name></member>
+      <member refid="classQgsAbstractContentCacheBase_1a0466d84c9bbe8749c671a05245fff78e" prot="public" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>remoteContentFetched</name></member>
+      <member refid="classQgsAbstractContentCache_1a96b34ddb8e8afab30dded884601ae3a2" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>takeEntryFromList</name></member>
+      <member refid="classQgsAbstractContentCache_1a36fd1d4d27bedca3cc7cf6e2afe4f1d9" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>TestQgsImageCache</name></member>
+      <member refid="classQgsAbstractContentCache_1af7d0b1d8148b0f23f4d15e6db57cb9c3" prot="private" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>TestQgsSvgCache</name></member>
+      <member refid="classQgsAbstractContentCache_1a7826c63eec1b04d2777ca784bd5ed458" prot="protected" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>trimToMaximumSize</name></member>
+      <member refid="classQgsAbstractContentCache_1a4e597e7d5e081ecb0760cfd856fbce42" prot="public" virt="non-virtual"><scope>QgsAbstractContentCache</scope><name>~QgsAbstractContentCache</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

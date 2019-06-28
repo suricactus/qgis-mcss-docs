@@ -1,0 +1,519 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsRasterProjector" kind="class" language="C++" prot="public">
+    <compoundname>QgsRasterProjector</compoundname>
+    <basecompoundref refid="classQgsRasterInterface" prot="public" virt="non-virtual">QgsRasterInterface</basecompoundref>
+    <includes refid="qgsrasterprojector_8h" local="no">qgsrasterprojector.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5d" prot="public" static="no">
+        <name>Precision</name>
+        <enumvalue id="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5da8d5989586b00d3d33427d7dd70e6b568" prot="public">
+          <name>Approximate</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Approximate (default), fast but possibly inaccurate. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5da55268aeb8570b9d6a80b27abef149408" prot="public">
+          <name>Exact</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Exact, precise but slow. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Precision defines if each pixel is reprojected or approximate reprojection based on an approximation matrix of reprojected points is used. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="58" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="57" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsRasterProjector_1ab03fd6067208739db8f8d8bfd8590c5a" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsRasterProjector::mDestCRS</definition>
+        <argsstring></argsstring>
+        <name>mDestCRS</name>
+        <briefdescription>
+<para>Destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterProjector_1a7d0778679219ef785ccdd4dc151aa5bb" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsRasterProjector::mDestDatumTransform</definition>
+        <argsstring></argsstring>
+        <name>mDestDatumTransform</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>Destination datum transformation id (or -1 if none) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="110" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterProjector_1af64e685411213c4cb70f7eb0a020331d" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5d" kindref="member">Precision</ref></type>
+        <definition>Precision QgsRasterProjector::mPrecision</definition>
+        <argsstring></argsstring>
+        <name>mPrecision</name>
+        <initializer>= <ref refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5da8d5989586b00d3d33427d7dd70e6b568" kindref="member">Approximate</ref></initializer>
+        <briefdescription>
+<para>Requested precision. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="113" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterProjector_1a7f30acbdb4da209bd61497b621ff2a30" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsRasterProjector::mSrcCRS</definition>
+        <argsstring></argsstring>
+        <name>mSrcCRS</name>
+        <briefdescription>
+<para>Source CRS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="101" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterProjector_1a0e5b9dde4b051286cbafb5d7ca556c4a" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsRasterProjector::mSrcDatumTransform</definition>
+        <argsstring></argsstring>
+        <name>mSrcDatumTransform</name>
+        <initializer>= -1</initializer>
+        <briefdescription>
+<para>Source datum transformation id (or -1 if none) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="107" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsRasterProjector_1a76aae75bc3f1a6dbe9844001a4b0add2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsRasterProjector::QgsRasterProjector</definition>
+        <argsstring>()</argsstring>
+        <name>QgsRasterProjector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="64" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="26" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1acde591c4d679ca2a0ab0829c371218b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int QgsRasterProjector::bandCount</definition>
+        <argsstring>() const override</argsstring>
+        <name>bandCount</name>
+        <reimplements refid="classQgsRasterInterface_1a93c7eda09b19f57e73f27d52272ebf1c">bandCount</reimplements>
+        <briefdescription>
+<para>Gets number of bands. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="68" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="45" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a9470d43c22eae5a717decf3ea6fe9655" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsRasterBlock" kindref="compound">QgsRasterBlock</ref> *</type>
+        <definition>QgsRasterBlock * QgsRasterProjector::block</definition>
+        <argsstring>(int bandNo, const QgsRectangle &amp;extent, int width, int height, QgsRasterBlockFeedback *feedback=nullptr) override</argsstring>
+        <name>block</name>
+        <reimplements refid="classQgsRasterInterface_1a0f28ed600d4fabd86c88c520652b8ae6">block</reimplements>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>extent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRasterBlockFeedback" kindref="compound">QgsRasterBlockFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Read block of data using given extent and size. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns pointer to data. Caller is responsible to free the memory returned. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bandNo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>band number </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>extent of block </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pixel width of block </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pixel height of block </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>feedback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional raster feedback object for cancelation/preview. Added in QGIS 3.0. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="87" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="737" bodyend="845"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a4176ffdfcc95f3bc54ee4ab9db88960a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsRasterProjector" kindref="compound">QgsRasterProjector</ref> *</type>
+        <definition>QgsRasterProjector * QgsRasterProjector::clone</definition>
+        <argsstring>() const override</argsstring>
+        <name>clone</name>
+        <reimplements refid="classQgsRasterInterface_1a1cf751088ebc443bb7efb0c0006b442d">clone</reimplements>
+        <briefdescription>
+<para>Clone itself, create deep copy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="66" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="33" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a6144ac0e8b6c08553916fc9bd8d4e22a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgis_1aeb8e0dfb7dc6eb09e552bf3dff9c84d5" kindref="member">Qgis::DataType</ref></type>
+        <definition>Qgis::DataType QgsRasterProjector::dataType</definition>
+        <argsstring>(int bandNo) const override</argsstring>
+        <name>dataType</name>
+        <reimplements refid="classQgsRasterInterface_1a3513c5b4cba6f7454b9d801a218ab971">dataType</reimplements>
+        <param>
+          <type>int</type>
+          <declname>bandNo</declname>
+        </param>
+        <briefdescription>
+<para>Returns data type for the band specified by number. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="70" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="52" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a437c3777403ccb8e54d78ac9b2c70fc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsRasterProjector::destExtentSize</definition>
+        <argsstring>(const QgsRectangle &amp;srcExtent, int srcXSize, int srcYSize, QgsRectangle &amp;destExtent, int &amp;destXSize, int &amp;destYSize)</argsstring>
+        <name>destExtentSize</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>srcExtent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>srcXSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>srcYSize</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>destExtent</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>destXSize</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>destYSize</declname>
+        </param>
+        <briefdescription>
+<para>Calculate destination extent and size from source extent and size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="90" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="847" bodyend="857"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a0d0c071a164fe5ff71d8bc3ef1b5658a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsRasterProjector::destinationCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationCrs</name>
+        <briefdescription>
+<para>Returns the destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="80" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="80" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1abf885909546bf19d4b2cd27df56030f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5d" kindref="member">Precision</ref></type>
+        <definition>Precision QgsRasterProjector::precision</definition>
+        <argsstring>() const</argsstring>
+        <name>precision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="82" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a7d51dff38d5df4c58afba18e45a620ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsRasterProjector::setCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;srcCRS, const QgsCoordinateReferenceSystem &amp;destCRS, int srcDatumTransform=-1, int destDatumTransform=-1)</argsstring>
+        <name>setCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>srcCRS</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destCRS</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>srcDatumTransform</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>destDatumTransform</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Sets the source and destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="73" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a8d4cdf5557ac7bf95a4fad3e826dc8f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsRasterProjector::setPrecision</definition>
+        <argsstring>(Precision precision)</argsstring>
+        <name>setPrecision</name>
+        <param>
+          <type><ref refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5d" kindref="member">Precision</ref></type>
+          <declname>precision</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="83" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a0fabc787bac6ce2650cbf45c9a5dbcbc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsRasterProjector::sourceCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>sourceCrs</name>
+        <briefdescription>
+<para>Returns the source CRS. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="77" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsRasterProjector_1aaff9fe5257376fa9b178dfb830858890" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsRasterProjector::extentSize</definition>
+        <argsstring>(const QgsCoordinateTransform &amp;ct, const QgsRectangle &amp;srcExtent, int srcXSize, int srcYSize, QgsRectangle &amp;destExtent, int &amp;destXSize, int &amp;destYSize)</argsstring>
+        <name>extentSize</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>srcExtent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>srcXSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>srcYSize</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>destExtent</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>destXSize</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>destYSize</declname>
+        </param>
+        <briefdescription>
+<para>Calculate destination extent and size from source extent and size. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="859" bodyend="901"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterProjector_1a43858ab249610d23e9a0905145797a01" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterProjector::precisionLabel</definition>
+        <argsstring>(Precision precision)</argsstring>
+        <name>precisionLabel</name>
+        <param>
+          <type><ref refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5d" kindref="member">Precision</ref></type>
+          <declname>precision</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="85" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.cpp" bodystart="725" bodyend="735"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classQgsRasterProjector" kindref="compound">QgsRasterProjector</ref> implements approximate projection support for it calculates grid of points in source CRS for target CRS + extent which are used to calculate affine transformation matrices. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7652">
+        <label>QgsRasterInterface</label>
+        <link refid="classQgsRasterInterface"/>
+      </node>
+      <node id="7651">
+        <label>QgsRasterProjector</label>
+        <link refid="classQgsRasterProjector"/>
+        <childnode refid="7652" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7654">
+        <label>QgsRasterInterface</label>
+        <link refid="classQgsRasterInterface"/>
+        <childnode refid="7654" relation="usage">
+          <edgelabel>mInput</edgelabel>
+        </childnode>
+      </node>
+      <node id="7653">
+        <label>QgsRasterProjector</label>
+        <link refid="classQgsRasterProjector"/>
+        <childnode refid="7654" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" line="48" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/raster/qgsrasterprojector.h" bodystart="47" bodyend="115"/>
+    <listofallmembers>
+      <member refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5da8d5989586b00d3d33427d7dd70e6b568" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Approximate</name></member>
+      <member refid="classQgsRasterProjector_1acde591c4d679ca2a0ab0829c371218b2" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>bandCount</name></member>
+      <member refid="classQgsRasterInterface_1aaa39473935ac32b7b38970fed2ffaaac" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>bandStatistics</name></member>
+      <member refid="classQgsRasterProjector_1a9470d43c22eae5a717decf3ea6fe9655" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>block</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a1089f3b5f33d01c4b60a89d7f62fed6c" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>BuildPyramids</name></member>
+      <member refid="classQgsRasterInterface_1adb432fe846c0ca47321636f606128b99" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>capabilities</name></member>
+      <member refid="classQgsRasterInterface_1a473e08e19842141c0502065b91ce807b" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>capabilitiesString</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Capability</name></member>
+      <member refid="classQgsRasterProjector_1a4176ffdfcc95f3bc54ee4ab9db88960a" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>clone</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a584740055ac9d887a713d013243b62a2" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Create</name></member>
+      <member refid="classQgsRasterInterface_1a0754453f6588941a102e9c5effb7423c" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>cumulativeCut</name></member>
+      <member refid="classQgsRasterProjector_1a6144ac0e8b6c08553916fc9bd8d4e22a" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>dataType</name></member>
+      <member refid="classQgsRasterInterface_1a2d7445619ea7fd798907f1d30d52ffee" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>dataTypeSize</name></member>
+      <member refid="classQgsRasterProjector_1a437c3777403ccb8e54d78ac9b2c70fc7" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>destExtentSize</name></member>
+      <member refid="classQgsRasterProjector_1a0d0c071a164fe5ff71d8bc3ef1b5658a" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>destinationCrs</name></member>
+      <member refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5da55268aeb8570b9d6a80b27abef149408" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Exact</name></member>
+      <member refid="classQgsRasterInterface_1ae1860edc92ef6534c48987ee0e647df7" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>extent</name></member>
+      <member refid="classQgsRasterProjector_1aaff9fe5257376fa9b178dfb830858890" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>extentSize</name></member>
+      <member refid="classQgsRasterInterface_1a6fd95d26a509c3855900518b5411b193" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>generateBandName</name></member>
+      <member refid="classQgsRasterInterface_1a96e3b90944051463689fd94291f64d59" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>hasHistogram</name></member>
+      <member refid="classQgsRasterInterface_1ad14d9430addc4dc547f157b11b1b2765" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>hasStatistics</name></member>
+      <member refid="classQgsRasterInterface_1af8aecc430f757bbfd2a3ad19640f0bff" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>histogram</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a395b13b3e726868979d953dce4e359ba" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Identify</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05aa107514876635dc1aa1812e4c00b1cbd" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>IdentifyFeature</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05acb26e48d27a087df228b73e542b1f1d2" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>IdentifyHtml</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05aec5ee874e5e3a63ec621f5bb76a399f0" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>IdentifyText</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a3289d821c3ce98cc0152d083c040ab2e" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>IdentifyValue</name></member>
+      <member refid="classQgsRasterInterface_1a5676bc47dd66917d489d1aa1857943d1" prot="protected" virt="non-virtual"><scope>QgsRasterProjector</scope><name>initHistogram</name></member>
+      <member refid="classQgsRasterInterface_1a9068892452454f5437f4f4d159a956e1" prot="protected" virt="non-virtual"><scope>QgsRasterProjector</scope><name>initStatistics</name></member>
+      <member refid="classQgsRasterInterface_1a5133e64fa9b646ba44ba970e58ba7de1" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>input</name></member>
+      <member refid="classQgsRasterProjector_1ab03fd6067208739db8f8d8bfd8590c5a" prot="private" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mDestCRS</name></member>
+      <member refid="classQgsRasterProjector_1a7d0778679219ef785ccdd4dc151aa5bb" prot="private" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mDestDatumTransform</name></member>
+      <member refid="classQgsRasterInterface_1ae62adab6db8d26dc8e04ba136ba819c8" prot="protected" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mHistograms</name></member>
+      <member refid="classQgsRasterInterface_1ad9ac7504d704cf5681691da269fc7a98" prot="protected" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mInput</name></member>
+      <member refid="classQgsRasterInterface_1a8b7d50f46de894b81abee6451723f7dc" prot="protected" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mOn</name></member>
+      <member refid="classQgsRasterProjector_1af64e685411213c4cb70f7eb0a020331d" prot="private" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mPrecision</name></member>
+      <member refid="classQgsRasterProjector_1a7f30acbdb4da209bd61497b621ff2a30" prot="private" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mSrcCRS</name></member>
+      <member refid="classQgsRasterProjector_1a0e5b9dde4b051286cbafb5d7ca556c4a" prot="private" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mSrcDatumTransform</name></member>
+      <member refid="classQgsRasterInterface_1a462c9ae3fde5e7896deb047ff78cfa2c" prot="protected" virt="non-virtual"><scope>QgsRasterProjector</scope><name>mStatistics</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a444d11298cdd17320df4af97558e5718" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>NoCapabilities</name></member>
+      <member refid="classQgsRasterInterface_1a97f3f96ee9376c7bce4fa5098e680adc" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>on</name></member>
+      <member refid="classQgsRasterProjector_1abf885909546bf19d4b2cd27df56030f7" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>precision</name></member>
+      <member refid="classQgsRasterProjector_1abe17ec079e20ec605e6a77ed1b8a0a5d" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Precision</name></member>
+      <member refid="classQgsRasterProjector_1a43858ab249610d23e9a0905145797a01" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>precisionLabel</name></member>
+      <member refid="classQgsRasterInterface_1a82a99df2f1820281227aed8a3545679c" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>QgsRasterInterface</name></member>
+      <member refid="classQgsRasterProjector_1a76aae75bc3f1a6dbe9844001a4b0add2" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>QgsRasterProjector</name></member>
+      <member refid="classQgsRasterInterface_1ad9f3a115ec5d9039d57260bdfeed5295" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>readXml</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05a167967c4e816c3601a3b5e0b44fff2f4" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Remove</name></member>
+      <member refid="classQgsRasterProjector_1a7d51dff38d5df4c58afba18e45a620ce" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>setCrs</name></member>
+      <member refid="classQgsRasterInterface_1affa882def3997d2e7aac2662947336c2" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>setInput</name></member>
+      <member refid="classQgsRasterInterface_1a71a9a54722582c331239ab5efd31822d" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>setOn</name></member>
+      <member refid="classQgsRasterProjector_1a8d4cdf5557ac7bf95a4fad3e826dc8f7" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>setPrecision</name></member>
+      <member refid="classQgsRasterInterface_1a508c8cf96ed6925d12a33085612f9b05aadc59abc8f2b2c71d9297613e18261b5" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>Size</name></member>
+      <member refid="classQgsRasterProjector_1a0fabc787bac6ce2650cbf45c9a5dbcbc" prot="public" virt="non-virtual"><scope>QgsRasterProjector</scope><name>sourceCrs</name></member>
+      <member refid="classQgsRasterInterface_1a8c551f46c2eb3908bb407bda3ddd9f97" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>sourceDataType</name></member>
+      <member refid="classQgsRasterInterface_1a8f18bf422730b3ad42f16efd5860df0c" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>sourceInput</name></member>
+      <member refid="classQgsRasterInterface_1a303711d66ff2c648ab69d3f9c7fb84bb" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>sourceInput</name></member>
+      <member refid="classQgsRasterInterface_1ae9547759099c137dea230259f1f06bac" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>writeXml</name></member>
+      <member refid="classQgsRasterInterface_1a8e8027c88f4f0ab5bc634da41a588edf" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>xBlockSize</name></member>
+      <member refid="classQgsRasterInterface_1a6024da23ab7abf219925b505a956526b" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>xSize</name></member>
+      <member refid="classQgsRasterInterface_1a212328b3ab8c1eeeca03785c0a38c715" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>yBlockSize</name></member>
+      <member refid="classQgsRasterInterface_1ae1812389c8815fae851ca3eaffef5265" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>ySize</name></member>
+      <member refid="classQgsRasterInterface_1aab63e6c02337fe78aac563aeb34db150" prot="public" virt="virtual"><scope>QgsRasterProjector</scope><name>~QgsRasterInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

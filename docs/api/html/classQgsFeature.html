@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsFeature class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsFeature <span class="m-thin">class</span>
+        </h1>
+        <p>The feature class encapsulates a single feature including its id, geometry and a list of field/values attributes.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classQgsFeature.html" class="m-doc">QgsFeature</a> objects are implicitly shared.</p></aside>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a8fc86e4db184a74f62c0800681a3d628" class="m-doc">QgsFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id = <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>())</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2dfe8b68917c12283f4fe032e231e43b" class="m-doc">QgsFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id = <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>())</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#afe2ee154df80150274247395ca1d9736" class="m-doc-self" name="afe2ee154df80150274247395ca1d9736">QgsFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; rhs)</span>
+            </dt>
+            <dd>Copy constructor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a52068200031ca423a630b284c1c6edd6" class="m-doc-self" name="a52068200031ca423a630b284c1c6edd6">operator QVariant</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd>Allows direct construction of QVariants from features.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae5957f3cf812dc7c077ee7f906745ac7" class="m-doc">attribute</a>(</span><span class="m-doc-wrap">const QString&amp; name) const -&gt; QVariant</span>
+            </dt>
+            <dd>Lookup attribute value from attribute name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5659f3ae6e9519425ebfd8054af432a8" class="m-doc">attribute</a>(</span><span class="m-doc-wrap">int fieldIdx) const -&gt; QVariant</span>
+            </dt>
+            <dd>Lookup attribute value from its index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5a473f89868c234d53cea67504cd2f2e" class="m-doc">attributes</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsAttributes.html" class="m-doc">QgsAttributes</a></span>
+            </dt>
+            <dd>Returns the feature&#x27;s attributes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aca7cfa7bdd4bed3fb658ca0985551202" class="m-doc">clearGeometry</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Removes any geometry associated with the feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a50b136d2c95fec13a79f49d740f7f404" class="m-doc">deleteAttribute</a>(</span><span class="m-doc-wrap">int field)</span>
+            </dt>
+            <dd>Deletes an attribute and its value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0d1ed1e43ca6d1c04493212ec2683cc4" class="m-doc">deleteAttribute</a>(</span><span class="m-doc-wrap">const QString&amp; name) -&gt; bool</span>
+            </dt>
+            <dd>Removes an attribute value by field name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a45a4cafbd2a9bad1faac112821f77b61" class="m-doc">fieldNameIndex</a>(</span><span class="m-doc-wrap">const QString&amp; fieldName) const -&gt; int</span>
+            </dt>
+            <dd>Utility method to get attribute index from name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a104bcd72de229217da70f3f90f1c1c44" class="m-doc">fields</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsFields.html" class="m-doc">QgsFields</a></span>
+            </dt>
+            <dd>Returns the field map associated with the feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af516151bcf60aa1a31283ced4f7d9a9f" class="m-doc">geometry</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a></span>
+            </dt>
+            <dd>Returns the geometry associated with this feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad08c562ec979020d21a7b0dc40681b7e" class="m-doc">hasGeometry</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the feature has an associated geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa53e2ba9fe75f54a6b099614139fa21e" class="m-doc">id</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a></span>
+            </dt>
+            <dd>Gets the feature ID for this feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4d705310b40a69d0b4aefe9515229455" class="m-doc">initAttributes</a>(</span><span class="m-doc-wrap">int fieldCount)</span>
+            </dt>
+            <dd>Initialize this feature with the given number of fields.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae534eb7d7a9facfe50f1253f92668cd3" class="m-doc">isValid</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns the validity of this feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2d419c426c0f985a1529069eee43748a" class="m-doc-self" name="a2d419c426c0f985a1529069eee43748a">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; other) const -&gt; bool</span>
+            </dt>
+            <dd>Compares two features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a79b12744d417b5a56da65f918f461e90" class="m-doc-self" name="a79b12744d417b5a56da65f918f461e90">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; rhs) -&gt; <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8c056077bac1fea71599e85a777f24ce" class="m-doc-self" name="a8c056077bac1fea71599e85a777f24ce">operator==</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; other) const -&gt; bool</span>
+            </dt>
+            <dd>Compares two features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0075d1f9c830d62c8fda6b843c307dd8" class="m-doc">setAttribute</a>(</span><span class="m-doc-wrap">int field,
+              const QVariant&amp; attr) -&gt; bool</span>
+            </dt>
+            <dd>Set an attribute&#x27;s value by field index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac3c903deca2bf6bd72a69de57d0f2ab4" class="m-doc">setAttribute</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              const QVariant&amp; value) -&gt; bool</span>
+            </dt>
+            <dd>Insert a value into attribute.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a83aff02ac2a6cfe15262fa55e1e09b0c" class="m-doc">setAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsAttributes.html" class="m-doc">QgsAttributes</a>&amp; attrs)</span>
+            </dt>
+            <dd>Sets the feature&#x27;s attributes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a>(</span><span class="m-doc-wrap">const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              bool initAttributes = false)</span>
+            </dt>
+            <dd>Assign a field map with the feature to allow attribute access by attribute name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae6c4c7a5c40d420c95285ce072c24307" class="m-doc">setGeometry</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry)</span>
+            </dt>
+            <dd>Set the feature&#x27;s geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a14dcfc99b476b613c21b8c35840ff388" class="m-doc">setGeometry</a>(</span><span class="m-doc-wrap">std::unique_ptr&lt;<a href="classQgsAbstractGeometry.html" class="m-doc">QgsAbstractGeometry</a>&gt; geometry)</span>
+            </dt>
+            <dd>Set the feature&#x27;s <em>geometry</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab1539bb160a37239afc57779e7cf9686" class="m-doc">setId</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id)</span>
+            </dt>
+            <dd>Sets the feature ID for this feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acfd6c000574243cffb2c6ab5efb33a0a" class="m-doc">setValid</a>(</span><span class="m-doc-wrap">bool validity)</span>
+            </dt>
+            <dd>Sets the validity of the feature.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a8fc86e4db184a74f62c0800681a3d628"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8fc86e4db184a74f62c0800681a3d628" class="m-doc-self">QgsFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id = <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>())</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>feature id</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2dfe8b68917c12283f4fe032e231e43b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2dfe8b68917c12283f4fe032e231e43b" class="m-doc-self">QgsFeature</a>(</span><span class="m-doc-wrap">const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id = <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>())</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fields</td>
+                  <td>feature&#x27;s fields</td>
+                </tr>
+                <tr>
+                  <td>id</td>
+                  <td>feature id</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ae5957f3cf812dc7c077ee7f906745ac7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae5957f3cf812dc7c077ee7f906745ac7" class="m-doc-self">attribute</a>(</span><span class="m-doc-wrap">const QString&amp; name) const</span></span>
+            </h3>
+            <p>Lookup attribute value from attribute name.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>The name of the attribute to get</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The value of the attribute (C++: Invalid variant if no such name exists )</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Field map must be associated using <a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields()</a> before this method can be used.</p><aside class="m-note m-info"><h4>Note</h4><p>For Python: raises a KeyError exception if the field is not found</p><p>Alternatively in Python: <code class="m-code"><span class="n">feature</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></code></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5659f3ae6e9519425ebfd8054af432a8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5659f3ae6e9519425ebfd8054af432a8" class="m-doc-self">attribute</a>(</span><span class="m-doc-wrap">int fieldIdx) const</span></span>
+            </h3>
+            <p>Lookup attribute value from its index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fieldIdx</td>
+                  <td>The index of the attribute to get</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The value of the attribute (C++: Invalid variant if no such index exists )</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Field map must be associated using <a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields()</a> before this method can be used.</p><aside class="m-note m-info"><h4>Note</h4><p>For Python: raises a KeyError exception if the field is not found</p><p>Alternatively in Python: <code class="m-code"><span class="n">feature</span><span class="p">[</span><span class="n">fieldIdx</span><span class="p">]</span></code></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5a473f89868c234d53cea67504cd2f2e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsAttributes.html" class="m-doc">QgsAttributes</a> QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5a473f89868c234d53cea67504cd2f2e" class="m-doc-self">attributes</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the feature&#x27;s attributes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of feature&#x27;s attributes</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a83aff02ac2a6cfe15262fa55e1e09b0c" class="m-doc">setAttributes</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>Alternatively in Python: iterate feature, eg. <code class="m-code"><span class="p">[</span><span class="n">attr</span> <span class="k">for</span> <span class="n">attr</span> <span class="n">in</span> <span class="n">feature</span><span class="p">]</span></code></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aca7cfa7bdd4bed3fb658ca0985551202"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aca7cfa7bdd4bed3fb658ca0985551202" class="m-doc-self">clearGeometry</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Removes any geometry associated with the feature.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#ae6c4c7a5c40d420c95285ce072c24307" class="m-doc">setGeometry()</a></p><p><a href="classQgsFeature.html#ad08c562ec979020d21a7b0dc40681b7e" class="m-doc">hasGeometry()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a50b136d2c95fec13a79f49d740f7f404"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a50b136d2c95fec13a79f49d740f7f404" class="m-doc-self">deleteAttribute</a>(</span><span class="m-doc-wrap">int field)</span></span>
+            </h3>
+            <p>Deletes an attribute and its value.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">field</td>
+                  <td>the index of the field</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a0075d1f9c830d62c8fda6b843c307dd8" class="m-doc">setAttribute</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>For Python: raises a KeyError exception if the field is not found</p><p>Alternatively in Python: <code class="m-code"><span class="n">del</span> <span class="n">feature</span><span class="p">[</span><span class="n">field</span><span class="p">]</span></code></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0d1ed1e43ca6d1c04493212ec2683cc4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0d1ed1e43ca6d1c04493212ec2683cc4" class="m-doc-self">deleteAttribute</a>(</span><span class="m-doc-wrap">const QString&amp; name)</span></span>
+            </h3>
+            <p>Removes an attribute value by field name.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>The name of the field to delete</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if attribute name could not be converted to index (C++ only)</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Field map must be associated using <a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields()</a> before this method can be used.</p><aside class="m-note m-info"><h4>Note</h4><p>For Python: raises a KeyError exception instead of returning false</p><p>Alternatively in Python: <code class="m-code"><span class="n">del</span> <span class="n">feature</span><span class="p">[</span><span class="n">name</span><span class="p">]</span></code></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a45a4cafbd2a9bad1faac112821f77b61"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a45a4cafbd2a9bad1faac112821f77b61" class="m-doc-self">fieldNameIndex</a>(</span><span class="m-doc-wrap">const QString&amp; fieldName) const</span></span>
+            </h3>
+            <p>Utility method to get attribute index from name.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fieldName</td>
+                  <td>name of field to get attribute index of</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>-1 if field does not exist or field map is not associated.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Field map must be associated using <a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields()</a> before this method can be used.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a104bcd72de229217da70f3f90f1c1c44"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFields.html" class="m-doc">QgsFields</a> QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a104bcd72de229217da70f3f90f1c1c44" class="m-doc-self">fields</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the field map associated with the feature.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af516151bcf60aa1a31283ced4f7d9a9f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a> QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af516151bcf60aa1a31283ced4f7d9a9f" class="m-doc-self">geometry</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the geometry associated with this feature.</p>
+<p>If the feature has no geometry, an empty <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a> object will be returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#ad08c562ec979020d21a7b0dc40681b7e" class="m-doc">hasGeometry()</a></p><p><a href="classQgsFeature.html#ae6c4c7a5c40d420c95285ce072c24307" class="m-doc">setGeometry()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad08c562ec979020d21a7b0dc40681b7e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad08c562ec979020d21a7b0dc40681b7e" class="m-doc-self">hasGeometry</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the feature has an associated geometry.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#abf0922d13bcf28c72770d8acdd75594e" class="m-doc">geometry()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa53e2ba9fe75f54a6b099614139fa21e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa53e2ba9fe75f54a6b099614139fa21e" class="m-doc-self">id</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets the feature ID for this feature.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>feature ID</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#ab1539bb160a37239afc57779e7cf9686" class="m-doc">setId()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4d705310b40a69d0b4aefe9515229455"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4d705310b40a69d0b4aefe9515229455" class="m-doc-self">initAttributes</a>(</span><span class="m-doc-wrap">int fieldCount)</span></span>
+            </h3>
+            <p>Initialize this feature with the given number of fields.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fieldCount</td>
+                  <td>Number of fields to initialize</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Discard any previously set attribute data.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae534eb7d7a9facfe50f1253f92668cd3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae534eb7d7a9facfe50f1253f92668cd3" class="m-doc-self">isValid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the validity of this feature.</p>
+<p>This is normally set by the provider to indicate some problem that makes the feature invalid or to indicate a null feature.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#acfd6c000574243cffb2c6ab5efb33a0a" class="m-doc">setValid</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0075d1f9c830d62c8fda6b843c307dd8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0075d1f9c830d62c8fda6b843c307dd8" class="m-doc-self">setAttribute</a>(</span><span class="m-doc-wrap">int field,
+              const QVariant&amp; attr)</span></span>
+            </h3>
+            <p>Set an attribute&#x27;s value by field index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">field</td>
+                  <td>the index of the field to set</td>
+                </tr>
+                <tr>
+                  <td>attr</td>
+                  <td>the value of the attribute</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false, if the field index does not exist</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The feature will be valid if it was successful.</p><aside class="m-note m-info"><h4>Note</h4><p>For Python: raises a KeyError exception instead of returning false</p><p>Alternatively in Python: <code class="m-code"><span class="n">feature</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span></code></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a83aff02ac2a6cfe15262fa55e1e09b0c" class="m-doc">setAttributes</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac3c903deca2bf6bd72a69de57d0f2ab4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac3c903deca2bf6bd72a69de57d0f2ab4" class="m-doc-self">setAttribute</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              const QVariant&amp; value)</span></span>
+            </h3>
+            <p>Insert a value into attribute.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>The name of the field to set</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>The value to set</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if attribute name could not be converted to index (C++ only)</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Returns false if attribute name could not be converted to index. Field map must be associated using <a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields()</a> before this method can be used. The feature will be valid if it was successful</p><aside class="m-note m-info"><h4>Note</h4><p>For Python: raises a KeyError exception instead of returning false</p><p>Alternatively in Python: <code class="m-code"><span class="n">feature</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">attr</span></code></p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc">setFields</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a83aff02ac2a6cfe15262fa55e1e09b0c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83aff02ac2a6cfe15262fa55e1e09b0c" class="m-doc-self">setAttributes</a>(</span><span class="m-doc-wrap">const <a href="classQgsAttributes.html" class="m-doc">QgsAttributes</a>&amp; attrs)</span></span>
+            </h3>
+            <p>Sets the feature&#x27;s attributes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">attrs</td>
+                  <td>attribute list</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The feature will be valid after.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a0075d1f9c830d62c8fda6b843c307dd8" class="m-doc">setAttribute</a></p><p><a href="classQgsFeature.html#a0c49a035fc3aa0ca232450394f689029" class="m-doc">attributes</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a96232e13ae05c90e553e400f24b4c5b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a96232e13ae05c90e553e400f24b4c5b2" class="m-doc-self">setFields</a>(</span><span class="m-doc-wrap">const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              bool initAttributes = false)</span></span>
+            </h3>
+            <p>Assign a field map with the feature to allow attribute access by attribute name.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fields</td>
+                  <td>The attribute fields which this feature holds</td>
+                </tr>
+                <tr>
+                  <td>initAttributes</td>
+                  <td>If true, attributes are initialized. Clears any data previously assigned. C++: Defaults to false Python: Defaults to true</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a331068f619fa9a4b85dee464a6b0f8dd" class="m-doc">fields</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae6c4c7a5c40d420c95285ce072c24307"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae6c4c7a5c40d420c95285ce072c24307" class="m-doc-self">setGeometry</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; geometry)</span></span>
+            </h3>
+            <p>Set the feature&#x27;s geometry.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">geometry</td>
+                  <td>new feature geometry</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The feature will be valid after.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#abf0922d13bcf28c72770d8acdd75594e" class="m-doc">geometry()</a></p><p><a href="classQgsFeature.html#aca7cfa7bdd4bed3fb658ca0985551202" class="m-doc">clearGeometry()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a14dcfc99b476b613c21b8c35840ff388"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14dcfc99b476b613c21b8c35840ff388" class="m-doc-self">setGeometry</a>(</span><span class="m-doc-wrap">std::unique_ptr&lt;<a href="classQgsAbstractGeometry.html" class="m-doc">QgsAbstractGeometry</a>&gt; geometry)</span></span>
+            </h3>
+            <p>Set the feature&#x27;s <em>geometry</em>.</p>
+<p>Ownership of the geometry is transferred to the feature. The feature will be made valid after calling this method.</p><p>This method is a shortcut for calling: <code class="m-code"><span class="n">feature</span><span class="p">.</span><span class="n">setGeometry</span><span class="p">(</span> <span class="n">QgsGeometry</span><span class="p">(</span> <span class="n">geometry</span> <span class="p">)</span> <span class="p">)</span></code></p><ul><li><p>Example:</p><pre class="m-code"><span class="cp"># Sets a feature&#39;s geometry to a point geometry</span>
+<span class="n">feature</span><span class="p">.</span><span class="n">setGeometry</span><span class="p">(</span> <span class="n">QgsPoint</span><span class="p">(</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">41</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="n">feature</span><span class="p">.</span><span class="n">geometry</span><span class="p">())</span>
+<span class="cp"># output: &lt;QgsGeometry: Point (210 41)&gt;</span>
+
+<span class="cp"># Sets a feature&#39;s geometry to a line string</span>
+<span class="n">feature</span><span class="p">.</span><span class="n">setGeometry</span><span class="p">(</span> <span class="n">QgsLineString</span><span class="p">(</span> <span class="p">[</span> <span class="n">QgsPoint</span><span class="p">(</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">41</span> <span class="p">),</span> <span class="n">QgsPoint</span><span class="p">(</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">55</span> <span class="p">)</span> <span class="p">]</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="n">feature</span><span class="p">.</span><span class="n">geometry</span><span class="p">())</span>
+<span class="cp"># output: &lt;QgsGeometry: LineString (210 41, 301 55)&gt;</span></pre></li></ul><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#abf0922d13bcf28c72770d8acdd75594e" class="m-doc">geometry()</a></p><p><a href="classQgsFeature.html#aca7cfa7bdd4bed3fb658ca0985551202" class="m-doc">clearGeometry()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab1539bb160a37239afc57779e7cf9686"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab1539bb160a37239afc57779e7cf9686" class="m-doc-self">setId</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id)</span></span>
+            </h3>
+            <p>Sets the feature ID for this feature.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>feature id</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#a64e6b9dd1e5a66c960f985f5d885d7f6" class="m-doc">id</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acfd6c000574243cffb2c6ab5efb33a0a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFeature::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acfd6c000574243cffb2c6ab5efb33a0a" class="m-doc-self">setValid</a>(</span><span class="m-doc-wrap">bool validity)</span></span>
+            </h3>
+            <p>Sets the validity of the feature.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">validity</td>
+                  <td>set to true if feature is valid</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFeature.html#ae534eb7d7a9facfe50f1253f92668cd3" class="m-doc">isValid</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

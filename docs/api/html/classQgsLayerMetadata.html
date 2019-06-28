@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLayerMetadata class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLayerMetadata <span class="m-thin">class</span>
+        </h1>
+        <p>A structured metadata store for a map layer.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a> handles storage and management of the metadata for a <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>. This class is an internal QGIS format with a common metadata structure, which allows for code to access the metadata properties for layers in a uniform way.</p><p>The metadata store is designed to be compatible with the Dublin Core metadata specifications, and will be expanded to allow compatibility with ISO specifications in future releases. However, the QGIS internal schema does not represent a superset of all existing metadata schemas and accordingly conversion from specific metadata formats to <a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a> may result in a loss of information.</p><p>This class is designed to follow the specifications detailed in the schema definition available at resources/qgis-resource-metadata.xsd within the QGIS source code.</p><p>Metadata can be validated through the use of QgsLayerMetadataValidator subclasses. E.g. validating against the native QGIS metadata schema can be performed using <a href="classQgsNativeMetadataValidator.html" class="m-doc">QgsNativeMetadataValidator</a>.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsAbstractMetadataBase.html" class="m-doc">QgsAbstractMetadataBase</a>
+            </dt>
+            <dd>An abstract base class for metadata stores.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsLayerMetadata_1_1Constraint.html" class="m-doc">Constraint</a>
+            </dt>
+            <dd>Metadata constraint structure.</dd>
+            <dt>
+              struct <a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">Extent</a>
+            </dt>
+            <dd>Metadata extent structure.</dd>
+            <dt>
+              struct <a href="structQgsLayerMetadata_1_1SpatialExtent.html" class="m-doc">SpatialExtent</a>
+            </dt>
+            <dd>Metadata spatial extent structure.</dd>
+            <dt>
+              using <a href="#aad84ab387f5dc41d166906eceffbbf89" class="m-doc-self" name="aad84ab387f5dc41d166906eceffbbf89">ConstraintList</a> = QList&lt;<a href="structQgsLayerMetadata_1_1Constraint.html" class="m-doc">QgsLayerMetadata::<wbr />Constraint</a>&gt;
+            </dt>
+            <dd>A list of constraints.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2e40ad2eb7d99058fadc6ffd80b719b0" class="m-doc-self" name="a2e40ad2eb7d99058fadc6ffd80b719b0">QgsLayerMetadata</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Constructor for <a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a08bf04e1f34f1b880fa91c662539399b" class="m-doc">addConstraint</a>(</span><span class="m-doc-wrap">const <a href="structQgsLayerMetadata_1_1Constraint.html" class="m-doc">QgsLayerMetadata::<wbr />Constraint</a>&amp; constraint)</span>
+            </dt>
+            <dd>Adds an individual constraint to the existing constraints.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a76e9af41023793b667588e0f7b03bd23" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a>* <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Clones the metadata object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a47ff443199c3ac36225ddae78feee36b" class="m-doc">constraints</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLayerMetadata.html#aad84ab387f5dc41d166906eceffbbf89" class="m-doc">QgsLayerMetadata::<wbr />ConstraintList</a></span>
+            </dt>
+            <dd>Returns a list of constraints associated with using the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a505921e4bbdce896a66edae02c738567" class="m-doc">crs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Returns the coordinate reference system described by the layer&#x27;s metadata.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5944e16c67ea916874dc7fab1bdd11eb" class="m-doc">encoding</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the character encoding of the data in the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a09610a659429abd1ec9ab464d855f557" class="m-doc">extent</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">QgsLayerMetadata::<wbr />Extent</a>&amp;</span>
+            </dt>
+            <dd>Returns the spatial and temporal extents associated with the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab5e87bebfda18ae90c79f10789544c9f" class="m-doc">extent</a>(</span><span class="m-doc-wrap">) -&gt; <a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">QgsLayerMetadata::<wbr />Extent</a>&amp;</span>
+            </dt>
+            <dd>Returns the spatial and temporal extents associated with the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af486c2360f37c65ce0dc84a4711631f3" class="m-doc">fees</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns any fees associated with using the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5f73796d7399aa3e195897f6ac89251e" class="m-doc">licenses</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of licenses associated with the resource (examples: <a href="http://opendefinition.org/licenses/">http:/<wbr />/<wbr />opendefinition.org/<wbr />licenses/<wbr /></a>).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a71157cd3f818b8180d23863ef0ccb25a" class="m-doc">readFromLayer</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer)</span>
+            </dt>
+            <dd>Reads the metadata state from a <em>layer&#x27;s</em> custom properties (see <a href="classQgsMapLayer.html#a1e78dec0541aaeff25feac9a2445ae29" class="m-doc">QgsMapLayer::<wbr />customProperty()</a> ).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6914d07a56377e989fb33a33d50a203f" class="m-doc">readMetadataXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; metadataElement) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Sets state from DOM document.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7522c639fc3a7984bcb88b0ac7f924ef" class="m-doc">rights</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of attribution or copyright strings associated with the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a745c2e91df9a0f68fc6a5cca49829db4" class="m-doc">saveToLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer) const</span>
+            </dt>
+            <dd>Saves the metadata to a <em>layer&#x27;s</em> custom properties (see <a href="classQgsMapLayer.html#a7bf94cfa08abc37b75cc53dc921bb15e" class="m-doc">QgsMapLayer::<wbr />setCustomProperty()</a> ).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a09a46927b42b1e156d9e1118241aefd8" class="m-doc">setConstraints</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayerMetadata.html#aad84ab387f5dc41d166906eceffbbf89" class="m-doc">QgsLayerMetadata::<wbr />ConstraintList</a>&amp; constraints)</span>
+            </dt>
+            <dd>Sets the list of <em>constraints</em> associated with using the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afd9c85d52fdc29b87c0c4d1d37cbe012" class="m-doc">setCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span>
+            </dt>
+            <dd>Sets the coordinate reference system for the layer&#x27;s metadata.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a55276726ad178ed97f9d6bb66bb885c7" class="m-doc">setEncoding</a>(</span><span class="m-doc-wrap">const QString&amp; encoding)</span>
+            </dt>
+            <dd>Sets the character <em>encoding</em> of the data in the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a90de7f845dcfd780cd728c7dbba26c9c" class="m-doc">setExtent</a>(</span><span class="m-doc-wrap">const <a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">QgsLayerMetadata::<wbr />Extent</a>&amp; extent)</span>
+            </dt>
+            <dd>Sets the spatial and temporal extents associated with the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3630a0e6b12617dd1308108a6efd202c" class="m-doc">setFees</a>(</span><span class="m-doc-wrap">const QString&amp; fees)</span>
+            </dt>
+            <dd>Sets the <em>fees</em> associated with using the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a45922656f93bdb219b0a214cbffa402b" class="m-doc">setLicenses</a>(</span><span class="m-doc-wrap">const QStringList&amp; licenses)</span>
+            </dt>
+            <dd>Sets a list of <em>licenses</em> associated with the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4ded83e135c28254ab7787d5525ee75b" class="m-doc">setRights</a>(</span><span class="m-doc-wrap">const QStringList&amp; rights)</span>
+            </dt>
+            <dd>Sets a list of <em>rights</em> (attribution or copyright strings) associated with the resource.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac6da5608efbe8398fb3fb9f890e0cf6d" class="m-doc">writeMetadataXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; metadataElement,
+              QDomDocument&amp; document) const -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Stores state in a DOM node.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a08bf04e1f34f1b880fa91c662539399b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a08bf04e1f34f1b880fa91c662539399b" class="m-doc-self">addConstraint</a>(</span><span class="m-doc-wrap">const <a href="structQgsLayerMetadata_1_1Constraint.html" class="m-doc">QgsLayerMetadata::<wbr />Constraint</a>&amp; constraint)</span></span>
+            </h3>
+            <p>Adds an individual constraint to the existing constraints.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a47ff443199c3ac36225ddae78feee36b" class="m-doc">constraints()</a></p><p><a href="classQgsLayerMetadata.html#a09a46927b42b1e156d9e1118241aefd8" class="m-doc">setConstraints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a76e9af41023793b667588e0f7b03bd23"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a>* QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a76e9af41023793b667588e0f7b03bd23" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Clones the metadata object.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a47ff443199c3ac36225ddae78feee36b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayerMetadata.html#aad84ab387f5dc41d166906eceffbbf89" class="m-doc">QgsLayerMetadata::<wbr />ConstraintList</a> QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a47ff443199c3ac36225ddae78feee36b" class="m-doc-self">constraints</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of constraints associated with using the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a09a46927b42b1e156d9e1118241aefd8" class="m-doc">setConstraints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a505921e4bbdce896a66edae02c738567"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a505921e4bbdce896a66edae02c738567" class="m-doc-self">crs</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the coordinate reference system described by the layer&#x27;s metadata.</p>
+<p>Note that this has no link to <a href="classQgsMapLayer.html#a3619f5329809ff09bf0cc88b05dd6168" class="m-doc">QgsMapLayer::<wbr />crs()</a>. While in most cases these two systems are likely to be identical, it is possible to have a layer with a different CRS described by it&#x27;s accompanying metadata versus the CRS which is actually used to display and manipulate the layer within QGIS. This may be the case when a layer has an incorrect CRS within its metadata and a user has manually overridden the layer&#x27;s CRS within QGIS.</p><p>The CRS described here should either match the CRS from the layer <a href="classQgsMapLayer.html#a3619f5329809ff09bf0cc88b05dd6168" class="m-doc">QgsMapLayer::<wbr />crs()</a> or the CRS from the data provider.</p><p>This property should also match the CRS property used in the spatial extent.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#afd9c85d52fdc29b87c0c4d1d37cbe012" class="m-doc">setCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5944e16c67ea916874dc7fab1bdd11eb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5944e16c67ea916874dc7fab1bdd11eb" class="m-doc-self">encoding</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the character encoding of the data in the resource.</p>
+<p>An empty string will be returned if no encoding is set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a55276726ad178ed97f9d6bb66bb885c7" class="m-doc">setEncoding()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a09610a659429abd1ec9ab464d855f557"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">QgsLayerMetadata::<wbr />Extent</a>&amp; QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a09610a659429abd1ec9ab464d855f557" class="m-doc-self">extent</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the spatial and temporal extents associated with the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a90de7f845dcfd780cd728c7dbba26c9c" class="m-doc">setExtent()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab5e87bebfda18ae90c79f10789544c9f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">QgsLayerMetadata::<wbr />Extent</a>&amp; QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab5e87bebfda18ae90c79f10789544c9f" class="m-doc-self">extent</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the spatial and temporal extents associated with the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a90de7f845dcfd780cd728c7dbba26c9c" class="m-doc">setExtent()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af486c2360f37c65ce0dc84a4711631f3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af486c2360f37c65ce0dc84a4711631f3" class="m-doc-self">fees</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns any fees associated with using the resource.</p>
+<p>An empty string will be returned if no fees are set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a3630a0e6b12617dd1308108a6efd202c" class="m-doc">setFees()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5f73796d7399aa3e195897f6ac89251e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5f73796d7399aa3e195897f6ac89251e" class="m-doc-self">licenses</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of licenses associated with the resource (examples: <a href="http://opendefinition.org/licenses/">http:/<wbr />/<wbr />opendefinition.org/<wbr />licenses/<wbr /></a>).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a45922656f93bdb219b0a214cbffa402b" class="m-doc">setLicenses()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a71157cd3f818b8180d23863ef0ccb25a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a71157cd3f818b8180d23863ef0ccb25a" class="m-doc-self">readFromLayer</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer)</span></span>
+            </h3>
+            <p>Reads the metadata state from a <em>layer&#x27;s</em> custom properties (see <a href="classQgsMapLayer.html#a1e78dec0541aaeff25feac9a2445ae29" class="m-doc">QgsMapLayer::<wbr />customProperty()</a> ).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a745c2e91df9a0f68fc6a5cca49829db4" class="m-doc">saveToLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6914d07a56377e989fb33a33d50a203f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6914d07a56377e989fb33a33d50a203f" class="m-doc-self">readMetadataXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; metadataElement) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Sets state from DOM document.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">metadataElement</td>
+                  <td>The DOM element corresponding to ``resourceMetadata&#x27;&#x27; tag</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if successful</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Subclasses which override this method should take care to also call the base class method in order to read common metadata properties.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7522c639fc3a7984bcb88b0ac7f924ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7522c639fc3a7984bcb88b0ac7f924ef" class="m-doc-self">rights</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of attribution or copyright strings associated with the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a4ded83e135c28254ab7787d5525ee75b" class="m-doc">setRights()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a745c2e91df9a0f68fc6a5cca49829db4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a745c2e91df9a0f68fc6a5cca49829db4" class="m-doc-self">saveToLayer</a>(</span><span class="m-doc-wrap"><a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer) const</span></span>
+            </h3>
+            <p>Saves the metadata to a <em>layer&#x27;s</em> custom properties (see <a href="classQgsMapLayer.html#a7bf94cfa08abc37b75cc53dc921bb15e" class="m-doc">QgsMapLayer::<wbr />setCustomProperty()</a> ).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a71157cd3f818b8180d23863ef0ccb25a" class="m-doc">readFromLayer()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a09a46927b42b1e156d9e1118241aefd8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a09a46927b42b1e156d9e1118241aefd8" class="m-doc-self">setConstraints</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayerMetadata.html#aad84ab387f5dc41d166906eceffbbf89" class="m-doc">QgsLayerMetadata::<wbr />ConstraintList</a>&amp; constraints)</span></span>
+            </h3>
+            <p>Sets the list of <em>constraints</em> associated with using the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a47ff443199c3ac36225ddae78feee36b" class="m-doc">constraints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afd9c85d52fdc29b87c0c4d1d37cbe012"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afd9c85d52fdc29b87c0c4d1d37cbe012" class="m-doc-self">setCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span></span>
+            </h3>
+            <p>Sets the coordinate reference system for the layer&#x27;s metadata.</p>
+<p>Note that this has no link to <a href="classQgsMapLayer.html#afc72ec9bb0d3b98fe20b5b85c3d70512" class="m-doc">QgsMapLayer::<wbr />setCrs()</a>. Setting the layer&#x27;s CRS via <a href="classQgsMapLayer.html#afc72ec9bb0d3b98fe20b5b85c3d70512" class="m-doc">QgsMapLayer::<wbr />setCrs()</a> does not affect the layer&#x27;s metadata CRS, and changing the CRS from the metadata will not change the layer&#x27;s CRS or how it is projected within QGIS.</p><p>While ideally these two systems are likely to be identical, it is possible to have a layer with a different CRS described by it&#x27;s accompanying metadata versus the CRS which is actually used to display and manipulate the layer within QGIS. This may be the case when a layer has an incorrect CRS within its metadata and a user has manually overridden the layer&#x27;s CRS within QGIS.</p><p>The CRS described here should either match the CRS from the layer <a href="classQgsMapLayer.html#a3619f5329809ff09bf0cc88b05dd6168" class="m-doc">QgsMapLayer::<wbr />crs()</a> or the CRS from the data provider.</p><p>This property should also match the CRS property used in the spatial extent.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a505921e4bbdce896a66edae02c738567" class="m-doc">crs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a55276726ad178ed97f9d6bb66bb885c7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a55276726ad178ed97f9d6bb66bb885c7" class="m-doc-self">setEncoding</a>(</span><span class="m-doc-wrap">const QString&amp; encoding)</span></span>
+            </h3>
+            <p>Sets the character <em>encoding</em> of the data in the resource.</p>
+<p>Use an empty string if no encoding is set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a5944e16c67ea916874dc7fab1bdd11eb" class="m-doc">encoding()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a90de7f845dcfd780cd728c7dbba26c9c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a90de7f845dcfd780cd728c7dbba26c9c" class="m-doc-self">setExtent</a>(</span><span class="m-doc-wrap">const <a href="structQgsLayerMetadata_1_1Extent.html" class="m-doc">QgsLayerMetadata::<wbr />Extent</a>&amp; extent)</span></span>
+            </h3>
+            <p>Sets the spatial and temporal extents associated with the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a90de7f845dcfd780cd728c7dbba26c9c" class="m-doc">setExtent()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3630a0e6b12617dd1308108a6efd202c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3630a0e6b12617dd1308108a6efd202c" class="m-doc-self">setFees</a>(</span><span class="m-doc-wrap">const QString&amp; fees)</span></span>
+            </h3>
+            <p>Sets the <em>fees</em> associated with using the resource.</p>
+<p>Use an empty string if no fees are set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#af486c2360f37c65ce0dc84a4711631f3" class="m-doc">fees()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a45922656f93bdb219b0a214cbffa402b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a45922656f93bdb219b0a214cbffa402b" class="m-doc-self">setLicenses</a>(</span><span class="m-doc-wrap">const QStringList&amp; licenses)</span></span>
+            </h3>
+            <p>Sets a list of <em>licenses</em> associated with the resource.</p>
+<p>(examples: <a href="http://opendefinition.org/licenses/">http:/<wbr />/<wbr />opendefinition.org/<wbr />licenses/<wbr /></a>).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a5f73796d7399aa3e195897f6ac89251e" class="m-doc">licenses()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4ded83e135c28254ab7787d5525ee75b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ded83e135c28254ab7787d5525ee75b" class="m-doc-self">setRights</a>(</span><span class="m-doc-wrap">const QStringList&amp; rights)</span></span>
+            </h3>
+            <p>Sets a list of <em>rights</em> (attribution or copyright strings) associated with the resource.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayerMetadata.html#a7522c639fc3a7984bcb88b0ac7f924ef" class="m-doc">rights()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac6da5608efbe8398fb3fb9f890e0cf6d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayerMetadata::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac6da5608efbe8398fb3fb9f890e0cf6d" class="m-doc-self">writeMetadataXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; metadataElement,
+              QDomDocument&amp; document) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Stores state in a DOM node.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">metadataElement</td>
+                  <td>is a DOM element corresponding to ``resourceMetadata&#x27;&#x27; tag</td>
+                </tr>
+                <tr>
+                  <td>document</td>
+                  <td>is a the DOM document being written</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if successful</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Subclasses which override this method should take care to also call the base class method in order to write common metadata properties.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

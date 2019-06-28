@@ -1,0 +1,1682 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsFeatureRenderer" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsFeatureRenderer</compoundname>
+    <derivedcompoundref refid="classQgs25DRenderer" prot="public" virt="non-virtual">Qgs25DRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsCategorizedSymbolRenderer" prot="public" virt="non-virtual">QgsCategorizedSymbolRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGraduatedSymbolRenderer" prot="public" virt="non-virtual">QgsGraduatedSymbolRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsHeatmapRenderer" prot="public" virt="non-virtual">QgsHeatmapRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsInvertedPolygonRenderer" prot="public" virt="non-virtual">QgsInvertedPolygonRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsNullSymbolRenderer" prot="public" virt="non-virtual">QgsNullSymbolRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsPointDistanceRenderer" prot="public" virt="non-virtual">QgsPointDistanceRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsRuleBasedRenderer" prot="public" virt="non-virtual">QgsRuleBasedRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsSingleSymbolRenderer" prot="public" virt="non-virtual">QgsSingleSymbolRenderer</derivedcompoundref>
+    <includes refid="qgsrenderer_8h" local="no">qgsrenderer.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151" prot="public" static="no">
+        <name>Capability</name>
+        <enumvalue id="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a9c0b2e9b38c8cfa909e20f9aa241da26" prot="public">
+          <name>SymbolLevels</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Rendering with symbol levels (i.e. implements <ref refid="classQgsFeatureRenderer_1a5f3e784718999bba182e46d2bff4d6c1" kindref="member">symbols()</ref>, <ref refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" kindref="member">symbolForFeature()</ref>) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a032dbbe9c457924a27f1f2ae4c6c6531" prot="public">
+          <name>MoreSymbolsPerFeature</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>May use more than one symbol to render a feature: <ref refid="classQgsFeatureRenderer_1a5933b6c08051c983cf65d874ac7b4b69" kindref="member">symbolsForFeature()</ref> will return them. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151ac421b4212b3fe37ac685edf9cc92110f" prot="public">
+          <name>Filter</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+<para>Features may be filtered, i.e. some features may not be rendered (categorized, rule based ...) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a9570a82adc24b246ae40596fdc8af6d2" prot="public">
+          <name>ScaleDependent</name>
+          <initializer>= 1 &lt;&lt; 4</initializer>
+          <briefdescription>
+<para>Depends on scale if feature will be rendered (rule based ) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Used to specify details about a renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Is returned from the <ref refid="classQgsFeatureRenderer_1a981b574dd6813bcc3cd849822af8929b" kindref="member">capabilities()</ref> method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="241" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="240" bodyend="246"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1a461119578a07fb73cd8e90bd50cca94e" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsFeatureRenderer::mCurrentVertexMarkerSize</definition>
+        <argsstring></argsstring>
+        <name>mCurrentVertexMarkerSize</name>
+        <briefdescription>
+<para>The current size of editing marker. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="508" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1ac3a0c2c2f0eb0f9c04abb44d9cce7c85" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsFeatureRenderer::mCurrentVertexMarkerType</definition>
+        <argsstring></argsstring>
+        <name>mCurrentVertexMarkerType</name>
+        <briefdescription>
+<para>The current type of editing marker. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="506" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="506" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1a2a274f78941c4f6110c9a798928029ac" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::mForceRaster</definition>
+        <argsstring></argsstring>
+        <name>mForceRaster</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="512" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="512" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1ac3c95f48b0233a3b56643c4602b0c43c" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsFeatureRequest_1_1OrderBy" kindref="compound">QgsFeatureRequest::OrderBy</ref></type>
+        <definition>QgsFeatureRequest::OrderBy QgsFeatureRenderer::mOrderBy</definition>
+        <argsstring></argsstring>
+        <name>mOrderBy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="526" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="526" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1ad77073a562a38dd4868124a83d9df065" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::mOrderByEnabled</definition>
+        <argsstring></argsstring>
+        <name>mOrderByEnabled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="528" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="528" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1a71a42b5fb97eeda8b4604e4a3e59f5e3" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref> *</type>
+        <definition>QgsPaintEffect* QgsFeatureRenderer::mPaintEffect</definition>
+        <argsstring></argsstring>
+        <name>mPaintEffect</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="510" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="510" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1ad320f00920e002ede32001884ce15b00" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsFeatureRenderer::mType</definition>
+        <argsstring></argsstring>
+        <name>mType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="501" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsFeatureRenderer_1ab8931a4c40fb66fb9f2017591d3a59fd" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::mUsingSymbolLevels</definition>
+        <argsstring></argsstring>
+        <name>mUsingSymbolLevels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="503" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="503" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a23ae7f4634cbd7df5e3cd06080b40119" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>QgsFeatureRenderer * QgsFeatureRenderer::defaultRenderer</definition>
+        <argsstring>(QgsWkbTypes::GeometryType geomType)</argsstring>
+        <name>defaultRenderer</name>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a60e72c2f73cb07fdbcdbc2d5068b5d9c" kindref="member">QgsWkbTypes::GeometryType</ref></type>
+          <declname>geomType</declname>
+        </param>
+        <briefdescription>
+<para>Returns a new renderer - used by default in vector layers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="127" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1ab9dd42567b1f71b19a276133e5ec5f01" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>QgsFeatureRenderer * QgsFeatureRenderer::load</definition>
+        <argsstring>(QDomElement &amp;symbologyElem, const QgsReadWriteContext &amp;context)</argsstring>
+        <name>load</name>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>symbologyElem</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>create a renderer from XML element </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="275" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="148" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a86927ac5c7b347c9cf62e8fa9464e8af" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>QgsFeatureRenderer * QgsFeatureRenderer::loadSld</definition>
+        <argsstring>(const QDomNode &amp;node, QgsWkbTypes::GeometryType geomType, QString &amp;errorMessage)</argsstring>
+        <name>loadSld</name>
+        <param>
+          <type>const QDomNode &amp;</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a60e72c2f73cb07fdbcdbc2d5068b5d9c" kindref="member">QgsWkbTypes::GeometryType</ref></type>
+          <declname>geomType</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>errorMessage</declname>
+        </param>
+        <briefdescription>
+<para>Create a new renderer according to the information contained in the UserStyle element of a SLD style document. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the node in the SLD document whose the UserStyle element is a child </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>geomType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the geometry type of the features, used to convert Symbolizer elements </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>errorMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>it will contain the error message if something went wrong </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the renderer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="297" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="203" bodyend="294"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a99e8aa22931295440692221602e50ac6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>QgsFeatureRenderer::~QgsFeatureRenderer</definition>
+        <argsstring>()</argsstring>
+        <name>~QgsFeatureRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="208" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a981b574dd6813bcc3cd849822af8929b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QgsFeatureRenderer::Capabilities</type>
+        <definition>virtual QgsFeatureRenderer::Capabilities QgsFeatureRenderer::capabilities</definition>
+        <argsstring>()</argsstring>
+        <name>capabilities</name>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1a6bdbfdee8d84d92168ffd2a45d2c81d8">capabilities</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a389777639662b9e3e03fa5245bc802de">capabilities</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a8ae8d6e2151b3ebb4038fec2d2bccc35">capabilities</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a7e3e3c9e1ce38d984503de720ce94297">capabilities</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1aed3ba97c9757f065e74f15d9aaa6cae7">capabilities</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a1576aa5317eb1d9276f403313db68823">capabilities</reimplementedby>
+        <briefdescription>
+<para>Returns details about internals of this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. if you only want to deal with visible features:</para><para><programlisting><codeline><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>renderer.capabilities().testFlag(QgsFeatureRenderer.Filter)<sp/></highlight><highlight class="keywordflow">or</highlight><highlight class="normal"><sp/>renderer.willRenderFeature(feature,<sp/>context):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>deal_with_my_feature()</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>skip_the_curren_feature()</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="262" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="262" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1aa007f92400dd9dbbc5766e1101e48851" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::checkLegendSymbolItem</definition>
+        <argsstring>(const QString &amp;key, bool state=true)</argsstring>
+        <name>checkLegendSymbolItem</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a9e640d995b9622d546ffd7bde8f996b8">checkLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1ae0af243ccb91a93ea1271fb31a3509c0">checkLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1acc69605792252ff962c57a30432829ec">checkLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a550144d79994cb1fdf51487a99dfbcbe">checkLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a27f540560feae36f892291cadc284b47">checkLegendSymbolItem</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>item in symbology was checked </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.5 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="322" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="322" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a1dc475663007d2a26f8e4480fd51ba9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>virtual QgsFeatureRenderer* QgsFeatureRenderer::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <reimplementedby refid="classQgsPointClusterRenderer_1a2ab4a6f6326c10fa84f09708eb120078">clone</reimplementedby>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1ae6f1853abc1c38ad8de105bfcceb94f4">clone</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1ae2140f57dc530264afd5d9b0b9c39aa8">clone</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1a49afb5d313eba036323db829cc314888">clone</reimplementedby>
+        <reimplementedby refid="classQgsPointDisplacementRenderer_1a24940f17782109bd1fcee3487360b1da">clone</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1adf52ce17022d8d372db46327e7bad838">clone</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1af069cf5ce51556bdfae70253156c83a9">clone</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a28972abf274d4282bfb9cd83f9b0c9c7">clone</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1ae354584408f69fc1e07a29a577a32066">clone</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1ac907894485fabd2dfbd8995953bcda0a">clone</reimplementedby>
+        <briefdescription>
+<para>Create a deep copy of this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Should be implemented by all subclasses and generate a proper subclass.</para><para><simplesect kind="return"><para>A copy of this renderer </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="216" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a905c0574eb38e9be79210d9ffb5001d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsFeatureRenderer::dump</definition>
+        <argsstring>() const</argsstring>
+        <name>dump</name>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1afbe84fb678b2a290a591e53a7c296947">dump</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1ac6b67f687ea4c549abdb41a3b40d1bf6">dump</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1af518d916f48c2e8f1d7a1884ed415ba8">dump</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1ace410bbd6a3f0c007161190f194fb01c">dump</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a82b8ba9b3385ed400f91ccf8919f3733">dump</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1accad34d4446e89f8a870970d97851c13">dump</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a5b7cd6b84e861c0eea30a415c4bc22c5">dump</reimplementedby>
+        <briefdescription>
+<para>Returns debug information about this renderer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="234" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="137" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1ae6e208c5af06c7ac126b512d607574c4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>const QgsFeatureRenderer * QgsFeatureRenderer::embeddedRenderer</definition>
+        <argsstring>() const</argsstring>
+        <name>embeddedRenderer</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a98311bbda29286aa294be4329f9f80d8">embeddedRenderer</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a2caf214894bf66d01064e97240643b36">embeddedRenderer</reimplementedby>
+        <briefdescription>
+<para>Returns the current embedded renderer (subrenderer) for this feature renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation does not use subrenderers and will always return null. <simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a49bf7257e9e5639e46f83c25d99d653e" kindref="member">setEmbeddedRenderer()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="460" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="436" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a3d293f3099396715ec4b0c3773ac9ed9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsFeatureRenderer::filter</definition>
+        <argsstring>(const QgsFields &amp;fields=QgsFields())</argsstring>
+        <name>filter</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a2d18996d098b56feb36fa7f7392b3d27">filter</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a15d5476bc8d2942760f4a1d22284d9b8">filter</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a802089170b9e98ebc2611eca8347e441">filter</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+          <defval><ref refid="classQgsFields" kindref="compound">QgsFields</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>If a renderer does not require all the features this method may be overridden and return an expression used as where clause. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will be called once after <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> and before the first call to <ref refid="classQgsFeatureRenderer_1a7f3398e1ba6247bf642eeb8d21a8acf3" kindref="member">renderFeature()</ref>. By default this returns a null string and all features will be requested. You do not need to specify the extent in here, this is taken care of separately and will be combined with a filter returned from this method.</para><para><simplesect kind="return"><para>An expression used as where clause </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="193" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="193" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1aad2474510673bc573a8f15517d9d0ce7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::filterNeedsGeometry</definition>
+        <argsstring>() const</argsstring>
+        <name>filterNeedsGeometry</name>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a20a44802cf16f62021de9d15fd8a4f12">filterNeedsGeometry</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1af3104b826fd056d705c840d95b13c294">filterNeedsGeometry</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1ae2d50b576e5f4186864ff51225b3fe49">filterNeedsGeometry</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a60108fb24dbecd82c355f68403a8b9f4">filterNeedsGeometry</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1abc707db7aa28a747c31682f82032e513">filterNeedsGeometry</reimplementedby>
+        <briefdescription>
+<para>Returns true if this renderer requires the geometry to apply the filter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="206" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="113" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a4d4d81f72e6866366a1acdcce8ead139" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::forceRasterRender</definition>
+        <argsstring>() const</argsstring>
+        <name>forceRasterRender</name>
+        <briefdescription>
+<para>Returns whether the renderer must render as a raster. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a5ca82668c01b2377dfd09b54b3020793" kindref="member">setForceRasterRender</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="400" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="400" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a6d9ba0a28df86dc5917bc8627117a7c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsFeatureRenderer::legendClassificationAttribute</definition>
+        <argsstring>() const</argsstring>
+        <name>legendClassificationAttribute</name>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1afe5b67b95c254205c62a854b88f1d3ed">legendClassificationAttribute</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a08cd6300cb772e4fa1ce2967e3eaa4c1">legendClassificationAttribute</reimplementedby>
+        <briefdescription>
+<para>If supported by the renderer, return classification attribute for the use in legend. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="342" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="342" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a717c6d365c6e22402d6d95df1b56c25a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSet&lt; QString &gt;</type>
+        <definition>QSet&lt; QString &gt; QgsFeatureRenderer::legendKeysForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const</argsstring>
+        <name>legendKeysForFeature</name>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1a8813b6a2bf53af2b25ad9d282ccfeec7">legendKeysForFeature</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1af908f79b61d1cc9cde609092e0c7d5aa">legendKeysForFeature</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1acdb57ab063866d9ea34ae13a1745d8d5">legendKeysForFeature</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a6eb398ac4a56af3debdfa2fc6a92c1af">legendKeysForFeature</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a43225775baf0970cf2c805c1566cd192">legendKeysForFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns legend keys matching a specified feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="154" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="85" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a39211a310945623959640a0c7d16b4bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::legendSymbolItemChecked</definition>
+        <argsstring>(const QString &amp;key)</argsstring>
+        <name>legendSymbolItemChecked</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a1b3712893cf6809961989aeed169cadf">legendSymbolItemChecked</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a46cd164841cf33ecc585e98356387181">legendSymbolItemChecked</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1aa0a0f4ed568d246ee940d7af80a7326c">legendSymbolItemChecked</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a9e479f1cc2b12d3592cbe83a287f0e69">legendSymbolItemChecked</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a082909c24517f5387d9c15cadd7b4e2b">legendSymbolItemChecked</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>items of symbology items in legend is checked </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.5 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="316" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="316" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a21cbef5245fd485a2e2a4a79f4f12fb6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgslegendsymbolitem_8h_1a407af583ecc2cfb135af16d9596bdaee" kindref="member">QgsLegendSymbolList</ref></type>
+        <definition>QgsLegendSymbolList QgsFeatureRenderer::legendSymbolItems</definition>
+        <argsstring>() const</argsstring>
+        <name>legendSymbolItems</name>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1aa8560e5edbb280b1e447cc9dfeb8ae77">legendSymbolItems</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a56d4f412198829d7965822a54a4e3f34">legendSymbolItems</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a7198193ace9cceaf72f0f7dd97771762">legendSymbolItems</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1abf0b15a6cd96d30d67063755bf9c9878">legendSymbolItems</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1acd840d383c136ab0909077396948f082">legendSymbolItems</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1ad0d4fa403dff49beee59d5f75080926b">legendSymbolItems</reimplementedby>
+        <briefdescription>
+<para>Returns a list of symbology items for the legend. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="336" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="334" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a31a44087be8b1cfc8e494879442dfb41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::legendSymbolItemsCheckable</definition>
+        <argsstring>() const</argsstring>
+        <name>legendSymbolItemsCheckable</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a7ccc10234def276202ae9db0d7b78e0d">legendSymbolItemsCheckable</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a9f8825664bba86f552ec2f46a2122ebb">legendSymbolItemsCheckable</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1aa1a8b4f9291e59d4521b93f76338fbb3">legendSymbolItemsCheckable</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1aad68b6e77147ce463c666864ae456d69">legendSymbolItemsCheckable</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a72d4482bdd3940abbbc4ccd9a5c1b506">legendSymbolItemsCheckable</reimplementedby>
+        <briefdescription>
+<para>items of symbology items in legend should be checkable </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.5 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="310" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="311" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a32974686f90c5010a197ff8b9b544975" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::modifyRequestExtent</definition>
+        <argsstring>(QgsRectangle &amp;extent, QgsRenderContext &amp;context)</argsstring>
+        <name>modifyRequestExtent</name>
+        <reimplementedby refid="classQgsHeatmapRenderer_1a1678c768965832410b0e1d90962d60ce">modifyRequestExtent</reimplementedby>
+        <param>
+          <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>extent</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Allows for a renderer to modify the extent of a feature request prior to rendering. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>extent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to request&apos;s filter extent. Modify extent to change the extent of feature request </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.7 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="377" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="386" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1afb510f7efd25a4d9bf6c1a5f5efda23f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsFeatureRequest_1_1OrderBy" kindref="compound">QgsFeatureRequest::OrderBy</ref></type>
+        <definition>QgsFeatureRequest::OrderBy QgsFeatureRenderer::orderBy</definition>
+        <argsstring>() const</argsstring>
+        <name>orderBy</name>
+        <briefdescription>
+<para>Gets the order in which features shall be processed by this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>this property has no effect if <ref refid="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" kindref="member">orderByEnabled()</ref> is false </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" kindref="member">orderByEnabled()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="418" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="411" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::orderByEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>orderByEnabled</name>
+        <briefdescription>
+<para>Returns whether custom ordering will be applied before features are processed by this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1afb510f7efd25a4d9bf6c1a5f5efda23f" kindref="member">orderBy()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a2f822400abdbabda8d3297a12928677e" kindref="member">setOrderByEnabled()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="434" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="421" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1ac6d0b1c48d738ee4f072fba72d546c0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+        <definition>QgsSymbol * QgsFeatureRenderer::originalSymbolForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const</argsstring>
+        <name>originalSymbolForFeature</name>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1a57a8862796dab1506f8649c5d8c1d0de">originalSymbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1accc393ff2d4f2aa034d25847e93f77ec">originalSymbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1ac26a81e31d524f2d8355517a89adb5fb">originalSymbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1ae0ed2eaf423b8dd589a92a87519b832e">originalSymbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a49c6263173fb651b81cdc68d9d223b51">originalSymbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1aad3d1123e1ea7dbf465e8969200a7705">originalSymbolForFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns symbol for feature. </para>        </briefdescription>
+        <detaileddescription>
+<para>The difference compared to <ref refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" kindref="member">symbolForFeature()</ref> is that it returns original symbol which can be used as an identifier for renderer&apos;s rule - the former may return a temporary replacement of a symbol for use in rendering. <simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="80" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1afe8da3c1fe313d782f8c7164df01aec9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsrenderer_8h_1a9e5c0f5f88a8fd455ad8ef92c3e96f1f" kindref="member">QgsSymbolList</ref></type>
+        <definition>QgsSymbolList QgsFeatureRenderer::originalSymbolsForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const</argsstring>
+        <name>originalSymbolsForFeature</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a7e4d41f5aca124903b071913646bd81b">originalSymbolsForFeature</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1af1e54646585ebaff94ba2b5c6aceda0f">originalSymbolsForFeature</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a694bc38d3df702d339350af0b389e05c">originalSymbolsForFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Equivalent of <ref refid="classQgsFeatureRenderer_1afe8da3c1fe313d782f8c7164df01aec9" kindref="member">originalSymbolsForFeature()</ref> call extended to support renderers that may use more symbols per feature - similar to <ref refid="classQgsFeatureRenderer_1a5933b6c08051c983cf65d874ac7b4b69" kindref="member">symbolsForFeature()</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="368" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="392" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a40ea35ba46863f1d1d17054a1ef9f0fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref> *</type>
+        <definition>QgsPaintEffect * QgsFeatureRenderer::paintEffect</definition>
+        <argsstring>() const</argsstring>
+        <name>paintEffect</name>
+        <briefdescription>
+<para>Returns the current paint effect for the renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>paint effect </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a46afb1e8bf35166215d61475860e910d" kindref="member">setPaintEffect</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.9 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="385" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="400" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a7f3398e1ba6247bf642eeb8d21a8acf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::renderFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context, int layer=-1, bool selected=false, bool drawVertexMarker=false)</argsstring>
+        <name>renderFeature</name>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1a0cab7ddf633c600fec0a88619a09e29e">renderFeature</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1a8a3b8d2732827cea53ac404dd1f39759">renderFeature</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1ae1a5812de9338230b6017f08fd3f1980">renderFeature</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a4c19bfd037e8129bfbae17ea9c694f91">renderFeature</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1af38e20b0f1878963223c02fe69006a07">renderFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>layer</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>selected</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drawVertexMarker</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Render a feature using this renderer in the given context. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be called between <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> and <ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref> calls. Default implementation renders a symbol as determined by <ref refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" kindref="member">symbolForFeature()</ref> call. Returns true if the feature has been returned (this is used for example to determine whether the feature may be labelled).</para><para>If layer is not -1, the renderer should draw only a particula layer from symbols (in order to support symbol level rendering).</para><para><simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="231" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="118" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a840dd8edae9546c287254ae97c137ac6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QDomElement</type>
+        <definition>QDomElement QgsFeatureRenderer::save</definition>
+        <argsstring>(QDomDocument &amp;doc, const QgsReadWriteContext &amp;context)</argsstring>
+        <name>save</name>
+        <reimplementedby refid="classQgsPointClusterRenderer_1a571cb0a4f1ce3ce300b56244918aeeaf">save</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1ada947f9cc0e1f79bf49fa8501e3fa0f5">save</reimplementedby>
+        <reimplementedby refid="classQgsPointDisplacementRenderer_1a1c38c692226a3a4b413f7c68316af7a4">save</reimplementedby>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1a389255400473227de0756b58cf66179e">save</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1ac9d6b0c13eb47bcff8f458504b3fc27c">save</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1a2e9182d535df438b5d19bb70231148d4">save</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1ae71a10f06a94e339e9e37e76d6dec1a5">save</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1ac6c6515e3506c790c55949b90231d9f9">save</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a08da017c960ba7a25d6656e9bb8f9529">save</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a0e060d8f4e8818808b012e030ea160cd">save</reimplementedby>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>store renderer info to XML element </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="278" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="183" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a49bf7257e9e5639e46f83c25d99d653e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setEmbeddedRenderer</definition>
+        <argsstring>(QgsFeatureRenderer *subRenderer)</argsstring>
+        <name>setEmbeddedRenderer</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a8901ece37e232a987d2ea1368212c3f0">setEmbeddedRenderer</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a6378aa20abfc6347fd19e24c113e1443">setEmbeddedRenderer</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>subRenderer</declname>
+        </param>
+        <briefdescription>
+<para>Sets an embedded renderer (subrenderer) for this feature renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation does nothing with subrenderers, but individual derived classes can use these to modify their behavior. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subRenderer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the embedded renderer. Ownership will be transferred. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1ae6e208c5af06c7ac126b512d607574c4" kindref="member">embeddedRenderer()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="452" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="431" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a5ca82668c01b2377dfd09b54b3020793" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setForceRasterRender</definition>
+        <argsstring>(bool forceRaster)</argsstring>
+        <name>setForceRasterRender</name>
+        <param>
+          <type>bool</type>
+          <declname>forceRaster</declname>
+        </param>
+        <briefdescription>
+<para>Sets whether the renderer should be rendered to a raster destination. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>forceRaster</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true if renderer must be drawn on a raster surface. This may be desirable for highly detailed layers where rendering as a vector would result in a large, complex vector output. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a4d4d81f72e6866366a1acdcce8ead139" kindref="member">forceRasterRender</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="410" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="410" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a499bf07e27cb21cd9b6340daa686fa59" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setLegendSymbolItem</definition>
+        <argsstring>(const QString &amp;key, QgsSymbol *symbol)</argsstring>
+        <name>setLegendSymbolItem</name>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1a6b189f0796657d4cd6c7650ca5191ad1">setLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1ad78273e724c91e41c58f9e3c34ac282c">setLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a2cee680f899785d0362e7cbd9cb69777">setLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a94c8fa040541d0f667a0b64405975c5e">setLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a6333e797c4d7db6938b9c9bd559e7d55">setLegendSymbolItem</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a0f30436cd365a511f81f543c433b4f83">setLegendSymbolItem</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+<para>Sets the symbol to be used for a legend symbol item. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>rule key for legend symbol </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbol</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new symbol for legend item. Ownership is transferred to renderer. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="330" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="328" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a006eebdce2c5758fe82b44d1fc4537e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setOrderBy</definition>
+        <argsstring>(const QgsFeatureRequest::OrderBy &amp;orderBy)</argsstring>
+        <name>setOrderBy</name>
+        <param>
+          <type>const <ref refid="classQgsFeatureRequest_1_1OrderBy" kindref="compound">QgsFeatureRequest::OrderBy</ref> &amp;</type>
+          <declname>orderBy</declname>
+        </param>
+        <briefdescription>
+<para>Define the order in which features shall be processed by this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>this property has no effect if <ref refid="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" kindref="member">orderByEnabled()</ref> is false </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a2f822400abdbabda8d3297a12928677e" kindref="member">setOrderByEnabled()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="426" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="416" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a2f822400abdbabda8d3297a12928677e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setOrderByEnabled</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>setOrderByEnabled</name>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Sets whether custom ordering should be applied before features are processed by this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to enable custom feature ordering </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a006eebdce2c5758fe82b44d1fc4537e2" kindref="member">setOrderBy()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" kindref="member">orderByEnabled()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="443" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="426" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a46afb1e8bf35166215d61475860e910d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setPaintEffect</definition>
+        <argsstring>(QgsPaintEffect *effect)</argsstring>
+        <name>setPaintEffect</name>
+        <param>
+          <type><ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref> *</type>
+          <declname>effect</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current paint effect for the renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>effect</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>paint effect. Ownership is transferred to the renderer. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a40ea35ba46863f1d1d17054a1ef9f0fc" kindref="member">paintEffect</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.9 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="393" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="405" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a99e2476044ca7ba7dafdf2798c9edfd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setUsingSymbolLevels</definition>
+        <argsstring>(bool usingSymbolLevels)</argsstring>
+        <name>setUsingSymbolLevels</name>
+        <param>
+          <type>bool</type>
+          <declname>usingSymbolLevels</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="272" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="272" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a708c80d56d903e447dbef31838f78ad6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::setVertexMarkerAppearance</definition>
+        <argsstring>(int type, int size)</argsstring>
+        <name>setVertexMarkerAppearance</name>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Sets type and size of editing vertex markers for subsequent rendering. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="345" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="339" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::startRender</definition>
+        <argsstring>(QgsRenderContext &amp;context, const QgsFields &amp;fields)</argsstring>
+        <name>startRender</name>
+        <reimplementedby refid="classQgsPointClusterRenderer_1a224b801287bf8138f5d4e8227982205d">startRender</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1a7759309f62aac733c9fff0852efe3384">startRender</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1ab9358a5c6888a38cddf3325adaddfb75">startRender</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1a2131bda456168af131c3b5d2d71329d3">startRender</reimplementedby>
+        <reimplementedby refid="classQgsPointDisplacementRenderer_1a61f8b36a5794101111c038bc0b182377">startRender</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a695deb8e26568109620c2bbb5ee55eaa">startRender</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c">startRender</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1a2c662e9c7e8dd1d5cf419639e03990d1">startRender</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a77ef0381e487ab1a9410494612bcdabb">startRender</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a090f68ffa388bdbe72f12a772bc5bcb8">startRender</reimplementedby>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <briefdescription>
+<para>Must be called when a new render cycle is started. </para>        </briefdescription>
+        <detaileddescription>
+<para>A call to <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> must always be followed by a corresponding call to <ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref> after all features have been rendered.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional information passed to the renderer about the job which will be rendered </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fields</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The fields available for rendering</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref></para></simplesect>
+<simplesect kind="warning"><para>This method is not thread safe. Before calling <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> in a non-main thread, the renderer should instead be cloned and <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref>/stopRender() called on the clone. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="168" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="92" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::stopRender</definition>
+        <argsstring>(QgsRenderContext &amp;context)</argsstring>
+        <name>stopRender</name>
+        <reimplementedby refid="classQgsPointClusterRenderer_1ac4b2a937431a1da17800fec743024c03">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1ac5c81cd1c65fe682c8a709cbc27e413c">stopRender</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1a24847bde1d0ce98c86cab0893d6c6181">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1aa573a069a108e1bd8ffc67e8677152cc">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1ac180378cd030fb0d446c7374a6b2a9bb">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsPointDisplacementRenderer_1a76dad90317275f05811b40841dfe4b35">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a96703921a2d973f411b0451e16ce588b">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1aa81a5afcd7f1edbc3cb2a39dc8fbedca">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a3269911e43749d9afd5d6073df7fd099">stopRender</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1aa65fdcbddc98ae7640e2ba05841db3cc">stopRender</reimplementedby>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Must be called when a render cycle has finished, to allow the renderer to clean up. </para>        </briefdescription>
+        <detaileddescription>
+<para>Calls to <ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref> must always be preceded by a call to <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref>.</para><para><simplesect kind="warning"><para>This method is not thread safe. Before calling <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> in a non-main thread, the renderer should instead be cloned and <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref>/stopRender() called on the clone.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="180" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="106" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+        <definition>virtual QgsSymbol* QgsFeatureRenderer::symbolForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const =0</argsstring>
+        <name>symbolForFeature</name>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1a637070eb424f963c97c9d4e17267377d">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1ae8f1dfaa59a82584113e80c3da639b42">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1a241903d01815622f2759e1ef78d7ac17">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1a13219b097fe4039b8d69b190aebc1cb0">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a33cc333cc412e767293372142a05d9e9">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1abe87ce49d1eea32a7b64047fdd1bc857">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a18dc2afe0783bb713142d793de16fe96">symbolForFeature</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a33a02c0c3468832b715c178e95f75bb5">symbolForFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>To be overridden. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be called between <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> and <ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref> calls. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>feature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>feature </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>returns pointer to symbol or 0 if symbol was not found </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="140" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a5f3e784718999bba182e46d2bff4d6c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsrenderer_8h_1a9e5c0f5f88a8fd455ad8ef92c3e96f1f" kindref="member">QgsSymbolList</ref></type>
+        <definition>QgsSymbolList QgsFeatureRenderer::symbols</definition>
+        <argsstring>(QgsRenderContext &amp;context) const</argsstring>
+        <name>symbols</name>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1ac861ca12fbdbe148498ab1eb0163daf4">symbols</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1a17995b5edc0501e5a83c79ff6a404cc4">symbols</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1af95f2946547e9fe96c9abf9d2222e3be">symbols</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1af3a9f660392415fac0c752184b8ee120">symbols</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a72c64d9fffde2a9ff1845700b79fa9d2">symbols</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a1d07a0d1b016f231de03cd5f585bcaf2">symbols</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1ac569f45e5ff26487fd181b4c80079107">symbols</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a79a3911f7590d01c86bab4f2ebe7d179">symbols</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1afa0160d037c18336499ec1d06b4215ba">symbols</reimplementedby>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns list of symbols used by the renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="269" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="142" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a5933b6c08051c983cf65d874ac7b4b69" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsrenderer_8h_1a9e5c0f5f88a8fd455ad8ef92c3e96f1f" kindref="member">QgsSymbolList</ref></type>
+        <definition>QgsSymbolList QgsFeatureRenderer::symbolsForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const</argsstring>
+        <name>symbolsForFeature</name>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1aa583263cda0c4a1e6e939b0ba80450c7">symbolsForFeature</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1adc2e72aaa23d6a57bf9fc5eb57962524">symbolsForFeature</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a59b2a6c80beac5c73a50c5f989391cc3">symbolsForFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns list of symbols used for rendering the feature. </para>        </briefdescription>
+        <detaileddescription>
+<para>For renderers that do not support MoreSymbolsPerFeature it is more efficient to use <ref refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" kindref="member">symbolForFeature()</ref> <simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="361" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="378" bodyend="384"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a84d6afd0e56bbca290789d726bb05117" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsFeatureRenderer::toSld</definition>
+        <argsstring>(QDomDocument &amp;doc, QDomElement &amp;element, const QgsStringMap &amp;props=QgsStringMap()) const</argsstring>
+        <name>toSld</name>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1a2151c28861dfe0c765763b924ebe5375">toSld</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1a160bc75d4076d0da0dcb23a3827fcecf">toSld</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1aa081a9fcecdaff311871d71c675f1e8b">toSld</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1acba41c2f5f060dc76d45c7ad4b043b5e">toSld</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a7772de975275b4e8d32ae43455c5518b">toSld</reimplementedby>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref> &amp;</type>
+          <declname>props</declname>
+          <defval><ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>used from subclasses to create SLD Rule elements following SLD v1.1 specs </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="300" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="300" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a7a3f1cbc41fce537ebdbbe93ce25af2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsFeatureRenderer::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="129" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1aaf8af921f929ad0ac9c947d87ec70ca6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QSet&lt; QString &gt;</type>
+        <definition>virtual QSet&lt;QString&gt; QgsFeatureRenderer::usedAttributes</definition>
+        <argsstring>(const QgsRenderContext &amp;context) const =0</argsstring>
+        <name>usedAttributes</name>
+        <reimplementedby refid="classQgsPointClusterRenderer_1a83bc1cac027ef5318fbe713ec7b05458">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1a86feb6a94e15cd7b47723e917a5fef17">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsSingleSymbolRenderer_1a1c7d4512ca174f52eb59c940583cb305">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgs25DRenderer_1ab95ba913b7893c129199c73e382aa6dc">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsPointDisplacementRenderer_1a8f0d38abb5b23dbb37d5847992706dcd">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsHeatmapRenderer_1a3b9697d1c8f6c84765f8afebd03f4ac4">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a7d521d293e80a6b83f47193085ea11b3">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1aa95ca179e5cec362540221b13736a146">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsGraduatedSymbolRenderer_1ab168b8a4d0b3990124c8921a3f2f95b8">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsCategorizedSymbolRenderer_1a6797541dd7c56add21d45b80323a6220">usedAttributes</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a7bb019ffb42ecd2a547375726bb0ba08">usedAttributes</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of attributes required by this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Attributes not listed in here may not have been requested from the provider at rendering time.</para><para><simplesect kind="return"><para>A set of attributes </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="201" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a903fb339ff145d9345fa54fafa2c50e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::usingSymbolLevels</definition>
+        <argsstring>() const</argsstring>
+        <name>usingSymbolLevels</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="271" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="271" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1aceb8a0f58f803a6a535f8998588600da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsFeatureRenderer::willRenderFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const</argsstring>
+        <name>willRenderFeature</name>
+        <reimplementedby refid="classQgsNullSymbolRenderer_1a896f1e6be243aaa2cec1cb29270962d4">willRenderFeature</reimplementedby>
+        <reimplementedby refid="classQgsPointDistanceRenderer_1af2713e66e8e4c24c0201c363e652c73e">willRenderFeature</reimplementedby>
+        <reimplementedby refid="classQgsInvertedPolygonRenderer_1a5895df7febe99f25a07f0717116ecd8f">willRenderFeature</reimplementedby>
+        <reimplementedby refid="classQgsRuleBasedRenderer_1a86ee043692ddfc8c933c885b8892ac51">willRenderFeature</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether the renderer will render a feature or not. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be called between <ref refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" kindref="member">startRender()</ref> and <ref refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" kindref="member">stopRender()</ref> calls. Default implementation uses <ref refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" kindref="member">symbolForFeature()</ref>. <simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="353" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="345" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a09711cbff0ad082a5bd1617bf504db3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QDomElement</type>
+        <definition>QDomElement QgsFeatureRenderer::writeSld</definition>
+        <argsstring>(QDomDocument &amp;doc, const QString &amp;styleName, const QgsStringMap &amp;props=QgsStringMap()) const</argsstring>
+        <name>writeSld</name>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>styleName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref> &amp;</type>
+          <declname>props</declname>
+          <defval><ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>create the SLD UserStyle element following the SLD v1.1 specs with the given name </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.8 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="284" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="296" bodyend="309"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a5641de1f5e0cdc08003fa2d0a52be2f9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsFeatureRenderer::QgsFeatureRenderer</definition>
+        <argsstring>(const QString &amp;type)</argsstring>
+        <name>QgsFeatureRenderer</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="463" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="58" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a7f2f02e0303669da209392112b5c6494" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::copyRendererData</definition>
+        <argsstring>(QgsFeatureRenderer *destRenderer) const</argsstring>
+        <name>copyRendererData</name>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>destRenderer</declname>
+        </param>
+        <briefdescription>
+<para>Clones generic renderer data to another renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Currently clones<itemizedlist>
+<listitem><para>Order By</para></listitem><listitem><para>Paint Effect</para></listitem></itemizedlist>
+</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>destRenderer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination renderer for copied effect </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="499" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="48" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1adaadfad7ce3b5d772dddcd0aabd9272c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::renderFeatureWithSymbol</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsSymbol *symbol, QgsRenderContext &amp;context, int layer, bool selected, bool drawVertexMarker)</argsstring>
+        <name>renderFeatureWithSymbol</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>selected</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drawVertexMarker</declname>
+        </param>
+        <briefdescription>
+<para>Render the <emphasis>feature</emphasis> with the <emphasis>symbol</emphasis> using <emphasis>context</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Use <emphasis>layer</emphasis> to specify the symbol layer, <emphasis>selected</emphasis> to specify if it should be rendered as selected and <emphasis>drawVertexMarker</emphasis> to specify if vertex markers should be rendered. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="471" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1ae47fb7698b274d144822bbab7b4e7847" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::renderVertexMarker</definition>
+        <argsstring>(QPointF pt, QgsRenderContext &amp;context)</argsstring>
+        <name>renderVertexMarker</name>
+        <param>
+          <type>QPointF</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>render editing vertex marker at specified point </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="479" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="350" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1ae6440861a23b16f61a725e10fc44a771" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::renderVertexMarkerPolygon</definition>
+        <argsstring>(QPolygonF &amp;pts, QList&lt; QPolygonF &gt; *rings, QgsRenderContext &amp;context)</argsstring>
+        <name>renderVertexMarkerPolygon</name>
+        <param>
+          <type>QPolygonF &amp;</type>
+          <declname>pts</declname>
+        </param>
+        <param>
+          <type>QList&lt; QPolygonF &gt; *</type>
+          <declname>rings</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>render editing vertex marker for a polygon </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="483" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="363" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a0532e04a04464ebe4f5ef0fc71023da6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::renderVertexMarkerPolyline</definition>
+        <argsstring>(QPolygonF &amp;pts, QgsRenderContext &amp;context)</argsstring>
+        <name>renderVertexMarkerPolyline</name>
+        <param>
+          <type>QPolygonF &amp;</type>
+          <declname>pts</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>render editing vertex marker for a polyline </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="481" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="357" bodyend="361"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a201626990c3b54690dad2de7e6401d2f" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QPointF</type>
+        <definition>QPointF QgsFeatureRenderer::_getPoint</definition>
+        <argsstring>(QgsRenderContext &amp;context, const QgsPoint &amp;point)</argsstring>
+        <name>_getPoint</name>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+<para>Creates a point in screen coordinates from a wkb string in map coordinates. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="489" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1ab25638a4e46eeb34e063d8199c762d47" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::convertSymbolRotation</definition>
+        <argsstring>(QgsSymbol *symbol, const QString &amp;field)</argsstring>
+        <name>convertSymbolRotation</name>
+        <param>
+          <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>this function is used to convert old rotations expressions to symbol level DataDefined angle </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="524" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="463" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsFeatureRenderer_1a396b23d7a9678c90c31bd5173eb70132" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsFeatureRenderer::convertSymbolSizeScale</definition>
+        <argsstring>(QgsSymbol *symbol, QgsSymbol::ScaleMethod method, const QString &amp;field)</argsstring>
+        <name>convertSymbolSizeScale</name>
+        <param>
+          <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbol_1a437af6ef98bf56bec257fc238cbd590d" kindref="member">QgsSymbol::ScaleMethod</ref></type>
+          <declname>method</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>this function is used to convert old sizeScale expressions to symbol level DataDefined size </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="518" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.cpp" bodystart="441" bodyend="461"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3030">
+        <label>QgsHeatmapRenderer</label>
+        <link refid="classQgsHeatmapRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3033">
+        <label>QgsPointDistanceRenderer</label>
+        <link refid="classQgsPointDistanceRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3029">
+        <label>QgsGraduatedSymbolRenderer</label>
+        <link refid="classQgsGraduatedSymbolRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3026">
+        <label>QgsFeatureRenderer</label>
+        <link refid="classQgsFeatureRenderer"/>
+      </node>
+      <node id="3034">
+        <label>QgsPointClusterRenderer</label>
+        <link refid="classQgsPointClusterRenderer"/>
+        <childnode refid="3033" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3027">
+        <label>Qgs25DRenderer</label>
+        <link refid="classQgs25DRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3031">
+        <label>QgsInvertedPolygonRenderer</label>
+        <link refid="classQgsInvertedPolygonRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3028">
+        <label>QgsCategorizedSymbolRenderer</label>
+        <link refid="classQgsCategorizedSymbolRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3036">
+        <label>QgsRuleBasedRenderer</label>
+        <link refid="classQgsRuleBasedRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3037">
+        <label>QgsSingleSymbolRenderer</label>
+        <link refid="classQgsSingleSymbolRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3032">
+        <label>QgsNullSymbolRenderer</label>
+        <link refid="classQgsNullSymbolRenderer"/>
+        <childnode refid="3026" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3035">
+        <label>QgsPointDisplacementRenderer</label>
+        <link refid="classQgsPointDisplacementRenderer"/>
+        <childnode refid="3033" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3040">
+        <label>QList&lt; QgsFeatureRequest::OrderByClause &gt;</label>
+      </node>
+      <node id="3038">
+        <label>QgsFeatureRenderer</label>
+        <link refid="classQgsFeatureRenderer"/>
+        <childnode refid="3039" relation="usage">
+          <edgelabel>mOrderBy</edgelabel>
+        </childnode>
+        <childnode refid="3041" relation="usage">
+          <edgelabel>mPaintEffect</edgelabel>
+        </childnode>
+      </node>
+      <node id="3041">
+        <label>QgsPaintEffect</label>
+        <link refid="classQgsPaintEffect"/>
+      </node>
+      <node id="3039">
+        <label>QgsFeatureRequest::OrderBy</label>
+        <link refid="classQgsFeatureRequest_1_1OrderBy"/>
+        <childnode refid="3040" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" line="91" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgsrenderer.h" bodystart="90" bodyend="542"/>
+    <listofallmembers>
+      <member refid="classQgsFeatureRenderer_1a201626990c3b54690dad2de7e6401d2f" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>_getPoint</name></member>
+      <member refid="classQgsFeatureRenderer_1a981b574dd6813bcc3cd849822af8929b" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>capabilities</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>Capability</name></member>
+      <member refid="classQgsFeatureRenderer_1aa007f92400dd9dbbc5766e1101e48851" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>checkLegendSymbolItem</name></member>
+      <member refid="classQgsFeatureRenderer_1a1dc475663007d2a26f8e4480fd51ba9b" prot="public" virt="pure-virtual"><scope>QgsFeatureRenderer</scope><name>clone</name></member>
+      <member refid="classQgsFeatureRenderer_1ab25638a4e46eeb34e063d8199c762d47" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>convertSymbolRotation</name></member>
+      <member refid="classQgsFeatureRenderer_1a396b23d7a9678c90c31bd5173eb70132" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>convertSymbolSizeScale</name></member>
+      <member refid="classQgsFeatureRenderer_1a7f2f02e0303669da209392112b5c6494" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>copyRendererData</name></member>
+      <member refid="classQgsFeatureRenderer_1a23ae7f4634cbd7df5e3cd06080b40119" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>defaultRenderer</name></member>
+      <member refid="classQgsFeatureRenderer_1a905c0574eb38e9be79210d9ffb5001d9" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>dump</name></member>
+      <member refid="classQgsFeatureRenderer_1ae6e208c5af06c7ac126b512d607574c4" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>embeddedRenderer</name></member>
+      <member refid="classQgsFeatureRenderer_1a3d293f3099396715ec4b0c3773ac9ed9" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>filter</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151ac421b4212b3fe37ac685edf9cc92110f" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>Filter</name></member>
+      <member refid="classQgsFeatureRenderer_1aad2474510673bc573a8f15517d9d0ce7" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>filterNeedsGeometry</name></member>
+      <member refid="classQgsFeatureRenderer_1a4d4d81f72e6866366a1acdcce8ead139" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>forceRasterRender</name></member>
+      <member refid="classQgsFeatureRenderer_1a6d9ba0a28df86dc5917bc8627117a7c0" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>legendClassificationAttribute</name></member>
+      <member refid="classQgsFeatureRenderer_1a717c6d365c6e22402d6d95df1b56c25a" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>legendKeysForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a39211a310945623959640a0c7d16b4bc" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>legendSymbolItemChecked</name></member>
+      <member refid="classQgsFeatureRenderer_1a21cbef5245fd485a2e2a4a79f4f12fb6" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>legendSymbolItems</name></member>
+      <member refid="classQgsFeatureRenderer_1a31a44087be8b1cfc8e494879442dfb41" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>legendSymbolItemsCheckable</name></member>
+      <member refid="classQgsFeatureRenderer_1ab9dd42567b1f71b19a276133e5ec5f01" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>load</name></member>
+      <member refid="classQgsFeatureRenderer_1a86927ac5c7b347c9cf62e8fa9464e8af" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>loadSld</name></member>
+      <member refid="classQgsFeatureRenderer_1a461119578a07fb73cd8e90bd50cca94e" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mCurrentVertexMarkerSize</name></member>
+      <member refid="classQgsFeatureRenderer_1ac3a0c2c2f0eb0f9c04abb44d9cce7c85" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mCurrentVertexMarkerType</name></member>
+      <member refid="classQgsFeatureRenderer_1a2a274f78941c4f6110c9a798928029ac" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mForceRaster</name></member>
+      <member refid="classQgsFeatureRenderer_1a32974686f90c5010a197ff8b9b544975" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>modifyRequestExtent</name></member>
+      <member refid="classQgsFeatureRenderer_1ac3c95f48b0233a3b56643c4602b0c43c" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mOrderBy</name></member>
+      <member refid="classQgsFeatureRenderer_1ad77073a562a38dd4868124a83d9df065" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mOrderByEnabled</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a032dbbe9c457924a27f1f2ae4c6c6531" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>MoreSymbolsPerFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a71a42b5fb97eeda8b4604e4a3e59f5e3" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mPaintEffect</name></member>
+      <member refid="classQgsFeatureRenderer_1ad320f00920e002ede32001884ce15b00" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mType</name></member>
+      <member refid="classQgsFeatureRenderer_1ab8931a4c40fb66fb9f2017591d3a59fd" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>mUsingSymbolLevels</name></member>
+      <member refid="classQgsFeatureRenderer_1afb510f7efd25a4d9bf6c1a5f5efda23f" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>orderBy</name></member>
+      <member refid="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>orderByEnabled</name></member>
+      <member refid="classQgsFeatureRenderer_1ac6d0b1c48d738ee4f072fba72d546c0c" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>originalSymbolForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1afe8da3c1fe313d782f8c7164df01aec9" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>originalSymbolsForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a40ea35ba46863f1d1d17054a1ef9f0fc" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>paintEffect</name></member>
+      <member refid="classQgsFeatureRenderer_1a5641de1f5e0cdc08003fa2d0a52be2f9" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>QgsFeatureRenderer</name></member>
+      <member refid="classQgsFeatureRenderer_1a7f3398e1ba6247bf642eeb8d21a8acf3" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>renderFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1adaadfad7ce3b5d772dddcd0aabd9272c" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>renderFeatureWithSymbol</name></member>
+      <member refid="classQgsFeatureRenderer_1ae47fb7698b274d144822bbab7b4e7847" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>renderVertexMarker</name></member>
+      <member refid="classQgsFeatureRenderer_1ae6440861a23b16f61a725e10fc44a771" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>renderVertexMarkerPolygon</name></member>
+      <member refid="classQgsFeatureRenderer_1a0532e04a04464ebe4f5ef0fc71023da6" prot="protected" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>renderVertexMarkerPolyline</name></member>
+      <member refid="classQgsFeatureRenderer_1a840dd8edae9546c287254ae97c137ac6" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>save</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a9570a82adc24b246ae40596fdc8af6d2" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>ScaleDependent</name></member>
+      <member refid="classQgsFeatureRenderer_1a49bf7257e9e5639e46f83c25d99d653e" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>setEmbeddedRenderer</name></member>
+      <member refid="classQgsFeatureRenderer_1a5ca82668c01b2377dfd09b54b3020793" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>setForceRasterRender</name></member>
+      <member refid="classQgsFeatureRenderer_1a499bf07e27cb21cd9b6340daa686fa59" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>setLegendSymbolItem</name></member>
+      <member refid="classQgsFeatureRenderer_1a006eebdce2c5758fe82b44d1fc4537e2" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>setOrderBy</name></member>
+      <member refid="classQgsFeatureRenderer_1a2f822400abdbabda8d3297a12928677e" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>setOrderByEnabled</name></member>
+      <member refid="classQgsFeatureRenderer_1a46afb1e8bf35166215d61475860e910d" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>setPaintEffect</name></member>
+      <member refid="classQgsFeatureRenderer_1a99e2476044ca7ba7dafdf2798c9edfd0" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>setUsingSymbolLevels</name></member>
+      <member refid="classQgsFeatureRenderer_1a708c80d56d903e447dbef31838f78ad6" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>setVertexMarkerAppearance</name></member>
+      <member refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>startRender</name></member>
+      <member refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>stopRender</name></member>
+      <member refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525" prot="public" virt="pure-virtual"><scope>QgsFeatureRenderer</scope><name>symbolForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a9c0b2e9b38c8cfa909e20f9aa241da26" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>SymbolLevels</name></member>
+      <member refid="classQgsFeatureRenderer_1a5f3e784718999bba182e46d2bff4d6c1" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>symbols</name></member>
+      <member refid="classQgsFeatureRenderer_1a5933b6c08051c983cf65d874ac7b4b69" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>symbolsForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a84d6afd0e56bbca290789d726bb05117" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>toSld</name></member>
+      <member refid="classQgsFeatureRenderer_1a7a3f1cbc41fce537ebdbbe93ce25af2d" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>type</name></member>
+      <member refid="classQgsFeatureRenderer_1aaf8af921f929ad0ac9c947d87ec70ca6" prot="public" virt="pure-virtual"><scope>QgsFeatureRenderer</scope><name>usedAttributes</name></member>
+      <member refid="classQgsFeatureRenderer_1a903fb339ff145d9345fa54fafa2c50e2" prot="public" virt="non-virtual"><scope>QgsFeatureRenderer</scope><name>usingSymbolLevels</name></member>
+      <member refid="classQgsFeatureRenderer_1aceb8a0f58f803a6a535f8998588600da" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>willRenderFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a09711cbff0ad082a5bd1617bf504db3f" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>writeSld</name></member>
+      <member refid="classQgsFeatureRenderer_1a99e8aa22931295440692221602e50ac6" prot="public" virt="virtual"><scope>QgsFeatureRenderer</scope><name>~QgsFeatureRenderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

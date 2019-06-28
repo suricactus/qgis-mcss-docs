@@ -1,0 +1,467 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProcessingFeatureBasedAlgorithm" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsProcessingFeatureBasedAlgorithm</compoundname>
+    <basecompoundref refid="classQgsProcessingAlgorithm" prot="public" virt="non-virtual">QgsProcessingAlgorithm</basecompoundref>
+    <includes refid="qgsprocessingalgorithm_8h" local="no">qgsprocessingalgorithm.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsProcessingFeatureBasedAlgorithm_1aee6023343105e13b1e9e5e6902b11250" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsProcessingFeatureSource" kindref="compound">QgsProcessingFeatureSource</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsProcessingFeatureSource &gt; QgsProcessingFeatureBasedAlgorithm::mSource</definition>
+        <argsstring></argsstring>
+        <name>mSource</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="1024" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="1024" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a8fc489ec5031d1879fb0c9f14daa7142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsProcessingFeatureBasedAlgorithm::QgsProcessingFeatureBasedAlgorithm</definition>
+        <argsstring>()=default</argsstring>
+        <name>QgsProcessingFeatureBasedAlgorithm</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsProcessingFeatureBasedAlgorithm" kindref="compound">QgsProcessingFeatureBasedAlgorithm</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="887" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1ad4884c782db9abe9e50e83bde9fcba2a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QgsProcessingAlgorithm::Flags</type>
+        <definition>QgsProcessingAlgorithm::Flags QgsProcessingFeatureBasedAlgorithm::flags</definition>
+        <argsstring>() const override</argsstring>
+        <name>flags</name>
+        <reimplements refid="classQgsProcessingAlgorithm_1a3f052a9a0f0ee438afdf6eacb48795cb">flags</reimplements>
+        <briefdescription>
+<para>Returns the flags indicating how and when the algorithm operates and should be exposed to users. </para>        </briefdescription>
+        <detaileddescription>
+<para>Default flags are FlagSupportsBatch and FlagCanCancel. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="889" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="804" bodyend="809"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1ac6b729b98d6c8eaeed269c461aa94a88" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref></type>
+        <definition>virtual QgsFeatureList QgsProcessingFeatureBasedAlgorithm::processFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback) SIP_THROW(QgsProcessingException)=0</argsstring>
+        <name>processFeature</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Processes an individual input <emphasis>feature</emphasis> from the source. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithms should implement their logic in this method for performing the algorithm&apos;s operation (e.g. replacing the feature&apos;s geometry with the centroid of the original feature geometry for a &apos;centroid&apos; type algorithm).</para><para>Implementations should return a list containing the modified feature. Returning an empty an list will indicate that this feature should be &apos;skipped&apos;, and will not be added to the algorithm&apos;s output. Subclasses can use this approach to filter the incoming features as desired.</para><para>Additionally, multiple features can be returned for a single input feature. Each returned feature will be added to the algorithm&apos;s output. This allows for &quot;explode&quot; type algorithms where a single input feature results in multiple output features.</para><para>The provided <emphasis>feedback</emphasis> object can be used to push messages to the log and for giving feedback to users. Note that handling of progress reports and algorithm cancelation is handled by the base class and subclasses do not need to reimplement this logic.</para><para>Algorithms can throw a <ref refid="classQgsProcessingException" kindref="compound">QgsProcessingException</ref> if a fatal error occurred which should prevent the algorithm execution from continuing. This can be annoying for users though as it can break valid model execution - so use with extreme caution, and consider using <emphasis>feedback</emphasis> to instead report non-fatal processing failures for features instead. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="914" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1acdd5208149b6df54144adc36a72b17f9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsProcessingFeatureBasedAlgorithm::initAlgorithm</definition>
+        <argsstring>(const QVariantMap &amp;configuration=QVariantMap()) override</argsstring>
+        <name>initAlgorithm</name>
+        <reimplements refid="classQgsProcessingAlgorithm_1abf1fd824abeccc74297edb26fe7d0d67">initAlgorithm</reimplements>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Initializes the algorithm using the specified <emphasis>configuration</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be called directly after creating algorithms and before retrieving any <ref refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" kindref="member">parameterDefinitions()</ref> or <ref refid="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" kindref="member">outputDefinitions()</ref>.</para><para>Subclasses should use their implementations to add all required input parameter and output definitions (which can be dynamically adjusted according to <emphasis>configuration</emphasis>).</para><para>Dynamic configuration can be used by algorithms which alter their behavior when used inside processing models. For instance, a &quot;feature router&quot; type algorithm which sends input features to one of any number of outputs sinks based on some preconfigured filter parameters can use the init method to create these outputs based on the specified <emphasis>configuration</emphasis>.</para><para><simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" kindref="member">addParameter()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" kindref="member">addOutput()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="918" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="811" bodyend="816"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a697d8068ef00d67aa9a9c2c09b789ffd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsProcessingFeatureBasedAlgorithm::initParameters</definition>
+        <argsstring>(const QVariantMap &amp;configuration=QVariantMap())</argsstring>
+        <name>initParameters</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Initializes any extra parameters added by the algorithm subclass. </para>        </briefdescription>
+        <detaileddescription>
+<para>There is no need to declare the input source or output sink, as these are automatically created by <ref refid="classQgsProcessingFeatureBasedAlgorithm" kindref="compound">QgsProcessingFeatureBasedAlgorithm</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="988" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="853" bodyend="855"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1ae7403b025c4535a32a1b5758b5dc4f8c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; int &gt;</type>
+        <definition>QList&lt; int &gt; QgsProcessingFeatureBasedAlgorithm::inputLayerTypes</definition>
+        <argsstring>() const</argsstring>
+        <name>inputLayerTypes</name>
+        <briefdescription>
+<para>Returns the valid input layer types for the source layer for this algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>By default vector layers with any geometry types (excluding non-spatial, geometryless layers) are accepted. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="932" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="818" bodyend="821"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a8b4d6aa125354337f7ad65277ad7cb6a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsProcessingFeatureBasedAlgorithm::outputCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;inputCrs) const</argsstring>
+        <name>outputCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>inputCrs</declname>
+        </param>
+        <briefdescription>
+<para>Maps the input source coordinate reference system (<emphasis>inputCrs</emphasis>) to a corresponding output CRS generated by the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>The default behavior is that the algorithm maintains the same CRS as the input source.</para><para>This is called once by the base class when creating the output sink for the algorithm (i.e. it is not called once per feature processed). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="981" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="848" bodyend="851"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a92baaef212caf817603bb4b1ee071707" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsProcessingFeatureBasedAlgorithm::outputFields</definition>
+        <argsstring>(const QgsFields &amp;inputFields) const</argsstring>
+        <name>outputFields</name>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>inputFields</declname>
+        </param>
+        <briefdescription>
+<para>Maps the input source fields (<emphasis>inputFields</emphasis>) to corresponding output fields generated by the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>The default behavior is that the algorithm maintains the same fields as are input. Algorithms which add, remove or modify existing fields should override this method and implement logic here to indicate which fields are output by the algorithm.</para><para>This is called once by the base class when creating the output sink for the algorithm (i.e. it is not called once per feature processed). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="971" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="843" bodyend="846"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1abd435d6267914a2fe1b93d17de40895c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsProcessing_1acad4d2322342455b53eee5701e2b3115" kindref="member">QgsProcessing::SourceType</ref></type>
+        <definition>QgsProcessing::SourceType QgsProcessingFeatureBasedAlgorithm::outputLayerType</definition>
+        <argsstring>() const</argsstring>
+        <name>outputLayerType</name>
+        <briefdescription>
+<para>Returns the layer type for layers generated by this algorithm, if this is possible to determine in advance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="938" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="823" bodyend="826"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a97eb6ca38bf9b25f7e0d10cdd1a29fcb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProcessingFeatureBasedAlgorithm::outputName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>outputName</name>
+        <briefdescription>
+<para>Returns the translated, user visible name for any layers created by this algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>This name will be used as the default name when loading the resultant layer into a QGIS project. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="925" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a78a203f55d8fb2d5238e8ba7e903c157" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsProcessingFeatureBasedAlgorithm::outputWkbType</definition>
+        <argsstring>(QgsWkbTypes::Type inputWkbType) const</argsstring>
+        <name>outputWkbType</name>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>inputWkbType</declname>
+        </param>
+        <briefdescription>
+<para>Maps the input WKB geometry type (<emphasis>inputWkbType</emphasis>) to the corresponding output WKB type generated by the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>The default behavior is that the algorithm maintains the same WKB type. This is called once by the base class when creating the output sink for the algorithm (i.e. it is not called once per feature processed). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="959" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="838" bodyend="841"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a8c577d6f5850392b99273ed29ce35e7e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProcessingFeatureBasedAlgorithm::prepareSource</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context)</argsstring>
+        <name>prepareSource</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Read the source from <emphasis>parameters</emphasis> and <emphasis>context</emphasis> and set it. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="1020" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="950" bodyend="958"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a6d34f3c0380d76694a9fd0daf3a6557a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProcessingFeatureBasedAlgorithm::processAlgorithm</definition>
+        <argsstring>(const QVariantMap &amp;parameters, QgsProcessingContext &amp;context, QgsProcessingFeedback *feedback) override SIP_THROW(QgsProcessingException)</argsstring>
+        <name>processAlgorithm</name>
+        <reimplements refid="classQgsProcessingAlgorithm_1a6c69050186f3673eb2f933e34cce6a3a">processAlgorithm</reimplements>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingFeedback" kindref="compound">QgsProcessingFeedback</ref> *</type>
+          <declname>feedback</declname>
+        </param>
+        <briefdescription>
+<para>Runs the algorithm using the specified <emphasis>parameters</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Algorithms should implement their custom processing logic here.</para><para>The <emphasis>context</emphasis> argument gives a temporary context with thread affinity matching the thread in which the algorithm is being run. This is a cut-back copy of the context passed to the <ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> and <ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> steps, but it is generally safe for most algorithms to utilize this context for loading layers and creating sinks. Any loaded layers or sinks created within this temporary context will be transferred back to the main execution context upon successful completion of the <ref refid="classQgsProcessingFeatureBasedAlgorithm_1a6d34f3c0380d76694a9fd0daf3a6557a" kindref="member">processAlgorithm()</ref> step.</para><para>Algorithm progress should be reported using the supplied <emphasis>feedback</emphasis> object. Additionally, well-behaved algorithms should periodically check <emphasis>feedback</emphasis> to determine whether the algorithm should be canceled and exited early.</para><para>This method will not be called if the <ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> step failed (returned false).</para><para>c++ implementations of processAlgorithm can throw the <ref refid="classQgsProcessingException" kindref="compound">QgsProcessingException</ref> exception to indicate that a fatal error occurred within the execution. Python based subclasses should raise GeoAlgorithmExecutionException for the same purpose.</para><para><simplesect kind="return"><para>A map of algorithm outputs. These may be output layer references, or calculated values such as statistical calculations. Unless the algorithm subclass overrides the <ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> step this returned map will be used as the output for the algorithm.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" kindref="member">prepareAlgorithm()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" kindref="member">postProcessAlgorithm()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="997" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="865" bodyend="915"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a03777ddd7ca6e9a67234c86c7107b794" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsFeatureRequest" kindref="compound">QgsFeatureRequest</ref></type>
+        <definition>QgsFeatureRequest QgsProcessingFeatureBasedAlgorithm::request</definition>
+        <argsstring>() const</argsstring>
+        <name>request</name>
+        <briefdescription>
+<para>Returns the feature request used for fetching features to process from the source layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The default implementation requests all attributes and geometry. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="1003" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="917" bodyend="920"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1ac4b4d16de7b287b4d86d0748a5969744" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QgsFeatureSink::SinkFlags</type>
+        <definition>QgsFeatureSink::SinkFlags QgsProcessingFeatureBasedAlgorithm::sinkFlags</definition>
+        <argsstring>() const</argsstring>
+        <name>sinkFlags</name>
+        <briefdescription>
+<para>Returns the feature sink flags to be used for the output. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4.1 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="950" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="833" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1ae7b3ec09d4a5f513f8cfec01e19f7df0" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsProcessingFeatureBasedAlgorithm::sourceCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>sourceCrs</name>
+        <briefdescription>
+<para>Returns the source&apos;s coordinate reference system. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will only return a valid CRS when called from a subclasses&apos; <ref refid="classQgsProcessingFeatureBasedAlgorithm_1ac6b729b98d6c8eaeed269c461aa94a88" kindref="member">processFeature()</ref> implementation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="994" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="857" bodyend="863"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1ad6ec9052960a8d876a1fc35077ee7f09" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsProcessingFeatureSource_1ab53039fddce5b82216a0d8802324f475" kindref="member">QgsProcessingFeatureSource::Flag</ref></type>
+        <definition>QgsProcessingFeatureSource::Flag QgsProcessingFeatureBasedAlgorithm::sourceFlags</definition>
+        <argsstring>() const</argsstring>
+        <name>sourceFlags</name>
+        <briefdescription>
+<para>Returns the processing feature source flags to be used in the algorithm. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="943" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="828" bodyend="831"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProcessingFeatureBasedAlgorithm_1a0f32a4e08be18509004a263f80cee886" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsProcessingFeatureBasedAlgorithm::supportInPlaceEdit</definition>
+        <argsstring>(const QgsMapLayer *layer) const override</argsstring>
+        <name>supportInPlaceEdit</name>
+        <reimplements refid="classQgsProcessingAlgorithm_1ad5da49d627f0e467f7147ace4bfa7254">supportInPlaceEdit</reimplements>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Checks whether this algorithm supports in-place editing on the given <emphasis>layer</emphasis> Default implementation for feature based algorithms run some basic compatibility checks based on the geometry type of the layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the algorithm supports in-place editing </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="1013" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.cpp" bodystart="922" bodyend="948"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract <ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> base class for processing algorithms which operate &quot;feature-by-feature&quot;. </para>    </briefdescription>
+    <detaileddescription>
+<para>Feature based algorithms are algorithms which operate on individual features in isolation. These are algorithms where one feature is output for each input feature, and the output feature result for each input feature is not dependent on any other features present in the source.</para><para>For instance, algorithms like &quot;centroids&quot; and &quot;buffers&quot; are feature based algorithms since the centroid or buffer of a feature is calculated for each feature in isolation. An algorithm like &quot;dissolve&quot; is NOT suitable for a feature based algorithm as the dissolved output depends on multiple input features and these features cannot be processed in isolation.</para><para>Using <ref refid="classQgsProcessingFeatureBasedAlgorithm" kindref="compound">QgsProcessingFeatureBasedAlgorithm</ref> as the base class for feature based algorithms allows shortcutting much of the common algorithm code for handling iterating over sources and pushing features to output sinks. It also allows the algorithm execution to be optimised in future (for instance allowing automatic multi-thread processing of the algorithm, or use of the algorithm in &quot;chains&quot;, avoiding the need for temporary outputs in multi-step models).</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6772">
+        <label>QgsProcessingAlgorithm</label>
+        <link refid="classQgsProcessingAlgorithm"/>
+      </node>
+      <node id="6771">
+        <label>QgsProcessingFeatureBasedAlgorithm</label>
+        <link refid="classQgsProcessingFeatureBasedAlgorithm"/>
+        <childnode refid="6772" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6774">
+        <label>QgsProcessingAlgorithm</label>
+        <link refid="classQgsProcessingAlgorithm"/>
+      </node>
+      <node id="6773">
+        <label>QgsProcessingFeatureBasedAlgorithm</label>
+        <link refid="classQgsProcessingFeatureBasedAlgorithm"/>
+        <childnode refid="6774" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" line="881" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/processing/qgsprocessingalgorithm.h" bodystart="880" bodyend="1026"/>
+    <listofallmembers>
+      <member refid="classQgsProcessingAlgorithm_1a89cbc2c2248a3300d0366de34f3d766a" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>addOutput</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a7ca95d2cfe38a82cfc36b19ca9e5abed" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>addParameter</name></member>
+      <member refid="classQgsProcessingAlgorithm_1acd0a1eab59679270bda1bd6e5e2078f4" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>asPythonCommand</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad0640971083463eb847fb6eb8622c501" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>canExecute</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae3991f84be1b939144df415bec29d3fd" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>checkParameterValues</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a55f228fcac6d55ada3d124386ca45c0b" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>countVisibleParameters</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad190b383961aeb7215af3626955852db" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>create</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ab8c8eb508bd422c98a662eb5f904563d" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>createCustomParametersWidget</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a870fb43ba74a0e6706071f1e01134b2b" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>createExpressionContext</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a88271da5a2b0e9609ea50aef72ec2eac" prot="protected" virt="pure-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>createInstance</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8756b505dbef21c4f5c14380d59764a5" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>destinationParameterDefinitions</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a7b315c390929a904a0a63cdad9d45869" prot="public" virt="pure-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>displayName</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>Flag</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a4c550fc5bb7df816465e47678895aa99" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagCanCancel</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3ab5d43ba462b9ef5b3e66c51686dfa9db" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagDeprecated</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3ae6b58d23dd713e5957bab067f202cf8b" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagDisplayNameIsLiteral</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a80148880fad1e4e0d3613f243497de5b" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagHideFromModeler</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a62f2a83f05f962a56b928c23d899962d" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagHideFromToolbox</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a229dea6cedf8c59132196dee09d4f2f6" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagNoThreading</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a94d0eeee061e1c4a44f250b36a651148" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagRequiresMatchingCrs</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1ad4884c782db9abe9e50e83bde9fcba2a" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>flags</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a6e2a0e3fac445e639157e0b0bc9a0931" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagSupportsBatch</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a8c21fab75e03f50f45e41a9d67dbc3a344d854c1895f74972c28602980da674" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>FlagSupportsInPlaceEdits</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a258c0bbdb36fb19512226804fd948bbb" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>group</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a2b976f38c1ff648152d7872a8b887ac2" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>groupId</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8918adc434de43cd430cbc52b2f789d4" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>hasHtmlOutputs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1aae9c981f348ccf5ab45d3cb92bb9958a" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>helpString</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a35f891fb3210f3521c4e7527d909479b" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>helpUrl</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a4272266b913c16756cf7a8c8b588fa5f" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>icon</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5ca92c590bec71b303e062496dc13823" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>id</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1acdd5208149b6df54144adc36a72b17f9" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>initAlgorithm</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a697d8068ef00d67aa9a9c2c09b789ffd" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>initParameters</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1ae7403b025c4535a32a1b5758b5dc4f8c" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>inputLayerTypes</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a626c97e8548831e668ac53f281138dae" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>invalidRasterError</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a887fe00bc77891b01f06f5af9eb41dbf" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>invalidSinkError</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae9fd1f30da55212b80d2f2193bad8074" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>invalidSourceError</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1aee6023343105e13b1e9e5e6902b11250" prot="private" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>mSource</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad9eb6365281f92799f1a4562ec386127" prot="public" virt="pure-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>name</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a37d99f115b643fdf83fa5c9ddfec7e7a" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>operator=</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a8b4d6aa125354337f7ad65277ad7cb6a" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a06ded33ee1a9200135806bdf8f514e01" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputDefinition</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a0a1b7ab5b4cd285fafda3def029bf4eb" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputDefinitions</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a92baaef212caf817603bb4b1ee071707" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputFields</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1abd435d6267914a2fe1b93d17de40895c" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputLayerType</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a97eb6ca38bf9b25f7e0d10cdd1a29fcb" prot="protected" virt="pure-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputName</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a78a203f55d8fb2d5238e8ba7e903c157" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>outputWkbType</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad8f3de369d3082a2da9498f6de838698" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsBool</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a0553a084a94050d245f8fc66563803b1" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsCompatibleSourceLayerPath</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a9600e69139a0498a4bf52fa7b24fd024" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8b145f2517eeb2ce5e778ba87277ca48" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsDouble</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a3a8055149c379064107c753b631a066a" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsEnum</name></member>
+      <member refid="classQgsProcessingAlgorithm_1adefea407e069065a1fb3490afa199fd7" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsEnums</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a73f0953fefbb7e8b6413b25b3b88549a" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsExpression</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8dcb01d3175dfc710e3b819fcc666f86" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsExtent</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a274428c88a5fe979ad1b4a4efc13d355" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsExtentCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad00fb487460ebc1d94e92945f48d37aa" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsExtentGeometry</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a533d86089c6f99daabaa53ae08a9b934" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsFields</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5b892c72fa566d1654358b1f4f7c1350" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsFile</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a96e1ffb21ebdf1549de3b99a266335bb" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsFileOutput</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a2e144277ee0d8f024bef0c69aa619ab9" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsInt</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad5b6029a76423eb98c8cb586e19189b3" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsInts</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a19d79ea06073d5c3d84e2f91818636a3" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1abbba867d1e52dadfabb33c59fb70cce9" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsLayerList</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8211f58dbfd389f86f43a08020e22a41" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsMatrix</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ac3980808a501fb7cf7464c1da69be751" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsMeshLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1afa6471892e6e6eff93775283badc3ef9" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsOutputLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ab76855abbc0d0f7960df45d2c11df83b" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsPoint</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ae23d5c022c3083097001194bce54b222" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsPointCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a7fdc858c2943eb143e01ac96aa71ff1d" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsRange</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a1acf6b180a53e944a81881a0d1f21d4c" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsRasterLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6a6c42b8773f360db0e98c687b8d0636" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsSink</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a545f024775b04ebe57b2dd0c0828d564" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsSource</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8d0cc2e0cf232c20cf81cbf177aed185" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsString</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6419a3d4c2c2e47d85304c586b736590" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterAsVectorLayer</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a9baa78fa74712abff92b1f45d9b8ba2d" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterDefinition</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a52751b5318eb077aaa5e475c7a3e82ef" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>parameterDefinitions</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a8cfe93b703357bb38247424af323a951" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>postProcess</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ac0162e2a5eccc253c5bcd3590010c4e9" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>postProcessAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a6f1a762b458af3c3c3ed84298fa6ccdf" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>prepare</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a84c59d63850ab86c6f77b271be82e3a1" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>prepareAlgorithm</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a8c577d6f5850392b99273ed29ce35e7e" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>prepareSource</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5e07c0377eb04819e2b667bef5a4237e" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>preprocessParameters</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a6d34f3c0380d76694a9fd0daf3a6557a" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>processAlgorithm</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1ac6b729b98d6c8eaeed269c461aa94a88" prot="public" virt="pure-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>processFeature</name></member>
+      <member refid="classQgsProcessingAlgorithm_1ad0ba1a020a2ddd33953d82dfca732893" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>provider</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a924e41ef98c41904e177189e9d26649b" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>QgsProcessingAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a30eb6bb68b6e29f782d03646a14c9cbb" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>QgsProcessingAlgorithm</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a8fc489ec5031d1879fb0c9f14daa7142" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>QgsProcessingFeatureBasedAlgorithm</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a75099bd6bb7898e450d332cc275e4e55" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>removeParameter</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a03777ddd7ca6e9a67234c86c7107b794" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>request</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a824e128ff93b51f17488d770f5eb7fa8" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>run</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a06a244d3a80f7ddb3196d912fcbaa81d" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>runPrepared</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a3f13bae47bd4daf90575e91bb97af2e5" prot="public" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>setProvider</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a5259bda1835282ab29ad6ec7b0c8df09" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>shortDescription</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a42eddbb1b445d4dd1879499b3ebfd0ba" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>shortHelpString</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1ac4b4d16de7b287b4d86d0748a5969744" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>sinkFlags</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1ae7b3ec09d4a5f513f8cfec01e19f7df0" prot="protected" virt="non-virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>sourceCrs</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1ad6ec9052960a8d876a1fc35077ee7f09" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>sourceFlags</name></member>
+      <member refid="classQgsProcessingFeatureBasedAlgorithm_1a0f32a4e08be18509004a263f80cee886" prot="protected" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>supportInPlaceEdit</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a9f6af182d75eb96a91430f576616dbbd" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>svgIconPath</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a92f23a6ed99ddce530fd4e1e8e7d8756" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>tags</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a46b98e40f5181fede74f89aeb5407722" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>validateInputCrs</name></member>
+      <member refid="classQgsProcessingAlgorithm_1a556068a168e2c8a1a75e18d58b4e1ff5" prot="public" virt="virtual"><scope>QgsProcessingFeatureBasedAlgorithm</scope><name>~QgsProcessingAlgorithm</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

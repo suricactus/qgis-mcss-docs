@@ -1,0 +1,2037 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsVectorDataProvider" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsVectorDataProvider</compoundname>
+    <basecompoundref refid="classQgsDataProvider" prot="public" virt="non-virtual">QgsDataProvider</basecompoundref>
+    <basecompoundref refid="classQgsFeatureSink" prot="public" virt="non-virtual">QgsFeatureSink</basecompoundref>
+    <basecompoundref refid="classQgsFeatureSource" prot="public" virt="non-virtual">QgsFeatureSource</basecompoundref>
+    <includes refid="qgsvectordataprovider_8h" local="no">qgsvectordataprovider.h</includes>
+    <innerclass refid="structQgsVectorDataProvider_1_1NativeType" prot="public">QgsVectorDataProvider::NativeType</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7a" prot="public" static="no">
+        <name>Capability</name>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac65d90beab8f931e6e2c8ba346b2ed84" prot="public">
+          <name>NoCapabilities</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Provider has no capabilities. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aafcd4a7812fcbaec7cb8c2682e210974b" prot="public">
+          <name>AddFeatures</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Allows adding features. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaad38f47b07f37cf18fa7694049e56486" prot="public">
+          <name>DeleteFeatures</name>
+          <initializer>= 1 &lt;&lt;  1</initializer>
+          <briefdescription>
+<para>Allows deletion of features. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaf92a70cfce8ac7bbc47f0a3d4b852ab5" prot="public">
+          <name>ChangeAttributeValues</name>
+          <initializer>= 1 &lt;&lt;  2</initializer>
+          <briefdescription>
+<para>Allows modification of attribute values. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac9dfe4b7a1e851169636dd54df278ff8" prot="public">
+          <name>AddAttributes</name>
+          <initializer>= 1 &lt;&lt;  3</initializer>
+          <briefdescription>
+<para>Allows addition of new attributes (fields) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaa44be5754d7cfda5c8bc3743ad94c60f" prot="public">
+          <name>DeleteAttributes</name>
+          <initializer>= 1 &lt;&lt;  4</initializer>
+          <briefdescription>
+<para>Allows deletion of attributes (fields) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae2344dd531f6050ada3125a5d2b1876d" prot="public">
+          <name>CreateSpatialIndex</name>
+          <initializer>= 1 &lt;&lt;  6</initializer>
+          <briefdescription>
+<para>Allows creation of spatial index. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa25ffb51a289a93119a52f01f78c0f326" prot="public">
+          <name>SelectAtId</name>
+          <initializer>= 1 &lt;&lt;  7</initializer>
+          <briefdescription>
+<para>Fast access to features using their ID. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaa39b0476843bb3e4522fd870da18ec16" prot="public">
+          <name>ChangeGeometries</name>
+          <initializer>= 1 &lt;&lt;  8</initializer>
+          <briefdescription>
+<para>Allows modifications of geometries. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aab9274fd1efbf5edfe537a092fb9b3ae4" prot="public">
+          <name>SelectEncoding</name>
+          <initializer>= 1 &lt;&lt; 13</initializer>
+          <briefdescription>
+<para>Allows user to select encoding. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aab6990390c447f1b6715e0263058a6618" prot="public">
+          <name>CreateAttributeIndex</name>
+          <initializer>= 1 &lt;&lt; 12</initializer>
+          <briefdescription>
+<para>Can create indexes on provider&apos;s fields. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa03507a562d78bea50e49ec9e4f84e7be" prot="public">
+          <name>SimplifyGeometries</name>
+          <initializer>= 1 &lt;&lt; 14</initializer>
+          <briefdescription>
+<para>Supports simplification of geometries on provider side according to a distance tolerance. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa13b5f0239c515a8e9956cc991aa34463" prot="public">
+          <name>SimplifyGeometriesWithTopologicalValidation</name>
+          <initializer>= 1 &lt;&lt; 15</initializer>
+          <briefdescription>
+<para>Supports topological simplification of geometries on provider side according to a distance tolerance. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac16de1004ae78d02b9697679e1f3071e" prot="public">
+          <name>TransactionSupport</name>
+          <initializer>= 1 &lt;&lt; 16</initializer>
+          <briefdescription>
+<para>Supports transactions. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa21066088fba28d3d031ae807320ab632" prot="public">
+          <name>CircularGeometries</name>
+          <initializer>= 1 &lt;&lt; 17</initializer>
+          <briefdescription>
+<para>Supports circular geometry types (circularstring, compoundcurve, curvepolygon) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa3a8f2eebac2385ba7c84795cce774d90" prot="public">
+          <name>ChangeFeatures</name>
+          <initializer>= 1 &lt;&lt; 18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae9cd89e3ce6161ae862d007be5d631b6" prot="public">
+          <name>RenameAttributes</name>
+          <initializer>= 1 &lt;&lt; 19</initializer>
+          <briefdescription>
+<para>Supports joint updates for attributes and geometry Providers supporting this should still define ChangeGeometries | ChangeAttributeValues. </para>          </briefdescription>
+          <detaileddescription>
+<para>Supports renaming attributes (fields). Since QGIS 2.16 </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aad01a4638ca4652d30e4e5f46c356ff05" prot="public">
+          <name>FastTruncate</name>
+          <initializer>= 1 &lt;&lt; 20</initializer>
+          <briefdescription>
+<para>Supports fast truncation of the layer (removing all features). Since QGIS 3.0. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa1d00b41cef3a7ebd19802db662948159" prot="public">
+          <name>ReadLayerMetadata</name>
+          <initializer>= 1 &lt;&lt; 21</initializer>
+          <briefdescription>
+<para>Provider can read layer metadata from data store. Since QGIS 3.0. See <ref refid="classQgsDataProvider_1a69646da138dc98e9fa605fbed1283bb6" kindref="member">QgsDataProvider::layerMetadata()</ref> </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa46ec88ca52a5375fea4759fca0bdf109" prot="public">
+          <name>WriteLayerMetadata</name>
+          <initializer>= 1 &lt;&lt; 22</initializer>
+          <briefdescription>
+<para>Provider can write layer metadata to the data store. Since QGIS 3.0. See <ref refid="classQgsDataProvider_1ad9277c014467cb8471e3119397f087e9" kindref="member">QgsDataProvider::writeLayerMetadata()</ref> </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa0c28137d889b6d71443a67444018c40c" prot="public">
+          <name>CancelSupport</name>
+          <initializer>= 1 &lt;&lt; 23</initializer>
+          <briefdescription>
+<para>Supports interruption of pending queries from a separated thread. Since QGIS 3.2. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae29f0befed03c6a5dadb9a3b3853a955" prot="public">
+          <name>CreateRenderer</name>
+          <initializer>= 1 &lt;&lt; 24</initializer>
+          <briefdescription>
+<para>Provider can create feature renderers using backend-specific formatting information. Since QGIS 3.2. See <ref refid="classQgsVectorDataProvider_1a42eadc265fe0d724ff4cabd58b806573" kindref="member">QgsVectorDataProvider::createRenderer()</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac57a4562b45a49c494b515bcb992507e" prot="public">
+          <name>CreateLabeling</name>
+          <initializer>= 1 &lt;&lt; 25</initializer>
+          <briefdescription>
+<para>Provider can set labeling settings using backend-specific formatting information. Since QGIS 3.6. See <ref refid="classQgsVectorDataProvider_1ad9eb37944b9a112fca385f47b086b0df" kindref="member">QgsVectorDataProvider::createLabeling()</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>enumeration with capabilities that providers might implement </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="72" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="71" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsVectorDataProvider_1afd6cc77eff5ce17eb1318c14814ae5c7" prot="public" static="no">
+        <name>FeatureCountState</name>
+        <enumvalue id="classQgsVectorDataProvider_1afd6cc77eff5ce17eb1318c14814ae5c7add5aa8efbb7478937d2f5f52daaf5712" prot="public">
+          <name>Uncounted</name>
+          <initializer>= -2</initializer>
+          <briefdescription>
+<para>Feature count not yet computed. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorDataProvider_1afd6cc77eff5ce17eb1318c14814ae5c7a3fc67833b9402c6cba79f12d7168f944" prot="public">
+          <name>UnknownCount</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+<para>Provider returned an unknown feature count. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of feature count states. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="110" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsVectorDataProvider_1a54b8324db925e3e163e05468515036d6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsTransaction</definition>
+        <argsstring></argsstring>
+        <name>QgsTransaction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="61" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsVectorDataProvider_1a29b73024f3965a2d0a4d3d4fa435f437" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsVectorLayerEditBuffer</definition>
+        <argsstring></argsstring>
+        <name>QgsVectorLayerEditBuffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1a38bc050c205fec2e5bebbe7db33233e7" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int QgsVectorDataProvider::EditingCapabilities</definition>
+        <argsstring></argsstring>
+        <name>EditingCapabilities</name>
+        <initializer>= <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aafcd4a7812fcbaec7cb8c2682e210974b" kindref="member">AddFeatures</ref> | <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaad38f47b07f37cf18fa7694049e56486" kindref="member">DeleteFeatures</ref> |
+                                           <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaf92a70cfce8ac7bbc47f0a3d4b852ab5" kindref="member">ChangeAttributeValues</ref> | <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaa39b0476843bb3e4522fd870da18ec16" kindref="member">ChangeGeometries</ref> | <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac9dfe4b7a1e851169636dd54df278ff8" kindref="member">AddAttributes</ref> | <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaa44be5754d7cfda5c8bc3743ad94c60f" kindref="member">DeleteAttributes</ref> |
+                                           <ref refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae9cd89e3ce6161ae862d007be5d631b6" kindref="member">RenameAttributes</ref></initializer>
+        <briefdescription>
+<para>Bitmask of all provider&apos;s editing capabilities. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="103" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1ab987d84bb008f3ae9125aed1622c6a27" prot="private" static="no" mutable="no">
+        <type><ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref></type>
+        <definition>QgsAttributeList QgsVectorDataProvider::mAttributesToFetch</definition>
+        <argsstring></argsstring>
+        <name>mAttributesToFetch</name>
+        <briefdescription>
+<para>List of attribute indices to fetch with nextFeature calls. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="664" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="664" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1aadc96ef3439a4a0c4ee3680c7ba2dc57" prot="private" static="no" mutable="yes">
+        <type>QMap&lt; int, QVariant &gt;</type>
+        <definition>QMap&lt;int, QVariant&gt; QgsVectorDataProvider::mCacheMaxValues</definition>
+        <argsstring></argsstring>
+        <name>mCacheMaxValues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="658" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="658" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1a464dc8c0f71535f34fba550f5fcfd652" prot="private" static="no" mutable="yes">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::mCacheMinMaxDirty</definition>
+        <argsstring></argsstring>
+        <name>mCacheMinMaxDirty</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="657" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="657" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1a7c035179f07791072238f1c5485482e6" prot="private" static="no" mutable="yes">
+        <type>QMap&lt; int, QVariant &gt;</type>
+        <definition>QMap&lt;int, QVariant&gt; QgsVectorDataProvider::mCacheMinValues</definition>
+        <argsstring></argsstring>
+        <name>mCacheMinValues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="658" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="658" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1af5d4a8018eb6de322cc64f3726779788" prot="private" static="no" mutable="no">
+        <type>QTextCodec *</type>
+        <definition>QTextCodec* QgsVectorDataProvider::mEncoding</definition>
+        <argsstring></argsstring>
+        <name>mEncoding</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Encoding. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="661" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="661" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1a6aa8102ae5cfeeadc701a06e5bb25eb3" prot="private" static="no" mutable="yes">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorDataProvider::mErrors</definition>
+        <argsstring></argsstring>
+        <name>mErrors</name>
+        <briefdescription>
+<para>List of errors. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="670" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="670" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1a94a7f9e075af9caeb08d809ea6ef38c7" prot="private" static="no" mutable="no">
+        <type>QList&lt; <ref refid="structQgsVectorDataProvider_1_1NativeType" kindref="compound">NativeType</ref> &gt;</type>
+        <definition>QList&lt; NativeType &gt; QgsVectorDataProvider::mNativeTypes</definition>
+        <argsstring></argsstring>
+        <name>mNativeTypes</name>
+        <briefdescription>
+<para>The names of the providers native types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="667" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="667" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classQgsVectorDataProvider_1a09b9623d19eafdeb70010637ba2dbdf2" prot="private" static="yes" mutable="no">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorDataProvider::sEncodings</definition>
+        <argsstring></argsstring>
+        <name>sEncodings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="672" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="672" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a82a190f8adb03972dbff20c334a66541" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorDataProvider::QgsVectorDataProvider</definition>
+        <argsstring>(const QString &amp;uri=QString(), const QgsDataProvider::ProviderOptions &amp;options=QgsDataProvider::ProviderOptions())</argsstring>
+        <name>QgsVectorDataProvider</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsDataProvider_1_1ProviderOptions" kindref="compound">QgsDataProvider::ProviderOptions</ref> &amp;</type>
+          <declname>options</declname>
+          <defval><ref refid="structQgsDataProvider_1_1ProviderOptions" kindref="compound">QgsDataProvider::ProviderOptions</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for a vector data provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>uri</emphasis> argument specifies the uniform resource locator (URI) for the associated dataset.</para><para>Additional creation options are specified within the <emphasis>options</emphasis> value. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="125" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="38" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ac3d0927cff569c3b19b8be56cf1541c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::addAttributes</definition>
+        <argsstring>(const QList&lt; QgsField &gt; &amp;attributes)</argsstring>
+        <name>addAttributes</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsField" kindref="compound">QgsField</ref> &gt; &amp;</type>
+          <declname>attributes</declname>
+        </param>
+        <briefdescription>
+<para>Adds new <emphasis>attributes</emphasis> to the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true in case of success and false in case of failure. If attributes are added using this method then <ref refid="classQgsVectorLayer_1a2a3b5542fc9714a405f68b0afca4a963" kindref="member">QgsVectorLayer::updateFields()</ref> must be called manually to ensure that the layer&apos;s field are correctly reported. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="291" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="113" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aa0f0e2128bc5b491880c118a0daa80a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::addFeatures</definition>
+        <argsstring>(QgsFeatureList &amp;flist, QgsFeatureSink::Flags flags=nullptr) override</argsstring>
+        <name>addFeatures</name>
+        <reimplements refid="classQgsFeatureSink_1ae74a8e6dbc5dfdb3c769df49d0fc4bd2">addFeatures</reimplements>
+        <param>
+          <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref> &amp;</type>
+          <declname>features</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a list of <emphasis>features</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05" kindref="member">addFeature()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="259" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="86" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a62af062a018df89926e9847bbc6975fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsVectorDataProvider::aggregate</definition>
+        <argsstring>(QgsAggregateCalculator::Aggregate aggregate, int index, const QgsAggregateCalculator::AggregateParameters &amp;parameters, QgsExpressionContext *context, bool &amp;ok) const</argsstring>
+        <name>aggregate</name>
+        <param>
+          <type><ref refid="classQgsAggregateCalculator_1a51eb9f5752cf107d72266829a21cf2fa" kindref="member">QgsAggregateCalculator::Aggregate</ref></type>
+          <declname>aggregate</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsAggregateCalculator_1_1AggregateParameters" kindref="compound">QgsAggregateCalculator::AggregateParameters</ref> &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsExpressionContext" kindref="compound">QgsExpressionContext</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>ok</declname>
+        </param>
+        <briefdescription>
+<para>Calculates an aggregated value from the layer&apos;s features. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base implementation does nothing, but subclasses can override this method to handoff calculation of aggregates to the provider. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aggregate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aggregate to calculate </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the attribute to calculate aggregate over </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parameters controlling aggregate calculation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>expression context for filter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>will be set to true if calculation was successfully performed by the data provider </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>calculated aggregate value </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="245" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="467" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ac0a6d67a7b949b042d774d0967930a63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref></type>
+        <definition>QgsAttributeList QgsVectorDataProvider::attributeIndexes</definition>
+        <argsstring>() const</argsstring>
+        <name>attributeIndexes</name>
+        <briefdescription>
+<para>Returns list of indexes to fetch all attributes in nextFeature() </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="427" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="328" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a0c082472be25f75cfa6cbe55a1f95cfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::cancelReload</definition>
+        <argsstring>()</argsstring>
+        <name>cancelReload</name>
+        <briefdescription>
+<para>Cancels the current reloading of data. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the reloading has been correctly interrupted, false otherwise </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDataProvider_1aea143a6723ae49ca0a10061ec52322d0" kindref="member">reloadData()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="284" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="830" bodyend="833"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1add5632886d7f8ce5f1ebbe8538cf380a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QgsVectorDataProvider::Capabilities</type>
+        <definition>QgsVectorDataProvider::Capabilities QgsVectorDataProvider::capabilities</definition>
+        <argsstring>() const</argsstring>
+        <name>capabilities</name>
+        <briefdescription>
+<para>Returns flags containing the supported capabilities. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>, some capabilities may change depending on whether a spatial filter is active on this provider, so it may be prudent to check this value per intended operation. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="397" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="192" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aff7ccab27425b79c307b05057838fa62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorDataProvider::capabilitiesString</definition>
+        <argsstring>() const</argsstring>
+        <name>capabilitiesString</name>
+        <briefdescription>
+<para>Returns the above in friendly format. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="402" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="224" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a99a5d01c33c1cadb7ae9209b68cd8743" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::changeAttributeValues</definition>
+        <argsstring>(const QgsChangedAttributesMap &amp;attr_map)</argsstring>
+        <name>changeAttributeValues</name>
+        <param>
+          <type>const <ref refid="qgsfeature_8h_1a6d7973b8c9854def3e1d7f8c49a3851b" kindref="member">QgsChangedAttributesMap</ref> &amp;</type>
+          <declname>attr_map</declname>
+        </param>
+        <briefdescription>
+<para>Changes attribute values of existing features. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should succeed if the provider reports the ChangeAttributeValues capability. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attr_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a map containing changed attributes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="318" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="131" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a86ac6bd24773fc09e3ec6e6cfd1c77f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::changeFeatures</definition>
+        <argsstring>(const QgsChangedAttributesMap &amp;attr_map, const QgsGeometryMap &amp;geometry_map)</argsstring>
+        <name>changeFeatures</name>
+        <param>
+          <type>const <ref refid="qgsfeature_8h_1a6d7973b8c9854def3e1d7f8c49a3851b" kindref="member">QgsChangedAttributesMap</ref> &amp;</type>
+          <declname>attr_map</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgsfeature_8h_1a43715e1a6d20c9e5c3962c6fb2c9869b" kindref="member">QgsGeometryMap</ref> &amp;</type>
+          <declname>geometry_map</declname>
+        </param>
+        <briefdescription>
+<para>Changes attribute values and geometries of existing features. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should succeed if the provider reports both the ChangeAttributeValues and ChangeGeometries capabilities. Providers which report the ChangeFeatures capability implement an optimised version of this method. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attr_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a map containing changed attributes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>geometry_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A QgsGeometryMap whose index contains the feature IDs that will have their geometries changed. The second map parameter being the new geometries themselves </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="331" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="169" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a2c926b153534868d2becfd78960a2a13" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::changeGeometryValues</definition>
+        <argsstring>(const QgsGeometryMap &amp;geometry_map)</argsstring>
+        <name>changeGeometryValues</name>
+        <param>
+          <type>const <ref refid="qgsfeature_8h_1a43715e1a6d20c9e5c3962c6fb2c9869b" kindref="member">QgsGeometryMap</ref> &amp;</type>
+          <declname>geometry_map</declname>
+        </param>
+        <briefdescription>
+<para>Changes geometries of existing features. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>geometry_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A QgsGeometryMap whose index contains the feature IDs that will have their geometries changed. The second map parameter being the new geometries themselves </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="380" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="163" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a59805353bbe826d877ebd321df57c1db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::clearErrors</definition>
+        <argsstring>()</argsstring>
+        <name>clearErrors</name>
+        <briefdescription>
+<para>Clear recorded errors. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="489" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="672" bodyend="675"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aa9b2a45c61ced9758f0093cf3892ec14" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::createAttributeIndex</definition>
+        <argsstring>(int field)</argsstring>
+        <name>createAttributeIndex</name>
+        <param>
+          <type>int</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+<para>Create an attribute index on the datasource. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="389" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="186" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ad9eb37944b9a112fca385f47b086b0df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsAbstractVectorLayerLabeling" kindref="compound">QgsAbstractVectorLayerLabeling</ref> *</type>
+        <definition>QgsAbstractVectorLayerLabeling * QgsVectorDataProvider::createLabeling</definition>
+        <argsstring>(const QVariantMap &amp;configuration=QVariantMap()) const</argsstring>
+        <name>createLabeling</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Creates labeling settings, using provider backend specific information. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>configuration</emphasis> map can be used to pass provider-specific configuration maps to the provider to allow customization of the returned labeling object. Support and format of <emphasis>configuration</emphasis> varies by provider.</para><para>When called with an empty <emphasis>configuration</emphasis> map the provider&apos;s default labeling settings will be returned.</para><para>This method returns a new labeling settings and the caller takes ownership of the returned object.</para><para>Only providers which report the CreateLabeling capability will return labeling settings. Other providers will return nullptr.</para><para><simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="540" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="702" bodyend="705"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a42eadc265fe0d724ff4cabd58b806573" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>QgsFeatureRenderer * QgsVectorDataProvider::createRenderer</definition>
+        <argsstring>(const QVariantMap &amp;configuration=QVariantMap()) const</argsstring>
+        <name>createRenderer</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>configuration</declname>
+          <defval>QVariantMap()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new vector layer feature renderer, using provider backend specific information. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>configuration</emphasis> map can be used to pass provider-specific configuration maps to the provider to allow customization of the returned renderer. Support and format of <emphasis>configuration</emphasis> varies by provider.</para><para>When called with an empty <emphasis>configuration</emphasis> map the provider&apos;s default renderer will be returned.</para><para>This method returns a new renderer and the caller takes ownership of the returned object.</para><para>Only providers which report the CreateRenderer capability will return a feature renderer. Other providers will return nullptr.</para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="523" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="697" bodyend="700"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a2fcb9f703debaf73667643614802d3a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::createSpatialIndex</definition>
+        <argsstring>()</argsstring>
+        <name>createSpatialIndex</name>
+        <briefdescription>
+<para>Creates a spatial index on the datasource (if supported by the provider type). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="386" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="181" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a1befce7b247736d8f40a0c85f7462c55" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorDataProvider::dataComment</definition>
+        <argsstring>() const</argsstring>
+        <name>dataComment</name>
+        <briefdescription>
+<para>Returns a short comment for the data that this provider is providing access to (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>the comment for postgres table). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="200" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ad2a51ae0b1928a179e258e7eba6d94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsVectorDataProvider::defaultValue</definition>
+        <argsstring>(int fieldIndex) const</argsstring>
+        <name>defaultValue</name>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <briefdescription>
+<para>Returns any literal default values which are present at the provider for a specified field index. </para>        </briefdescription>
+        <detaileddescription>
+<para>Important - this should ONLY be called when creating an attribute to insert directly into the database. Do not call this method for non-feature creation or modification, e.g., when validating an attribute or to compare it against an existing value, as calling it can cause changes to the underlying data source (e.g., Postgres provider where the default value is calculated as a result of a sequence). It is recommended that you instead use the methods in <ref refid="classQgsVectorLayerUtils" kindref="compound">QgsVectorLayerUtils</ref> such as <ref refid="classQgsVectorLayerUtils_1a8049ffa5e5b57fad94b09280e943f235" kindref="member">QgsVectorLayerUtils::createFeature()</ref> so that default value handling and validation is automatically carried out. <simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1a8b8b1fe945ec289885d77f820c85f8b6" kindref="member">defaultValueClause()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="345" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="137" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a8b8b1fe945ec289885d77f820c85f8b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorDataProvider::defaultValueClause</definition>
+        <argsstring>(int fieldIndex) const</argsstring>
+        <name>defaultValueClause</name>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <briefdescription>
+<para>Returns any default value clauses which are present at the provider for a specified field index. </para>        </briefdescription>
+        <detaileddescription>
+<para>These clauses are usually SQL fragments which must be evaluated by the provider, e.g., sequence values. <simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1ad2a51ae0b1928a179e258e7eba6d94a7" kindref="member">defaultValue()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="354" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="143" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ae1edaa2869fd44d801c62b13d6ce7ed7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::deleteAttributes</definition>
+        <argsstring>(const QgsAttributeIds &amp;attributes)</argsstring>
+        <name>deleteAttributes</name>
+        <param>
+          <type>const <ref refid="qgsvectordataprovider_8h_1a3358457bef0f70b54b8c3c8219bde791" kindref="member">QgsAttributeIds</ref> &amp;</type>
+          <declname>attributes</declname>
+        </param>
+        <briefdescription>
+<para>Deletes existing <emphasis>attributes</emphasis> from the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>If attributes are deleted using this method then <ref refid="classQgsVectorLayer_1a2a3b5542fc9714a405f68b0afca4a963" kindref="member">QgsVectorLayer::updateFields()</ref> must be called manually to ensure that the layer&apos;s field are correctly reported. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a set containing indices of attributes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="300" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="119" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a9d1406bb796c92c2c104a1d5f3391e19" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::deleteFeatures</definition>
+        <argsstring>(const QgsFeatureIds &amp;id)</argsstring>
+        <name>deleteFeatures</name>
+        <param>
+          <type>const <ref refid="qgsfeatureid_8h_1a443917048a2ef75006fdeba30f1549f3" kindref="member">QgsFeatureIds</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Deletes one or more features from the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>This requires the DeleteFeatures capability. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list containing feature ids to delete </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1a4b9ae0ff7bf3bf3cadfb502f4e1af26c" kindref="member">truncate()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="267" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="93" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a88e40ebec776efd1849946571eaed0c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSet&lt; <ref refid="classQgsMapLayerDependency" kindref="compound">QgsMapLayerDependency</ref> &gt;</type>
+        <definition>QSet&lt; QgsMapLayerDependency &gt; QgsVectorDataProvider::dependencies</definition>
+        <argsstring>() const</argsstring>
+        <name>dependencies</name>
+        <briefdescription>
+<para>Gets the list of layer ids on which this layer depends. </para>        </briefdescription>
+        <detaileddescription>
+<para>This in particular determines the order of layer loading. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="561" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="714" bodyend="717"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a13e920f942394e4d0b2ab01f85eb6730" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classQgsRelation" kindref="compound">QgsRelation</ref> &gt;</type>
+        <definition>QList&lt; QgsRelation &gt; QgsVectorDataProvider::discoverRelations</definition>
+        <argsstring>(const QgsVectorLayer *self, const QList&lt; QgsVectorLayer *&gt; &amp;layers) const</argsstring>
+        <name>discoverRelations</name>
+        <param>
+          <type>const <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>self</declname>
+        </param>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+<para>Discover the available relations with the given layers. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>self</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the layer using this data provider. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the other layers. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the list of N-1 relations from this provider. </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="570" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="837" bodyend="840"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a74fec7851a6b0a222c4719ecc8c5d32f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsVectorDataProvider::doesStrictFeatureTypeCheck</definition>
+        <argsstring>() const</argsstring>
+        <name>doesStrictFeatureTypeCheck</name>
+        <briefdescription>
+<para>Returns true if the provider is strict about the type of inserted features (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>no multipolygon in a polygon layer) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="476" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="476" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a6209edd29c8905ef2083f1e1ef47732a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <briefdescription>
+<para>Returns true if the layer contains at least one feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="50" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ad029dcf35a0ebcf4b590266320d656bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorDataProvider::encoding</definition>
+        <argsstring>() const</argsstring>
+        <name>encoding</name>
+        <briefdescription>
+<para>Gets encoding which is used for accessing data. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="412" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="214" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a0b00bcf20a00706dc1c2148763e6245a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsVectorDataProvider::enumValues</definition>
+        <argsstring>(int index, QStringList &amp;enumList) const</argsstring>
+        <name>enumValues</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>QStringList &amp;</type>
+          <declname>enumList</declname>
+        </param>
+        <briefdescription>
+<para>Returns the possible enum values of an attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns an empty stringlist if a provider does not support enum types or if the given attribute is not an enum type. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enumList</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reference to the list to fill </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="257" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="257" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a6174acc5d73c2fd09f6d6fb5cc92afec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorDataProvider::errors</definition>
+        <argsstring>() const</argsstring>
+        <name>errors</name>
+        <briefdescription>
+<para>Gets recorded errors. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="494" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="682" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aa9cb2492231a2e756620c3b76a0cb2e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>long</type>
+        <definition>long QgsVectorDataProvider::featureCount</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>featureCount</name>
+        <reimplements refid="classQgsFeatureSource_1aaa7a890168b71e524c56baff022b36f7">featureCount</reimplements>
+        <briefdescription>
+<para>Number of features in the layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>long containing number of features </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="166" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a3176d502b39e093486dfd096fe1bbbe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractFeatureSource" kindref="compound">QgsAbstractFeatureSource</ref> *</type>
+        <definition>virtual QgsAbstractFeatureSource* QgsVectorDataProvider::featureSource</definition>
+        <argsstring>() const =0</argsstring>
+        <name>featureSource</name>
+        <briefdescription>
+<para>Returns feature source object that can be used for querying provider&apos;s data. </para>        </briefdescription>
+        <detaileddescription>
+<para>The returned feature source is independent from provider - any changes to provider&apos;s state (e.g. change of subset string) will not be reflected in the feature source, therefore it can be safely used for processing in background without having to care about possible changes within provider that may happen concurrently. Also, even in the case of provider being deleted, any feature source obtained from the provider will be kept alive and working (they are independent and owned by the caller).</para><para>Sometimes there are cases when some data needs to be shared between vector data provider and its feature source. In such cases, the implementation must ensure that the data is not susceptible to run condition. For example, if it is possible that both feature source and provider may need reading/writing to some shared data at the same time, some synchronization mechanisms must be used (e.g. mutexes) to prevent data corruption.</para><para><simplesect kind="return"><para>new instance of <ref refid="classQgsAbstractFeatureSource" kindref="compound">QgsAbstractFeatureSource</ref> (caller is responsible for deleting it) </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="143" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ad8a8ea008afb653fa028728efdc50846" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QgsFieldConstraints::Constraints</type>
+        <definition>QgsFieldConstraints::Constraints QgsVectorDataProvider::fieldConstraints</definition>
+        <argsstring>(int fieldIndex) const</argsstring>
+        <name>fieldConstraints</name>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <briefdescription>
+<para>Returns any constraints which are present at the provider for a specified field index. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1ae63d25f64a99f3b0f24fc7ee108f8603" kindref="member">skipConstraintCheck()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="362" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="149" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a8af47d0fa09374a7cb39abacb8a328e6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsVectorDataProvider::fieldNameIndex</definition>
+        <argsstring>(const QString &amp;fieldName) const</argsstring>
+        <name>fieldNameIndex</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fieldName</declname>
+        </param>
+        <briefdescription>
+<para>Returns the index of a field name or -1 if the field does not exist. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="417" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="310" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aaea19083f59dfba8362fceaa6b64d244" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QMap&lt; QString, int &gt;</type>
+        <definition>QMap&lt; QString, int &gt; QgsVectorDataProvider::fieldNameMap</definition>
+        <argsstring>() const</argsstring>
+        <name>fieldNameMap</name>
+        <briefdescription>
+<para>Returns a map where the key is the name of the field and the value is its index. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="422" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="315" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aae02100a7b2dc2f7c8acb15f71727dc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsVectorDataProvider::fields</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>fields</name>
+        <reimplements refid="classQgsFeatureSource_1a13c7311e473ed02b22f7b673e9bcff60">fields</reimplements>
+        <briefdescription>
+<para>Returns the fields associated with this data provider. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="190" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a5a5652d573f6be91cc6085b3d43b39ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::forceReload</definition>
+        <argsstring>()</argsstring>
+        <name>forceReload</name>
+        <briefdescription>
+<para>Forces a reload of the underlying datasource if the provider implements this method. </para>        </briefdescription>
+        <detaileddescription>
+<para>In particular on the OGR provider, a pooled connection will be invalidated. This forces QGIS to reopen a file or connection. This can be required if the underlying file is replaced. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="556" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="597" bodyend="600"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ab82526fc3df773e094d035a832dcbdf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsFeatureIterator" kindref="compound">QgsFeatureIterator</ref></type>
+        <definition>QgsFeatureIterator QgsVectorDataProvider::getFeatures</definition>
+        <argsstring>(const QgsFeatureRequest &amp;request=QgsFeatureRequest()) const override=0</argsstring>
+        <name>getFeatures</name>
+        <reimplements refid="classQgsFeatureSource_1aa16f62261f2e83d105f771ce28fefce6">getFeatures</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeatureRequest" kindref="compound">QgsFeatureRequest</ref> &amp;</type>
+          <declname>request</declname>
+          <defval><ref refid="classQgsFeatureRequest" kindref="compound">QgsFeatureRequest</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Query the provider for features specified in request. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>request</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>feature request describing parameters of features to return </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>iterator for matching features from provider </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="155" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1af82c47ea2346ca90c805cddb445e2ee7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::hasErrors</definition>
+        <argsstring>() const</argsstring>
+        <name>hasErrors</name>
+        <briefdescription>
+<para>Provider has errors to report. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="484" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="677" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a9b31dcecf42ef05a580619b14dc224d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsFeatureSource_1a81dd9e974bac0697ac2fd765e194a057" kindref="member">QgsFeatureSource::FeatureAvailability</ref></type>
+        <definition>QgsFeatureSource::FeatureAvailability QgsVectorDataProvider::hasFeatures</definition>
+        <argsstring>() const override</argsstring>
+        <name>hasFeatures</name>
+        <reimplements refid="classQgsFeatureSource_1a6f75283013397a5041db18992a66f34b">hasFeatures</reimplements>
+        <briefdescription>
+<para>Will always return FeatureAvailability::FeaturesAvailable or FeatureAvailability::NoFeaturesAvailable. </para>        </briefdescription>
+        <detaileddescription>
+<para>Calls <ref refid="classQgsVectorDataProvider_1a6209edd29c8905ef2083f1e1ef47732a" kindref="member">empty()</ref> internally. Providers should override <ref refid="classQgsVectorDataProvider_1a6209edd29c8905ef2083f1e1ef47732a" kindref="member">empty()</ref> instead if they provide an optimized version of this call.</para><para><simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1a6209edd29c8905ef2083f1e1ef47732a" kindref="member">empty()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="185" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="63" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a9c861401748b4aa43359a05197be00ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsVectorDataProvider::hasMetadata</definition>
+        <argsstring>() const</argsstring>
+        <name>hasMetadata</name>
+        <briefdescription>
+<para>Returns true if the data source has metadata, false otherwise. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if data source has metadata, false otherwise.</para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="600" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="600" bodyend="600"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a4c5828dae4ff0a4614fcd25497fdcf7e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::isDeleteStyleFromDatabaseSupported</definition>
+        <argsstring>() const</argsstring>
+        <name>isDeleteStyleFromDatabaseSupported</name>
+        <briefdescription>
+<para>It returns false by default. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be implemented by providers that support delete styles from db returning true </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="506" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="692" bodyend="695"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a2bda21d51b451efa0c65e708713d10c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::isSaveAndLoadStyleToDatabaseSupported</definition>
+        <argsstring>() const</argsstring>
+        <name>isSaveAndLoadStyleToDatabaseSupported</name>
+        <briefdescription>
+<para>It returns false by default. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be implemented by providers that support saving and loading styles to db returning true </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="500" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="687" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1aa053d87a20a74205a5b866433f013656" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsVectorDataProvider::maximumValue</definition>
+        <argsstring>(int index) const override</argsstring>
+        <name>maximumValue</name>
+        <reimplements refid="classQgsFeatureSource_1aba70559fe60637b0e366c1783f265b21">maximumValue</reimplements>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns the maximum value of an attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Default implementation walks all numeric attributes and caches minimal and maximal values. If provider has facilities to retrieve maximal value directly, override this function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="220" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="414" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1af5a239140e2ac8dfa082e1384708eb1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QVariantMap</type>
+        <definition>virtual QVariantMap QgsVectorDataProvider::metadata</definition>
+        <argsstring>() const</argsstring>
+        <name>metadata</name>
+        <briefdescription>
+<para>Gets metadata, dependent on the provider type, that will be display in the metadata tab of the layer properties. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The provider metadata </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="576" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="576" bodyend="576"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ac7828f40da689dbe15090cce9cfb446f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsVectorDataProvider::minimumValue</definition>
+        <argsstring>(int index) const override</argsstring>
+        <name>minimumValue</name>
+        <reimplements refid="classQgsFeatureSource_1a986882d83f5f5718ae1b917003024608">minimumValue</reimplements>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns the minimum value of an attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the attribute</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+Default implementation walks all numeric attributes and caches minimal and maximal values. If provider has facilities to retrieve minimal value directly, override this function. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="210" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="398" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a7377cc768990be4f61e45f3cba9d9d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="structQgsVectorDataProvider_1_1NativeType" kindref="compound">QgsVectorDataProvider::NativeType</ref> &gt;</type>
+        <definition>QList&lt; QgsVectorDataProvider::NativeType &gt; QgsVectorDataProvider::nativeTypes</definition>
+        <argsstring>() const</argsstring>
+        <name>nativeTypes</name>
+        <briefdescription>
+<para>Returns the names of the supported types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="470" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="338" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a3d76a019fb8e980c05c060d56cb298b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsvectordataprovider_8h_1a51ddbde148e653c3514ddcd5de661470" kindref="member">QgsAttrPalIndexNameHash</ref></type>
+        <definition>QgsAttrPalIndexNameHash QgsVectorDataProvider::palAttributeIndexNames</definition>
+        <argsstring>() const</argsstring>
+        <name>palAttributeIndexNames</name>
+        <briefdescription>
+<para>Returns list of indexes to names for <ref refid="classQgsPalLabeling" kindref="compound">QgsPalLabeling</ref> fix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="437" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="343" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a8083b93801d0f91783809895f28ebecf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref></type>
+        <definition>QgsAttributeList QgsVectorDataProvider::pkAttributeIndexes</definition>
+        <argsstring>() const</argsstring>
+        <name>pkAttributeIndexes</name>
+        <briefdescription>
+<para>Returns list of indexes of fields that make up the primary key. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="432" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="333" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ae1661cdfd4cc785e5b1bf5afa23b7f3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::renameAttributes</definition>
+        <argsstring>(const QgsFieldNameMap &amp;renamedAttributes)</argsstring>
+        <name>renameAttributes</name>
+        <param>
+          <type>const <ref refid="qgsattributes_8h_1a4d2b39da1db02b10e2027ebc9047944c" kindref="member">QgsFieldNameMap</ref> &amp;</type>
+          <declname>renamedAttributes</declname>
+        </param>
+        <briefdescription>
+<para>Renames existing attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para>If attributes are renamed using this method then <ref refid="classQgsVectorLayer_1a2a3b5542fc9714a405f68b0afca4a963" kindref="member">QgsVectorLayer::updateFields()</ref> must be called manually to ensure that the layer&apos;s field are correctly reported. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>renamedAttributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map of attribute index to new attribute name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="310" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="125" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a95754bf8354a0208dcb43809e2c85042" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::setEncoding</definition>
+        <argsstring>(const QString &amp;e)</argsstring>
+        <name>setEncoding</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Set encoding used for accessing data from layer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="407" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="198" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ae63d25f64a99f3b0f24fc7ee108f8603" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::skipConstraintCheck</definition>
+        <argsstring>(int fieldIndex, QgsFieldConstraints::Constraint constraint, const QVariant &amp;value=QVariant()) const</argsstring>
+        <name>skipConstraintCheck</name>
+        <param>
+          <type>int</type>
+          <declname>fieldIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFieldConstraints_1a8a3debfa6ba118b8f577ad9743ca32cc" kindref="member">QgsFieldConstraints::Constraint</ref></type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+          <defval>QVariant()</defval>
+        </param>
+        <briefdescription>
+<para>Returns true if a constraint check should be skipped for a specified field (e.g., if the value returned by <ref refid="classQgsVectorDataProvider_1ad2a51ae0b1928a179e258e7eba6d94a7" kindref="member">defaultValue()</ref> is trusted implicitly. </para>        </briefdescription>
+        <detaileddescription>
+<para>An optional attribute value can be passed which can help refine the skip constraint check. <simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1ad8a8ea008afb653fa028728efdc50846" kindref="member">fieldConstraints()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="371" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a422a5e1d0b8dfe8a699c733378c4de14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsVectorDataProvider::sourceCrs</definition>
+        <argsstring>() const override</argsstring>
+        <name>sourceCrs</name>
+        <reimplements refid="classQgsFeatureSource_1a263eee3bfb98755cbe411968d72601cd">sourceCrs</reimplements>
+        <briefdescription>
+<para>Returns the coordinate reference system for features in the source. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="192" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a0b67722bb1c4f98f707390ea28240f15" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsVectorDataProvider::sourceExtent</definition>
+        <argsstring>() const override</argsstring>
+        <name>sourceExtent</name>
+        <reimplements refid="classQgsFeatureSource_1add03234eb7c62ed070508d0c0bb39ec9">sourceExtent</reimplements>
+        <briefdescription>
+<para>Returns the extent of all geometries from the source. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation uses a non-optimised approach of looping through all features in the source. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="193" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a1bab663705b4bc4e4ddf7f188e2c6d56" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorDataProvider::sourceName</definition>
+        <argsstring>() const override</argsstring>
+        <name>sourceName</name>
+        <reimplements refid="classQgsFeatureSource_1ab9f3b9901e4d7f84a76df2f5cd80b4e7">sourceName</reimplements>
+        <briefdescription>
+<para>Returns a friendly display name for the source. </para>        </briefdescription>
+        <detaileddescription>
+<para>The returned value can be an empty string. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="194" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="194" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a4820a4cd54ded3f613e08bf4bc59a737" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorDataProvider::storageType</definition>
+        <argsstring>() const</argsstring>
+        <name>storageType</name>
+        <briefdescription>
+<para>Returns the permanent storage type for this layer as a friendly name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a2b81c5a3c9f752c65805e6924a24a7de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::supportedType</definition>
+        <argsstring>(const QgsField &amp;field) const</argsstring>
+        <name>supportedType</name>
+        <param>
+          <type>const <ref refid="classQgsField" kindref="compound">QgsField</ref> &amp;</type>
+          <declname>field</declname>
+        </param>
+        <briefdescription>
+<para>check if provider supports type of field </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="442" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="348" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ad96decba31e2ad195a55c0fcfe15bddf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsTransaction" kindref="compound">QgsTransaction</ref> *</type>
+        <definition>QgsTransaction * QgsVectorDataProvider::transaction</definition>
+        <argsstring>() const</argsstring>
+        <name>transaction</name>
+        <briefdescription>
+<para>Returns the transaction this data provider is included in, if any. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="547" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="592" bodyend="595"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1acf385b6aefb09f43cea1df853bf9f1b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsVectorDataProvider::translateMetadataKey</definition>
+        <argsstring>(const QString &amp;mdKey) const</argsstring>
+        <name>translateMetadataKey</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>mdKey</declname>
+        </param>
+        <briefdescription>
+<para>Gets the translated metadata key. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mdKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The metadata key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated metadata value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="583" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="583" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a3e9f44fb44a471c95ef3055a8f379fa3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsVectorDataProvider::translateMetadataValue</definition>
+        <argsstring>(const QString &amp;mdKey, const QVariant &amp;value) const</argsstring>
+        <name>translateMetadataValue</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>mdKey</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Gets the translated metadata value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mdKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The metadata key </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The metadata value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The translated metadata value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="591" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="591" bodyend="591"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a4b9ae0ff7bf3bf3cadfb502f4e1af26c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorDataProvider::truncate</definition>
+        <argsstring>()</argsstring>
+        <name>truncate</name>
+        <briefdescription>
+<para>Removes all features from the layer. </para>        </briefdescription>
+        <detaileddescription>
+<para>This requires either the FastTruncate or DeleteFeatures capability. Providers with the FastTruncate capability will use an optimised method to truncate the layer. <simplesect kind="return"><para>true in case of success and false in case of failure. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsVectorDataProvider_1a9d1406bb796c92c2c104a1d5f3391e19" kindref="member">deleteFeatures()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="276" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="99" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a4d558f61738e7a3e4aaa119e93500493" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorDataProvider::uniqueStringsMatching</definition>
+        <argsstring>(int index, const QString &amp;substring, int limit=-1, QgsFeedback *feedback=nullptr) const</argsstring>
+        <name>uniqueStringsMatching</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>substring</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>limit</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Returns unique string values of an attribute which contain a specified subset string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subset matching is done in a case-insensitive manner. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the index of the attribute </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>substring</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>substring to match (case insensitive) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>limit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maxmum number of the values to return, or -1 to return all unique values </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>feedback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional feedback object for canceling request </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of unique strings containing substring </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="231" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="431" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a2a7279902022df7d5980411ecace9392" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsVectorDataProvider::wkbType</definition>
+        <argsstring>() const override=0</argsstring>
+        <name>wkbType</name>
+        <reimplements refid="classQgsFeatureSource_1a6dd4622d2c06d1d898460c548404ee99">wkbType</reimplements>
+        <briefdescription>
+<para>Returns the geometry type which is returned by this layer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="160" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a1628f61b192992e893ba7919da66049b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorDataProvider::availableEncodings</definition>
+        <argsstring>()</argsstring>
+        <name>availableEncodings</name>
+        <briefdescription>
+<para>Returns a list of available encodings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="479" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="607" bodyend="670"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1af6ed58d58c86f39d25c96fdaaba07abe" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsVectorDataProvider::convertValue</definition>
+        <argsstring>(QVariant::Type type, const QString &amp;value)</argsstring>
+        <name>convertValue</name>
+        <param>
+          <type>QVariant::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="542" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="582" bodyend="590"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsVectorDataProvider_1a4e0909729702a458496627ff6f4e53ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::raiseError</definition>
+        <argsstring>(const QString &amp;msg) const</argsstring>
+        <name>raiseError</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Signals an error in this provider. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="609" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a4b6836609174e2e4bf2e075092369540" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::clearMinMaxCache</definition>
+        <argsstring>()</argsstring>
+        <name>clearMinMaxCache</name>
+        <briefdescription>
+<para>Invalidates the min/max cache. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will force the provider to recalculate the cache the next time it is requested. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="617" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="480" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a8626c3c091b13c45f7b3ab83bf317ff3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref></type>
+        <definition>QgsGeometry QgsVectorDataProvider::convertToProviderType</definition>
+        <argsstring>(const QgsGeometry &amp;geom) const</argsstring>
+        <name>convertToProviderType</name>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>geom</declname>
+        </param>
+        <briefdescription>
+<para>Converts the geometry to the provider type if possible / necessary. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the converted geometry or nullptr if no conversion was necessary or possible </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="639" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="719" bodyend="818"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1acc696e05ba852cbf942871d47ef3d466" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::fillMinMaxCache</definition>
+        <argsstring>() const</argsstring>
+        <name>fillMinMaxCache</name>
+        <briefdescription>
+<para>Populates the cache of minimum and maximum attribute values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="622" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="487" bodyend="580"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a049591e9c19a134166b267777c4a8708" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::pushError</definition>
+        <argsstring>(const QString &amp;msg) const</argsstring>
+        <name>pushError</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+<para>Push a notification about errors that happened in this providers scope. </para>        </briefdescription>
+        <detaileddescription>
+<para>Errors should be translated strings that require the users immediate attention.</para><para>For general debug information use <ref refid="classQgsMessageLog_1a08b7139ea06e6c5f12bf3b060d6960d5" kindref="member">QgsMessageLog::logMessage()</ref> instead.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="633" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="707" bodyend="712"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a131817881b5cf5213e1f5d63511e2d86" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorDataProvider::setNativeTypes</definition>
+        <argsstring>(const QList&lt; QgsVectorDataProvider::NativeType &gt; &amp;nativeTypes)</argsstring>
+        <name>setNativeTypes</name>
+        <param>
+          <type>const QList&lt; <ref refid="structQgsVectorDataProvider_1_1NativeType" kindref="compound">QgsVectorDataProvider::NativeType</ref> &gt; &amp;</type>
+          <declname>nativeTypes</declname>
+        </param>
+        <briefdescription>
+<para>Set the list of native types supported by this provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>Usually done in the constructor.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="647" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="820" bodyend="823"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorDataProvider_1a534c3ac8166300c9500a55ce914de059" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QTextCodec *</type>
+        <definition>QTextCodec * QgsVectorDataProvider::textEncoding</definition>
+        <argsstring>() const</argsstring>
+        <name>textEncoding</name>
+        <briefdescription>
+<para>Gets this providers encoding. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="654" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.cpp" bodystart="825" bodyend="828"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsVectorDataProvider_1ac3d47be07983e0d4d13355d884a682be" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsVectorDataProvider::setTransaction</definition>
+        <argsstring>(QgsTransaction *)</argsstring>
+        <name>setTransaction</name>
+        <param>
+          <type><ref refid="classQgsTransaction" kindref="compound">QgsTransaction</ref> *</type>
+        </param>
+        <briefdescription>
+<para>Includes this data provider in the specified transaction. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of transaction is not transferred. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="677" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="677" bodyend="677"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is the base class for vector data providers. </para>    </briefdescription>
+    <detaileddescription>
+<para>Data providers abstract the retrieval and writing (where supported) of feature and attribute information from a spatial datasource. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9320">
+        <label>QObject</label>
+      </node>
+      <node id="9322">
+        <label>QgsFeatureSource</label>
+        <link refid="classQgsFeatureSource"/>
+      </node>
+      <node id="9321">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="9319">
+        <label>QgsDataProvider</label>
+        <link refid="classQgsDataProvider"/>
+        <childnode refid="9320" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9318">
+        <label>QgsVectorDataProvider</label>
+        <link refid="classQgsVectorDataProvider"/>
+        <childnode refid="9319" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9321" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9322" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9326">
+        <label>QgsError</label>
+        <link refid="classQgsError"/>
+      </node>
+      <node id="9325">
+        <label>QObject</label>
+      </node>
+      <node id="9328">
+        <label>QgsFeatureSource</label>
+        <link refid="classQgsFeatureSource"/>
+      </node>
+      <node id="9327">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="9324">
+        <label>QgsDataProvider</label>
+        <link refid="classQgsDataProvider"/>
+        <childnode refid="9325" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9326" relation="usage">
+          <edgelabel>mError</edgelabel>
+        </childnode>
+      </node>
+      <node id="9323">
+        <label>QgsVectorDataProvider</label>
+        <link refid="classQgsVectorDataProvider"/>
+        <childnode refid="9324" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9327" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9328" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" line="58" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectordataprovider.h" bodystart="57" bodyend="679"/>
+    <listofallmembers>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac9dfe4b7a1e851169636dd54df278ff8" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>AddAttributes</name></member>
+      <member refid="classQgsVectorDataProvider_1ac3d0927cff569c3b19b8be56cf1541c6" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>addAttributes</name></member>
+      <member refid="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>addFeature</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aafcd4a7812fcbaec7cb8c2682e210974b" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>AddFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1aa0f0e2128bc5b491880c118a0daa80a0" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>addFeatures</name></member>
+      <member refid="classQgsFeatureSink_1a3d65e9e2cac5e0e0b699b08922f20f68" prot="public" virt="virtual" ambiguityscope="QgsFeatureSink::"><scope>QgsVectorDataProvider</scope><name>addFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1a62af062a018df89926e9847bbc6975fc" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>aggregate</name></member>
+      <member refid="classQgsFeatureSource_1ac25a91ac31808a8dc2b76026870fcf8b" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>allFeatureIds</name></member>
+      <member refid="classQgsDataProvider_1aff7aa0a18bcb7170f17cb2d5b073d8ce" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>appendError</name></member>
+      <member refid="classQgsVectorDataProvider_1ac0a6d67a7b949b042d774d0967930a63" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>attributeIndexes</name></member>
+      <member refid="classQgsVectorDataProvider_1a1628f61b192992e893ba7919da66049b" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>availableEncodings</name></member>
+      <member refid="classQgsVectorDataProvider_1a0c082472be25f75cfa6cbe55a1f95cfd" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>cancelReload</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa0c28137d889b6d71443a67444018c40c" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CancelSupport</name></member>
+      <member refid="classQgsVectorDataProvider_1add5632886d7f8ce5f1ebbe8538cf380a" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>capabilities</name></member>
+      <member refid="classQgsVectorDataProvider_1aff7ccab27425b79c307b05057838fa62" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>capabilitiesString</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7a" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>Capability</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaf92a70cfce8ac7bbc47f0a3d4b852ab5" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>ChangeAttributeValues</name></member>
+      <member refid="classQgsVectorDataProvider_1a99a5d01c33c1cadb7ae9209b68cd8743" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>changeAttributeValues</name></member>
+      <member refid="classQgsVectorDataProvider_1a86ac6bd24773fc09e3ec6e6cfd1c77f0" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>changeFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa3a8f2eebac2385ba7c84795cce774d90" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>ChangeFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaa39b0476843bb3e4522fd870da18ec16" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>ChangeGeometries</name></member>
+      <member refid="classQgsVectorDataProvider_1a2c926b153534868d2becfd78960a2a13" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>changeGeometryValues</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa21066088fba28d3d031ae807320ab632" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CircularGeometries</name></member>
+      <member refid="classQgsVectorDataProvider_1a59805353bbe826d877ebd321df57c1db" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>clearErrors</name></member>
+      <member refid="classQgsVectorDataProvider_1a4b6836609174e2e4bf2e075092369540" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>clearMinMaxCache</name></member>
+      <member refid="classQgsVectorDataProvider_1a8626c3c091b13c45f7b3ab83bf317ff3" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>convertToProviderType</name></member>
+      <member refid="classQgsVectorDataProvider_1af6ed58d58c86f39d25c96fdaaba07abe" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>convertValue</name></member>
+      <member refid="classQgsVectorDataProvider_1aa9b2a45c61ced9758f0093cf3892ec14" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>createAttributeIndex</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aab6990390c447f1b6715e0263058a6618" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CreateAttributeIndex</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac57a4562b45a49c494b515bcb992507e" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CreateLabeling</name></member>
+      <member refid="classQgsVectorDataProvider_1ad9eb37944b9a112fca385f47b086b0df" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>createLabeling</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae29f0befed03c6a5dadb9a3b3853a955" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CreateRenderer</name></member>
+      <member refid="classQgsVectorDataProvider_1a42eadc265fe0d724ff4cabd58b806573" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>createRenderer</name></member>
+      <member refid="classQgsVectorDataProvider_1a2fcb9f703debaf73667643614802d3a6" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>createSpatialIndex</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae2344dd531f6050ada3125a5d2b1876d" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CreateSpatialIndex</name></member>
+      <member refid="classQgsDataProvider_1a390a2d77b871763209396167d5558d18" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>crs</name></member>
+      <member refid="classQgsDataProvider_1a5b7c15ef49dfa659b23b81c4b0893cddafe3bb20221731e6f855d22ed0993e78d" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>CustomData</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153a2895dc708693161d3d6316e1feeb4194" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>Database</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>DataCapability</name></member>
+      <member refid="classQgsDataProvider_1a3ef3fe56a79c3a56fccb2cbb528aa886" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>dataChanged</name></member>
+      <member refid="classQgsVectorDataProvider_1a1befce7b247736d8f40a0c85f7462c55" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>dataComment</name></member>
+      <member refid="classQgsDataProvider_1a94c4cce6651e60b9245989ba4bffd625" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>dataSourceUri</name></member>
+      <member refid="classQgsDataProvider_1a875178949796ab38817744e2da88159e" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>dataTimestamp</name></member>
+      <member refid="classQgsVectorDataProvider_1ad2a51ae0b1928a179e258e7eba6d94a7" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>defaultValue</name></member>
+      <member refid="classQgsVectorDataProvider_1a8b8b1fe945ec289885d77f820c85f8b6" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>defaultValueClause</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaa44be5754d7cfda5c8bc3743ad94c60f" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>DeleteAttributes</name></member>
+      <member refid="classQgsVectorDataProvider_1ae1edaa2869fd44d801c62b13d6ce7ed7" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>deleteAttributes</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aaad38f47b07f37cf18fa7694049e56486" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>DeleteFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1a9d1406bb796c92c2c104a1d5f3391e19" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>deleteFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1a88e40ebec776efd1849946571eaed0c2" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>dependencies</name></member>
+      <member refid="classQgsDataProvider_1aa735b1c007dd7becc218de07177afe3f" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>description</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153ac6c219f067db2e6eab688b6550d64e7e" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>Dir</name></member>
+      <member refid="classQgsVectorDataProvider_1a13e920f942394e4d0b2ab01f85eb6730" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>discoverRelations</name></member>
+      <member refid="classQgsVectorDataProvider_1a74fec7851a6b0a222c4719ecc8c5d32f" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>doesStrictFeatureTypeCheck</name></member>
+      <member refid="classQgsVectorDataProvider_1a38bc050c205fec2e5bebbe7db33233e7" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>EditingCapabilities</name></member>
+      <member refid="classQgsVectorDataProvider_1a6209edd29c8905ef2083f1e1ef47732a" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>empty</name></member>
+      <member refid="classQgsVectorDataProvider_1ad029dcf35a0ebcf4b590266320d656bb" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>encoding</name></member>
+      <member refid="classQgsDataProvider_1aee77f143f485b6d792dec21b03e9dec1" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>enterUpdateMode</name></member>
+      <member refid="classQgsVectorDataProvider_1a0b00bcf20a00706dc1c2148763e6245a" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>enumValues</name></member>
+      <member refid="classQgsDataProvider_1a77e9159d97d4276753cbaf54b89da6d0" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>error</name></member>
+      <member refid="classQgsVectorDataProvider_1a6174acc5d73c2fd09f6d6fb5cc92afec" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>errors</name></member>
+      <member refid="classQgsDataProvider_1a5b7c15ef49dfa659b23b81c4b0893cddabcccdb5e52717ca90a42d83bb247d306" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>EvaluateDefaultValues</name></member>
+      <member refid="classQgsDataProvider_1aeea803b5b927c0551ec70f06af62971b" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>extent</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239acd4b5c2a6ae1868f72a80b8fce669072" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>FastInsert</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aad01a4638ca4652d30e4e5f46c356ff05" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>FastTruncate</name></member>
+      <member refid="classQgsFeatureSource_1a81dd9e974bac0697ac2fd765e194a057" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>FeatureAvailability</name></member>
+      <member refid="classQgsVectorDataProvider_1aa9cb2492231a2e756620c3b76a0cb2e7" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>featureCount</name></member>
+      <member refid="classQgsVectorDataProvider_1afd6cc77eff5ce17eb1318c14814ae5c7" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>FeatureCountState</name></member>
+      <member refid="classQgsFeatureSource_1a81dd9e974bac0697ac2fd765e194a057ae4ff049c1dec8069968ad4ecc9e5bd6b" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>FeaturesAvailable</name></member>
+      <member refid="classQgsFeatureSource_1a81dd9e974bac0697ac2fd765e194a057a0b39d4a12268de21cf16f802a4821888" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>FeaturesMaybeAvailable</name></member>
+      <member refid="classQgsVectorDataProvider_1a3176d502b39e093486dfd096fe1bbbe1" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>featureSource</name></member>
+      <member refid="classQgsVectorDataProvider_1ad8a8ea008afb653fa028728efdc50846" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>fieldConstraints</name></member>
+      <member refid="classQgsVectorDataProvider_1a8af47d0fa09374a7cb39abacb8a328e6" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>fieldNameIndex</name></member>
+      <member refid="classQgsVectorDataProvider_1aaea19083f59dfba8362fceaa6b64d244" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>fieldNameMap</name></member>
+      <member refid="classQgsVectorDataProvider_1aae02100a7b2dc2f7c8acb15f71727dc7" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>fields</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153a4527edddfa87acc2f0e13e76e9bef573" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>File</name></member>
+      <member refid="classQgsDataProvider_1a77c62f534a2dccc65b963e03805c5b55" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>fileRasterFilters</name></member>
+      <member refid="classQgsDataProvider_1ac24f20e109d01676c79f8a903a22d7f8" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>fileVectorFilters</name></member>
+      <member refid="classQgsVectorDataProvider_1acc696e05ba852cbf942871d47ef3d466" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>fillMinMaxCache</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>Flag</name></member>
+      <member refid="classQgsFeatureSink_1a649343548eb3c919cfd42ccee588c7ce" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>flushBuffer</name></member>
+      <member refid="classQgsVectorDataProvider_1a5a5652d573f6be91cc6085b3d43b39ff" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>forceReload</name></member>
+      <member refid="classQgsDataProvider_1a584aad1c83ef7873a4cefa3d337c391e" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>fullExtentCalculated</name></member>
+      <member refid="classQgsVectorDataProvider_1ab82526fc3df773e094d035a832dcbdf5" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>getFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1af82c47ea2346ca90c805cddb445e2ee7" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>hasErrors</name></member>
+      <member refid="classQgsVectorDataProvider_1a9b31dcecf42ef05a580619b14dc224d1" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>hasFeatures</name></member>
+      <member refid="classQgsVectorDataProvider_1a9c861401748b4aa43359a05197be00ea" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>hasMetadata</name></member>
+      <member refid="classQgsDataProvider_1a037199bfafba24782f2ea7f07a133876" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>invalidateConnections</name></member>
+      <member refid="classQgsVectorDataProvider_1a4c5828dae4ff0a4614fcd25497fdcf7e" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>isDeleteStyleFromDatabaseSupported</name></member>
+      <member refid="classQgsVectorDataProvider_1a2bda21d51b451efa0c65e708713d10c0" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>isSaveAndLoadStyleToDatabaseSupported</name></member>
+      <member refid="classQgsDataProvider_1a6d034edbd7af7a7b02a642d241aa61fd" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>isValid</name></member>
+      <member refid="classQgsDataProvider_1a69646da138dc98e9fa605fbed1283bb6" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>layerMetadata</name></member>
+      <member refid="classQgsDataProvider_1a06aa48e59fe6cd5aa6584c6bbb7891f2" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>leaveUpdateMode</name></member>
+      <member refid="classQgsFeatureSource_1ab95bcca99b1d5c082ca409da04e280b9" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>materialize</name></member>
+      <member refid="classQgsVectorDataProvider_1ab987d84bb008f3ae9125aed1622c6a27" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mAttributesToFetch</name></member>
+      <member refid="classQgsVectorDataProvider_1aa053d87a20a74205a5b866433f013656" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>maximumValue</name></member>
+      <member refid="classQgsVectorDataProvider_1aadc96ef3439a4a0c4ee3680c7ba2dc57" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mCacheMaxValues</name></member>
+      <member refid="classQgsVectorDataProvider_1a464dc8c0f71535f34fba550f5fcfd652" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mCacheMinMaxDirty</name></member>
+      <member refid="classQgsVectorDataProvider_1a7c035179f07791072238f1c5485482e6" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mCacheMinValues</name></member>
+      <member refid="classQgsVectorDataProvider_1af5d4a8018eb6de322cc64f3726779788" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mEncoding</name></member>
+      <member refid="classQgsDataProvider_1a739f3d6e8264888cfd9b9acfb89187c5" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mError</name></member>
+      <member refid="classQgsVectorDataProvider_1a6aa8102ae5cfeeadc701a06e5bb25eb3" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mErrors</name></member>
+      <member refid="classQgsVectorDataProvider_1af5a239140e2ac8dfa082e1384708eb1c" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>metadata</name></member>
+      <member refid="classQgsVectorDataProvider_1ac7828f40da689dbe15090cce9cfb446f" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>minimumValue</name></member>
+      <member refid="classQgsVectorDataProvider_1a94a7f9e075af9caeb08d809ea6ef38c7" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mNativeTypes</name></member>
+      <member refid="classQgsDataProvider_1a709da4f1f8f9a3ff272a0a6e24fca062" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>mTimestamp</name></member>
+      <member refid="classQgsDataProvider_1a167a2d18c5824e4d5b69455b031546bd" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>name</name></member>
+      <member refid="classQgsVectorDataProvider_1a7377cc768990be4f61e45f3cba9d9d5a" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>nativeTypes</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153ab2188dfa40f0cd2198972b7c771dd97c" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>Net</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac65d90beab8f931e6e2c8ba346b2ed84" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>NoCapabilities</name></member>
+      <member refid="classQgsDataProvider_1a7926195725476b07e40a8acbd7b5b153a1f81315186e62435cff393022d4afac2" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>NoDataCapabilities</name></member>
+      <member refid="classQgsFeatureSource_1a81dd9e974bac0697ac2fd765e194a057ae0beb7ceb47869612ad19f06687b8629" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>NoFeaturesAvailable</name></member>
+      <member refid="classQgsDataProvider_1abdb764c89cc99ccaa418178c26d84c32" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>notify</name></member>
+      <member refid="classQgsVectorDataProvider_1a3d76a019fb8e980c05c060d56cb298b9" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>palAttributeIndexNames</name></member>
+      <member refid="classQgsVectorDataProvider_1a8083b93801d0f91783809895f28ebecf" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>pkAttributeIndexes</name></member>
+      <member refid="classQgsDataProvider_1ac244176fc16f6b0c8f10735da6d52118" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>providerProperty</name></member>
+      <member refid="classQgsDataProvider_1adaa3e78c2635798ad3f98c97102d03d4" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>providerProperty</name></member>
+      <member refid="classQgsDataProvider_1a5b7c15ef49dfa659b23b81c4b0893cdd" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>ProviderProperty</name></member>
+      <member refid="classQgsVectorDataProvider_1a049591e9c19a134166b267777c4a8708" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>pushError</name></member>
+      <member refid="classQgsDataProvider_1a01ff4330b3a2b2df1cdd6d27603e04e9" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>QgsDataProvider</name></member>
+      <member refid="classQgsVectorDataProvider_1a54b8324db925e3e163e05468515036d6" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>QgsTransaction</name></member>
+      <member refid="classQgsVectorDataProvider_1a82a190f8adb03972dbff20c334a66541" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>QgsVectorDataProvider</name></member>
+      <member refid="classQgsVectorDataProvider_1a29b73024f3965a2d0a4d3d4fa435f437" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>QgsVectorLayerEditBuffer</name></member>
+      <member refid="classQgsVectorDataProvider_1a4e0909729702a458496627ff6f4e53ef" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>raiseError</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa1d00b41cef3a7ebd19802db662948159" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>ReadLayerMetadata</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19a068ceb3d5fef4dea3ee5ea0d0527300e" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>RegeneratePrimaryKey</name></member>
+      <member refid="classQgsDataProvider_1aea143a6723ae49ca0a10061ec52322d0" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>reloadData</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aae9cd89e3ce6161ae862d007be5d631b6" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>RenameAttributes</name></member>
+      <member refid="classQgsVectorDataProvider_1ae1661cdfd4cc785e5b1bf5afa23b7f3d" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>renameAttributes</name></member>
+      <member refid="classQgsDataProvider_1ade08d99b8d4d08052d3911de3e3c081f" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>renderInPreview</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa25ffb51a289a93119a52f01f78c0f326" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>SelectAtId</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aab9274fd1efbf5edfe537a092fb9b3ae4" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>SelectEncoding</name></member>
+      <member refid="classQgsVectorDataProvider_1a09b9623d19eafdeb70010637ba2dbdf2" prot="private" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>sEncodings</name></member>
+      <member refid="classQgsDataProvider_1a73a6ca365cde3bcd37ff9c7d931b3d75" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setDataSourceUri</name></member>
+      <member refid="classQgsVectorDataProvider_1a95754bf8354a0208dcb43809e2c85042" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setEncoding</name></member>
+      <member refid="classQgsDataProvider_1a1e7a5b46dcf07d146f257e9a08bde197" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>setError</name></member>
+      <member refid="classQgsDataProvider_1a0cf28542bcea779cb93d3fd67cd623c0" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setLayerOrder</name></member>
+      <member refid="classQgsDataProvider_1a2765050355390ae652f50eef6e47c35a" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setListening</name></member>
+      <member refid="classQgsVectorDataProvider_1a131817881b5cf5213e1f5d63511e2d86" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>setNativeTypes</name></member>
+      <member refid="classQgsDataProvider_1a3012970e7ff3fd790f45d5b680431c8f" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>setProviderProperty</name></member>
+      <member refid="classQgsDataProvider_1a3fc28217167326c71ecb68547d971036" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>setProviderProperty</name></member>
+      <member refid="classQgsDataProvider_1af1e9e5f613bc26aad36321e789801366" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setSubLayerVisibility</name></member>
+      <member refid="classQgsDataProvider_1ad52e4c2dab80e6125e1c07f13c725cc6" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setSubsetString</name></member>
+      <member refid="classQgsVectorDataProvider_1ac3d47be07983e0d4d13355d884a682be" prot="private" virt="virtual"><scope>QgsVectorDataProvider</scope><name>setTransaction</name></member>
+      <member refid="classQgsDataProvider_1a07f39172fc273ba241d0f8e483ef6b2b" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>setUri</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa03507a562d78bea50e49ec9e4f84e7be" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>SimplifyGeometries</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa13b5f0239c515a8e9956cc991aa34463" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>SimplifyGeometriesWithTopologicalValidation</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>SinkFlag</name></member>
+      <member refid="classQgsVectorDataProvider_1ae63d25f64a99f3b0f24fc7ee108f8603" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>skipConstraintCheck</name></member>
+      <member refid="classQgsVectorDataProvider_1a422a5e1d0b8dfe8a699c733378c4de14" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>sourceCrs</name></member>
+      <member refid="classQgsVectorDataProvider_1a0b67722bb1c4f98f707390ea28240f15" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>sourceExtent</name></member>
+      <member refid="classQgsVectorDataProvider_1a1bab663705b4bc4e4ddf7f188e2c6d56" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>sourceName</name></member>
+      <member refid="classQgsVectorDataProvider_1a4820a4cd54ded3f613e08bf4bc59a737" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>storageType</name></member>
+      <member refid="classQgsDataProvider_1acfd848673de93ad11abb901f23bcc03b" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>SUBLAYER_SEPARATOR</name></member>
+      <member refid="classQgsDataProvider_1ad54e0150e07dc310f75068543d40e141" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>subLayerCount</name></member>
+      <member refid="classQgsDataProvider_1ad73997762df861eacb25c553623e14b2" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>subLayers</name></member>
+      <member refid="classQgsDataProvider_1ac37f7be01d016aa85624d80ab94d6f32" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>subLayerStyles</name></member>
+      <member refid="classQgsDataProvider_1a63173ed93bfc521d3ed3f50e2c1a046b" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>subsetString</name></member>
+      <member refid="classQgsVectorDataProvider_1a2b81c5a3c9f752c65805e6924a24a7de" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>supportedType</name></member>
+      <member refid="classQgsDataProvider_1a92eaf65492a9162be2583a94f2a3d7df" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>supportsSubsetString</name></member>
+      <member refid="classQgsVectorDataProvider_1a534c3ac8166300c9500a55ce914de059" prot="protected" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>textEncoding</name></member>
+      <member refid="classQgsDataProvider_1a1ea9dadfd22370ef901f0d4d01039a8c" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>timestamp</name></member>
+      <member refid="classQgsVectorDataProvider_1ad96decba31e2ad195a55c0fcfe15bddf" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>transaction</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aac16de1004ae78d02b9697679e1f3071e" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>TransactionSupport</name></member>
+      <member refid="classQgsVectorDataProvider_1acf385b6aefb09f43cea1df853bf9f1b7" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>translateMetadataKey</name></member>
+      <member refid="classQgsVectorDataProvider_1a3e9f44fb44a471c95ef3055a8f379fa3" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>translateMetadataValue</name></member>
+      <member refid="classQgsVectorDataProvider_1a4b9ae0ff7bf3bf3cadfb502f4e1af26c" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>truncate</name></member>
+      <member refid="classQgsVectorDataProvider_1afd6cc77eff5ce17eb1318c14814ae5c7add5aa8efbb7478937d2f5f52daaf5712" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>Uncounted</name></member>
+      <member refid="classQgsVectorDataProvider_1a4d558f61738e7a3e4aaa119e93500493" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>uniqueStringsMatching</name></member>
+      <member refid="classQgsFeatureSource_1a20fbdc02ebae7eb0250ee390286e6466" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>uniqueValues</name></member>
+      <member refid="classQgsVectorDataProvider_1afd6cc77eff5ce17eb1318c14814ae5c7a3fc67833b9402c6cba79f12d7168f944" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>UnknownCount</name></member>
+      <member refid="classQgsDataProvider_1acb454ad6003885cfb6f38908e6b31e76" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>updateExtents</name></member>
+      <member refid="classQgsDataProvider_1aace8571ba2a6c0fd1beb972b60cc6741" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>uri</name></member>
+      <member refid="classQgsVectorDataProvider_1a2a7279902022df7d5980411ecace9392" prot="public" virt="pure-virtual"><scope>QgsVectorDataProvider</scope><name>wkbType</name></member>
+      <member refid="classQgsDataProvider_1ad9277c014467cb8471e3119397f087e9" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>writeLayerMetadata</name></member>
+      <member refid="classQgsVectorDataProvider_1a1a360c9e78933697b9f9be334cfcaf7aa46ec88ca52a5375fea4759fca0bdf109" prot="public" virt="non-virtual"><scope>QgsVectorDataProvider</scope><name>WriteLayerMetadata</name></member>
+      <member refid="classQgsFeatureSink_1a216423652491057eef823728c29654e4" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>~QgsFeatureSink</name></member>
+      <member refid="classQgsFeatureSource_1aafd2d10fcd704fd52774847f266c73af" prot="public" virt="virtual"><scope>QgsVectorDataProvider</scope><name>~QgsFeatureSource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

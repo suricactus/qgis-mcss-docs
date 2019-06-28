@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsGeometryCheck class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsGeometryCheck <span class="m-thin">class</span>
+        </h1>
+        <p>This class implements a geometry check.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Geometry checks run over a set of features and can detect errors like topological or other issues which are reported in the geometry validation panel in QGIS and help a user to create valid geometries.</p><p>Implementing a custom geometry check consists of the following parts</p><h4>Writing the check</h4><p>A new subclass of <a href="classQgsGeometryCheck.html" class="m-doc">QgsGeometryCheck</a> needs to be written and at least the following abstract methods need to be implemented:</p><ul><li><p><code><a href="classQgsGeometryCheck.html#a77dd5eeacbce9fca7d357e2f190d84b9" class="m-doc">compatibleGeometryTypes()</a></code></p><p>A list of geometry types to which this check applies</p></li><li><p><code><a href="classQgsGeometryCheck.html#a9299e644f9cc31edfa02a40f1329955b" class="m-doc">resolutionMethods()</a></code></p><p>A list of names for (automated) resolution methods that can be used to fix errors of this type</p></li><li><p><code><a href="classQgsGeometryCheck.html#aa7b3c69d0c5e4f1feb174f791c835260" class="m-doc">description()</a></code></p><p>A description for the geometry check.</p></li><li><p><code><a href="classQgsGeometryCheck.html#a6955bf434c11fe157b8ffa58549b0bf1" class="m-doc">id()</a></code></p><p>A unique id for this check.</p></li><li><p><code><a href="classQgsGeometryCheck.html#a98b4cb94c365697457473cb492e0a679" class="m-doc">checkType()</a></code></p><p>One of <a href="classQgsGeometryCheck.html#a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e" class="m-doc">QgsGeometryCheck.LayerCheck</a>, <a href="classQgsGeometryCheck.html#a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46" class="m-doc">QgsGeometryCheck.FeatureCheck</a>,<a href="classQgsGeometryCheck.html#a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac" class="m-doc">QgsGeometryCheck.FeatureNodeCheck</a></p></li><li><p><a href="classQgsGeometryCheck.html#a38f46d10fb219d6418c0e66835477e3d" class="m-doc"><code>collectErrors(featurePools, errors, messages, feedback, ids)</code></a></p><p>This method will be called to validate geometries. All geometries which should be validated are passed into this method with the parameter ids and should be retrieved from the available featurePools to make use of caching. New errors should be appended to the error list and other message strings to messages. The method needs to return a tuple (errors, messages).</p></li></ul><h4>Creating a geometry check factory</h4><p>A Geometry check factory manages meta information for checks. There will always be one single geometry check factory created per check type, but it&#x27;s possible that multiple <a href="classQgsGeometryCheck.html" class="m-doc">QgsGeometryCheck</a> instances are created and used in parallel.</p><p>A new subclass of <a href="classQgsGeometryCheckFactory.html" class="m-doc">QgsGeometryCheckFactory</a> needs to be written and at least the following abstract methods need to be implemented:</p><ul><li><p><a href="classQgsGeometryCheckFactory.html#a7264835526053299c69861e2d1babb63" class="m-doc"><code>createGeometryCheck(context, configuration)</code></a></p><p>Needs to return a new subclassed <a href="classQgsGeometryCheck.html" class="m-doc">QgsGeometryCheck</a> object that has been written in the previous step.</p></li><li><p><a href="classQgsGeometryCheckFactory.html#ab0a4122bcf7693f185df0c4fb5547f41" class="m-doc">`id()</a></p><p>A unique id for this geometry check.</p></li><li><p><a href="classQgsGeometryCheckFactory.html#afea7c34eaa970f7dea450089483e4575" class="m-doc">`description()</a></p><p>A description for this geometry check that can be presented to the user for more explanation.</p></li><li><p><a href="classQgsGeometryCheckFactory.html#a0179928a8485f97adfbeaa5da35ea9be" class="m-doc"><code>QgsGeometryCheckFactory::isCompatible(layer)</code></a></p><p>Returns a boolean that determines if this check is available for a given layer. This often checks for the geometry type of the layer.</p></li><li><p><a href="classQgsGeometryCheckFactory.html#adf4c6e980b254611544f942b18a6b571" class="m-doc"><code>flags()</code></a></p><p>Returns additional flags for a geometry check. If unsure return <a href="classQgsGeometryCheck.html#a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b" class="m-doc">QgsGeometryCheck.AvailableInValidation</a>.</p></li><li><p><a href="classQgsGeometryCheckFactory.html#aad06ba2663a06432e757a2d53b1df2a4" class="m-doc"><code>checkType()</code></a></p><p>Returns the type of this geometry check.</p></li></ul><h4>Registering the geometry check</h4><p>Finally the geometry check factory needs to be registered in QGIS, so the system is aware of the available geometry checks.</p><pre class="m-code"><span class="cp"># Make sure you always keep a</span>
+<span class="n">checkFactory</span> <span class="o">=</span> <span class="n">MyGeometryCheckFactory</span><span class="p">()</span>
+<span class="n">QgsAnalysis</span><span class="p">.</span><span class="n">geometryCheckRegistry</span><span class="p">().</span><span class="n">registerGeometryCheck</span><span class="p">(</span><span class="n">checkFactory</span><span class="p">)</span></pre><aside class="m-note m-info"><h4>Note</h4><p>This class is a technology preview and unstable API.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsGeometryGapCheck.html" class="m-doc">QgsGeometryGapCheck</a>
+            </dt>
+            <dd>Checks for gaps between neighbouring polygons.</dd>
+            <dt>
+              class <a href="classQgsGeometryMissingVertexCheck.html" class="m-doc">QgsGeometryMissingVertexCheck</a>
+            </dt>
+            <dd>A topology check for missing vertices.</dd>
+            <dt>
+              class <a href="classQgsGeometryOverlapCheck.html" class="m-doc">QgsGeometryOverlapCheck</a>
+            </dt>
+            <dd>Checks if geometries overlap.</dd>
+            <dt>
+              class <a href="classQgsSingleGeometryCheck.html" class="m-doc">QgsSingleGeometryCheck</a>
+            </dt>
+            <dd>Base class for geometry checks for a single geometry without any context of the layer or other layers in the project.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsGeometryCheck_1_1Change.html" class="m-doc">Change</a>
+            </dt>
+            <dd>Descripts a change to fix a geometry.</dd>
+            <dt>
+              struct <a href="structQgsGeometryCheck_1_1LayerFeatureIds.html" class="m-doc">LayerFeatureIds</a>
+            </dt>
+            <dd>A list of layers and feature ids for each of these layers.</dd>
+            <dt>
+              using <a href="#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a> = QMap&lt;QString, QMap&lt;<a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>, QList&lt;<a href="structQgsGeometryCheck_1_1Change.html" class="m-doc">QgsGeometryCheck::<wbr />Change</a>&gt;&gt;&gt;
+            </dt>
+            <dd>A collection of changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a8fcc860dd19792a6d4ebf671deb10cc3" class="m-doc">ChangeType</a> { </span><span class="m-doc-wrap"><a href="#a8fcc860dd19792a6d4ebf671deb10cc3ac86b1c170be77a24a8a834704e87d09f" class="m-doc">ChangeAdded</a>,
+              <a href="#a8fcc860dd19792a6d4ebf671deb10cc3ae45df7c68f38ed45fc1fc6dbced4b4c5" class="m-doc">ChangeRemoved</a>,
+              <a href="#a8fcc860dd19792a6d4ebf671deb10cc3a0d6677addd344807b9a5cd231bd5f2a8" class="m-doc">ChangeChanged</a> }</span>
+            </dt>
+            <dd>Description of the type of a change.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a59d881b4b3c77d8620d143d02ece653c" class="m-doc">ChangeWhat</a> { </span><span class="m-doc-wrap"><a href="#a59d881b4b3c77d8620d143d02ece653ca9046cebece86eb101fbf87cc8c083b8a" class="m-doc">ChangeFeature</a>,
+              <a href="#a59d881b4b3c77d8620d143d02ece653cad319ee63359166653ea0d890af0f51d0" class="m-doc">ChangePart</a>,
+              <a href="#a59d881b4b3c77d8620d143d02ece653ca49d2608918455c31a8911467a8e0d447" class="m-doc">ChangeRing</a>,
+              <a href="#a59d881b4b3c77d8620d143d02ece653ca3a6df43b826e38d734053157925d23f5" class="m-doc">ChangeNode</a> }</span>
+            </dt>
+            <dd>Description of a change to indicate at which level a change occurred.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a5d8c1863f8c880a3b2b87fdb60265ac3" class="m-doc">CheckType</a> { </span><span class="m-doc-wrap"><a href="#a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac" class="m-doc">FeatureNodeCheck</a>,
+              <a href="#a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46" class="m-doc">FeatureCheck</a>,
+              <a href="#a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e" class="m-doc">LayerCheck</a> }</span>
+            </dt>
+            <dd>The type of a check.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a5a70060933147c9bda6d1cdb195edc40" class="m-doc">Flag</a> { </span><span class="m-doc-wrap"><a href="#a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b" class="m-doc">AvailableInValidation</a> = 1 &lt;&lt; 1 }</span>
+            </dt>
+            <dd>Flags for geometry checks.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ae0440691019211c3e45c5c76c486320b" class="m-doc-self" name="ae0440691019211c3e45c5c76c486320b">QgsGeometryCheck</a>(</span><span class="m-doc-wrap">const <a href="structQgsGeometryCheckContext.html" class="m-doc">QgsGeometryCheckContext</a>* context,
+              const QVariantMap&amp; configuration)</span>
+            </dt>
+            <dd>Create a new geometry check.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a98b4cb94c365697457473cb492e0a679" class="m-doc">checkType</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsGeometryCheck.html#a5d8c1863f8c880a3b2b87fdb60265ac3" class="m-doc">CheckType</a> <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the check type.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a38f46d10fb219d6418c0e66835477e3d" class="m-doc">collectErrors</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              QList&lt;<a href="classQgsGeometryCheckError.html" class="m-doc">QgsGeometryCheckError</a>*&gt;&amp; errors,
+              QStringList&amp; messages,
+              <a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback,
+              const <a href="structQgsGeometryCheck_1_1LayerFeatureIds.html" class="m-doc">LayerFeatureIds</a>&amp; ids = <a href="structQgsGeometryCheck_1_1LayerFeatureIds.html" class="m-doc">QgsGeometryCheck::<wbr />LayerFeatureIds</a>()) const <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>The main worker method.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a77dd5eeacbce9fca7d357e2f190d84b9" class="m-doc">compatibleGeometryTypes</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsWkbTypes.html#a60e72c2f73cb07fdbcdbc2d5068b5d9c" class="m-doc">QgsWkbTypes::<wbr />GeometryType</a>&gt; <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>A list of geometry types for which this check can be performed.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1c9767dd69811d6d0ae6b398c3081e1f" class="m-doc">configurationValue</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              const QVariant&amp; defaultValue = QVariant()) -&gt; T</span>
+            </dt>
+            <dd>Returns the configuration value with the <em>name</em>, saved in the QGIS settings for this geometry check.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab8b239f8793bf2af23246aa45157aae9" class="m-doc">context</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="structQgsGeometryCheckContext.html" class="m-doc">QgsGeometryCheckContext</a>*</span>
+            </dt>
+            <dd>Returns the context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa7b3c69d0c5e4f1feb174f791c835260" class="m-doc">description</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns a human readable description for this check.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a74faa34590d7f4ae69dc55848c5a6006" class="m-doc">fixError</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              <a href="classQgsGeometryCheckError.html" class="m-doc">QgsGeometryCheckError</a>* error,
+              int method,
+              const QMap&lt;QString, int&gt;&amp; mergeAttributeIndices,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Fix the error <em>error</em> with the specified <em>method</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abb92d8bc14440c7a33e08547f37a6f13" class="m-doc-self" name="abb92d8bc14440c7a33e08547f37a6f13">flags</a>(</span><span class="m-doc-wrap">) const -&gt; QgsGeometryCheck::Flags <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Flags for this geometry check.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6955bf434c11fe157b8ffa58549b0bf1" class="m-doc">id</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns an id for this check.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeafbce06f090de57f9634866f39d0ac2" class="m-doc">isCompatible</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns if this geometry check is compatible with <em>layer</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9299e644f9cc31edfa02a40f1329955b" class="m-doc">resolutionMethods</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns a list of descriptions for available resolutions for errors.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6588300b1c3945a736b0859370cb866e" class="m-doc">allLayerFeatureIds</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools) const -&gt; QMap&lt;QString, <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&gt;</span>
+            </dt>
+            <dd>Returns all layers and feature ids.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a07b8422e25ab12b6515e7ab7ec3b4c4a" class="m-doc">deleteFeatureGeometryPart</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              const QString&amp; layerId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              int partIdx,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const</span>
+            </dt>
+            <dd>Deletes a part of a feature geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7cc77f1f308fbcdfa11b52ae66aa08fb" class="m-doc">deleteFeatureGeometryRing</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              const QString&amp; layerId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              int partIdx,
+              int ringIdx,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const</span>
+            </dt>
+            <dd>Deletes a ring in a feature geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2a7ae087ad3612d307c61820d2525d08" class="m-doc">replaceFeatureGeometryPart</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              const QString&amp; layerId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              int partIdx,
+              <a href="classQgsAbstractGeometry.html" class="m-doc">QgsAbstractGeometry</a>* newPartGeom,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const</span>
+            </dt>
+            <dd>Replaces a part in a feature geometry.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab1ce45e7073a0ca796a318841ffe82db" class="m-doc">scaleFactor</a>(</span><span class="m-doc-wrap">const QPointer&lt;<a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>&gt;&amp; layer) const -&gt; double</span>
+            </dt>
+            <dd>Determines the scale factor of a layer to the map coordinate reference system.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a8fcc860dd19792a6d4ebf671deb10cc3"><div>
+            <h3>
+              enum QgsGeometryCheck::<wbr /><a href="#a8fcc860dd19792a6d4ebf671deb10cc3" class="m-doc-self">ChangeType</a>
+            </h3>
+            <p>Description of the type of a change.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>Python bindings since QGIS 3.4</p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a8fcc860dd19792a6d4ebf671deb10cc3ac86b1c170be77a24a8a834704e87d09f" class="m-doc-self" name="a8fcc860dd19792a6d4ebf671deb10cc3ac86b1c170be77a24a8a834704e87d09f">ChangeAdded</a></td>
+                  <td>
+                  <p>Something has been added.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a8fcc860dd19792a6d4ebf671deb10cc3ae45df7c68f38ed45fc1fc6dbced4b4c5" class="m-doc-self" name="a8fcc860dd19792a6d4ebf671deb10cc3ae45df7c68f38ed45fc1fc6dbced4b4c5">ChangeRemoved</a></td>
+                  <td>
+                  <p>Something has been removed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a8fcc860dd19792a6d4ebf671deb10cc3a0d6677addd344807b9a5cd231bd5f2a8" class="m-doc-self" name="a8fcc860dd19792a6d4ebf671deb10cc3a0d6677addd344807b9a5cd231bd5f2a8">ChangeChanged</a></td>
+                  <td>
+                  <p>Something has been updated.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a59d881b4b3c77d8620d143d02ece653c"><div>
+            <h3>
+              enum QgsGeometryCheck::<wbr /><a href="#a59d881b4b3c77d8620d143d02ece653c" class="m-doc-self">ChangeWhat</a>
+            </h3>
+            <p>Description of a change to indicate at which level a change occurred.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>Python bindings since QGIS 3.4</p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a59d881b4b3c77d8620d143d02ece653ca9046cebece86eb101fbf87cc8c083b8a" class="m-doc-self" name="a59d881b4b3c77d8620d143d02ece653ca9046cebece86eb101fbf87cc8c083b8a">ChangeFeature</a></td>
+                  <td>
+                  <p>This change happens on feature level.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a59d881b4b3c77d8620d143d02ece653cad319ee63359166653ea0d890af0f51d0" class="m-doc-self" name="a59d881b4b3c77d8620d143d02ece653cad319ee63359166653ea0d890af0f51d0">ChangePart</a></td>
+                  <td>
+                  <p>This change happens on part level.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a59d881b4b3c77d8620d143d02ece653ca49d2608918455c31a8911467a8e0d447" class="m-doc-self" name="a59d881b4b3c77d8620d143d02ece653ca49d2608918455c31a8911467a8e0d447">ChangeRing</a></td>
+                  <td>
+                  <p>This change happens on ring level.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a59d881b4b3c77d8620d143d02ece653ca3a6df43b826e38d734053157925d23f5" class="m-doc-self" name="a59d881b4b3c77d8620d143d02ece653ca3a6df43b826e38d734053157925d23f5">ChangeNode</a></td>
+                  <td>
+                  <p>This change happens on node level.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5d8c1863f8c880a3b2b87fdb60265ac3"><div>
+            <h3>
+              enum QgsGeometryCheck::<wbr /><a href="#a5d8c1863f8c880a3b2b87fdb60265ac3" class="m-doc-self">CheckType</a>
+            </h3>
+            <p>The type of a check.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>Python bindings since QGIS 3.4</p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac" class="m-doc-self" name="a5d8c1863f8c880a3b2b87fdb60265ac3aa5def7dd3045b4d3d96faeef384e91ac">FeatureNodeCheck</a></td>
+                  <td>
+                  <p>The check controls individual nodes.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46" class="m-doc-self" name="a5d8c1863f8c880a3b2b87fdb60265ac3ad4ffea1a8c295a9c3d24610c9975bc46">FeatureCheck</a></td>
+                  <td>
+                  <p>The check controls geometries as a whole.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e" class="m-doc-self" name="a5d8c1863f8c880a3b2b87fdb60265ac3aa00d2ae748a4bd983108e70ca7b8631e">LayerCheck</a></td>
+                  <td>
+                  <p>The check controls a whole layer (topology checks)</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5a70060933147c9bda6d1cdb195edc40"><div>
+            <h3>
+              enum QgsGeometryCheck::<wbr /><a href="#a5a70060933147c9bda6d1cdb195edc40" class="m-doc-self">Flag</a>
+            </h3>
+            <p>Flags for geometry checks.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b" class="m-doc-self" name="a5a70060933147c9bda6d1cdb195edc40abddb849a6326141017d3c7e68dad8e3b">AvailableInValidation</a></td>
+                  <td>
+                  <p>This geometry check should be available in layer validation on the vector layer peroperties.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Typedef documentation</h2>
+          <section class="m-doc-details" id="a0dee120422a42789a44079d735b456ee"><div>
+            <h3>
+              typedef QMap&lt;QString, QMap&lt;<a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a>, QList&lt;<a href="structQgsGeometryCheck_1_1Change.html" class="m-doc">QgsGeometryCheck::<wbr />Change</a>&gt;&gt;&gt; QgsGeometryCheck::<wbr /><a href="#a0dee120422a42789a44079d735b456ee" class="m-doc-self">Changes</a>
+            </h3>
+            <p>A collection of changes.</p>
+<p>Grouped by layer id and feature id.</p>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a98b4cb94c365697457473cb492e0a679"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsGeometryCheck.html#a5d8c1863f8c880a3b2b87fdb60265ac3" class="m-doc">CheckType</a> QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a98b4cb94c365697457473cb492e0a679" class="m-doc-self">checkType</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the check type.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a38f46d10fb219d6418c0e66835477e3d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a38f46d10fb219d6418c0e66835477e3d" class="m-doc-self">collectErrors</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              QList&lt;<a href="classQgsGeometryCheckError.html" class="m-doc">QgsGeometryCheckError</a>*&gt;&amp; errors,
+              QStringList&amp; messages,
+              <a href="classQgsFeedback.html" class="m-doc">QgsFeedback</a>* feedback,
+              const <a href="structQgsGeometryCheck_1_1LayerFeatureIds.html" class="m-doc">LayerFeatureIds</a>&amp; ids = <a href="structQgsGeometryCheck_1_1LayerFeatureIds.html" class="m-doc">QgsGeometryCheck::<wbr />LayerFeatureIds</a>()) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>The main worker method.</p>
+<p>Check all features available from <em>featurePools</em> and write errors found to <em>errors</em>. Other status messages can be written to <em>messages</em>. Progress should be reported to <em>feedback</em>. Only features and layers listed in <em>ids</em> should be checked.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a77dd5eeacbce9fca7d357e2f190d84b9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsWkbTypes.html#a60e72c2f73cb07fdbcdbc2d5068b5d9c" class="m-doc">QgsWkbTypes::<wbr />GeometryType</a>&gt; QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a77dd5eeacbce9fca7d357e2f190d84b9" class="m-doc-self">compatibleGeometryTypes</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>A list of geometry types for which this check can be performed.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1c9767dd69811d6d0ae6b398c3081e1f"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">T QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c9767dd69811d6d0ae6b398c3081e1f" class="m-doc-self">configurationValue</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              const QVariant&amp; defaultValue = QVariant())</span></span>
+            </h3>
+            <p>Returns the configuration value with the <em>name</em>, saved in the QGIS settings for this geometry check.</p>
+<p>If no configuration could be found, <em>defaultValue</em> is returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab8b239f8793bf2af23246aa45157aae9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="structQgsGeometryCheckContext.html" class="m-doc">QgsGeometryCheckContext</a>* QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab8b239f8793bf2af23246aa45157aae9" class="m-doc-self">context</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the context.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa7b3c69d0c5e4f1feb174f791c835260"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7b3c69d0c5e4f1feb174f791c835260" class="m-doc-self">description</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns a human readable description for this check.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a74faa34590d7f4ae69dc55848c5a6006"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a74faa34590d7f4ae69dc55848c5a6006" class="m-doc-self">fixError</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              <a href="classQgsGeometryCheckError.html" class="m-doc">QgsGeometryCheckError</a>* error,
+              int method,
+              const QMap&lt;QString, int&gt;&amp; mergeAttributeIndices,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Fix the error <em>error</em> with the specified <em>method</em>.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6955bf434c11fe157b8ffa58549b0bf1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6955bf434c11fe157b8ffa58549b0bf1" class="m-doc-self">id</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns an id for this check.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeafbce06f090de57f9634866f39d0ac2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeafbce06f090de57f9634866f39d0ac2" class="m-doc-self">isCompatible</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* layer) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns if this geometry check is compatible with <em>layer</em>.</p>
+<p>By default it checks for the geometry type in <em><a href="classQgsGeometryCheck.html#a77dd5eeacbce9fca7d357e2f190d84b9" class="m-doc">compatibleGeometryTypes()</a></em>.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9299e644f9cc31edfa02a40f1329955b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9299e644f9cc31edfa02a40f1329955b" class="m-doc-self">resolutionMethods</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns a list of descriptions for available resolutions for errors.</p>
+<p>The index will be passed as <code>method</code> to</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsGeometryCheck.html#a74faa34590d7f4ae69dc55848c5a6006" class="m-doc">fixError()</a>.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6588300b1c3945a736b0859370cb866e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QMap&lt;QString, <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&gt; QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6588300b1c3945a736b0859370cb866e" class="m-doc-self">allLayerFeatureIds</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns all layers and feature ids.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a07b8422e25ab12b6515e7ab7ec3b4c4a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a07b8422e25ab12b6515e7ab7ec3b4c4a" class="m-doc-self">deleteFeatureGeometryPart</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              const QString&amp; layerId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              int partIdx,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Deletes a part of a feature geometry.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7cc77f1f308fbcdfa11b52ae66aa08fb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7cc77f1f308fbcdfa11b52ae66aa08fb" class="m-doc-self">deleteFeatureGeometryRing</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              const QString&amp; layerId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              int partIdx,
+              int ringIdx,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Deletes a ring in a feature geometry.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2a7ae087ad3612d307c61820d2525d08"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2a7ae087ad3612d307c61820d2525d08" class="m-doc-self">replaceFeatureGeometryPart</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, <a href="classQgsFeaturePool.html" class="m-doc">QgsFeaturePool</a>*&gt;&amp; featurePools,
+              const QString&amp; layerId,
+              <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature,
+              int partIdx,
+              <a href="classQgsAbstractGeometry.html" class="m-doc">QgsAbstractGeometry</a>* newPartGeom,
+              <a href="classQgsGeometryCheck.html#a0dee120422a42789a44079d735b456ee" class="m-doc">Changes</a>&amp; changes) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Replaces a part in a feature geometry.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab1ce45e7073a0ca796a318841ffe82db"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsGeometryCheck::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab1ce45e7073a0ca796a318841ffe82db" class="m-doc-self">scaleFactor</a>(</span><span class="m-doc-wrap">const QPointer&lt;<a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>&gt;&amp; layer) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Determines the scale factor of a layer to the map coordinate reference system.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

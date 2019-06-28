@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsCurveTransform class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsCurveTransform <span class="m-thin">class</span>
+        </h1>
+        <p>Handles scaling of input values to output values by using a curve created from smoothly joining a number of set control points.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsCurveTransform.html" class="m-doc">QgsCurveTransform</a> assists in creation of curve type transforms, typically seen in raster image editing software (eg the curves dialog in GIMP or Photoshop). Transforms are created by passing a number of set control points through which the transform curve must pass. The curve is guaranteed to exactly pass through these control points. Between control points the curve is smoothly interpolated so that no disjoint sections or &quot;corners&quot; are present.</p><p>If the first or last control point are not located at x = 0 and x = 1 respectively, then values outside this range will be mapped to the y value of either the first or last control point. In other words, the curve will have a flat segment for values outside of the control point range.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aacaca5efb77b1d07ac50ed7492abe2af" class="m-doc">QgsCurveTransform</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Constructs a default <a href="classQgsCurveTransform.html" class="m-doc">QgsCurveTransform</a> which linearly maps values between 0 and 1 unchanged.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a6c1a327f0c35996e303359987c0281f3" class="m-doc">QgsCurveTransform</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; controlPoints)</span>
+            </dt>
+            <dd>Constructs a <a href="classQgsCurveTransform.html" class="m-doc">QgsCurveTransform</a> using a specified list of <em>controlPoints</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#afaaeb846900d255ce0e7ce15f3be1034" class="m-doc-self" name="afaaeb846900d255ce0e7ce15f3be1034">QgsCurveTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsCurveTransform.html" class="m-doc">QgsCurveTransform</a>&amp; other)</span>
+            </dt>
+            <dd>Copy constructor.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acb045d554b8b37163625a8f521a944fb" class="m-doc">addControlPoint</a>(</span><span class="m-doc-wrap">double x,
+              double y)</span>
+            </dt>
+            <dd>Adds a control point to the transform.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afe16e29cd11ec7efbd1dfc7d9936be22" class="m-doc">controlPoints</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;</span>
+            </dt>
+            <dd>Returns a list of the control points for the transform.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad1c32b797b1725689285b375f6b76536" class="m-doc">loadVariant</a>(</span><span class="m-doc-wrap">const QVariant&amp; transformer) -&gt; bool</span>
+            </dt>
+            <dd>Load this curve transformer from a QVariantMap, wrapped in a QVariant.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0740a48d81964ea2e8a367257a731843" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; elem,
+              const QDomDocument&amp; doc) -&gt; bool</span>
+            </dt>
+            <dd>Reads the curve&#x27;s state from an XML element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac0310e32a7f436a0d0c08e50276fe8a2" class="m-doc">removeControlPoint</a>(</span><span class="m-doc-wrap">double x,
+              double y)</span>
+            </dt>
+            <dd>Removes a control point from the transform.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a39efcd5b8f82868b5b0c47c99d05db84" class="m-doc">setControlPoints</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; points)</span>
+            </dt>
+            <dd>Sets the list of control points for the transform.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5aef5f113fa70028088ba7320ccd92eb" class="m-doc">toVariant</a>(</span><span class="m-doc-wrap">) const -&gt; QVariant</span>
+            </dt>
+            <dd>Saves this curve transformer to a QVariantMap, wrapped in a QVariant.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a84a5d455d6a367e9582875c6c87f3598" class="m-doc">writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; transformElem,
+              QDomDocument&amp; doc) const -&gt; bool</span>
+            </dt>
+            <dd>Writes the current state of the transform into an XML element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acc2f3a3c4948ab867395b56a41eaa4b4" class="m-doc-self" name="acc2f3a3c4948ab867395b56a41eaa4b4">y</a>(</span><span class="m-doc-wrap">double x) const -&gt; double</span>
+            </dt>
+            <dd>Returns the mapped y value corresponding to the specified <em>x</em> value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa7ec75d1f751e7e57721f47419f63851" class="m-doc">y</a>(</span><span class="m-doc-wrap">const QVector&lt;double&gt;&amp; x) const -&gt; QVector&lt;double&gt;</span>
+            </dt>
+            <dd>Returns a list of y values corresponding to a list of <em>x</em> values.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="aacaca5efb77b1d07ac50ed7492abe2af"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aacaca5efb77b1d07ac50ed7492abe2af" class="m-doc-self">QgsCurveTransform</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Constructs a default <a href="classQgsCurveTransform.html" class="m-doc">QgsCurveTransform</a> which linearly maps values between 0 and 1 unchanged.</p>
+<p>I.e. y == x.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6c1a327f0c35996e303359987c0281f3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6c1a327f0c35996e303359987c0281f3" class="m-doc-self">QgsCurveTransform</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; controlPoints)</span></span>
+            </h3>
+            <p>Constructs a <a href="classQgsCurveTransform.html" class="m-doc">QgsCurveTransform</a> using a specified list of <em>controlPoints</em>.</p>
+<p>Behavior is undefined if duplicate x values exist in the control points list.</p>
+          </div></section>
+          <section class="m-doc-details" id="acb045d554b8b37163625a8f521a944fb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acb045d554b8b37163625a8f521a944fb" class="m-doc-self">addControlPoint</a>(</span><span class="m-doc-wrap">double x,
+              double y)</span></span>
+            </h3>
+            <p>Adds a control point to the transform.</p>
+<p>Behavior is undefined if duplicate x values exist in the control points list.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#ac0310e32a7f436a0d0c08e50276fe8a2" class="m-doc">removeControlPoint()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afe16e29cd11ec7efbd1dfc7d9936be22"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt; QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afe16e29cd11ec7efbd1dfc7d9936be22" class="m-doc-self">controlPoints</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of the control points for the transform.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#a39efcd5b8f82868b5b0c47c99d05db84" class="m-doc">setControlPoints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad1c32b797b1725689285b375f6b76536"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad1c32b797b1725689285b375f6b76536" class="m-doc-self">loadVariant</a>(</span><span class="m-doc-wrap">const QVariant&amp; transformer)</span></span>
+            </h3>
+            <p>Load this curve transformer from a QVariantMap, wrapped in a QVariant.</p>
+<p>You can use <a href="classQgsXmlUtils.html#a4192d177c2475a2825cc1ba9972d97b9" class="m-doc">QgsXmlUtils::<wbr />writeVariant</a> to load it from an XML document.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#a5aef5f113fa70028088ba7320ccd92eb" class="m-doc">toVariant()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0740a48d81964ea2e8a367257a731843"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0740a48d81964ea2e8a367257a731843" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomElement&amp; elem,
+              const QDomDocument&amp; doc)</span></span>
+            </h3>
+            <p>Reads the curve&#x27;s state from an XML element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">elem</td>
+                  <td>source DOM element for transform&#x27;s state</td>
+                </tr>
+                <tr>
+                  <td>doc</td>
+                  <td>DOM document</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#a84a5d455d6a367e9582875c6c87f3598" class="m-doc">writeXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac0310e32a7f436a0d0c08e50276fe8a2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac0310e32a7f436a0d0c08e50276fe8a2" class="m-doc-self">removeControlPoint</a>(</span><span class="m-doc-wrap">double x,
+              double y)</span></span>
+            </h3>
+            <p>Removes a control point from the transform.</p>
+<p>This will have no effect if a matching control point does not exist.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#acb045d554b8b37163625a8f521a944fb" class="m-doc">addControlPoint()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a39efcd5b8f82868b5b0c47c99d05db84"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a39efcd5b8f82868b5b0c47c99d05db84" class="m-doc-self">setControlPoints</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&gt;&amp; points)</span></span>
+            </h3>
+            <p>Sets the list of control points for the transform.</p>
+<p>Any existing points are removed.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#afe16e29cd11ec7efbd1dfc7d9936be22" class="m-doc">controlPoints()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5aef5f113fa70028088ba7320ccd92eb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5aef5f113fa70028088ba7320ccd92eb" class="m-doc-self">toVariant</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Saves this curve transformer to a QVariantMap, wrapped in a QVariant.</p>
+<p>You can use <a href="classQgsXmlUtils.html#a4192d177c2475a2825cc1ba9972d97b9" class="m-doc">QgsXmlUtils::<wbr />writeVariant</a> to save it to an XML document.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#ad1c32b797b1725689285b375f6b76536" class="m-doc">loadVariant()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a84a5d455d6a367e9582875c6c87f3598"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a84a5d455d6a367e9582875c6c87f3598" class="m-doc-self">writeXml</a>(</span><span class="m-doc-wrap">QDomElement&amp; transformElem,
+              QDomDocument&amp; doc) const</span></span>
+            </h3>
+            <p>Writes the current state of the transform into an XML element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">transformElem</td>
+                  <td>destination element for the transform&#x27;s state</td>
+                </tr>
+                <tr>
+                  <td>doc</td>
+                  <td>DOM document</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCurveTransform.html#a0740a48d81964ea2e8a367257a731843" class="m-doc">readXml()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa7ec75d1f751e7e57721f47419f63851"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVector&lt;double&gt; QgsCurveTransform::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7ec75d1f751e7e57721f47419f63851" class="m-doc-self">y</a>(</span><span class="m-doc-wrap">const QVector&lt;double&gt;&amp; x) const</span></span>
+            </h3>
+            <p>Returns a list of y values corresponding to a list of <em>x</em> values.</p>
+<p>Calling this method is faster then calling the double variant multiple times.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

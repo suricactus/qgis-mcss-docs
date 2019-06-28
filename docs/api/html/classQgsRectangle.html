@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsRectangle class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsRectangle <span class="m-thin">class</span>
+        </h1>
+        <p>A rectangle specified with double values.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> is used to store a rectangle when double values are required. Examples are storing a layer extent or the current view extent of a map</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsBox3d.html" class="m-doc">QgsBox3d</a></p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsReferencedRectangle.html" class="m-doc">QgsReferencedRectangle</a>
+            </dt>
+            <dd>A <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> with associated coordinate reference system.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ab3a63a0898596bf500c2335aaecc9553" class="m-doc">fromCenterAndSize</a>(</span><span class="m-doc-wrap"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> center,
+              double width,
+              double height) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Creates a new rectangle, given the specified <em>center</em> point and <em>width</em> and <em>height</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a448199084b4bb98ecb223620cc3463c7" class="m-doc">fromWkt</a>(</span><span class="m-doc-wrap">const QString&amp; wkt) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Creates a new rectangle from a <em>wkt</em> string.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a1a1d6859809da156d0f8bde5ce23e806" class="m-doc-self" name="a1a1d6859809da156d0f8bde5ce23e806">QgsRectangle</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Constructor for a null rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a5fd6aa775689c2dc21193fe929cdd07b" class="m-doc-self" name="a5fd6aa775689c2dc21193fe929cdd07b">QgsRectangle</a>(</span><span class="m-doc-wrap">double xMin,
+              double yMin = 0,
+              double xMax = 0,
+              double yMax = 0) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a3a7d7e5f02e864286247856846ad59c0" class="m-doc-self" name="a3a7d7e5f02e864286247856846ad59c0">QgsRectangle</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2)</span>
+            </dt>
+            <dd>Construct a rectangle from two points. The rectangle is normalized after construction.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ac751a997038fd33bb115bb92c5fd8040" class="m-doc-self" name="ac751a997038fd33bb115bb92c5fd8040">QgsRectangle</a>(</span><span class="m-doc-wrap">const QRectF&amp; qRectF)</span>
+            </dt>
+            <dd>Construct a rectangle from a QRectF. The rectangle is normalized after construction.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a821ed12db2a93e13f0c37d13bb30a2fc" class="m-doc-self" name="a821ed12db2a93e13f0c37d13bb30a2fc">QgsRectangle</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; other)</span>
+            </dt>
+            <dd>Copy constructor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a66a7616da5ee2e9a6334062b82931ac6" class="m-doc-self" name="a66a7616da5ee2e9a6334062b82931ac6">operator QVariant</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd>Allows direct construction of QVariants from rectangles.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1c4612bf5f32ceb2ebc47b2730b2c970" class="m-doc">area</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the area of the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acd72740e6d6c37b9e5417ee222a1bdc1" class="m-doc-self" name="acd72740e6d6c37b9e5417ee222a1bdc1">asPolygon</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the rectangle as a polygon.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a82408b9bfc72549234ad4d3f114deaa8" class="m-doc-self" name="a82408b9bfc72549234ad4d3f114deaa8">asWktCoordinates</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a string representation of the rectangle in WKT format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7a9a575d4a0a062160765422079321b6" class="m-doc-self" name="a7a9a575d4a0a062160765422079321b6">asWktPolygon</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a string representation of the rectangle as a WKT Polygon.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad576d37943d703cff35df26dfced144b" class="m-doc">buffered</a>(</span><span class="m-doc-wrap">double width) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Gets rectangle enlarged by buffer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9b5148e60e6a0cc49cfc6c06bcc93f5d" class="m-doc-self" name="a9b5148e60e6a0cc49cfc6c06bcc93f5d">center</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>Returns the center point of the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab8a73ddc15774addc822550266f886c9" class="m-doc-self" name="ab8a73ddc15774addc822550266f886c9">combineExtentWith</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rect)</span>
+            </dt>
+            <dd>Expands the rectangle so that it covers both the original rectangle and the given rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a36a06e763f5625f7a29f2fd32dca14ed" class="m-doc-self" name="a36a06e763f5625f7a29f2fd32dca14ed">combineExtentWith</a>(</span><span class="m-doc-wrap">double x,
+              double y)</span>
+            </dt>
+            <dd>Expands the rectangle so that it covers both the original rectangle and the given point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a18e7b49528cd0fa65d7c48641d12a139" class="m-doc">combineExtentWith</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; point)</span>
+            </dt>
+            <dd>Expands the rectangle so that it covers both the original rectangle and the given point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a12889d757ef465b9cc9804bbba564ad8" class="m-doc-self" name="a12889d757ef465b9cc9804bbba564ad8">contains</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rect) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true when rectangle contains other rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad2f4459cf03ac0ebb84e2a4e36e4f1a9" class="m-doc-self" name="ad2f4459cf03ac0ebb84e2a4e36e4f1a9">contains</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true when rectangle contains a point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9e2c2922e47ed8aedcd41f2f4c49d143" class="m-doc">grow</a>(</span><span class="m-doc-wrap">double delta)</span>
+            </dt>
+            <dd>Grows the rectangle in place by the specified amount.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0a64f974edb994e38e3c418e48396d8" class="m-doc">height</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the height of the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a26b96e47b68fb4fc95756b9c20bd1fbd" class="m-doc-self" name="a26b96e47b68fb4fc95756b9c20bd1fbd">include</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p)</span>
+            </dt>
+            <dd>Updates the rectangle to include the specified point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad62419b14bc17f923346f8a233383382" class="m-doc-self" name="ad62419b14bc17f923346f8a233383382">intersect</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rect) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns the intersection with the given rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5ac7b7fec02a03b4b7922c3edb5ed07a" class="m-doc-self" name="a5ac7b7fec02a03b4b7922c3edb5ed07a">intersects</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rect) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true when rectangle intersects with other rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aef2567ca2b950376232f55539c4cf5cc" class="m-doc-self" name="aef2567ca2b950376232f55539c4cf5cc">invert</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Swap x/y coordinates in the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac5d660b2ad11bf1e1db7f61e03e12ba6" class="m-doc">isEmpty</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the rectangle is empty.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af56b3de7c7b2621d6df4257cb9305702" class="m-doc">isFinite</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the rectangle has finite boundaries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a808de027f7a917117cda880b6156c780" class="m-doc">isNull</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Test if the rectangle is null (all coordinates zero or after call to <a href="classQgsRectangle.html#a67942f7c288e36e6df8079e3527f8080" class="m-doc">setMinimal()</a>).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac38fa16ed393aee77071cc2549cc03e6" class="m-doc-self" name="ac38fa16ed393aee77071cc2549cc03e6">normalize</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Normalize the rectangle so it has non-negative width/height.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6d4e9742658343e3560a5de3d7d7cb40" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; r1) const -&gt; bool</span>
+            </dt>
+            <dd>Comparison operator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aed013671b0a8b28fef61724c38c24c03" class="m-doc">operator+</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns a rectangle offset from this one in the direction of the vector.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a190db9ce9f94d6757ed8580b1c780765" class="m-doc">operator+=</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp;</span>
+            </dt>
+            <dd>Moves this rectangle in the direction of the vector.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a831221e07a05884ade1a3985ac8a689d" class="m-doc">operator-</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns a rectangle offset from this one in the direction of the reversed vector.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5b5d065971acadc0d47d6cc2d761209a" class="m-doc">operator-=</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp;</span>
+            </dt>
+            <dd>Moves this rectangle in the direction of the reversed vector.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab9ecf5a5197d2341136f89a5e75a9e1d" class="m-doc">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; r1) -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aaa4dc6dd0247d385f8196739612de3ff" class="m-doc">operator==</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; r1) const -&gt; bool</span>
+            </dt>
+            <dd>Comparison operator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab8bc9a2b55c7afd9611a7844dd4c112c" class="m-doc">perimeter</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the perimeter of the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a089518bf2969bedf1e63cd5089ca86bd" class="m-doc-self" name="a089518bf2969bedf1e63cd5089ca86bd">scale</a>(</span><span class="m-doc-wrap">double scaleFactor,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>* c = nullptr)</span>
+            </dt>
+            <dd>Scale the rectangle around its center point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad5c7173f0d0f45366d2b3f00ea9220e9" class="m-doc-self" name="ad5c7173f0d0f45366d2b3f00ea9220e9">scale</a>(</span><span class="m-doc-wrap">double scaleFactor,
+              double centerX,
+              double centerY)</span>
+            </dt>
+            <dd>Scale the rectangle around its center point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8d0e37033940732e69cf6d1102e72fb6" class="m-doc">scaled</a>(</span><span class="m-doc-wrap">double scaleFactor,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>* center = nullptr) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Scale the rectangle around its <em>center</em> point.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aac7df78decdde71b9daa17513628792b" class="m-doc">set</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2)</span>
+            </dt>
+            <dd>Sets the rectangle from two QgsPoints.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a63e2223f69a7ddbf0c67e706bcf65d8c" class="m-doc">set</a>(</span><span class="m-doc-wrap">double xMin,
+              double yMin,
+              double xMax,
+              double yMax)</span>
+            </dt>
+            <dd>Sets the rectangle from four points.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a67942f7c288e36e6df8079e3527f8080" class="m-doc">setMinimal</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Set a rectangle so that min corner is at max and max corner is at min.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9c1b3bd829629195ef2d4a0457e3fc4d" class="m-doc-self" name="a9c1b3bd829629195ef2d4a0457e3fc4d">setXMaximum</a>(</span><span class="m-doc-wrap">double x)</span>
+            </dt>
+            <dd>Set the maximum x value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a75af88bdca2341c2a2ec861c8d8b204f" class="m-doc-self" name="a75af88bdca2341c2a2ec861c8d8b204f">setXMinimum</a>(</span><span class="m-doc-wrap">double x)</span>
+            </dt>
+            <dd>Set the minimum x value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8ed0c626e63ff10cd47942b634e16cc3" class="m-doc-self" name="a8ed0c626e63ff10cd47942b634e16cc3">setYMaximum</a>(</span><span class="m-doc-wrap">double y)</span>
+            </dt>
+            <dd>Set the maximum y value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4c326f205269549e2bdcd83cec406169" class="m-doc-self" name="a4c326f205269549e2bdcd83cec406169">setYMinimum</a>(</span><span class="m-doc-wrap">double y)</span>
+            </dt>
+            <dd>Set the minimum y value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae1333a6317c936e0120c09b724d40e0c" class="m-doc">snappedToGrid</a>(</span><span class="m-doc-wrap">double spacing) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns a copy of this rectangle that is snapped to a grid with the specified <em>spacing</em> between the grid lines.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3bd100280f1f4999c2b86dda2e6130e4" class="m-doc">toBox3d</a>(</span><span class="m-doc-wrap">double zMin,
+              double zMax) const -&gt; <a href="classQgsBox3d.html" class="m-doc">QgsBox3d</a></span>
+            </dt>
+            <dd>Converts the rectangle to a 3D box, with the specified <em>zMin</em> and <em>zMax</em> z values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7f948ea549d50e8f53ba5317ead3f284" class="m-doc-self" name="a7f948ea549d50e8f53ba5317ead3f284">toRectF</a>(</span><span class="m-doc-wrap">) const -&gt; QRectF</span>
+            </dt>
+            <dd>Returns a QRectF with same coordinates as the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a05a40e45995b2b25689467caa297a93e" class="m-doc">toString</a>(</span><span class="m-doc-wrap">int precision = 16) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a string representation of form xmin,ymin : xmax,ymax Coordinates will be truncated to the specified precision.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7f80945a6f9149707a29d16706b3bafd" class="m-doc">width</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the width of the rectangle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7fe11d0cd4fb7146dca5516c3eb03347" class="m-doc-self" name="a7fe11d0cd4fb7146dca5516c3eb03347">xMaximum</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the x maximum value (right side of rectangle).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3186f5474a5fa3ced21e8204d339c301" class="m-doc-self" name="a3186f5474a5fa3ced21e8204d339c301">xMinimum</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the x minimum value (left side of rectangle).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a87a5cf3ee2fe6494c04a9e88876cc54e" class="m-doc-self" name="a87a5cf3ee2fe6494c04a9e88876cc54e">yMaximum</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the y maximum value (top side of rectangle).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a601966d81267b649960ec2d409208350" class="m-doc-self" name="a601966d81267b649960ec2d409208350">yMinimum</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the y minimum value (bottom side of rectangle).</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ab3a63a0898596bf500c2335aaecc9553"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab3a63a0898596bf500c2335aaecc9553" class="m-doc-self">fromCenterAndSize</a>(</span><span class="m-doc-wrap"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> center,
+              double width,
+              double height)</span></span>
+            </h3>
+            <p>Creates a new rectangle, given the specified <em>center</em> point and <em>width</em> and <em>height</em>.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a448199084b4bb98ecb223620cc3463c7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a448199084b4bb98ecb223620cc3463c7" class="m-doc-self">fromWkt</a>(</span><span class="m-doc-wrap">const QString&amp; wkt)</span></span>
+            </h3>
+            <p>Creates a new rectangle from a <em>wkt</em> string.</p>
+<p>The WKT must contain only 5 vertices, representing a rectangle aligned with X and Y axes.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1c4612bf5f32ceb2ebc47b2730b2c970"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c4612bf5f32ceb2ebc47b2730b2c970" class="m-doc-self">area</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the area of the rectangle.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRectangle.html#a7f80945a6f9149707a29d16706b3bafd" class="m-doc">width()</a></p><p><a href="classQgsRectangle.html#ad0a64f974edb994e38e3c418e48396d8" class="m-doc">height()</a></p><p><a href="classQgsRectangle.html#ab8bc9a2b55c7afd9611a7844dd4c112c" class="m-doc">perimeter()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad576d37943d703cff35df26dfced144b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad576d37943d703cff35df26dfced144b" class="m-doc-self">buffered</a>(</span><span class="m-doc-wrap">double width) const</span></span>
+            </h3>
+            <p>Gets rectangle enlarged by buffer.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>In earlier QGIS releases this method was named buffer().</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRectangle.html#a9e2c2922e47ed8aedcd41f2f4c49d143" class="m-doc">grow()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a18e7b49528cd0fa65d7c48641d12a139"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a18e7b49528cd0fa65d7c48641d12a139" class="m-doc-self">combineExtentWith</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; point)</span></span>
+            </h3>
+            <p>Expands the rectangle so that it covers both the original rectangle and the given point.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.2</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9e2c2922e47ed8aedcd41f2f4c49d143"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e2c2922e47ed8aedcd41f2f4c49d143" class="m-doc-self">grow</a>(</span><span class="m-doc-wrap">double delta)</span></span>
+            </h3>
+            <p>Grows the rectangle in place by the specified amount.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRectangle.html#ad576d37943d703cff35df26dfced144b" class="m-doc">buffered()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad0a64f974edb994e38e3c418e48396d8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0a64f974edb994e38e3c418e48396d8" class="m-doc-self">height</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the height of the rectangle.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRectangle.html#a7f80945a6f9149707a29d16706b3bafd" class="m-doc">width()</a></p><p><a href="classQgsRectangle.html#a1c4612bf5f32ceb2ebc47b2730b2c970" class="m-doc">area()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac5d660b2ad11bf1e1db7f61e03e12ba6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac5d660b2ad11bf1e1db7f61e03e12ba6" class="m-doc-self">isEmpty</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the rectangle is empty.</p>
+<p>An empty rectangle may still be non-null if it contains valid information (e.g. bounding box of a point).</p>
+          </div></section>
+          <section class="m-doc-details" id="af56b3de7c7b2621d6df4257cb9305702"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af56b3de7c7b2621d6df4257cb9305702" class="m-doc-self">isFinite</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the rectangle has finite boundaries.</p>
+<p>Will return false if any of the rectangle boundaries are NaN or Inf.</p>
+          </div></section>
+          <section class="m-doc-details" id="a808de027f7a917117cda880b6156c780"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a808de027f7a917117cda880b6156c780" class="m-doc-self">isNull</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Test if the rectangle is null (all coordinates zero or after call to <a href="classQgsRectangle.html#a67942f7c288e36e6df8079e3527f8080" class="m-doc">setMinimal()</a>).</p>
+<p>A null rectangle is also an empty rectangle.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6d4e9742658343e3560a5de3d7d7cb40"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d4e9742658343e3560a5de3d7d7cb40" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; r1) const</span></span>
+            </h3>
+            <p>Comparison operator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>False if rectangles are equal</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aed013671b0a8b28fef61724c38c24c03"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aed013671b0a8b28fef61724c38c24c03" class="m-doc-self">operator+</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v) const</span></span>
+            </h3>
+            <p>Returns a rectangle offset from this one in the direction of the vector.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a190db9ce9f94d6757ed8580b1c780765"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a190db9ce9f94d6757ed8580b1c780765" class="m-doc-self">operator+=</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v)</span></span>
+            </h3>
+            <p>Moves this rectangle in the direction of the vector.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a831221e07a05884ade1a3985ac8a689d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a831221e07a05884ade1a3985ac8a689d" class="m-doc-self">operator-</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v) const</span></span>
+            </h3>
+            <p>Returns a rectangle offset from this one in the direction of the reversed vector.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5b5d065971acadc0d47d6cc2d761209a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5b5d065971acadc0d47d6cc2d761209a" class="m-doc-self">operator-=</a>(</span><span class="m-doc-wrap"><a href="classQgsVector.html" class="m-doc">QgsVector</a> v)</span></span>
+            </h3>
+            <p>Moves this rectangle in the direction of the reversed vector.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab9ecf5a5197d2341136f89a5e75a9e1d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab9ecf5a5197d2341136f89a5e75a9e1d" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; r1)</span></span>
+            </h3>
+            <p>Assignment operator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">r1</td>
+                  <td><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> to assign from</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aaa4dc6dd0247d385f8196739612de3ff"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaa4dc6dd0247d385f8196739612de3ff" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; r1) const</span></span>
+            </h3>
+            <p>Comparison operator.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if rectangles are equal</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab8bc9a2b55c7afd9611a7844dd4c112c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab8bc9a2b55c7afd9611a7844dd4c112c" class="m-doc-self">perimeter</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the perimeter of the rectangle.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRectangle.html#a1c4612bf5f32ceb2ebc47b2730b2c970" class="m-doc">area()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8d0e37033940732e69cf6d1102e72fb6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8d0e37033940732e69cf6d1102e72fb6" class="m-doc-self">scaled</a>(</span><span class="m-doc-wrap">double scaleFactor,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>* center = nullptr) const</span></span>
+            </h3>
+            <p>Scale the rectangle around its <em>center</em> point.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aac7df78decdde71b9daa17513628792b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aac7df78decdde71b9daa17513628792b" class="m-doc-self">set</a>(</span><span class="m-doc-wrap">const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p1,
+              const <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a>&amp; p2)</span></span>
+            </h3>
+            <p>Sets the rectangle from two QgsPoints.</p>
+<p>The rectangle is normalised after construction.</p>
+          </div></section>
+          <section class="m-doc-details" id="a63e2223f69a7ddbf0c67e706bcf65d8c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a63e2223f69a7ddbf0c67e706bcf65d8c" class="m-doc-self">set</a>(</span><span class="m-doc-wrap">double xMin,
+              double yMin,
+              double xMax,
+              double yMax)</span></span>
+            </h3>
+            <p>Sets the rectangle from four points.</p>
+<p>The rectangle is normalised after construction.</p>
+          </div></section>
+          <section class="m-doc-details" id="a67942f7c288e36e6df8079e3527f8080"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a67942f7c288e36e6df8079e3527f8080" class="m-doc-self">setMinimal</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Set a rectangle so that min corner is at max and max corner is at min.</p>
+<p>It is NOT normalized.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae1333a6317c936e0120c09b724d40e0c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae1333a6317c936e0120c09b724d40e0c" class="m-doc-self">snappedToGrid</a>(</span><span class="m-doc-wrap">double spacing) const</span></span>
+            </h3>
+            <p>Returns a copy of this rectangle that is snapped to a grid with the specified <em>spacing</em> between the grid lines.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3bd100280f1f4999c2b86dda2e6130e4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsBox3d.html" class="m-doc">QgsBox3d</a> QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3bd100280f1f4999c2b86dda2e6130e4" class="m-doc-self">toBox3d</a>(</span><span class="m-doc-wrap">double zMin,
+              double zMax) const</span></span>
+            </h3>
+            <p>Converts the rectangle to a 3D box, with the specified <em>zMin</em> and <em>zMax</em> z values.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a05a40e45995b2b25689467caa297a93e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a05a40e45995b2b25689467caa297a93e" class="m-doc-self">toString</a>(</span><span class="m-doc-wrap">int precision = 16) const</span></span>
+            </h3>
+            <p>Returns a string representation of form xmin,ymin : xmax,ymax Coordinates will be truncated to the specified precision.</p>
+<p>If the specified precision is less than 0, a suitable minimum precision is used.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7f80945a6f9149707a29d16706b3bafd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsRectangle::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7f80945a6f9149707a29d16706b3bafd" class="m-doc-self">width</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the width of the rectangle.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsRectangle.html#ad0a64f974edb994e38e3c418e48396d8" class="m-doc">height()</a></p><p><a href="classQgsRectangle.html#a1c4612bf5f32ceb2ebc47b2730b2c970" class="m-doc">area()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

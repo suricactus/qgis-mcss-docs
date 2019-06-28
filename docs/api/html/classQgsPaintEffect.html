@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsPaintEffect class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsPaintEffect <span class="m-thin">class</span>
+        </h1>
+        <p>Base class for visual effects which can be applied to QPicture drawings.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a> objects can be used to modify QPicture drawings prior to rendering them with a QPainter operation. There are two methods for drawing using an effect, either drawing a picture directly, or by intercepting drawing operations to a render context.</p><p>To directly draw a picture, use the <a href="classQgsPaintEffect.html#a8c72a0ad77d041425eb8333adcb7d2ff" class="m-doc">render()</a> method with a source QPicture and destination render context.</p><p>Intercepting drawing operations to a render context is achieved by first calling the <a href="classQgsPaintEffect.html#a425bfa8d03538b48923fb1fd74d573d5" class="m-doc">begin()</a> method, passing a render context. Any drawing operations performed on the render context will not directly affect the context&#x27;s paint device. When the drawing operations have been completed, call the <a href="classQgsPaintEffect.html#a99d751b7346141fecb2d32c2964b947f" class="m-doc">end()</a> method. This will perform the paint effect on the intercepted drawing operations and render the result to the render context&#x27;s paint device.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffectRegistry.html" class="m-doc">QgsPaintEffectRegistry</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.9</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsBlurEffect.html" class="m-doc">QgsBlurEffect</a>
+            </dt>
+            <dd>A paint effect which blurs a source picture, using a number of different blur methods.</dd>
+            <dt>
+              class <a href="classQgsColorEffect.html" class="m-doc">QgsColorEffect</a>
+            </dt>
+            <dd>A paint effect which alters the colors (e.g., brightness, contrast) in a source picture.</dd>
+            <dt>
+              class <a href="classQgsDrawSourceEffect.html" class="m-doc">QgsDrawSourceEffect</a>
+            </dt>
+            <dd>A paint effect which draws the source picture with minor or no alterations.</dd>
+            <dt>
+              class <a href="classQgsEffectStack.html" class="m-doc">QgsEffectStack</a>
+            </dt>
+            <dd>A paint effect which consists of a stack of other chained paint effects.</dd>
+            <dt>
+              class <a href="classQgsGlowEffect.html" class="m-doc">QgsGlowEffect</a>
+            </dt>
+            <dd>Base class for paint effect which draw a glow inside or outside a picture.</dd>
+            <dt>
+              class <a href="classQgsShadowEffect.html" class="m-doc">QgsShadowEffect</a>
+            </dt>
+            <dd>Base class for paint effects which offset, blurred shadows.</dd>
+            <dt>
+              class <a href="classQgsTransformEffect.html" class="m-doc">QgsTransformEffect</a>
+            </dt>
+            <dd>A paint effect which applies transformations (such as move, scale and rotate) to a picture.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#aef41c2d12d4241a4f80e00fbc56b0982" class="m-doc">DrawMode</a> { </span><span class="m-doc-wrap"><a href="#aef41c2d12d4241a4f80e00fbc56b0982a55e2fe67bb81e4bf22ac0934e9469327" class="m-doc">Modifier</a>,
+              <a href="#aef41c2d12d4241a4f80e00fbc56b0982a4daa726e138125db565a732921d12b00" class="m-doc">Render</a>,
+              <a href="#aef41c2d12d4241a4f80e00fbc56b0982a7d76ef7c905d15d8aca171036debede0" class="m-doc">ModifyAndRender</a> }</span>
+            </dt>
+            <dd>Drawing modes for effects.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a017fc678352720c740de3362c3e18442" class="m-doc-self" name="a017fc678352720c740de3362c3e18442">QgsPaintEffect</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-info">defaulted</span></span>
+            </dt>
+            <dd>Constructor for <a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a425bfa8d03538b48923fb1fd74d573d5" class="m-doc">begin</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Begins intercepting paint operations to a render context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7b2b7697df9bff751b9bbbcccccfdc88" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Duplicates an effect by creating a deep copy of the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8ec1443e5c5ff1212add50a713b1700c" class="m-doc">drawMode</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsPaintEffect.html#aef41c2d12d4241a4f80e00fbc56b0982" class="m-doc">DrawMode</a></span>
+            </dt>
+            <dd>Returns the draw mode for the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aab11df83128d9bb53a90d76fca211986" class="m-doc">enabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the effect is enabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a99d751b7346141fecb2d32c2964b947f" class="m-doc">end</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Ends interception of paint operations to a render context, and draws the result to the render context after being modified by the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a442466a24f26991098292419cce2b407" class="m-doc">properties</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a> <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the properties describing the paint effect encoded in a string format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7c11b9321444d5069f741cd5f6bf8614" class="m-doc">readProperties</a>(</span><span class="m-doc-wrap">const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; props) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Reads a string map of an effect&#x27;s properties and restores the effect to the state described by the properties map.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1958ff32795826542e58642e8bcdd99c" class="m-doc">readProperties</a>(</span><span class="m-doc-wrap">const QDomElement&amp; element) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Restores the effect to the state described by a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8c72a0ad77d041425eb8333adcb7d2ff" class="m-doc">render</a>(</span><span class="m-doc-wrap">QPicture&amp; picture,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Renders a picture using the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3183a56cb881bf2c6fa30e119ec9109a" class="m-doc">saveProperties</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              QDomElement&amp; element) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Saves the current state of the effect to a DOM element.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0e0eba1cbbc19e2ae1c54715e91d9921" class="m-doc">setDrawMode</a>(</span><span class="m-doc-wrap"><a href="classQgsPaintEffect.html#aef41c2d12d4241a4f80e00fbc56b0982" class="m-doc">DrawMode</a> drawMode)</span>
+            </dt>
+            <dd>Sets the draw mode for the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a27eb0c4c8b423968a510f9b1c227644b" class="m-doc">setEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether the effect is enabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af814e71abb9cf4674c74d088296b6bbf" class="m-doc">type</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the effect type.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acefb25d50d01507f2d664a79c773390a" class="m-doc">boundingRect</a>(</span><span class="m-doc-wrap">const QRectF&amp; rect,
+              const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QRectF <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the bounding rect required for drawing the effect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af5539f4985268b89f836c1c30827b96c" class="m-doc">draw</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Handles drawing of the effect&#x27;s result on to the specified render context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a33a7179181f0cafed64ee16ec0042e5d" class="m-doc">drawSource</a>(</span><span class="m-doc-wrap">QPainter&amp; painter)</span>
+            </dt>
+            <dd>Draws the source QPicture onto the specified painter.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad5e1ae12d59feeb077a2175cb54ba48f" class="m-doc">fixQPictureDpi</a>(</span><span class="m-doc-wrap">QPainter* painter) const</span>
+            </dt>
+            <dd>Applies a workaround to a QPainter to avoid an issue with incorrect scaling when drawing QPictures.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a87b6fdf7089eea8917b226779d7d4766" class="m-doc">imageOffset</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const -&gt; QPointF</span>
+            </dt>
+            <dd>Returns the offset which should be used when drawing the source image on to a destination render context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a533441986048341f85a7aa100bc75b34" class="m-doc">source</a>(</span><span class="m-doc-wrap">) const -&gt; const QPicture*</span>
+            </dt>
+            <dd>Returns the source QPicture.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afad6072b9380a1c2270ba121816462ea" class="m-doc">sourceAsImage</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) -&gt; QImage*</span>
+            </dt>
+            <dd>Returns the source QPicture rendered to a new QImage.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="aef41c2d12d4241a4f80e00fbc56b0982"><div>
+            <h3>
+              enum QgsPaintEffect::<wbr /><a href="#aef41c2d12d4241a4f80e00fbc56b0982" class="m-doc-self">DrawMode</a>
+            </h3>
+            <p>Drawing modes for effects.</p>
+<p>These modes are used only when effects are drawn as part of an effects stack</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsEffectStack.html" class="m-doc">QgsEffectStack</a></p></aside>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#aef41c2d12d4241a4f80e00fbc56b0982a55e2fe67bb81e4bf22ac0934e9469327" class="m-doc-self" name="aef41c2d12d4241a4f80e00fbc56b0982a55e2fe67bb81e4bf22ac0934e9469327">Modifier</a></td>
+                  <td>
+                  <p>The result of the effect is not rendered, but is passed on to following effects in the stack.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aef41c2d12d4241a4f80e00fbc56b0982a4daa726e138125db565a732921d12b00" class="m-doc-self" name="aef41c2d12d4241a4f80e00fbc56b0982a4daa726e138125db565a732921d12b00">Render</a></td>
+                  <td>
+                  <p>The result of the effect is rendered on the destination, but does not affect subsequent effects in the stack.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aef41c2d12d4241a4f80e00fbc56b0982a7d76ef7c905d15d8aca171036debede0" class="m-doc-self" name="aef41c2d12d4241a4f80e00fbc56b0982a7d76ef7c905d15d8aca171036debede0">ModifyAndRender</a></td>
+                  <td>
+                  <p>The result of the effect is both rendered and passed on to subsequent effects in the stack.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a425bfa8d03538b48923fb1fd74d573d5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a425bfa8d03538b48923fb1fd74d573d5" class="m-doc-self">begin</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Begins intercepting paint operations to a render context.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+            </table>
+<p>When the corresponding <a href="classQgsPaintEffect.html#a99d751b7346141fecb2d32c2964b947f" class="m-doc">end()</a> member is called all intercepted paint operations will be drawn to the render context after being modified by the effect.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a99d751b7346141fecb2d32c2964b947f" class="m-doc">end</a></p><p><a href="classQgsPaintEffect.html#a8c72a0ad77d041425eb8333adcb7d2ff" class="m-doc">render</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7b2b7697df9bff751b9bbbcccccfdc88"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPaintEffect.html" class="m-doc">QgsPaintEffect</a>* QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7b2b7697df9bff751b9bbbcccccfdc88" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Duplicates an effect by creating a deep copy of the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>clone of paint effect</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a8ec1443e5c5ff1212add50a713b1700c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPaintEffect.html#aef41c2d12d4241a4f80e00fbc56b0982" class="m-doc">DrawMode</a> QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8ec1443e5c5ff1212add50a713b1700c" class="m-doc-self">drawMode</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the draw mode for the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>draw mode for effect</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This property only has an effect if the paint effect is used in a <a href="classQgsEffectStack.html" class="m-doc">QgsEffectStack</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a0e0eba1cbbc19e2ae1c54715e91d9921" class="m-doc">setDrawMode</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aab11df83128d9bb53a90d76fca211986"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab11df83128d9bb53a90d76fca211986" class="m-doc-self">enabled</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the effect is enabled.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if effect is enabled</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a27eb0c4c8b423968a510f9b1c227644b" class="m-doc">setEnabled</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a99d751b7346141fecb2d32c2964b947f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a99d751b7346141fecb2d32c2964b947f" class="m-doc-self">end</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Ends interception of paint operations to a render context, and draws the result to the render context after being modified by the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a425bfa8d03538b48923fb1fd74d573d5" class="m-doc">begin</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a442466a24f26991098292419cce2b407"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a> QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a442466a24f26991098292419cce2b407" class="m-doc-self">properties</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the properties describing the paint effect encoded in a string format.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>string map of properties, in the form property key, value</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a7c11b9321444d5069f741cd5f6bf8614" class="m-doc">readProperties</a></p><p><a href="classQgsPaintEffect.html#a3183a56cb881bf2c6fa30e119ec9109a" class="m-doc">saveProperties</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7c11b9321444d5069f741cd5f6bf8614"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7c11b9321444d5069f741cd5f6bf8614" class="m-doc-self">readProperties</a>(</span><span class="m-doc-wrap">const <a href="qgis_8h.html#ab13d4e9821da606b92748097c691b9dd" class="m-doc">QgsStringMap</a>&amp; props) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Reads a string map of an effect&#x27;s properties and restores the effect to the state described by the properties map.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">props</td>
+                  <td>effect properties encoded in a string map</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a442466a24f26991098292419cce2b407" class="m-doc">properties</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1958ff32795826542e58642e8bcdd99c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1958ff32795826542e58642e8bcdd99c" class="m-doc-self">readProperties</a>(</span><span class="m-doc-wrap">const QDomElement&amp; element) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Restores the effect to the state described by a DOM element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">element</td>
+                  <td>DOM element describing an effect&#x27;s state</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if read was successful</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a3183a56cb881bf2c6fa30e119ec9109a" class="m-doc">saveProperties</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8c72a0ad77d041425eb8333adcb7d2ff"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8c72a0ad77d041425eb8333adcb7d2ff" class="m-doc-self">render</a>(</span><span class="m-doc-wrap">QPicture&amp; picture,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Renders a picture using the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">picture</td>
+                  <td>source QPicture to render</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a425bfa8d03538b48923fb1fd74d573d5" class="m-doc">begin</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3183a56cb881bf2c6fa30e119ec9109a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3183a56cb881bf2c6fa30e119ec9109a" class="m-doc-self">saveProperties</a>(</span><span class="m-doc-wrap">QDomDocument&amp; doc,
+              QDomElement&amp; element) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Saves the current state of the effect to a DOM element.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">doc</td>
+                  <td>destination DOM document</td>
+                </tr>
+                <tr>
+                  <td>element</td>
+                  <td>destination DOM element</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if save was successful</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The default behavior is to save the properties string map returned by <a href="classQgsPaintEffect.html#a442466a24f26991098292419cce2b407" class="m-doc">properties()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a7c11b9321444d5069f741cd5f6bf8614" class="m-doc">readProperties</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0e0eba1cbbc19e2ae1c54715e91d9921"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0e0eba1cbbc19e2ae1c54715e91d9921" class="m-doc-self">setDrawMode</a>(</span><span class="m-doc-wrap"><a href="classQgsPaintEffect.html#aef41c2d12d4241a4f80e00fbc56b0982" class="m-doc">DrawMode</a> drawMode)</span></span>
+            </h3>
+            <p>Sets the draw mode for the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">drawMode</td>
+                  <td>draw mode for effect</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This property only has an effect if the paint effect is used in a <a href="classQgsEffectStack.html" class="m-doc">QgsEffectStack</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a8ec1443e5c5ff1212add50a713b1700c" class="m-doc">drawMode</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a27eb0c4c8b423968a510f9b1c227644b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a27eb0c4c8b423968a510f9b1c227644b" class="m-doc-self">setEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Sets whether the effect is enabled.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">enabled</td>
+                  <td>set to false to disable the effect</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#aab11df83128d9bb53a90d76fca211986" class="m-doc">enabled</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af814e71abb9cf4674c74d088296b6bbf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af814e71abb9cf4674c74d088296b6bbf" class="m-doc-self">type</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the effect type.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>unique string representation of the effect type</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="acefb25d50d01507f2d664a79c773390a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QRectF QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acefb25d50d01507f2d664a79c773390a" class="m-doc-self">boundingRect</a>(</span><span class="m-doc-wrap">const QRectF&amp; rect,
+              const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the bounding rect required for drawing the effect.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">rect</td>
+                  <td>original source bounding rect</td>
+                </tr>
+                <tr>
+                  <td>context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>modified bounding rect</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This method can be used to expand the bounding rect of a source picture to account for offset or blurring effects.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#afad6072b9380a1c2270ba121816462ea" class="m-doc">sourceAsImage</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af5539f4985268b89f836c1c30827b96c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af5539f4985268b89f836c1c30827b96c" class="m-doc-self">draw</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">pure virtual</span> <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Handles drawing of the effect&#x27;s result on to the specified render context.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Derived classes must reimplement this method to apply any transformations to the source QPicture and draw the result using the context&#x27;s painter.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a33a7179181f0cafed64ee16ec0042e5d" class="m-doc">drawSource</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a33a7179181f0cafed64ee16ec0042e5d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33a7179181f0cafed64ee16ec0042e5d" class="m-doc-self">drawSource</a>(</span><span class="m-doc-wrap">QPainter&amp; painter) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Draws the source QPicture onto the specified painter.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">painter</td>
+                  <td>destination painter</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Handles scaling of the picture to account for the destination painter&#x27;s DPI.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a533441986048341f85a7aa100bc75b34" class="m-doc">source</a></p><p><a href="classQgsPaintEffect.html#afad6072b9380a1c2270ba121816462ea" class="m-doc">sourceAsImage</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5e1ae12d59feeb077a2175cb54ba48f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5e1ae12d59feeb077a2175cb54ba48f" class="m-doc-self">fixQPictureDpi</a>(</span><span class="m-doc-wrap">QPainter* painter) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Applies a workaround to a QPainter to avoid an issue with incorrect scaling when drawing QPictures.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">painter</td>
+                  <td>destination painter</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This may need to be called by derived classes prior to rendering results onto a painter.</p>
+          </div></section>
+          <section class="m-doc-details" id="a87b6fdf7089eea8917b226779d7d4766"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QPointF QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a87b6fdf7089eea8917b226779d7d4766" class="m-doc-self">imageOffset</a>(</span><span class="m-doc-wrap">const <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the offset which should be used when drawing the source image on to a destination render context.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>destination render context</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>point offset for image top left corner</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#afad6072b9380a1c2270ba121816462ea" class="m-doc">sourceAsImage</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a533441986048341f85a7aa100bc75b34"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const QPicture* QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a533441986048341f85a7aa100bc75b34" class="m-doc-self">source</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the source QPicture.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>source QPicture</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The <a href="classQgsPaintEffect.html#af5539f4985268b89f836c1c30827b96c" class="m-doc">draw()</a> member can utilize this when drawing the effect.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a33a7179181f0cafed64ee16ec0042e5d" class="m-doc">drawSource</a></p><p><a href="classQgsPaintEffect.html#afad6072b9380a1c2270ba121816462ea" class="m-doc">sourceAsImage</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afad6072b9380a1c2270ba121816462ea"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QImage* QgsPaintEffect::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afad6072b9380a1c2270ba121816462ea" class="m-doc-self">sourceAsImage</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; context) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Returns the source QPicture rendered to a new QImage.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>source QPicture rendered to an image</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The <a href="classQgsPaintEffect.html#af5539f4985268b89f836c1c30827b96c" class="m-doc">draw()</a> member can utilize this when drawing the effect. The image will be padded or cropped from the original source QPicture by the results of the <a href="classQgsPaintEffect.html#acefb25d50d01507f2d664a79c773390a" class="m-doc">boundingRect()</a> method. The result is cached to speed up subsequent calls to sourceAsImage.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsPaintEffect.html#a33a7179181f0cafed64ee16ec0042e5d" class="m-doc">drawSource</a></p><p><a href="classQgsPaintEffect.html#a533441986048341f85a7aa100bc75b34" class="m-doc">source</a></p><p><a href="classQgsPaintEffect.html#a87b6fdf7089eea8917b226779d7d4766" class="m-doc">imageOffset</a></p><p><a href="classQgsPaintEffect.html#acefb25d50d01507f2d664a79c773390a" class="m-doc">boundingRect</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,1454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsLayoutMultiFrame" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsLayoutMultiFrame</compoundname>
+    <basecompoundref refid="classQgsLayoutObject" prot="public" virt="non-virtual">QgsLayoutObject</basecompoundref>
+    <basecompoundref refid="classQgsLayoutUndoObjectInterface" prot="public" virt="non-virtual">QgsLayoutUndoObjectInterface</basecompoundref>
+    <derivedcompoundref refid="classQgsLayoutItemHtml" prot="public" virt="non-virtual">QgsLayoutItemHtml</derivedcompoundref>
+    <derivedcompoundref refid="classQgsLayoutTable" prot="public" virt="non-virtual">QgsLayoutTable</derivedcompoundref>
+    <includes refid="qgslayoutmultiframe_8h" local="no">qgslayoutmultiframe.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72baf" prot="public" static="no">
+        <name>ResizeMode</name>
+        <enumvalue id="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafa9eecefa55ed73cbadeeaab696674de8c" prot="public">
+          <name>UseExistingFrames</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Don&apos;t automatically create new frames, just use existing frames. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafaf3a12f91e148657aff6508fe87c10dee" prot="public">
+          <name>ExtendToNextPage</name>
+          <briefdescription>
+<para>Creates new full page frames on the following page(s) until the entire multiframe content is visible. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafae5df4460df04c6823bb2167b14b5929a" prot="public">
+          <name>RepeatOnEveryPage</name>
+          <briefdescription>
+<para>Repeats the same frame on every page. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafa5eab4a991333852420ccd97e087d7a2c" prot="public">
+          <name>RepeatUntilFinished</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>creates new frames with the same position and dimensions as the existing frame on the following page(s), until the entire multiframe content is visible </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Specifies the behavior for creating new frames to fit the multiframe&apos;s content. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="96" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="95" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6" prot="public" static="no">
+        <name>UndoCommand</name>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a46e27ca96be1be9849723bc83451ec35" prot="public">
+          <name>UndoHtmlBreakDistance</name>
+          <briefdescription>
+<para>HTML page break distance. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ae7adcc999b9e17ed10c8c0706e58d325" prot="public">
+          <name>UndoHtmlSource</name>
+          <briefdescription>
+<para>HTML source. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a71ad8db44d46e85e041899ae8071cf12" prot="public">
+          <name>UndoHtmlStylesheet</name>
+          <briefdescription>
+<para>HTML stylesheet. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a4e75eef7e77e49e643dc07f9ef47f0ec" prot="public">
+          <name>UndoTableCellStyle</name>
+          <briefdescription>
+<para>Table cell style. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a0fe77d00cb74136a5f68a8118c12429d" prot="public">
+          <name>UndoTableMaximumFeatures</name>
+          <briefdescription>
+<para>Maximum features in table. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ac0988be89148fce9d34d3687dfad4cd9" prot="public">
+          <name>UndoTableMargin</name>
+          <briefdescription>
+<para>Table margins. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6aaac6f4c287364a790c08ac58f7f732cb" prot="public">
+          <name>UndoTableHeaderFontColor</name>
+          <briefdescription>
+<para>Table header font color. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a1dea97aca9b6e1beb6cc3bac443d7e2d" prot="public">
+          <name>UndoTableContentFontColor</name>
+          <briefdescription>
+<para>Table content font color. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a9bbd5a6f3a50fdde983308f2fa0cf339" prot="public">
+          <name>UndoTableGridStrokeWidth</name>
+          <briefdescription>
+<para>Table grid stroke width. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a9c3e0cfb2695806e15abf75f277cc1d0" prot="public">
+          <name>UndoTableGridColor</name>
+          <briefdescription>
+<para>Table grid color. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a10cd2a835b57ee21c7bc79501182763e" prot="public">
+          <name>UndoTableBackgroundColor</name>
+          <briefdescription>
+<para>Table background color. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ab52116ca89e5f907ad454964cf7d2664" prot="public">
+          <name>UndoNone</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+<para>No command suppression. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Multiframe item undo commands, used for collapsing undo commands. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="106" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="105" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1a5b8cfc61b37b5919ba3d93ee98d0560c" prot="protected" static="no" mutable="no">
+        <type>QList&lt; <ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> * &gt;</type>
+        <definition>QList&lt;QgsLayoutFrame *&gt; QgsLayoutMultiFrame::mFrameItems</definition>
+        <argsstring></argsstring>
+        <name>mFrameItems</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="400" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1a6e632a67b33cf40588a129c86aba5391" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72baf" kindref="member">ResizeMode</ref></type>
+        <definition>ResizeMode QgsLayoutMultiFrame::mResizeMode</definition>
+        <argsstring></argsstring>
+        <name>mResizeMode</name>
+        <initializer>= <ref refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafa9eecefa55ed73cbadeeaab696674de8c" kindref="member">UseExistingFrames</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="402" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="402" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1a5a08c951d4abe6b8458ba838109a5a00" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::mBlockUndoCommands</definition>
+        <argsstring></argsstring>
+        <name>mBlockUndoCommands</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="424" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="424" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1afb56d1859a9e3ecc74fcca74b9a6d121" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::mBlockUpdates</definition>
+        <argsstring></argsstring>
+        <name>mBlockUpdates</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="423" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="423" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1aa741ed4009ff563f263a486f02eebbd6" prot="private" static="no" mutable="no">
+        <type>QList&lt; QString &gt;</type>
+        <definition>QList&lt; QString &gt; QgsLayoutMultiFrame::mFrameTemplateUuids</definition>
+        <argsstring></argsstring>
+        <name>mFrameTemplateUuids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="427" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="427" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1ac73005fea24f722ef2b755fae232e097" prot="private" static="no" mutable="no">
+        <type>QList&lt; QString &gt;</type>
+        <definition>QList&lt; QString &gt; QgsLayoutMultiFrame::mFrameUuids</definition>
+        <argsstring></argsstring>
+        <name>mFrameUuids</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="426" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="426" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1aa7c0b40646c768c83edf5b7eb68c59b7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::mIsRecalculatingSize</definition>
+        <argsstring></argsstring>
+        <name>mIsRecalculatingSize</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="421" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="421" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1a93e6e12d1bccb2fc6417227063f3fff9" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsLayoutMultiFrame::mTemplateUuid</definition>
+        <argsstring></argsstring>
+        <name>mTemplateUuid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="431" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="431" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsLayoutMultiFrame_1af2f0cb831e2f3d4deda0d561594f1d4e" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsLayoutMultiFrame::mUuid</definition>
+        <argsstring></argsstring>
+        <name>mUuid</name>
+        <briefdescription>
+<para>Unique id. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="430" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="430" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsLayoutMultiFrame_1a085ac095b38a952f8405b7bf2ae4d04d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsLayout</definition>
+        <argsstring></argsstring>
+        <name>QgsLayout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="433" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsLayoutMultiFrame_1a64efed1a86fa9463be95b0081a45507a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsLayoutFrame</definition>
+        <argsstring></argsstring>
+        <name>QgsLayoutFrame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="432" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a24532c3c84293d1247467182616c02a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsLayoutMultiFrame::QgsLayoutMultiFrame</definition>
+        <argsstring>(QgsLayout *layout)</argsstring>
+        <name>QgsLayoutMultiFrame</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new multiframe item, attached to the specified <emphasis>layout</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="124" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="24" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a5db3947bf2ca374df95976c3e7129431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsLayoutMultiFrame::~QgsLayoutMultiFrame</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsLayoutMultiFrame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a11adf45aeab3c8aa04b9bf345bbaf90a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::addFrame</definition>
+        <argsstring>(QgsLayoutFrame *frame, bool recalcFrameSizes=true)</argsstring>
+        <name>addFrame</name>
+        <param>
+          <type><ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> *</type>
+          <declname>frame</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>recalcFrameSizes</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Adds a <emphasis>frame</emphasis> to the multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>recalcFrameSizes</emphasis> is set to true, then a recalculation of all existing frame sizes will be forced.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a59cf702e9261290269fac4c5a2ac70be" kindref="member">removeFrame()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="189" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="55" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1ab48ff7465d0d541083099501dc2178bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::beginCommand</definition>
+        <argsstring>(const QString &amp;commandText, UndoCommand command=UndoNone)</argsstring>
+        <name>beginCommand</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>commandText</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6" kindref="member">UndoCommand</ref></type>
+          <declname>command</declname>
+          <defval><ref refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ab52116ca89e5f907ad454964cf7d2664" kindref="member">UndoNone</ref></defval>
+        </param>
+        <briefdescription>
+<para>Starts new undo command for this item. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>commandText</emphasis> should be a capitalized, imperative tense description (e.g. &quot;Add Map Item&quot;). If specified, multiple consecutive commands for this item with the same <emphasis>command</emphasis> will be collapsed into a single undo command in the layout history. <simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a98cdce62c5048b8a6c392228810041d8" kindref="member">endCommand()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a5df80b0290d6fb304a2e43e7233946d5" kindref="member">cancelCommand()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="298" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="282" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a5df80b0290d6fb304a2e43e7233946d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::cancelCommand</definition>
+        <argsstring>()</argsstring>
+        <name>cancelCommand</name>
+        <briefdescription>
+<para>Cancels the current item command and discards it. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1ab48ff7465d0d541083099501dc2178bf" kindref="member">beginCommand()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a98cdce62c5048b8a6c392228810041d8" kindref="member">endCommand()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="312" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="296" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a32336c567f395235895a769759ae2c5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsAbstractLayoutUndoCommand" kindref="compound">QgsAbstractLayoutUndoCommand</ref> *</type>
+        <definition>QgsAbstractLayoutUndoCommand * QgsLayoutMultiFrame::createCommand</definition>
+        <argsstring>(const QString &amp;text, int id, QUndoCommand *parent=nullptr) override</argsstring>
+        <name>createCommand</name>
+        <reimplements refid="classQgsLayoutUndoObjectInterface_1af226ed133a64ff5a3dfdcc3cd2c047d6">createCommand</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>QUndoCommand *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new layout undo command with the specified <emphasis>text</emphasis> and <emphasis>parent</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>id</emphasis> argument can be used to specify an id number for the source event - this is used to determine whether QUndoCommand command compression can apply to the command. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="288" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="277" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1aadcad7a983126c7ff9b4efd84485b37b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> *</type>
+        <definition>QgsLayoutFrame * QgsLayoutMultiFrame::createNewFrame</definition>
+        <argsstring>(QgsLayoutFrame *currentFrame, QPointF pos, QSizeF size)</argsstring>
+        <name>createNewFrame</name>
+        <param>
+          <type><ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> *</type>
+          <declname>currentFrame</declname>
+        </param>
+        <param>
+          <type>QPointF</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>QSizeF</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new frame and adds it to the multi frame and layout. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>currentFrame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>an existing <ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> from which to copy the size and general frame properties (e.g., frame style, background, rendering settings). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position of top-left corner of the new frame, in layout units </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>size of the new frame, in layout units </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="281" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="246" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a4aae83cbb1dbf2f35ad46d7d2434c4b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::deleteFrames</definition>
+        <argsstring>()</argsstring>
+        <name>deleteFrames</name>
+        <briefdescription>
+<para>Removes and deletes all child frames. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a59cf702e9261290269fac4c5a2ac70be" kindref="member">removeFrame()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="215" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="442" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1af021b0a6176273e7ef6e331e38e61de0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsLayoutMultiFrame::displayName</definition>
+        <argsstring>() const</argsstring>
+        <name>displayName</name>
+        <reimplementedby refid="classQgsLayoutItemTextTable_1a4fa685f6ece5ccfd10ef7dc4847a4e13">displayName</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1acc8c229417f8a302274c30ae458b4156">displayName</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemHtml_1aa54fdf584b30ba75e003a059b6fb2e21">displayName</reimplementedby>
+        <briefdescription>
+<para>Returns the multiframe display name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="286" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="272" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a98cdce62c5048b8a6c392228810041d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::endCommand</definition>
+        <argsstring>()</argsstring>
+        <name>endCommand</name>
+        <briefdescription>
+<para>Completes the current item command and push it onto the layout&apos;s undo stack. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1ab48ff7465d0d541083099501dc2178bf" kindref="member">beginCommand()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a5df80b0290d6fb304a2e43e7233946d5" kindref="member">cancelCommand()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="305" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="290" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a2f161303a958abcd9fcce05d468e2570" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::finalizeRestoreFromXml</definition>
+        <argsstring>()</argsstring>
+        <name>finalizeRestoreFromXml</name>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1a56be914cf29cad4d1decee165245fd37">finalizeRestoreFromXml</reimplementedby>
+        <briefdescription>
+<para>Called after all pending items have been restored from XML. </para>        </briefdescription>
+        <detaileddescription>
+<para>Multiframes can use this method to run steps which must take place after all items have been restored to the layout, such as connecting to signals emitted by other items, which may not have existed in the layout at the time <ref refid="classQgsLayoutMultiFrame_1a479e25933ebd8713c74abc1a83a6c0f8" kindref="member">readXml()</ref> was called. E.g. a scalebar can use this to connect to its linked map item after restoration from XML. <simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a479e25933ebd8713c74abc1a83a6c0f8" kindref="member">readXml()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="322" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="302" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a82b834a8b174cec5454d421d7c38ac08" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double QgsLayoutMultiFrame::findNearbyPageBreak</definition>
+        <argsstring>(double yPos)</argsstring>
+        <name>findNearbyPageBreak</name>
+        <reimplementedby refid="classQgsLayoutItemHtml_1a7fc4e40cee855b716e2cdba798c4f015">findNearbyPageBreak</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>yPos</declname>
+        </param>
+        <briefdescription>
+<para>Finds the optimal position to break a frame at. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>yPos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum vertical position for break, in layout units. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the optimal breakable position which occurs in the multi frame close to and before the specified yPos </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a528901749ecc66c75099298c91a2f804" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSizeF</type>
+        <definition>QSizeF QgsLayoutMultiFrame::fixedFrameSize</definition>
+        <argsstring>(int frameIndex=-1) const</argsstring>
+        <name>fixedFrameSize</name>
+        <reimplementedby refid="classQgsLayoutTable_1a030147cdbd42ad350b3f5fda580f4efa">fixedFrameSize</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>frameIndex</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Returns the fixed size for a frame, if desired. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the fixed frame size changes, the sizes of all frames can be recalculated by calling <ref refid="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" kindref="member">recalculateFrameRects()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frameIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>frame number </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>fixed size for frame. If the size has a width or height of 0, then the frame size is not fixed in that direction and frames can have variable width or height accordingly. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a826fb529a6410b0f27c1c5abaad417ef" kindref="member">minFrameSize()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" kindref="member">recalculateFrameRects()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="160" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="38" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a4c53a172789e151611a1d54c125e0e4f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> *</type>
+        <definition>QgsLayoutFrame * QgsLayoutMultiFrame::frame</definition>
+        <argsstring>(int index) const</argsstring>
+        <name>frame</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns the child frame at a specified <emphasis>index</emphasis> from the multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1ad82c67ab0f0c57cde583680c35eb666b" kindref="member">frameIndex()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="265" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="458" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a0d87aae195511f3bbc1adf2de1df4d85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayoutMultiFrame::frameCount</definition>
+        <argsstring>() const</argsstring>
+        <name>frameCount</name>
+        <briefdescription>
+<para>Returns the number of frames associated with this multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1ab5fa1ac317c1a53642cc692ba2e65696" kindref="member">frames()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="259" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="259" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1ad82c67ab0f0c57cde583680c35eb666b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsLayoutMultiFrame::frameIndex</definition>
+        <argsstring>(QgsLayoutFrame *frame) const</argsstring>
+        <name>frameIndex</name>
+        <param>
+          <type><ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> *</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>Returns the index of a <emphasis>frame</emphasis> within the multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>index for frame if found, -1 if frame not found in multiframe </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a4c53a172789e151611a1d54c125e0e4f" kindref="member">frame()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="272" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="467" bodyend="470"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1ab5fa1ac317c1a53642cc692ba2e65696" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> * &gt;</type>
+        <definition>QList&lt; QgsLayoutFrame * &gt; QgsLayoutMultiFrame::frames</definition>
+        <argsstring>() const</argsstring>
+        <name>frames</name>
+        <briefdescription>
+<para>Returns a list of all child frames for this multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a0d87aae195511f3bbc1adf2de1df4d85" kindref="member">frameCount()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="253" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a6efea5cfebbe4bd8be8d55b44ccb7c02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>QIcon</type>
+        <definition>virtual QIcon QgsLayoutMultiFrame::icon</definition>
+        <argsstring>() const</argsstring>
+        <name>icon</name>
+        <reimplementedby refid="classQgsLayoutItemHtml_1acf92bb5bbb6f323a1780ec2cdc5f38df">icon</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1aaa062e1fad353cfed71a8cd277b8636c">icon</reimplementedby>
+        <briefdescription>
+<para>Returns the item&apos;s icon. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="148" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a826fb529a6410b0f27c1c5abaad417ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSizeF</type>
+        <definition>QSizeF QgsLayoutMultiFrame::minFrameSize</definition>
+        <argsstring>(int frameIndex=-1) const</argsstring>
+        <name>minFrameSize</name>
+        <reimplementedby refid="classQgsLayoutTable_1abe587f29b376773f417a19b7eb37c135">minFrameSize</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>frameIndex</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Returns the minimum size for a frames, if desired. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the minimum size changes, the sizes of all frames can be recalculated by calling <ref refid="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" kindref="member">recalculateFrameRects()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frameIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>frame number </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>minimum size for frame. If the size has a width or height of 0, then the frame size has no minimum in that direction. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a528901749ecc66c75099298c91a2f804" kindref="member">fixedFrameSize()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" kindref="member">recalculateFrameRects()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="172" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a479e25933ebd8713c74abc1a83a6c0f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::readXml</definition>
+        <argsstring>(const QDomElement &amp;itemElement, const QDomDocument &amp;document, const QgsReadWriteContext &amp;context, bool includeFrames=false)</argsstring>
+        <name>readXml</name>
+        <param>
+          <type>const QDomElement &amp;</type>
+          <declname>itemElement</declname>
+        </param>
+        <param>
+          <type>const QDomDocument &amp;</type>
+          <declname>document</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeFrames</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Sets the item state from a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>itemElement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the DOM node corresponding to item (e.g. &apos;LayoutItem&apos; element) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>read write context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>includeFrames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to read state information about child frames from DOM </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a26cf83ca74f05bd05f1e71e89f579523" kindref="member">writeXml()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="247" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="503" bodyend="554"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a59cf702e9261290269fac4c5a2ac70be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::removeFrame</definition>
+        <argsstring>(int index, bool removeEmptyPages=false)</argsstring>
+        <name>removeFrame</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>removeEmptyPages</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Removes a frame by <emphasis>index</emphasis> from the multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method automatically removes the frame from the layout too.</para><para>If <emphasis>removeEmptyPages</emphasis> is set to true, then pages which are empty after the frame is removed will also be removed from the layout.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a11adf45aeab3c8aa04b9bf345bbaf90a" kindref="member">addFrame()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a4aae83cbb1dbf2f35ad46d7d2434c4b0" kindref="member">deleteFrames()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="209" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="408" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1af9fab3403c4c78caacbbef385601a95a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsLayoutMultiFrame::render</definition>
+        <argsstring>(QgsLayoutItemRenderContext &amp;context, const QRectF &amp;renderExtent, int frameIndex)=0</argsstring>
+        <name>render</name>
+        <reimplementedby refid="classQgsLayoutItemHtml_1aec0df9f01beb735683369dd994e84327">render</reimplementedby>
+        <reimplementedby refid="classQgsLayoutTable_1a5646ed96b30ff3a185ec1183b34ac832">render</reimplementedby>
+        <param>
+          <type><ref refid="classQgsLayoutItemRenderContext" kindref="compound">QgsLayoutItemRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>renderExtent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>frameIndex</declname>
+        </param>
+        <briefdescription>
+<para>Renders a portion of the multiframe&apos;s content into a render <emphasis>context</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render painter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>renderExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>visible extent of content to render into the painter. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>frameIndex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>frame number for content </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="180" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a707d331c6cfffa5e5f6a8eba29dd9fdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72baf" kindref="member">ResizeMode</ref></type>
+        <definition>ResizeMode QgsLayoutMultiFrame::resizeMode</definition>
+        <argsstring>() const</argsstring>
+        <name>resizeMode</name>
+        <briefdescription>
+<para>Returns the resize mode for the multiframe. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a098e3666ba95e8e8d911c47f1401033e" kindref="member">setResizeMode()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="227" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="227" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a098e3666ba95e8e8d911c47f1401033e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::setResizeMode</definition>
+        <argsstring>(ResizeMode mode)</argsstring>
+        <name>setResizeMode</name>
+        <param>
+          <type><ref refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72baf" kindref="member">ResizeMode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Sets the resize <emphasis>mode</emphasis> for the multiframe, and recalculates frame sizes to match. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a707d331c6cfffa5e5f6a8eba29dd9fdc" kindref="member">resizeMode()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="221" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="78" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a0cb872b65e7de661476c27b225d04f12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QSizeF</type>
+        <definition>virtual QSizeF QgsLayoutMultiFrame::totalSize</definition>
+        <argsstring>() const =0</argsstring>
+        <name>totalSize</name>
+        <reimplementedby refid="classQgsLayoutItemHtml_1a11a480391c255078ce770194adb5ed6f">totalSize</reimplementedby>
+        <reimplementedby refid="classQgsLayoutTable_1aee5ec5e7c9122e0215e51c4aa4e03d43">totalSize</reimplementedby>
+        <briefdescription>
+<para>Returns the total size of the multiframe&apos;s content, in layout units. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="138" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a6de740fdac4f75ad5af9fea1cdfa8d36" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsLayoutMultiFrame::type</definition>
+        <argsstring>() const =0</argsstring>
+        <name>type</name>
+        <reimplementedby refid="classQgsLayoutItemTextTable_1acc1690cca651718178e910ad12041186">type</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemHtml_1a0590454dabf41eaf503acb9f7c47dfe1">type</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1a63bf2cb131c2e7c90e32e4f390a08260">type</reimplementedby>
+        <briefdescription>
+<para>Returns unique multiframe type id. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="143" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a9582f26cd2b9ebffb645e6bd27780bda" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsLayoutMultiFrame::uuid</definition>
+        <argsstring>() const</argsstring>
+        <name>uuid</name>
+        <briefdescription>
+<para>Returns the multiframe identification string. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is a unique random string set for the multiframe upon creation. <simplesect kind="note"><para>There is no corresponding setter for the uuid - it&apos;s created automatically. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="133" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="133" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a26cf83ca74f05bd05f1e71e89f579523" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::writeXml</definition>
+        <argsstring>(QDomElement &amp;parentElement, QDomDocument &amp;document, const QgsReadWriteContext &amp;context, bool includeFrames=false) const</argsstring>
+        <name>writeXml</name>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>parentElement</declname>
+        </param>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>document</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeFrames</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Stores the multiframe state in a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parentElement</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parent DOM element (e.g. &apos;Layout&apos; element) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>read write context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>includeFrames</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to write state information about child frames into DOM </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a479e25933ebd8713c74abc1a83a6c0f8" kindref="member">readXml()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="237" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="472" bodyend="501"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::recalculateFrameRects</definition>
+        <argsstring>()</argsstring>
+        <name>recalculateFrameRects</name>
+        <briefdescription>
+<para>Forces a recalculation of all the associated frame&apos;s scene rectangles. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method is useful for multiframes which implement a <ref refid="classQgsLayoutMultiFrame_1a826fb529a6410b0f27c1c5abaad417ef" kindref="member">minFrameSize()</ref> or <ref refid="classQgsLayoutMultiFrame_1a528901749ecc66c75099298c91a2f804" kindref="member">fixedFrameSize()</ref> method. <simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a826fb529a6410b0f27c1c5abaad417ef" kindref="member">minFrameSize()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a528901749ecc66c75099298c91a2f804" kindref="member">fixedFrameSize()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1ab6d8600981bdace4ea30716000c9b657" kindref="member">recalculateFrameSizes</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="353" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="226" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1ab6d8600981bdace4ea30716000c9b657" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::recalculateFrameSizes</definition>
+        <argsstring>()</argsstring>
+        <name>recalculateFrameSizes</name>
+        <briefdescription>
+<para>Recalculates the portion of the multiframe item which is shown in each of its component frames. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the resize mode is set to anything but UseExistingFrames then this may cause new frames to be added or frames to be removed, in order to fit the current size of the multiframe&apos;s content. <simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" kindref="member">recalculateFrameRects()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="343" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="95" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1a9869a27b064870866a369459702b2e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::refresh</definition>
+        <argsstring>() override</argsstring>
+        <name>refresh</name>
+        <briefdescription>
+<para>Refreshes the multiframe, causing a recalculation of any property overrides. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="329" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="330" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1af611f40603fa01a27be509c5524327f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::refreshDataDefinedProperty</definition>
+        <argsstring>(QgsLayoutObject::DataDefinedProperty property=QgsLayoutObject::AllProperties)</argsstring>
+        <name>refreshDataDefinedProperty</name>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1a6ef6a5e50f594d2d813a990b03fbc635">refreshDataDefinedProperty</reimplementedby>
+        <param>
+          <type><ref refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0" kindref="member">QgsLayoutObject::DataDefinedProperty</ref></type>
+          <declname>property</declname>
+          <defval><ref refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a607b21034d5aa5270e410a0179feffca" kindref="member">QgsLayoutObject::AllProperties</ref></defval>
+        </param>
+        <briefdescription>
+<para>Refreshes a data defined <emphasis>property</emphasis> for the multi frame by reevaluating the property&apos;s value and redrawing the item with this new value. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>property</emphasis> is set to <ref refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a607b21034d5aa5270e410a0179feffca" kindref="member">QgsLayoutObject::AllProperties</ref> then all data defined properties for the item will be refreshed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="361" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="241" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1ac06495017e6fade2337156c4861aaf99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+<para>Forces a redraw of all child frames. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="334" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="434" bodyend="440"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsLayoutMultiFrame_1a35b07577ea8c45214f5442c449595e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::contentsChanged</definition>
+        <argsstring>()</argsstring>
+        <name>contentsChanged</name>
+        <briefdescription>
+<para>Emitted when the contents of the multi frame have changed and the frames must be redrawn. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="369" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1ae1d818fcc686e388fda9cae965192400" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::readPropertiesFromElement</definition>
+        <argsstring>(const QDomElement &amp;element, const QDomDocument &amp;document, const QgsReadWriteContext &amp;context)</argsstring>
+        <name>readPropertiesFromElement</name>
+        <reimplementedby refid="classQgsLayoutItemHtml_1a3f1cacde7f2509c79dd72882b529ec78">readPropertiesFromElement</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1a074e86b8658474b333c0552d12692079">readPropertiesFromElement</reimplementedby>
+        <reimplementedby refid="classQgsLayoutTable_1ae7ff1e39f8a13dcdded2abb5f1e64d1b">readPropertiesFromElement</reimplementedby>
+        <param>
+          <type>const QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>const QDomDocument &amp;</type>
+          <declname>document</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Sets multiframe state from a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the DOM element for the multiframe </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>read write context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a0137199e2f70fa9f94759b0af8b2c07a" kindref="member">writePropertiesToElement()</ref></para></simplesect>
+Note that item subclasses should not rely on all other items being present in the layout at the time this method is called. Instead, any connections and links to other items must be made in the <ref refid="classQgsLayoutMultiFrame_1a2f161303a958abcd9fcce05d468e2570" kindref="member">finalizeRestoreFromXml()</ref> method. E.g. when restoring a scalebar, the connection to the linked map&apos;s signals should be implemented in <ref refid="classQgsLayoutMultiFrame_1a2f161303a958abcd9fcce05d468e2570" kindref="member">finalizeRestoreFromXml()</ref>, not <ref refid="classQgsLayoutMultiFrame_1ae1d818fcc686e388fda9cae965192400" kindref="member">readPropertiesFromElement()</ref>.</para><para><simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a479e25933ebd8713c74abc1a83a6c0f8" kindref="member">readXml()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="398" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="561" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a0137199e2f70fa9f94759b0af8b2c07a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsLayoutMultiFrame::writePropertiesToElement</definition>
+        <argsstring>(QDomElement &amp;element, QDomDocument &amp;document, const QgsReadWriteContext &amp;context) const</argsstring>
+        <name>writePropertiesToElement</name>
+        <reimplementedby refid="classQgsLayoutItemHtml_1ad4b3aa07a18875f83ca59c216226e283">writePropertiesToElement</reimplementedby>
+        <reimplementedby refid="classQgsLayoutItemAttributeTable_1ad01e5a0c0822d7e57d29cdd76b8320d5">writePropertiesToElement</reimplementedby>
+        <reimplementedby refid="classQgsLayoutTable_1ad3036b0ff0d72942a5e3a66c9495eed1">writePropertiesToElement</reimplementedby>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>document</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Stores multiframe state within an XML DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the DOM element to store the multiframe&apos;s properties in </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>document</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>read write context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1a26cf83ca74f05bd05f1e71e89f579523" kindref="member">writeXml()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsLayoutMultiFrame_1ae1d818fcc686e388fda9cae965192400" kindref="member">readPropertiesFromElement()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="381" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="556" bodyend="559"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1a473a2c0f770aa890bcd67338756deb46" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::handleFrameRemoval</definition>
+        <argsstring>(QgsLayoutFrame *frame)</argsstring>
+        <name>handleFrameRemoval</name>
+        <param>
+          <type><ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> *</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>Called when a frame is removed. </para>        </briefdescription>
+        <detaileddescription>
+<para>Updates frame list and recalculates content of remaining frames. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="415" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="336" bodyend="363"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsLayoutMultiFrame_1a5d545ec017f39faf9ff655d08dd0a2a3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsLayoutMultiFrame::handlePageChange</definition>
+        <argsstring>()</argsstring>
+        <name>handlePageChange</name>
+        <briefdescription>
+<para>Adapts to changed number of layout pages if resize type is RepeatOnEveryPage. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="409" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.cpp" bodystart="365" bodyend="406"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsLayoutMultiFrame_1a0021ca7bbb5e91253f8066bd91cdd5b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsLayoutMultiFrame::QgsLayoutMultiFrame</definition>
+        <argsstring>()=delete</argsstring>
+        <name>QgsLayoutMultiFrame</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="419" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for layout items with the ability to distribute the content to several frames (<ref refid="classQgsLayoutFrame" kindref="compound">QgsLayoutFrame</ref> items). </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="4859">
+        <label>QgsLayoutItemTextTable</label>
+        <link refid="classQgsLayoutItemTextTable"/>
+        <childnode refid="4857" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4851">
+        <label>QgsLayoutMultiFrame</label>
+        <link refid="classQgsLayoutMultiFrame"/>
+        <childnode refid="4852" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4855" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4853">
+        <label>QObject</label>
+      </node>
+      <node id="4856">
+        <label>QgsLayoutItemHtml</label>
+        <link refid="classQgsLayoutItemHtml"/>
+        <childnode refid="4851" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4852">
+        <label>QgsLayoutObject</label>
+        <link refid="classQgsLayoutObject"/>
+        <childnode refid="4853" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4854" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4854">
+        <label>QgsExpressionContextGenerator</label>
+        <link refid="classQgsExpressionContextGenerator"/>
+      </node>
+      <node id="4855">
+        <label>QgsLayoutUndoObjectInterface</label>
+        <link refid="classQgsLayoutUndoObjectInterface"/>
+      </node>
+      <node id="4858">
+        <label>QgsLayoutItemAttributeTable</label>
+        <link refid="classQgsLayoutItemAttributeTable"/>
+        <childnode refid="4857" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4857">
+        <label>QgsLayoutTable</label>
+        <link refid="classQgsLayoutTable"/>
+        <childnode refid="4851" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4866">
+        <label>QgsAbstractPropertyCollection</label>
+        <link refid="classQgsAbstractPropertyCollection"/>
+      </node>
+      <node id="4860">
+        <label>QgsLayoutMultiFrame</label>
+        <link refid="classQgsLayoutMultiFrame"/>
+        <childnode refid="4861" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4867" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4862">
+        <label>QObject</label>
+      </node>
+      <node id="4861">
+        <label>QgsLayoutObject</label>
+        <link refid="classQgsLayoutObject"/>
+        <childnode refid="4862" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4863" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4864" relation="usage">
+          <edgelabel>mCustomProperties</edgelabel>
+        </childnode>
+        <childnode refid="4865" relation="usage">
+          <edgelabel>mDataDefinedProperties</edgelabel>
+        </childnode>
+      </node>
+      <node id="4863">
+        <label>QgsExpressionContextGenerator</label>
+        <link refid="classQgsExpressionContextGenerator"/>
+      </node>
+      <node id="4865">
+        <label>QgsPropertyCollection</label>
+        <link refid="classQgsPropertyCollection"/>
+        <childnode refid="4866" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4867">
+        <label>QgsLayoutUndoObjectInterface</label>
+        <link refid="classQgsLayoutUndoObjectInterface"/>
+      </node>
+      <node id="4864">
+        <label>QgsObjectCustomProperties</label>
+        <link refid="classQgsObjectCustomProperties"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" line="48" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutmultiframe.h" bodystart="47" bodyend="434"/>
+    <listofallmembers>
+      <member refid="classQgsLayoutMultiFrame_1a11adf45aeab3c8aa04b9bf345bbaf90a" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>addFrame</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a607b21034d5aa5270e410a0179feffca" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>AllProperties</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a26e0a415fbe8c5690868088342e019a8" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>AttributeTableSourceLayer</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aa2b623d97732f6f500cf7fb3588fd08a" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>BackgroundColor</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ab48ff7465d0d541083099501dc2178bf" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>beginCommand</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a4c8aaa81d12f413ad5c09ce4deea8eea" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>BlendMode</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a5df80b0290d6fb304a2e43e7233946d5" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>cancelCommand</name></member>
+      <member refid="classQgsLayoutObject_1a616de52c6aae52217a3a4e5b8a61c758" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>changed</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a35b07577ea8c45214f5442c449595e2b" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>contentsChanged</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a32336c567f395235895a769759ae2c5e" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>createCommand</name></member>
+      <member refid="classQgsLayoutObject_1a813d0158de4aea8adcc6d9946be1dab3" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>createExpressionContext</name></member>
+      <member refid="classQgsLayoutMultiFrame_1aadcad7a983126c7ff9b4efd84485b37b" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>createNewFrame</name></member>
+      <member refid="classQgsLayoutObject_1a006d4bec3ed3b591289a4e0f55197318" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>customProperties</name></member>
+      <member refid="classQgsLayoutObject_1a1f1d97a03aa0d6789c09b67e460b4257" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>customProperty</name></member>
+      <member refid="classQgsLayoutObject_1aeec6cfc2fdb1f0be6753955e622fe0c8" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>dataDefinedProperties</name></member>
+      <member refid="classQgsLayoutObject_1af9b0f79cb73a058f45d35678fbe46276" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>dataDefinedProperties</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>DataDefinedProperty</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a4aae83cbb1dbf2f35ad46d7d2434c4b0" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>deleteFrames</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af021b0a6176273e7ef6e331e38e61de0" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>displayName</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a98cdce62c5048b8a6c392228810041d8" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>endCommand</name></member>
+      <member refid="classQgsLayoutObject_1af5a44ba76312a7dc4c998bf2001a96bea6c2be104b240adf840fb8cf4c8a8c34a" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>EvaluatedValue</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a8c08d116637d49b6f18dd514f900e376" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ExcludeFromExports</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafaf3a12f91e148657aff6508fe87c10dee" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ExtendToNextPage</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a2f161303a958abcd9fcce05d468e2570" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>finalizeRestoreFromXml</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a82b834a8b174cec5454d421d7c38ac08" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>findNearbyPageBreak</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a528901749ecc66c75099298c91a2f804" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>fixedFrameSize</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a4c53a172789e151611a1d54c125e0e4f" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>frame</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aecef78cb2bbef20401b755e54310696b" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>FrameColor</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a0d87aae195511f3bbc1adf2de1df4d85" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>frameCount</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ad82c67ab0f0c57cde583680c35eb666b" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>frameIndex</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ab5fa1ac317c1a53642cc692ba2e65696" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>frames</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a473a2c0f770aa890bcd67338756deb46" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>handleFrameRemoval</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a5d545ec017f39faf9ff655d08dd0a2a3" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>handlePageChange</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a6efea5cfebbe4bd8be8d55b44ccb7c02" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>icon</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a396a374ac672c934e1b0420a67615491" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ItemHeight</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aa711676e5e311231eee99060da4573d9" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ItemRotation</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a272630d99c5ef7689a4254c59f143f3f" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ItemWidth</name></member>
+      <member refid="classQgsLayoutObject_1a5c2685de76a13b24f034dac8efc895eb" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>layout</name></member>
+      <member refid="classQgsLayoutObject_1aa54a8d2f4bf51c50f091b1d5290e5d6c" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>layout</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aa4034a28dc4aeca423ce34c45dcc0f15" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>LegendColumnCount</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a13e1017d71a0aa69335138986b859402" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>LegendTitle</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a83ae4f0b48de6182c82e4ef0d1b26b97" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapAtlasMargin</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aa42d600bb53ba16bc49ecfc51153280d" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapLabelMargin</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aac2cd3d53998bac72701447192ea6162" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapLayers</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0afa8565f3fa9391aa60f2cbd2245599db" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapRotation</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aa2febebc9f33cfb092a8cb804fd0643a" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapScale</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a1f8f24b051fa6119fed9471604900a1c" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapStylePreset</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a4141a8badf860d75a4844dac6ba3f57e" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapXMax</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a8b6fe2e155c053376e46b6a90cdcd305" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapXMin</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a88af9499bb0399bd14f7b466b8503bdb" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapYMax</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a04f96ed7f947365154082c774a2456ee" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>MapYMin</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a5a08c951d4abe6b8458ba838109a5a00" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mBlockUndoCommands</name></member>
+      <member refid="classQgsLayoutMultiFrame_1afb56d1859a9e3ecc74fcca74b9a6d121" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mBlockUpdates</name></member>
+      <member refid="classQgsLayoutObject_1a3edd413c3af897fd2c01070b7b7938e2" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mCustomProperties</name></member>
+      <member refid="classQgsLayoutObject_1a41d76e6d986bd088cf03128b91d37833" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mDataDefinedProperties</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a5b8cfc61b37b5919ba3d93ee98d0560c" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mFrameItems</name></member>
+      <member refid="classQgsLayoutMultiFrame_1aa741ed4009ff563f263a486f02eebbd6" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mFrameTemplateUuids</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ac73005fea24f722ef2b755fae232e097" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mFrameUuids</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a826fb529a6410b0f27c1c5abaad417ef" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>minFrameSize</name></member>
+      <member refid="classQgsLayoutMultiFrame_1aa7c0b40646c768c83edf5b7eb68c59b7" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mIsRecalculatingSize</name></member>
+      <member refid="classQgsLayoutObject_1a7432eaf13bda5dafb41e4a3cf0348900" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mLayout</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a6e632a67b33cf40588a129c86aba5391" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mResizeMode</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a93e6e12d1bccb2fc6417227063f3fff9" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mTemplateUuid</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2f0cb831e2f3d4deda0d561594f1d4e" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>mUuid</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0ad2f753f2a5fd9cd01884a74dcdf30581" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>NoProperty</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aefd4819c5d82a5ccd2d892431fbfe91f" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>NumPages</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a18c4ba918cd1a2de78fbe2dc4b548d9d" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>Opacity</name></member>
+      <member refid="classQgsLayoutObject_1af5a44ba76312a7dc4c998bf2001a96bea0a68679ca04e4528d1f2875d0d641847" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>OriginalValue</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a8aec1505682fa9b0efefe2afb79309cb" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PageNumber</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a32cad4df9f9aca96db05a5a5843e5250" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PaperHeight</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a0d3fa9a224e8c4efd68da11ed28338a0" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PaperOrientation</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0ad968e380d2c9efa280ea36de9d1c7e24" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PaperWidth</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0ad06234cdabbb9a9d6d07b95370fcbfb0" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PictureSource</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0abd45277e0db71abfecc3658a1c7d9861" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PictureSvgBackgroundColor</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a0c82656c4c9db685669f433b60184dea" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PictureSvgStrokeColor</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a8f0cce732900179d825460bb64de39ff" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PictureSvgStrokeWidth</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0ae75285b6755ec937241633ffc0f3a4c8" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PositionX</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a65f4698b882592f96a9ab2e8b9f28d9b" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PositionY</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0ae6e749f94e114e2521fffe3cd7350c80" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PresetPaperSize</name></member>
+      <member refid="classQgsLayoutObject_1a31cf38a52dcfef37d1158cef141f73d4" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>propertyDefinitions</name></member>
+      <member refid="classQgsLayoutObject_1af5a44ba76312a7dc4c998bf2001a96be" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>PropertyValueType</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a085ac095b38a952f8405b7bf2ae4d04d" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>QgsLayout</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a64efed1a86fa9463be95b0081a45507a" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>QgsLayoutFrame</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a24532c3c84293d1247467182616c02a6" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>QgsLayoutMultiFrame</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a0021ca7bbb5e91253f8066bd91cdd5b7" prot="private" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>QgsLayoutMultiFrame</name></member>
+      <member refid="classQgsLayoutObject_1ac285fa34d1af638fed24d1f7f7410dac" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>QgsLayoutObject</name></member>
+      <member refid="classQgsLayoutObject_1a57043429761448c8c2963c334616debf" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>readObjectPropertiesFromElement</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ae1d818fcc686e388fda9cae965192400" prot="protected" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>readPropertiesFromElement</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a479e25933ebd8713c74abc1a83a6c0f8" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>readXml</name></member>
+      <member refid="classQgsLayoutMultiFrame_1adb6be6bb6d2546df806e2f36b9e08556" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>recalculateFrameRects</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ab6d8600981bdace4ea30716000c9b657" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>recalculateFrameSizes</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a9869a27b064870866a369459702b2e30" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>refresh</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af611f40603fa01a27be509c5524327f9" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>refreshDataDefinedProperty</name></member>
+      <member refid="classQgsLayoutObject_1a8207598f6a2b6f54f6cdaacc0430567f" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>removeCustomProperty</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a59cf702e9261290269fac4c5a2ac70be" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>removeFrame</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af9fab3403c4c78caacbbef385601a95a" prot="public" virt="pure-virtual"><scope>QgsLayoutMultiFrame</scope><name>render</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafae5df4460df04c6823bb2167b14b5929a" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>RepeatOnEveryPage</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafa5eab4a991333852420ccd97e087d7a2c" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>RepeatUntilFinished</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a707d331c6cfffa5e5f6a8eba29dd9fdc" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>resizeMode</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72baf" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ResizeMode</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a7466184b12322ec8bc66b02a34059947" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ScalebarFillColor</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a4d8d3f8fc9786365c4ee044508fce999" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ScalebarFillColor2</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0aaea90c17d5f0313b08e6856706ed510e" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ScalebarLineColor</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a4ef7176ae3bb6d3c8f8252bada365f75" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>ScalebarLineWidth</name></member>
+      <member refid="classQgsLayoutObject_1a5d3f15eb11a3715c3449027cea38bced" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>setCustomProperty</name></member>
+      <member refid="classQgsLayoutObject_1aa8b7a6d6ce0fcfcd42788aca05a3264b" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>setDataDefinedProperties</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a098e3666ba95e8e8d911c47f1401033e" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>setResizeMode</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a6d9c0ef9553e2b2b6c82b21e8265b8b9" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>SourceUrl</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a00411b895e2e42762fb007d5a9e2f8f4" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>TestProperty</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a0cb872b65e7de661476c27b225d04f12" prot="public" virt="pure-virtual"><scope>QgsLayoutMultiFrame</scope><name>totalSize</name></member>
+      <member refid="classQgsLayoutObject_1a76eb9873bc7087e3c3ce43acce0dbad0a72191f49489ec21628b1aff603219fef" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>Transparency</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a6de740fdac4f75ad5af9fea1cdfa8d36" prot="public" virt="pure-virtual"><scope>QgsLayoutMultiFrame</scope><name>type</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoCommand</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a46e27ca96be1be9849723bc83451ec35" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoHtmlBreakDistance</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ae7adcc999b9e17ed10c8c0706e58d325" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoHtmlSource</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a71ad8db44d46e85e041899ae8071cf12" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoHtmlStylesheet</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ab52116ca89e5f907ad454964cf7d2664" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoNone</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a10cd2a835b57ee21c7bc79501182763e" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableBackgroundColor</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a4e75eef7e77e49e643dc07f9ef47f0ec" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableCellStyle</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a1dea97aca9b6e1beb6cc3bac443d7e2d" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableContentFontColor</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a9c3e0cfb2695806e15abf75f277cc1d0" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableGridColor</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a9bbd5a6f3a50fdde983308f2fa0cf339" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableGridStrokeWidth</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6aaac6f4c287364a790c08ac58f7f732cb" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableHeaderFontColor</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6ac0988be89148fce9d34d3687dfad4cd9" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableMargin</name></member>
+      <member refid="classQgsLayoutMultiFrame_1af2402b82da369b3e533facd79d04bfb6a0fe77d00cb74136a5f68a8118c12429d" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UndoTableMaximumFeatures</name></member>
+      <member refid="classQgsLayoutMultiFrame_1ac06495017e6fade2337156c4861aaf99" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>update</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a97164b74de7ba1bf5ae6fb5013b72bafa9eecefa55ed73cbadeeaab696674de8c" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>UseExistingFrames</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a9582f26cd2b9ebffb645e6bd27780bda" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>uuid</name></member>
+      <member refid="classQgsLayoutObject_1aec1cff215521090f1b22d88f95858bd1" prot="protected" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>writeObjectPropertiesToElement</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a0137199e2f70fa9f94759b0af8b2c07a" prot="protected" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>writePropertiesToElement</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a26cf83ca74f05bd05f1e71e89f579523" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>writeXml</name></member>
+      <member refid="classQgsExpressionContextGenerator_1a22fc3aa78011d821a4271a084c3818c8" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>~QgsExpressionContextGenerator</name></member>
+      <member refid="classQgsLayoutMultiFrame_1a5db3947bf2ca374df95976c3e7129431" prot="public" virt="non-virtual"><scope>QgsLayoutMultiFrame</scope><name>~QgsLayoutMultiFrame</name></member>
+      <member refid="classQgsLayoutUndoObjectInterface_1a65997dbe0478c0b59dd0a7895c25672d" prot="public" virt="virtual"><scope>QgsLayoutMultiFrame</scope><name>~QgsLayoutUndoObjectInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

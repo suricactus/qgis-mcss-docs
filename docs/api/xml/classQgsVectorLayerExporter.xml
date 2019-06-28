@@ -1,0 +1,659 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsVectorLayerExporter" kind="class" language="C++" prot="public">
+    <compoundname>QgsVectorLayerExporter</compoundname>
+    <basecompoundref refid="classQgsFeatureSink" prot="public" virt="non-virtual">QgsFeatureSink</basecompoundref>
+    <includes refid="qgsvectorlayerexporter_8h" local="no">qgsvectorlayerexporter.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128" prot="public" static="no">
+        <name>ExportError</name>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128abb2776e5b7e5264ce92f38e17e3a7f1a" prot="public">
+          <name>NoError</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No errors were encountered. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a1e957abf00fd2046ca0df9693bbf8937" prot="public">
+          <name>ErrCreateDataSource</name>
+          <briefdescription>
+<para>Could not create the destination data source. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a802cf1b59bdc04950bded69a9953891d" prot="public">
+          <name>ErrCreateLayer</name>
+          <briefdescription>
+<para>Could not create destination layer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128aeda0f36b0745f56e9b1953aa23a0641d" prot="public">
+          <name>ErrAttributeTypeUnsupported</name>
+          <briefdescription>
+<para>Source layer has an attribute type which could not be handled by destination. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a77554b755214595b8d45200ac22596ad" prot="public">
+          <name>ErrAttributeCreationFailed</name>
+          <briefdescription>
+<para>Destination provider was unable to create an attribute. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128ab5a09a034432e6d18158b1170d3d9beb" prot="public">
+          <name>ErrProjection</name>
+          <briefdescription>
+<para>An error occurred while reprojecting features to destination CRS. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128ad850592ac177805b81da8090ae90e521" prot="public">
+          <name>ErrFeatureWriteFailed</name>
+          <briefdescription>
+<para>An error occurred while writing a feature to the destination. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a30193c8558ffcbef94c8c0c0a7750eb1" prot="public">
+          <name>ErrInvalidLayer</name>
+          <briefdescription>
+<para>Could not access newly created destination layer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a2e3e92fb7e2d61504376953679c61306" prot="public">
+          <name>ErrInvalidProvider</name>
+          <briefdescription>
+<para>Could not find a matching provider key. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128aac2fbaae0b9a79963966298206a189b3" prot="public">
+          <name>ErrProviderUnsupportedFeature</name>
+          <briefdescription>
+<para>Provider does not support creation of empty layers. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a83f90ed68f6af9631d510d00e4dd3dc7" prot="public">
+          <name>ErrConnectionFailed</name>
+          <briefdescription>
+<para>Could not connect to destination. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a08e9734328ce1a09e2d90d09dd22d7be" prot="public">
+          <name>ErrUserCanceled</name>
+          <briefdescription>
+<para>User canceled the export. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Error codes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="53" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="52" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1a509855b5365ea2aec15fda02c00ea8e0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsVectorLayerExporter::mAttributeCount</definition>
+        <argsstring></argsstring>
+        <name>mAttributeCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="163" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1aad82005961f9d6d812749a81f3d08f26" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128" kindref="member">ExportError</ref></type>
+        <definition>ExportError QgsVectorLayerExporter::mError</definition>
+        <argsstring></argsstring>
+        <name>mError</name>
+        <briefdescription>
+<para>Contains error value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="154" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1a0a0d9e3f4b3a264ea2ed85788661f8a1" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsVectorLayerExporter::mErrorCount</definition>
+        <argsstring></argsstring>
+        <name>mErrorCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="157" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1a990e511f0cc33f00449260843b44626a" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsVectorLayerExporter::mErrorMessage</definition>
+        <argsstring></argsstring>
+        <name>mErrorMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="155" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1ac831af3431cd3ac6caf683de465c45fa" prot="private" static="no" mutable="no">
+        <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref></type>
+        <definition>QgsFeatureList QgsVectorLayerExporter::mFeatureBuffer</definition>
+        <argsstring></argsstring>
+        <name>mFeatureBuffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="165" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1a2ec495e8c3f94c8c0c72b3b99a20a25c" prot="private" static="no" mutable="no">
+        <type>QMap&lt; int, int &gt;</type>
+        <definition>QMap&lt;int, int&gt; QgsVectorLayerExporter::mOldToNewAttrIdx</definition>
+        <argsstring></argsstring>
+        <name>mOldToNewAttrIdx</name>
+        <briefdescription>
+<para>Map attribute indexes to new field indexes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="162" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorLayerExporter_1ad0135e020a71927ad7fbc8b55ab2eb48" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsVectorDataProvider" kindref="compound">QgsVectorDataProvider</ref> *</type>
+        <definition>QgsVectorDataProvider* QgsVectorLayerExporter::mProvider</definition>
+        <argsstring></argsstring>
+        <name>mProvider</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="159" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1a9e827c3e9845bc7222fdd44a93b07041" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128" kindref="member">ExportError</ref></type>
+        <definition>QgsVectorLayerExporter::ExportError QgsVectorLayerExporter::exportLayer</definition>
+        <argsstring>(QgsVectorLayer *layer, const QString &amp;uri, const QString &amp;providerKey, const QgsCoordinateReferenceSystem &amp;destCRS, bool onlySelected=false, QString *errorMessage=nullptr, const QMap&lt; QString, QVariant &gt; &amp;options=QMap&lt; QString, QVariant &gt;(), QgsFeedback *feedback=nullptr)</argsstring>
+        <name>exportLayer</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destCRS</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>onlySelected</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QMap&lt; QString, QVariant &gt; &amp;</type>
+          <declname>options</declname>
+          <defval>QMap&lt; QString, QVariant &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Writes the contents of vector layer to a different datasource. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>URI for destination data source </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>providerKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string key for destination data provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destCRS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination CRS, or an invalid (default constructed) CRS if not available </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>onlySelected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to export only selected features </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>errorMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if non-null, will be set to any error messages </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional provider dataset options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>feedback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional feedback object to show progress and cancelation of export </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NoError for a successful export, or encountered error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="243" bodyend="472"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1aa52370d1a08ef6415b265ee30925623b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorLayerExporter::QgsVectorLayerExporter</definition>
+        <argsstring>(const QString &amp;uri, const QString &amp;provider, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType, const QgsCoordinateReferenceSystem &amp;crs, bool overwrite=false, const QMap&lt; QString, QVariant &gt; &amp;options=QMap&lt; QString, QVariant &gt;(), QgsFeatureSink::SinkFlags sinkFlags=nullptr)</argsstring>
+        <name>QgsVectorLayerExporter</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>provider</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>overwrite</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const QMap&lt; QString, QVariant &gt; &amp;</type>
+          <declname>options</declname>
+          <defval>QMap&lt; QString, QVariant &gt;()</defval>
+        </param>
+        <param>
+          <type>QgsFeatureSink::SinkFlags</type>
+          <declname>sinkFlags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>URI for destination data source </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>provider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string key for destination data provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fields</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>fields to include in created layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>geometryType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination geometry type </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>crs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>desired CRS, or an invalid (default constructed) CRS if not available </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overwrite</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to overwrite any existing data source </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional provider dataset options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sinkFlags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>for how to add features </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="103" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="48" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1abd4902785b41be1db656c03b99428739" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorLayerExporter::QgsVectorLayerExporter</definition>
+        <argsstring>(const QgsVectorLayerExporter &amp;rh)=delete</argsstring>
+        <name>QgsVectorLayerExporter</name>
+        <param>
+          <type>const <ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> &amp;</type>
+          <declname>rh</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> cannot be copied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1ab02cffcf7db365b3472058451b63c974" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorLayerExporter::~QgsVectorLayerExporter</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsVectorLayerExporter</name>
+        <briefdescription>
+<para>Finalizes the export and closes the new created layer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="144" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="144" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1abfd59483fd63e8f80551224af6d32a61" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorLayerExporter::addFeature</definition>
+        <argsstring>(QgsFeature &amp;feature, QgsFeatureSink::Flags flags=nullptr) override</argsstring>
+        <name>addFeature</name>
+        <reimplements refid="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05">addFeature</reimplements>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a single <emphasis>feature</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1a25c4585020eee6a870057c3493f3d7ff" kindref="member">addFeatures()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="139" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="171" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1a25c4585020eee6a870057c3493f3d7ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorLayerExporter::addFeatures</definition>
+        <argsstring>(QgsFeatureList &amp;features, QgsFeatureSink::Flags flags=nullptr) override</argsstring>
+        <name>addFeatures</name>
+        <reimplements refid="classQgsFeatureSink_1ae74a8e6dbc5dfdb3c769df49d0fc4bd2">addFeatures</reimplements>
+        <param>
+          <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref> &amp;</type>
+          <declname>features</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a list of <emphasis>features</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1abfd59483fd63e8f80551224af6d32a61" kindref="member">addFeature()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="138" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="160" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1aeac01d441ce87505a09b9109a526b293" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128" kindref="member">ExportError</ref></type>
+        <definition>QgsVectorLayerExporter::ExportError QgsVectorLayerExporter::errorCode</definition>
+        <argsstring>() const</argsstring>
+        <name>errorCode</name>
+        <briefdescription>
+<para>Returns any encountered error code, or false if no error was encountered. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1a697fedf8eec7a3836305cbd2957fb532" kindref="member">errorMessage()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1a58480ca394a66a86c3185e1185b50bde" kindref="member">errorCount()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="122" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1a58480ca394a66a86c3185e1185b50bde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsVectorLayerExporter::errorCount</definition>
+        <argsstring>() const</argsstring>
+        <name>errorCount</name>
+        <briefdescription>
+<para>Returns the number of error messages encountered during the export. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1a697fedf8eec7a3836305cbd2957fb532" kindref="member">errorMessage()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1aeac01d441ce87505a09b9109a526b293" kindref="member">errorCode()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="136" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="136" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1a697fedf8eec7a3836305cbd2957fb532" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorLayerExporter::errorMessage</definition>
+        <argsstring>() const</argsstring>
+        <name>errorMessage</name>
+        <briefdescription>
+<para>Returns any error message encountered during the export. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1a58480ca394a66a86c3185e1185b50bde" kindref="member">errorCount()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsVectorLayerExporter_1aeac01d441ce87505a09b9109a526b293" kindref="member">errorCode()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="129" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="155" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1ab5bd1116f9da7b6c3bd469764cce3e4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorLayerExporter::flushBuffer</definition>
+        <argsstring>() override</argsstring>
+        <name>flushBuffer</name>
+        <reimplements refid="classQgsFeatureSink_1a649343548eb3c919cfd42ccee588c7ce">flushBuffer</reimplements>
+        <briefdescription>
+<para>Flushes any internal buffer which may exist in the sink, causing any buffered features to be added to the sink&apos;s destination. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>false if any buffered features could not be added to the sink. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="146" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="203" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1aa23f03ac9c1d06adf90eb5ec1986839c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> &amp;</type>
+        <definition>QgsVectorLayerExporter&amp; QgsVectorLayerExporter::operator=</definition>
+        <argsstring>(const QgsVectorLayerExporter &amp;rh)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> &amp;</type>
+          <declname>rh</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> cannot be copied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="115" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsVectorLayerExporter_1a46f9516c8ff58756d0202e4258e65ec4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorLayerExporter::createSpatialIndex</definition>
+        <argsstring>()</argsstring>
+        <name>createSpatialIndex</name>
+        <briefdescription>
+<para>Create index. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="151" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.cpp" bodystart="230" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A convenience class for exporting vector layers to a destination data provider. </para>    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classQgsVectorLayerExporter" kindref="compound">QgsVectorLayerExporter</ref> can be used in two ways:</para><para><orderedlist>
+<listitem><para>Using a static call to <ref refid="classQgsVectorLayerExporter_1a9e827c3e9845bc7222fdd44a93b07041" kindref="member">QgsVectorLayerExporter::exportLayer</ref>(...) which exports the entire layer to the destination provider.</para></listitem><listitem><para>Create an instance of the class and issue calls to addFeature(...)</para></listitem></orderedlist>
+</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9460">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="9459">
+        <label>QgsVectorLayerExporter</label>
+        <link refid="classQgsVectorLayerExporter"/>
+        <childnode refid="9460" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9462">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="9461">
+        <label>QgsVectorLayerExporter</label>
+        <link refid="classQgsVectorLayerExporter"/>
+        <childnode refid="9462" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" line="48" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorlayerexporter.h" bodystart="47" bodyend="171"/>
+    <listofallmembers>
+      <member refid="classQgsVectorLayerExporter_1abfd59483fd63e8f80551224af6d32a61" prot="public" virt="virtual"><scope>QgsVectorLayerExporter</scope><name>addFeature</name></member>
+      <member refid="classQgsVectorLayerExporter_1a25c4585020eee6a870057c3493f3d7ff" prot="public" virt="virtual"><scope>QgsVectorLayerExporter</scope><name>addFeatures</name></member>
+      <member refid="classQgsFeatureSink_1a3d65e9e2cac5e0e0b699b08922f20f68" prot="public" virt="virtual" ambiguityscope="QgsFeatureSink::"><scope>QgsVectorLayerExporter</scope><name>addFeatures</name></member>
+      <member refid="classQgsVectorLayerExporter_1a46f9516c8ff58756d0202e4258e65ec4" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>createSpatialIndex</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a77554b755214595b8d45200ac22596ad" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrAttributeCreationFailed</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128aeda0f36b0745f56e9b1953aa23a0641d" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrAttributeTypeUnsupported</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a83f90ed68f6af9631d510d00e4dd3dc7" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrConnectionFailed</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a1e957abf00fd2046ca0df9693bbf8937" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrCreateDataSource</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a802cf1b59bdc04950bded69a9953891d" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrCreateLayer</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128ad850592ac177805b81da8090ae90e521" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrFeatureWriteFailed</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a30193c8558ffcbef94c8c0c0a7750eb1" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrInvalidLayer</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a2e3e92fb7e2d61504376953679c61306" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrInvalidProvider</name></member>
+      <member refid="classQgsVectorLayerExporter_1aeac01d441ce87505a09b9109a526b293" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>errorCode</name></member>
+      <member refid="classQgsVectorLayerExporter_1a58480ca394a66a86c3185e1185b50bde" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>errorCount</name></member>
+      <member refid="classQgsVectorLayerExporter_1a697fedf8eec7a3836305cbd2957fb532" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>errorMessage</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128ab5a09a034432e6d18158b1170d3d9beb" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrProjection</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128aac2fbaae0b9a79963966298206a189b3" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrProviderUnsupportedFeature</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128a08e9734328ce1a09e2d90d09dd22d7be" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ErrUserCanceled</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>ExportError</name></member>
+      <member refid="classQgsVectorLayerExporter_1a9e827c3e9845bc7222fdd44a93b07041" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>exportLayer</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239acd4b5c2a6ae1868f72a80b8fce669072" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>FastInsert</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>Flag</name></member>
+      <member refid="classQgsVectorLayerExporter_1ab5bd1116f9da7b6c3bd469764cce3e4a" prot="public" virt="virtual"><scope>QgsVectorLayerExporter</scope><name>flushBuffer</name></member>
+      <member refid="classQgsVectorLayerExporter_1a509855b5365ea2aec15fda02c00ea8e0" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mAttributeCount</name></member>
+      <member refid="classQgsVectorLayerExporter_1aad82005961f9d6d812749a81f3d08f26" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mError</name></member>
+      <member refid="classQgsVectorLayerExporter_1a0a0d9e3f4b3a264ea2ed85788661f8a1" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mErrorCount</name></member>
+      <member refid="classQgsVectorLayerExporter_1a990e511f0cc33f00449260843b44626a" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mErrorMessage</name></member>
+      <member refid="classQgsVectorLayerExporter_1ac831af3431cd3ac6caf683de465c45fa" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mFeatureBuffer</name></member>
+      <member refid="classQgsVectorLayerExporter_1a2ec495e8c3f94c8c0c72b3b99a20a25c" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mOldToNewAttrIdx</name></member>
+      <member refid="classQgsVectorLayerExporter_1ad0135e020a71927ad7fbc8b55ab2eb48" prot="private" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>mProvider</name></member>
+      <member refid="classQgsVectorLayerExporter_1a35d70c957b01dca0b27335b928935128abb2776e5b7e5264ce92f38e17e3a7f1a" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>NoError</name></member>
+      <member refid="classQgsVectorLayerExporter_1aa23f03ac9c1d06adf90eb5ec1986839c" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>operator=</name></member>
+      <member refid="classQgsVectorLayerExporter_1aa52370d1a08ef6415b265ee30925623b" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>QgsVectorLayerExporter</name></member>
+      <member refid="classQgsVectorLayerExporter_1abd4902785b41be1db656c03b99428739" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>QgsVectorLayerExporter</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19a068ceb3d5fef4dea3ee5ea0d0527300e" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>RegeneratePrimaryKey</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>SinkFlag</name></member>
+      <member refid="classQgsFeatureSink_1a216423652491057eef823728c29654e4" prot="public" virt="virtual"><scope>QgsVectorLayerExporter</scope><name>~QgsFeatureSink</name></member>
+      <member refid="classQgsVectorLayerExporter_1ab02cffcf7db365b3472058451b63c974" prot="public" virt="non-virtual"><scope>QgsVectorLayerExporter</scope><name>~QgsVectorLayerExporter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

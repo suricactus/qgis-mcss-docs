@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsSettings class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsSettings <span class="m-thin">class</span>
+        </h1>
+        <p>This class is a composition of two QSettings instances:</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<ul><li>the main QSettings instance is the standard User Settings and</li><li>the second one (Global Settings) is meant to provide read-only pre-configuration and defaults to the first one.</li></ul><p>For a given settings key, the function call to value(key, default) will return the first existing setting in the order specified below:</p><ul><li>User Settings</li><li>Global Settings</li><li>Default Value</li></ul><p>The path to the Global Settings storage can be set before constructing the <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> objects, with a static call to: static bool setGlobalSettingsPath( QString path );</p><p><a href="classQgsSettings.html" class="m-doc">QgsSettings</a> provides some shortcuts to get/set namespaced settings from/to a specific section:</p><ul><li>Core</li><li>Gui</li><li>Server</li><li>Plugins</li><li>Auth</li><li>App</li><li>Providers</li><li>Misc</li></ul><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#aba2f174ee000905cac8aff26665ed7c7" class="m-doc-self" name="aba2f174ee000905cac8aff26665ed7c7">Section</a> { </span><span class="m-doc-wrap"><a href="#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a92d7ec148132a564e345e8c4a4a8bdec" class="m-doc">Core</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a44c935f77c273c99030edc971dc7b5fd" class="m-doc">Gui</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a7b519ae80e55ed2b0c947f60446e1934" class="m-doc">Server</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7ac0e5f5a85069c9996262870ea5f98c40" class="m-doc">Plugins</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a7d6d7576ec261e0ed8356cd3e6cdc610" class="m-doc">Auth</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a79c53654a7c797b38015f8e9404161b8" class="m-doc">App</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a75d1105526af040406b97629fef6d826" class="m-doc">Providers</a>,
+              <a href="#aba2f174ee000905cac8aff26665ed7c7a4d3081f517416dc73771d21717925cc6" class="m-doc">Misc</a> }</span>
+            </dt>
+            <dd>Sections for namespaced settings.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1b37d0e391af730a0e4393fe5395dbfc" class="m-doc-self" name="a1b37d0e391af730a0e4393fe5395dbfc">globalSettingsPath</a>(</span><span class="m-doc-wrap">) -&gt; QString</span>
+            </dt>
+            <dd>Returns the path to the Global Settings QSettings storage file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3331dc3abc0e2bd35b583356f8e12cc0" class="m-doc-self" name="a3331dc3abc0e2bd35b583356f8e12cc0">setGlobalSettingsPath</a>(</span><span class="m-doc-wrap">const QString&amp; path) -&gt; bool</span>
+            </dt>
+            <dd>Sets the Global Settings QSettings storage file.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a941d006563dab89f81c411a62fc5b0c9" class="m-doc-self" name="a941d006563dab89f81c411a62fc5b0c9">QgsSettings</a>(</span><span class="m-doc-wrap">const QString&amp; organization,
+              const QString&amp; application = QString(),
+              QObject* parent = nullptr) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application called application from the organization called organization, and with parent parent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a9ae704e2f492a54e26c5757d5feecbc1" class="m-doc">QgsSettings</a>(</span><span class="m-doc-wrap">QSettings::Scope scope,
+              const QString&amp; organization,
+              const QString&amp; application = QString(),
+              QObject* parent = nullptr)</span>
+            </dt>
+            <dd>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application called application from the organization called organization, and with parent parent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a7ddbdcc4886ebdb926f2436d512c92a5" class="m-doc">QgsSettings</a>(</span><span class="m-doc-wrap">QSettings::Format format,
+              QSettings::Scope scope,
+              const QString&amp; organization,
+              const QString&amp; application = QString(),
+              QObject* parent = nullptr)</span>
+            </dt>
+            <dd>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application called application from the organization called organization, and with parent parent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aed457faa33f5dca37e82c545e36c7afb" class="m-doc">QgsSettings</a>(</span><span class="m-doc-wrap">const QString&amp; fileName,
+              QSettings::Format format,
+              QObject* parent = nullptr)</span>
+            </dt>
+            <dd>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing the settings stored in the file called fileName, with parent parent.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aaa65b218a9b2e1a3e4c74e0cf94f3d89" class="m-doc">QgsSettings</a>(</span><span class="m-doc-wrap">QObject* parent = nullptr) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructs a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application and organization set previously with a call to QCoreApplication::setOrganizationName(), QCoreApplication::setOrganizationDomain(), and QCoreApplication::setApplicationName().</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae56525fbda2484288914d1c3a1e5323f" class="m-doc-self" name="ae56525fbda2484288914d1c3a1e5323f">allKeys</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of all keys, including subkeys, that can be read using the QSettings object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6db7f9e18c2af86bec8804ef7d1089fa" class="m-doc">beginGroup</a>(</span><span class="m-doc-wrap">const QString&amp; prefix,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>)</span>
+            </dt>
+            <dd>Appends prefix to the current group.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af410c0c176615dd1e357efc477064284" class="m-doc-self" name="af410c0c176615dd1e357efc477064284">beginReadArray</a>(</span><span class="m-doc-wrap">const QString&amp; prefix) -&gt; int</span>
+            </dt>
+            <dd>Adds prefix to the current group and starts reading from an array. Returns the size of the array.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab0506e509bf0806e983fafbee53a9000" class="m-doc">beginWriteArray</a>(</span><span class="m-doc-wrap">const QString&amp; prefix,
+              int size = -1)</span>
+            </dt>
+            <dd>Adds prefix to the current group and starts writing an array of size size.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ca024e7dc5d8dc2efc94eef1ff3c484" class="m-doc-self" name="a1ca024e7dc5d8dc2efc94eef1ff3c484">childGroups</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of all key top-level groups that contain keys that can be read using the QSettings object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8e250f0ffbc6b9594ad467cd3125c66d" class="m-doc-self" name="a8e250f0ffbc6b9594ad467cd3125c66d">childKeys</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of all top-level keys that can be read using the QSettings object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3fe043d642fabef903b4bd8456a3f993" class="m-doc-self" name="a3fe043d642fabef903b4bd8456a3f993">clear</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Removes all entries in the user settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a459a71f2971010b8f3f17ff5fd2a93d6" class="m-doc">contains</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if there exists a setting called key; returns false otherwise.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5a2d07c419641b76dc31e2eeb2739bee" class="m-doc-self" name="a5a2d07c419641b76dc31e2eeb2739bee">endArray</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Closes the array that was started using <a href="classQgsSettings.html#af410c0c176615dd1e357efc477064284" class="m-doc">beginReadArray()</a> or <a href="classQgsSettings.html#ab0506e509bf0806e983fafbee53a9000" class="m-doc">beginWriteArray()</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a390bb0fd42654083e93bb37b01202aa6" class="m-doc-self" name="a390bb0fd42654083e93bb37b01202aa6">endGroup</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Resets the group to what it was before the corresponding <a href="classQgsSettings.html#a6db7f9e18c2af86bec8804ef7d1089fa" class="m-doc">beginGroup()</a> call.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#adc9421d6c9c374f7276f385293a5c208" class="m-doc">enumValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; defaultValue,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>) -&gt; T</span>
+            </dt>
+            <dd>Returns the setting value for a setting based on an enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5eb70acbaede8b0063ed1e633a4202b" class="m-doc-self" name="ad5eb70acbaede8b0063ed1e633a4202b">fileName</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the path where settings written using this QSettings object are stored.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">auto <a href="#a152714ac615c9fc004b52970aa08b9c6" class="m-doc">flagValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; defaultValue,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>) -&gt; T</span>
+            </dt>
+            <dd>Returns the setting value for a setting based on a flag.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa8cf73397c84beb216266f1d2f42af8d" class="m-doc-self" name="aa8cf73397c84beb216266f1d2f42af8d">globalChildGroups</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of all key top-level groups (same as childGroups) but only for groups defined in global settings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5a34cf7ba265d5fdb813814db8d89c9d" class="m-doc">group</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the current group.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a46db9582b011dd416d55c7e207c7d34f" class="m-doc-self" name="a46db9582b011dd416d55c7e207c7d34f">prefixedKey</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the sanitized and prefixed key.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad36e56e807163c4502bb0e763163f5f5" class="m-doc-self" name="ad36e56e807163c4502bb0e763163f5f5">remove</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>)</span>
+            </dt>
+            <dd>Removes the setting key and any sub-settings of key in a section.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afb834a0dfda3843f5c33af10e277bf28" class="m-doc">setArrayIndex</a>(</span><span class="m-doc-wrap">int i)</span>
+            </dt>
+            <dd>Sets the current array index to i.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a7e8af392a7931d9759f30fd31b785292" class="m-doc">setEnumValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; value,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>)</span>
+            </dt>
+            <dd>Set the value of a setting based on an enum.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;class T&gt;</div>
+              <span class="m-doc-wrap-bumper">void <a href="#a2d04ecd62b6d91868e6876ffceaec33b" class="m-doc">setFlagValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; value,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>)</span>
+            </dt>
+            <dd>Set the value of a setting based on a flaf.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad5ea1e3318bed24f70625f2fdb29f01e" class="m-doc">setValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>)</span>
+            </dt>
+            <dd>Sets the value of setting key to value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a98ba0ffdb619e37b7e4c0c2626ee5bbc" class="m-doc">sync</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Writes any unsaved changes to permanent storage, and reloads any settings that have been changed in the meantime by another application.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4398513cdbed73f4bacfde90a9170b6f" class="m-doc">value</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant(),
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>) const -&gt; QVariant</span>
+            </dt>
+            <dd>Returns the value for setting key.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a9ae704e2f492a54e26c5757d5feecbc1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ae704e2f492a54e26c5757d5feecbc1" class="m-doc-self">QgsSettings</a>(</span><span class="m-doc-wrap">QSettings::Scope scope,
+              const QString&amp; organization,
+              const QString&amp; application = QString(),
+              QObject* parent = nullptr)</span></span>
+            </h3>
+            <p>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application called application from the organization called organization, and with parent parent.</p>
+<p>If scope is QSettings::UserScope, the QSettings object searches user-specific settings first, before it searches system-wide settings as a fallback. If scope is QSettings::SystemScope, the QSettings object ignores user-specific settings and provides access to system-wide settings.</p><p>The storage format is set to QSettings::NativeFormat (i.e. calling setDefaultFormat() before calling this constructor has no effect).</p><p>If no application name is given, the QSettings object will only access the organization-wide locations.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7ddbdcc4886ebdb926f2436d512c92a5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ddbdcc4886ebdb926f2436d512c92a5" class="m-doc-self">QgsSettings</a>(</span><span class="m-doc-wrap">QSettings::Format format,
+              QSettings::Scope scope,
+              const QString&amp; organization,
+              const QString&amp; application = QString(),
+              QObject* parent = nullptr)</span></span>
+            </h3>
+            <p>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application called application from the organization called organization, and with parent parent.</p>
+<p>If scope is QSettings::UserScope, the QSettings object searches user-specific settings first, before it searches system-wide settings as a fallback. If scope is QSettings::SystemScope, the QSettings object ignores user-specific settings and provides access to system-wide settings. If format is QSettings::NativeFormat, the native API is used for storing settings. If format is QSettings::IniFormat, the INI format is used.</p><p>If no application name is given, the QSettings object will only access the organization-wide locations.</p>
+          </div></section>
+          <section class="m-doc-details" id="aed457faa33f5dca37e82c545e36c7afb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aed457faa33f5dca37e82c545e36c7afb" class="m-doc-self">QgsSettings</a>(</span><span class="m-doc-wrap">const QString&amp; fileName,
+              QSettings::Format format,
+              QObject* parent = nullptr)</span></span>
+            </h3>
+            <p>Construct a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing the settings stored in the file called fileName, with parent parent.</p>
+<p>If the file doesn&#x27;t already exist, it is created.</p><p>If format is QSettings::NativeFormat, the meaning of fileName depends on the platform. On Unix, fileName is the name of an INI file. On macOS and iOS, fileName is the name of a .plist file. On Windows, fileName is a path in the system registry.</p><p>If format is QSettings::IniFormat, fileName is the name of an INI file.</p><p>Warning: This function is provided for convenience. It works well for accessing INI or .plist files generated by Qt, but might fail on some syntaxes found in such files originated by other programs. In particular, be aware of the following limitations:</p><ul><li><a href="classQgsSettings.html" class="m-doc">QgsSettings</a> provides no way of reading INI &quot;path&quot; entries, i.e., entries with unescaped slash characters. (This is because these entries are ambiguous and cannot be resolved automatically.)</li><li>In INI files, QSettings uses the @ character as a metacharacter in some contexts, to encode Qt-specific data types (e.g., @Rect), and might therefore misinterpret it when it occurs in pure INI files.</li></ul>
+          </div></section>
+          <section class="m-doc-details" id="aaa65b218a9b2e1a3e4c74e0cf94f3d89"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaa65b218a9b2e1a3e4c74e0cf94f3d89" class="m-doc-self">QgsSettings</a>(</span><span class="m-doc-wrap">QObject* parent = nullptr) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructs a <a href="classQgsSettings.html" class="m-doc">QgsSettings</a> object for accessing settings of the application and organization set previously with a call to QCoreApplication::setOrganizationName(), QCoreApplication::setOrganizationDomain(), and QCoreApplication::setApplicationName().</p>
+<p>The scope is QSettings::UserScope and the format is defaultFormat() (QSettings::NativeFormat by default). Use setDefaultFormat() before calling this constructor to change the default format used by this constructor.</p>
+          </div></section>
+          <section class="m-doc-details" id="a6db7f9e18c2af86bec8804ef7d1089fa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6db7f9e18c2af86bec8804ef7d1089fa" class="m-doc-self">beginGroup</a>(</span><span class="m-doc-wrap">const QString&amp; prefix,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>)</span></span>
+            </h3>
+            <p>Appends prefix to the current group.</p>
+<p>The current group is automatically prepended to all keys specified to QSettings. In addition, query functions such as <a href="classQgsSettings.html#a1ca024e7dc5d8dc2efc94eef1ff3c484" class="m-doc">childGroups()</a>, <a href="classQgsSettings.html#a8e250f0ffbc6b9594ad467cd3125c66d" class="m-doc">childKeys()</a>, and <a href="classQgsSettings.html#ae56525fbda2484288914d1c3a1e5323f" class="m-doc">allKeys()</a> are based on the group. By default, no group is set.</p>
+          </div></section>
+          <section class="m-doc-details" id="ab0506e509bf0806e983fafbee53a9000"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab0506e509bf0806e983fafbee53a9000" class="m-doc-self">beginWriteArray</a>(</span><span class="m-doc-wrap">const QString&amp; prefix,
+              int size = -1)</span></span>
+            </h3>
+            <p>Adds prefix to the current group and starts writing an array of size size.</p>
+<p>If size is -1 (the default), it is automatically determined based on the indexes of the entries written.</p><aside class="m-note m-info"><h4>Note</h4><p>This will completely shadow any existing array with the same name in the global settings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a459a71f2971010b8f3f17ff5fd2a93d6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a459a71f2971010b8f3f17ff5fd2a93d6" class="m-doc-self">contains</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>) const</span></span>
+            </h3>
+            <p>Returns true if there exists a setting called key; returns false otherwise.</p>
+<p>If a group is set using <a href="classQgsSettings.html#a6db7f9e18c2af86bec8804ef7d1089fa" class="m-doc">beginGroup()</a>, key is taken to be relative to that group.</p>
+          </div></section>
+          <section class="m-doc-details" id="adc9421d6c9c374f7276f385293a5c208"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">T QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc9421d6c9c374f7276f385293a5c208" class="m-doc-self">enumValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; defaultValue,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>)</span></span>
+            </h3>
+            <p>Returns the setting value for a setting based on an enum.</p>
+<p>This forces the output to be a valid and existing entry of the enum. Hence if the setting value is incorrect, the given default value is returned. This tries first with setting as a string (as the enum) and then as an integer value.</p><aside class="m-note m-info"><h4>Note</h4><p>The enum needs to be declared with Q_ENUM, and flags with Q_FLAG (not Q_FLAGS).</p><p>for Python bindings, a custom implementation is achieved in Python directly</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSettings.html#a7e8af392a7931d9759f30fd31b785292" class="m-doc">setEnumValue</a></p><p><a href="classQgsSettings.html#a152714ac615c9fc004b52970aa08b9c6" class="m-doc">flagValue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a152714ac615c9fc004b52970aa08b9c6"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">T QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a152714ac615c9fc004b52970aa08b9c6" class="m-doc-self">flagValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; defaultValue,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>)</span></span>
+            </h3>
+            <p>Returns the setting value for a setting based on a flag.</p>
+<p>This forces the output to be a valid and existing entry of the flag. Hence if the setting value is incorrect, the given default value is returned. This tries first with setting as a string (using a byte array) and then as an integer value.</p><aside class="m-note m-info"><h4>Note</h4><p>The flag needs to be declared with Q_FLAG (not Q_FLAGS).</p><p>for Python bindings, a custom implementation is achieved in Python directly.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSettings.html#a2d04ecd62b6d91868e6876ffceaec33b" class="m-doc">setFlagValue</a></p><p><a href="classQgsSettings.html#adc9421d6c9c374f7276f385293a5c208" class="m-doc">enumValue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5a34cf7ba265d5fdb813814db8d89c9d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5a34cf7ba265d5fdb813814db8d89c9d" class="m-doc-self">group</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current group.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSettings.html#a6db7f9e18c2af86bec8804ef7d1089fa" class="m-doc">beginGroup()</a></p><p><a href="classQgsSettings.html#a390bb0fd42654083e93bb37b01202aa6" class="m-doc">endGroup()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afb834a0dfda3843f5c33af10e277bf28"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afb834a0dfda3843f5c33af10e277bf28" class="m-doc-self">setArrayIndex</a>(</span><span class="m-doc-wrap">int i)</span></span>
+            </h3>
+            <p>Sets the current array index to i.</p>
+<p>Calls to functions such as <a href="classQgsSettings.html#ad5ea1e3318bed24f70625f2fdb29f01e" class="m-doc">setValue()</a>, <a href="classQgsSettings.html#a4398513cdbed73f4bacfde90a9170b6f" class="m-doc">value()</a>, <a href="classQgsSettings.html#ad36e56e807163c4502bb0e763163f5f5" class="m-doc">remove()</a>, and <a href="classQgsSettings.html#a459a71f2971010b8f3f17ff5fd2a93d6" class="m-doc">contains()</a> will operate on the array entry at that index.</p>
+          </div></section>
+          <section class="m-doc-details" id="a7e8af392a7931d9759f30fd31b785292"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7e8af392a7931d9759f30fd31b785292" class="m-doc-self">setEnumValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; value,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>)</span></span>
+            </h3>
+            <p>Set the value of a setting based on an enum.</p>
+<p>The setting will be saved as string.</p><aside class="m-note m-info"><h4>Note</h4><p>The enum needs to be declared with Q_ENUM, and flags with Q_FLAG (not Q_FLAGS).</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSettings.html#adc9421d6c9c374f7276f385293a5c208" class="m-doc">enumValue</a></p><p><a href="classQgsSettings.html#a2d04ecd62b6d91868e6876ffceaec33b" class="m-doc">setFlagValue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2d04ecd62b6d91868e6876ffceaec33b"><div>
+            <h3>
+              <div class="m-doc-template">
+                template&lt;class T&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d04ecd62b6d91868e6876ffceaec33b" class="m-doc-self">setFlagValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const T&amp; value,
+              const <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>)</span></span>
+            </h3>
+            <p>Set the value of a setting based on a flaf.</p>
+<p>The setting will be saved as string.</p><aside class="m-note m-info"><h4>Note</h4><p>The flag needs to be declared with Q_FLAG (not Q_FLAGS).</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsSettings.html#a152714ac615c9fc004b52970aa08b9c6" class="m-doc">flagValue</a></p><p><a href="classQgsSettings.html#a7e8af392a7931d9759f30fd31b785292" class="m-doc">setEnumValue</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5ea1e3318bed24f70625f2fdb29f01e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5ea1e3318bed24f70625f2fdb29f01e" class="m-doc-self">setValue</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; value,
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">QgsSettings::<wbr />Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">QgsSettings::<wbr />NoSection</a>)</span></span>
+            </h3>
+            <p>Sets the value of setting key to value.</p>
+<p>If the key already exists, the previous value is overwritten. An optional Section argument can be used to set a value to a specific Section.</p>
+          </div></section>
+          <section class="m-doc-details" id="a98ba0ffdb619e37b7e4c0c2626ee5bbc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a98ba0ffdb619e37b7e4c0c2626ee5bbc" class="m-doc-self">sync</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Writes any unsaved changes to permanent storage, and reloads any settings that have been changed in the meantime by another application.</p>
+<p>This function is called automatically from QSettings&#x27;s destructor and by the event loop at regular intervals, so you normally don&#x27;t need to call it yourself.</p>
+          </div></section>
+          <section class="m-doc-details" id="a4398513cdbed73f4bacfde90a9170b6f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4398513cdbed73f4bacfde90a9170b6f" class="m-doc-self">value</a>(</span><span class="m-doc-wrap">const QString&amp; key,
+              const QVariant&amp; defaultValue = QVariant(),
+              <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7" class="m-doc">Section</a> section = <a href="classQgsSettings.html#aba2f174ee000905cac8aff26665ed7c7a3983c0fc5fdc03bffa31578411fcc772" class="m-doc">NoSection</a>) const</span></span>
+            </h3>
+            <p>Returns the value for setting key.</p>
+<p>If the setting doesn&#x27;t exist, it will be searched in the Global Settings and if not found, returns defaultValue. If no default value is specified, a default QVariant is returned. An optional Section argument can be used to get a value from a specific Section.</p>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

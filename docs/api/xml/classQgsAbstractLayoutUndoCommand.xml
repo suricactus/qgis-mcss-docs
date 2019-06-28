@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsAbstractLayoutUndoCommand" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsAbstractLayoutUndoCommand</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QUndoCommand</basecompoundref>
+    <includes refid="qgslayoutundocommand_8h" local="no">qgslayoutundocommand.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsAbstractLayoutUndoCommand_1a2f98f979d7f65e63db3d888ae81e521e" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsAbstractLayoutUndoCommand::mFirstRun</definition>
+        <argsstring></argsstring>
+        <name>mFirstRun</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>Flag to prevent the first <ref refid="classQgsAbstractLayoutUndoCommand_1afd9116c18681958f1de9bdeb4043e98a" kindref="member">redo()</ref> if the command is pushed to the undo stack. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="108" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsAbstractLayoutUndoCommand_1aef5ed0352796f7a1e2950ea09228d367" prot="private" static="no" mutable="no">
+        <type>QDomDocument</type>
+        <definition>QDomDocument QgsAbstractLayoutUndoCommand::mAfterState</definition>
+        <argsstring></argsstring>
+        <name>mAfterState</name>
+        <briefdescription>
+<para>XML containing the state after executing the command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="116" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractLayoutUndoCommand_1a29d311ab528c1ff94d485f67bcde603e" prot="private" static="no" mutable="no">
+        <type>QDomDocument</type>
+        <definition>QDomDocument QgsAbstractLayoutUndoCommand::mBeforeState</definition>
+        <argsstring></argsstring>
+        <name>mBeforeState</name>
+        <briefdescription>
+<para>XML that saves the state before executing the command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="113" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractLayoutUndoCommand_1a4409de9204907951a164aaacf155b621" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsAbstractLayoutUndoCommand::mId</definition>
+        <argsstring></argsstring>
+        <name>mId</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Command id. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="119" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1ab88c78bc23faefe6197c6b064964c849" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsAbstractLayoutUndoCommand::QgsAbstractLayoutUndoCommand</definition>
+        <argsstring>(const QString &amp;text, int id=0, QUndoCommand *parent=nullptr)</argsstring>
+        <name>QgsAbstractLayoutUndoCommand</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>QUndoCommand *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for QgsLayoutUndoCommand. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>id</emphasis> argument can be used to specify an id number for the source event - this is used to determine whether QUndoCommand command compression can apply to the command. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="43" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="21" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1abb34b8f1749140ff3e24c84d1bb721fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QDomDocument</type>
+        <definition>QDomDocument QgsAbstractLayoutUndoCommand::afterState</definition>
+        <argsstring>() const</argsstring>
+        <name>afterState</name>
+        <briefdescription>
+<para>Returns the after state for the layout. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1ab3d2653ac3527fe1bfe76bf34e3c9fd2" kindref="member">saveAfterState()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1a9b63af59061e6251e708db2a946dda21" kindref="member">beforeState()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="75" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1a9b63af59061e6251e708db2a946dda21" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QDomDocument</type>
+        <definition>QDomDocument QgsAbstractLayoutUndoCommand::beforeState</definition>
+        <argsstring>() const</argsstring>
+        <name>beforeState</name>
+        <briefdescription>
+<para>Returns the before state for the layout. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1acb7117ab4d4c6e436a65d881d66c45dc" kindref="member">saveBeforeState()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1abb34b8f1749140ff3e24c84d1bb721fc" kindref="member">afterState()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="68" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1a6ab3de9d9390b278d8adee85beefdd00" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractLayoutUndoCommand::containsChange</definition>
+        <argsstring>() const</argsstring>
+        <name>containsChange</name>
+        <briefdescription>
+<para>Returns true if both the before and after states are valid and different. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="80" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1a09a8573a38a21b86026995a32ccaf57b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsAbstractLayoutUndoCommand::id</definition>
+        <argsstring>() const override</argsstring>
+        <name>id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="47" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1afd9116c18681958f1de9bdeb4043e98a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractLayoutUndoCommand::redo</definition>
+        <argsstring>() override</argsstring>
+        <name>redo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="46" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="32" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1ab3d2653ac3527fe1bfe76bf34e3c9fd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractLayoutUndoCommand::saveAfterState</definition>
+        <argsstring>()</argsstring>
+        <name>saveAfterState</name>
+        <briefdescription>
+<para>Saves current layout state as after state. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1abb34b8f1749140ff3e24c84d1bb721fc" kindref="member">afterState()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1acb7117ab4d4c6e436a65d881d66c45dc" kindref="member">saveBeforeState()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="61" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1acb7117ab4d4c6e436a65d881d66c45dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractLayoutUndoCommand::saveBeforeState</definition>
+        <argsstring>()</argsstring>
+        <name>saveBeforeState</name>
+        <briefdescription>
+<para>Saves current layout state as before state. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1a9b63af59061e6251e708db2a946dda21" kindref="member">beforeState()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1ab3d2653ac3527fe1bfe76bf34e3c9fd2" kindref="member">saveAfterState()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="54" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1aebb46a9bd76e085ca83907569010ad9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractLayoutUndoCommand::undo</definition>
+        <argsstring>() override</argsstring>
+        <name>undo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="45" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="26" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1aaa312f3e9d72445d03c08a6d516a34c5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractLayoutUndoCommand::restoreState</definition>
+        <argsstring>(QDomDocument &amp;stateDoc)=0</argsstring>
+        <name>restoreState</name>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>stateDoc</declname>
+        </param>
+        <briefdescription>
+<para>Restores the state of the object from the specified <emphasis>stateDoc</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses must implement this to handle restoring their current state from the encapsulated state.</para><para><simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1a8e2e449267751fcc6cffa5770a41d05a" kindref="member">saveState()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="100" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1a8e2e449267751fcc6cffa5770a41d05a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractLayoutUndoCommand::saveState</definition>
+        <argsstring>(QDomDocument &amp;stateDoc) const =0</argsstring>
+        <name>saveState</name>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>stateDoc</declname>
+        </param>
+        <briefdescription>
+<para>Saves the state of the object to the specified <emphasis>stateDoc</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses must implement this to handle encapsulating their current state into a DOM document.</para><para><simplesect kind="see"><para><ref refid="classQgsAbstractLayoutUndoCommand_1aaa312f3e9d72445d03c08a6d516a34c5" kindref="member">restoreState()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractLayoutUndoCommand_1a92770955d6ba30ea8c092c066ae412e5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractLayoutUndoCommand::setAfterState</definition>
+        <argsstring>(const QDomDocument &amp;stateDoc)</argsstring>
+        <name>setAfterState</name>
+        <param>
+          <type>const QDomDocument &amp;</type>
+          <declname>stateDoc</declname>
+        </param>
+        <briefdescription>
+<para>Manually sets the after state for the command. </para>        </briefdescription>
+        <detaileddescription>
+<para>Generally this should not be called directly. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.cpp" bodystart="58" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for commands to undo/redo layout and layout object changes. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1051">
+        <label>QgsAbstractLayoutUndoCommand</label>
+        <link refid="classQgsAbstractLayoutUndoCommand"/>
+        <childnode refid="1052" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1052">
+        <label>QUndoCommand</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1053">
+        <label>QgsAbstractLayoutUndoCommand</label>
+        <link refid="classQgsAbstractLayoutUndoCommand"/>
+        <childnode refid="1054" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1054">
+        <label>QUndoCommand</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" line="35" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutundocommand.h" bodystart="34" bodyend="121"/>
+    <listofallmembers>
+      <member refid="classQgsAbstractLayoutUndoCommand_1abb34b8f1749140ff3e24c84d1bb721fc" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>afterState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a9b63af59061e6251e708db2a946dda21" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>beforeState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a6ab3de9d9390b278d8adee85beefdd00" prot="public" virt="virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>containsChange</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a09a8573a38a21b86026995a32ccaf57b" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>id</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1aef5ed0352796f7a1e2950ea09228d367" prot="private" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>mAfterState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a29d311ab528c1ff94d485f67bcde603e" prot="private" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>mBeforeState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a2f98f979d7f65e63db3d888ae81e521e" prot="protected" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>mFirstRun</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a4409de9204907951a164aaacf155b621" prot="private" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>mId</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1ab88c78bc23faefe6197c6b064964c849" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>QgsAbstractLayoutUndoCommand</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1afd9116c18681958f1de9bdeb4043e98a" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>redo</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1aaa312f3e9d72445d03c08a6d516a34c5" prot="protected" virt="pure-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>restoreState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1ab3d2653ac3527fe1bfe76bf34e3c9fd2" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>saveAfterState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1acb7117ab4d4c6e436a65d881d66c45dc" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>saveBeforeState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a8e2e449267751fcc6cffa5770a41d05a" prot="protected" virt="pure-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>saveState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1a92770955d6ba30ea8c092c066ae412e5" prot="protected" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>setAfterState</name></member>
+      <member refid="classQgsAbstractLayoutUndoCommand_1aebb46a9bd76e085ca83907569010ad9c" prot="public" virt="non-virtual"><scope>QgsAbstractLayoutUndoCommand</scope><name>undo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

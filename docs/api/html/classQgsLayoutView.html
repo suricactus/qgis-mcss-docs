@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsLayoutView class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsLayoutView <span class="m-thin">class</span>
+        </h1>
+        <p>A graphical widget to display and interact with QgsLayouts.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p><a href="classQgsLayoutView.html" class="m-doc">QgsLayoutView</a> manages the layout interaction tools and mouse/key events.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#aa827fe9915aaf1d077297603e40ad168" class="m-doc">ClipboardOperation</a> { </span><span class="m-doc-wrap"><a href="#aa827fe9915aaf1d077297603e40ad168a2f2c10a57eb09e38550410be3c980b91" class="m-doc">ClipboardCut</a>,
+              <a href="#aa827fe9915aaf1d077297603e40ad168a793a551b2bb26a241a29473bd0d8d04c" class="m-doc">ClipboardCopy</a> }</span>
+            </dt>
+            <dd>Clipboard operations.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a1324d5dd24285587ff3fa35be6e90e70" class="m-doc">PasteMode</a> { </span><span class="m-doc-wrap"><a href="#a1324d5dd24285587ff3fa35be6e90e70acc02746929865cbc3b2fc9c6d1d5b364" class="m-doc">PasteModeCursor</a>,
+              <a href="#a1324d5dd24285587ff3fa35be6e90e70a4bc87542887fcd29ca02e75d84ca7d68" class="m-doc">PasteModeCenter</a>,
+              <a href="#a1324d5dd24285587ff3fa35be6e90e70a669b2fcc11b582250072a6d611e33e3d" class="m-doc">PasteModeInPlace</a> }</span>
+            </dt>
+            <dd>Paste modes.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a0aea57bd71834bf62f7fdaf1d9f3ddd3" class="m-doc-self" name="a0aea57bd71834bf62f7fdaf1d9f3ddd3">QgsLayoutView</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr)</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsLayoutView.html" class="m-doc">QgsLayoutView</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a04c3647992b38aa22fe99f44bf965e66" class="m-doc">alignSelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutAligner.html#a156a181873285cc969b423fb5bd4cff0" class="m-doc">QgsLayoutAligner::<wbr />Alignment</a> alignment)</span>
+            </dt>
+            <dd>Aligns all selected items using the specified <em>alignment</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac1f7d40f7ccc5d9edeb668ce71753724" class="m-doc">copyItems</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;&amp; items,
+              <a href="classQgsLayoutView.html#aa827fe9915aaf1d077297603e40ad168" class="m-doc">ClipboardOperation</a> operation)</span>
+            </dt>
+            <dd>Cuts or copies the a list of <em>items</em>, respecting the specified <em>operation</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae5013469bc8f8e05e697a7a9ac95a5d6" class="m-doc">copySelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutView.html#aa827fe9915aaf1d077297603e40ad168" class="m-doc">ClipboardOperation</a> operation)</span>
+            </dt>
+            <dd>Cuts or copies the selected items, respecting the specified <em>operation</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a38128f16fd982d66c2501da8e184a98a" class="m-doc">currentLayout</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>*</span>
+            </dt>
+            <dd>Returns the current layout associated with the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7d30fc9758e7abecea447b1a50248e65" class="m-doc">currentLayout</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>*</span>
+            </dt>
+            <dd>Returns the current layout associated with the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa224d9f50b51397735814cd4ed662f1f" class="m-doc">currentPage</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the page visible in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69332ed054052f6565fadd38f24ace27" class="m-doc-self" name="a69332ed054052f6565fadd38f24ace27">deltaForKeyEvent</a>(</span><span class="m-doc-wrap">QKeyEvent* event) -&gt; QPointF</span>
+            </dt>
+            <dd>Returns the delta (in layout coordinates) by which to move items for the given key <em>event</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acee13d0b564712816ad09728185fee48" class="m-doc">distributeSelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutAligner.html#ae2766f5da94de87fcec2c29a4ae6a5c7" class="m-doc">QgsLayoutAligner::<wbr />Distribution</a> distribution)</span>
+            </dt>
+            <dd>Distributes all selected items using the specified <em>distribution</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8d1409f2c826fe51a002dedb05d98671" class="m-doc">hasItemsInClipboard</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the current clipboard contains layout items.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af6c68c38a81c0b524882c7c13c3acae3" class="m-doc">menuProvider</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLayoutViewMenuProvider.html" class="m-doc">QgsLayoutViewMenuProvider</a>*</span>
+            </dt>
+            <dd>Returns the provider for context menus.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a176b41d490348ff55c01d1951b0a6264" class="m-doc">pasteItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutView.html#a1324d5dd24285587ff3fa35be6e90e70" class="m-doc">PasteMode</a> mode) -&gt; QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;</span>
+            </dt>
+            <dd>Pastes items from clipboard, using the specified <em>mode</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af6fb807eaa537de266b4f673a7c31b22" class="m-doc">pasteItems</a>(</span><span class="m-doc-wrap">QPointF layoutPoint) -&gt; QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;</span>
+            </dt>
+            <dd>Pastes items from clipboard, at the specified <em>layoutPoint</em>, in layout units.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3dd348990de43cc3c43a8527d0a134e2" class="m-doc">previewMode</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsPreviewEffect.html#a968a567c028669335cc90ebfc54a8f1b" class="m-doc">QgsPreviewEffect::<wbr />PreviewMode</a></span>
+            </dt>
+            <dd>Returns the preview mode which may be used to modify the view&#x27;s appearance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aabd0d2efe4bac198fcccf403610273b5" class="m-doc">previewModeEnabled</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if a preview effect is being used to alter the view&#x27;s appearance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a52483ad60230f6fcd5d46d2c6549e3a7" class="m-doc">resizeSelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutAligner.html#a2017594d97e0a4bdad3f214d10ad0e8c" class="m-doc">QgsLayoutAligner::<wbr />Resize</a> resize)</span>
+            </dt>
+            <dd>Resizes all selected items using the specified <em>resize</em> mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ade26af7debbb8304390dcb9b250e7a47" class="m-doc">scaleSafe</a>(</span><span class="m-doc-wrap">double scale)</span>
+            </dt>
+            <dd>Scales the view in a safe way, by limiting the acceptable range of the scale applied.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa1aa3326f2710ce840ad7387670e5eee" class="m-doc">setCurrentLayout</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout)</span>
+            </dt>
+            <dd>Sets the current <em>layout</em> to edit in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6a70001f767a5246a13a583a0af9a944" class="m-doc">setHorizontalRuler</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRuler.html" class="m-doc">QgsLayoutRuler</a>* ruler)</span>
+            </dt>
+            <dd>Sets a horizontal <em>ruler</em> to synchronize with the view state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a242a201e5763e926fa38e9e2aac331c0" class="m-doc">setMenuProvider</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewMenuProvider.html" class="m-doc">QgsLayoutViewMenuProvider</a>* provider)</span>
+            </dt>
+            <dd>Sets a <em>provider</em> for context menus.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a329a96271d6ab7f7143d5435e18e4e72" class="m-doc">setPaintingEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether widget repainting should be allowed for the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7511644e865b22a25210bcb0f7cdffa1" class="m-doc">setPreviewMode</a>(</span><span class="m-doc-wrap"><a href="classQgsPreviewEffect.html#a968a567c028669335cc90ebfc54a8f1b" class="m-doc">QgsPreviewEffect::<wbr />PreviewMode</a> mode)</span>
+            </dt>
+            <dd>Sets the preview <em>mode</em> which should be used to modify the view&#x27;s appearance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9e3690d2665ca13f58b931204185833a" class="m-doc">setPreviewModeEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span>
+            </dt>
+            <dd>Sets whether a preview effect should be used to alter the view&#x27;s appearance.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a449f5ba96c2b6f15429ea5d1306d51c3" class="m-doc-self" name="a449f5ba96c2b6f15429ea5d1306d51c3">setSectionLabel</a>(</span><span class="m-doc-wrap">const QString&amp; label)</span>
+            </dt>
+            <dd>Sets a section <em>label</em>, to display above the first page shown in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a53c892a7c8ea1a5c2e2091f43ac2f0a4" class="m-doc">setTool</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* tool)</span>
+            </dt>
+            <dd>Sets the <em>tool</em> currently being used in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab2cfb775f9fc7f256fc8461b48da5bb5" class="m-doc">setVerticalRuler</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRuler.html" class="m-doc">QgsLayoutRuler</a>* ruler)</span>
+            </dt>
+            <dd>Sets a vertical <em>ruler</em> to synchronize with the view state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac8586ce90a3a0452972e1515086ee993" class="m-doc-self" name="ac8586ce90a3a0452972e1515086ee993">setZoomLevel</a>(</span><span class="m-doc-wrap">double level)</span>
+            </dt>
+            <dd>Sets the zoom <em>level</em> for the view, where a zoom level of 1.0 corresponds to 100%.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab2f2df939e3ed33c1186cec885731eeb" class="m-doc">tool</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>*</span>
+            </dt>
+            <dd>Returns the currently active tool for the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acf6c496dc48f975f79a0af73465236a9" class="m-doc">unsetTool</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* tool)</span>
+            </dt>
+            <dd>Unsets the current view tool, if it matches the specified <em>tool</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af71af70079bef8490fb84d0c9dab00da" class="m-doc">visiblePageNumbers</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;int&gt;</span>
+            </dt>
+            <dd>Returns a list of page numbers for pages which are currently visible in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab4ad0e3f96a394048f74b928ff470583" class="m-doc">visiblePages</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsLayoutItemPage.html" class="m-doc">QgsLayoutItemPage</a>*&gt;</span>
+            </dt>
+            <dd>Returns a list of page items which are currently visible in the view.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1045a5112dd9a47d56f88749bde48ed0" class="m-doc">cursorPosChanged</a>(</span><span class="m-doc-wrap">QPointF layoutPoint)</span>
+            </dt>
+            <dd>Is emitted when the mouse cursor coordinates change within the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8760edae2104e3658580580d720301fb" class="m-doc">itemFocused</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item)</span>
+            </dt>
+            <dd>Emitted when an <em>item</em> is &quot;focused&quot; in the view, i.e.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9eeeda01b6cfa3dedb5858f16c463a1e" class="m-doc">layoutSet</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout)</span>
+            </dt>
+            <dd>Emitted when a <em>layout</em> is set for the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adfdf744faf63905f7527bcd493be433d" class="m-doc">pageChanged</a>(</span><span class="m-doc-wrap">int page)</span>
+            </dt>
+            <dd>Emitted when the page visible in the view is changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a84414ce4716b3a89083ada5fdfda982b" class="m-doc">statusMessage</a>(</span><span class="m-doc-wrap">const QString&amp; message)</span>
+            </dt>
+            <dd>Emitted when the view has a <em>message</em> for display in a parent window&#x27;s status bar.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad5dc901bb068129e25b7b1a2057a2399" class="m-doc">toolSet</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* tool)</span>
+            </dt>
+            <dd>Emitted when the current <em>tool</em> is changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a647242a5af7105194b90c361bad07dac" class="m-doc-self" name="a647242a5af7105194b90c361bad07dac">willBeDeleted</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted in the destructor when the view is about to be deleted, but is still in a perfectly valid state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a550fe3bfb31fc0527a30183c8ae550eb" class="m-doc-self" name="a550fe3bfb31fc0527a30183c8ae550eb">zoomLevelChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Is emitted whenever the zoom level of the view is changed.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5b468ba9221a595170ec75baf887becb" class="m-doc">deleteItems</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;&amp; items)</span>
+            </dt>
+            <dd>Delete the specified <em>items</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1714ce9cb0228b8399ee17292c48cfd6" class="m-doc">deleteSelectedItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Deletes all selected items.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a76999db417a795a5d8dda71786b00752" class="m-doc">deselectAll</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Deselects all items in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aabb600dd7688f26a121eead0d65fc5fc" class="m-doc">emitZoomLevelChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emits the <a href="classQgsLayoutView.html#a550fe3bfb31fc0527a30183c8ae550eb" class="m-doc">zoomLevelChanged()</a> signal.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af920a0f91e09338a23b13e79d994ce5a" class="m-doc">groupSelectedItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Groups all selected items.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad2b2cde13dace0057f4905d11db0d444" class="m-doc">invertSelection</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Inverts the current selection, selecting deselected items and deselecting and selected items.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3ea57228ba0b3080f8898e3ed0889053" class="m-doc">lockSelectedItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Locks any selected items, preventing them from being interacted with by mouse interactions.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2cfe43326a8a0b2c016a3ee92d62f233" class="m-doc">lowerSelectedItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Lowers the selected items down the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0c78fe8853987c558f17e70d740e18f6" class="m-doc">moveSelectedItemsToBottom</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Lowers the selected items to the bottom of the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8af73651ea3a245d42bace6077537e44" class="m-doc">moveSelectedItemsToTop</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Raises the selected items to the top of the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0f14dbb050affc764cf1100b0f4f9a3d" class="m-doc">pushStatusMessage</a>(</span><span class="m-doc-wrap">const QString&amp; message)</span>
+            </dt>
+            <dd>Pushes a new status bar <em>message</em> to the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7c190a8a9da4c1d6c1ee26467fdbc0c0" class="m-doc">raiseSelectedItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Raises the selected items up the z-order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5e7e61048025d42f3a775cc41cc3a763" class="m-doc">selectAll</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Selects all items in the view.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a88fb4f896745ca0088080a66fd06ef7e" class="m-doc">selectNextItemAbove</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Selects the next item above the existing selection, by item z order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a09ffe83af270aee5f0fd0050a7a56fef" class="m-doc">selectNextItemBelow</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Selects the next item below the existing selection, by item z order.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aab7dfc18c6fd2f2722d1135c3892c7a5" class="m-doc">ungroupSelectedItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Ungroups all selected items.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a14a5d3a0d1d531d37f8aab3ba918e15e" class="m-doc">unlockAllItems</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Unlocks all locked items in the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0fe122e74b5fcc9761248a94b9c9a602" class="m-doc">viewChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Updates associated rulers and other widgets after view extent or zoom has changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a93ae20d532c4b3ea204da204eb7379d9" class="m-doc">zoomActual</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Zooms to the actual size of the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a06ae857a7dd1f65427e7e1f44c83fa0f" class="m-doc">zoomFull</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Zooms the view to the full extent of the layout.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae515a84187143d0a48e345718416ab08" class="m-doc">zoomIn</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Zooms in to the view by a preset amount.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aaf41401c11a8304fd938bd8a7aeebe9e" class="m-doc">zoomOut</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Zooms out of the view by a preset amount.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7b9f436e4ce61dc886186f60fb20c49e" class="m-doc">zoomWidth</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Zooms the view to the full width of the layout.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="aa827fe9915aaf1d077297603e40ad168"><div>
+            <h3>
+              enum QgsLayoutView::<wbr /><a href="#aa827fe9915aaf1d077297603e40ad168" class="m-doc-self">ClipboardOperation</a>
+            </h3>
+            <p>Clipboard operations.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#aa827fe9915aaf1d077297603e40ad168a2f2c10a57eb09e38550410be3c980b91" class="m-doc-self" name="aa827fe9915aaf1d077297603e40ad168a2f2c10a57eb09e38550410be3c980b91">ClipboardCut</a></td>
+                  <td>
+                  <p>Cut items.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#aa827fe9915aaf1d077297603e40ad168a793a551b2bb26a241a29473bd0d8d04c" class="m-doc-self" name="aa827fe9915aaf1d077297603e40ad168a793a551b2bb26a241a29473bd0d8d04c">ClipboardCopy</a></td>
+                  <td>
+                  <p>Copy items.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1324d5dd24285587ff3fa35be6e90e70"><div>
+            <h3>
+              enum QgsLayoutView::<wbr /><a href="#a1324d5dd24285587ff3fa35be6e90e70" class="m-doc-self">PasteMode</a>
+            </h3>
+            <p>Paste modes.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a1324d5dd24285587ff3fa35be6e90e70acc02746929865cbc3b2fc9c6d1d5b364" class="m-doc-self" name="a1324d5dd24285587ff3fa35be6e90e70acc02746929865cbc3b2fc9c6d1d5b364">PasteModeCursor</a></td>
+                  <td>
+                  <p>Paste items at cursor position.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a1324d5dd24285587ff3fa35be6e90e70a4bc87542887fcd29ca02e75d84ca7d68" class="m-doc-self" name="a1324d5dd24285587ff3fa35be6e90e70a4bc87542887fcd29ca02e75d84ca7d68">PasteModeCenter</a></td>
+                  <td>
+                  <p>Paste items in center of view.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a1324d5dd24285587ff3fa35be6e90e70a669b2fcc11b582250072a6d611e33e3d" class="m-doc-self" name="a1324d5dd24285587ff3fa35be6e90e70a669b2fcc11b582250072a6d611e33e3d">PasteModeInPlace</a></td>
+                  <td>
+                  <p>Paste items in place.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a04c3647992b38aa22fe99f44bf965e66"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a04c3647992b38aa22fe99f44bf965e66" class="m-doc-self">alignSelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutAligner.html#a156a181873285cc969b423fb5bd4cff0" class="m-doc">QgsLayoutAligner::<wbr />Alignment</a> alignment)</span></span>
+            </h3>
+            <p>Aligns all selected items using the specified <em>alignment</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#acee13d0b564712816ad09728185fee48" class="m-doc">distributeSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a52483ad60230f6fcd5d46d2c6549e3a7" class="m-doc">resizeSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac1f7d40f7ccc5d9edeb668ce71753724"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac1f7d40f7ccc5d9edeb668ce71753724" class="m-doc-self">copyItems</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;&amp; items,
+              <a href="classQgsLayoutView.html#aa827fe9915aaf1d077297603e40ad168" class="m-doc">ClipboardOperation</a> operation)</span></span>
+            </h3>
+            <p>Cuts or copies the a list of <em>items</em>, respecting the specified <em>operation</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ae5013469bc8f8e05e697a7a9ac95a5d6" class="m-doc">copySelectedItems()</a></p><p><a href="classQgsLayoutView.html#a176b41d490348ff55c01d1951b0a6264" class="m-doc">pasteItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae5013469bc8f8e05e697a7a9ac95a5d6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae5013469bc8f8e05e697a7a9ac95a5d6" class="m-doc-self">copySelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutView.html#aa827fe9915aaf1d077297603e40ad168" class="m-doc">ClipboardOperation</a> operation)</span></span>
+            </h3>
+            <p>Cuts or copies the selected items, respecting the specified <em>operation</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ac1f7d40f7ccc5d9edeb668ce71753724" class="m-doc">copyItems()</a></p><p><a href="classQgsLayoutView.html#a176b41d490348ff55c01d1951b0a6264" class="m-doc">pasteItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a38128f16fd982d66c2501da8e184a98a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a38128f16fd982d66c2501da8e184a98a" class="m-doc-self">currentLayout</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the current layout associated with the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#aa1aa3326f2710ce840ad7387670e5eee" class="m-doc">setCurrentLayout()</a></p><p><a href="classQgsLayoutView.html#a9eeeda01b6cfa3dedb5858f16c463a1e" class="m-doc">layoutSet()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7d30fc9758e7abecea447b1a50248e65"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7d30fc9758e7abecea447b1a50248e65" class="m-doc-self">currentLayout</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the current layout associated with the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#aa1aa3326f2710ce840ad7387670e5eee" class="m-doc">setCurrentLayout()</a></p><p><a href="classQgsLayoutView.html#a9eeeda01b6cfa3dedb5858f16c463a1e" class="m-doc">layoutSet()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa224d9f50b51397735814cd4ed662f1f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa224d9f50b51397735814cd4ed662f1f" class="m-doc-self">currentPage</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the page visible in the view.</p>
+<p>This method considers the page at the center of the view as the current visible page.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#adfdf744faf63905f7527bcd493be433d" class="m-doc">pageChanged()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acee13d0b564712816ad09728185fee48"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acee13d0b564712816ad09728185fee48" class="m-doc-self">distributeSelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutAligner.html#ae2766f5da94de87fcec2c29a4ae6a5c7" class="m-doc">QgsLayoutAligner::<wbr />Distribution</a> distribution)</span></span>
+            </h3>
+            <p>Distributes all selected items using the specified <em>distribution</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a04c3647992b38aa22fe99f44bf965e66" class="m-doc">alignSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a52483ad60230f6fcd5d46d2c6549e3a7" class="m-doc">resizeSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8d1409f2c826fe51a002dedb05d98671"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8d1409f2c826fe51a002dedb05d98671" class="m-doc-self">hasItemsInClipboard</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the current clipboard contains layout items.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a176b41d490348ff55c01d1951b0a6264" class="m-doc">pasteItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af6c68c38a81c0b524882c7c13c3acae3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutViewMenuProvider.html" class="m-doc">QgsLayoutViewMenuProvider</a>* QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af6c68c38a81c0b524882c7c13c3acae3" class="m-doc-self">menuProvider</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the provider for context menus.</p>
+<p>Returned value may be nullptr if no provider is set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a242a201e5763e926fa38e9e2aac331c0" class="m-doc">setMenuProvider()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a176b41d490348ff55c01d1951b0a6264"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt; QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a176b41d490348ff55c01d1951b0a6264" class="m-doc-self">pasteItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutView.html#a1324d5dd24285587ff3fa35be6e90e70" class="m-doc">PasteMode</a> mode)</span></span>
+            </h3>
+            <p>Pastes items from clipboard, using the specified <em>mode</em>.</p>
+<p>A list of pasted items is returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ae5013469bc8f8e05e697a7a9ac95a5d6" class="m-doc">copySelectedItems()</a></p><p><a href="classQgsLayoutView.html#a8d1409f2c826fe51a002dedb05d98671" class="m-doc">hasItemsInClipboard()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af6fb807eaa537de266b4f673a7c31b22"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt; QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af6fb807eaa537de266b4f673a7c31b22" class="m-doc-self">pasteItems</a>(</span><span class="m-doc-wrap">QPointF layoutPoint)</span></span>
+            </h3>
+            <p>Pastes items from clipboard, at the specified <em>layoutPoint</em>, in layout units.</p>
+<p>A list of pasted items is returned.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ae5013469bc8f8e05e697a7a9ac95a5d6" class="m-doc">copySelectedItems()</a></p><p><a href="classQgsLayoutView.html#a8d1409f2c826fe51a002dedb05d98671" class="m-doc">hasItemsInClipboard()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3dd348990de43cc3c43a8527d0a134e2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPreviewEffect.html#a968a567c028669335cc90ebfc54a8f1b" class="m-doc">QgsPreviewEffect::<wbr />PreviewMode</a> QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3dd348990de43cc3c43a8527d0a134e2" class="m-doc-self">previewMode</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the preview mode which may be used to modify the view&#x27;s appearance.</p>
+<p>Preview modes are only used if <a href="classQgsLayoutView.html#aabd0d2efe4bac198fcccf403610273b5" class="m-doc">previewModeEnabled()</a> is true.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a7511644e865b22a25210bcb0f7cdffa1" class="m-doc">setPreviewMode()</a></p><p><a href="classQgsLayoutView.html#aabd0d2efe4bac198fcccf403610273b5" class="m-doc">previewModeEnabled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aabd0d2efe4bac198fcccf403610273b5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aabd0d2efe4bac198fcccf403610273b5" class="m-doc-self">previewModeEnabled</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if a preview effect is being used to alter the view&#x27;s appearance.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a9e3690d2665ca13f58b931204185833a" class="m-doc">setPreviewModeEnabled()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a52483ad60230f6fcd5d46d2c6549e3a7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52483ad60230f6fcd5d46d2c6549e3a7" class="m-doc-self">resizeSelectedItems</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutAligner.html#a2017594d97e0a4bdad3f214d10ad0e8c" class="m-doc">QgsLayoutAligner::<wbr />Resize</a> resize)</span></span>
+            </h3>
+            <p>Resizes all selected items using the specified <em>resize</em> mode.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a04c3647992b38aa22fe99f44bf965e66" class="m-doc">alignSelectedItems()</a></p><p><a href="classQgsLayoutView.html#acee13d0b564712816ad09728185fee48" class="m-doc">distributeSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ade26af7debbb8304390dcb9b250e7a47"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ade26af7debbb8304390dcb9b250e7a47" class="m-doc-self">scaleSafe</a>(</span><span class="m-doc-wrap">double scale)</span></span>
+            </h3>
+            <p>Scales the view in a safe way, by limiting the acceptable range of the scale applied.</p>
+<p>The <em>scale</em> parameter specifies the zoom factor to scale the view by.</p>
+          </div></section>
+          <section class="m-doc-details" id="aa1aa3326f2710ce840ad7387670e5eee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa1aa3326f2710ce840ad7387670e5eee" class="m-doc-self">setCurrentLayout</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout)</span></span>
+            </h3>
+            <p>Sets the current <em>layout</em> to edit in the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a38128f16fd982d66c2501da8e184a98a" class="m-doc">currentLayout()</a></p><p><a href="classQgsLayoutView.html#a9eeeda01b6cfa3dedb5858f16c463a1e" class="m-doc">layoutSet()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6a70001f767a5246a13a583a0af9a944"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6a70001f767a5246a13a583a0af9a944" class="m-doc-self">setHorizontalRuler</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRuler.html" class="m-doc">QgsLayoutRuler</a>* ruler)</span></span>
+            </h3>
+            <p>Sets a horizontal <em>ruler</em> to synchronize with the view state.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ab2cfb775f9fc7f256fc8461b48da5bb5" class="m-doc">setVerticalRuler()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a242a201e5763e926fa38e9e2aac331c0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a242a201e5763e926fa38e9e2aac331c0" class="m-doc-self">setMenuProvider</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewMenuProvider.html" class="m-doc">QgsLayoutViewMenuProvider</a>* provider)</span></span>
+            </h3>
+            <p>Sets a <em>provider</em> for context menus.</p>
+<p>Ownership of the provider is transferred to the view.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#af6c68c38a81c0b524882c7c13c3acae3" class="m-doc">menuProvider()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a329a96271d6ab7f7143d5435e18e4e72"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a329a96271d6ab7f7143d5435e18e4e72" class="m-doc-self">setPaintingEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Sets whether widget repainting should be allowed for the view.</p>
+<p>This is used to temporarily halt painting while exporting layouts.</p><aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7511644e865b22a25210bcb0f7cdffa1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7511644e865b22a25210bcb0f7cdffa1" class="m-doc-self">setPreviewMode</a>(</span><span class="m-doc-wrap"><a href="classQgsPreviewEffect.html#a968a567c028669335cc90ebfc54a8f1b" class="m-doc">QgsPreviewEffect::<wbr />PreviewMode</a> mode)</span></span>
+            </h3>
+            <p>Sets the preview <em>mode</em> which should be used to modify the view&#x27;s appearance.</p>
+<p>Preview modes are only used if <a href="classQgsLayoutView.html#aabd0d2efe4bac198fcccf403610273b5" class="m-doc">previewModeEnabled()</a> is true.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a9e3690d2665ca13f58b931204185833a" class="m-doc">setPreviewModeEnabled()</a></p><p><a href="classQgsLayoutView.html#a3dd348990de43cc3c43a8527d0a134e2" class="m-doc">previewMode()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9e3690d2665ca13f58b931204185833a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9e3690d2665ca13f58b931204185833a" class="m-doc-self">setPreviewModeEnabled</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </h3>
+            <p>Sets whether a preview effect should be used to alter the view&#x27;s appearance.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">enabled</td>
+                  <td>Set to true to enable the preview effect on the view.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a7511644e865b22a25210bcb0f7cdffa1" class="m-doc">setPreviewMode()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a53c892a7c8ea1a5c2e2091f43ac2f0a4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a53c892a7c8ea1a5c2e2091f43ac2f0a4" class="m-doc-self">setTool</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* tool)</span></span>
+            </h3>
+            <p>Sets the <em>tool</em> currently being used in the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#acf6c496dc48f975f79a0af73465236a9" class="m-doc">unsetTool()</a></p><p><a href="classQgsLayoutView.html#ab2f2df939e3ed33c1186cec885731eeb" class="m-doc">tool()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab2cfb775f9fc7f256fc8461b48da5bb5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2cfb775f9fc7f256fc8461b48da5bb5" class="m-doc-self">setVerticalRuler</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutRuler.html" class="m-doc">QgsLayoutRuler</a>* ruler)</span></span>
+            </h3>
+            <p>Sets a vertical <em>ruler</em> to synchronize with the view state.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a6a70001f767a5246a13a583a0af9a944" class="m-doc">setHorizontalRuler()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab2f2df939e3ed33c1186cec885731eeb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2f2df939e3ed33c1186cec885731eeb" class="m-doc-self">tool</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the currently active tool for the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a53c892a7c8ea1a5c2e2091f43ac2f0a4" class="m-doc">setTool()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acf6c496dc48f975f79a0af73465236a9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acf6c496dc48f975f79a0af73465236a9" class="m-doc-self">unsetTool</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* tool)</span></span>
+            </h3>
+            <p>Unsets the current view tool, if it matches the specified <em>tool</em>.</p>
+<p>This is called from destructor of view tools to make sure that the tool won&#x27;t be used any more. You don&#x27;t have to call it manually, <a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a> takes care of it.</p>
+          </div></section>
+          <section class="m-doc-details" id="af71af70079bef8490fb84d0c9dab00da"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;int&gt; QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af71af70079bef8490fb84d0c9dab00da" class="m-doc-self">visiblePageNumbers</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of page numbers for pages which are currently visible in the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ab4ad0e3f96a394048f74b928ff470583" class="m-doc">visiblePages()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab4ad0e3f96a394048f74b928ff470583"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLayoutItemPage.html" class="m-doc">QgsLayoutItemPage</a>*&gt; QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab4ad0e3f96a394048f74b928ff470583" class="m-doc-self">visiblePages</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a list of page items which are currently visible in the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#af71af70079bef8490fb84d0c9dab00da" class="m-doc">visiblePageNumbers()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1045a5112dd9a47d56f88749bde48ed0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1045a5112dd9a47d56f88749bde48ed0" class="m-doc-self">cursorPosChanged</a>(</span><span class="m-doc-wrap">QPointF layoutPoint) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted when the mouse cursor coordinates change within the view.</p>
+<p>The <em>layoutPoint</em> argument indicates the cursor position within the layout coordinate system.</p>
+          </div></section>
+          <section class="m-doc-details" id="a8760edae2104e3658580580d720301fb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8760edae2104e3658580580d720301fb" class="m-doc-self">itemFocused</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>* item) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when an <em>item</em> is &quot;focused&quot; in the view, i.e.</p>
+<p>it becomes the active item and should have its properties displayed in any designer windows.</p>
+          </div></section>
+          <section class="m-doc-details" id="a9eeeda01b6cfa3dedb5858f16c463a1e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9eeeda01b6cfa3dedb5858f16c463a1e" class="m-doc-self">layoutSet</a>(</span><span class="m-doc-wrap"><a href="classQgsLayout.html" class="m-doc">QgsLayout</a>* layout) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when a <em>layout</em> is set for the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a38128f16fd982d66c2501da8e184a98a" class="m-doc">currentLayout()</a></p><p><a href="classQgsLayoutView.html#aa1aa3326f2710ce840ad7387670e5eee" class="m-doc">setCurrentLayout()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adfdf744faf63905f7527bcd493be433d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adfdf744faf63905f7527bcd493be433d" class="m-doc-self">pageChanged</a>(</span><span class="m-doc-wrap">int page) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the page visible in the view is changed.</p>
+<p>This signal considers the page at the center of the view as the current visible page.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#aa224d9f50b51397735814cd4ed662f1f" class="m-doc">currentPage()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a84414ce4716b3a89083ada5fdfda982b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a84414ce4716b3a89083ada5fdfda982b" class="m-doc-self">statusMessage</a>(</span><span class="m-doc-wrap">const QString&amp; message) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the view has a <em>message</em> for display in a parent window&#x27;s status bar.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a0f14dbb050affc764cf1100b0f4f9a3d" class="m-doc">pushStatusMessage()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5dc901bb068129e25b7b1a2057a2399"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5dc901bb068129e25b7b1a2057a2399" class="m-doc-self">toolSet</a>(</span><span class="m-doc-wrap"><a href="classQgsLayoutViewTool.html" class="m-doc">QgsLayoutViewTool</a>* tool) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the current <em>tool</em> is changed.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a53c892a7c8ea1a5c2e2091f43ac2f0a4" class="m-doc">setTool()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5b468ba9221a595170ec75baf887becb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5b468ba9221a595170ec75baf887becb" class="m-doc-self">deleteItems</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLayoutItem.html" class="m-doc">QgsLayoutItem</a>*&gt;&amp; items) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Delete the specified <em>items</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a1714ce9cb0228b8399ee17292c48cfd6" class="m-doc">deleteSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1714ce9cb0228b8399ee17292c48cfd6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1714ce9cb0228b8399ee17292c48cfd6" class="m-doc-self">deleteSelectedItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Deletes all selected items.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a5b468ba9221a595170ec75baf887becb" class="m-doc">deleteItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a76999db417a795a5d8dda71786b00752"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a76999db417a795a5d8dda71786b00752" class="m-doc-self">deselectAll</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Deselects all items in the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a5e7e61048025d42f3a775cc41cc3a763" class="m-doc">selectAll()</a></p><p><a href="classQgsLayoutView.html#ad2b2cde13dace0057f4905d11db0d444" class="m-doc">invertSelection()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aabb600dd7688f26a121eead0d65fc5fc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aabb600dd7688f26a121eead0d65fc5fc" class="m-doc-self">emitZoomLevelChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Emits the <a href="classQgsLayoutView.html#a550fe3bfb31fc0527a30183c8ae550eb" class="m-doc">zoomLevelChanged()</a> signal.</p>
+<p>This should be called after calling any of the QGraphicsView base class methods which alter the view&#x27;s zoom level, i.e. QGraphicsView::fitInView().</p>
+          </div></section>
+          <section class="m-doc-details" id="af920a0f91e09338a23b13e79d994ce5a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af920a0f91e09338a23b13e79d994ce5a" class="m-doc-self">groupSelectedItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Groups all selected items.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#aab7dfc18c6fd2f2722d1135c3892c7a5" class="m-doc">ungroupSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad2b2cde13dace0057f4905d11db0d444"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad2b2cde13dace0057f4905d11db0d444" class="m-doc-self">invertSelection</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Inverts the current selection, selecting deselected items and deselecting and selected items.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a5e7e61048025d42f3a775cc41cc3a763" class="m-doc">selectAll()</a></p><p><a href="classQgsLayoutView.html#a76999db417a795a5d8dda71786b00752" class="m-doc">deselectAll()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3ea57228ba0b3080f8898e3ed0889053"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3ea57228ba0b3080f8898e3ed0889053" class="m-doc-self">lockSelectedItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Locks any selected items, preventing them from being interacted with by mouse interactions.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a14a5d3a0d1d531d37f8aab3ba918e15e" class="m-doc">unlockAllItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2cfe43326a8a0b2c016a3ee92d62f233"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2cfe43326a8a0b2c016a3ee92d62f233" class="m-doc-self">lowerSelectedItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Lowers the selected items down the z-order.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a7c190a8a9da4c1d6c1ee26467fdbc0c0" class="m-doc">raiseSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a8af73651ea3a245d42bace6077537e44" class="m-doc">moveSelectedItemsToTop()</a></p><p><a href="classQgsLayoutView.html#a0c78fe8853987c558f17e70d740e18f6" class="m-doc">moveSelectedItemsToBottom()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0c78fe8853987c558f17e70d740e18f6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0c78fe8853987c558f17e70d740e18f6" class="m-doc-self">moveSelectedItemsToBottom</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Lowers the selected items to the bottom of the z-order.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a7c190a8a9da4c1d6c1ee26467fdbc0c0" class="m-doc">raiseSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a2cfe43326a8a0b2c016a3ee92d62f233" class="m-doc">lowerSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a8af73651ea3a245d42bace6077537e44" class="m-doc">moveSelectedItemsToTop()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8af73651ea3a245d42bace6077537e44"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8af73651ea3a245d42bace6077537e44" class="m-doc-self">moveSelectedItemsToTop</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Raises the selected items to the top of the z-order.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a7c190a8a9da4c1d6c1ee26467fdbc0c0" class="m-doc">raiseSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a2cfe43326a8a0b2c016a3ee92d62f233" class="m-doc">lowerSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a0c78fe8853987c558f17e70d740e18f6" class="m-doc">moveSelectedItemsToBottom()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0f14dbb050affc764cf1100b0f4f9a3d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0f14dbb050affc764cf1100b0f4f9a3d" class="m-doc-self">pushStatusMessage</a>(</span><span class="m-doc-wrap">const QString&amp; message) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Pushes a new status bar <em>message</em> to the view.</p>
+<p>This causes <a href="classQgsLayoutView.html#a84414ce4716b3a89083ada5fdfda982b" class="m-doc">statusMessage()</a> to be emitted, which should cause the message to appear in the status bar for the parent window.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a84414ce4716b3a89083ada5fdfda982b" class="m-doc">statusMessage()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7c190a8a9da4c1d6c1ee26467fdbc0c0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7c190a8a9da4c1d6c1ee26467fdbc0c0" class="m-doc-self">raiseSelectedItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Raises the selected items up the z-order.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a2cfe43326a8a0b2c016a3ee92d62f233" class="m-doc">lowerSelectedItems()</a></p><p><a href="classQgsLayoutView.html#a8af73651ea3a245d42bace6077537e44" class="m-doc">moveSelectedItemsToTop()</a></p><p><a href="classQgsLayoutView.html#a0c78fe8853987c558f17e70d740e18f6" class="m-doc">moveSelectedItemsToBottom()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5e7e61048025d42f3a775cc41cc3a763"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5e7e61048025d42f3a775cc41cc3a763" class="m-doc-self">selectAll</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Selects all items in the view.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a76999db417a795a5d8dda71786b00752" class="m-doc">deselectAll()</a></p><p><a href="classQgsLayoutView.html#ad2b2cde13dace0057f4905d11db0d444" class="m-doc">invertSelection()</a></p><p><a href="classQgsLayoutView.html#a88fb4f896745ca0088080a66fd06ef7e" class="m-doc">selectNextItemAbove()</a></p><p><a href="classQgsLayoutView.html#a09ffe83af270aee5f0fd0050a7a56fef" class="m-doc">selectNextItemBelow()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a88fb4f896745ca0088080a66fd06ef7e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a88fb4f896745ca0088080a66fd06ef7e" class="m-doc-self">selectNextItemAbove</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Selects the next item above the existing selection, by item z order.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a09ffe83af270aee5f0fd0050a7a56fef" class="m-doc">selectNextItemBelow()</a></p><p><a href="classQgsLayoutView.html#a5e7e61048025d42f3a775cc41cc3a763" class="m-doc">selectAll()</a></p><p><a href="classQgsLayoutView.html#a76999db417a795a5d8dda71786b00752" class="m-doc">deselectAll()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a09ffe83af270aee5f0fd0050a7a56fef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a09ffe83af270aee5f0fd0050a7a56fef" class="m-doc-self">selectNextItemBelow</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Selects the next item below the existing selection, by item z order.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a88fb4f896745ca0088080a66fd06ef7e" class="m-doc">selectNextItemAbove()</a></p><p><a href="classQgsLayoutView.html#a5e7e61048025d42f3a775cc41cc3a763" class="m-doc">selectAll()</a></p><p><a href="classQgsLayoutView.html#a76999db417a795a5d8dda71786b00752" class="m-doc">deselectAll()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aab7dfc18c6fd2f2722d1135c3892c7a5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab7dfc18c6fd2f2722d1135c3892c7a5" class="m-doc-self">ungroupSelectedItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Ungroups all selected items.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#af920a0f91e09338a23b13e79d994ce5a" class="m-doc">groupSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a14a5d3a0d1d531d37f8aab3ba918e15e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14a5d3a0d1d531d37f8aab3ba918e15e" class="m-doc-self">unlockAllItems</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Unlocks all locked items in the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a3ea57228ba0b3080f8898e3ed0889053" class="m-doc">lockSelectedItems()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0fe122e74b5fcc9761248a94b9c9a602"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0fe122e74b5fcc9761248a94b9c9a602" class="m-doc-self">viewChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Updates associated rulers and other widgets after view extent or zoom has changed.</p>
+<p>This should be called after calling any of the QGraphicsView base class methods which alter the view&#x27;s zoom level or extent, i.e. QGraphicsView::fitInView().</p>
+          </div></section>
+          <section class="m-doc-details" id="a93ae20d532c4b3ea204da204eb7379d9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a93ae20d532c4b3ea204da204eb7379d9" class="m-doc-self">zoomActual</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Zooms to the actual size of the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a06ae857a7dd1f65427e7e1f44c83fa0f" class="m-doc">zoomFull()</a></p><p><a href="classQgsLayoutView.html#ae515a84187143d0a48e345718416ab08" class="m-doc">zoomIn()</a></p><p><a href="classQgsLayoutView.html#aaf41401c11a8304fd938bd8a7aeebe9e" class="m-doc">zoomOut()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a06ae857a7dd1f65427e7e1f44c83fa0f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a06ae857a7dd1f65427e7e1f44c83fa0f" class="m-doc-self">zoomFull</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Zooms the view to the full extent of the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ae515a84187143d0a48e345718416ab08" class="m-doc">zoomIn()</a></p><p><a href="classQgsLayoutView.html#aaf41401c11a8304fd938bd8a7aeebe9e" class="m-doc">zoomOut()</a></p><p><a href="classQgsLayoutView.html#a93ae20d532c4b3ea204da204eb7379d9" class="m-doc">zoomActual()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae515a84187143d0a48e345718416ab08"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae515a84187143d0a48e345718416ab08" class="m-doc-self">zoomIn</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Zooms in to the view by a preset amount.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a06ae857a7dd1f65427e7e1f44c83fa0f" class="m-doc">zoomFull()</a></p><p><a href="classQgsLayoutView.html#aaf41401c11a8304fd938bd8a7aeebe9e" class="m-doc">zoomOut()</a></p><p><a href="classQgsLayoutView.html#a93ae20d532c4b3ea204da204eb7379d9" class="m-doc">zoomActual()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aaf41401c11a8304fd938bd8a7aeebe9e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaf41401c11a8304fd938bd8a7aeebe9e" class="m-doc-self">zoomOut</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Zooms out of the view by a preset amount.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#a06ae857a7dd1f65427e7e1f44c83fa0f" class="m-doc">zoomFull()</a></p><p><a href="classQgsLayoutView.html#ae515a84187143d0a48e345718416ab08" class="m-doc">zoomIn()</a></p><p><a href="classQgsLayoutView.html#a93ae20d532c4b3ea204da204eb7379d9" class="m-doc">zoomActual()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7b9f436e4ce61dc886186f60fb20c49e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsLayoutView::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7b9f436e4ce61dc886186f60fb20c49e" class="m-doc-self">zoomWidth</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Zooms the view to the full width of the layout.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsLayoutView.html#ae515a84187143d0a48e345718416ab08" class="m-doc">zoomIn()</a></p><p><a href="classQgsLayoutView.html#aaf41401c11a8304fd938bd8a7aeebe9e" class="m-doc">zoomOut()</a></p><p><a href="classQgsLayoutView.html#a93ae20d532c4b3ea204da204eb7379d9" class="m-doc">zoomActual()</a></p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

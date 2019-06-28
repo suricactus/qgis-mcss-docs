@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsCoordinateReferenceSystem class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsCoordinateReferenceSystem <span class="m-thin">class</span>
+        </h1>
+        <p>This class represents a coordinate reference system (CRS).</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li><a href="#crs_construct_and_copy">Object Construction and Copying  </a></li>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Coordinate reference system object defines a specific map projection, as well as transformations between different coordinate reference systems. There are various ways how a CRS can be defined: using well-known text (WKT), PROJ string or combination of authority and code (e.g. EPSG:4326). QGIS comes with its internal database of coordinate reference systems (stored in SQLite) that allows lookups of CRS and seamless conversions between the various definitions.</p><p>Most commonly one comes across two types of coordinate systems:</p><ol><li><strong>Geographic coordinate systems</strong> - based on a geodetic datum, normally with coordinates being latitude/longitude in degrees. The most common one is World Geodetic System 84 (WGS84).</li><li><strong>Projected coordinate systems</strong> - based on a geodetic datum with coordinates projected to a plane, typically using meters or feet as units. Common projected coordinate systems are Universal Transverse Mercator or Albers Equal Area.</li></ol><p>Internally QGIS uses proj4 library for all the math behind coordinate transformations, so in case of any troubles with projections it is best to examine the PROJ representation within the object, as that is the representation that will be ultimately used.</p><p>Methods that allow inspection of CRS instances include <a href="classQgsCoordinateReferenceSystem.html#a077267450cec872305c6690de5b5b09c" class="m-doc">isValid()</a>, <a href="classQgsCoordinateReferenceSystem.html#ab2dee1805d8e3b62448e4d106753b595" class="m-doc">authid()</a>, <a href="classQgsCoordinateReferenceSystem.html#a2888185eab7e7bf2f7d80ffe2b274224" class="m-doc">description()</a>, <a href="classQgsCoordinateReferenceSystem.html#ad0a46c5e28ecb31a4b160931ab96d0a3" class="m-doc">toWkt()</a>, <a href="classQgsCoordinateReferenceSystem.html#a433853323df4837869a2a8c2ad7521ea" class="m-doc">toProj4()</a>, <a href="classQgsCoordinateReferenceSystem.html#a79949e22a654073dcc4f8d1810f07c5f" class="m-doc">mapUnits()</a> and others. Creation of CRS instances is further described in <a href="classQgsCoordinateReferenceSystem.html#crs_construct_and_copy" class="m-doc">Object Construction and Copying</a> section below. Transformations between coordinate reference systems are done using <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> class.</p><p>For example, the following code will create and inspect &quot;British national grid&quot; CRS:</p><pre class="m-code"><span class="n">crs</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s">&quot;EPSG:27700&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">crs</span><span class="p">.</span><span class="n">isValid</span><span class="p">()</span><span class="o">:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;CRS Description: {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">crs</span><span class="p">.</span><span class="n">description</span><span class="p">()))</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;CRS PROJ text: {}&quot;</span><span class="p">.</span><span class="n">format</span><span class="p">(</span><span class="n">crs</span><span class="p">.</span><span class="n">toProj4</span><span class="p">()))</span>
+<span class="k">else</span><span class="o">:</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Invalid CRS!&quot;</span><span class="p">)</span></pre><p>This will produce the following output:</p><pre class="m-code"><span class="n">CRS</span> <span class="nl">Description</span><span class="p">:</span> <span class="n">OSGB</span> <span class="mi">1936</span> <span class="o">/</span> <span class="n">British</span> <span class="n">National</span> <span class="n">Grid</span>
+<span class="n">CRS</span> <span class="n">PROJ</span> <span class="nl">text</span><span class="p">:</span> <span class="o">+</span><span class="n">proj</span><span class="o">=</span><span class="n">tmerc</span> <span class="o">+</span><span class="n">lat_0</span><span class="o">=</span><span class="mi">49</span> <span class="o">+</span><span class="n">lon_0</span><span class="o">=-</span><span class="mi">2</span> <span class="o">+</span><span class="n">k</span><span class="o">=</span><span class="mf">0.9996012717</span> <span class="o">+</span><span class="n">x_0</span><span class="o">=</span><span class="mi">400000</span> <span class="o">+</span><span class="n">y_0</span><span class="o">=-</span><span class="mi">100000</span> <span class="p">[</span><span class="n">output</span> <span class="n">trimmed</span><span class="p">]</span></pre><h2>CRS Definition Formats </h2><p>This section gives an overview of various supported CRS definition formats:</p><ol><li><p><strong>Authority and Code.</strong> Also referred to as OGC WMS format within QGIS as they have been widely used in OGC standards. These are encoded as <code>&lt;auth&gt;:&lt;code&gt;</code>, for example <code>EPSG:4326</code> refers to WGS84 system. EPSG is the most commonly used authority that covers a wide range of coordinate systems around the world.</p><p>An extended variant of this format is OGC URN. Syntax of URN for CRS definition is <code>urn:ogc:def:crs:&lt;auth&gt;:[&lt;version&gt;]:&lt;code&gt;</code>. This class can also parse URNs (versions are currently ignored). For example, WGS84 may be encoded as <code>urn:ogc:def:crs:OGC:1.3:CRS84</code>.</p><p>QGIS adds support for &quot;USER&quot; authority that refers to IDs used internally in QGIS. This variant is best avoided or used with caution as the IDs are not permanent and they refer to different CRS on different machines or user profiles.</p><p>See <a href="classQgsCoordinateReferenceSystem.html#ab2dee1805d8e3b62448e4d106753b595" class="m-doc">authid()</a> and <a href="classQgsCoordinateReferenceSystem.html#a07523ae2730845c275ca96ee5acf095e" class="m-doc">createFromOgcWmsCrs()</a> methods.</p></li><li><p><strong>PROJ string.</strong> This is a string consisting of a series of key/value pairs in the following format: <code>+param1=value1 +param2=value2 [...]</code>. This is the format natively used by the underlying proj4 library. For example, the definition of WGS84 looks like this:</p><pre>+proj=longlat +datum=WGS84 +no_defs
+</pre><p>See <a href="classQgsCoordinateReferenceSystem.html#a433853323df4837869a2a8c2ad7521ea" class="m-doc">toProj4()</a> and <a href="classQgsCoordinateReferenceSystem.html#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc">createFromProj4()</a> methods.</p></li><li><p><strong>Well-known text (WKT).</strong> Defined by Open Geospatial Consortium (OGC), this is another common format to define CRS. For WGS84 the OGC WKT definition is the following:</p><pre>GEOGCS[&quot;WGS 84&quot;,
+       DATUM[&quot;WGS_1984&quot;,
+         SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],
+         AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],
+       PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],
+       UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],
+       AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]]
+</pre><p>See <a href="classQgsCoordinateReferenceSystem.html#ad0a46c5e28ecb31a4b160931ab96d0a3" class="m-doc">toWkt()</a> and <a href="classQgsCoordinateReferenceSystem.html#a08876a710bfc24adaa30a345d9408367" class="m-doc">createFromWkt()</a> methods.</p></li></ol><h2>CRS Database and Custom CRS </h2><p>The database of CRS shipped with QGIS is stored in a SQLite database (see <a href="classQgsApplication.html#ae55dcb7b2578daefddf872b6fc754c60" class="m-doc">QgsApplication::<wbr />srsDatabaseFilePath()</a>) and it is based on the data files maintained by GDAL project (a variety of .csv and .wkt files).</p><p>Sometimes it happens that users need to use a CRS definition that is not well known or that has been only created with a specific purpose (and thus its definition is not available in our database of CRS). Whenever a new CRS definition is seen, it will be added to the local database (in user&#x27;s home directory, see <a href="classQgsApplication.html#ab60a0a01f2a675b56830b21d586e9344" class="m-doc">QgsApplication::<wbr />qgisUserDatabaseFilePath()</a>). QGIS also features a GUI for management of local custom CRS definitions.</p><p>There are therefore two databases: one for shipped CRS definitions and one for custom CRS definitions. Custom CRS have internal IDs (accessible with <a href="classQgsCoordinateReferenceSystem.html#ae4ea9435d989c13d536635563a3ad71e" class="m-doc">srsid()</a>) greater or equal to <a href="qgis_8h.html#ad8794344628fad7031cceb6b8ab2b8ec" class="m-doc">USER_<wbr />CRS_<wbr />START_<wbr />ID</a>. The local CRS databases should never be accessed directly with SQLite functions, instead you should use <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> API for CRS lookups and for managements of custom CRS.</p><h2>Validation </h2><p>In some cases (most prominently when loading a map layer), QGIS will try to ensure that the given map layer CRS is valid using <a href="classQgsCoordinateReferenceSystem.html#a116bcaa537aea15ad7a137ec85d3e1fb" class="m-doc">validate()</a> call. If not, a custom validation function will be called - such function may for example show a GUI for manual CRS selection. The validation function is configured using <a href="classQgsCoordinateReferenceSystem.html#a2494196604ef8bd572e4caaca633a3ce" class="m-doc">setCustomCrsValidation()</a>. If validation fails or no validation function is set, the default CRS is assigned (WGS84). QGIS application registers its validation function that will act according to user&#x27;s settings (either show CRS selector dialog or use project/custom CRS).</p><section id="crs_construct_and_copy"><h2><a href="#crs_construct_and_copy">Object Construction and Copying  </a></h2><p>The easiest way of creating CRS instances is to use <a href="classQgsCoordinateReferenceSystem.html#a2155dc5b81655f328ced767f3ccd2602" class="m-doc">QgsCoordinateReferenceSystem(const QString&amp;)</a> constructor that automatically recognizes definition format from the given string.</p><p>Creation of CRS object involves some queries in a local SQLite database, which may be potentially expensive. Consequently, CRS creation methods use an internal cache to avoid unnecessary database lookups. If the CRS database is modified, then it is necessary to call <a href="classQgsCoordinateReferenceSystem.html#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc">invalidateCache()</a> to ensure that outdated records are not being returned from the cache.</p><p>Since QGIS 2.16 <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> objects are implicitly shared.</p><h2>Caveats </h2><p>There are two different flavors of WKT: one is defined by OGC, the other is the standard used by ESRI. They look very similar, but they are not the same. QGIS is able to consume both flavors.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a></p></aside></section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a50be71ef85725c7a3959f780ac7c36cf" class="m-doc">CrsType</a> { </span><span class="m-doc-wrap"><a href="#a50be71ef85725c7a3959f780ac7c36cfabc92b4ee3c6be188b5dfe000ddac415e" class="m-doc">InternalCrsId</a>,
+              <a href="#a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5" class="m-doc">PostgisCrsId</a>,
+              <a href="#a50be71ef85725c7a3959f780ac7c36cfaa999f03c89ccddb4fb57570089de576b" class="m-doc">EpsgCrsId</a> }</span>
+            </dt>
+            <dd>Enumeration of types of IDs accepted in <a href="classQgsCoordinateReferenceSystem.html#a7b1cc27b6feeb0c798176b034644c421" class="m-doc">createFromId()</a> method.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a14f511357cd10d47f7833faa9e8918ef" class="m-doc">customCrsValidation</a>(</span><span class="m-doc-wrap">) -&gt; <a href="qgscoordinatereferencesystem_8h.html#ae594353fae7a3563d756927092d45f74" class="m-doc">CUSTOM_<wbr />CRS_<wbr />VALIDATION</a></span>
+            </dt>
+            <dd>Gets custom function.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1ebd03dee30d9041b9cd2f987b48e0fa" class="m-doc">fromEpsgId</a>(</span><span class="m-doc-wrap">long epsg) -&gt; Q_INVOKABLE <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Creates a CRS from a given EPSG ID.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0213a21ebf445a417db751b1e5da7afe" class="m-doc">fromOgcWmsCrs</a>(</span><span class="m-doc-wrap">const QString&amp; ogcCrs) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Creates a CRS from a given OGC WMS-format Coordinate Reference System string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#afebf8e84e1ca648f50a407ce3cc7ab88" class="m-doc">fromProj4</a>(</span><span class="m-doc-wrap">const QString&amp; proj4) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Creates a CRS from a proj4 style formatted string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac8d137de30c09b41c96033aa31d14bf1" class="m-doc">fromSrsId</a>(</span><span class="m-doc-wrap">long srsId) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Creates a CRS from a specified QGIS SRS ID.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac567ae2a9264c460dbdd87ab6baded83" class="m-doc">fromWkt</a>(</span><span class="m-doc-wrap">const QString&amp; wkt) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>Creates a CRS from a WKT spatial ref sys definition string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc">invalidateCache</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Clears the internal cache used to initialize <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> objects.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a22bb0b4fee4e7e251f52433df846e202" class="m-doc">recentProjections</a>(</span><span class="m-doc-wrap">) -&gt; QStringList</span>
+            </dt>
+            <dd>Returns a list of recently used projections.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a2494196604ef8bd572e4caaca633a3ce" class="m-doc">setCustomCrsValidation</a>(</span><span class="m-doc-wrap"><a href="qgscoordinatereferencesystem_8h.html#ae594353fae7a3563d756927092d45f74" class="m-doc">CUSTOM_<wbr />CRS_<wbr />VALIDATION</a> f)</span>
+            </dt>
+            <dd>Sets custom function to force valid CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a98d3c061553eb9a87bdb71824e493ca6" class="m-doc">setupESRIWktFix</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Make sure that ESRI WKT import is done properly.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5257588fdbab1d5a2f1748f1521e6ccf" class="m-doc">syncDatabase</a>(</span><span class="m-doc-wrap">) -&gt; int</span>
+            </dt>
+            <dd>Update proj.4 parameters in our database from proj.4.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3ee43d5d0b60e26e886e6cec9347e737" class="m-doc">validSrsIds</a>(</span><span class="m-doc-wrap">) -&gt; QList&lt;long&gt;</span>
+            </dt>
+            <dd>Returns a list of all valid SRS IDs present in the CRS database.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a51fef08cdc3353f9c6d5073981cefdc9" class="m-doc-self" name="a51fef08cdc3353f9c6d5073981cefdc9">QgsCoordinateReferenceSystem</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Constructs an invalid CRS object.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a2155dc5b81655f328ced767f3ccd2602" class="m-doc">QgsCoordinateReferenceSystem</a>(</span><span class="m-doc-wrap">const QString&amp; definition) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructs a CRS object from a string definition using <a href="classQgsCoordinateReferenceSystem.html#a0b233da61bdfd4f6cdc9e43af21044ed" class="m-doc">createFromString()</a></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#aab2aeb3e8d3888dd35778701af683a78" class="m-doc">QgsCoordinateReferenceSystem</a>(</span><span class="m-doc-wrap">long id,
+              <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cf" class="m-doc">CrsType</a> type = <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5" class="m-doc">PostgisCrsId</a>) <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Constructor a CRS object using a PostGIS SRID, an EPSG code or an internal QGIS CRS ID.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ace0cb3e77a0bbd8080c68b60c8bafc1e" class="m-doc-self" name="ace0cb3e77a0bbd8080c68b60c8bafc1e">QgsCoordinateReferenceSystem</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs)</span>
+            </dt>
+            <dd>Copy constructor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a1f6176f96bdc9d6abd9e62e69d9aa9a2" class="m-doc-self" name="a1f6176f96bdc9d6abd9e62e69d9aa9a2">operator QVariant</a>(</span><span class="m-doc-wrap">) const</span>
+            </dt>
+            <dd>Allows direct construction of QVariants from <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab2dee1805d8e3b62448e4d106753b595" class="m-doc">authid</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the authority identifier for the CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a133fc56cc73dffa0baf91d945a42b536" class="m-doc">bounds</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns the approximate bounds for the region the CRS is usable within.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7b1cc27b6feeb0c798176b034644c421" class="m-doc">createFromId</a>(</span><span class="m-doc-wrap">long id,
+              <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cf" class="m-doc">CrsType</a> type = <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5" class="m-doc">PostgisCrsId</a>) -&gt; bool</span>
+            </dt>
+            <dd>Sets this CRS by lookup of the given ID in the CRS database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a07523ae2730845c275ca96ee5acf095e" class="m-doc">createFromOgcWmsCrs</a>(</span><span class="m-doc-wrap">const QString&amp; crs) -&gt; bool</span>
+            </dt>
+            <dd>Sets this CRS to the given OGC WMS-format Coordinate Reference Systems.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc">createFromProj4</a>(</span><span class="m-doc-wrap">const QString&amp; projString) -&gt; bool</span>
+            </dt>
+            <dd>Sets this CRS by passing it a PROJ style formatted string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab5e8107d5d4aa3c08e3a6d570a78915e" class="m-doc">createFromSrid</a>(</span><span class="m-doc-wrap">long srid) -&gt; bool</span>
+            </dt>
+            <dd>Sets this CRS by lookup of the given PostGIS SRID in the CRS database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7ad5a7957fa06c24db1f831cb9f0a052" class="m-doc">createFromSrsId</a>(</span><span class="m-doc-wrap">long srsId) -&gt; bool</span>
+            </dt>
+            <dd>Sets this CRS by lookup of internal QGIS CRS ID in the CRS database.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0b233da61bdfd4f6cdc9e43af21044ed" class="m-doc">createFromString</a>(</span><span class="m-doc-wrap">const QString&amp; definition) -&gt; bool</span>
+            </dt>
+            <dd>Set up this CRS from a string definition.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a51e619c7d985c4496aed33fc1dcbb657" class="m-doc">createFromUserInput</a>(</span><span class="m-doc-wrap">const QString&amp; definition) -&gt; bool</span>
+            </dt>
+            <dd>Set up this CRS from various text formats.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a08876a710bfc24adaa30a345d9408367" class="m-doc">createFromWkt</a>(</span><span class="m-doc-wrap">const QString&amp; wkt) -&gt; bool</span>
+            </dt>
+            <dd>Sets this CRS using a WKT definition.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2888185eab7e7bf2f7d80ffe2b274224" class="m-doc">description</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the descriptive name of the CRS, e.g., &quot;WGS 84&quot; or &quot;GDA 94 / Vicgrid94&quot;.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a23384af6f9401c380effc74a1d5d8713" class="m-doc">ellipsoidAcronym</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the ellipsoid acronym for the ellipsoid used by the CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3dcef003135c7bf9de91c79e6d9a54bb" class="m-doc">findMatchingProj</a>(</span><span class="m-doc-wrap">) -&gt; long</span>
+            </dt>
+            <dd>Walks the CRS databases (both system and user database) trying to match stored PROJ string to a database entry in order to fill in further pieces of information about CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acfd9eae9ba8c7b80142dc4033991da07" class="m-doc-self" name="acfd9eae9ba8c7b80142dc4033991da07">geographicCrsAuthId</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns auth id of related geographic CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aecc077365492da22796fe7c702616406" class="m-doc">hasAxisInverted</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether axis is inverted (e.g., for WMS 1.3) for the CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a277cab862bc3e29bd5057bc38ebe4943" class="m-doc">isGeographic</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the CRS is a geographic CRS (using lat/lon coordinates)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a077267450cec872305c6690de5b5b09c" class="m-doc-self" name="a077267450cec872305c6690de5b5b09c">isValid</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether this CRS is correctly initialized and usable.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3c12b38470f974a6c36625988fdf9859" class="m-doc-self" name="a3c12b38470f974a6c36625988fdf9859">mapUnits</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a></span>
+            </dt>
+            <dd>Returns the units for the projection used by the CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a54ce7fefe585a1e534580468138a0cb5" class="m-doc">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs) const -&gt; bool</span>
+            </dt>
+            <dd>Overloaded != operator used to compare to CRS&#x27;s.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a82e312eac028563b73c045c61bbac266" class="m-doc-self" name="a82e312eac028563b73c045c61bbac266">operator=</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs) -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp;</span>
+            </dt>
+            <dd>Assignment operator.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4ac56deae42db141632511530258e3dd" class="m-doc">operator==</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs) const -&gt; bool</span>
+            </dt>
+            <dd>Overloaded == operator used to compare to CRS&#x27;s.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a289b8b7295fdebe393ec2d937b5ff8d3" class="m-doc">postgisSrid</a>(</span><span class="m-doc-wrap">) const -&gt; long</span>
+            </dt>
+            <dd>Returns PostGIS SRID for the CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a4ae7f768ca2efd1d7b7f5bf1c795c61a" class="m-doc">projectionAcronym</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the projection acronym for the projection used by the CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a183c17d37be47503fc9592cd18bac586" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomNode&amp; node) -&gt; bool</span>
+            </dt>
+            <dd>Restores state from the given DOM node.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a70f8049289da491c0584b7291e122502" class="m-doc">saveAsUserCrs</a>(</span><span class="m-doc-wrap">const QString&amp; name) -&gt; long</span>
+            </dt>
+            <dd>Save the proj4-string as a custom CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a40171c3b7c249bc4ae9dbb926cd02171" class="m-doc-self" name="a40171c3b7c249bc4ae9dbb926cd02171">setValidationHint</a>(</span><span class="m-doc-wrap">const QString&amp; html)</span>
+            </dt>
+            <dd>Set user hint for validation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae4ea9435d989c13d536635563a3ad71e" class="m-doc">srsid</a>(</span><span class="m-doc-wrap">) const -&gt; long</span>
+            </dt>
+            <dd>Returns the internal CRS ID, if available.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a433853323df4837869a2a8c2ad7521ea" class="m-doc">toProj4</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a Proj4 string representation of this CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad0a46c5e28ecb31a4b160931ab96d0a3" class="m-doc">toWkt</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns a WKT representation of this CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a116bcaa537aea15ad7a137ec85d3e1fb" class="m-doc">validate</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Perform some validation on this CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a797b2bfe6a0f95ba0f75abacba5eca0c" class="m-doc-self" name="a797b2bfe6a0f95ba0f75abacba5eca0c">validationHint</a>(</span><span class="m-doc-wrap">) -&gt; QString</span>
+            </dt>
+            <dd>Gets user hint for validation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac6187f872b2910674d041dc1981b4ef0" class="m-doc">writeXml</a>(</span><span class="m-doc-wrap">QDomNode&amp; node,
+              QDomDocument&amp; doc) const -&gt; bool</span>
+            </dt>
+            <dd>Stores state to the given Dom node in the given document.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a50be71ef85725c7a3959f780ac7c36cf"><div>
+            <h3>
+              enum QgsCoordinateReferenceSystem::<wbr /><a href="#a50be71ef85725c7a3959f780ac7c36cf" class="m-doc-self">CrsType</a>
+            </h3>
+            <p>Enumeration of types of IDs accepted in <a href="classQgsCoordinateReferenceSystem.html#a7b1cc27b6feeb0c798176b034644c421" class="m-doc">createFromId()</a> method.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a50be71ef85725c7a3959f780ac7c36cfabc92b4ee3c6be188b5dfe000ddac415e" class="m-doc-self" name="a50be71ef85725c7a3959f780ac7c36cfabc92b4ee3c6be188b5dfe000ddac415e">InternalCrsId</a></td>
+                  <td>
+                  <p>Internal ID used by QGIS in the local SQLite database.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5" class="m-doc-self" name="a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5">PostgisCrsId</a></td>
+                  <td>
+                  <p>SRID used in PostGIS.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a50be71ef85725c7a3959f780ac7c36cfaa999f03c89ccddb4fb57570089de576b" class="m-doc-self" name="a50be71ef85725c7a3959f780ac7c36cfaa999f03c89ccddb4fb57570089de576b">EpsgCrsId</a></td>
+                  <td>
+                  <p>EPSG code.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a14f511357cd10d47f7833faa9e8918ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="qgscoordinatereferencesystem_8h.html#ae594353fae7a3563d756927092d45f74" class="m-doc">CUSTOM_<wbr />CRS_<wbr />VALIDATION</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14f511357cd10d47f7833faa9e8918ef" class="m-doc-self">customCrsValidation</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Gets custom function.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1ebd03dee30d9041b9cd2f987b48e0fa"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static Q_INVOKABLE <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1ebd03dee30d9041b9cd2f987b48e0fa" class="m-doc-self">fromEpsgId</a>(</span><span class="m-doc-wrap">long epsg)</span></span>
+            </h3>
+            <p>Creates a CRS from a given EPSG ID.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">epsg</td>
+                  <td>epsg CRS ID</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>matching CRS, or an invalid CRS if string could not be matched</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0213a21ebf445a417db751b1e5da7afe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0213a21ebf445a417db751b1e5da7afe" class="m-doc-self">fromOgcWmsCrs</a>(</span><span class="m-doc-wrap">const QString&amp; ogcCrs)</span></span>
+            </h3>
+            <p>Creates a CRS from a given OGC WMS-format Coordinate Reference System string.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">ogcCrs</td>
+                  <td>OGR compliant CRS definition, e.g., &quot;EPSG:4326&quot;</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>matching CRS, or an invalid CRS if string could not be matched</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a07523ae2730845c275ca96ee5acf095e" class="m-doc">createFromOgcWmsCrs()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afebf8e84e1ca648f50a407ce3cc7ab88"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afebf8e84e1ca648f50a407ce3cc7ab88" class="m-doc-self">fromProj4</a>(</span><span class="m-doc-wrap">const QString&amp; proj4)</span></span>
+            </h3>
+            <p>Creates a CRS from a proj4 style formatted string.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">proj4</td>
+                  <td>proj4 format string</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>matching CRS, or an invalid CRS if string could not be matched</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc">createFromProj4()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac8d137de30c09b41c96033aa31d14bf1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac8d137de30c09b41c96033aa31d14bf1" class="m-doc-self">fromSrsId</a>(</span><span class="m-doc-wrap">long srsId)</span></span>
+            </h3>
+            <p>Creates a CRS from a specified QGIS SRS ID.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">srsId</td>
+                  <td>internal QGIS SRS ID</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>matching CRS, or an invalid CRS if ID could not be found</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a7ad5a7957fa06c24db1f831cb9f0a052" class="m-doc">createFromSrsId()</a></p><p><a href="classQgsCoordinateReferenceSystem.html#a3ee43d5d0b60e26e886e6cec9347e737" class="m-doc">validSrsIds()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac567ae2a9264c460dbdd87ab6baded83"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac567ae2a9264c460dbdd87ab6baded83" class="m-doc-self">fromWkt</a>(</span><span class="m-doc-wrap">const QString&amp; wkt)</span></span>
+            </h3>
+            <p>Creates a CRS from a WKT spatial ref sys definition string.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">wkt</td>
+                  <td>WKT for the desired spatial reference system.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>matching CRS, or an invalid CRS if string could not be matched</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a08876a710bfc24adaa30a345d9408367" class="m-doc">createFromWkt()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4e869297fba5f0ea801f44cd756b6b52"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc-self">invalidateCache</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Clears the internal cache used to initialize <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> objects.</p>
+<p>This should be called whenever the srs database has been modified in order to ensure that outdated CRS objects are not created.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a22bb0b4fee4e7e251f52433df846e202"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a22bb0b4fee4e7e251f52433df846e202" class="m-doc-self">recentProjections</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns a list of recently used projections.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>list of srsid for recently used projections</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.7</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2494196604ef8bd572e4caaca633a3ce"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2494196604ef8bd572e4caaca633a3ce" class="m-doc-self">setCustomCrsValidation</a>(</span><span class="m-doc-wrap"><a href="qgscoordinatereferencesystem_8h.html#ae594353fae7a3563d756927092d45f74" class="m-doc">CUSTOM_<wbr />CRS_<wbr />VALIDATION</a> f)</span></span>
+            </h3>
+            <p>Sets custom function to force valid CRS.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a98d3c061553eb9a87bdb71824e493ca6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a98d3c061553eb9a87bdb71824e493ca6" class="m-doc-self">setupESRIWktFix</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Make sure that ESRI WKT import is done properly.</p>
+<p>This is required for proper shapefile CRS import when using gdal&gt;= 1.9.</p><aside class="m-note m-info"><h4>Note</h4><p>This function is called by <a href="classQgsCoordinateReferenceSystem.html#a51e619c7d985c4496aed33fc1dcbb657" class="m-doc">createFromUserInput()</a> and QgsOgrProvider::crs(), there is usually no need to call it from elsewhere.</p><p>This function sets CPL config option GDAL_FIX_ESRI_WKT to a proper value, unless it has been set by the user through the commandline or an environment variable. For more details refer to OGRSpatialReference::morphFromESRI() .</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5257588fdbab1d5a2f1748f1521e6ccf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static int QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5257588fdbab1d5a2f1748f1521e6ccf" class="m-doc-self">syncDatabase</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Update proj.4 parameters in our database from proj.4.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>number of updated CRS on success and negative number of failed updates in case of errors.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>This is used internally and should not be necessary to call in client code</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3ee43d5d0b60e26e886e6cec9347e737"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;long&gt; QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3ee43d5d0b60e26e886e6cec9347e737" class="m-doc-self">validSrsIds</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns a list of all valid SRS IDs present in the CRS database.</p>
+<p>Any of the returned values can be safely passed to <a href="classQgsCoordinateReferenceSystem.html#ac8d137de30c09b41c96033aa31d14bf1" class="m-doc">fromSrsId()</a> to create a new, valid <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> object.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#ac8d137de30c09b41c96033aa31d14bf1" class="m-doc">fromSrsId()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2155dc5b81655f328ced767f3ccd2602"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2155dc5b81655f328ced767f3ccd2602" class="m-doc-self">QgsCoordinateReferenceSystem</a>(</span><span class="m-doc-wrap">const QString&amp; definition) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructs a CRS object from a string definition using <a href="classQgsCoordinateReferenceSystem.html#a0b233da61bdfd4f6cdc9e43af21044ed" class="m-doc">createFromString()</a></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">definition</td>
+                  <td>A String containing a coordinate reference system definition.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>It supports the following formats:</p><ul><li>&quot;EPSG:&lt;code&gt;&quot; - handled with createFromOgcWms()</li><li>&quot;POSTGIS:&lt;srid&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#ab5e8107d5d4aa3c08e3a6d570a78915e" class="m-doc">createFromSrid()</a></li><li>&quot;INTERNAL:&lt;srsid&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#a7ad5a7957fa06c24db1f831cb9f0a052" class="m-doc">createFromSrsId()</a></li><li>&quot;PROJ4:&lt;proj4&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc">createFromProj4()</a></li><li>&quot;WKT:&lt;wkt&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#a08876a710bfc24adaa30a345d9408367" class="m-doc">createFromWkt()</a></li></ul><p>If no prefix is specified, WKT definition is assumed.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a0b233da61bdfd4f6cdc9e43af21044ed" class="m-doc">createFromString()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aab2aeb3e8d3888dd35778701af683a78"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab2aeb3e8d3888dd35778701af683a78" class="m-doc-self">QgsCoordinateReferenceSystem</a>(</span><span class="m-doc-wrap">long id,
+              <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cf" class="m-doc">CrsType</a> type = <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5" class="m-doc">PostgisCrsId</a>) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Constructor a CRS object using a PostGIS SRID, an EPSG code or an internal QGIS CRS ID.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>The ID valid for the chosen CRS ID type</td>
+                </tr>
+                <tr>
+                  <td>type</td>
+                  <td>One of the types described in CrsType</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>We encourage you to use EPSG code, WKT or Proj4 to describe CRS&#x27;s in your code wherever possible. Internal QGIS CRS IDs are not guaranteed to be permanent / involatile.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab2dee1805d8e3b62448e4d106753b595"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab2dee1805d8e3b62448e4d106753b595" class="m-doc-self">authid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the authority identifier for the CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the authority identifier for this CRS</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The identifier includes both the authority (e.g., EPSG) and the CRS number (e.g., 4326). This is the best method to use when showing a very short CRS identifier to a user, e.g., &quot;EPSG:4326&quot;.</p><p>If CRS object is a custom CRS (not found in database), the method will return internal QGIS CRS ID with &quot;QGIS&quot; authority, for example &quot;QGIS:100005&quot;</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a2888185eab7e7bf2f7d80ffe2b274224" class="m-doc">description()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a133fc56cc73dffa0baf91d945a42b536"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a133fc56cc73dffa0baf91d945a42b536" class="m-doc-self">bounds</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the approximate bounds for the region the CRS is usable within.</p>
+<p>The returned bounds represent the latitude and longitude extent for the projection in the WGS 84 CRS.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7b1cc27b6feeb0c798176b034644c421"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7b1cc27b6feeb0c798176b034644c421" class="m-doc-self">createFromId</a>(</span><span class="m-doc-wrap">long id,
+              <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cf" class="m-doc">CrsType</a> type = <a href="classQgsCoordinateReferenceSystem.html#a50be71ef85725c7a3959f780ac7c36cfae88ca07f39092200cb8f0ac4328551a5" class="m-doc">PostgisCrsId</a>)</span></span>
+            </h3>
+            <p>Sets this CRS by lookup of the given ID in the CRS database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>We encourage you to use EPSG code, WKT or Proj4 to describe CRS&#x27;s in your code wherever possible. Internal QGIS CRS IDs are not guaranteed to be permanent / involatile.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a07523ae2730845c275ca96ee5acf095e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a07523ae2730845c275ca96ee5acf095e" class="m-doc-self">createFromOgcWmsCrs</a>(</span><span class="m-doc-wrap">const QString&amp; crs)</span></span>
+            </h3>
+            <p>Sets this CRS to the given OGC WMS-format Coordinate Reference Systems.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Accepts both &quot;&lt;auth&gt;:&lt;code&gt;&quot; format and OGC URN &quot;urn:ogc:def:crs:&lt;auth&gt;:[&lt;version&gt;]:&lt;code&gt;&quot;. It also recognizes &quot;QGIS&quot;, &quot;USER&quot;, &quot;CUSTOM&quot; authorities, which all have the same meaning and refer to QGIS internal CRS IDs.</p><aside class="m-note m-info"><h4>Note</h4><p>this method uses an internal cache. Call <a href="classQgsCoordinateReferenceSystem.html#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc">invalidateCache()</a> to clear the cache.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a0213a21ebf445a417db751b1e5da7afe" class="m-doc">fromOgcWmsCrs()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1edc7752a75a3b3753d6079957b61f9b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc-self">createFromProj4</a>(</span><span class="m-doc-wrap">const QString&amp; projString)</span></span>
+            </h3>
+            <p>Sets this CRS by passing it a PROJ style formatted string.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">projString</td>
+                  <td>A proj4 format string</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The string will be parsed and the projection and ellipsoid members set and the remainder of the proj4 string will be stored in the parameters member. The reason for this is so that we can easily present the user with &#x27;natural language&#x27; representation of the projection and ellipsoid by looking them up in the srs.db sqlite database.</p><p>We try to match the proj4 string to internal QGIS CRS ID using the following logic:</p><ul><li>perform a whole text search on proj4 string (if not null)</li><li>if not match is found, split proj4 into individual parameters and try to find a match where the parameters are in a different order</li><li>if none of the above match, use <a href="classQgsCoordinateReferenceSystem.html#a3dcef003135c7bf9de91c79e6d9a54bb" class="m-doc">findMatchingProj()</a></li></ul><aside class="m-note m-info"><h4>Note</h4><p>Some members may be left blank if no match can be found in CRS database.</p><p>this method uses an internal cache. Call <a href="classQgsCoordinateReferenceSystem.html#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc">invalidateCache()</a> to clear the cache.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#afebf8e84e1ca648f50a407ce3cc7ab88" class="m-doc">fromProj4()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab5e8107d5d4aa3c08e3a6d570a78915e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab5e8107d5d4aa3c08e3a6d570a78915e" class="m-doc-self">createFromSrid</a>(</span><span class="m-doc-wrap">long srid)</span></span>
+            </h3>
+            <p>Sets this CRS by lookup of the given PostGIS SRID in the CRS database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">srid</td>
+                  <td>The PostGIS SRID for the desired spatial reference system.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7ad5a7957fa06c24db1f831cb9f0a052"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ad5a7957fa06c24db1f831cb9f0a052" class="m-doc-self">createFromSrsId</a>(</span><span class="m-doc-wrap">long srsId)</span></span>
+            </h3>
+            <p>Sets this CRS by lookup of internal QGIS CRS ID in the CRS database.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">srsId</td>
+                  <td>The internal QGIS CRS ID for the desired spatial reference system.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the srsid is &lt; USER_CRS_START_ID, system CRS database is used, otherwise user&#x27;s local CRS database from home directory is used.</p><aside class="m-note m-info"><h4>Note</h4><p>this method uses an internal cache. Call <a href="classQgsCoordinateReferenceSystem.html#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc">invalidateCache()</a> to clear the cache.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#ac8d137de30c09b41c96033aa31d14bf1" class="m-doc">fromSrsId()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0b233da61bdfd4f6cdc9e43af21044ed"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0b233da61bdfd4f6cdc9e43af21044ed" class="m-doc-self">createFromString</a>(</span><span class="m-doc-wrap">const QString&amp; definition)</span></span>
+            </h3>
+            <p>Set up this CRS from a string definition.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">definition</td>
+                  <td>A String containing a coordinate reference system definition.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>It supports the following formats:</p><ul><li>&quot;EPSG:&lt;code&gt;&quot; - handled with createFromOgcWms()</li><li>&quot;POSTGIS:&lt;srid&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#ab5e8107d5d4aa3c08e3a6d570a78915e" class="m-doc">createFromSrid()</a></li><li>&quot;INTERNAL:&lt;srsid&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#a7ad5a7957fa06c24db1f831cb9f0a052" class="m-doc">createFromSrsId()</a></li><li>&quot;PROJ4:&lt;proj4&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc">createFromProj4()</a></li><li>&quot;WKT:&lt;wkt&gt;&quot; - handled with <a href="classQgsCoordinateReferenceSystem.html#a08876a710bfc24adaa30a345d9408367" class="m-doc">createFromWkt()</a></li></ul><p>If no prefix is specified, WKT definition is assumed.</p>
+          </div></section>
+          <section class="m-doc-details" id="a51e619c7d985c4496aed33fc1dcbb657"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a51e619c7d985c4496aed33fc1dcbb657" class="m-doc-self">createFromUserInput</a>(</span><span class="m-doc-wrap">const QString&amp; definition)</span></span>
+            </h3>
+            <p>Set up this CRS from various text formats.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">definition</td>
+                  <td>A String containing a coordinate reference system definition.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Valid formats: WKT string, &quot;EPSG:n&quot;, &quot;EPSGA:n&quot;, &quot;AUTO:proj_id,unit_id,lon0,lat0&quot;, &quot;urn:ogc:def:crs:EPSG::n&quot;, PROJ string, filename (with WKT, XML or PROJ string), well known name (such as NAD27, NAD83, WGS84 or WGS72), ESRI::[WKT string] (directly or in a file), &quot;IGNF:xxx&quot;</p><p>For more details on supported formats see OGRSpatialReference::SetFromUserInput() ( <a href="http://www.gdal.org/ogr/classOGRSpatialReference.html#aec3c6a49533fe457ddc763d699ff8796">http:/<wbr />/<wbr />www.gdal.org/<wbr />ogr/<wbr />classOGRSpatialReference.html#aec3c6a49533fe457ddc763d699ff8796</a> )</p><aside class="m-note m-info"><h4>Note</h4><p>this function generates a WKT string using OSRSetFromUserInput() and passes it to <a href="classQgsCoordinateReferenceSystem.html#a08876a710bfc24adaa30a345d9408367" class="m-doc">createFromWkt()</a> function.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a08876a710bfc24adaa30a345d9408367"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a08876a710bfc24adaa30a345d9408367" class="m-doc-self">createFromWkt</a>(</span><span class="m-doc-wrap">const QString&amp; wkt)</span></span>
+            </h3>
+            <p>Sets this CRS using a WKT definition.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">wkt</td>
+                  <td>The WKT for the desired spatial reference system.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True on success else false</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If EPSG code of the WKT definition can be determined, it is extracted and <a href="classQgsCoordinateReferenceSystem.html#a07523ae2730845c275ca96ee5acf095e" class="m-doc">createFromOgcWmsCrs()</a> is used to initialize the object. Otherwise the WKT will be converted to a proj4 string and <a href="classQgsCoordinateReferenceSystem.html#a1edc7752a75a3b3753d6079957b61f9b" class="m-doc">createFromProj4()</a> set up the object.</p><aside class="m-note m-info"><h4>Note</h4><p>Some members may be left blank if no match can be found in CRS database.</p><p>this method uses an internal cache. Call <a href="classQgsCoordinateReferenceSystem.html#a4e869297fba5f0ea801f44cd756b6b52" class="m-doc">invalidateCache()</a> to clear the cache.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#ac567ae2a9264c460dbdd87ab6baded83" class="m-doc">fromWkt()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2888185eab7e7bf2f7d80ffe2b274224"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2888185eab7e7bf2f7d80ffe2b274224" class="m-doc-self">description</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the descriptive name of the CRS, e.g., &quot;WGS 84&quot; or &quot;GDA 94 / Vicgrid94&quot;.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>descriptive name of the CRS</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>In most cases this is the best method to use when showing a friendly identifier for the CRS to a user.</p><aside class="m-note m-info"><h4>Note</h4><p>an empty string will be returned if the description is not available for the CRS</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#ab2dee1805d8e3b62448e4d106753b595" class="m-doc">authid()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a23384af6f9401c380effc74a1d5d8713"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a23384af6f9401c380effc74a1d5d8713" class="m-doc-self">ellipsoidAcronym</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the ellipsoid acronym for the ellipsoid used by the CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the official proj4 acronym for the ellipoid</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>an empty string will be returned if the ellipsoidAcronym is not available for the CRS</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a4ae7f768ca2efd1d7b7f5bf1c795c61a" class="m-doc">projectionAcronym()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3dcef003135c7bf9de91c79e6d9a54bb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">long QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3dcef003135c7bf9de91c79e6d9a54bb" class="m-doc-self">findMatchingProj</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Walks the CRS databases (both system and user database) trying to match stored PROJ string to a database entry in order to fill in further pieces of information about CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>long the SrsId of the matched CRS, zero if no match was found</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>The ellipsoid and projection acronyms must be set as well as the proj4string!</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aecc077365492da22796fe7c702616406"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aecc077365492da22796fe7c702616406" class="m-doc-self">hasAxisInverted</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether axis is inverted (e.g., for WMS 1.3) for the CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if CRS axis is inverted</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a277cab862bc3e29bd5057bc38ebe4943"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a277cab862bc3e29bd5057bc38ebe4943" class="m-doc-self">isGeographic</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the CRS is a geographic CRS (using lat/lon coordinates)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if CRS is geographic, or false if it is a projected CRS</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a54ce7fefe585a1e534580468138a0cb5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a54ce7fefe585a1e534580468138a0cb5" class="m-doc-self">operator!=</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs) const</span></span>
+            </h3>
+            <p>Overloaded != operator used to compare to CRS&#x27;s.</p>
+<p>Returns opposite bool value to operator ==</p>
+          </div></section>
+          <section class="m-doc-details" id="a4ac56deae42db141632511530258e3dd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ac56deae42db141632511530258e3dd" class="m-doc-self">operator==</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; srs) const</span></span>
+            </h3>
+            <p>Overloaded == operator used to compare to CRS&#x27;s.</p>
+<p>Internally it will use <a href="classQgsCoordinateReferenceSystem.html#ab2dee1805d8e3b62448e4d106753b595" class="m-doc">authid()</a> for comparison.</p>
+          </div></section>
+          <section class="m-doc-details" id="a289b8b7295fdebe393ec2d937b5ff8d3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">long QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a289b8b7295fdebe393ec2d937b5ff8d3" class="m-doc-self">postgisSrid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns PostGIS SRID for the CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the PostGIS spatial_ref_sys identifier for this CRS (defaults to 0)</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a4ae7f768ca2efd1d7b7f5bf1c795c61a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4ae7f768ca2efd1d7b7f5bf1c795c61a" class="m-doc-self">projectionAcronym</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the projection acronym for the projection used by the CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the official proj4 acronym for the projection family</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>an empty string will be returned if the projectionAcronym is not available for the CRS</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a23384af6f9401c380effc74a1d5d8713" class="m-doc">ellipsoidAcronym()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a183c17d37be47503fc9592cd18bac586"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a183c17d37be47503fc9592cd18bac586" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomNode&amp; node)</span></span>
+            </h3>
+            <p>Restores state from the given DOM node.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">node</td>
+                  <td>The node from which state will be restored</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>bool True on success, False on failure</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If it fails or if the node is empty, a default empty CRS will be returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="a70f8049289da491c0584b7291e122502"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">long QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a70f8049289da491c0584b7291e122502" class="m-doc-self">saveAsUserCrs</a>(</span><span class="m-doc-wrap">const QString&amp; name)</span></span>
+            </h3>
+            <p>Save the proj4-string as a custom CRS.</p>
+<p>Copied from QgsCustomProjectionDialog /// Please refactor into SQL handler !!! ///.</p><p>Returns the new CRS <a href="classQgsCoordinateReferenceSystem.html#ae4ea9435d989c13d536635563a3ad71e" class="m-doc">srsid()</a>, or -1 if the CRS could not be saved.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae4ea9435d989c13d536635563a3ad71e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">long QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae4ea9435d989c13d536635563a3ad71e" class="m-doc-self">srsid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the internal CRS ID, if available.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the internal sqlite3 srs.db primary key for this CRS</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a433853323df4837869a2a8c2ad7521ea"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a433853323df4837869a2a8c2ad7521ea" class="m-doc-self">toProj4</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a Proj4 string representation of this CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Proj4 format string that defines this CRS.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If proj and ellps keys are found in the parameters, they will be stripped out and the projection and ellipsoid acronyms will be overridden with these.</p><aside class="m-note m-info"><h4>Note</h4><p>an empty string will be returned if the CRS could not be represented by a Proj4 string</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#ad0a46c5e28ecb31a4b160931ab96d0a3" class="m-doc">toWkt()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad0a46c5e28ecb31a4b160931ab96d0a3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad0a46c5e28ecb31a4b160931ab96d0a3" class="m-doc-self">toWkt</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns a WKT representation of this CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>string containing WKT of the CRS</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a433853323df4837869a2a8c2ad7521ea" class="m-doc">toProj4()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a116bcaa537aea15ad7a137ec85d3e1fb"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a116bcaa537aea15ad7a137ec85d3e1fb" class="m-doc-self">validate</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Perform some validation on this CRS.</p>
+<p>If the CRS doesn&#x27;t validate the default behavior settings for layers with unknown CRS will be consulted and acted on accordingly. By hell or high water this method will do its best to make sure that this CRS is valid - even if that involves resorting to a hard coded default of geocs:wgs84.</p><aside class="m-note m-info"><h4>Note</h4><p>It is not usually necessary to use this function, unless you are trying to force this CRS to be valid.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsCoordinateReferenceSystem.html#a2494196604ef8bd572e4caaca633a3ce" class="m-doc">setCustomCrsValidation()</a>, <a href="classQgsCoordinateReferenceSystem.html#a14f511357cd10d47f7833faa9e8918ef" class="m-doc">customCrsValidation()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac6187f872b2910674d041dc1981b4ef0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsCoordinateReferenceSystem::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac6187f872b2910674d041dc1981b4ef0" class="m-doc-self">writeXml</a>(</span><span class="m-doc-wrap">QDomNode&amp; node,
+              QDomDocument&amp; doc) const</span></span>
+            </h3>
+            <p>Stores state to the given Dom node in the given document.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">node</td>
+                  <td>The node in which state will be restored</td>
+                </tr>
+                <tr>
+                  <td>doc</td>
+                  <td>The document in which state will be stored</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>bool True on success, False on failure</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

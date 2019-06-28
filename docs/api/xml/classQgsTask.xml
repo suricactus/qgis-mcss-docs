@@ -1,0 +1,1016 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsTask" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsTask</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <derivedcompoundref refid="classQgsMapRendererTask" prot="public" virt="non-virtual">QgsMapRendererTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsNetworkContentFetcherTask" prot="public" virt="non-virtual">QgsNetworkContentFetcherTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsProcessingAlgRunnerTask" prot="public" virt="non-virtual">QgsProcessingAlgRunnerTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsProxyProgressTask" prot="public" virt="non-virtual">QgsProxyProgressTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsRasterFileWriterTask" prot="public" virt="non-virtual">QgsRasterFileWriterTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorFileWriterTask" prot="public" virt="non-virtual">QgsVectorFileWriterTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorLayerExporterTask" prot="public" virt="non-virtual">QgsVectorLayerExporterTask</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVectorLayerFeatureCounter" prot="public" virt="non-virtual">QgsVectorLayerFeatureCounter</derivedcompoundref>
+    <derivedcompoundref refid="classQgsVirtualLayerTask" prot="public" virt="non-virtual">QgsVirtualLayerTask</derivedcompoundref>
+    <includes refid="qgstaskmanager_8h" local="no">qgstaskmanager.h</includes>
+    <innerclass refid="structQgsTask_1_1SubTask" prot="private">QgsTask::SubTask</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsTask_1a78265e4b22b3fa23910713b55cb3397a" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa1cb7aaa2e363846d69093018c368af20" prot="public">
+          <name>CanCancel</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Task can be canceled. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" prot="public">
+          <name>AllFlags</name>
+          <initializer>= CanCancel</initializer>
+          <briefdescription>
+<para>Task supports all flags. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Task flags. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="71" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="70" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82b" prot="public" static="no">
+        <name>SubTaskDependency</name>
+        <enumvalue id="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" prot="public">
+          <name>SubTaskIndependent</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Subtask is independent of the parent, and can run before, after or at the same time as the parent. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba4f04e3281cba5e2c705141f0ed07097d" prot="public">
+          <name>ParentDependsOnSubTask</name>
+          <briefdescription>
+<para>Subtask must complete before parent can begin. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Controls how subtasks relate to their parent task. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="155" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsTask_1abf6d09858b2621d25b15e61f9b94716a" prot="public" static="no">
+        <name>TaskStatus</name>
+        <enumvalue id="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" prot="public">
+          <name>Queued</name>
+          <briefdescription>
+<para>Task is queued and has not begun. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aac2e4a7d8f3fb678c3b8b979fd55f07fb" prot="public">
+          <name>OnHold</name>
+          <briefdescription>
+<para>Task is queued but on hold and will not be started. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aae2415f41b060b3ff551a498d926667e2" prot="public">
+          <name>Running</name>
+          <briefdescription>
+<para>Task is currently running. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aaf885759c2ac9e8d0e76a8f035e0ef2e8" prot="public">
+          <name>Complete</name>
+          <briefdescription>
+<para>Task successfully completed. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa642c6a9896682897fb8e1990fadc5bb2" prot="public">
+          <name>Terminated</name>
+          <briefdescription>
+<para>Task was terminated or errored. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Status of tasks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="61" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="60" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsTask_1ab34554e552bc56a301cb5ca3a84d1397" prot="private" static="no" mutable="no">
+        <type><ref refid="qgsmaplayer_8h_1ad2fc812c37392fdf54ae85f5044f917f" kindref="member">QgsWeakMapLayerPointerList</ref></type>
+        <definition>QgsWeakMapLayerPointerList QgsTask::mDependentLayers</definition>
+        <argsstring></argsstring>
+        <name>mDependentLayers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="328" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1add48d82188a0f1c38b2d3d80af17b9a7" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsTask::mDescription</definition>
+        <argsstring></argsstring>
+        <name>mDescription</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="296" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1a5dfbc8504970abe25efe04a1efae7883" prot="private" static="no" mutable="no">
+        <type>QElapsedTimer</type>
+        <definition>QElapsedTimer QgsTask::mElapsedTime</definition>
+        <argsstring></argsstring>
+        <name>mElapsedTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="330" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="330" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1abb65717db430c71159383a76c871a396" prot="private" static="no" mutable="no">
+        <type>Flags</type>
+        <definition>Flags QgsTask::mFlags</definition>
+        <argsstring></argsstring>
+        <name>mFlags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="295" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="295" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1ae659866a6b653eb4c5fe96bc8841771f" prot="private" static="no" mutable="no">
+        <type>QMutex</type>
+        <definition>QMutex QgsTask::mNotFinishedMutex</definition>
+        <argsstring></argsstring>
+        <name>mNotFinishedMutex</name>
+        <briefdescription>
+<para>This mutex remains locked from initialization until the task finishes, it&apos;s used as a trigger for waitForFinished. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="306" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1a7b381b8a2d61e3c52e81ebfc381fc4aa" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716a" kindref="member">TaskStatus</ref></type>
+        <definition>TaskStatus QgsTask::mOverallStatus</definition>
+        <argsstring></argsstring>
+        <name>mOverallStatus</name>
+        <initializer>= <ref refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" kindref="member">Queued</ref></initializer>
+        <briefdescription>
+<para>Status of this task and all subtasks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="300" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1af8f9fb31440ecfa1433a8f9ab551ac9c" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsTask::mProgress</definition>
+        <argsstring></argsstring>
+        <name>mProgress</name>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+<para>Progress of this (parent) task alone. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="309" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1acf6d3ee94583ede033086d451516b0b0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsTask::mShouldTerminate</definition>
+        <argsstring></argsstring>
+        <name>mShouldTerminate</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="312" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1a1eb8f278051d3a76b64f2ef0e4d4ff7d" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsTask::mStartCount</definition>
+        <argsstring></argsstring>
+        <name>mStartCount</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="313" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1a725cc3ef06a0c14711262b635beb7839" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716a" kindref="member">TaskStatus</ref></type>
+        <definition>TaskStatus QgsTask::mStatus</definition>
+        <argsstring></argsstring>
+        <name>mStatus</name>
+        <initializer>= <ref refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" kindref="member">Queued</ref></initializer>
+        <briefdescription>
+<para>Status of this (parent) task alone. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="298" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1a559c17cf3d4681764964746d6ebee0b6" prot="private" static="no" mutable="no">
+        <type>QList&lt; SubTask &gt;</type>
+        <definition>QList&lt; SubTask &gt; QgsTask::mSubTasks</definition>
+        <argsstring></argsstring>
+        <name>mSubTasks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="326" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTask_1aa6af55b788fe4ce60fd419a1d43b498c" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsTask::mTotalProgress</definition>
+        <argsstring></argsstring>
+        <name>mTotalProgress</name>
+        <initializer>= 0.0</initializer>
+        <briefdescription>
+<para>Overall progress of this task and all subtasks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="311" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsTask_1abe28026e0d5b1d5511133f1db485ee2c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsTaskManager</definition>
+        <argsstring></argsstring>
+        <name>QgsTaskManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="354" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsTask_1a5987b7ac894a16be7d57b8cccc4da75a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsTaskRunnableWrapper</definition>
+        <argsstring></argsstring>
+        <name>QgsTaskRunnableWrapper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="355" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsTask_1a4b5139a1246bdc950c0fb2aaa1765cfd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsTaskManager</definition>
+        <argsstring></argsstring>
+        <name>TestQgsTaskManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="356" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="356" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsTask_1a6b6a5a9ce2caeb19b8f1c93d003e8ae7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsTask::QgsTask</definition>
+        <argsstring>(const QString &amp;description=QString(), QgsTask::Flags flags=AllFlags)</argsstring>
+        <name>QgsTask</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>description</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>QgsTask::Flags</type>
+          <declname>flags</declname>
+          <defval><ref refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" kindref="member">AllFlags</ref></defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsTask" kindref="compound">QgsTask</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>text description of task </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>task flags </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a2be94a3a3e2a4d2c0e6ad79ad80301fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsTask::~QgsTask</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsTask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="84" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="34" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1adee948d61b73caf57498eb57f087fb8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::addSubTask</definition>
+        <argsstring>(QgsTask *subTask, const QgsTaskList &amp;dependencies=QgsTaskList(), SubTaskDependency subTaskDependency=SubTaskIndependent)</argsstring>
+        <name>addSubTask</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>subTask</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgstaskmanager_8h_1aca25b7c15b64f8170f669436fef001db" kindref="member">QgsTaskList</ref> &amp;</type>
+          <declname>dependencies</declname>
+          <defval><ref refid="qgstaskmanager_8h_1aca25b7c15b64f8170f669436fef001db" kindref="member">QgsTaskList</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82b" kindref="member">SubTaskDependency</ref></type>
+          <declname>subTaskDependency</declname>
+          <defval><ref refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" kindref="member">SubTaskIndependent</ref></defval>
+        </param>
+        <briefdescription>
+<para>Adds a subtask to this task. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subtasks allow a single task to be created which consists of multiple smaller tasks. Subtasks are not visible or indepedently controllable by users. Ownership of the subtask is transferred. Subtasks can have an optional list of dependent tasks, which must be completed before the subtask can begin. By default subtasks are considered independent of the parent task, ie they can be run either before, after, or at the same time as the parent task. This behavior can be overridden through the subTaskDependency argument. Note that subtasks should NEVER be dependent on their parent task, and violating this constraint will prevent the task from completing successfully.</para><para>The parent task must be added to a <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref> for subtasks to be utilized. Subtasks should not be added manually to a <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref>, rather, only the parent task should be added to the manager.</para><para>Subtasks can be nested, ie a subtask can legally be a parent task itself with its own set of subtasks. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="181" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="131" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1af9eb9236ea0d342fa5aa9f2073b4e08a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTask::canCancel</definition>
+        <argsstring>() const</argsstring>
+        <name>canCancel</name>
+        <briefdescription>
+<para>Returns true if the task can be canceled. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a5d10b93acb49394b851bebf8a03680d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsTask::cancel</definition>
+        <argsstring>()</argsstring>
+        <name>cancel</name>
+        <reimplementedby refid="classQgsVectorFileWriterTask_1ac8d5a5c7dd247d9e186f5167c696f6ff">cancel</reimplementedby>
+        <reimplementedby refid="classQgsProcessingAlgRunnerTask_1a11767429e97833531a1a2d81eb3424d9">cancel</reimplementedby>
+        <reimplementedby refid="classQgsRasterFileWriterTask_1a3c55e97871abda309a3c329e8a2b09f6">cancel</reimplementedby>
+        <reimplementedby refid="classQgsNetworkContentFetcherTask_1a9f9bb9a1c3b149915464b518cb064186">cancel</reimplementedby>
+        <reimplementedby refid="classQgsVirtualLayerTask_1a4b70e448aba757b5213fb6ef2aff884e">cancel</reimplementedby>
+        <reimplementedby refid="classQgsMapRendererTask_1afef40a24af5c4866a126274fb8f9057f">cancel</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerExporterTask_1a947a17a8803733e98b8dc66c531e9c70">cancel</reimplementedby>
+        <briefdescription>
+<para>Notifies the task that it should terminate. </para>        </briefdescription>
+        <detaileddescription>
+<para>Calling this is not guaranteed to immediately end the task, rather it sets the <ref refid="classQgsTask_1af268c16fc903e9a63e93bf5818e50eca" kindref="member">isCanceled()</ref> flag which task subclasses can check and terminate their operations at an appropriate time. Any subtasks owned by this task will also be canceled. Derived classes must ensure that the base class implementation is called from any overridden version. <simplesect kind="see"><para><ref refid="classQgsTask_1af268c16fc903e9a63e93bf5818e50eca" kindref="member">isCanceled()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="135" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="79" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a2ec1a2f6f324a0083028f1df10accbd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt;</type>
+        <definition>QList&lt; QgsMapLayer * &gt; QgsTask::dependentLayers</definition>
+        <argsstring>() const</argsstring>
+        <name>dependentLayers</name>
+        <briefdescription>
+<para>Returns the list of layers on which the task depends. </para>        </briefdescription>
+        <detaileddescription>
+<para>The task will automatically be canceled if any of these layers are about to be removed. <simplesect kind="see"><para><ref refid="classQgsTask_1ac118b1200a6b56a9bc36908da3fdf6fd" kindref="member">setDependentLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="196" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1ad3a6fd5f8743c007927cf54c98c323c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsTask::description</definition>
+        <argsstring>() const</argsstring>
+        <name>description</name>
+        <briefdescription>
+<para>Returns the task&apos;s description. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="110" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1ab0d3c22232efac5deb4c0a9114b95a8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>qint64</type>
+        <definition>qint64 QgsTask::elapsedTime</definition>
+        <argsstring>() const</argsstring>
+        <name>elapsedTime</name>
+        <briefdescription>
+<para>Returns the elapsed time since the task commenced, in milliseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para>The value is undefined for tasks which have not begun.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="124" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a0eb8cade49fad19ae30e02e44e52ab67" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Flags</type>
+        <definition>Flags QgsTask::flags</definition>
+        <argsstring>() const</argsstring>
+        <name>flags</name>
+        <briefdescription>
+<para>Returns the flags associated with the task. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="89" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1ac531f6ac746c2a48762908bca9f569e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::hold</definition>
+        <argsstring>()</argsstring>
+        <name>hold</name>
+        <briefdescription>
+<para>Places the task on hold. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the task in not queued (ie it is already running or has finished) then calling this has no effect. Calling this method only has an effect for tasks which are managed by a <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref>. <simplesect kind="see"><para><ref refid="classQgsTask_1ab3ac2490c151cc90d175d175b8112b05" kindref="member">unhold()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="144" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="102" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a77207b78e993a8068ca932a78588ba78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTask::isActive</definition>
+        <argsstring>() const</argsstring>
+        <name>isActive</name>
+        <briefdescription>
+<para>Returns true if the task is active, ie it is not complete and has not been canceled. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="100" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a1bc035725fa4689d486e6024a17fa694" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsTask::progress</definition>
+        <argsstring>() const</argsstring>
+        <name>progress</name>
+        <briefdescription>
+<para>Returns the task&apos;s progress (between 0.0 and 100.0) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="115" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1ac118b1200a6b56a9bc36908da3fdf6fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::setDependentLayers</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;dependentLayers)</argsstring>
+        <name>setDependentLayers</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>dependentLayers</declname>
+        </param>
+        <briefdescription>
+<para>Sets a list of layers on which the task depends. </para>        </briefdescription>
+        <detaileddescription>
+<para>The task will automatically be canceled if any of these layers are about to be removed. <simplesect kind="see"><para><ref refid="classQgsTask_1a2ec1a2f6f324a0083028f1df10accbd8" kindref="member">dependentLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="189" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="168" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a09fe64a54e26d3a4de96d77a1a28d4ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716a" kindref="member">TaskStatus</ref></type>
+        <definition>TaskStatus QgsTask::status</definition>
+        <argsstring>() const</argsstring>
+        <name>status</name>
+        <briefdescription>
+<para>Returns the current task status. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1ab3ac2490c151cc90d175d175b8112b05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::unhold</definition>
+        <argsstring>()</argsstring>
+        <name>unhold</name>
+        <briefdescription>
+<para>Releases the task from being held. </para>        </briefdescription>
+        <detaileddescription>
+<para>For tasks managed by a <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref> calling this will re-add them to the queue. If the task in not currently being held then calling this has no effect. <simplesect kind="see"><para><ref refid="classQgsTask_1ac531f6ac746c2a48762908bca9f569e8" kindref="member">hold()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="152" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="116" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1af640d3e3150cd8636bdddbfcd263c698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTask::waitForFinished</definition>
+        <argsstring>(int timeout=30000)</argsstring>
+        <name>waitForFinished</name>
+        <param>
+          <type>int</type>
+          <declname>timeout</declname>
+          <defval>30000</defval>
+        </param>
+        <briefdescription>
+<para>Blocks the current thread until the task finishes or a maximum of <emphasis>timeout</emphasis> milliseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>timeout</emphasis> is <computeroutput>0</computeroutput> the thread will be blocked forever. In case of a timeout, the task will still be running. In case the task already is finished, the method will return immediately while returning <computeroutput>true</computeroutput>.</para><para>The result will be false if the wait timed out and true in any other case. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="207" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="144" bodyend="166"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsTask_1a5b2b284b03102808efedaac5dfc00707" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::begun</definition>
+        <argsstring>()</argsstring>
+        <name>begun</name>
+        <briefdescription>
+<para>Will be emitted by task to indicate its commencement. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>derived classes should not emit this signal directly, it will automatically be emitted when the task begins </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="232" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTask_1a2df3b95a83b5296959947950d9320940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::progressChanged</definition>
+        <argsstring>(double progress)</argsstring>
+        <name>progressChanged</name>
+        <param>
+          <type>double</type>
+          <declname>progress</declname>
+        </param>
+        <briefdescription>
+<para>Will be emitted by task when its progress changes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>progress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>percent of progress, from 0.0 - 100.0 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>derived classes should not emit this signal directly, instead they should call <ref refid="classQgsTask_1af44d70df34a60ea921f55c1c69a62c69" kindref="member">setProgress()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="217" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTask_1aad96341858c75ce3ed6995fb83c663ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::statusChanged</definition>
+        <argsstring>(int status)</argsstring>
+        <name>statusChanged</name>
+        <param>
+          <type>int</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Will be emitted by task when its status changes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new task status </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>derived classes should not emit this signal directly, it will automatically be emitted </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="225" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTask_1a1943c69e00a43641d929ec64787e54b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::taskCompleted</definition>
+        <argsstring>()</argsstring>
+        <name>taskCompleted</name>
+        <briefdescription>
+<para>Will be emitted by task to indicate its successful completion. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>derived classes should not emit this signal directly, it will automatically be emitted </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="239" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTask_1aa5f8557431c472b72804a8e9a39bbfaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::taskTerminated</definition>
+        <argsstring>()</argsstring>
+        <name>taskTerminated</name>
+        <briefdescription>
+<para>Will be emitted by task if it has terminated for any reason other then completion (e.g., when a task has been canceled or encountered an internal error). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>derived classes should not emit this signal directly, it will automatically be emitted </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="248" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsTask_1a2775f4377b3bc65b4dfb89d67c89c639" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsTask::finished</definition>
+        <argsstring>(bool result)</argsstring>
+        <name>finished</name>
+        <reimplementedby refid="classQgsProcessingAlgRunnerTask_1a7d48c9240ca3452109cb4a34d1f88f89">finished</reimplementedby>
+        <reimplementedby refid="classQgsRasterFileWriterTask_1acdb128094d10a34256be55b9bf98e68d">finished</reimplementedby>
+        <reimplementedby refid="classQgsVectorFileWriterTask_1abff3ad6f2fe039e190894dfd6588f9ea">finished</reimplementedby>
+        <reimplementedby refid="classQgsMapRendererTask_1af188a811c657d320a6c74cdf027e1143">finished</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerExporterTask_1a3b03a7fb0921dda2b74c1025cfc6bd61">finished</reimplementedby>
+        <param>
+          <type>bool</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>If the task is managed by a <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref>, this will be called after the task has finished (whether through successful completion or via early termination). </para>        </briefdescription>
+        <detaileddescription>
+<para>The result argument reflects whether the task was successfully completed or not. This method is always called from the main thread, so it is safe to create widgets and perform other operations which require the main thread. However, the GUI will be blocked for the duration of this method so tasks should avoid performing any lengthy operations here. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="272" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="272" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1af268c16fc903e9a63e93bf5818e50eca" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTask::isCanceled</definition>
+        <argsstring>() const</argsstring>
+        <name>isCanceled</name>
+        <briefdescription>
+<para>Will return true if task should terminate ASAP. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the task reports the CanCancel flag, then derived classes&apos; <ref refid="classQgsTask_1a2d77e5bc36f0bbef5c7e2ee38a796bbe" kindref="member">run()</ref> methods should periodically check this and terminate in a safe manner. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="279" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="279" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a2d77e5bc36f0bbef5c7e2ee38a796bbe" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsTask::run</definition>
+        <argsstring>()=0</argsstring>
+        <name>run</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureCounter_1a3ef132283c5ff7567eac10042350a1fc">run</reimplementedby>
+        <reimplementedby refid="classQgsProxyProgressTask_1add1cdd862f2e5144cc46e8a07b2c1111">run</reimplementedby>
+        <reimplementedby refid="classQgsProcessingAlgRunnerTask_1ac1ad942aa91e0dbf494ce23081fe94d6">run</reimplementedby>
+        <reimplementedby refid="classQgsVirtualLayerTask_1a6196414bd5f19b0bfe07bea548efe186">run</reimplementedby>
+        <reimplementedby refid="classQgsNetworkContentFetcherTask_1a1bd63af10956a1e992c462f8a4bcb738">run</reimplementedby>
+        <reimplementedby refid="classQgsRasterFileWriterTask_1affcbcef489e59dc650c4e52858d179bb">run</reimplementedby>
+        <reimplementedby refid="classQgsVectorFileWriterTask_1a9565ff96ee71cc791d534809847b70b4">run</reimplementedby>
+        <reimplementedby refid="classQgsMapRendererTask_1a227530b74d7ba17ea6fbf4c19d29b0f7">run</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerExporterTask_1afdf8f0e8fb0e13762646b95ca01bf1ba">run</reimplementedby>
+        <briefdescription>
+<para>Performs the task&apos;s operation. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method will be called when the task commences (ie via calling start() ), and subclasses should implement the operation they wish to perform in the background within this method.</para><para>A task must return a boolean value to indicate whether the task was completed successfully or terminated before completion. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="260" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-slot">
+      <memberdef kind="slot" id="classQgsTask_1af44d70df34a60ea921f55c1c69a62c69" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::setProgress</definition>
+        <argsstring>(double progress)</argsstring>
+        <name>setProgress</name>
+        <param>
+          <type>double</type>
+          <declname>progress</declname>
+        </param>
+        <briefdescription>
+<para>Sets the task&apos;s current progress. </para>        </briefdescription>
+        <detaileddescription>
+<para>The derived class should call this method whenever the task wants to update its progress. Calling will automatically emit the progressChanged signal. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>progress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>percent of progress, from 0.0 - 100.0 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="288" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="204" bodyend="234"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classQgsTask_1a2ca5b200236ee576515685931bdcdbec" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::subTaskStatusChanged</definition>
+        <argsstring>(int status)</argsstring>
+        <name>subTaskStatusChanged</name>
+        <param>
+          <type>int</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="291" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="173" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsTask_1a8fb821c016c3919fac4ccb5fbb2d00e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::completed</definition>
+        <argsstring>()</argsstring>
+        <name>completed</name>
+        <briefdescription>
+<para>Called when the task has completed successfully. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="341" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="236" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a1b9aca21eda42464a1a1924eea739ace" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::processSubTasksForCompletion</definition>
+        <argsstring>()</argsstring>
+        <name>processSubTasksForCompletion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="348" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="242" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1acee8a7a13e74917d333767eecc694cd1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::processSubTasksForHold</definition>
+        <argsstring>()</argsstring>
+        <name>processSubTasksForHold</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="352" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="299" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1a237e953972ce687c9167aab6fde17459" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::processSubTasksForTermination</definition>
+        <argsstring>()</argsstring>
+        <name>processSubTasksForTermination</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="350" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="271" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1acd6aba22afd07ecc9ae7b9fd4823ccda" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+<para>Starts the task. </para>        </briefdescription>
+        <detaileddescription>
+<para>Should not be public as only QgsTaskManagers can initiate tasks. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="336" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="50" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTask_1ad6962761942ef8aebfd84db2faab5ac4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTask::terminated</definition>
+        <argsstring>()</argsstring>
+        <name>terminated</name>
+        <briefdescription>
+<para>Called when the task has failed, as either a result of an internal failure or via cancelation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="346" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="323" bodyend="327"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for long running background tasks. </para>    </briefdescription>
+    <detaileddescription>
+<para>Tasks can be controlled directly, or added to a <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref> for automatic management.</para><para>Derived classes should implement the process they want to execute in the background within the <ref refid="classQgsTask_1a2d77e5bc36f0bbef5c7e2ee38a796bbe" kindref="member">run()</ref> method. This method will be called when the task commences (ie via calling <ref refid="classQgsTask_1a2d77e5bc36f0bbef5c7e2ee38a796bbe" kindref="member">run()</ref> ).</para><para>Long running tasks should periodically check the <ref refid="classQgsTask_1af268c16fc903e9a63e93bf5818e50eca" kindref="member">isCanceled()</ref> flag to detect if the task has been canceled via some external event. If this flag is true then the task should clean up and terminate at the earliest possible convenience.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8927">
+        <label>QgsProxyProgressTask</label>
+        <link refid="classQgsProxyProgressTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8931">
+        <label>QgsVectorLayerFeatureCounter</label>
+        <link refid="classQgsVectorLayerFeatureCounter"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8926">
+        <label>QgsProcessingAlgRunnerTask</label>
+        <link refid="classQgsProcessingAlgRunnerTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8923">
+        <label>QObject</label>
+      </node>
+      <node id="8929">
+        <label>QgsVectorFileWriterTask</label>
+        <link refid="classQgsVectorFileWriterTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8922">
+        <label>QgsTask</label>
+        <link refid="classQgsTask"/>
+        <childnode refid="8923" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8932">
+        <label>QgsVirtualLayerTask</label>
+        <link refid="classQgsVirtualLayerTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8930">
+        <label>QgsVectorLayerExporterTask</label>
+        <link refid="classQgsVectorLayerExporterTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8928">
+        <label>QgsRasterFileWriterTask</label>
+        <link refid="classQgsRasterFileWriterTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8925">
+        <label>QgsNetworkContentFetcherTask</label>
+        <link refid="classQgsNetworkContentFetcherTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8924">
+        <label>QgsMapRendererTask</label>
+        <link refid="classQgsMapRendererTask"/>
+        <childnode refid="8922" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8934">
+        <label>QObject</label>
+      </node>
+      <node id="8933">
+        <label>QgsTask</label>
+        <link refid="classQgsTask"/>
+        <childnode refid="8934" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="54" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="53" bodyend="358"/>
+    <listofallmembers>
+      <member refid="classQgsTask_1adee948d61b73caf57498eb57f087fb8d" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>addSubTask</name></member>
+      <member refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa304f0778a1549c89af939785fed6ebd9" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>AllFlags</name></member>
+      <member refid="classQgsTask_1a5b2b284b03102808efedaac5dfc00707" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>begun</name></member>
+      <member refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397aa1cb7aaa2e363846d69093018c368af20" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>CanCancel</name></member>
+      <member refid="classQgsTask_1af9eb9236ea0d342fa5aa9f2073b4e08a" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>canCancel</name></member>
+      <member refid="classQgsTask_1a5d10b93acb49394b851bebf8a03680d7" prot="public" virt="virtual"><scope>QgsTask</scope><name>cancel</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aaf885759c2ac9e8d0e76a8f035e0ef2e8" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>Complete</name></member>
+      <member refid="classQgsTask_1a8fb821c016c3919fac4ccb5fbb2d00e0" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>completed</name></member>
+      <member refid="classQgsTask_1a2ec1a2f6f324a0083028f1df10accbd8" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>dependentLayers</name></member>
+      <member refid="classQgsTask_1ad3a6fd5f8743c007927cf54c98c323c0" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>description</name></member>
+      <member refid="classQgsTask_1ab0d3c22232efac5deb4c0a9114b95a8f" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>elapsedTime</name></member>
+      <member refid="classQgsTask_1a2775f4377b3bc65b4dfb89d67c89c639" prot="protected" virt="virtual"><scope>QgsTask</scope><name>finished</name></member>
+      <member refid="classQgsTask_1a78265e4b22b3fa23910713b55cb3397a" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>Flag</name></member>
+      <member refid="classQgsTask_1a0eb8cade49fad19ae30e02e44e52ab67" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>flags</name></member>
+      <member refid="classQgsTask_1ac531f6ac746c2a48762908bca9f569e8" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>hold</name></member>
+      <member refid="classQgsTask_1a77207b78e993a8068ca932a78588ba78" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>isActive</name></member>
+      <member refid="classQgsTask_1af268c16fc903e9a63e93bf5818e50eca" prot="protected" virt="non-virtual"><scope>QgsTask</scope><name>isCanceled</name></member>
+      <member refid="classQgsTask_1ab34554e552bc56a301cb5ca3a84d1397" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mDependentLayers</name></member>
+      <member refid="classQgsTask_1add48d82188a0f1c38b2d3d80af17b9a7" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mDescription</name></member>
+      <member refid="classQgsTask_1a5dfbc8504970abe25efe04a1efae7883" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mElapsedTime</name></member>
+      <member refid="classQgsTask_1abb65717db430c71159383a76c871a396" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mFlags</name></member>
+      <member refid="classQgsTask_1ae659866a6b653eb4c5fe96bc8841771f" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mNotFinishedMutex</name></member>
+      <member refid="classQgsTask_1a7b381b8a2d61e3c52e81ebfc381fc4aa" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mOverallStatus</name></member>
+      <member refid="classQgsTask_1af8f9fb31440ecfa1433a8f9ab551ac9c" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mProgress</name></member>
+      <member refid="classQgsTask_1acf6d3ee94583ede033086d451516b0b0" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mShouldTerminate</name></member>
+      <member refid="classQgsTask_1a1eb8f278051d3a76b64f2ef0e4d4ff7d" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mStartCount</name></member>
+      <member refid="classQgsTask_1a725cc3ef06a0c14711262b635beb7839" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mStatus</name></member>
+      <member refid="classQgsTask_1a559c17cf3d4681764964746d6ebee0b6" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mSubTasks</name></member>
+      <member refid="classQgsTask_1aa6af55b788fe4ce60fd419a1d43b498c" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>mTotalProgress</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aac2e4a7d8f3fb678c3b8b979fd55f07fb" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>OnHold</name></member>
+      <member refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba4f04e3281cba5e2c705141f0ed07097d" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>ParentDependsOnSubTask</name></member>
+      <member refid="classQgsTask_1a1b9aca21eda42464a1a1924eea739ace" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>processSubTasksForCompletion</name></member>
+      <member refid="classQgsTask_1acee8a7a13e74917d333767eecc694cd1" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>processSubTasksForHold</name></member>
+      <member refid="classQgsTask_1a237e953972ce687c9167aab6fde17459" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>processSubTasksForTermination</name></member>
+      <member refid="classQgsTask_1a1bc035725fa4689d486e6024a17fa694" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>progress</name></member>
+      <member refid="classQgsTask_1a2df3b95a83b5296959947950d9320940" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>progressChanged</name></member>
+      <member refid="classQgsTask_1a6b6a5a9ce2caeb19b8f1c93d003e8ae7" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>QgsTask</name></member>
+      <member refid="classQgsTask_1abe28026e0d5b1d5511133f1db485ee2c" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>QgsTaskManager</name></member>
+      <member refid="classQgsTask_1a5987b7ac894a16be7d57b8cccc4da75a" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>QgsTaskRunnableWrapper</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa9ff9973828d16d37614e943f80212662" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>Queued</name></member>
+      <member refid="classQgsTask_1a2d77e5bc36f0bbef5c7e2ee38a796bbe" prot="protected" virt="pure-virtual"><scope>QgsTask</scope><name>run</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aae2415f41b060b3ff551a498d926667e2" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>Running</name></member>
+      <member refid="classQgsTask_1ac118b1200a6b56a9bc36908da3fdf6fd" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>setDependentLayers</name></member>
+      <member refid="classQgsTask_1af44d70df34a60ea921f55c1c69a62c69" prot="protected" virt="non-virtual"><scope>QgsTask</scope><name>setProgress</name></member>
+      <member refid="classQgsTask_1acd6aba22afd07ecc9ae7b9fd4823ccda" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>start</name></member>
+      <member refid="classQgsTask_1a09fe64a54e26d3a4de96d77a1a28d4ff" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>status</name></member>
+      <member refid="classQgsTask_1aad96341858c75ce3ed6995fb83c663ef" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>statusChanged</name></member>
+      <member refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82b" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>SubTaskDependency</name></member>
+      <member refid="classQgsTask_1ae5622a3fc728da46df42c04a47f4e82ba0d04769f81046099e1cb037d55503f67" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>SubTaskIndependent</name></member>
+      <member refid="classQgsTask_1a2ca5b200236ee576515685931bdcdbec" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>subTaskStatusChanged</name></member>
+      <member refid="classQgsTask_1a1943c69e00a43641d929ec64787e54b0" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>taskCompleted</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716a" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>TaskStatus</name></member>
+      <member refid="classQgsTask_1aa5f8557431c472b72804a8e9a39bbfaa" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>taskTerminated</name></member>
+      <member refid="classQgsTask_1abf6d09858b2621d25b15e61f9b94716aa642c6a9896682897fb8e1990fadc5bb2" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>Terminated</name></member>
+      <member refid="classQgsTask_1ad6962761942ef8aebfd84db2faab5ac4" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>terminated</name></member>
+      <member refid="classQgsTask_1a4b5139a1246bdc950c0fb2aaa1765cfd" prot="private" virt="non-virtual"><scope>QgsTask</scope><name>TestQgsTaskManager</name></member>
+      <member refid="classQgsTask_1ab3ac2490c151cc90d175d175b8112b05" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>unhold</name></member>
+      <member refid="classQgsTask_1af640d3e3150cd8636bdddbfcd263c698" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>waitForFinished</name></member>
+      <member refid="classQgsTask_1a2be94a3a3e2a4d2c0e6ad79ad80301fb" prot="public" virt="non-virtual"><scope>QgsTask</scope><name>~QgsTask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

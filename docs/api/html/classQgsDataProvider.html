@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsDataProvider class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsDataProvider <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for spatial data provider implementations.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-attribs">Public static variables</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsMeshDataProvider.html" class="m-doc">QgsMeshDataProvider</a>
+            </dt>
+            <dd>Base class for providing data for <a href="classQgsMeshLayer.html" class="m-doc">QgsMeshLayer</a>.</dd>
+            <dt>
+              class <a href="classQgsRasterDataProvider.html" class="m-doc">QgsRasterDataProvider</a>
+            </dt>
+            <dd>Base class for raster data providers.</dd>
+            <dt>
+              class <a href="classQgsVectorDataProvider.html" class="m-doc">QgsVectorDataProvider</a>
+            </dt>
+            <dd>This is the base class for vector data providers.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              struct <a href="structQgsDataProvider_1_1PreviewContext.html" class="m-doc">PreviewContext</a>
+            </dt>
+            <dd>Stores settings related to the context in which a preview job runs.</dd>
+            <dt>
+              struct <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">ProviderOptions</a>
+            </dt>
+            <dd>Setting options for creating vector data providers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a5b7c15ef49dfa659b23b81c4b0893cdd" class="m-doc">ProviderProperty</a> { </span><span class="m-doc-wrap"><a href="#a5b7c15ef49dfa659b23b81c4b0893cddabcccdb5e52717ca90a42d83bb247d306" class="m-doc">EvaluateDefaultValues</a>,
+              <a href="#a5b7c15ef49dfa659b23b81c4b0893cddafe3bb20221731e6f855d22ed0993e78d" class="m-doc">CustomData</a> = 3000 }</span>
+            </dt>
+            <dd>Properties are used to pass custom configuration options into data providers.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-attribs">
+          <h2><a href="#pub-static-attribs">Public static variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              static QString <a href="#acfd848673de93ad11abb901f23bcc03b" class="m-doc">SUBLAYER_SEPARATOR</a>
+            </dt>
+            <dd>String sequence used for separating components of sublayers strings.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a01ff4330b3a2b2df1cdd6d27603e04e9" class="m-doc">QgsDataProvider</a>(</span><span class="m-doc-wrap">const QString&amp; uri = QString(),
+              const <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>&amp; options = <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>())</span>
+            </dt>
+            <dd>Create a new dataprovider with the specified in the <em>uri</em>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a390a2d77b871763209396167d5558d18" class="m-doc">crs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the coordinate system for the data source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a94c4cce6651e60b9245989ba4bffd625" class="m-doc">dataSourceUri</a>(</span><span class="m-doc-wrap">bool expandAuthConfig = false) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets the data source specification.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a875178949796ab38817744e2da88159e" class="m-doc-self" name="a875178949796ab38817744e2da88159e">dataTimestamp</a>(</span><span class="m-doc-wrap">) const -&gt; QDateTime <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Current time stamp of data source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa735b1c007dd7becc218de07177afe3f" class="m-doc">description</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns description.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode</a>(</span><span class="m-doc-wrap">) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Enter update mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a77e9159d97d4276753cbaf54b89da6d0" class="m-doc">error</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsError.html" class="m-doc">QgsError</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets current status error.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeea803b5b927c0551ec70f06af62971b" class="m-doc">extent</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns the extent of the layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a77c62f534a2dccc65b963e03805c5b55" class="m-doc">fileRasterFilters</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns raster file filter string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac24f20e109d01676c79f8a903a22d7f8" class="m-doc">fileVectorFilters</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns vector file filter string.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a037199bfafba24782f2ea7f07a133876" class="m-doc">invalidateConnections</a>(</span><span class="m-doc-wrap">const QString&amp; connection) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Invalidate connections corresponding to specified name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6d034edbd7af7a7b02a642d241aa61fd" class="m-doc">isValid</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns true if this is a valid layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69646da138dc98e9fa605fbed1283bb6" class="m-doc">layerMetadata</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns layer metadata collected from the provider&#x27;s source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a06aa48e59fe6cd5aa6584c6bbb7891f2" class="m-doc">leaveUpdateMode</a>(</span><span class="m-doc-wrap">) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Leave update mode.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a167a2d18c5824e4d5b69455b031546bd" class="m-doc">name</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns a provider name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac244176fc16f6b0c8f10735da6d52118" class="m-doc">providerProperty</a>(</span><span class="m-doc-wrap"><a href="classQgsDataProvider.html#a5b7c15ef49dfa659b23b81c4b0893cdd" class="m-doc">ProviderProperty</a> property,
+              const QVariant&amp; defaultValue = QVariant()) const -&gt; QVariant</span>
+            </dt>
+            <dd>Gets the current value of a certain provider property.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adaa3e78c2635798ad3f98c97102d03d4" class="m-doc">providerProperty</a>(</span><span class="m-doc-wrap">int property,
+              const QVariant&amp; defaultValue) const -&gt; QVariant</span>
+            </dt>
+            <dd>Gets the current value of a certain provider property.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aea143a6723ae49ca0a10061ec52322d0" class="m-doc">reloadData</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Reloads the data from the source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ade08d99b8d4d08052d3911de3e3c081f" class="m-doc">renderInPreview</a>(</span><span class="m-doc-wrap">const <a href="structQgsDataProvider_1_1PreviewContext.html" class="m-doc">QgsDataProvider::<wbr />PreviewContext</a>&amp; context) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns whether the layer must be rendered in preview jobs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a73a6ca365cde3bcd37ff9c7d931b3d75" class="m-doc">setDataSourceUri</a>(</span><span class="m-doc-wrap">const QString&amp; uri) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Set the data source specification.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a0cf28542bcea779cb93d3fd67cd623c0" class="m-doc">setLayerOrder</a>(</span><span class="m-doc-wrap">const QStringList&amp; layers) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Reorder the list of layer names to be rendered by this provider (in order from bottom to top)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2765050355390ae652f50eef6e47c35a" class="m-doc">setListening</a>(</span><span class="m-doc-wrap">bool isListening) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Set whether the provider will listen to datasource notifications If set, the provider will issue notify signals.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3012970e7ff3fd790f45d5b680431c8f" class="m-doc">setProviderProperty</a>(</span><span class="m-doc-wrap"><a href="classQgsDataProvider.html#a5b7c15ef49dfa659b23b81c4b0893cdd" class="m-doc">ProviderProperty</a> property,
+              const QVariant&amp; value)</span>
+            </dt>
+            <dd>Allows setting arbitrary properties on the provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3fc28217167326c71ecb68547d971036" class="m-doc">setProviderProperty</a>(</span><span class="m-doc-wrap">int property,
+              const QVariant&amp; value)</span>
+            </dt>
+            <dd>Allows setting arbitrary properties on the provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af1e9e5f613bc26aad36321e789801366" class="m-doc-self" name="af1e9e5f613bc26aad36321e789801366">setSubLayerVisibility</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              bool vis) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Set the visibility of the given sublayer name.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad52e4c2dab80e6125e1c07f13c725cc6" class="m-doc">setSubsetString</a>(</span><span class="m-doc-wrap">const QString&amp; subset,
+              bool updateFeatureCount = true) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Set the subset string used to create a subset of features in the layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a07f39172fc273ba241d0f8e483ef6b2b" class="m-doc">setUri</a>(</span><span class="m-doc-wrap">const <a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a>&amp; uri)</span>
+            </dt>
+            <dd>Set the data source specification.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad54e0150e07dc310f75068543d40e141" class="m-doc-self" name="ad54e0150e07dc310f75068543d40e141">subLayerCount</a>(</span><span class="m-doc-wrap">) const -&gt; uint <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the number of layers for the current data source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad73997762df861eacb25c553623e14b2" class="m-doc">subLayers</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sub-layers handled by this provider, in order from bottom to top.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac37f7be01d016aa85624d80ab94d6f32" class="m-doc">subLayerStyles</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sub-layer styles for each sub-layer handled by this provider, in order from bottom to top.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a63173ed93bfc521d3ed3f50e2c1a046b" class="m-doc">subsetString</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns the subset definition string (typically sql) currently in use by the layer and used by the provider to limit the feature set.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a92eaf65492a9162be2583a94f2a3d7df" class="m-doc-self" name="a92eaf65492a9162be2583a94f2a3d7df">supportsSubsetString</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Returns true if the provider supports setting of subset strings.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1ea9dadfd22370ef901f0d4d01039a8c" class="m-doc-self" name="a1ea9dadfd22370ef901f0d4d01039a8c">timestamp</a>(</span><span class="m-doc-wrap">) const -&gt; QDateTime <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Time stamp of data source in the moment when data/metadata were loaded by provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acb454ad6003885cfb6f38908e6b31e76" class="m-doc">updateExtents</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Update the extents of the layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aace8571ba2a6c0fd1beb972b60cc6741" class="m-doc">uri</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a></span>
+            </dt>
+            <dd>Gets the data source specification.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad9277c014467cb8471e3119397f087e9" class="m-doc">writeLayerMetadata</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a>&amp; metadata) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Writes layer <em>metadata</em> to the underlying provider source.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3ef3fe56a79c3a56fccb2cbb528aa886" class="m-doc">dataChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted whenever a change is made to the data provider which may have caused changes in the provider&#x27;s data OUTSIDE of QGIS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a584aad1c83ef7873a4cefa3d337c391e" class="m-doc">fullExtentCalculated</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted whenever a deferred extent calculation is completed by the provider.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abdb764c89cc99ccaa418178c26d84c32" class="m-doc">notify</a>(</span><span class="m-doc-wrap">const QString&amp; msg)</span>
+            </dt>
+            <dd>Emitted when the datasource issues a notification.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aff7aa0a18bcb7170f17cb2d5b073d8ce" class="m-doc-self" name="aff7aa0a18bcb7170f17cb2d5b073d8ce">appendError</a>(</span><span class="m-doc-wrap">const <a href="classQgsErrorMessage.html" class="m-doc">QgsErrorMessage</a>&amp; message)</span>
+            </dt>
+            <dd>Add error message.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1e7a5b46dcf07d146f257e9a08bde197" class="m-doc-self" name="a1e7a5b46dcf07d146f257e9a08bde197">setError</a>(</span><span class="m-doc-wrap">const <a href="classQgsError.html" class="m-doc">QgsError</a>&amp; error)</span>
+            </dt>
+            <dd>Sets error message.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <a href="classQgsError.html" class="m-doc">QgsError</a> <a href="#a739f3d6e8264888cfd9b9acfb89187c5" class="m-doc-self" name="a739f3d6e8264888cfd9b9acfb89187c5">mError</a>
+            </dt>
+            <dd>Error.</dd>
+            <dt>
+              QDateTime <a href="#a709da4f1f8f9a3ff272a0a6e24fca062" class="m-doc-self" name="a709da4f1f8f9a3ff272a0a6e24fca062">mTimestamp</a>
+            </dt>
+            <dd>Timestamp of data in the moment when the data were loaded by provider.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a5b7c15ef49dfa659b23b81c4b0893cdd"><div>
+            <h3>
+              enum QgsDataProvider::<wbr /><a href="#a5b7c15ef49dfa659b23b81c4b0893cdd" class="m-doc-self">ProviderProperty</a>
+            </h3>
+            <p>Properties are used to pass custom configuration options into data providers.</p>
+<p>This enum defines a list of custom properties which can be used on different providers. It depends on the provider, which properties are supported. In addition to these default properties, providers can add their custom properties starting from CustomData.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a5b7c15ef49dfa659b23b81c4b0893cddabcccdb5e52717ca90a42d83bb247d306" class="m-doc-self" name="a5b7c15ef49dfa659b23b81c4b0893cddabcccdb5e52717ca90a42d83bb247d306">EvaluateDefaultValues</a></td>
+                  <td>
+                  <p>Evaluate default values on provider side when calling QgsVectorDataProvider::defaultValue( int index ) rather than on commit.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a5b7c15ef49dfa659b23b81c4b0893cddafe3bb20221731e6f855d22ed0993e78d" class="m-doc-self" name="a5b7c15ef49dfa659b23b81c4b0893cddafe3bb20221731e6f855d22ed0993e78d">CustomData</a></td>
+                  <td>
+                  <p>Custom properties for 3rd party providers or very provider-specific properties which are not expected to be of interest for other providers can be added starting from this value up.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a01ff4330b3a2b2df1cdd6d27603e04e9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a01ff4330b3a2b2df1cdd6d27603e04e9" class="m-doc-self">QgsDataProvider</a>(</span><span class="m-doc-wrap">const QString&amp; uri = QString(),
+              const <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>&amp; options = <a href="structQgsDataProvider_1_1ProviderOptions.html" class="m-doc">QgsDataProvider::<wbr />ProviderOptions</a>())</span></span>
+            </h3>
+            <p>Create a new dataprovider with the specified in the <em>uri</em>.</p>
+<p>Additional creation options are specified within the <em>options</em> value.</p>
+          </div></section>
+          <section class="m-doc-details" id="a390a2d77b871763209396167d5558d18"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a390a2d77b871763209396167d5558d18" class="m-doc-self">crs</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the coordinate system for the data source.</p>
+<p>If the provider isn&#x27;t capable of returning its projection then an invalid <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a> will be returned.</p>
+          </div></section>
+          <section class="m-doc-details" id="a94c4cce6651e60b9245989ba4bffd625"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a94c4cce6651e60b9245989ba4bffd625" class="m-doc-self">dataSourceUri</a>(</span><span class="m-doc-wrap">bool expandAuthConfig = false) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Gets the data source specification.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">expandAuthConfig</td>
+                  <td>Whether to expand any assigned authentication configuration</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>data source specification</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This may be a path or database connection string</p><aside class="m-note m-info"><h4>Note</h4><p>The default authentication configuration expansion is FALSE. This keeps credentials out of layer data source URIs and project files. Expansion should be specifically done only when needed within a provider</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa735b1c007dd7becc218de07177afe3f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa735b1c007dd7becc218de07177afe3f" class="m-doc-self">description</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns description.</p>
+<p>Returns a terse string describing what the provider is.</p><aside class="m-note m-info"><h4>Note</h4></aside><p>Instead of being pure virtual, might be better to generalize this behavior and presume that none of the sub-classes are going to do anything strange with regards to their name or description?</p>
+          </div></section>
+          <section class="m-doc-details" id="aee77f143f485b6d792dec21b03e9dec1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aee77f143f485b6d792dec21b03e9dec1" class="m-doc-self">enterUpdateMode</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Enter update mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true in case of success (or no-op implementation), false in case of failure.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This is aimed at providers that can open differently the connection to the datasource, according it to be in update mode or in read-only mode. A call to this method shall be balanced with a call to <a href="classQgsDataProvider.html#a06aa48e59fe6cd5aa6584c6bbb7891f2" class="m-doc">leaveUpdateMode()</a>, if this method returns true.</p><p>Most providers will have an empty implementation for that method.</p><p>For backward compatibility, providers that implement <a href="classQgsDataProvider.html#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode()</a> should still make sure to allow editing operations to work even if <a href="classQgsDataProvider.html#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode()</a> is not explicitly called.</p><p>Several successive calls to <a href="classQgsDataProvider.html#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode()</a> can be done. So there is a concept of stack of calls that must be handled by the provider. Only the first call to <a href="classQgsDataProvider.html#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode()</a> will really turn update mode on.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a77e9159d97d4276753cbaf54b89da6d0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsError.html" class="m-doc">QgsError</a> QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a77e9159d97d4276753cbaf54b89da6d0" class="m-doc-self">error</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Gets current status error.</p>
+<p>This error describes some principal problem for which provider cannot work and thus is not valid. It is not last error after accessing data by block(), identify() etc.</p>
+          </div></section>
+          <section class="m-doc-details" id="aeea803b5b927c0551ec70f06af62971b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeea803b5b927c0551ec70f06af62971b" class="m-doc-self">extent</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns the extent of the layer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> containing the extent of the layer</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a77c62f534a2dccc65b963e03805c5b55"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a77c62f534a2dccc65b963e03805c5b55" class="m-doc-self">fileRasterFilters</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns raster file filter string.</p>
+<p>Returns a string suitable for a QFileDialog of raster file formats supported by the data provider. Naturally this will be an empty string for those data providers that do not deal with plain files, such as databases and servers.</p><aside class="m-note m-info"><h4>Note</h4><p>It&#x27;d be nice to eventually be raster/vector neutral.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac24f20e109d01676c79f8a903a22d7f8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac24f20e109d01676c79f8a903a22d7f8" class="m-doc-self">fileVectorFilters</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns vector file filter string.</p>
+<p>Returns a string suitable for a QFileDialog of vector file formats supported by the data provider. Naturally this will be an empty string for those data providers that do not deal with plain files, such as databases and servers.</p><aside class="m-note m-info"><h4>Note</h4><p>It&#x27;d be nice to eventually be raster/vector neutral.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a037199bfafba24782f2ea7f07a133876"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a037199bfafba24782f2ea7f07a133876" class="m-doc-self">invalidateConnections</a>(</span><span class="m-doc-wrap">const QString&amp; connection) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Invalidate connections corresponding to specified name.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6d034edbd7af7a7b02a642d241aa61fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6d034edbd7af7a7b02a642d241aa61fd" class="m-doc-self">isValid</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns true if this is a valid layer.</p>
+<p>It is up to individual providers to determine what constitutes a valid layer.</p>
+          </div></section>
+          <section class="m-doc-details" id="a69646da138dc98e9fa605fbed1283bb6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a> QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69646da138dc98e9fa605fbed1283bb6" class="m-doc-self">layerMetadata</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns layer metadata collected from the provider&#x27;s source.</p>
+<p>Individual data providers must implement this method if they support collecting metadata.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDataProvider.html#ad9277c014467cb8471e3119397f087e9" class="m-doc">writeLayerMetadata()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a06aa48e59fe6cd5aa6584c6bbb7891f2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a06aa48e59fe6cd5aa6584c6bbb7891f2" class="m-doc-self">leaveUpdateMode</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Leave update mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true in case of success (or no-op implementation), false in case of failure.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This is aimed at providers that can open differently the connection to the datasource, according it to be in update mode or in read-only mode. This method shall be balanced with a successful call to <a href="classQgsDataProvider.html#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode()</a>.</p><p>Most providers will have an empty implementation for that method.</p><p>Several successive calls to <a href="classQgsDataProvider.html#aee77f143f485b6d792dec21b03e9dec1" class="m-doc">enterUpdateMode()</a> can be done. So there is a concept of stack of calls that must be handled by the provider. Only the last call to <a href="classQgsDataProvider.html#a06aa48e59fe6cd5aa6584c6bbb7891f2" class="m-doc">leaveUpdateMode()</a> will really turn update mode off.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a167a2d18c5824e4d5b69455b031546bd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a167a2d18c5824e4d5b69455b031546bd" class="m-doc-self">name</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns a provider name.</p>
+<p>Essentially just returns the provider key. Should be used to build file dialogs so that providers can be shown with their supported types. Thus if more than one provider supports a given format, the user is able to select a specific provider to open that file.</p><aside class="m-note m-info"><h4>Note</h4></aside><p>Instead of being pure virtual, might be better to generalize this behavior and presume that none of the sub-classes are going to do anything strange with regards to their name or description?</p>
+          </div></section>
+          <section class="m-doc-details" id="ac244176fc16f6b0c8f10735da6d52118"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac244176fc16f6b0c8f10735da6d52118" class="m-doc-self">providerProperty</a>(</span><span class="m-doc-wrap"><a href="classQgsDataProvider.html#a5b7c15ef49dfa659b23b81c4b0893cdd" class="m-doc">ProviderProperty</a> property,
+              const QVariant&amp; defaultValue = QVariant()) const</span></span>
+            </h3>
+            <p>Gets the current value of a certain provider property.</p>
+<p>It depends on the provider which properties are supported.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adaa3e78c2635798ad3f98c97102d03d4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adaa3e78c2635798ad3f98c97102d03d4" class="m-doc-self">providerProperty</a>(</span><span class="m-doc-wrap">int property,
+              const QVariant&amp; defaultValue) const</span></span>
+            </h3>
+            <p>Gets the current value of a certain provider property.</p>
+<p>It depends on the provider which properties are supported.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aea143a6723ae49ca0a10061ec52322d0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aea143a6723ae49ca0a10061ec52322d0" class="m-doc-self">reloadData</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Reloads the data from the source.</p>
+<p>Needs to be implemented by providers with data caches to synchronize with changes in the data source</p>
+          </div></section>
+          <section class="m-doc-details" id="ade08d99b8d4d08052d3911de3e3c081f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ade08d99b8d4d08052d3911de3e3c081f" class="m-doc-self">renderInPreview</a>(</span><span class="m-doc-wrap">const <a href="structQgsDataProvider_1_1PreviewContext.html" class="m-doc">QgsDataProvider::<wbr />PreviewContext</a>&amp; context) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns whether the layer must be rendered in preview jobs.</p>
+<p>The <em>context</em> argument gives useful information which can be used to determine whether the layer should be rendered or not.</p><p>The base implementation returns true if lastRenderingTimeMs &lt;= maxRenderingTimeMs.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a73a6ca365cde3bcd37ff9c7d931b3d75"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a73a6ca365cde3bcd37ff9c7d931b3d75" class="m-doc-self">setDataSourceUri</a>(</span><span class="m-doc-wrap">const QString&amp; uri) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Set the data source specification.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">uri</td>
+                  <td>source specification</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This may be a path or database connection string</p>
+          </div></section>
+          <section class="m-doc-details" id="a0cf28542bcea779cb93d3fd67cd623c0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0cf28542bcea779cb93d3fd67cd623c0" class="m-doc-self">setLayerOrder</a>(</span><span class="m-doc-wrap">const QStringList&amp; layers) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Reorder the list of layer names to be rendered by this provider (in order from bottom to top)</p>
+<aside class="m-note m-info"><h4>Note</h4><p>layers must have been previously added.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2765050355390ae652f50eef6e47c35a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2765050355390ae652f50eef6e47c35a" class="m-doc-self">setListening</a>(</span><span class="m-doc-wrap">bool isListening) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Set whether the provider will listen to datasource notifications If set, the provider will issue notify signals.</p>
+<p>The default implementation does nothing.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDataProvider.html#abdb764c89cc99ccaa418178c26d84c32" class="m-doc">notify</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3012970e7ff3fd790f45d5b680431c8f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3012970e7ff3fd790f45d5b680431c8f" class="m-doc-self">setProviderProperty</a>(</span><span class="m-doc-wrap"><a href="classQgsDataProvider.html#a5b7c15ef49dfa659b23b81c4b0893cdd" class="m-doc">ProviderProperty</a> property,
+              const QVariant&amp; value)</span></span>
+            </h3>
+            <p>Allows setting arbitrary properties on the provider.</p>
+<p>It depends on the provider which properties are supported.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3fc28217167326c71ecb68547d971036"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3fc28217167326c71ecb68547d971036" class="m-doc-self">setProviderProperty</a>(</span><span class="m-doc-wrap">int property,
+              const QVariant&amp; value)</span></span>
+            </h3>
+            <p>Allows setting arbitrary properties on the provider.</p>
+<p>It depends on the provider which properties are supported.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad52e4c2dab80e6125e1c07f13c725cc6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad52e4c2dab80e6125e1c07f13c725cc6" class="m-doc-self">setSubsetString</a>(</span><span class="m-doc-wrap">const QString&amp; subset,
+              bool updateFeatureCount = true) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Set the subset string used to create a subset of features in the layer.</p>
+<p>This may be a sql where clause or any other string that can be used by the data provider to create a subset. Must be implemented in the dataprovider.</p>
+          </div></section>
+          <section class="m-doc-details" id="a07f39172fc273ba241d0f8e483ef6b2b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a07f39172fc273ba241d0f8e483ef6b2b" class="m-doc-self">setUri</a>(</span><span class="m-doc-wrap">const <a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a>&amp; uri)</span></span>
+            </h3>
+            <p>Set the data source specification.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad73997762df861eacb25c553623e14b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad73997762df861eacb25c553623e14b2" class="m-doc-self">subLayers</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Sub-layers handled by this provider, in order from bottom to top.</p>
+<p>Sub-layers are used when the provider&#x27;s source can combine layers it knows about in some way before it hands them off to the provider.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDataProvider.html#acfd848673de93ad11abb901f23bcc03b" class="m-doc">SUBLAYER_<wbr />SEPARATOR</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac37f7be01d016aa85624d80ab94d6f32"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QStringList QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac37f7be01d016aa85624d80ab94d6f32" class="m-doc-self">subLayerStyles</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Sub-layer styles for each sub-layer handled by this provider, in order from bottom to top.</p>
+<p>Sub-layer styles are used to abstract the way the provider&#x27;s source can symbolise layers in some way at the server, before it serves them to the provider.</p>
+          </div></section>
+          <section class="m-doc-details" id="a63173ed93bfc521d3ed3f50e2c1a046b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a63173ed93bfc521d3ed3f50e2c1a046b" class="m-doc-self">subsetString</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Returns the subset definition string (typically sql) currently in use by the layer and used by the provider to limit the feature set.</p>
+<p>Must be overridden in the dataprovider, otherwise returns a null QString.</p>
+          </div></section>
+          <section class="m-doc-details" id="acb454ad6003885cfb6f38908e6b31e76"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acb454ad6003885cfb6f38908e6b31e76" class="m-doc-self">updateExtents</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Update the extents of the layer.</p>
+<p>Not implemented by default.</p>
+          </div></section>
+          <section class="m-doc-details" id="aace8571ba2a6c0fd1beb972b60cc6741"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsDataSourceUri.html" class="m-doc">QgsDataSourceUri</a> QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aace8571ba2a6c0fd1beb972b60cc6741" class="m-doc-self">uri</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets the data source specification.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad9277c014467cb8471e3119397f087e9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad9277c014467cb8471e3119397f087e9" class="m-doc-self">writeLayerMetadata</a>(</span><span class="m-doc-wrap">const <a href="classQgsLayerMetadata.html" class="m-doc">QgsLayerMetadata</a>&amp; metadata) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Writes layer <em>metadata</em> to the underlying provider source.</p>
+<p>Support depends on individual provider capabilities.</p><p>Returns true if metadata was successfully written to the data provider.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDataProvider.html#a69646da138dc98e9fa605fbed1283bb6" class="m-doc">layerMetadata()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3ef3fe56a79c3a56fccb2cbb528aa886"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3ef3fe56a79c3a56fccb2cbb528aa886" class="m-doc-self">dataChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted whenever a change is made to the data provider which may have caused changes in the provider&#x27;s data OUTSIDE of QGIS.</p>
+<p>When emitted from a <a href="classQgsVectorDataProvider.html" class="m-doc">QgsVectorDataProvider</a>, any cached information such as feature ids should be invalidated.</p><aside class="m-note m-danger"><h4>Warning</h4><p>This signal is NOT emitted when changes are made to a provider from INSIDE QGIS &ndash; e.g. when adding features to a vector layer, deleting features or modifying existing features. Instead, the specific <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a> signals should be used to detect these operations.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a584aad1c83ef7873a4cefa3d337c391e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a584aad1c83ef7873a4cefa3d337c391e" class="m-doc-self">fullExtentCalculated</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted whenever a deferred extent calculation is completed by the provider.</p>
+<p>Layers should connect to this signal and update their cached extents whenever it is emitted.</p>
+          </div></section>
+          <section class="m-doc-details" id="abdb764c89cc99ccaa418178c26d84c32"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsDataProvider::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abdb764c89cc99ccaa418178c26d84c32" class="m-doc-self">notify</a>(</span><span class="m-doc-wrap">const QString&amp; msg) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the datasource issues a notification.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDataProvider.html#a2765050355390ae652f50eef6e47c35a" class="m-doc">setListening</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+        </section>
+        <section>
+          <h2>Variable documentation</h2>
+          <section class="m-doc-details" id="acfd848673de93ad11abb901f23bcc03b"><div>
+            <h3>
+              static QString QgsDataProvider::<wbr /><a href="#acfd848673de93ad11abb901f23bcc03b" class="m-doc-self">SUBLAYER_SEPARATOR</a>
+            </h3>
+            <p>String sequence used for separating components of sublayers strings.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsDataProvider.html#ad73997762df861eacb25c553623e14b2" class="m-doc">subLayers()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

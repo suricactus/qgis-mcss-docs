@@ -1,0 +1,2519 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsVectorFileWriter" kind="class" language="C++" prot="public">
+    <compoundname>QgsVectorFileWriter</compoundname>
+    <basecompoundref refid="classQgsFeatureSink" prot="public" virt="non-virtual">QgsFeatureSink</basecompoundref>
+    <includes refid="qgsvectorfilewriter_8h" local="no">qgsvectorfilewriter.h</includes>
+    <innerclass refid="classQgsVectorFileWriter_1_1BoolOption" prot="public">QgsVectorFileWriter::BoolOption</innerclass>
+    <innerclass refid="structQgsVectorFileWriter_1_1DriverDetails" prot="public">QgsVectorFileWriter::DriverDetails</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1FieldValueConverter" prot="public">QgsVectorFileWriter::FieldValueConverter</innerclass>
+    <innerclass refid="structQgsVectorFileWriter_1_1FilterFormatDetails" prot="public">QgsVectorFileWriter::FilterFormatDetails</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1HiddenOption" prot="public">QgsVectorFileWriter::HiddenOption</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1IntOption" prot="public">QgsVectorFileWriter::IntOption</innerclass>
+    <innerclass refid="structQgsVectorFileWriter_1_1MetaData" prot="public">QgsVectorFileWriter::MetaData</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1Option" prot="public">QgsVectorFileWriter::Option</innerclass>
+    <innerclass refid="structQgsVectorFileWriter_1_1PreparedWriterDetails" prot="private">QgsVectorFileWriter::PreparedWriterDetails</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1SaveVectorOptions" prot="public">QgsVectorFileWriter::SaveVectorOptions</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1SetOption" prot="public">QgsVectorFileWriter::SetOption</innerclass>
+    <innerclass refid="classQgsVectorFileWriter_1_1StringOption" prot="public">QgsVectorFileWriter::StringOption</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1" prot="public" static="no">
+        <name>ActionOnExistingFile</name>
+        <enumvalue id="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1ad724e253787e753035c3706a33f34cc1" prot="public">
+          <name>CreateOrOverwriteFile</name>
+          <briefdescription>
+<para>Create or overwrite file. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1ac227f6e0f2382b000dd59c2d24639b67" prot="public">
+          <name>CreateOrOverwriteLayer</name>
+          <briefdescription>
+<para>Create or overwrite layer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1ae26480cef1cad2bd5d5e02f1f94dbd11" prot="public">
+          <name>AppendToLayerNoNewFields</name>
+          <briefdescription>
+<para>Append features to existing layer, but do not create new fields. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1af665f771ac6426f4d7520d213b69187c" prot="public">
+          <name>AppendToLayerAddFields</name>
+          <briefdescription>
+<para>Append features to existing layer, and create new fields if needed. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Combination of CanAddNewLayer, CanAppendToExistingLayer, CanAddNewFieldsToExistingLayer or CanDeleteLayer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 Enumeration to describe how to handle existing files </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="262" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="261" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9c" prot="public" static="no">
+        <name>EditionCapability</name>
+        <enumvalue id="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9ca5a296f7865fbd3a78046ecda0b57fa59" prot="public">
+          <name>CanAddNewLayer</name>
+          <initializer>= 1 &lt;&lt; 0</initializer>
+          <briefdescription>
+<para>Flag to indicate that a new layer can be added to the dataset. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9ca20f38cbd7ce55674c1c0257af48ac8d6" prot="public">
+          <name>CanAppendToExistingLayer</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Flag to indicate that new features can be added to an existing layer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9ca1d9c8f0ee225ee5d0e959e5c70defa7a" prot="public">
+          <name>CanAddNewFieldsToExistingLayer</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Flag to indicate that new fields can be added to an existing layer. Imply CanAppendToExistingLayer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9caa480afe1d12bdaabde36bd75f862a548" prot="public">
+          <name>CanDeleteLayer</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+<para>Flag to indicate that an existing layer can be deleted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Edition capability flags. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="238" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="237" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015" prot="public" static="no">
+        <name>OptionType</name>
+        <enumvalue id="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015a2119e31b8158999411faeb9282ad1e9a" prot="public">
+          <name>Set</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015ae01888645b5b055ad6e3ddc5b84c116a" prot="public">
+          <name>String</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015a72c49ea1f499bd0b52a70b88f66ef0de" prot="public">
+          <name>Int</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015a9f4e472b156991bca4d3f7a513be9f76" prot="public">
+          <name>Hidden</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="49" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="48" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" prot="public" static="no">
+        <name>SymbologyExport</name>
+        <enumvalue id="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" prot="public">
+          <name>NoSymbology</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63ca0e0ef6e8137bf5abb4aa63feb75a9118" prot="public">
+          <name>FeatureSymbology</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cad74aeb9ca7aa3dca50f59df0650d1e59" prot="public">
+          <name>SymbolLayerSymbology</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="181" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108e" prot="public" static="no">
+        <name>VectorFormatOption</name>
+        <enumvalue id="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" prot="public">
+          <name>SortRecommended</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Use recommended sort order, with extremely commonly used formats listed first. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108ea5c74f6095ec7ea850cc65f0fd1bb87bd" prot="public">
+          <name>SkipNonSpatialFormats</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Filter out any formats which do not have spatial support (e.g. those which cannot save geometries) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Options for sorting and filtering vector formats. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="194" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="193" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" prot="public" static="no">
+        <name>WriterError</name>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea895defb2f533770206caa176cbd59827" prot="public">
+          <name>NoError</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badeafec6f47c5429ffc6103cfca2a5d9b97b" prot="public">
+          <name>ErrDriverNotFound</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea8f6198e7d3dd13809470f7f0bd6ff3e7" prot="public">
+          <name>ErrCreateDataSource</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea087f8c320f0ddf4cae140317ae561804" prot="public">
+          <name>ErrCreateLayer</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea29a40fd2d2cf2d3296faafd4132fc593" prot="public">
+          <name>ErrAttributeTypeUnsupported</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea48f85a36399ab200328052e214ee5859" prot="public">
+          <name>ErrAttributeCreationFailed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea4ee01040c52ee8713deee39b92a26852" prot="public">
+          <name>ErrProjection</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badeac36653e2c87f8d17bbb73fc9c5dedcf9" prot="public">
+          <name>ErrFeatureWriteFailed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badeaec3f8283f829d1c98e7e6060c627aded" prot="public">
+          <name>ErrInvalidLayer</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea449f6fdf156a18ff00fb03fb0cb6d29f" prot="public">
+          <name>Canceled</name>
+          <briefdescription>
+<para>Writing was interrupted by manual cancelation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="168" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="167" bodyend="179"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a3178de40584c63951609a528c5dceec0" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; int, int &gt;</type>
+        <definition>QMap&lt;int, int&gt; QgsVectorFileWriter::mAttrIdxToOgrIdx</definition>
+        <argsstring></argsstring>
+        <name>mAttrIdxToOgrIdx</name>
+        <briefdescription>
+<para>Map attribute indizes to OGR field indexes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="814" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="814" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a4ebbf83498110495fdb880f5379d247c" prot="protected" static="no" mutable="no">
+        <type>QTextCodec *</type>
+        <definition>QTextCodec* QgsVectorFileWriter::mCodec</definition>
+        <argsstring></argsstring>
+        <name>mCodec</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="808" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="808" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a3a6f2d6f6f52db7d436560488e86fcbf" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespacegdal_1a718845d911d3ea05a267f1c44f0b0eaa" kindref="member">gdal::ogr_datasource_unique_ptr</ref></type>
+        <definition>gdal::ogr_datasource_unique_ptr QgsVectorFileWriter::mDS</definition>
+        <argsstring></argsstring>
+        <name>mDS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="798" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="798" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1acb9ed0bb93a9ca56251f7bc48b0b576f" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">WriterError</ref></type>
+        <definition>WriterError QgsVectorFileWriter::mError</definition>
+        <argsstring></argsstring>
+        <name>mError</name>
+        <briefdescription>
+<para>Contains error value if construction was not successful. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="805" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="805" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a953c43a2e9faf2404e080ac7d4afb70b" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::mErrorMessage</definition>
+        <argsstring></argsstring>
+        <name>mErrorMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="806" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="806" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1abcf941b2d73acddbd7044e2268fbfc77" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsVectorFileWriter::mFields</definition>
+        <argsstring></argsstring>
+        <name>mFields</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="802" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="802" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1aed06d15562b8249d3c038953e9f6085e" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsVectorFileWriter_1_1FieldValueConverter" kindref="compound">FieldValueConverter</ref> *</type>
+        <definition>FieldValueConverter* QgsVectorFileWriter::mFieldValueConverter</definition>
+        <argsstring></argsstring>
+        <name>mFieldValueConverter</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Field value converter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="826" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="826" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a088a9e5a738635bbde8fadbcfd2fa9d2" prot="protected" static="no" mutable="no">
+        <type>OGRLayerH</type>
+        <definition>OGRLayerH QgsVectorFileWriter::mLayer</definition>
+        <argsstring></argsstring>
+        <name>mLayer</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="799" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="799" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a245be3947ccce19c5982b62b6e38fb80" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::mOgrDriverName</definition>
+        <argsstring></argsstring>
+        <name>mOgrDriverName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="823" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="823" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a7170a9aa56ac89977e5233def8246055" prot="protected" static="no" mutable="no">
+        <type><ref refid="qgscoordinatereferencesystem_8h_1a23361112dba57d043fa64632348c0870" kindref="member">OGRSpatialReferenceH</ref></type>
+        <definition>OGRSpatialReferenceH QgsVectorFileWriter::mOgrRef</definition>
+        <argsstring></argsstring>
+        <name>mOgrRef</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="800" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="800" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1af5d8fa4639f4c1581d481c926d4c58d6" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *, QString &gt;</type>
+        <definition>QMap&lt; QgsSymbolLayer *, QString &gt; QgsVectorFileWriter::mSymbolLayerTable</definition>
+        <argsstring></argsstring>
+        <name>mSymbolLayerTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="818" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="818" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a5ed3b07be63c805f0688502287be45c1" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">SymbologyExport</ref></type>
+        <definition>SymbologyExport QgsVectorFileWriter::mSymbologyExport</definition>
+        <argsstring></argsstring>
+        <name>mSymbologyExport</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="816" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="816" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a21f80fa13ba5dcc63c516dc4085f35f7" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsVectorFileWriter::mSymbologyScale</definition>
+        <argsstring></argsstring>
+        <name>mSymbologyScale</name>
+        <briefdescription>
+<para>Scale for symbology export (e.g. for symbols units in map units) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="821" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="821" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a90f774daaa18ab2cb1199435d5e28ec6" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsVectorFileWriter::mWkbType</definition>
+        <argsstring></argsstring>
+        <name>mWkbType</name>
+        <briefdescription>
+<para>Geometry type which is being used. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="811" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="811" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a0824f43fe5df76a82ca60450449d3968" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref></type>
+        <definition>QgsRenderContext QgsVectorFileWriter::mRenderContext</definition>
+        <argsstring></argsstring>
+        <name>mRenderContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="888" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="888" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1ad11003d0674ef975f824115968721e61" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsFeatureRenderer &gt; QgsVectorFileWriter::mRenderer</definition>
+        <argsstring></argsstring>
+        <name>mRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="887" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="887" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1abcae17a9693b0425beec2fd0fa0928c3" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::mUsingTransaction</definition>
+        <argsstring></argsstring>
+        <name>mUsingTransaction</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="890" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="890" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classQgsVectorFileWriter_1a2e82f8ac93015ae0a04b97be29040041" prot="private" static="yes" mutable="no">
+        <type>QMap&lt; QString, <ref refid="structQgsVectorFileWriter_1_1MetaData" kindref="compound">MetaData</ref> &gt;</type>
+        <definition>QMap&lt;QString, MetaData&gt; QgsVectorFileWriter::sDriverMetadata</definition>
+        <argsstring></argsstring>
+        <name>sDriverMetadata</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="906" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="906" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsVectorFileWriter_1a6c926c62be93238ef409e0b0cb3632b1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsVectorFileWriterTask</definition>
+        <argsstring></argsstring>
+        <name>QgsVectorFileWriterTask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="911" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="911" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classQgsVectorFileWriter_1ad3264b6bc8453533f6523816e1315962" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsVectorFileWriter</definition>
+        <argsstring></argsstring>
+        <name>TestQgsVectorFileWriter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="912" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="912" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ab4ee564d053a608025a7d304423003ce" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::areThereNewFieldsToCreate</definition>
+        <argsstring>(const QString &amp;datasetName, const QString &amp;layerName, QgsVectorLayer *layer, const QgsAttributeList &amp;attributes)</argsstring>
+        <name>areThereNewFieldsToCreate</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>datasetName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerName</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref> &amp;</type>
+          <declname>attributes</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether there are among the attributes specified some that do not exist yet in the layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="789" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3542" bodyend="3568"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ae77e9b23fc9e48612d7e36a71b03cc56" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::convertCodecNameForEncodingOption</definition>
+        <argsstring>(const QString &amp;codecName)</argsstring>
+        <name>convertCodecNameForEncodingOption</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>codecName</declname>
+        </param>
+        <briefdescription>
+<para>Converts codec name to string passed to ENCODING layer creation option of OGR Shapefile. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="697" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3151" bodyend="3166"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ad92f30d3cfca5a3fccb686da36ec6622" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorFileWriter::defaultDatasetOptions</definition>
+        <argsstring>(const QString &amp;driverName)</argsstring>
+        <name>defaultDatasetOptions</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of the default dataset options for a specified driver. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>driverName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of OGR driver </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1a5d92da9f2991542faca7bf809286ff6f" kindref="member">defaultLayerOptions()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="754" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="1985" bodyend="1992"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a5d92da9f2991542faca7bf809286ff6f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorFileWriter::defaultLayerOptions</definition>
+        <argsstring>(const QString &amp;driverName)</argsstring>
+        <name>defaultLayerOptions</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of the default layer options for a specified driver. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>driverName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of OGR driver </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1ad92f30d3cfca5a3fccb686da36ec6622" kindref="member">defaultDatasetOptions()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="762" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="1994" bodyend="2001"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a853b8ecddf91890523c61aa3e27b97e3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::deleteShapeFile</definition>
+        <argsstring>(const QString &amp;fileName)</argsstring>
+        <name>deleteShapeFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <briefdescription>
+<para>Delete a shapefile (and its accompanying shx / dbf / prf) </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>/path/to/file.shp </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool true if the file was deleted successfully </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="725" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2847" bodyend="2871"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a61f47207b1959d021ef2eb4b45c6d88e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::driverForExtension</definition>
+        <argsstring>(const QString &amp;extension)</argsstring>
+        <name>driverForExtension</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>extension</declname>
+        </param>
+        <briefdescription>
+<para>Returns the OGR driver name for a specified file <emphasis>extension</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. the driver name for the &quot;.shp&quot; extension is &quot;ESRI Shapefile&quot;. If no suitable drivers are found then an empty string is returned. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="683" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3092" bodyend="3124"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a7260a320dae447248dd138c0ef64e07c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::driverMetadata</definition>
+        <argsstring>(const QString &amp;driverName, MetaData &amp;driverMetadata)</argsstring>
+        <name>driverMetadata</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <param>
+          <type><ref refid="structQgsVectorFileWriter_1_1MetaData" kindref="compound">MetaData</ref> &amp;</type>
+          <declname>driverMetadata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="746" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="1968" bodyend="1983"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a1129392e0f083f6fffb6f702f7c6b2d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QgsVectorFileWriter::EditionCapabilities</type>
+        <definition>QgsVectorFileWriter::EditionCapabilities QgsVectorFileWriter::editionCapabilities</definition>
+        <argsstring>(const QString &amp;datasetName)</argsstring>
+        <name>editionCapabilities</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>datasetName</declname>
+        </param>
+        <briefdescription>
+<para>Returns edition capabilities for an existing dataset name. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="776" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3487" bodyend="3524"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1af61aeb4efd85caecb0c244ce911a2bb0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::fileFilterString</definition>
+        <argsstring>(VectorFormatOptions options=SortRecommended)</argsstring>
+        <name>fileFilterString</name>
+        <param>
+          <type>VectorFormatOptions</type>
+          <declname>options</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" kindref="member">SortRecommended</ref></defval>
+        </param>
+        <briefdescription>
+<para>Returns filter string that can be used for dialogs. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>options</emphasis> argument can be used to control the sorting and filtering of returned drivers. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="691" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3126" bodyend="3138"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a89827e931a1d174437ceb9d7fca28cf2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::filterForDriver</definition>
+        <argsstring>(const QString &amp;driverName)</argsstring>
+        <name>filterForDriver</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <briefdescription>
+<para>Creates a filter for an OGR driver key. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="694" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3140" bodyend="3149"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ab959cfe625a8dc4a3528d0451af5929d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="structQgsVectorFileWriter_1_1DriverDetails" kindref="compound">QgsVectorFileWriter::DriverDetails</ref> &gt;</type>
+        <definition>QList&lt; QgsVectorFileWriter::DriverDetails &gt; QgsVectorFileWriter::ogrDriverList</definition>
+        <argsstring>(VectorFormatOptions options=SortRecommended)</argsstring>
+        <name>ogrDriverList</name>
+        <param>
+          <type>VectorFormatOptions</type>
+          <declname>options</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" kindref="member">SortRecommended</ref></defval>
+        </param>
+        <briefdescription>
+<para>Returns the driver list that can be used for dialogs. </para>        </briefdescription>
+        <detaileddescription>
+<para>It contains all OGR drivers plus some additional internal QGIS driver names to distinguish between more supported formats of the same OGR driver.</para><para>The returned list consists of structs containing the driver long name (e.g. user-friendly display name for the format) and internal driver short name.</para><para>The <emphasis>options</emphasis> argument can be used to control the sorting and filtering of returned drivers. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="675" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2998" bodyend="3090"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a97a688ee0c92903fde254174d6b85db6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>OGRwkbGeometryType</type>
+        <definition>OGRwkbGeometryType QgsVectorFileWriter::ogrTypeFromWkbType</definition>
+        <argsstring>(QgsWkbTypes::Type type)</argsstring>
+        <name>ogrTypeFromWkbType</name>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Gets the ogr geometry type from an internal QGIS wkb type enum. </para>        </briefdescription>
+        <detaileddescription>
+<para>Will drop M values and convert Z to 2.5D where required. <simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="770" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2003" bodyend="2013"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a6e64aa45103dad8fb7fe86fed1f83360" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="structQgsVectorFileWriter_1_1FilterFormatDetails" kindref="compound">QgsVectorFileWriter::FilterFormatDetails</ref> &gt;</type>
+        <definition>QList&lt; QgsVectorFileWriter::FilterFormatDetails &gt; QgsVectorFileWriter::supportedFiltersAndFormats</definition>
+        <argsstring>(VectorFormatOptions options=SortRecommended)</argsstring>
+        <name>supportedFiltersAndFormats</name>
+        <param>
+          <type>VectorFormatOptions</type>
+          <declname>options</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" kindref="member">SortRecommended</ref></defval>
+        </param>
+        <briefdescription>
+<para>Returns a list or pairs, with format filter string as first element and OGR format key as second element. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>options</emphasis> argument can be used to control the sorting and filtering of returned formats.</para><para><simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1ae4028dfc2ffa72b3e8f4508a9af96e4a" kindref="member">supportedFormatExtensions()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="629" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2879" bodyend="2954"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ae4028dfc2ffa72b3e8f4508a9af96e4a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorFileWriter::supportedFormatExtensions</definition>
+        <argsstring>(VectorFormatOptions options=SortRecommended)</argsstring>
+        <name>supportedFormatExtensions</name>
+        <param>
+          <type>VectorFormatOptions</type>
+          <declname>options</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" kindref="member">SortRecommended</ref></defval>
+        </param>
+        <briefdescription>
+<para>Returns a list of file extensions for supported formats, e.g &quot;shp&quot;, &quot;gpkg&quot;. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>options</emphasis> argument can be used to control the sorting and filtering of returned formats.</para><para><simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1a6e64aa45103dad8fb7fe86fed1f83360" kindref="member">supportedFiltersAndFormats()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="640" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2956" bodyend="2996"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a1f582af055260a8ba3b1997d7698cd8c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::supportsFeatureStyles</definition>
+        <argsstring>(const QString &amp;driverName)</argsstring>
+        <name>supportsFeatureStyles</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if the specified <emphasis>driverName</emphasis> supports feature styles. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>driverName</emphasis> argument must be a valid GDAL driver name.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="649" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="142" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a565439cc1c93a7bc85090d4a9e7ce1fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::targetLayerExists</definition>
+        <argsstring>(const QString &amp;datasetName, const QString &amp;layerName)</argsstring>
+        <name>targetLayerExists</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>datasetName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerName</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether the target layer already exists. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="782" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3526" bodyend="3539"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1abb1879ababb5d662ff95d7374d742008" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::writeAsVectorFormat</definition>
+        <argsstring>(QgsVectorLayer *layer, const QString &amp;fileName, const QString &amp;fileEncoding, const QgsCoordinateReferenceSystem &amp;destCRS=QgsCoordinateReferenceSystem(), const QString &amp;driverName=&quot;GPKG&quot;, bool onlySelected=false, QString *errorMessage=nullptr, const QStringList &amp;datasourceOptions=QStringList(), const QStringList &amp;layerOptions=QStringList(), bool skipAttributeCreation=false, QString *newFilename=nullptr, QgsVectorFileWriter::SymbologyExport symbologyExport=QgsVectorFileWriter::NoSymbology, double symbologyScale=1.0, const QgsRectangle *filterExtent=nullptr, QgsWkbTypes::Type overrideGeometryType=QgsWkbTypes::Unknown, bool forceMulti=false, bool includeZ=false, const QgsAttributeList &amp;attributes=QgsAttributeList(), QgsVectorFileWriter::FieldValueConverter *fieldValueConverter=nullptr, QString *newLayer=nullptr)</argsstring>
+        <name>writeAsVectorFormat</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileEncoding</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>destCRS</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+          <defval>&quot;GPKG&quot;</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>onlySelected</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>datasourceOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>skipAttributeCreation</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">QgsVectorFileWriter::SymbologyExport</ref></type>
+          <declname>symbologyExport</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" kindref="member">QgsVectorFileWriter::NoSymbology</ref></defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>symbologyScale</declname>
+          <defval>1.0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> *</type>
+          <declname>filterExtent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>overrideGeometryType</declname>
+          <defval><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" kindref="member">QgsWkbTypes::Unknown</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forceMulti</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeZ</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const <ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref> &amp;</type>
+          <declname>attributes</declname>
+          <defval><ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1_1FieldValueConverter" kindref="compound">QgsVectorFileWriter::FieldValueConverter</ref> *</type>
+          <declname>fieldValueConverter</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Write contents of vector layer to an (OGR supported) vector format. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>layer to write </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>file name to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileEncoding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>encoding to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>destCRS</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CRS to reproject exported geometries to, or invalid CRS for no reprojection </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>driverName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OGR driver to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>onlySelected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>write only selected features of layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>errorMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to buffer fo error message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>datasourceOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of OGR data source creation options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layerOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of OGR layer creation options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>skipAttributeCreation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>only write geometries </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newFilename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString pointer which will contain the new file name created (in case it is different to fileName). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbologyExport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>symbology to export </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbologyScale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>scale of symbology </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filterExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if not a null pointer, only features intersecting the extent will be saved (added in QGIS 2.4) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overrideGeometryType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to a valid geometry type to override the default geometry type for the layer. This parameter allows for conversion of geometryless tables to null geometries, etc (added in QGIS 2.14) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>forceMulti</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to force creation of multi* geometries (added in QGIS 2.14) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>includeZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to include z dimension in output. This option is only valid if overrideGeometryType is set. (added in QGIS 2.14) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>attributes to export (empty means all unless skipAttributeCreation is set) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValueConverter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>field value converter (added in QGIS 2.16) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newLayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString pointer which will contain the new layer name created (in case it is different to the provided layer name) (added in QGIS 3.4, not available in python) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="328" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2387" bodyend="2422"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1aa69d7084007503269158d425d2709a2e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::writeAsVectorFormat</definition>
+        <argsstring>(QgsVectorLayer *layer, const QString &amp;fileName, const QString &amp;fileEncoding, const QgsCoordinateTransform &amp;ct, const QString &amp;driverName=&quot;GPKG&quot;, bool onlySelected=false, QString *errorMessage=nullptr, const QStringList &amp;datasourceOptions=QStringList(), const QStringList &amp;layerOptions=QStringList(), bool skipAttributeCreation=false, QString *newFilename=nullptr, QgsVectorFileWriter::SymbologyExport symbologyExport=QgsVectorFileWriter::NoSymbology, double symbologyScale=1.0, const QgsRectangle *filterExtent=nullptr, QgsWkbTypes::Type overrideGeometryType=QgsWkbTypes::Unknown, bool forceMulti=false, bool includeZ=false, const QgsAttributeList &amp;attributes=QgsAttributeList(), QgsVectorFileWriter::FieldValueConverter *fieldValueConverter=nullptr, QString *newLayer=nullptr)</argsstring>
+        <name>writeAsVectorFormat</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileEncoding</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+          <defval>&quot;GPKG&quot;</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>onlySelected</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>datasourceOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>skipAttributeCreation</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">QgsVectorFileWriter::SymbologyExport</ref></type>
+          <declname>symbologyExport</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" kindref="member">QgsVectorFileWriter::NoSymbology</ref></defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>symbologyScale</declname>
+          <defval>1.0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> *</type>
+          <declname>filterExtent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>overrideGeometryType</declname>
+          <defval><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" kindref="member">QgsWkbTypes::Unknown</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forceMulti</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeZ</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>const <ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref> &amp;</type>
+          <declname>attributes</declname>
+          <defval><ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1_1FieldValueConverter" kindref="compound">QgsVectorFileWriter::FieldValueConverter</ref> *</type>
+          <declname>fieldValueConverter</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Writes a layer out to a vector file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>layer to write </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>file name to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileEncoding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>encoding to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>coordinate transform to reproject exported geometries with, or invalid transform for no transformation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>driverName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OGR driver to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>onlySelected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>write only selected features of layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>errorMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to buffer fo error message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>datasourceOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of OGR data source creation options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layerOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of OGR layer creation options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>skipAttributeCreation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>only write geometries </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newFilename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString pointer which will contain the new file name created (in case it is different to fileName). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbologyExport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>symbology to export </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbologyScale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>scale of symbology </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filterExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if not a null pointer, only features intersecting the extent will be saved (added in QGIS 2.4) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>overrideGeometryType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to a valid geometry type to override the default geometry type for the layer. This parameter allows for conversion of geometryless tables to null geometries, etc (added in QGIS 2.14) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>forceMulti</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to force creation of multi* geometries (added in QGIS 2.14) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>includeZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to include z dimension in output. This option is only valid if overrideGeometryType is set. (added in QGIS 2.14) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attributes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>attributes to export (empty means all unless skipAttributeCreation is set) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValueConverter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>field value converter (added in QGIS 2.16) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newLayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString pointer which will contain the new layer name created (in case it is different to the provided layer name) (added in QGIS 3.4, not available in python) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="409" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2424" bodyend="2463"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a0fb1b773dbe4030890a04310aff4728b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::writeAsVectorFormat</definition>
+        <argsstring>(QgsVectorLayer *layer, const QString &amp;fileName, const QgsVectorFileWriter::SaveVectorOptions &amp;options, QString *newFilename=nullptr, QString *errorMessage=nullptr, QString *newLayer=nullptr)</argsstring>
+        <name>writeAsVectorFormat</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsVectorFileWriter_1_1SaveVectorOptions" kindref="compound">QgsVectorFileWriter::SaveVectorOptions</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Writes a layer out to a vector file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source layer to write </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>file name to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>options. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newFilename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString pointer which will contain the new file name created (in case it is different to fileName). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>errorMessage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to buffer fo error message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newLayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString pointer which will contain the new layer name created (in case it is different to the provided layer name) (added in QGIS 3.4, not available in python) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="535" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2831" bodyend="2844"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsVectorFileWriter_1af738739713ee2c1f35764124a55f1050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorFileWriter::QgsVectorFileWriter</definition>
+        <argsstring>(const QString &amp;vectorFileName, const QString &amp;fileEncoding, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType, const QgsCoordinateReferenceSystem &amp;srs=QgsCoordinateReferenceSystem(), const QString &amp;driverName=&quot;GPKG&quot;, const QStringList &amp;datasourceOptions=QStringList(), const QStringList &amp;layerOptions=QStringList(), QString *newFilename=nullptr, QgsVectorFileWriter::SymbologyExport symbologyExport=QgsVectorFileWriter::NoSymbology, QgsFeatureSink::SinkFlags sinkFlags=nullptr, QString *newLayer=nullptr)</argsstring>
+        <name>QgsVectorFileWriter</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>vectorFileName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileEncoding</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>srs</declname>
+          <defval><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref>()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+          <defval>&quot;GPKG&quot;</defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>datasourceOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerOptions</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">QgsVectorFileWriter::SymbologyExport</ref></type>
+          <declname>symbologyExport</declname>
+          <defval><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" kindref="member">QgsVectorFileWriter::NoSymbology</ref></defval>
+        </param>
+        <param>
+          <type>QgsFeatureSink::SinkFlags</type>
+          <declname>sinkFlags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Create a new vector file writer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="547" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="94" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a2d931c0625d83c70eabcbb531330f087" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorFileWriter::QgsVectorFileWriter</definition>
+        <argsstring>(const QString &amp;vectorFileName, const QString &amp;fileEncoding, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType, const QgsCoordinateReferenceSystem &amp;srs, const QString &amp;driverName, const QStringList &amp;datasourceOptions, const QStringList &amp;layerOptions, QString *newFilename, QgsVectorFileWriter::SymbologyExport symbologyExport, QgsVectorFileWriter::FieldValueConverter *fieldValueConverter, const QString &amp;layerName, QgsVectorFileWriter::ActionOnExistingFile action, QString *newLayer=nullptr)</argsstring>
+        <name>QgsVectorFileWriter</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>vectorFileName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileEncoding</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>srs</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>datasourceOptions</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerOptions</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">QgsVectorFileWriter::SymbologyExport</ref></type>
+          <declname>symbologyExport</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1_1FieldValueConverter" kindref="compound">QgsVectorFileWriter::FieldValueConverter</ref> *</type>
+          <declname>fieldValueConverter</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerName</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1" kindref="member">QgsVectorFileWriter::ActionOnExistingFile</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Create a new vector file writer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vectorFileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>file name to write to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileEncoding</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>encoding to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fields</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>fields to write </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>geometryType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>geometry type of output file </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>srs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>spatial reference system of output file </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>driverName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>OGR driver to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>datasourceOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of OGR data source creation options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layerOptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of OGR layer creation options </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newFilename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>potentially modified file name (output parameter) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbologyExport</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>symbology to export </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fieldValueConverter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>field value converter (added in QGIS 2.16) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>layer name. If let empty, it will be derived from the filename (added in QGIS 3.0) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>action on existing file (added in QGIS 3.0) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newLayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>potentially modified layer name (output parameter) (added in QGIS 3.4) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="581" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="118" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a56a66685610ab855a5b23c87dbb910bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorFileWriter::QgsVectorFileWriter</definition>
+        <argsstring>(const QgsVectorFileWriter &amp;rh)=delete</argsstring>
+        <name>QgsVectorFileWriter</name>
+        <param>
+          <type>const <ref refid="classQgsVectorFileWriter" kindref="compound">QgsVectorFileWriter</ref> &amp;</type>
+          <declname>rh</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsVectorFileWriter" kindref="compound">QgsVectorFileWriter</ref> cannot be copied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="598" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a564a24719c660809393abae67fb3093d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsVectorFileWriter::~QgsVectorFileWriter</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsVectorFileWriter</name>
+        <briefdescription>
+<para>Close opened shapefile for writing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="718" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2368" bodyend="2384"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a037c91a3018bfcb6c5e350bdbbae99f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::addFeature</definition>
+        <argsstring>(QgsFeature &amp;feature, QgsFeatureSink::Flags flags=nullptr) override</argsstring>
+        <name>addFeature</name>
+        <reimplements refid="classQgsFeatureSink_1aef4fbd5b3c521770ea2e7acda0addc05">addFeature</reimplements>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a single <emphasis>feature</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1aa7a2e60585dc1bf76b6dd54f44a153ac" kindref="member">addFeatures()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="705" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2025" bodyend="2028"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1aa7a2e60585dc1bf76b6dd54f44a153ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::addFeatures</definition>
+        <argsstring>(QgsFeatureList &amp;features, QgsFeatureSink::Flags flags=nullptr) override</argsstring>
+        <name>addFeatures</name>
+        <reimplements refid="classQgsFeatureSink_1ae74a8e6dbc5dfdb3c769df49d0fc4bd2">addFeatures</reimplements>
+        <param>
+          <type><ref refid="qgsfeature_8h_1ae0f922f3469155bc17dfc96729f1c1cc" kindref="member">QgsFeatureList</ref> &amp;</type>
+          <declname>features</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::Flags</type>
+          <declname>flags</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Adds a list of <emphasis>features</emphasis> to the sink. </para>        </briefdescription>
+        <detaileddescription>
+<para>Feature addition behavior is controlled by the specified <emphasis>flags</emphasis>. <simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1a037c91a3018bfcb6c5e350bdbbae99f4" kindref="member">addFeature()</ref> </para></simplesect>
+<simplesect kind="return"><para>true in case of success and false in case of failure </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="706" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2030" bodyend="2039"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1aed15a1c03d4be7a1f9ac5a8427ba3433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::addFeatureWithStyle</definition>
+        <argsstring>(QgsFeature &amp;feature, QgsFeatureRenderer *renderer, QgsUnitTypes::DistanceUnit outputUnit=QgsUnitTypes::DistanceMeters)</argsstring>
+        <name>addFeatureWithStyle</name>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50d" kindref="member">QgsUnitTypes::DistanceUnit</ref></type>
+          <declname>outputUnit</declname>
+          <defval><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50da0c409a69a5ab55af7765ec7a6b8d574b" kindref="member">QgsUnitTypes::DistanceMeters</ref></defval>
+        </param>
+        <briefdescription>
+<para>Adds a <emphasis>feature</emphasis> to the currently opened data source, using the style from a specified <emphasis>renderer</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="712" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2041" bodyend="2105"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ab84c5dacd6ceae95d8a17755b7bae80d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>QMap&lt; int, int &gt;</type>
+        <definition>QMap&lt;int, int&gt; QgsVectorFileWriter::attrIdxToOgrIdx</definition>
+        <argsstring>()</argsstring>
+        <name>attrIdxToOgrIdx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="715" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="715" bodyend="715"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ae637bbb1ca61f065eeb643c30b65ee26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsVectorFileWriter::errorMessage</definition>
+        <argsstring>()</argsstring>
+        <name>errorMessage</name>
+        <briefdescription>
+<para>Retrieves error message. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="703" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2020" bodyend="2023"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a74e50619e6d313df983e6d3ffa6f1cfb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::hasError</definition>
+        <argsstring>()</argsstring>
+        <name>hasError</name>
+        <briefdescription>
+<para>Checks whether there were any errors in constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="700" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2015" bodyend="2018"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ac44cba650bf8c30be5ee757af76bee4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter" kindref="compound">QgsVectorFileWriter</ref> &amp;</type>
+        <definition>QgsVectorFileWriter&amp; QgsVectorFileWriter::operator=</definition>
+        <argsstring>(const QgsVectorFileWriter &amp;rh)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsVectorFileWriter" kindref="compound">QgsVectorFileWriter</ref> &amp;</type>
+          <declname>rh</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsVectorFileWriter" kindref="compound">QgsVectorFileWriter</ref> cannot be copied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="600" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1aac4a52fad3fb6df85117013a9f58f0dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::setSymbologyExport</definition>
+        <argsstring>(QgsVectorFileWriter::SymbologyExport symExport)</argsstring>
+        <name>setSymbologyExport</name>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">QgsVectorFileWriter::SymbologyExport</ref></type>
+          <declname>symExport</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="728" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="728" bodyend="728"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1aef2f0ea401dae23e657a6977110722dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::setSymbologyScale</definition>
+        <argsstring>(double scale)</argsstring>
+        <name>setSymbologyScale</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Set reference <emphasis>scale</emphasis> for output. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>scale</emphasis> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. <simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1a56b0201c92365ba91a5277a9bdbe8809" kindref="member">symbologyScale()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="744" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2873" bodyend="2877"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1aee88e8238876249b11250609f88fbce7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" kindref="member">QgsVectorFileWriter::SymbologyExport</ref></type>
+        <definition>QgsVectorFileWriter::SymbologyExport QgsVectorFileWriter::symbologyExport</definition>
+        <argsstring>() const</argsstring>
+        <name>symbologyExport</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="727" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="727" bodyend="727"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a56b0201c92365ba91a5277a9bdbe8809" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsVectorFileWriter::symbologyScale</definition>
+        <argsstring>() const</argsstring>
+        <name>symbologyScale</name>
+        <briefdescription>
+<para>Returns the reference scale for output. </para>        </briefdescription>
+        <detaileddescription>
+<para>The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. <simplesect kind="see"><para><ref refid="classQgsVectorFileWriter_1aef2f0ea401dae23e657a6977110722dc" kindref="member">setSymbologyScale()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="736" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="736" bodyend="736"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a2a24310d633da326bdc9268662009403" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>OGRGeometryH</type>
+        <definition>OGRGeometryH QgsVectorFileWriter::createEmptyGeometry</definition>
+        <argsstring>(QgsWkbTypes::Type wkbType)</argsstring>
+        <name>createEmptyGeometry</name>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>wkbType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="796" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="728" bodyend="731"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a6be1aa11968be3b8215fc93076e02f03" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::addRendererAttributes</definition>
+        <argsstring>(QgsFeatureRenderer *renderer, QgsRenderContext &amp;context, const QgsFields &amp;fields, QgsAttributeList &amp;attList)</argsstring>
+        <name>addRendererAttributes</name>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>renderer</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref> &amp;</type>
+          <declname>attList</declname>
+        </param>
+        <briefdescription>
+<para>Adds attributes needed for classification. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="905" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3418" bodyend="3432"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a44a58ad15c0857160d36b51c002441ff" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsVectorFileWriter::concatenateOptions</definition>
+        <argsstring>(const QMap&lt; QString, Option *&gt; &amp;options)</argsstring>
+        <name>concatenateOptions</name>
+        <param>
+          <type>const QMap&lt; QString, <ref refid="classQgsVectorFileWriter_1_1Option" kindref="compound">Option</ref> *&gt; &amp;</type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+<para>Concatenates a list of options using their default values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="909" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3434" bodyend="3485"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ae77004b0735a426e70768bec2580197f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::prepareWriteAsVectorFormat</definition>
+        <argsstring>(QgsVectorLayer *layer, const QgsVectorFileWriter::SaveVectorOptions &amp;options, PreparedWriterDetails &amp;details)</argsstring>
+        <name>prepareWriteAsVectorFormat</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsVectorFileWriter_1_1SaveVectorOptions" kindref="compound">QgsVectorFileWriter::SaveVectorOptions</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>PreparedWriterDetails &amp;</type>
+          <declname>details</declname>
+        </param>
+        <briefdescription>
+<para>Prepares a write by populating a PreparedWriterDetails object. </para>        </briefdescription>
+        <detaileddescription>
+<para>This MUST be called in the main thread. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="863" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2473" bodyend="2611"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a4b671e8c0f594a26c746ecdef9e82ca5" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::writeAsVectorFormat</definition>
+        <argsstring>(PreparedWriterDetails &amp;details, const QString &amp;fileName, const QgsVectorFileWriter::SaveVectorOptions &amp;options, QString *newFilename=nullptr, QString *errorMessage=nullptr, QString *newLayer=nullptr)</argsstring>
+        <name>writeAsVectorFormat</name>
+        <param>
+          <type>PreparedWriterDetails &amp;</type>
+          <declname>details</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fileName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsVectorFileWriter_1_1SaveVectorOptions" kindref="compound">QgsVectorFileWriter::SaveVectorOptions</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Writes a previously prepared PreparedWriterDetails <emphasis>details</emphasis> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is safe to call in a background thread. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="871" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2613" bodyend="2828"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a51f6cf22240483fd17e12c63ee69ccda" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacegdal_1a376b2c9f1f7b4e14e318ccbfd486e3b1" kindref="member">gdal::ogr_feature_unique_ptr</ref></type>
+        <definition>gdal::ogr_feature_unique_ptr QgsVectorFileWriter::createFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature)</argsstring>
+        <name>createFeature</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="893" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2107" bodyend="2343"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a6fe05482f6e1006784c8df4a11ba431a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::createSymbolLayerTable</definition>
+        <argsstring>(QgsVectorLayer *vl, const QgsCoordinateTransform &amp;ct, OGRDataSourceH ds)</argsstring>
+        <name>createSymbolLayerTable</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>vl</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type>OGRDataSourceH</type>
+          <declname>ds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="892" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3168" bodyend="3211"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1accb1266dbcdaa4b166ece7c85cbbf217" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsFeatureRenderer &gt; QgsVectorFileWriter::createSymbologyRenderer</definition>
+        <argsstring>(QgsFeatureRenderer *sourceRenderer) const</argsstring>
+        <name>createSymbologyRenderer</name>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>sourceRenderer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="903" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3404" bodyend="3416"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ac2758e07e7e66fc25e1fe7d27ef71bc6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" kindref="member">QgsVectorFileWriter::WriterError</ref></type>
+        <definition>QgsVectorFileWriter::WriterError QgsVectorFileWriter::exportFeaturesSymbolLevels</definition>
+        <argsstring>(const PreparedWriterDetails &amp;details, QgsFeatureIterator &amp;fit, const QgsCoordinateTransform &amp;ct, QString *errorMessage=nullptr)</argsstring>
+        <name>exportFeaturesSymbolLevels</name>
+        <param>
+          <type>const PreparedWriterDetails &amp;</type>
+          <declname>details</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeatureIterator" kindref="compound">QgsFeatureIterator</ref> &amp;</type>
+          <declname>fit</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>errorMessage</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Writes features considering symbol level order. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="897" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3213" bodyend="3347"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1acdec5bc621a7d8c909cade438944ec82" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::init</definition>
+        <argsstring>(QString vectorFileName, QString fileEncoding, const QgsFields &amp;fields, QgsWkbTypes::Type geometryType, QgsCoordinateReferenceSystem srs, const QString &amp;driverName, QStringList datasourceOptions, QStringList layerOptions, QString *newFilename, QgsVectorFileWriter::FieldValueConverter *fieldValueConverter, const QString &amp;layerName, QgsVectorFileWriter::ActionOnExistingFile action, QString *newLayer, QgsFeatureSink::SinkFlags sinkFlags)</argsstring>
+        <name>init</name>
+        <param>
+          <type>QString</type>
+          <declname>vectorFileName</declname>
+        </param>
+        <param>
+          <type>QString</type>
+          <declname>fileEncoding</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>geometryType</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+          <declname>srs</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>driverName</declname>
+        </param>
+        <param>
+          <type>QStringList</type>
+          <declname>datasourceOptions</declname>
+        </param>
+        <param>
+          <type>QStringList</type>
+          <declname>layerOptions</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newFilename</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1_1FieldValueConverter" kindref="compound">QgsVectorFileWriter::FieldValueConverter</ref> *</type>
+          <declname>fieldValueConverter</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerName</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1" kindref="member">QgsVectorFileWriter::ActionOnExistingFile</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>QString *</type>
+          <declname>newLayer</declname>
+        </param>
+        <param>
+          <type>QgsFeatureSink::SinkFlags</type>
+          <declname>sinkFlags</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="878" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="163" bodyend="726"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1ab16ef9b5efca2bcba2f8a2e91aff974c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsVectorFileWriter::mapUnitScaleFactor</definition>
+        <argsstring>(double scale, QgsUnitTypes::RenderUnit symbolUnits, QgsUnitTypes::DistanceUnit mapUnits)</argsstring>
+        <name>mapUnitScaleFactor</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+          <declname>symbolUnits</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50d" kindref="member">QgsUnitTypes::DistanceUnit</ref></type>
+          <declname>mapUnits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="899" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3367" bodyend="3381"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a35386fd7e4c9e26006b090e0fcc784ad" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsVectorFileWriter::mmScaleFactor</definition>
+        <argsstring>(double scale, QgsUnitTypes::RenderUnit symbolUnits, QgsUnitTypes::DistanceUnit mapUnits)</argsstring>
+        <name>mmScaleFactor</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+          <declname>symbolUnits</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50d" kindref="member">QgsUnitTypes::DistanceUnit</ref></type>
+          <declname>mapUnits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="898" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3349" bodyend="3365"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a362b28ae7647ec02ac27d8fd4cc314c5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::resetMap</definition>
+        <argsstring>(const QgsAttributeList &amp;attributes)</argsstring>
+        <name>resetMap</name>
+        <param>
+          <type>const <ref refid="qgsfield_8h_1a00f27df80eac3fb534923fefaed2181d" kindref="member">QgsAttributeList</ref> &amp;</type>
+          <declname>attributes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="885" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2345" bodyend="2354"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a7df22fb083afad71d8a1aba8889473ff" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::startRender</definition>
+        <argsstring>(QgsFeatureRenderer *sourceRenderer, const QgsFields &amp;fields)</argsstring>
+        <name>startRender</name>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>sourceRenderer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="901" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3383" bodyend="3392"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a8066500814a16c9c1fd597c70bf53585" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsVectorFileWriter::stopRender</definition>
+        <argsstring>()</argsstring>
+        <name>stopRender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="902" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="3394" bodyend="3402"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsVectorFileWriter_1a4f3e320a6d4e28b10c81d8c8958c299b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsVectorFileWriter::writeFeature</definition>
+        <argsstring>(OGRLayerH layer, OGRFeatureH feature)</argsstring>
+        <name>writeFeature</name>
+        <param>
+          <type>OGRLayerH</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>OGRFeatureH</type>
+          <declname>feature</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="894" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.cpp" bodystart="2356" bodyend="2366"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A convenience class for writing vector files to disk. </para>    </briefdescription>
+    <detaileddescription>
+<para>There are two possibilities how to use this class:<orderedlist>
+<listitem><para>static call to <ref refid="classQgsVectorFileWriter_1abb1879ababb5d662ff95d7374d742008" kindref="member">QgsVectorFileWriter::writeAsVectorFormat</ref>(...) which saves the whole vector layer</para></listitem><listitem><para>create an instance of the class and issue calls to addFeature(...) </para></listitem></orderedlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9364">
+        <label>QgsVectorFileWriter</label>
+        <link refid="classQgsVectorFileWriter"/>
+        <childnode refid="9365" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9365">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9366">
+        <label>QgsVectorFileWriter</label>
+        <link refid="classQgsVectorFileWriter"/>
+        <childnode refid="9367" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9368" relation="usage">
+          <edgelabel>mFieldValueConverter</edgelabel>
+        </childnode>
+        <childnode refid="9369" relation="usage">
+          <edgelabel>mFields</edgelabel>
+        </childnode>
+      </node>
+      <node id="9369">
+        <label>QgsFields</label>
+        <link refid="classQgsFields"/>
+      </node>
+      <node id="9367">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="9368">
+        <label>QgsVectorFileWriter::FieldValueConverter</label>
+        <link refid="classQgsVectorFileWriter_1_1FieldValueConverter"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" line="46" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsvectorfilewriter.h" bodystart="45" bodyend="913"/>
+    <listofallmembers>
+      <member refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ActionOnExistingFile</name></member>
+      <member refid="classQgsVectorFileWriter_1a037c91a3018bfcb6c5e350bdbbae99f4" prot="public" virt="virtual"><scope>QgsVectorFileWriter</scope><name>addFeature</name></member>
+      <member refid="classQgsVectorFileWriter_1aa7a2e60585dc1bf76b6dd54f44a153ac" prot="public" virt="virtual"><scope>QgsVectorFileWriter</scope><name>addFeatures</name></member>
+      <member refid="classQgsFeatureSink_1a3d65e9e2cac5e0e0b699b08922f20f68" prot="public" virt="virtual" ambiguityscope="QgsFeatureSink::"><scope>QgsVectorFileWriter</scope><name>addFeatures</name></member>
+      <member refid="classQgsVectorFileWriter_1aed15a1c03d4be7a1f9ac5a8427ba3433" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>addFeatureWithStyle</name></member>
+      <member refid="classQgsVectorFileWriter_1a6be1aa11968be3b8215fc93076e02f03" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>addRendererAttributes</name></member>
+      <member refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1af665f771ac6426f4d7520d213b69187c" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>AppendToLayerAddFields</name></member>
+      <member refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1ae26480cef1cad2bd5d5e02f1f94dbd11" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>AppendToLayerNoNewFields</name></member>
+      <member refid="classQgsVectorFileWriter_1ab4ee564d053a608025a7d304423003ce" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>areThereNewFieldsToCreate</name></member>
+      <member refid="classQgsVectorFileWriter_1ab84c5dacd6ceae95d8a17755b7bae80d" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>attrIdxToOgrIdx</name></member>
+      <member refid="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9ca1d9c8f0ee225ee5d0e959e5c70defa7a" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>CanAddNewFieldsToExistingLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9ca5a296f7865fbd3a78046ecda0b57fa59" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>CanAddNewLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9ca20f38cbd7ce55674c1c0257af48ac8d6" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>CanAppendToExistingLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea449f6fdf156a18ff00fb03fb0cb6d29f" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>Canceled</name></member>
+      <member refid="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9caa480afe1d12bdaabde36bd75f862a548" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>CanDeleteLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a44a58ad15c0857160d36b51c002441ff" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>concatenateOptions</name></member>
+      <member refid="classQgsVectorFileWriter_1ae77e9b23fc9e48612d7e36a71b03cc56" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>convertCodecNameForEncodingOption</name></member>
+      <member refid="classQgsVectorFileWriter_1a2a24310d633da326bdc9268662009403" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>createEmptyGeometry</name></member>
+      <member refid="classQgsVectorFileWriter_1a51f6cf22240483fd17e12c63ee69ccda" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>createFeature</name></member>
+      <member refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1ad724e253787e753035c3706a33f34cc1" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>CreateOrOverwriteFile</name></member>
+      <member refid="classQgsVectorFileWriter_1afda86eff21ac1da7dc42cbdde424acb1ac227f6e0f2382b000dd59c2d24639b67" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>CreateOrOverwriteLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a6fe05482f6e1006784c8df4a11ba431a" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>createSymbolLayerTable</name></member>
+      <member refid="classQgsVectorFileWriter_1accb1266dbcdaa4b166ece7c85cbbf217" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>createSymbologyRenderer</name></member>
+      <member refid="classQgsVectorFileWriter_1ad92f30d3cfca5a3fccb686da36ec6622" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>defaultDatasetOptions</name></member>
+      <member refid="classQgsVectorFileWriter_1a5d92da9f2991542faca7bf809286ff6f" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>defaultLayerOptions</name></member>
+      <member refid="classQgsVectorFileWriter_1a853b8ecddf91890523c61aa3e27b97e3" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>deleteShapeFile</name></member>
+      <member refid="classQgsVectorFileWriter_1a61f47207b1959d021ef2eb4b45c6d88e" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>driverForExtension</name></member>
+      <member refid="classQgsVectorFileWriter_1a7260a320dae447248dd138c0ef64e07c" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>driverMetadata</name></member>
+      <member refid="classQgsVectorFileWriter_1a1129392e0f083f6fffb6f702f7c6b2d5" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>editionCapabilities</name></member>
+      <member refid="classQgsVectorFileWriter_1a108df7127b36c4cf469dea1d3b0b8e9c" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>EditionCapability</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea48f85a36399ab200328052e214ee5859" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrAttributeCreationFailed</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea29a40fd2d2cf2d3296faafd4132fc593" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrAttributeTypeUnsupported</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea8f6198e7d3dd13809470f7f0bd6ff3e7" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrCreateDataSource</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea087f8c320f0ddf4cae140317ae561804" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrCreateLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badeafec6f47c5429ffc6103cfca2a5d9b97b" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrDriverNotFound</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badeac36653e2c87f8d17bbb73fc9c5dedcf9" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrFeatureWriteFailed</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badeaec3f8283f829d1c98e7e6060c627aded" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrInvalidLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1ae637bbb1ca61f065eeb643c30b65ee26" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>errorMessage</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea4ee01040c52ee8713deee39b92a26852" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ErrProjection</name></member>
+      <member refid="classQgsVectorFileWriter_1ac2758e07e7e66fc25e1fe7d27ef71bc6" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>exportFeaturesSymbolLevels</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239acd4b5c2a6ae1868f72a80b8fce669072" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>FastInsert</name></member>
+      <member refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63ca0e0ef6e8137bf5abb4aa63feb75a9118" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>FeatureSymbology</name></member>
+      <member refid="classQgsVectorFileWriter_1af61aeb4efd85caecb0c244ce911a2bb0" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>fileFilterString</name></member>
+      <member refid="classQgsVectorFileWriter_1a89827e931a1d174437ceb9d7fca28cf2" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>filterForDriver</name></member>
+      <member refid="classQgsFeatureSink_1a85446dba6f3f5d74ad85890cfdd58239" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>Flag</name></member>
+      <member refid="classQgsFeatureSink_1a649343548eb3c919cfd42ccee588c7ce" prot="public" virt="virtual"><scope>QgsVectorFileWriter</scope><name>flushBuffer</name></member>
+      <member refid="classQgsVectorFileWriter_1a74e50619e6d313df983e6d3ffa6f1cfb" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>hasError</name></member>
+      <member refid="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015a9f4e472b156991bca4d3f7a513be9f76" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>Hidden</name></member>
+      <member refid="classQgsVectorFileWriter_1acdec5bc621a7d8c909cade438944ec82" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>init</name></member>
+      <member refid="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015a72c49ea1f499bd0b52a70b88f66ef0de" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>Int</name></member>
+      <member refid="classQgsVectorFileWriter_1ab16ef9b5efca2bcba2f8a2e91aff974c" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mapUnitScaleFactor</name></member>
+      <member refid="classQgsVectorFileWriter_1a3178de40584c63951609a528c5dceec0" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mAttrIdxToOgrIdx</name></member>
+      <member refid="classQgsVectorFileWriter_1a4ebbf83498110495fdb880f5379d247c" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mCodec</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a6f2d6f6f52db7d436560488e86fcbf" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mDS</name></member>
+      <member refid="classQgsVectorFileWriter_1acb9ed0bb93a9ca56251f7bc48b0b576f" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mError</name></member>
+      <member refid="classQgsVectorFileWriter_1a953c43a2e9faf2404e080ac7d4afb70b" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mErrorMessage</name></member>
+      <member refid="classQgsVectorFileWriter_1abcf941b2d73acddbd7044e2268fbfc77" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mFields</name></member>
+      <member refid="classQgsVectorFileWriter_1aed06d15562b8249d3c038953e9f6085e" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mFieldValueConverter</name></member>
+      <member refid="classQgsVectorFileWriter_1a088a9e5a738635bbde8fadbcfd2fa9d2" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mLayer</name></member>
+      <member refid="classQgsVectorFileWriter_1a35386fd7e4c9e26006b090e0fcc784ad" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mmScaleFactor</name></member>
+      <member refid="classQgsVectorFileWriter_1a245be3947ccce19c5982b62b6e38fb80" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mOgrDriverName</name></member>
+      <member refid="classQgsVectorFileWriter_1a7170a9aa56ac89977e5233def8246055" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mOgrRef</name></member>
+      <member refid="classQgsVectorFileWriter_1a0824f43fe5df76a82ca60450449d3968" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mRenderContext</name></member>
+      <member refid="classQgsVectorFileWriter_1ad11003d0674ef975f824115968721e61" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mRenderer</name></member>
+      <member refid="classQgsVectorFileWriter_1af5d8fa4639f4c1581d481c926d4c58d6" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mSymbolLayerTable</name></member>
+      <member refid="classQgsVectorFileWriter_1a5ed3b07be63c805f0688502287be45c1" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mSymbologyExport</name></member>
+      <member refid="classQgsVectorFileWriter_1a21f80fa13ba5dcc63c516dc4085f35f7" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mSymbologyScale</name></member>
+      <member refid="classQgsVectorFileWriter_1abcae17a9693b0425beec2fd0fa0928c3" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mUsingTransaction</name></member>
+      <member refid="classQgsVectorFileWriter_1a90f774daaa18ab2cb1199435d5e28ec6" prot="protected" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>mWkbType</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9badea895defb2f533770206caa176cbd59827" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>NoError</name></member>
+      <member refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cac74b47e35551c4eb945d38d620f429d2" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>NoSymbology</name></member>
+      <member refid="classQgsVectorFileWriter_1ab959cfe625a8dc4a3528d0451af5929d" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ogrDriverList</name></member>
+      <member refid="classQgsVectorFileWriter_1a97a688ee0c92903fde254174d6b85db6" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>ogrTypeFromWkbType</name></member>
+      <member refid="classQgsVectorFileWriter_1ac44cba650bf8c30be5ee757af76bee4e" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>operator=</name></member>
+      <member refid="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>OptionType</name></member>
+      <member refid="classQgsVectorFileWriter_1ae77004b0735a426e70768bec2580197f" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>prepareWriteAsVectorFormat</name></member>
+      <member refid="classQgsVectorFileWriter_1af738739713ee2c1f35764124a55f1050" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>QgsVectorFileWriter</name></member>
+      <member refid="classQgsVectorFileWriter_1a2d931c0625d83c70eabcbb531330f087" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>QgsVectorFileWriter</name></member>
+      <member refid="classQgsVectorFileWriter_1a56a66685610ab855a5b23c87dbb910bd" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>QgsVectorFileWriter</name></member>
+      <member refid="classQgsVectorFileWriter_1a6c926c62be93238ef409e0b0cb3632b1" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>QgsVectorFileWriterTask</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19a068ceb3d5fef4dea3ee5ea0d0527300e" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>RegeneratePrimaryKey</name></member>
+      <member refid="classQgsVectorFileWriter_1a362b28ae7647ec02ac27d8fd4cc314c5" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>resetMap</name></member>
+      <member refid="classQgsVectorFileWriter_1a2e82f8ac93015ae0a04b97be29040041" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>sDriverMetadata</name></member>
+      <member refid="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015a2119e31b8158999411faeb9282ad1e9a" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>Set</name></member>
+      <member refid="classQgsVectorFileWriter_1aac4a52fad3fb6df85117013a9f58f0dc" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>setSymbologyExport</name></member>
+      <member refid="classQgsVectorFileWriter_1aef2f0ea401dae23e657a6977110722dc" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>setSymbologyScale</name></member>
+      <member refid="classQgsFeatureSink_1a9201f5e47af6bb8003bc1b8314947f19" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>SinkFlag</name></member>
+      <member refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108ea5c74f6095ec7ea850cc65f0fd1bb87bd" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>SkipNonSpatialFormats</name></member>
+      <member refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108eae9c03806243ab95906910f4259b780bf" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>SortRecommended</name></member>
+      <member refid="classQgsVectorFileWriter_1a7df22fb083afad71d8a1aba8889473ff" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>startRender</name></member>
+      <member refid="classQgsVectorFileWriter_1a8066500814a16c9c1fd597c70bf53585" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>stopRender</name></member>
+      <member refid="classQgsVectorFileWriter_1afd4b9be23160fb204011b4b0898af015ae01888645b5b055ad6e3ddc5b84c116a" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>String</name></member>
+      <member refid="classQgsVectorFileWriter_1a6e64aa45103dad8fb7fe86fed1f83360" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>supportedFiltersAndFormats</name></member>
+      <member refid="classQgsVectorFileWriter_1ae4028dfc2ffa72b3e8f4508a9af96e4a" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>supportedFormatExtensions</name></member>
+      <member refid="classQgsVectorFileWriter_1a1f582af055260a8ba3b1997d7698cd8c" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>supportsFeatureStyles</name></member>
+      <member refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63cad74aeb9ca7aa3dca50f59df0650d1e59" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>SymbolLayerSymbology</name></member>
+      <member refid="classQgsVectorFileWriter_1a1aac90d30d811d2888d1aab4098ad63c" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>SymbologyExport</name></member>
+      <member refid="classQgsVectorFileWriter_1aee88e8238876249b11250609f88fbce7" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>symbologyExport</name></member>
+      <member refid="classQgsVectorFileWriter_1a56b0201c92365ba91a5277a9bdbe8809" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>symbologyScale</name></member>
+      <member refid="classQgsVectorFileWriter_1a565439cc1c93a7bc85090d4a9e7ce1fd" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>targetLayerExists</name></member>
+      <member refid="classQgsVectorFileWriter_1ad3264b6bc8453533f6523816e1315962" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>TestQgsVectorFileWriter</name></member>
+      <member refid="classQgsVectorFileWriter_1aa42e9897c4b1cbdabbdc08002550108e" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>VectorFormatOption</name></member>
+      <member refid="classQgsVectorFileWriter_1abb1879ababb5d662ff95d7374d742008" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>writeAsVectorFormat</name></member>
+      <member refid="classQgsVectorFileWriter_1aa69d7084007503269158d425d2709a2e" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>writeAsVectorFormat</name></member>
+      <member refid="classQgsVectorFileWriter_1a0fb1b773dbe4030890a04310aff4728b" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>writeAsVectorFormat</name></member>
+      <member refid="classQgsVectorFileWriter_1a4b671e8c0f594a26c746ecdef9e82ca5" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>writeAsVectorFormat</name></member>
+      <member refid="classQgsVectorFileWriter_1a4f3e320a6d4e28b10c81d8c8958c299b" prot="private" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>writeFeature</name></member>
+      <member refid="classQgsVectorFileWriter_1a3a4405a59d8f8ac147878cae5bd9bade" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>WriterError</name></member>
+      <member refid="classQgsFeatureSink_1a216423652491057eef823728c29654e4" prot="public" virt="virtual"><scope>QgsVectorFileWriter</scope><name>~QgsFeatureSink</name></member>
+      <member refid="classQgsVectorFileWriter_1a564a24719c660809393abae67fb3093d" prot="public" virt="non-virtual"><scope>QgsVectorFileWriter</scope><name>~QgsVectorFileWriter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

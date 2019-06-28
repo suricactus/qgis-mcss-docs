@@ -1,0 +1,832 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsExpressionContextUtils" kind="class" language="C++" prot="public">
+    <compoundname>QgsExpressionContextUtils</compoundname>
+    <includes refid="qgsexpressioncontext_8h" local="no">qgsexpressioncontext.h</includes>
+    <innerclass refid="classQgsExpressionContextUtils_1_1GetLayerVisibility" prot="private">QgsExpressionContextUtils::GetLayerVisibility</innerclass>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsExpressionContextUtils_1a62c18204406987fa113881258493f4ca" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsLayoutItemMap</definition>
+        <argsstring></argsstring>
+        <name>QgsLayoutItemMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="1006" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" bodystart="1006" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a66eebd07714f21ac3b21c229bac398f7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::atlasScope</definition>
+        <argsstring>(QgsLayoutAtlas *atlas)</argsstring>
+        <name>atlasScope</name>
+        <param>
+          <type><ref refid="classQgsLayoutAtlas" kindref="compound">QgsLayoutAtlas</ref> *</type>
+          <declname>atlas</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a <ref refid="classQgsLayoutAtlas" kindref="compound">QgsLayoutAtlas</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, current page name and number. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>atlas</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source atlas. If null, a set of default atlas variables will be added to the scope. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="936" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1155" bodyend="1192"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a37b99228545c3c246c6247d90c54b2e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContext" kindref="compound">QgsExpressionContext</ref></type>
+        <definition>QgsExpressionContext QgsExpressionContextUtils::createFeatureBasedContext</definition>
+        <argsstring>(const QgsFeature &amp;feature, const QgsFields &amp;fields)</argsstring>
+        <name>createFeatureBasedContext</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <briefdescription>
+<para>Helper function for creating an expression context which contains just a feature and fields collection. </para>        </briefdescription>
+        <detaileddescription>
+<para>Generally this method should not be used as the created context does not include standard scopes such as the global and project scopes. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="971" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1276" bodyend="1282"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1aa0d383f2d71c0799c2de1d1a89933647" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::formScope</definition>
+        <argsstring>(const QgsFeature &amp;formFeature=QgsFeature(), const QString &amp;formMode=QString())</argsstring>
+        <name>formScope</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>formFeature</declname>
+          <defval><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref>()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>formMode</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains functions and variables from the current attribute form/table <emphasis>feature</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The variables and values in this scope will reflect the current state of the form/row being edited. The <emphasis>formMode</emphasis> (SingleEditMode etc.) is passed as text <simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="773" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="770" bodyend="778"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1ae204a266b5a9ae5475f568c264fc719c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> * &gt;</type>
+        <definition>QList&lt; QgsExpressionContextScope * &gt; QgsExpressionContextUtils::globalProjectLayerScopes</definition>
+        <argsstring>(const QgsMapLayer *layer)</argsstring>
+        <name>globalProjectLayerScopes</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Creates a list of three scopes: global, layer&apos;s project and layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="856" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="904" bodyend="916"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1afba36ac63b06dd2659710f4f3cd58936" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::globalScope</definition>
+        <argsstring>()</argsstring>
+        <name>globalScope</name>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to the global QGIS context. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, QGIS version numbers and variables specified through QGIS options. <simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae05f83118513c147a754f90e906982ec" kindref="member">setGlobalVariable()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="765" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="583" bodyend="606"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1af1b61531d9512e4cdc8ca505ae07be89" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::layerScope</definition>
+        <argsstring>(const QgsMapLayer *layer)</argsstring>
+        <name>layerScope</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, layer name, id and fields. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="850" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="863" bodyend="902"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a04af195b7f916d8574245cb337bc524b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::layoutItemScope</definition>
+        <argsstring>(const QgsLayoutItem *item)</argsstring>
+        <name>layoutItemScope</name>
+        <param>
+          <type>const <ref refid="classQgsLayoutItem" kindref="compound">QgsLayoutItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a <ref refid="classQgsLayoutItem" kindref="compound">QgsLayoutItem</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, item size and position. <simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1aa51f9bb99fab6ff86690ab5da396ae82" kindref="member">setLayoutItemVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a6174fe816c7626cd0d13de4117d3259c" kindref="member">setLayoutItemVariables()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="945" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1194" bodyend="1239"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a340ede6d40ac582c1e3865d3bb465be4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::layoutScope</definition>
+        <argsstring>(const QgsLayout *layout)</argsstring>
+        <name>layoutScope</name>
+        <param>
+          <type>const <ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a <ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> <emphasis>layout</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, number of pages and page sizes. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="906" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1062" bodyend="1118"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1ad97a6492b7f61a41dcbe399537415fc2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::mapSettingsScope</definition>
+        <argsstring>(const QgsMapSettings &amp;mapSettings)</argsstring>
+        <name>mapSettingsScope</name>
+        <param>
+          <type>const <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> &amp;</type>
+          <declname>mapSettings</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, map scale and rotation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="883" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="954" bodyend="1018"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1aa9bdc27de65d845f5e31e69ea4d936f8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::mapToolCaptureScope</definition>
+        <argsstring>(const QList&lt; QgsPointLocator::Match &gt; &amp;matches)</argsstring>
+        <name>mapToolCaptureScope</name>
+        <param>
+          <type>const QList&lt; <ref refid="structQgsPointLocator_1_1Match" kindref="compound">QgsPointLocator::Match</ref> &gt; &amp;</type>
+          <declname>matches</declname>
+        </param>
+        <briefdescription>
+<para>Sets the expression context variables which are available for expressions triggered by a map tool capture like add feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="891" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1020" bodyend="1042"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a8291267b0a963725e733c9f1d7f2d176" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::notificationScope</definition>
+        <argsstring>(const QString &amp;message=QString())</argsstring>
+        <name>notificationScope</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>message</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to provider notifications. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the notification message </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="984" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1301" bodyend="1306"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a7d8522a7794ba4a960515ba97e33a158" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::processingAlgorithmScope</definition>
+        <argsstring>(const QgsProcessingAlgorithm *algorithm, const QVariantMap &amp;parameters, QgsProcessingContext &amp;context)</argsstring>
+        <name>processingAlgorithmScope</name>
+        <param>
+          <type>const <ref refid="classQgsProcessingAlgorithm" kindref="compound">QgsProcessingAlgorithm</ref> *</type>
+          <declname>algorithm</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProcessingContext" kindref="compound">QgsProcessingContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a processing <emphasis>algorithm</emphasis>, when used with the specified <emphasis>parameters</emphasis> and <emphasis>context</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, algorithm name and parameter functions. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="978" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1284" bodyend="1299"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a9b0dc97b5f9e21fa11eb803a33dfa7d8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::projectScope</definition>
+        <argsstring>(const QgsProject *project)</argsstring>
+        <name>projectScope</name>
+        <param>
+          <type>const <ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new scope which contains variables and functions relating to a QGIS project. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, project path and title, and variables specified through the project properties. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>What project to use </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae4dcfffde09d1aab67f4cdc79abeb021" kindref="member">setProjectVariable()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="811" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="780" bodyend="829"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1ab1636f7b97d9fa9b106a8063d9b3bfd3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::registerContextFunctions</definition>
+        <argsstring>()</argsstring>
+        <name>registerContextFunctions</name>
+        <briefdescription>
+<para>Registers all known core functions provided by <ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> objects. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="989" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1308" bodyend="1315"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1add23d8e5e5df6e6cfe8d405feb654412" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::removeGlobalVariable</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>removeGlobalVariable</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Remove a global context variable. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae05f83118513c147a754f90e906982ec" kindref="member">setGlobalVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a5afdc3d54b2d64e6052743362b97650a" kindref="member">setGlobalVariables()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1afba36ac63b06dd2659710f4f3cd58936" kindref="member">globalScope()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="803" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="618" bodyend="623"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a538d3af82abc562b3a1c011c04df1eed" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::removeProjectVariable</definition>
+        <argsstring>(QgsProject *project, const QString &amp;name)</argsstring>
+        <name>removeProjectVariable</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Remove project context variable. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Project to apply changes to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae4dcfffde09d1aab67f4cdc79abeb021" kindref="member">setProjectVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a311388b59c0759920dda2420f1f8b8f5" kindref="member">setProjectVariables()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a9b0dc97b5f9e21fa11eb803a33dfa7d8" kindref="member">projectScope()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="844" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="851" bodyend="861"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1ae05f83118513c147a754f90e906982ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setGlobalVariable</definition>
+        <argsstring>(const QString &amp;name, const QVariant &amp;value)</argsstring>
+        <name>setGlobalVariable</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets a global context variable. </para>        </briefdescription>
+        <detaileddescription>
+<para>This variable will be contained within scopes retrieved via <ref refid="classQgsExpressionContextUtils_1afba36ac63b06dd2659710f4f3cd58936" kindref="member">globalScope()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae05f83118513c147a754f90e906982ec" kindref="member">setGlobalVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1afba36ac63b06dd2659710f4f3cd58936" kindref="member">globalScope()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1add23d8e5e5df6e6cfe8d405feb654412" kindref="member">removeGlobalVariable()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="784" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="608" bodyend="611"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a5afdc3d54b2d64e6052743362b97650a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setGlobalVariables</definition>
+        <argsstring>(const QVariantMap &amp;variables)</argsstring>
+        <name>setGlobalVariables</name>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>variables</declname>
+        </param>
+        <briefdescription>
+<para>Sets all global context variables. </para>        </briefdescription>
+        <detaileddescription>
+<para>Existing global variables will be removed and replaced with the variables specified. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>variables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new set of global variables </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae05f83118513c147a754f90e906982ec" kindref="member">setGlobalVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1afba36ac63b06dd2659710f4f3cd58936" kindref="member">globalScope()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1add23d8e5e5df6e6cfe8d405feb654412" kindref="member">removeGlobalVariable()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="794" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="613" bodyend="616"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a1fbb959d92c38898002f1ccf2ad307d7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setLayerVariable</definition>
+        <argsstring>(QgsMapLayer *layer, const QString &amp;name, const QVariant &amp;value)</argsstring>
+        <name>setLayerVariable</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets a layer context variable. </para>        </briefdescription>
+        <detaileddescription>
+<para>This variable will be contained within scopes retrieved via <ref refid="classQgsExpressionContextUtils_1af1b61531d9512e4cdc8ca505ae07be89" kindref="member">layerScope()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a55848917d0e162a8d220e4a0eefcfca0" kindref="member">setLayerVariables()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1af1b61531d9512e4cdc8ca505ae07be89" kindref="member">layerScope()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="867" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="919" bodyend="933"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a55848917d0e162a8d220e4a0eefcfca0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setLayerVariables</definition>
+        <argsstring>(QgsMapLayer *layer, const QVariantMap &amp;variables)</argsstring>
+        <name>setLayerVariables</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>variables</declname>
+        </param>
+        <briefdescription>
+<para>Sets all layer context variables. </para>        </briefdescription>
+        <detaileddescription>
+<para>Existing layer variables will be removed and replaced with the variables specified. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>variables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new set of layer variables </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a1fbb959d92c38898002f1ccf2ad307d7" kindref="member">setLayerVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1af1b61531d9512e4cdc8ca505ae07be89" kindref="member">layerScope()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="877" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="935" bodyend="952"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1aa51f9bb99fab6ff86690ab5da396ae82" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setLayoutItemVariable</definition>
+        <argsstring>(QgsLayoutItem *item, const QString &amp;name, const QVariant &amp;value)</argsstring>
+        <name>setLayoutItemVariable</name>
+        <param>
+          <type><ref refid="classQgsLayoutItem" kindref="compound">QgsLayoutItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets a layout <emphasis>item</emphasis> context variable, with the given <emphasis>name</emphasis> and <emphasis>value</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>This variable will be contained within scopes retrieved via <ref refid="classQgsExpressionContextUtils_1a04af195b7f916d8574245cb337bc524b" kindref="member">layoutItemScope()</ref>. <simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a6174fe816c7626cd0d13de4117d3259c" kindref="member">setLayoutItemVariables()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a04af195b7f916d8574245cb337bc524b" kindref="member">layoutItemScope()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="955" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1241" bodyend="1255"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a6174fe816c7626cd0d13de4117d3259c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setLayoutItemVariables</definition>
+        <argsstring>(QgsLayoutItem *item, const QVariantMap &amp;variables)</argsstring>
+        <name>setLayoutItemVariables</name>
+        <param>
+          <type><ref refid="classQgsLayoutItem" kindref="compound">QgsLayoutItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>variables</declname>
+        </param>
+        <briefdescription>
+<para>Sets all layout item context variables for an <emphasis>item</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Existing variables will be removed and replaced with the <emphasis>variables</emphasis> specified. <simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1aa51f9bb99fab6ff86690ab5da396ae82" kindref="member">setLayoutItemVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a04af195b7f916d8574245cb337bc524b" kindref="member">layoutItemScope()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="964" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1257" bodyend="1274"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a9ec29c2a673c7fd37dabea6074051a91" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setLayoutVariable</definition>
+        <argsstring>(QgsLayout *layout, const QString &amp;name, const QVariant &amp;value)</argsstring>
+        <name>setLayoutVariable</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets a layout context variable. </para>        </briefdescription>
+        <detaileddescription>
+<para>This variable will be contained within scopes retrieved via <ref refid="classQgsExpressionContextUtils_1a340ede6d40ac582c1e3865d3bb465be4" kindref="member">layoutScope()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target layout </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1accec9b32dd95126556d1f8cf5642a6e9" kindref="member">setLayoutVariables()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a340ede6d40ac582c1e3865d3bb465be4" kindref="member">layoutScope()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="918" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1120" bodyend="1134"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1accec9b32dd95126556d1f8cf5642a6e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setLayoutVariables</definition>
+        <argsstring>(QgsLayout *layout, const QVariantMap &amp;variables)</argsstring>
+        <name>setLayoutVariables</name>
+        <param>
+          <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>variables</declname>
+        </param>
+        <briefdescription>
+<para>Sets all layout context variables. </para>        </briefdescription>
+        <detaileddescription>
+<para>Existing layout variables will be removed and replaced with the variables specified. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target layout </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>variables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new set of layer variables </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a9ec29c2a673c7fd37dabea6074051a91" kindref="member">setLayoutVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a340ede6d40ac582c1e3865d3bb465be4" kindref="member">layoutScope()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="929" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1136" bodyend="1153"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1ae4dcfffde09d1aab67f4cdc79abeb021" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setProjectVariable</definition>
+        <argsstring>(QgsProject *project, const QString &amp;name, const QVariant &amp;value)</argsstring>
+        <name>setProjectVariable</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets a project context variable. </para>        </briefdescription>
+        <detaileddescription>
+<para>This variable will be contained within scopes retrieved via <ref refid="classQgsExpressionContextUtils_1a9b0dc97b5f9e21fa11eb803a33dfa7d8" kindref="member">projectScope()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Project to apply changes to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>variable value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a311388b59c0759920dda2420f1f8b8f5" kindref="member">setProjectVariables()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a538d3af82abc562b3a1c011c04df1eed" kindref="member">removeProjectVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a9b0dc97b5f9e21fa11eb803a33dfa7d8" kindref="member">projectScope()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="823" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="831" bodyend="841"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a311388b59c0759920dda2420f1f8b8f5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsExpressionContextUtils::setProjectVariables</definition>
+        <argsstring>(QgsProject *project, const QVariantMap &amp;variables)</argsstring>
+        <name>setProjectVariables</name>
+        <param>
+          <type><ref refid="classQgsProject" kindref="compound">QgsProject</ref> *</type>
+          <declname>project</declname>
+        </param>
+        <param>
+          <type>const QVariantMap &amp;</type>
+          <declname>variables</declname>
+        </param>
+        <briefdescription>
+<para>Sets all project context variables. </para>        </briefdescription>
+        <detaileddescription>
+<para>Existing project variables will be removed and replaced with the variables specified. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>project</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Project to apply changes to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>variables</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new set of project variables </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1ae4dcfffde09d1aab67f4cdc79abeb021" kindref="member">setProjectVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a538d3af82abc562b3a1c011c04df1eed" kindref="member">removeProjectVariable()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsExpressionContextUtils_1a9b0dc97b5f9e21fa11eb803a33dfa7d8" kindref="member">projectScope()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="834" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="843" bodyend="849"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsExpressionContextUtils_1a23cfe974933355eafa6b92cae9eaf525" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsExpressionContextUtils::updateSymbolScope</definition>
+        <argsstring>(const QgsSymbol *symbol, QgsExpressionContextScope *symbolScope=nullptr)</argsstring>
+        <name>updateSymbolScope</name>
+        <param>
+          <type>const <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+          <declname>symbolScope</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Updates a symbol scope related to a <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> to an expression context. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>symbol</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>symbol to extract properties from </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbolScope</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pointer to an existing scope to update </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="899" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.cpp" bodystart="1044" bodyend="1060"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains utilities for working with <ref refid="classQgsExpressionContext" kindref="compound">QgsExpressionContext</ref> objects, including methods for creating scopes for specific uses (e.g., project scopes, layer scopes). </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" line="757" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsexpressioncontext.h" bodystart="756" bodyend="1008"/>
+    <listofallmembers>
+      <member refid="classQgsExpressionContextUtils_1a66eebd07714f21ac3b21c229bac398f7" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>atlasScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a37b99228545c3c246c6247d90c54b2e9" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>createFeatureBasedContext</name></member>
+      <member refid="classQgsExpressionContextUtils_1aa0d383f2d71c0799c2de1d1a89933647" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>formScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1ae204a266b5a9ae5475f568c264fc719c" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>globalProjectLayerScopes</name></member>
+      <member refid="classQgsExpressionContextUtils_1afba36ac63b06dd2659710f4f3cd58936" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>globalScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1af1b61531d9512e4cdc8ca505ae07be89" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>layerScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a04af195b7f916d8574245cb337bc524b" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>layoutItemScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a340ede6d40ac582c1e3865d3bb465be4" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>layoutScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1ad97a6492b7f61a41dcbe399537415fc2" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>mapSettingsScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1aa9bdc27de65d845f5e31e69ea4d936f8" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>mapToolCaptureScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a8291267b0a963725e733c9f1d7f2d176" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>notificationScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a7d8522a7794ba4a960515ba97e33a158" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>processingAlgorithmScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a9b0dc97b5f9e21fa11eb803a33dfa7d8" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>projectScope</name></member>
+      <member refid="classQgsExpressionContextUtils_1a62c18204406987fa113881258493f4ca" prot="private" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>QgsLayoutItemMap</name></member>
+      <member refid="classQgsExpressionContextUtils_1ab1636f7b97d9fa9b106a8063d9b3bfd3" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>registerContextFunctions</name></member>
+      <member refid="classQgsExpressionContextUtils_1add23d8e5e5df6e6cfe8d405feb654412" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>removeGlobalVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1a538d3af82abc562b3a1c011c04df1eed" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>removeProjectVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1ae05f83118513c147a754f90e906982ec" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setGlobalVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1a5afdc3d54b2d64e6052743362b97650a" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setGlobalVariables</name></member>
+      <member refid="classQgsExpressionContextUtils_1a1fbb959d92c38898002f1ccf2ad307d7" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setLayerVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1a55848917d0e162a8d220e4a0eefcfca0" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setLayerVariables</name></member>
+      <member refid="classQgsExpressionContextUtils_1aa51f9bb99fab6ff86690ab5da396ae82" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setLayoutItemVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1a6174fe816c7626cd0d13de4117d3259c" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setLayoutItemVariables</name></member>
+      <member refid="classQgsExpressionContextUtils_1a9ec29c2a673c7fd37dabea6074051a91" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setLayoutVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1accec9b32dd95126556d1f8cf5642a6e9" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setLayoutVariables</name></member>
+      <member refid="classQgsExpressionContextUtils_1ae4dcfffde09d1aab67f4cdc79abeb021" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setProjectVariable</name></member>
+      <member refid="classQgsExpressionContextUtils_1a311388b59c0759920dda2420f1f8b8f5" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>setProjectVariables</name></member>
+      <member refid="classQgsExpressionContextUtils_1a23cfe974933355eafa6b92cae9eaf525" prot="public" virt="non-virtual"><scope>QgsExpressionContextUtils</scope><name>updateSymbolScope</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

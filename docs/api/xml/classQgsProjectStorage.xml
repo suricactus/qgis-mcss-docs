@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProjectStorage" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsProjectStorage</compoundname>
+    <includes refid="qgsprojectstorage_8h" local="no">qgsprojectstorage.h</includes>
+    <innerclass refid="classQgsProjectStorage_1_1Metadata" prot="public">QgsProjectStorage::Metadata</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsProjectStorage_1a6a784b4b9fef066e0523e026dd20f3ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsProjectStorage::~QgsProjectStorage</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsProjectStorage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="55" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1a34a77eada6733e25b45f3c588d772bb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList QgsProjectStorage::listProjects</definition>
+        <argsstring>(const QString &amp;uri)=0</argsstring>
+        <name>listProjects</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+<para>Returns list of all projects for given URI (specific to each storage backend) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="64" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1ac76ee703af1c605cc59d6fe2001de189" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsProjectStorage::readProject</definition>
+        <argsstring>(const QString &amp;uri, QIODevice *device, QgsReadWriteContext &amp;context)=0</argsstring>
+        <name>readProject</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>QIODevice *</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Reads project file content stored in the backend at the specified URI to the given device (could be e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>a temporary file or a memory buffer). The device is expected to be empty when passed to <ref refid="classQgsProjectStorage_1ac76ee703af1c605cc59d6fe2001de189" kindref="member">readProject()</ref> so that the method can write all data to it and then rewind it using seek(0) to make it ready for reading in <ref refid="classQgsProject" kindref="compound">QgsProject</ref>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1af34b8ab2365d5fd95dde4dd6b5d8f7e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsProjectStorage::readProjectStorageMetadata</definition>
+        <argsstring>(const QString &amp;uri, QgsProjectStorage::Metadata &amp;metadata)</argsstring>
+        <name>readProjectStorageMetadata</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsProjectStorage_1_1Metadata" kindref="compound">QgsProjectStorage::Metadata</ref> &amp;</type>
+          <declname>metadata</declname>
+        </param>
+        <briefdescription>
+<para>Reads project metadata (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>last modified time) if this is supported by the storage implementation. Returns true if the metadata were read with success. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="98" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1adb380b94e946700c28e791dc06ab0704" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsProjectStorage::removeProject</definition>
+        <argsstring>(const QString &amp;uri)=0</argsstring>
+        <name>removeProject</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+<para>Removes an existing project at the given URI. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the removal was successful. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1a036ef30327ac9bd1f9f6a4b60c6100a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsProjectStorage::renameProject</definition>
+        <argsstring>(const QString &amp;uri, const QString &amp;uriNew)</argsstring>
+        <name>renameProject</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uriNew</declname>
+        </param>
+        <briefdescription>
+<para>Rename an existing project at the given URI to a different URI. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if renaming was successful. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="92" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1abd2f53805bd43b316079918821bc461a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProjectStorage::showLoadGui</definition>
+        <argsstring>()</argsstring>
+        <name>showLoadGui</name>
+        <briefdescription>
+<para>Opens GUI to allow user to select a project to be loaded (GUI specific to this storage type). </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns project URI if user has picked a project or empty string if the GUI was canceled. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1ad2f4ab755b329522baa4d5aa981a0d7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProjectStorage::showSaveGui</definition>
+        <argsstring>()</argsstring>
+        <name>showSaveGui</name>
+        <briefdescription>
+<para>Opens GUI to allow user to select where a project should be saved (GUI specific to this storage type). </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns project URI if user has picked a destination or empty string if the GUI was canceled. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="117" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" bodystart="117" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1a7a986e28550545200cf38c237fffab28" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProjectStorage::type</definition>
+        <argsstring>()=0</argsstring>
+        <name>type</name>
+        <briefdescription>
+<para>Unique identifier of the project storage type. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <ref refid="classQgsProjectStorage_1a7a986e28550545200cf38c237fffab28" kindref="member">type()</ref> returns &quot;memory&quot;, all project file names starting with &quot;memory:&quot; will have read/write redirected through that storage implementation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1ae65ce5739fe90bb2825d4a73f0cd6caa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsProjectStorage::visibleName</definition>
+        <argsstring>()</argsstring>
+        <name>visibleName</name>
+        <briefdescription>
+<para>Returns human-readable name of the storage. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used as the menu item text in QGIS. Empty name indicates that the storage does not implement GUI support (<ref refid="classQgsProjectStorage_1abd2f53805bd43b316079918821bc461a" kindref="member">showLoadGui()</ref> and <ref refid="classQgsProjectStorage_1ad2f4ab755b329522baa4d5aa981a0d7b" kindref="member">showSaveGui()</ref>). The name may be translatable and ideally unique as well. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProjectStorage_1a2ee24bbf5f2ac1e8a41f4422e5561ff6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsProjectStorage::writeProject</definition>
+        <argsstring>(const QString &amp;uri, QIODevice *device, QgsReadWriteContext &amp;context)=0</argsstring>
+        <name>writeProject</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <param>
+          <type>QIODevice *</type>
+          <declname>device</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Writes project file content stored in given device (could be e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>a temporary file or a memory buffer) using the backend to the specified URI. The device is expected to contain all project file data and having position at the start of the content when passed to <ref refid="classQgsProjectStorage_1a2ee24bbf5f2ac1e8a41f4422e5561ff6" kindref="member">writeProject()</ref> so that the method can read all data from it until it reaches its end. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="80" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract interface for project storage - to be implemented by various backends and registered in <ref refid="classQgsProjectStorageRegistry" kindref="compound">QgsProjectStorageRegistry</ref>. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" line="38" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsprojectstorage.h" bodystart="37" bodyend="118"/>
+    <listofallmembers>
+      <member refid="classQgsProjectStorage_1a34a77eada6733e25b45f3c588d772bb3" prot="public" virt="pure-virtual"><scope>QgsProjectStorage</scope><name>listProjects</name></member>
+      <member refid="classQgsProjectStorage_1ac76ee703af1c605cc59d6fe2001de189" prot="public" virt="pure-virtual"><scope>QgsProjectStorage</scope><name>readProject</name></member>
+      <member refid="classQgsProjectStorage_1af34b8ab2365d5fd95dde4dd6b5d8f7e9" prot="public" virt="virtual"><scope>QgsProjectStorage</scope><name>readProjectStorageMetadata</name></member>
+      <member refid="classQgsProjectStorage_1adb380b94e946700c28e791dc06ab0704" prot="public" virt="pure-virtual"><scope>QgsProjectStorage</scope><name>removeProject</name></member>
+      <member refid="classQgsProjectStorage_1a036ef30327ac9bd1f9f6a4b60c6100a1" prot="public" virt="virtual"><scope>QgsProjectStorage</scope><name>renameProject</name></member>
+      <member refid="classQgsProjectStorage_1abd2f53805bd43b316079918821bc461a" prot="public" virt="virtual"><scope>QgsProjectStorage</scope><name>showLoadGui</name></member>
+      <member refid="classQgsProjectStorage_1ad2f4ab755b329522baa4d5aa981a0d7b" prot="public" virt="virtual"><scope>QgsProjectStorage</scope><name>showSaveGui</name></member>
+      <member refid="classQgsProjectStorage_1a7a986e28550545200cf38c237fffab28" prot="public" virt="pure-virtual"><scope>QgsProjectStorage</scope><name>type</name></member>
+      <member refid="classQgsProjectStorage_1ae65ce5739fe90bb2825d4a73f0cd6caa" prot="public" virt="virtual"><scope>QgsProjectStorage</scope><name>visibleName</name></member>
+      <member refid="classQgsProjectStorage_1a2ee24bbf5f2ac1e8a41f4422e5561ff6" prot="public" virt="pure-virtual"><scope>QgsProjectStorage</scope><name>writeProject</name></member>
+      <member refid="classQgsProjectStorage_1a6a784b4b9fef066e0523e026dd20f3ae" prot="public" virt="virtual"><scope>QgsProjectStorage</scope><name>~QgsProjectStorage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

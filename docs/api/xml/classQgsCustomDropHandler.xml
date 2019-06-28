@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsCustomDropHandler" kind="class" language="C++" prot="public">
+    <compoundname>QgsCustomDropHandler</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="qgscustomdrophandler_8h" local="no">qgscustomdrophandler.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsCustomDropHandler_1a28b67041d39a1d91ba4dbdecac3f9ab0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsCustomDropHandler::customUriProviderKey</definition>
+        <argsstring>() const</argsstring>
+        <name>customUriProviderKey</name>
+        <briefdescription>
+<para>Type of custom URI recognized by the handler. </para>        </briefdescription>
+        <detaileddescription>
+<para>This must match the URI entry&apos;s providerKey in order for <ref refid="classQgsCustomDropHandler_1a4397dd44c21285abe4686a1941c90d32" kindref="member">handleCustomUriDrop()</ref> to be called.</para><para><simplesect kind="see"><para><ref refid="classQgsCustomDropHandler_1a4397dd44c21285abe4686a1941c90d32" kindref="member">handleCustomUriDrop()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.h" line="60" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.cpp" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCustomDropHandler_1a4397dd44c21285abe4686a1941c90d32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsCustomDropHandler::handleCustomUriDrop</definition>
+        <argsstring>(const QgsMimeDataUtils::Uri &amp;uri) const</argsstring>
+        <name>handleCustomUriDrop</name>
+        <param>
+          <type>const <ref refid="structQgsMimeDataUtils_1_1Uri" kindref="compound">QgsMimeDataUtils::Uri</ref> &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+<para>Called from QGIS after a drop event with custom URI known by the handler. </para>        </briefdescription>
+        <detaileddescription>
+<para>In order for <ref refid="classQgsCustomDropHandler_1a4397dd44c21285abe4686a1941c90d32" kindref="member">handleCustomUriDrop()</ref> to be called, subclasses must also implement <ref refid="classQgsCustomDropHandler_1a28b67041d39a1d91ba4dbdecac3f9ab0" kindref="member">customUriProviderKey()</ref> to indicate the providerKey value which the handler accepts.</para><para><simplesect kind="see"><para><ref refid="classQgsCustomDropHandler_1a28b67041d39a1d91ba4dbdecac3f9ab0" kindref="member">customUriProviderKey()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.h" line="71" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCustomDropHandler_1a19ccf7ebc35f6c2e1b6771023532e28f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsCustomDropHandler::handleFileDrop</definition>
+        <argsstring>(const QString &amp;file)</argsstring>
+        <name>handleFileDrop</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+<para>Called when the specified <emphasis>file</emphasis> has been dropped onto QGIS. </para>        </briefdescription>
+        <detaileddescription>
+<para>If true is returned, then the handler has accepted this file and it should not be further processed (e.g. by other QgsCustomDropHandlers).</para><para>The base class implementation does nothing.</para><para>This method is not called directly while drop handling is occurring, so the limitations described in <ref refid="classQgsCustomDropHandler_1a117bbeaf137051f165ced74a50e32a24" kindref="member">handleMimeData()</ref> about returning quickly do not apply. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsCustomDropHandler_1a117bbeaf137051f165ced74a50e32a24" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsCustomDropHandler::handleMimeData</definition>
+        <argsstring>(const QMimeData *data)</argsstring>
+        <name>handleMimeData</name>
+        <param>
+          <type>const QMimeData *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Called when the specified mime <emphasis>data</emphasis> has been dropped onto QGIS. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation does nothing.</para><para>Subclasses should take care when overriding this method. When a drop event occurs, Qt will lock the source application of the drag for the duration of the drop event handling (e.g. dragging files from explorer to QGIS will lock the explorer window until the drop handling has been complete).</para><para>Accordingly, only implementations must be lightweight and return ASAP. (For instance by copying the relevant parts of <emphasis>data</emphasis> and then handling the data after a short timeout). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.h" line="87" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class that may be implemented to handle new types of data to be dropped in QGIS. </para>    </briefdescription>
+    <detaileddescription>
+<para>Implementations have three approaches they can use to handle drops.</para><para><orderedlist>
+<listitem><para>The simplest approach is to implement handeFileDrop() when they need to handle dropped files (i.e. with mime type &quot;text/uri-list&quot;).</para></listitem><listitem><para>Reimplement <ref refid="classQgsCustomDropHandler_1a4397dd44c21285abe4686a1941c90d32" kindref="member">handleCustomUriDrop()</ref> when they want to handle dropped custom <ref refid="structQgsMimeDataUtils_1_1Uri" kindref="compound">QgsMimeDataUtils::Uri</ref> entries, for instance handling dropping custom entries from the browser tree (with mime type &quot;application/x-vnd.qgis.qgis.uri&quot;). In this case the implementation&apos;s <ref refid="classQgsCustomDropHandler_1a28b67041d39a1d91ba4dbdecac3f9ab0" kindref="member">customUriProviderKey()</ref> must match the uri entry&apos;s providerKey.</para></listitem><listitem><para>Reimplement <ref refid="classQgsCustomDropHandler_1a117bbeaf137051f165ced74a50e32a24" kindref="member">handleMimeData()</ref> to directly handle dropped QMimeData. Subclasses should take care when overriding this method. When a drop event occurs, Qt will lock the source application of the drag for the duration of the drop event handling via <ref refid="classQgsCustomDropHandler_1a117bbeaf137051f165ced74a50e32a24" kindref="member">handleMimeData()</ref> (e.g. dragging files from explorer to QGIS will lock the explorer window until the drop handling has been complete). Accordingly <ref refid="classQgsCustomDropHandler_1a117bbeaf137051f165ced74a50e32a24" kindref="member">handleMimeData()</ref> implementations must return quickly and defer any intensive or slow processing.</para></listitem></orderedlist>
+</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2115">
+        <label>QObject</label>
+      </node>
+      <node id="2114">
+        <label>QgsCustomDropHandler</label>
+        <link refid="classQgsCustomDropHandler"/>
+        <childnode refid="2115" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2117">
+        <label>QObject</label>
+      </node>
+      <node id="2116">
+        <label>QgsCustomDropHandler</label>
+        <link refid="classQgsCustomDropHandler"/>
+        <childnode refid="2117" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.h" line="48" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/gui/qgscustomdrophandler.h" bodystart="47" bodyend="101"/>
+    <listofallmembers>
+      <member refid="classQgsCustomDropHandler_1a28b67041d39a1d91ba4dbdecac3f9ab0" prot="public" virt="virtual"><scope>QgsCustomDropHandler</scope><name>customUriProviderKey</name></member>
+      <member refid="classQgsCustomDropHandler_1a4397dd44c21285abe4686a1941c90d32" prot="public" virt="virtual"><scope>QgsCustomDropHandler</scope><name>handleCustomUriDrop</name></member>
+      <member refid="classQgsCustomDropHandler_1a19ccf7ebc35f6c2e1b6771023532e28f" prot="public" virt="virtual"><scope>QgsCustomDropHandler</scope><name>handleFileDrop</name></member>
+      <member refid="classQgsCustomDropHandler_1a117bbeaf137051f165ced74a50e32a24" prot="public" virt="virtual"><scope>QgsCustomDropHandler</scope><name>handleMimeData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

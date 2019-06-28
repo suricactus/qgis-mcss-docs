@@ -1,0 +1,2322 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsAbstractGeometry" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsAbstractGeometry</compoundname>
+    <derivedcompoundref refid="classQgsCurve" prot="public" virt="non-virtual">QgsCurve</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGeometryCollection" prot="public" virt="non-virtual">QgsGeometryCollection</derivedcompoundref>
+    <derivedcompoundref refid="classQgsPoint" prot="public" virt="non-virtual">QgsPoint</derivedcompoundref>
+    <derivedcompoundref refid="classQgsSurface" prot="public" virt="non-virtual">QgsSurface</derivedcompoundref>
+    <includes refid="qgsabstractgeometry_8h" local="no">qgsabstractgeometry.h</includes>
+    <innerclass refid="classQgsAbstractGeometry_1_1const__part__iterator" prot="public">QgsAbstractGeometry::const_part_iterator</innerclass>
+    <innerclass refid="classQgsAbstractGeometry_1_1part__iterator" prot="public">QgsAbstractGeometry::part_iterator</innerclass>
+    <innerclass refid="classQgsAbstractGeometry_1_1vertex__iterator" prot="public">QgsAbstractGeometry::vertex_iterator</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7" prot="public" static="no">
+        <name>AxisOrder</name>
+        <enumvalue id="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7aae0bffb31794a26e0f1e2f5f506cccb3" prot="public">
+          <name>XY</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>X comes before Y (or lon before lat) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7ad3bbc17894009b36b9a9a6e3b41d0b2f" prot="public">
+          <name>YX</name>
+          <briefdescription>
+<para>Y comes before X (or lat before lon) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Axis order for GML generation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="115" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="114" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96" prot="public" static="no">
+        <name>SegmentationToleranceType</name>
+        <enumvalue id="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96ae179641e9ac6aafe1005da4b6f7c7618" prot="public">
+          <name>MaximumAngle</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Maximum angle between generating radii (lines from arc center to output vertices) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96a366917a4d314a51392c2e04686aad8d2" prot="public">
+          <name>MaximumDifference</name>
+          <briefdescription>
+<para>Maximum distance between an arbitrary point on the original curve and closest point on its approximation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Segmentation tolerance as maximum angle or maximum difference between approximation and circle. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="99" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="98" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsAbstractGeometry_1af287af3318c631f2206ef0b200830583" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsAbstractGeometry::mWkbType</definition>
+        <argsstring></argsstring>
+        <name>mWkbType</name>
+        <initializer>= <ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11ab4b00cf5f667f3c8164d955613c93dfa" kindref="member">QgsWkbTypes::Unknown</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="915" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="915" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsAbstractGeometry_1a8b0016c1570a66a82dc64fa595366541" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsGeometry</definition>
+        <argsstring></argsstring>
+        <name>TestQgsGeometry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="933" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="933" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsAbstractGeometry_1aea45573a7471a93b4839d9ba3e240293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsAbstractGeometry::QgsAbstractGeometry</definition>
+        <argsstring>()=default</argsstring>
+        <name>QgsAbstractGeometry</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="132" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a0ca58ea869fa586cbc08d228e171aa5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsAbstractGeometry::QgsAbstractGeometry</definition>
+        <argsstring>(const QgsAbstractGeometry &amp;geom)</argsstring>
+        <name>QgsAbstractGeometry</name>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &amp;</type>
+          <declname>geom</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="134" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1afbd59f1e4fbeb985adaefceb3c6b9b7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsAbstractGeometry::~QgsAbstractGeometry</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsAbstractGeometry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="133" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a7312cb36669cfbc3030c0f867348ffe0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::addMValue</definition>
+        <argsstring>(double mValue=0)=0</argsstring>
+        <name>addMValue</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a2c1b41818fb8d01749d483e45dbaa19d">addMValue</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a3e85b150d10bae9dddb6244bbfd896fd">addMValue</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a18188338a65997ad6cbd89ed70c62fda">addMValue</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a7993c7c240c6ff058027f8e29e221aac">addMValue</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a1a22f2bc353403e5b607c6f5f36d5410">addMValue</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a9ddbf37f2048fa0f689f3d73b482e37d">addMValue</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>mValue</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Adds a measure to the geometry, initialized to a preset value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>initial m-value for all nodes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true on success </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a119e7a6f1287bf23281d051d575994ca" kindref="member">dropMValue()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a07db82adbfcdb6f9aeb18d4639d2c141" kindref="member">addZValue()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="545" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a07db82adbfcdb6f9aeb18d4639d2c141" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::addZValue</definition>
+        <argsstring>(double zValue=0)=0</argsstring>
+        <name>addZValue</name>
+        <reimplementedby refid="classQgsCompoundCurve_1afbb72cc845d784e9422f642cf03da774">addZValue</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a534bbd671e8569279031a6dfdbe33b18">addZValue</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ac6e27300953f8104ede47f230abcaafd">addZValue</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a14ec897564951f3c1334bd94be264d66">addZValue</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a31a943ac0ab4256bc6a0012e370effb4">addZValue</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a3bfe74554059788f49ddd03e04d23c58">addZValue</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>zValue</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Adds a z-dimension to the geometry, initialized to a preset value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>zValue</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>initial z-value for all nodes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true on success </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ad3592944bd8919d44a7a5c5e3f160899" kindref="member">dropZValue()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a7312cb36669cfbc3030c0f867348ffe0" kindref="member">addMValue()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="535" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a6de19d36661e354ad0894e2bacc1517a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractGeometry::adjacentVertices</definition>
+        <argsstring>(QgsVertexId vertex, QgsVertexId &amp;previousVertex, QgsVertexId &amp;nextVertex) const =0</argsstring>
+        <name>adjacentVertices</name>
+        <reimplementedby refid="classQgsGeometryCollection_1a3ed7833de0e7a8f1d6c31412fb6c378d">adjacentVertices</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a8289753b86e788a82c3370f57d0451a2">adjacentVertices</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a6e022bd5ef4b903b51940e549c3162a1">adjacentVertices</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a2e185edb769959901abcaacd94b3110c">adjacentVertices</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>vertex</declname>
+        </param>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref> &amp;</type>
+          <declname>previousVertex</declname>
+        </param>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref> &amp;</type>
+          <declname>nextVertex</declname>
+        </param>
+        <briefdescription>
+<para>Returns the vertices adjacent to a specified <emphasis>vertex</emphasis> within a geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="337" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1aeb48c72d10d875e97e516e6f7495438e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double QgsAbstractGeometry::area</definition>
+        <argsstring>() const</argsstring>
+        <name>area</name>
+        <reimplementedby refid="classQgsCurvePolygon_1a4ebeb839d745b2be76804c7edee43c0f">area</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a66b467abda19ef81a6cdace3216b6923">area</reimplementedby>
+        <briefdescription>
+<para>Returns the area of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a92a705bc19d95e1d6c0fc1bc407ab783" kindref="member">length()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a61a15d374161fccc1401f9971e93f2b7" kindref="member">perimeter()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="421" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a71d6a67c0756c7294f643096583d7619" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QDomElement</type>
+        <definition>virtual QDomElement QgsAbstractGeometry::asGml2</definition>
+        <argsstring>(QDomDocument &amp;doc, int precision=17, const QString &amp;ns=&quot;gml&quot;, AxisOrder axisOrder=QgsAbstractGeometry::AxisOrder::XY) const =0</argsstring>
+        <name>asGml2</name>
+        <reimplementedby refid="classQgsMultiPolygon_1ab723f4b1bdb032b5a2e1ec2f84c48010">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsMultiSurface_1a55ecef0a98e2da9132c51fcc822b6f62">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1ae79496c3edccecb13f8fca3a5b8672b7">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1a71756f48ee6827ca580bd106b2a69558">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1af9905dac88c266644df9cab4def689bb">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a89a8947644e5fe8f9f9d7183bd468160">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a16e98390efda7a85032bb41bdbd3beba">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a59dd322920abe7f518a77c3619e586ac">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a838e844a47a0f975894d62cbabe1b2ce">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a7aa8f52cc2616563e173557e0af830ad">asGml2</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a90b8be58425311e8d28c4bbabaef0443">asGml2</reimplementedby>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>precision</declname>
+          <defval>17</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>ns</declname>
+          <defval>&quot;gml&quot;</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7" kindref="member">AxisOrder</ref></type>
+          <declname>axisOrder</declname>
+          <defval>QgsAbstractGeometry::AxisOrder::XY</defval>
+        </param>
+        <briefdescription>
+<para>Returns a GML2 representation of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>doc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>precision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of decimal places for coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>XML namespace </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>axisOrder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis order for generated GML </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa5f9616ce24cd17807c951e1d41be73a" kindref="member">asWkb()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a92e7e3e943101ae22fb8d4659de11ddb" kindref="member">asWkt()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa86061e273223dbd396f7b9853960b96" kindref="member">asGml3()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa1a1182d214073a7bc9d32b96e9b4520" kindref="member">asJson()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="258" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1aa86061e273223dbd396f7b9853960b96" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QDomElement</type>
+        <definition>virtual QDomElement QgsAbstractGeometry::asGml3</definition>
+        <argsstring>(QDomDocument &amp;doc, int precision=17, const QString &amp;ns=&quot;gml&quot;, AxisOrder axisOrder=QgsAbstractGeometry::AxisOrder::XY) const =0</argsstring>
+        <name>asGml3</name>
+        <reimplementedby refid="classQgsMultiPolygon_1a6b9b641faac4ed3874646ad42cf5e197">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsMultiSurface_1a863853f48ab638faf3bf4dc3a6166ea6">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1aa79afaa5094b57900c606760fd316ba5">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1a923a96d35fbd6b66c309047bd781d46a">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1a0afdbb99403054265d9fc8a69aead910">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1afdd06c299d69a0873e7ad6a3f871e5a0">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1acc84f79fd5fd5684cd5f651d52807109">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a9233d5285df72c3c1c22ea51d930893c">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1abdfed871d5d84fe904e1263d55a1cc99">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ae20f9bf10c9f3914efde2cdbc789ca9e">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a19513245c9f535ebea5e24e0c452561b">asGml3</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a763befe925a7c1ad5631774b818619a0">asGml3</reimplementedby>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>precision</declname>
+          <defval>17</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>ns</declname>
+          <defval>&quot;gml&quot;</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7" kindref="member">AxisOrder</ref></type>
+          <declname>axisOrder</declname>
+          <defval>QgsAbstractGeometry::AxisOrder::XY</defval>
+        </param>
+        <briefdescription>
+<para>Returns a GML3 representation of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>doc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>precision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of decimal places for coordinates </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>XML namespace </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>axisOrder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis order for generated GML </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa5f9616ce24cd17807c951e1d41be73a" kindref="member">asWkb()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a92e7e3e943101ae22fb8d4659de11ddb" kindref="member">asWkt()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a71d6a67c0756c7294f643096583d7619" kindref="member">asGml2()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa1a1182d214073a7bc9d32b96e9b4520" kindref="member">asJson()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="271" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1aa1a1182d214073a7bc9d32b96e9b4520" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsAbstractGeometry::asJson</definition>
+        <argsstring>(int precision=17) const =0</argsstring>
+        <name>asJson</name>
+        <reimplementedby refid="classQgsMultiPolygon_1a306f6c8084f51fad1da6361430654a43">asJson</reimplementedby>
+        <reimplementedby refid="classQgsMultiSurface_1a9194a98ce3d98fbd290d84023460b353">asJson</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1aaa291b9b4b6b9836956c65e51330c54a">asJson</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1af4be2d31397d4d1411b4a8357752e574">asJson</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1a97fad4dd9c38fb655f55b66b65cbf6ff">asJson</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1aa831450f9cbdcb3131cedb4ba39b5f48">asJson</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ae7b885037fcbc89d12a2e26d0963633b">asJson</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a9210e702235999da453ea02c8434a142">asJson</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a01e33ca1167a5188864c24d8ec9ce65f">asJson</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a9a999e2f47725ffb00ee3c74e0d397ac">asJson</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ac810dd82548f50515a59cdf241986efc">asJson</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>precision</declname>
+          <defval>17</defval>
+        </param>
+        <briefdescription>
+<para>Returns a GeoJSON representation of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>precision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of decimal places for coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa5f9616ce24cd17807c951e1d41be73a" kindref="member">asWkb()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a92e7e3e943101ae22fb8d4659de11ddb" kindref="member">asWkt()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a71d6a67c0756c7294f643096583d7619" kindref="member">asGml2()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa86061e273223dbd396f7b9853960b96" kindref="member">asGml3()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="281" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1aa5f9616ce24cd17807c951e1d41be73a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QByteArray</type>
+        <definition>virtual QByteArray QgsAbstractGeometry::asWkb</definition>
+        <argsstring>() const =0</argsstring>
+        <name>asWkb</name>
+        <reimplementedby refid="classQgsPolygon_1acf9b5ce63493efdff5e740d9db71d8e3">asWkb</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a80375de8233471f1712785f8fb8f5c98">asWkb</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a77c97ce48692890387190272421cdbb4">asWkb</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a59922783ff291b65fb267e5fc794d24b">asWkb</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1aa23d63864d178724caed9a95d7963d91">asWkb</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1adbca810479cbf0988792e37015f50cf0">asWkb</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1af02ab0d936ae02909007d647d0311bb8">asWkb</reimplementedby>
+        <briefdescription>
+<para>Returns a WKB representation of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a92e7e3e943101ae22fb8d4659de11ddb" kindref="member">asWkt</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a71d6a67c0756c7294f643096583d7619" kindref="member">asGml2</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa86061e273223dbd396f7b9853960b96" kindref="member">asGml3</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa1a1182d214073a7bc9d32b96e9b4520" kindref="member">asJson()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="235" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a92e7e3e943101ae22fb8d4659de11ddb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsAbstractGeometry::asWkt</definition>
+        <argsstring>(int precision=17) const =0</argsstring>
+        <name>asWkt</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a65accf4f2fe9d8775dc2ec657fed958a">asWkt</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a121e9370eba35987b2a1aa3519958b67">asWkt</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1ad2e27e22d90bbadae30bd8bdaf2b2a88">asWkt</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a570b5f970b552a015d08c0aad47813dc">asWkt</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a4f38b0d3de53d2cda84358a32a841f34">asWkt</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a937efc39df1fc25c545dd9cb56c99c2c">asWkt</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>precision</declname>
+          <defval>17</defval>
+        </param>
+        <briefdescription>
+<para>Returns a WKT representation of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>precision</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of decimal places for coordinates </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa5f9616ce24cd17807c951e1d41be73a" kindref="member">asWkb()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a71d6a67c0756c7294f643096583d7619" kindref="member">asGml2()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa86061e273223dbd396f7b9853960b96" kindref="member">asGml3()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aa1a1182d214073a7bc9d32b96e9b4520" kindref="member">asJson()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="245" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a0a0f6159d97445e1a869d997cdb87ff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>virtual QgsAbstractGeometry* QgsAbstractGeometry::boundary</definition>
+        <argsstring>() const =0</argsstring>
+        <name>boundary</name>
+        <reimplementedby refid="classQgsMultiSurface_1ac2f34f5f1ca80a1ac7788d7076c163c3">boundary</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1ac197dd15d5c582c4a85fb44fe2917a87">boundary</reimplementedby>
+        <reimplementedby refid="classQgsMultiPolygon_1afea7beea66b9d561023fc2f55e43465c">boundary</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1a762d28ea061bc4ae7395a803356876f2">boundary</reimplementedby>
+        <reimplementedby refid="classQgsPolygon_1a8b79a8b927d4717638c62713b29592e6">boundary</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a1d9535ba32c6bf3fb0bd29477d1e2e85">boundary</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a1c7f9adfa5e24ff8c8fbe6810ed047c7">boundary</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a5fb2a06765af0839274f98e07e206ecc">boundary</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a7cf5989f9f121ccd333c4b4f0bd12586">boundary</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a330a945d87d07d7db75ebfe5a1ea95f1">boundary</reimplementedby>
+        <briefdescription>
+<para>Returns the closure of the combinatorial boundary of the geometry (ie the topological boundary of the geometry). </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance, a polygon geometry will have a boundary consisting of the linestrings for each ring in the polygon. <simplesect kind="return"><para>boundary for geometry. May be null for some geometry types. </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="208" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a28d745df47c96d586ee05cf70ce1cc6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>virtual QgsRectangle QgsAbstractGeometry::boundingBox</definition>
+        <argsstring>() const =0</argsstring>
+        <name>boundingBox</name>
+        <reimplementedby refid="classQgsSurface_1a1d0142c080f55f168295f32fbc3b50ad">boundingBox</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a0d778c45c3e950387e915e335fc23710">boundingBox</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1aa7cac3b3ced89cf25d793e6ba1f31355">boundingBox</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a68b66fd929b03b88b43d62e88031fb3a">boundingBox</reimplementedby>
+        <briefdescription>
+<para>Returns the minimal bounding box for the geometry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="153" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ad559e167894034e9ae1d10f840c96c3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref></type>
+        <definition>QgsPoint QgsAbstractGeometry::centroid</definition>
+        <argsstring>() const</argsstring>
+        <name>centroid</name>
+        <reimplementedby refid="classQgsLineString_1a73f4e3f17d65b4c8b936198c2f5c71b5">centroid</reimplementedby>
+        <briefdescription>
+<para>Returns the centroid of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="430" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="156" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1acbd999fc4aada45327f862bda205783c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractGeometry::clear</definition>
+        <argsstring>()=0</argsstring>
+        <name>clear</name>
+        <reimplementedby refid="classQgsMultiSurface_1ae933953f3220b02b6cc2783246eb3946">clear</reimplementedby>
+        <reimplementedby refid="classQgsMultiPolygon_1aa93a54cee1daaa6b78707aaf54ef83e3">clear</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1ae595e0c730dc15560e7fb877f128edad">clear</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1a1d1838c29fed79d81ee056ba8c5936de">clear</reimplementedby>
+        <reimplementedby refid="classQgsPolygon_1a807a164de3468d3faefc05e7bcd5d1dc">clear</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1a2ad715f94a4a473876b8dfc6b2e387c8">clear</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1ad2c7bdd445dbe3d3ee14fa9a7ca6aa47">clear</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a5a2589db7f88662f4bae827530a204d9">clear</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a1077abb5420c93be02f43dc53d1afff2">clear</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1acdbfacc3a600651bcaa8382e144a72b2">clear</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a2350422d8ce8835410cb12e6344f13d4">clear</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a230e11904d82d5454ec3ebe84eb5a51c">clear</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a36bf7396db53efd91ba73181eb834cc3">clear</reimplementedby>
+        <briefdescription>
+<para>Clears the geometry, ie reset it to a null geometry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="148" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a6a916e15201499e34a64f2de7946188d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>virtual QgsAbstractGeometry* QgsAbstractGeometry::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <reimplementedby refid="classQgsMultiCurve_1ae3207bf267ca1df2d04c417846c304a5">clone</reimplementedby>
+        <reimplementedby refid="classQgsMultiSurface_1a9678826ce7f38c27121f9360d341b846">clone</reimplementedby>
+        <reimplementedby refid="classQgsMultiPolygon_1ac07eeb1c703c44f7deccfb6c2dea7e20">clone</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1af69ad73c6d8d5d2ff4b40d09bb2a2805">clone</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1abf2838dffd1342dac5b238fa898a178a">clone</reimplementedby>
+        <reimplementedby refid="classQgsPolygon_1a7ee0cd7508cc275c5bafc82819f71337">clone</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1aaba095b4601ad58a823edc6ac0dcac74">clone</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a95d87e7c147598b1893a9dcddb2a8925">clone</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a4c9f4d27ab3e9306cfcae66c815d8818">clone</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1aa8cfc82a2706c6103ceea9738511ca9b">clone</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a28b22ecf9105dbf9a19869a535a9bdaf">clone</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a267ad39120a64a1b13c628309c56cadb">clone</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a6da6d0975e3a64805ffa50cbb46edfa6">clone</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ad92fc46d26ff355b9588d2c50a1e9d4d">clone</reimplementedby>
+        <briefdescription>
+<para>Clones the geometry by performing a deep copy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="143" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1afb4026bdd44aec81bbbfb232b267f812" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double QgsAbstractGeometry::closestSegment</definition>
+        <argsstring>(const QgsPoint &amp;pt, QgsPoint &amp;segmentPt, QgsVertexId &amp;vertexAfter, int *leftOf=nullptr, double epsilon=4 *std::numeric_limits&lt; double &gt;::epsilon()) const =0</argsstring>
+        <name>closestSegment</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a8716cdb1e1f8c2a3e89699fb23f8f1cc">closestSegment</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a38e1425f74df395558b8fc90b726cf8e">closestSegment</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1af66c1dc9446e7b07afa412b96c63f0d2">closestSegment</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a619dcd880c72cad69b240dd210fbd683">closestSegment</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a7655d6d083a29bdf0636e1f141ba4721">closestSegment</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ac830dccaa076f1ce401bf94dc72d80de">closestSegment</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>segmentPt</declname>
+        </param>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref> &amp;</type>
+          <declname>vertexAfter</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>leftOf</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>epsilon</declname>
+          <defval>4 *std::numeric_limits&lt; double &gt;::epsilon()</defval>
+        </param>
+        <briefdescription>
+<para>Searches for the closest segment of the geometry to a given point. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>specifies the point to find closest segment to </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>segmentPt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>storage for the closest point within the geometry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vertexAfter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>storage for the ID of the vertex at the end of the closest segment </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>leftOf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>indicates whether the point lies on the left side of the geometry (-1 if point is to the left of the geometry, +1 if the point is to the right of the geometry, or 0 for cases where left/right could not be determined, e.g. point exactly on a line) false if point is to right of segment) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>epsilon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>epsilon for segment snapping </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>squared distance to closest segment or negative value on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="367" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ae86c938f4a97ce51fbd73a77156eecce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry_1_1const__part__iterator" kindref="compound">const_part_iterator</ref></type>
+        <definition>const_part_iterator QgsAbstractGeometry::const_parts_begin</definition>
+        <argsstring>() const</argsstring>
+        <name>const_parts_begin</name>
+        <briefdescription>
+<para>Returns STL-style iterator pointing to the const first part of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a9d19fdb36c64ac40b00125c455dc64df" kindref="member">const_parts_end()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="724" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="724" bodyend="727"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a9d19fdb36c64ac40b00125c455dc64df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry_1_1const__part__iterator" kindref="compound">const_part_iterator</ref></type>
+        <definition>QgsAbstractGeometry::const_part_iterator QgsAbstractGeometry::const_parts_end</definition>
+        <argsstring>() const</argsstring>
+        <name>const_parts_end</name>
+        <briefdescription>
+<para>Returns STL-style iterator pointing to the imaginary const part after the last part of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ae86c938f4a97ce51fbd73a77156eecce" kindref="member">const_parts_begin()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="736" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="265" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1aad5452504a91918ff5f5c12fb3305e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractGeometry::convertTo</definition>
+        <argsstring>(QgsWkbTypes::Type type)</argsstring>
+        <name>convertTo</name>
+        <reimplementedby refid="classQgsPoint_1a5675e2867176a1c48cde703ab2d9ba57">convertTo</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a7c234c18bff489f1f52193c1767e698e">convertTo</reimplementedby>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Converts the geometry to a specified type. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if conversion was successful </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="578" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="208" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ab19bf974972b67aee49a5f4bccd829b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="qgsabstractgeometry_8h_1a34a2af2e7b4a63974fc6c09e66c94d8c" kindref="member">QgsCoordinateSequence</ref></type>
+        <definition>virtual QgsCoordinateSequence QgsAbstractGeometry::coordinateSequence</definition>
+        <argsstring>() const =0</argsstring>
+        <name>coordinateSequence</name>
+        <reimplementedby refid="classQgsCurve_1a053d415621c99b5a5abe3f117e6276ce">coordinateSequence</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ad6067eae0ddd093414417e7c08f44b61">coordinateSequence</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a0640d18bdafaf4898baf8594472ec12b">coordinateSequence</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a0e1df7868de14be73412652da40ca507">coordinateSequence</reimplementedby>
+        <briefdescription>
+<para>Retrieves the sequence of geometries, rings and nodes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>coordinate sequence </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="343" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a597f27b71036ca634386b766f602a912" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>virtual QgsAbstractGeometry* QgsAbstractGeometry::createEmptyWithSameType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>createEmptyWithSameType</name>
+        <reimplementedby refid="classQgsMultiPolygon_1afe2b7e09b876f86302ff1368423d479c">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1ad0195b09d185ea8cebedf7844543a44d">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1afb7b424896ab9974f1aae812ada8e0f9">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsMultiSurface_1ac290f49de940d8518b209ab16a1ba386">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1aa9e3eab3b2afcef31befde746a541b09">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsPolygon_1ab6d77f6f9e7478f99df86c9114dea12f">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1ae95f6ab3160be6234e8a1041e0fd0d30">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a36a1d513fd0d042a3d2a62a1c0c1c226">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a1e7c091a1797596e6bdded57b0950d47">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ac44df0577c5b7a2b136733246eb84edd">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a25e21df383cb580a05f146c309ad9cef">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a8798423119e45f3858e4d4d88b4286c7">createEmptyWithSameType</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ae6f8cf8549fbf5c4ac830f8d9aed7bb1">createEmptyWithSameType</reimplementedby>
+        <briefdescription>
+<para>Creates a new geometry with the same class and same WKB type as the original and transfers ownership. </para>        </briefdescription>
+        <detaileddescription>
+<para>To create it, the geometry is default constructed and then the WKB is changed. <simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a6a916e15201499e34a64f2de7946188d" kindref="member">clone()</ref> </para></simplesect>
+<simplesect kind="since"><para>3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="882" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ac52b5975cd6e6fd54fcc039fb8614c6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::deleteVertex</definition>
+        <argsstring>(QgsVertexId position)=0</argsstring>
+        <name>deleteVertex</name>
+        <reimplementedby refid="classQgsTriangle_1a2709b7eea7e1a3a55c43d4581a91883b">deleteVertex</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a8704a7cf30ca3fa651a9813b3f1d4f6a">deleteVertex</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a158c6d314744af240bd1f554bb60e6c7">deleteVertex</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ab096673c7b193c25f3072451a161560a">deleteVertex</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ac508cb38d2be4c13f7e5664d62620ea8">deleteVertex</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a9ddd26075e82a5b686d1528b25e68b49">deleteVertex</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ac5323ab4beaa448eabb03a00b008d01d">deleteVertex</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a vertex within the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vertex id for vertex to delete </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if delete was successful </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a81e51aa7a9d2100609c14d7420c8c7ff" kindref="member">insertVertex</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a092a0395c14e70e288665fa47bb2fd22" kindref="member">moveVertex</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="400" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ada1545bccf717251e11e2b5bd02d8746" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsAbstractGeometry::dimension</definition>
+        <argsstring>() const =0</argsstring>
+        <name>dimension</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a2d7dd889e5ca7916df5c2c06d50fa5eb">dimension</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a9d394ab02f9390777d19fdc95dc7d3c2">dimension</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1aa5fd934ec7e6e1e8b66769d309e9c872">dimension</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1aa5c846c772e6ade026e5dfce0f98f677">dimension</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a6a5d4d2df34b59d450700f33c7a76089">dimension</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a2b41a2f854cacc6438a87c94cb6fc8ea">dimension</reimplementedby>
+        <briefdescription>
+<para>Returns the inherent dimension of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>For example, this is 0 for a point geometry, 1 for a linestring and 2 for a polygon. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="161" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a196cb31fed9a15b9b342a4cca28d73a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractGeometry::draw</definition>
+        <argsstring>(QPainter &amp;p) const =0</argsstring>
+        <name>draw</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a028e3bf00e38b9052d7ddd818b98245a">draw</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a34c1aee58d62cfde9d05eba1ee88b94d">draw</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a115daabd801499f7a1cc65e18e8ff6be">draw</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a716fb1412709d27d876f0a62ae42242e">draw</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a335eb95c02ad8cd82fef981d14be7d1b">draw</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a69b4f2b17cf97040d6f55ed7bf03177b">draw</reimplementedby>
+        <param>
+          <type>QPainter &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Draws the geometry using the specified QPainter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination QPainter </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="310" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a119e7a6f1287bf23281d051d575994ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::dropMValue</definition>
+        <argsstring>()=0</argsstring>
+        <name>dropMValue</name>
+        <reimplementedby refid="classQgsCompoundCurve_1aa509370cd2ca62dc345c1821ecb8cf4c">dropMValue</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a75a4db5f22a9ab07f734c5a1c940a905">dropMValue</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a02484b4aaddf0dd1da8bab23ab818eb0">dropMValue</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ae3a7f34112ce8ffc63a3ac4909817d67">dropMValue</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a29d20191fbfd8da2f29184ad6d8c9985">dropMValue</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ad9766467ad555b51ffeea7d6cfbdfce4">dropMValue</reimplementedby>
+        <briefdescription>
+<para>Drops any measure values which exist in the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if m-values were present and have been removed </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a7312cb36669cfbc3030c0f867348ffe0" kindref="member">addMValue()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ad3592944bd8919d44a7a5c5e3f160899" kindref="member">dropZValue()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="563" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ad3592944bd8919d44a7a5c5e3f160899" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::dropZValue</definition>
+        <argsstring>()=0</argsstring>
+        <name>dropZValue</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a8ce440c1ff6cc4c095fe64354dfe5b67">dropZValue</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1ab8eaf5263a7eab9b57e454cbcce95a68">dropZValue</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a3b2e8804a3263cd698c8b6ad5f7b63c6">dropZValue</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a818134beb199c89ed072b9b3a2417b76">dropZValue</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1ae231f18ce0f9f02e28a4ae367b563b78">dropZValue</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a568fd6c91795448b7a9fd5da45fda2f9">dropZValue</reimplementedby>
+        <briefdescription>
+<para>Drops any z-dimensions which exist in the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if Z values were present and have been removed </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a07db82adbfcdb6f9aeb18d4639d2c141" kindref="member">addZValue()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a119e7a6f1287bf23281d051d575994ca" kindref="member">dropMValue()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="554" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ace16ad5e1ff5c0541da19e57861bc373" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsAbstractGeometry::filterVertices</definition>
+        <argsstring>(const std::function&lt; bool(const QgsPoint &amp;) &gt; &amp;filter)</argsstring>
+        <name>filterVertices</name>
+        <reimplementedby refid="classQgsMultiPoint_1a760873e229269f26a6d83f457040ce70">filterVertices</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a3d93ff9967e4e1439127560cd7886479">filterVertices</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a451ed627b57a5072b1b95c852f7bdebb">filterVertices</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a7976be10bdeeb278093762eef8e0bfd7">filterVertices</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a6d7774c696df2f84315fab9305a77c30">filterVertices</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a0bf734f1b7960359ed8ca98a6593c976">filterVertices</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1addde95ecc3bfc27134e909ab9c0ee0c2">filterVertices</reimplementedby>
+        <param>
+          <type>const std::function&lt; bool(const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;) &gt; &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+<para>Filters the vertices from the geometry in place, removing any which do not return true for the <emphasis>filter</emphasis> function check. </para>        </briefdescription>
+        <detaileddescription>
+<para>Has no meaning when called on a single point geometry.</para><para>Depending on the <emphasis>filter</emphasis> used, this may result in an invalid geometry.</para><para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="591" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="239" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a091bbdb232265ff282397d27a7a1029b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::fromWkb</definition>
+        <argsstring>(QgsConstWkbPtr &amp;wkb)=0</argsstring>
+        <name>fromWkb</name>
+        <reimplementedby refid="classQgsPolygon_1ac4cf3785a2b48a7eff17eb488a3692ff">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a26c480f014ac0e8175cea8dd561b9388">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a3e02fa817b0865b9c356c3526c3889cc">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1af6f000936142aef0a3b08c11a3402d1d">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a2ec7c22762bc30ce9943590cdf4d3df2">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a5d137d8b734c9a8375548ff7620d2cf3">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a0bb9694fbb2872148030b0650bf77ff4">fromWkb</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a3a1e5be8ef425f427e05236f1de9e79e">fromWkb</reimplementedby>
+        <param>
+          <type><ref refid="classQgsConstWkbPtr" kindref="compound">QgsConstWkbPtr</ref> &amp;</type>
+          <declname>wkb</declname>
+        </param>
+        <briefdescription>
+<para>Sets the geometry from a WKB string. </para>        </briefdescription>
+        <detaileddescription>
+<para>After successful read the wkb argument will be at the position where the reading has stopped. <simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ab3004c5748c9b014702da3f58fc54215" kindref="member">fromWkt</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="217" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ab3004c5748c9b014702da3f58fc54215" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::fromWkt</definition>
+        <argsstring>(const QString &amp;wkt)=0</argsstring>
+        <name>fromWkt</name>
+        <reimplementedby refid="classQgsMultiPolygon_1afd90e8b955a1770cc3f100a5c948ccee">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsMultiSurface_1a873d3ceb93b3f7b2aa469fd867e36bbc">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1aa960fc6fc78ab60d7eeaa93b19ef0b3d">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1a73bcfaf8057f32c773b9ccfad5812780">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1ae160a26e27db2e8bc8fe7c95427f72ab">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a00ecdda2d40e0a99e2ba0a06ba846633">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1aaa0326c52c866a5ad2c20e081fc66e17">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a06a494feff6686447e8c07a17babdc29">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a5669bb3efcae8ee48bb6773f346ed208">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a1441ad669422b59c866d6b431058e43e">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a2611b17bf71ed927352e27996333c979">fromWkt</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a02a70d0b8a09f9bc9d553e621452d5b2">fromWkt</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>wkt</declname>
+        </param>
+        <briefdescription>
+<para>Sets the geometry from a WKT string. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a091bbdb232265ff282397d27a7a1029b" kindref="member">fromWkb</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="223" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a55e56308b97d5635945a65b666ab19d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsAbstractGeometry::geometryType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>geometryType</name>
+        <reimplementedby refid="classQgsMultiSurface_1a63f220ec9a90fbedac36352cdf82c3f6">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsMultiPolygon_1abae23710f32a7cfe537548959b2bc0be">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1a18bfbccdfb5163e9c6c733777a10f9c2">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1af042bd39af2a20955cf10540dd8cc943">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1a2764f31ca39a55c23464ae803bdb1fba">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsPolygon_1a81ec43dfb363c00ade9be4c6fc1edc22">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a48a327b70a706f3989881f8cb6c87a30">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ab84f771933688bbafbfcfde7aba8ee14">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1aa55db2d1053b8c76a16c0e43bdafa104">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a06f29077199e0cf43d4752be891f4ffd">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a34b10b96bf974627da094f716ef10eeb">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1adc9d8015910f51ebbc0f5bba9cd0aef5">geometryType</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a8683e67565e73664a8b7566fd1c96a7e">geometryType</reimplementedby>
+        <briefdescription>
+<para>Returns a unique string representing the geometry type. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a8b8706728c90bc5c0e9c3ea3925b4453" kindref="member">wkbType</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a5c6589aaf5ddfc75c0e141438666ae5c" kindref="member">wktTypeStr</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="168" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ac5b4206ebdc39ca64dd0b3e826c7e1b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractGeometry::hasCurvedSegments</definition>
+        <argsstring>() const</argsstring>
+        <name>hasCurvedSegments</name>
+        <reimplementedby refid="classQgsCompoundCurve_1adaac614be0b79add625ab72d1d3878ae">hasCurvedSegments</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1adc11ac23535a3e3009de4ac4433f79b8">hasCurvedSegments</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a9f9f5b144e8c016766d8c2b23026f82f">hasCurvedSegments</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a1a7964ed8ee37f6334c234ea6e6fb484">hasCurvedSegments</reimplementedby>
+        <briefdescription>
+<para>Returns true if the geometry contains curved segments. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="440" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="294" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a81e51aa7a9d2100609c14d7420c8c7ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::insertVertex</definition>
+        <argsstring>(QgsVertexId position, const QgsPoint &amp;vertex)=0</argsstring>
+        <name>insertVertex</name>
+        <reimplementedby refid="classQgsTriangle_1a9aa1a37362514b8696547917e28e4c3b">insertVertex</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a10710a5fb2be0d195bff2cf2d27fb5b6">insertVertex</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1ae8dbe2964d9e74f3a6dc6c47d5fad3f1">insertVertex</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1aa18c5ca3384a296b6026f86abc2ed5d4">insertVertex</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1aa7285074d8c0b8dc0b1b0d68b3ddcd59">insertVertex</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a2a12dad7ff419ded43f307a718099804">insertVertex</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1acb1f63dd2e2d413a426192dd86f6bfe8">insertVertex</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a vertex into the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vertex id for position of inserted vertex </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vertex to insert </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if insert was successful </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a092a0395c14e70e288665fa47bb2fd22" kindref="member">moveVertex</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ac52b5975cd6e6fd54fcc039fb8614c6e" kindref="member">deleteVertex</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="381" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a414275940aae6a3a8a7f0adeeefcfdee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractGeometry::is3D</definition>
+        <argsstring>() const</argsstring>
+        <name>is3D</name>
+        <briefdescription>
+<para>Returns true if the geometry is 3D and contains a z-value. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a244df46423e297f76e6f8f0cbc39db6d" kindref="member">isMeasure</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="188" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="188" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a9d211f0b36027d9a9f2984624338362d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractGeometry::isEmpty</definition>
+        <argsstring>() const</argsstring>
+        <name>isEmpty</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a5021580f3fc85be2aa74113baeec446c">isEmpty</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a66c43bbc51d794c29518c728c5cdb373">isEmpty</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a4dfee22e22c5fa81d1e9dde0d28303da">isEmpty</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a33916ade1e892095acca02edff9ba173">isEmpty</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1abd73219032dfe02d9bd0cc0533d1cba2">isEmpty</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a4ea181bb5ed27a4fbdb42bac4ecbb8ee">isEmpty</reimplementedby>
+        <briefdescription>
+<para>Returns true if the geometry is empty. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="435" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="287" bodyend="292"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a244df46423e297f76e6f8f0cbc39db6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractGeometry::isMeasure</definition>
+        <argsstring>() const</argsstring>
+        <name>isMeasure</name>
+        <briefdescription>
+<para>Returns true if the geometry contains m values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a414275940aae6a3a8a7f0adeeefcfdee" kindref="member">is3D</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="197" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a92a705bc19d95e1d6c0fc1bc407ab783" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double QgsAbstractGeometry::length</definition>
+        <argsstring>() const</argsstring>
+        <name>length</name>
+        <reimplementedby refid="classQgsCompoundCurve_1ae567b2c368dc5e458afe884e550ecf7d">length</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a04a8b2334f7e7ca5d4bd520bed943b91">length</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1aa25b0978988c906d2affb4e432e6c0f7">length</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a20ece566c14522528db6dd4c218b1b6e">length</reimplementedby>
+        <briefdescription>
+<para>Returns the length of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aeb48c72d10d875e97e516e6f7495438e" kindref="member">area()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a61a15d374161fccc1401f9971e93f2b7" kindref="member">perimeter()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="407" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="131" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a092a0395c14e70e288665fa47bb2fd22" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::moveVertex</definition>
+        <argsstring>(QgsVertexId position, const QgsPoint &amp;newPos)=0</argsstring>
+        <name>moveVertex</name>
+        <reimplementedby refid="classQgsTriangle_1a42d87d88950a1b8f8831efb014afbb3b">moveVertex</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a7f2230351102d08198259261d2009154">moveVertex</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a125a122e0af6d9003c7ee2e835454bd1">moveVertex</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a877d82f7cd78308f98cd4ace5cfe87ff">moveVertex</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a0f32ddebbd3cfac8c87afd821d1a2178">moveVertex</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a906c2ce03dbcf320de972785272cdc40">moveVertex</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a1f2e17a8c4bc1b2c41ffb17db6a7298f">moveVertex</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>newPos</declname>
+        </param>
+        <briefdescription>
+<para>Moves a vertex within the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>vertex id for vertex to move </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newPos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new position of vertex </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if move was successful </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a81e51aa7a9d2100609c14d7420c8c7ff" kindref="member">insertVertex</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ac52b5975cd6e6fd54fcc039fb8614c6e" kindref="member">deleteVertex</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="391" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a64c5b74e8ce6ccbf46fcb8ca17505891" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int QgsAbstractGeometry::nCoordinates</definition>
+        <argsstring>() const</argsstring>
+        <name>nCoordinates</name>
+        <reimplementedby refid="classQgsMultiPoint_1a9faf83cbd74f87ec278115fa084a2b2b">nCoordinates</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a8ac7b8232b91ef97555b27c9ce00fd9d">nCoordinates</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a658be14b7f3f12fcdfab754d4519f83a">nCoordinates</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1acd02d56f35297cee8cc583d9b2aea334">nCoordinates</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a5de1e0f2bd3b2e33eec186f85f875fe4">nCoordinates</reimplementedby>
+        <briefdescription>
+<para>Returns the number of nodes contained in the geometry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="348" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="115" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1af5ec97c5568c257e0284b733a1c86d82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::nextVertex</definition>
+        <argsstring>(QgsVertexId &amp;id, QgsPoint &amp;vertex) const =0</argsstring>
+        <name>nextVertex</name>
+        <reimplementedby refid="classQgsCurve_1acc25375b4329d5a46b2d91aa2c9dbdf8">nextVertex</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a56fb958648f83b6a453adcb9302cf762">nextVertex</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1aa1ad12714c3a7f25a01569c28ee70df8">nextVertex</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1aedd4f26134472a45ea8fb54f8bfd27e3">nextVertex</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref> &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Returns next vertex id and coordinates. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>initial value should be the starting vertex id. The next vertex id will be stored in this variable if found. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>container for found node </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>false if at end </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="331" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a7af4753f5c0aa85fc4457488dcbad57c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::operator!=</definition>
+        <argsstring>(const QgsAbstractGeometry &amp;other) const =0</argsstring>
+        <name>operator!=</name>
+        <reimplementedby refid="classQgsCurvePolygon_1a464014c611b68364f45e6e984e1d609e">operator!=</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ad9811622cc11851101ef3f747919eeab">operator!=</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1abb68841f03e7a44b95ba693558026dc4">operator!=</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1ae8cec10583e770fba3408d49f6e151ce">operator!=</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="138" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a72e38668113433c7a5ae2e43d9086654" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &amp;</type>
+        <definition>QgsAbstractGeometry &amp; QgsAbstractGeometry::operator=</definition>
+        <argsstring>(const QgsAbstractGeometry &amp;geom)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &amp;</type>
+          <declname>geom</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="135" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="32" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ae46cc147b9834ca5d0ca66cfe5d17575" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::operator==</definition>
+        <argsstring>(const QgsAbstractGeometry &amp;other) const =0</argsstring>
+        <name>operator==</name>
+        <reimplementedby refid="classQgsCurvePolygon_1aef14f976a343dcd43d25386edd4d6927">operator==</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a93ab26e6541cecbcde6785bf53f2043b">operator==</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a9864f10d2b332647fad23fb557e81be3">operator==</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a116b79816221173f90736dc7b73ae2f4">operator==</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ab4ae6761b862c334114afe31a8a89fdf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsAbstractGeometry::partCount</definition>
+        <argsstring>() const =0</argsstring>
+        <name>partCount</name>
+        <reimplementedby refid="classQgsCurve_1a41f40653d4295731df770e32ca18999b">partCount</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1acefcf20c65327e9782619425ea468e23">partCount</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a63666ac70e42aea3b178c5545eb650ce">partCount</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1af679c870bae3affb083d4901202982d7">partCount</reimplementedby>
+        <briefdescription>
+<para>Returns count of parts contained in the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a234be132c5f849e44001a998e239fc3f" kindref="member">vertexCount</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a0632546e8330bfa94cffa6e7bc8313b2" kindref="member">ringCount</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="525" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1af50be9d5399768d25a136cea07f608f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometryConstPartIterator" kindref="compound">QgsGeometryConstPartIterator</ref></type>
+        <definition>QgsGeometryConstPartIterator QgsAbstractGeometry::parts</definition>
+        <argsstring>() const</argsstring>
+        <name>parts</name>
+        <briefdescription>
+<para>Returns Java-style iterator for traversal of parts of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>This iterator returns read-only references to parts and cannot be used to modify the parts.</para><para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="677" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="260" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ab2118f1df1d278df8cecb46c99810d67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsGeometryPartIterator" kindref="compound">QgsGeometryPartIterator</ref></type>
+        <definition>QgsGeometryPartIterator QgsAbstractGeometry::parts</definition>
+        <argsstring>()</argsstring>
+        <name>parts</name>
+        <briefdescription>
+<para>Returns Java-style iterator for traversal of parts of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>This iterator can safely be used to modify parts of the geometry.</para><para><itemizedlist>
+<listitem><para>Example: <programlisting><codeline><highlight class="comment">#<sp/>print<sp/>the<sp/>WKT<sp/>representation<sp/>of<sp/>each<sp/>part<sp/>in<sp/>a<sp/>multi-point<sp/>geometry</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">geometry<sp/>=<sp/><ref refid="classQgsMultiPoint_1aa960fc6fc78ab60d7eeaa93b19ef0b3d" kindref="member">QgsMultiPoint.fromWkt</ref>(<sp/></highlight><highlight class="stringliteral">&apos;MultiPoint(<sp/>0<sp/>0,<sp/>1<sp/>1,<sp/>2<sp/>2)&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>part<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>geometry.parts():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>print(part.asWkt())</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>single<sp/>part<sp/>geometries<sp/>only<sp/>have<sp/>one<sp/>part<sp/>-<sp/>this<sp/>loop<sp/>will<sp/>iterate<sp/>once<sp/>only</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">geometry<sp/>=<sp/><ref refid="classQgsLineString_1a02a70d0b8a09f9bc9d553e621452d5b2" kindref="member">QgsLineString.fromWkt</ref>(<sp/></highlight><highlight class="stringliteral">&apos;LineString(<sp/>0<sp/>0,<sp/>10<sp/>10<sp/>)&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>part<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>geometry.parts():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>print(part.asWkt())</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>parts<sp/>can<sp/>be<sp/>modified<sp/>during<sp/>the<sp/>iteration</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">geometry<sp/>=<sp/><ref refid="classQgsMultiPoint_1aa960fc6fc78ab60d7eeaa93b19ef0b3d" kindref="member">QgsMultiPoint.fromWkt</ref>(<sp/></highlight><highlight class="stringliteral">&apos;MultiPoint(<sp/>0<sp/>0,<sp/>1<sp/>1,<sp/>2<sp/>2)&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>part<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>geometry.parts():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>part.transform(ct)</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>part<sp/>iteration<sp/>can<sp/>also<sp/>be<sp/>combined<sp/>with<sp/>vertex<sp/>iteration</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">geometry<sp/>=<sp/><ref refid="classQgsMultiPolygon_1afd90e8b955a1770cc3f100a5c948ccee" kindref="member">QgsMultiPolygon.fromWkt</ref>(<sp/></highlight><highlight class="stringliteral">&apos;MultiPolygon(((<sp/>0<sp/>0,<sp/>0<sp/>10,<sp/>10<sp/>10,<sp/>10<sp/>0,<sp/>0<sp/>0<sp/>),(<sp/>5<sp/>5,<sp/>5<sp/>6,<sp/>6<sp/>6,<sp/>6<sp/>5,<sp/>5<sp/>5)),((20<sp/>2,<sp/>22<sp/>2,<sp/>22<sp/>4,<sp/>20<sp/>4,<sp/>20<sp/>2)))&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>part<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>geometry.parts():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>v<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>part.vertices():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>print(v.x(),<sp/>v.y())</highlight></codeline>
+</programlisting></para></listitem></itemizedlist>
+</para><para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a1f8cda068565f35313215df729a5971e" kindref="member">vertices()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="849" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="255" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1af309b3f75d6cb473a7ce8518718f6130" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry_1_1part__iterator" kindref="compound">part_iterator</ref></type>
+        <definition>part_iterator QgsAbstractGeometry::parts_begin</definition>
+        <argsstring>()</argsstring>
+        <name>parts_begin</name>
+        <briefdescription>
+<para>Returns STL-style iterator pointing to the first part of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a911e0222e26032cca995fc84005a8288" kindref="member">parts_end()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ab2118f1df1d278df8cecb46c99810d67" kindref="member">parts()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="655" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="655" bodyend="658"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a911e0222e26032cca995fc84005a8288" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry_1_1part__iterator" kindref="compound">part_iterator</ref></type>
+        <definition>QgsAbstractGeometry::part_iterator QgsAbstractGeometry::parts_end</definition>
+        <argsstring>()</argsstring>
+        <name>parts_end</name>
+        <briefdescription>
+<para>Returns STL-style iterator pointing to the imaginary part after the last part of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1af309b3f75d6cb473a7ce8518718f6130" kindref="member">parts_begin()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ab2118f1df1d278df8cecb46c99810d67" kindref="member">parts()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="668" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="249" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a61a15d374161fccc1401f9971e93f2b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>double QgsAbstractGeometry::perimeter</definition>
+        <argsstring>() const</argsstring>
+        <name>perimeter</name>
+        <reimplementedby refid="classQgsCurvePolygon_1a781232cc2696f16c800d213b5c13bb78">perimeter</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a0cf2c58917bdf5a7d30150748e8da09e">perimeter</reimplementedby>
+        <briefdescription>
+<para>Returns the perimeter of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1aeb48c72d10d875e97e516e6f7495438e" kindref="member">area()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a92a705bc19d95e1d6c0fc1bc407ab783" kindref="member">length()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="414" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="136" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ae5a6fc4ba09589575d1826ff67705754" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractGeometry::removeDuplicateNodes</definition>
+        <argsstring>(double epsilon=4 *std::numeric_limits&lt; double &gt;::epsilon(), bool useZValues=false)=0</argsstring>
+        <name>removeDuplicateNodes</name>
+        <reimplementedby refid="classQgsCurvePolygon_1acdde97c782a08b58ee08af1d70e22750">removeDuplicateNodes</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a13f9f400a700c4dbcc974feeae6f597e">removeDuplicateNodes</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a4c8102159929bf43ff5bdef1db74674f">removeDuplicateNodes</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a698ca48fa2e1aff3a3ebda0d495ccd8b">removeDuplicateNodes</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1afc8d94987d752264120e425131998c6c">removeDuplicateNodes</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a80c37ee89581e5eec867661dcf88ad84">removeDuplicateNodes</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>epsilon</declname>
+          <defval>4 *std::numeric_limits&lt; double &gt;::epsilon()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>useZValues</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Removes duplicate nodes from the geometry, wherever removing the nodes does not result in a degenerate geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>epsilon</emphasis> parameter specifies the tolerance for coordinates when determining that vertices are identical.</para><para>By default, z values are not considered when detecting duplicate nodes. E.g. two nodes with the same x and y coordinate but different z values will still be considered duplicate and one will be removed. If <emphasis>useZValues</emphasis> is true, then the z values are also tested and nodes with the same x and y but different z will be maintained.</para><para>Note that duplicate nodes are not tested between different parts of a multipart geometry. E.g. a multipoint geometry with overlapping points will not be changed by this method.</para><para>The function will return true if nodes were removed, or false if no duplicate nodes were found.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="499" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a0632546e8330bfa94cffa6e7bc8313b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsAbstractGeometry::ringCount</definition>
+        <argsstring>(int part=0) const =0</argsstring>
+        <name>ringCount</name>
+        <reimplementedby refid="classQgsCurve_1ab03c4a8849d77f0100c733c989cc0d44">ringCount</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a6bc2be4088d585dbbaeb4d3d0378c443">ringCount</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1aa5fb64dd6fd0dbea79b517dd573c9018">ringCount</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a77a6e2353b6bb8801406fd4671ccb467">ringCount</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>part</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Returns the number of rings of which this geometry is built. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="518" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a2074dabaf33c1ba3a4407aff45b75a59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>QgsAbstractGeometry * QgsAbstractGeometry::segmentize</definition>
+        <argsstring>(double tolerance=M_PI/180., SegmentationToleranceType toleranceType=MaximumAngle) const</argsstring>
+        <name>segmentize</name>
+        <reimplementedby refid="classQgsCurve_1a46eed2c49c816d14a6cc4674f60ea753">segmentize</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a2cf948e4948713c5831a9d4579ec0f5b">segmentize</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1aaf27c790d17f6d64a14d16d565a87ff6">segmentize</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>tolerance</declname>
+          <defval>M_PI/180.</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96" kindref="member">SegmentationToleranceType</ref></type>
+          <declname>toleranceType</declname>
+          <defval><ref refid="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96ae179641e9ac6aafe1005da4b6f7c7618" kindref="member">MaximumAngle</ref></defval>
+        </param>
+        <briefdescription>
+<para>Returns a version of the geometry without curves. </para>        </briefdescription>
+        <detaileddescription>
+<para>Caller takes ownership of the returned geometry. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tolerance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>segmentation tolerance </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>toleranceType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>maximum segmentation angle or maximum difference between approximation and curve </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="448" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="299" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ae1afc6e953981f8929312ad6b558fe2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double QgsAbstractGeometry::segmentLength</definition>
+        <argsstring>(QgsVertexId startVertex) const =0</argsstring>
+        <name>segmentLength</name>
+        <reimplementedby refid="classQgsMultiPoint_1ac58b30218c457c157849a14680c45b14">segmentLength</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1a597b59684847591e5903c781f7c66e94">segmentLength</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a46d12002ccce9d42a8fc23bd080a8928">segmentLength</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ae02d7937d2c9fbfc27769b679537aead">segmentLength</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1af8dcb05c24bc294403f0aa5ee6e67489">segmentLength</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1adf6a8b20318b2f17d7b0eccb1b3b4212">segmentLength</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a001b3b11f4f6db7bd5cb3b2ec8c58e0a">segmentLength</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>startVertex</declname>
+        </param>
+        <briefdescription>
+<para>Returns the length of the segment of the geometry which begins at <emphasis>startVertex</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="427" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a78bedc13b410bb6e442fa19eefbf6983" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>virtual QgsAbstractGeometry* QgsAbstractGeometry::snappedToGrid</definition>
+        <argsstring>(double hSpacing, double vSpacing, double dSpacing=0, double mSpacing=0) const =0</argsstring>
+        <name>snappedToGrid</name>
+        <reimplementedby refid="classQgsCurvePolygon_1a401b5f4ff00899d298e3bcfac10502c3">snappedToGrid</reimplementedby>
+        <reimplementedby refid="classQgsCompoundCurve_1af63dcf78f1a87642723308fd55d3d879">snappedToGrid</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a1cb3aa2a6b9508b5dbbc20e537a1c2cf">snappedToGrid</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a13888ceb0024d43745ce2ca64c0fad6f">snappedToGrid</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1ab4e496cc8f2d652fa37827f445255769">snappedToGrid</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a082aaf07742c88de1ba0b8414bbaeeb8">snappedToGrid</reimplementedby>
+        <param>
+          <type>double</type>
+          <declname>hSpacing</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>vSpacing</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>dSpacing</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>mSpacing</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Makes a new geometry with all the points or vertices snapped to the closest point of the grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership is transferred to the caller.</para><para>If the gridified geometry could not be calculated a nullptr will be returned. It may generate an invalid geometry (in some corner cases). It can also be thought as rounding the edges and it may be useful for removing errors. Example: <programlisting><codeline><highlight class="normal">geometry-&gt;snappedToGrid(1,<sp/>1);</highlight></codeline>
+</programlisting> In this case we use a 2D grid of 1x1 to gridify. In this case, it can be thought like rounding the x and y of all the points/vertices to full units (remove all decimals). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hSpacing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Horizontal spacing of the grid (x axis). 0 to disable. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>vSpacing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vertical spacing of the grid (y axis). 0 to disable. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dSpacing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Depth spacing of the grid (z axis). 0 (default) to disable. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mSpacing</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Custom dimension spacing of the grid (m axis). 0 (default) to disable. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="477" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a85289f1e45950856e54fdf21856ad6bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractGeometry::swapXy</definition>
+        <argsstring>()=0</argsstring>
+        <name>swapXy</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a76e79a4fc3d00aa90f169403eb5098b7">swapXy</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a3b9e88ae912e7e2435267dbf64b18de5">swapXy</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1abaf5ea73b8fda94a00680f8cc33877e3">swapXy</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a329f733647a9472dd65a2fed5c5a0320">swapXy</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1ad0b3661b698cd9b2b00a46c01ef85951">swapXy</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a0cdd451b0499c02f16e154d8969a80bd">swapXy</reimplementedby>
+        <briefdescription>
+<para>Swaps the x and y coordinates from the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>This can be used to repair geometries which have accidentally had their latitude and longitude coordinates reversed. <simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="571" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a506550131e5b8c8b3bf289d34909699c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>virtual QgsAbstractGeometry* QgsAbstractGeometry::toCurveType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>toCurveType</name>
+        <reimplementedby refid="classQgsMultiSurface_1ad2e27b3aaefb7d43c54d98adf9ebc6a4">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsMultiPoint_1aef81dbd720eeb66742dc790c90530090">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsMultiCurve_1a6bf76935d76675d372af7261cbddec54">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsPolygon_1a010b93e106f255331d74e18ec0086a6e">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsMultiPolygon_1a694022a4bbe7dba2fdb75baad4dd523b">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsMultiLineString_1a4bc0b9d3a778c176fc753c5dadae8035">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsTriangle_1a6ede8bd7df383728b46b0a7672cd580d">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a966574c2896195b5fc65fc15f07be58a">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a017a007246410178ca8903772ee356f3">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a506dd0af4252d74375e1cc3c94f0063f">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a3628b484f3de4cd16d3381cd03703b3e">toCurveType</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1aa30feffacd78b79e62590df92fa04460">toCurveType</reimplementedby>
+        <briefdescription>
+<para>Returns the geometry converted to the more generic curve type. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. <ref refid="classQgsLineString" kindref="compound">QgsLineString</ref> -&gt; <ref refid="classQgsCompoundCurve" kindref="compound">QgsCompoundCurve</ref>, <ref refid="classQgsPolygon" kindref="compound">QgsPolygon</ref> -&gt; <ref refid="classQgsCurvePolygon" kindref="compound">QgsCurvePolygon</ref>, <ref refid="classQgsMultiLineString" kindref="compound">QgsMultiLineString</ref> -&gt; <ref refid="classQgsMultiCurve" kindref="compound">QgsMultiCurve</ref>, <ref refid="classQgsMultiPolygon" kindref="compound">QgsMultiPolygon</ref> -&gt; <ref refid="classQgsMultiSurface" kindref="compound">QgsMultiSurface</ref> <simplesect kind="return"><para>the converted geometry. Caller takes ownership </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="456" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a87d89f92efa9db41483f00a0f1e0e302" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractGeometry::transform</definition>
+        <argsstring>(const QgsCoordinateTransform &amp;ct, QgsCoordinateTransform::TransformDirection d=QgsCoordinateTransform::ForwardTransform, bool transformZ=false) SIP_THROW(QgsCsException)=0</argsstring>
+        <name>transform</name>
+        <reimplementedby refid="classQgsCompoundCurve_1ae021364d30ade490d2616e4a97ec6bb5">transform</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1ac190378cf595d697195d01a147239ccd">transform</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a76670701979bdbfbea3f508014e470d7">transform</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a9fc788988ddcc076da9e435ed56cedf3">transform</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1afa511445b91cad28178838d8848edd38">transform</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a3759d6aad911b5dbe6e73d379d266109">transform</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5" kindref="member">QgsCoordinateTransform::TransformDirection</ref></type>
+          <declname>d</declname>
+          <defval><ref refid="classQgsCoordinateTransform_1a8bc24d9a900ec38443bb573eb77e66f5a1bae13b526add06d1a5f42dae9f67c9e" kindref="member">QgsCoordinateTransform::ForwardTransform</ref></defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>transformZ</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Transforms the geometry using a coordinate transform. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>coordinate transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>transformation direction </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transformZ</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to also transform z coordinates. This requires that the z coordinates in the geometry represent height relative to the vertical datum of the source CRS (generally ellipsoidal heights) and are expressed in its vertical units (generally meters). If false, then z coordinates will not be changed by the transform. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="295" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ab21e149ab74999808bd266820100fa6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsAbstractGeometry::transform</definition>
+        <argsstring>(const QTransform &amp;t, double zTranslate=0.0, double zScale=1.0, double mTranslate=0.0, double mScale=1.0)=0</argsstring>
+        <name>transform</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a0c35b0135016fb315cd83013f6c485a0">transform</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1ade5f512ee3d8815b2f2eefe6e82b8cdb">transform</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a68201c745e70baae7f4d0a18837cf591">transform</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ab1971bcb08fded2162de8fbb1549cf35">transform</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1acbec9a30303207527c6d89d33354ef0b">transform</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1a7fadac8ea7ba63965e9336a58cd8febe">transform</reimplementedby>
+        <param>
+          <type>const QTransform &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>zTranslate</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>zScale</declname>
+          <defval>1.0</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>mTranslate</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>mScale</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+<para>Transforms the x and y components of the geometry using a QTransform object <emphasis>t</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Optionally, the geometry&apos;s z values can be scaled via <emphasis>zScale</emphasis> and translated via <emphasis>zTranslate</emphasis>. Similarly, m-values can be scaled via <emphasis>mScale</emphasis> and translated via <emphasis>mTranslate</emphasis>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="303" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a33ad8f7d7022716968a1dea76e830607" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsAbstractGeometry::transformVertices</definition>
+        <argsstring>(const std::function&lt; QgsPoint(const QgsPoint &amp;) &gt; &amp;transform)</argsstring>
+        <name>transformVertices</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a5c370b875980ee9a9412f07309147323">transformVertices</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1afe121c49976e75d5ddbed8cffcd39cab">transformVertices</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a7853b6e3722a0a4fd052d10668cd68f7">transformVertices</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1abfcfb72b939b29950c1eac0212c51e28">transformVertices</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1ab381af490b807cc36e607c696a959cdb">transformVertices</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ae6068af957be8986ef946763d477e86b">transformVertices</reimplementedby>
+        <param>
+          <type>const std::function&lt; <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref>(const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;) &gt; &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <briefdescription>
+<para>Transforms the vertices from the geometry in place, applying the <emphasis>transform</emphasis> function to every vertex. </para>        </briefdescription>
+        <detaileddescription>
+<para>Depending on the <emphasis>transform</emphasis> used, this may result in an invalid geometry.</para><para>Transform functions are not permitted to alter the dimensionality of vertices. If a transform which adds (or removes) z/m values is desired, first call the corresponding <ref refid="classQgsAbstractGeometry_1a07db82adbfcdb6f9aeb18d4639d2c141" kindref="member">addZValue()</ref> or <ref refid="classQgsAbstractGeometry_1a7312cb36669cfbc3030c0f867348ffe0" kindref="member">addMValue()</ref> function to change the geometry&apos;s dimensionality and then transform.</para><para><simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="607" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="244" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a0e7b77f10a7a29bb2c184c7098f57456" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double QgsAbstractGeometry::vertexAngle</definition>
+        <argsstring>(QgsVertexId vertex) const =0</argsstring>
+        <name>vertexAngle</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a52725d3f4323b0ff86e75033de76093f">vertexAngle</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1ab67f8f31bf980f7783daf068aafdce7b">vertexAngle</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ae96598dd245a85248c959e655702cf06">vertexAngle</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a197a690134c62975f487c52039b39cc3">vertexAngle</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a0eb0b85af07a8b91e4781c88e6b3a3c1">vertexAngle</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1aa05e33a790fc6cc2a9ccf6cdfd5c65eb">vertexAngle</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+<para>Returns approximate angle at a vertex. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually the average angle between adjacent segments, and can be pictured as the orientation of a line following the curvature of the geometry at the specified vertex. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vertex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vertex id </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>rotation in radians, clockwise from north </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="508" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a665ef655c903c02e6ae5d0d211a04ecb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref></type>
+        <definition>virtual QgsPoint QgsAbstractGeometry::vertexAt</definition>
+        <argsstring>(QgsVertexId id) const =0</argsstring>
+        <name>vertexAt</name>
+        <reimplementedby refid="classQgsCurve_1a7cb8de691213951ba5f699cdfa4d2a38">vertexAt</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1ab435c1428e3afe7acaf25e9f0d7c01f1">vertexAt</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1aa3506aa1f751497834f9e5ae141b769f">vertexAt</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a867d213aac0648d3b11aa948576b9c82">vertexAt</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Returns the point corresponding to a specified vertex id. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="353" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a234be132c5f849e44001a998e239fc3f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsAbstractGeometry::vertexCount</definition>
+        <argsstring>(int part=0, int ring=0) const =0</argsstring>
+        <name>vertexCount</name>
+        <reimplementedby refid="classQgsCurve_1a7beaa860c0dbf638e39e5c89cb4b8700">vertexCount</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a336ef37653e40d4490fd291bd5ec079d">vertexCount</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a38c658ff7734594bcf5cba17a4d8db78">vertexCount</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1ac9f58c31d3b557133ff4809beb322a92">vertexCount</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>part</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ring</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Returns the number of vertices of which this geometry is built. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="513" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a0b9d10657e010af6f6bf0e5608c3fe24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int QgsAbstractGeometry::vertexNumberFromVertexId</definition>
+        <argsstring>(QgsVertexId id) const =0</argsstring>
+        <name>vertexNumberFromVertexId</name>
+        <reimplementedby refid="classQgsMultiPoint_1a97616d3f3e7057074885fe059ea58e5f">vertexNumberFromVertexId</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a44bf079692bfc71e0f5adca88720e424">vertexNumberFromVertexId</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a3566cd6937f84f939176f616f78deac6">vertexNumberFromVertexId</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ab1ffe1f4e1b6de29b3f1d50c224d1eca">vertexNumberFromVertexId</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1abc680ecbd5f9d800f61b551406e5b49e">vertexNumberFromVertexId</reimplementedby>
+        <param>
+          <type><ref refid="structQgsVertexId" kindref="compound">QgsVertexId</ref></type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Returns the vertex number corresponding to a vertex <emphasis>id</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The vertex numbers start at 0, so a return value of 0 corresponds to the first vertex.</para><para>Returns -1 if a corresponding vertex could not be found.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="322" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a1f8cda068565f35313215df729a5971e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsVertexIterator" kindref="compound">QgsVertexIterator</ref></type>
+        <definition>QgsVertexIterator QgsAbstractGeometry::vertices</definition>
+        <argsstring>() const</argsstring>
+        <name>vertices</name>
+        <briefdescription>
+<para>Returns a read-only, Java-style iterator for traversal of vertices of all the geometry, including all geometry parts and rings. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>The iterator returns a copy of individual vertices, and accordingly geometries cannot be modified using the iterator. See <ref refid="classQgsAbstractGeometry_1a33ad8f7d7022716968a1dea76e830607" kindref="member">transformVertices()</ref> for a safe method to modify vertices &quot;in-place&quot;.</para></simplesect>
+<itemizedlist>
+<listitem><para>Example: <programlisting><codeline><highlight class="comment">#<sp/>print<sp/>the<sp/>x<sp/>and<sp/>y<sp/>coordinate<sp/>for<sp/>each<sp/>vertex<sp/>in<sp/>a<sp/>LineString</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">geometry<sp/>=<sp/><ref refid="classQgsLineString_1a02a70d0b8a09f9bc9d553e621452d5b2" kindref="member">QgsLineString.fromWkt</ref>(<sp/></highlight><highlight class="stringliteral">&apos;LineString(<sp/>0<sp/>0,<sp/>1<sp/>1,<sp/>2<sp/>2)&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>v<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>geometry.vertices():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>print(v.x(),<sp/>v.y())</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">#<sp/>vertex<sp/>iteration<sp/>includes<sp/>all<sp/>parts<sp/>and<sp/>rings</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">geometry<sp/>=<sp/><ref refid="classQgsMultiPolygon_1afd90e8b955a1770cc3f100a5c948ccee" kindref="member">QgsMultiPolygon.fromWkt</ref>(<sp/></highlight><highlight class="stringliteral">&apos;MultiPolygon(((<sp/>0<sp/>0,<sp/>0<sp/>10,<sp/>10<sp/>10,<sp/>10<sp/>0,<sp/>0<sp/>0<sp/>),(<sp/>5<sp/>5,<sp/>5<sp/>6,<sp/>6<sp/>6,<sp/>6<sp/>5,<sp/>5<sp/>5)),((20<sp/>2,<sp/>22<sp/>2,<sp/>22<sp/>4,<sp/>20<sp/>4,<sp/>20<sp/>2)))&apos;</highlight><highlight class="normal"><sp/>)</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>v<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/>geometry.vertices():</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>print(v.x(),<sp/>v.y())</highlight></codeline>
+</programlisting></para></listitem></itemizedlist>
+</para><para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ab2118f1df1d278df8cecb46c99810d67" kindref="member">parts()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="874" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="271" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ac391bce2a1a06eceffaccf6d731beb52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry_1_1vertex__iterator" kindref="compound">vertex_iterator</ref></type>
+        <definition>vertex_iterator QgsAbstractGeometry::vertices_begin</definition>
+        <argsstring>() const</argsstring>
+        <name>vertices_begin</name>
+        <briefdescription>
+<para>Returns STL-style iterator pointing to the first vertex of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a14ad1c06073e0933a32b9b05f7c599a8" kindref="member">vertices_end()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a1f8cda068565f35313215df729a5971e" kindref="member">vertices()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="798" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="798" bodyend="801"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a14ad1c06073e0933a32b9b05f7c599a8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsAbstractGeometry_1_1vertex__iterator" kindref="compound">vertex_iterator</ref></type>
+        <definition>vertex_iterator QgsAbstractGeometry::vertices_end</definition>
+        <argsstring>() const</argsstring>
+        <name>vertices_end</name>
+        <briefdescription>
+<para>Returns STL-style iterator pointing to the imaginary vertex after the last vertex of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1ac391bce2a1a06eceffaccf6d731beb52" kindref="member">vertices_begin()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a1f8cda068565f35313215df729a5971e" kindref="member">vertices()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="811" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="811" bodyend="814"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a8b8706728c90bc5c0e9c3ea3925b4453" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+        <definition>QgsWkbTypes::Type QgsAbstractGeometry::wkbType</definition>
+        <argsstring>() const</argsstring>
+        <name>wkbType</name>
+        <briefdescription>
+<para>Returns the WKB type of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a55e56308b97d5635945a65b666ab19d5" kindref="member">geometryType</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a5c6589aaf5ddfc75c0e141438666ae5c" kindref="member">wktTypeStr</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="175" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a5c6589aaf5ddfc75c0e141438666ae5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsAbstractGeometry::wktTypeStr</definition>
+        <argsstring>() const</argsstring>
+        <name>wktTypeStr</name>
+        <briefdescription>
+<para>Returns the WKT type string of the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a55e56308b97d5635945a65b666ab19d5" kindref="member">geometryType</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsAbstractGeometry_1a8b8706728c90bc5c0e9c3ea3925b4453" kindref="member">wkbType</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="146" bodyend="154"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a30243090ed9158f111a0637315112c30" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsAbstractGeometry::calculateBoundingBox</definition>
+        <argsstring>() const</argsstring>
+        <name>calculateBoundingBox</name>
+        <reimplementedby refid="classQgsCompoundCurve_1a937559258a5a2d4328fa5cf1d2a7d511">calculateBoundingBox</reimplementedby>
+        <reimplementedby refid="classQgsCircularString_1a61a6e02f20abdef96321716f9617dc21">calculateBoundingBox</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1a4121043bdbb633e1491b7b52549f1571">calculateBoundingBox</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1aabf62f715fca9cecf18e04d2a3404158">calculateBoundingBox</reimplementedby>
+        <reimplementedby refid="classQgsLineString_1ad7e50ac91269f90d53fe849d18960228">calculateBoundingBox</reimplementedby>
+        <briefdescription>
+<para>Default calculator for the minimal bounding box for the geometry. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes should override this method if a more efficient bounding box calculation is available. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="926" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="84" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a323a213bdeb27cafbcc9f901656aed3f" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int QgsAbstractGeometry::childCount</definition>
+        <argsstring>() const</argsstring>
+        <name>childCount</name>
+        <reimplementedby refid="classQgsCurve_1a4e9b6c6f6ecbb2394f4965db5278bd74">childCount</reimplementedby>
+        <reimplementedby refid="classQgsCurvePolygon_1ac26c665dabe48697825f5918d719a030">childCount</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a9f88dfd24bad5a935f6a27af533e543e">childCount</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1abcbf55a33f5376ad6932aee9dfd6b407">childCount</reimplementedby>
+        <briefdescription>
+<para>Returns number of child geometries (for geometries with child geometries) or child points (for geometries without child geometries - i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>curve / point) <simplesect kind="note"><para>used for <ref refid="classQgsAbstractGeometry_1_1vertex__iterator" kindref="compound">vertex_iterator</ref> implementation </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="898" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="898" bodyend="898"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1acb56ca5e94987b9cb9fdf8f5530859ea" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+        <definition>virtual QgsAbstractGeometry* QgsAbstractGeometry::childGeometry</definition>
+        <argsstring>(int index) const</argsstring>
+        <name>childGeometry</name>
+        <reimplementedby refid="classQgsCurvePolygon_1ae529ee3f46bf39807a0095583696f2e5">childGeometry</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a743a752895e082c218eb8eaaa0f971e1">childGeometry</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns pointer to child geometry (for geometries with child geometries - i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>geom. collection / polygon) <simplesect kind="note"><para>used for <ref refid="classQgsAbstractGeometry_1_1vertex__iterator" kindref="compound">vertex_iterator</ref> implementation </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="905" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="905" bodyend="905"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a02138fd0cca00c4504818ff6ed7a1934" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsPoint" kindref="compound">QgsPoint</ref></type>
+        <definition>QgsPoint QgsAbstractGeometry::childPoint</definition>
+        <argsstring>(int index) const</argsstring>
+        <name>childPoint</name>
+        <reimplementedby refid="classQgsCurve_1a30676f7fcd69f8585c671d87b69f85ef">childPoint</reimplementedby>
+        <reimplementedby refid="classQgsPoint_1a5028bb72a36596c97973301c42b04296">childPoint</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns point at index (for geometries without child geometries - i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>curve / point) <simplesect kind="note"><para>used for <ref refid="classQgsAbstractGeometry_1_1vertex__iterator" kindref="compound">vertex_iterator</ref> implementation </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="912" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="281" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1a725f124cb23fdf84260deda680f24303" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsAbstractGeometry::clearCache</definition>
+        <argsstring>() const</argsstring>
+        <name>clearCache</name>
+        <reimplementedby refid="classQgsSurface_1a8dcaa87896320207e534a5202b563827">clearCache</reimplementedby>
+        <reimplementedby refid="classQgsCurve_1a19878b5a604867b07e45b4e57b9621ab">clearCache</reimplementedby>
+        <reimplementedby refid="classQgsGeometryCollection_1a2e59b61b3deecbd2e7d80e5480d3b616">clearCache</reimplementedby>
+        <briefdescription>
+<para>Clears any cached parameters associated with the geometry, e.g., bounding boxes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="931" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1ab8c18bf4a80645ff70cc61518f7e3ef9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractGeometry::hasChildGeometries</definition>
+        <argsstring>() const</argsstring>
+        <name>hasChildGeometries</name>
+        <briefdescription>
+<para>Returns whether the geometry has any child geometries (false for point / curve, true otherwise) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>used for <ref refid="classQgsAbstractGeometry_1_1vertex__iterator" kindref="compound">vertex_iterator</ref> implementation </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="891" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="276" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractGeometry_1afd3ab014d85f3b9daafee9544763cb08" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractGeometry::setZMTypeFromSubGeometry</definition>
+        <argsstring>(const QgsAbstractGeometry *subggeom, QgsWkbTypes::Type baseGeomType)</argsstring>
+        <name>setZMTypeFromSubGeometry</name>
+        <param>
+          <type>const <ref refid="classQgsAbstractGeometry" kindref="compound">QgsAbstractGeometry</ref> *</type>
+          <declname>subggeom</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsWkbTypes_1a70dff7aceefd4b16909f038e32aece11" kindref="member">QgsWkbTypes::Type</ref></type>
+          <declname>baseGeomType</declname>
+        </param>
+        <briefdescription>
+<para>Updates the geometry type based on whether sub geometries contain z or m values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="920" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.cpp" bodystart="42" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for all geometries. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.10 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1018">
+        <label>QgsMultiSurface</label>
+        <link refid="classQgsMultiSurface"/>
+        <childnode refid="1014" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1009">
+        <label>QgsAbstractGeometry</label>
+        <link refid="classQgsAbstractGeometry"/>
+      </node>
+      <node id="1019">
+        <label>QgsMultiPolygon</label>
+        <link refid="classQgsMultiPolygon"/>
+        <childnode refid="1018" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1020">
+        <label>QgsPoint</label>
+        <link refid="classQgsPoint"/>
+        <childnode refid="1009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1014">
+        <label>QgsGeometryCollection</label>
+        <link refid="classQgsGeometryCollection"/>
+        <childnode refid="1009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1012">
+        <label>QgsCompoundCurve</label>
+        <link refid="classQgsCompoundCurve"/>
+        <childnode refid="1010" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1021">
+        <label>QgsSurface</label>
+        <link refid="classQgsSurface"/>
+        <childnode refid="1009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1023">
+        <label>QgsPolygon</label>
+        <link refid="classQgsPolygon"/>
+        <childnode refid="1022" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1017">
+        <label>QgsMultiPoint</label>
+        <link refid="classQgsMultiPoint"/>
+        <childnode refid="1014" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1015">
+        <label>QgsMultiCurve</label>
+        <link refid="classQgsMultiCurve"/>
+        <childnode refid="1014" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1013">
+        <label>QgsLineString</label>
+        <link refid="classQgsLineString"/>
+        <childnode refid="1010" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1022">
+        <label>QgsCurvePolygon</label>
+        <link refid="classQgsCurvePolygon"/>
+        <childnode refid="1021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1010">
+        <label>QgsCurve</label>
+        <link refid="classQgsCurve"/>
+        <childnode refid="1009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1011">
+        <label>QgsCircularString</label>
+        <link refid="classQgsCircularString"/>
+        <childnode refid="1010" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1016">
+        <label>QgsMultiLineString</label>
+        <link refid="classQgsMultiLineString"/>
+        <childnode refid="1015" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1024">
+        <label>QgsTriangle</label>
+        <link refid="classQgsTriangle"/>
+        <childnode refid="1023" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" line="58" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/geometry/qgsabstractgeometry.h" bodystart="57" bodyend="934"/>
+    <listofallmembers>
+      <member refid="classQgsAbstractGeometry_1a7312cb36669cfbc3030c0f867348ffe0" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>addMValue</name></member>
+      <member refid="classQgsAbstractGeometry_1a07db82adbfcdb6f9aeb18d4639d2c141" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>addZValue</name></member>
+      <member refid="classQgsAbstractGeometry_1a6de19d36661e354ad0894e2bacc1517a" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>adjacentVertices</name></member>
+      <member refid="classQgsAbstractGeometry_1aeb48c72d10d875e97e516e6f7495438e" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>area</name></member>
+      <member refid="classQgsAbstractGeometry_1a71d6a67c0756c7294f643096583d7619" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>asGml2</name></member>
+      <member refid="classQgsAbstractGeometry_1aa86061e273223dbd396f7b9853960b96" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>asGml3</name></member>
+      <member refid="classQgsAbstractGeometry_1aa1a1182d214073a7bc9d32b96e9b4520" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>asJson</name></member>
+      <member refid="classQgsAbstractGeometry_1aa5f9616ce24cd17807c951e1d41be73a" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>asWkb</name></member>
+      <member refid="classQgsAbstractGeometry_1a92e7e3e943101ae22fb8d4659de11ddb" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>asWkt</name></member>
+      <member refid="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>AxisOrder</name></member>
+      <member refid="classQgsAbstractGeometry_1a0a0f6159d97445e1a869d997cdb87ff5" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>boundary</name></member>
+      <member refid="classQgsAbstractGeometry_1a28d745df47c96d586ee05cf70ce1cc6a" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>boundingBox</name></member>
+      <member refid="classQgsAbstractGeometry_1a30243090ed9158f111a0637315112c30" prot="protected" virt="virtual"><scope>QgsAbstractGeometry</scope><name>calculateBoundingBox</name></member>
+      <member refid="classQgsAbstractGeometry_1ad559e167894034e9ae1d10f840c96c3a" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>centroid</name></member>
+      <member refid="classQgsAbstractGeometry_1a323a213bdeb27cafbcc9f901656aed3f" prot="protected" virt="virtual"><scope>QgsAbstractGeometry</scope><name>childCount</name></member>
+      <member refid="classQgsAbstractGeometry_1acb56ca5e94987b9cb9fdf8f5530859ea" prot="protected" virt="virtual"><scope>QgsAbstractGeometry</scope><name>childGeometry</name></member>
+      <member refid="classQgsAbstractGeometry_1a02138fd0cca00c4504818ff6ed7a1934" prot="protected" virt="virtual"><scope>QgsAbstractGeometry</scope><name>childPoint</name></member>
+      <member refid="classQgsAbstractGeometry_1acbd999fc4aada45327f862bda205783c" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>clear</name></member>
+      <member refid="classQgsAbstractGeometry_1a725f124cb23fdf84260deda680f24303" prot="protected" virt="virtual"><scope>QgsAbstractGeometry</scope><name>clearCache</name></member>
+      <member refid="classQgsAbstractGeometry_1a6a916e15201499e34a64f2de7946188d" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>clone</name></member>
+      <member refid="classQgsAbstractGeometry_1afb4026bdd44aec81bbbfb232b267f812" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>closestSegment</name></member>
+      <member refid="classQgsAbstractGeometry_1ae86c938f4a97ce51fbd73a77156eecce" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>const_parts_begin</name></member>
+      <member refid="classQgsAbstractGeometry_1a9d19fdb36c64ac40b00125c455dc64df" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>const_parts_end</name></member>
+      <member refid="classQgsAbstractGeometry_1aad5452504a91918ff5f5c12fb3305e2a" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>convertTo</name></member>
+      <member refid="classQgsAbstractGeometry_1ab19bf974972b67aee49a5f4bccd829b1" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>coordinateSequence</name></member>
+      <member refid="classQgsAbstractGeometry_1a597f27b71036ca634386b766f602a912" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>createEmptyWithSameType</name></member>
+      <member refid="classQgsAbstractGeometry_1ac52b5975cd6e6fd54fcc039fb8614c6e" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>deleteVertex</name></member>
+      <member refid="classQgsAbstractGeometry_1ada1545bccf717251e11e2b5bd02d8746" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>dimension</name></member>
+      <member refid="classQgsAbstractGeometry_1a196cb31fed9a15b9b342a4cca28d73a9" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>draw</name></member>
+      <member refid="classQgsAbstractGeometry_1a119e7a6f1287bf23281d051d575994ca" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>dropMValue</name></member>
+      <member refid="classQgsAbstractGeometry_1ad3592944bd8919d44a7a5c5e3f160899" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>dropZValue</name></member>
+      <member refid="classQgsAbstractGeometry_1ace16ad5e1ff5c0541da19e57861bc373" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>filterVertices</name></member>
+      <member refid="classQgsAbstractGeometry_1a091bbdb232265ff282397d27a7a1029b" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>fromWkb</name></member>
+      <member refid="classQgsAbstractGeometry_1ab3004c5748c9b014702da3f58fc54215" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>fromWkt</name></member>
+      <member refid="classQgsAbstractGeometry_1a55e56308b97d5635945a65b666ab19d5" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>geometryType</name></member>
+      <member refid="classQgsAbstractGeometry_1ab8c18bf4a80645ff70cc61518f7e3ef9" prot="protected" virt="virtual"><scope>QgsAbstractGeometry</scope><name>hasChildGeometries</name></member>
+      <member refid="classQgsAbstractGeometry_1ac5b4206ebdc39ca64dd0b3e826c7e1b5" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>hasCurvedSegments</name></member>
+      <member refid="classQgsAbstractGeometry_1a81e51aa7a9d2100609c14d7420c8c7ff" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>insertVertex</name></member>
+      <member refid="classQgsAbstractGeometry_1a414275940aae6a3a8a7f0adeeefcfdee" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>is3D</name></member>
+      <member refid="classQgsAbstractGeometry_1a9d211f0b36027d9a9f2984624338362d" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>isEmpty</name></member>
+      <member refid="classQgsAbstractGeometry_1a244df46423e297f76e6f8f0cbc39db6d" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>isMeasure</name></member>
+      <member refid="classQgsAbstractGeometry_1a92a705bc19d95e1d6c0fc1bc407ab783" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>length</name></member>
+      <member refid="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96ae179641e9ac6aafe1005da4b6f7c7618" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>MaximumAngle</name></member>
+      <member refid="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96a366917a4d314a51392c2e04686aad8d2" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>MaximumDifference</name></member>
+      <member refid="classQgsAbstractGeometry_1a092a0395c14e70e288665fa47bb2fd22" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>moveVertex</name></member>
+      <member refid="classQgsAbstractGeometry_1af287af3318c631f2206ef0b200830583" prot="protected" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>mWkbType</name></member>
+      <member refid="classQgsAbstractGeometry_1a64c5b74e8ce6ccbf46fcb8ca17505891" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>nCoordinates</name></member>
+      <member refid="classQgsAbstractGeometry_1af5ec97c5568c257e0284b733a1c86d82" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>nextVertex</name></member>
+      <member refid="classQgsAbstractGeometry_1a7af4753f5c0aa85fc4457488dcbad57c" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>operator!=</name></member>
+      <member refid="classQgsAbstractGeometry_1a72e38668113433c7a5ae2e43d9086654" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>operator=</name></member>
+      <member refid="classQgsAbstractGeometry_1ae46cc147b9834ca5d0ca66cfe5d17575" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>operator==</name></member>
+      <member refid="classQgsAbstractGeometry_1ab4ae6761b862c334114afe31a8a89fdf" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>partCount</name></member>
+      <member refid="classQgsAbstractGeometry_1af50be9d5399768d25a136cea07f608f9" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>parts</name></member>
+      <member refid="classQgsAbstractGeometry_1ab2118f1df1d278df8cecb46c99810d67" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>parts</name></member>
+      <member refid="classQgsAbstractGeometry_1af309b3f75d6cb473a7ce8518718f6130" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>parts_begin</name></member>
+      <member refid="classQgsAbstractGeometry_1a911e0222e26032cca995fc84005a8288" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>parts_end</name></member>
+      <member refid="classQgsAbstractGeometry_1a61a15d374161fccc1401f9971e93f2b7" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>perimeter</name></member>
+      <member refid="classQgsAbstractGeometry_1aea45573a7471a93b4839d9ba3e240293" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>QgsAbstractGeometry</name></member>
+      <member refid="classQgsAbstractGeometry_1a0ca58ea869fa586cbc08d228e171aa5d" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>QgsAbstractGeometry</name></member>
+      <member refid="classQgsAbstractGeometry_1ae5a6fc4ba09589575d1826ff67705754" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>removeDuplicateNodes</name></member>
+      <member refid="classQgsAbstractGeometry_1a0632546e8330bfa94cffa6e7bc8313b2" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>ringCount</name></member>
+      <member refid="classQgsAbstractGeometry_1a0ad4bdf6c9a37daa3be14cb41fc38d96" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>SegmentationToleranceType</name></member>
+      <member refid="classQgsAbstractGeometry_1a2074dabaf33c1ba3a4407aff45b75a59" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>segmentize</name></member>
+      <member refid="classQgsAbstractGeometry_1ae1afc6e953981f8929312ad6b558fe2d" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>segmentLength</name></member>
+      <member refid="classQgsAbstractGeometry_1afd3ab014d85f3b9daafee9544763cb08" prot="protected" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>setZMTypeFromSubGeometry</name></member>
+      <member refid="classQgsAbstractGeometry_1a78bedc13b410bb6e442fa19eefbf6983" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>snappedToGrid</name></member>
+      <member refid="classQgsAbstractGeometry_1a85289f1e45950856e54fdf21856ad6bb" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>swapXy</name></member>
+      <member refid="classQgsAbstractGeometry_1a8b0016c1570a66a82dc64fa595366541" prot="protected" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>TestQgsGeometry</name></member>
+      <member refid="classQgsAbstractGeometry_1a506550131e5b8c8b3bf289d34909699c" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>toCurveType</name></member>
+      <member refid="classQgsAbstractGeometry_1a87d89f92efa9db41483f00a0f1e0e302" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>transform</name></member>
+      <member refid="classQgsAbstractGeometry_1ab21e149ab74999808bd266820100fa6e" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>transform</name></member>
+      <member refid="classQgsAbstractGeometry_1a33ad8f7d7022716968a1dea76e830607" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>transformVertices</name></member>
+      <member refid="classQgsAbstractGeometry_1a0e7b77f10a7a29bb2c184c7098f57456" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>vertexAngle</name></member>
+      <member refid="classQgsAbstractGeometry_1a665ef655c903c02e6ae5d0d211a04ecb" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>vertexAt</name></member>
+      <member refid="classQgsAbstractGeometry_1a234be132c5f849e44001a998e239fc3f" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>vertexCount</name></member>
+      <member refid="classQgsAbstractGeometry_1a0b9d10657e010af6f6bf0e5608c3fe24" prot="public" virt="pure-virtual"><scope>QgsAbstractGeometry</scope><name>vertexNumberFromVertexId</name></member>
+      <member refid="classQgsAbstractGeometry_1a1f8cda068565f35313215df729a5971e" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>vertices</name></member>
+      <member refid="classQgsAbstractGeometry_1ac391bce2a1a06eceffaccf6d731beb52" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>vertices_begin</name></member>
+      <member refid="classQgsAbstractGeometry_1a14ad1c06073e0933a32b9b05f7c599a8" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>vertices_end</name></member>
+      <member refid="classQgsAbstractGeometry_1a8b8706728c90bc5c0e9c3ea3925b4453" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>wkbType</name></member>
+      <member refid="classQgsAbstractGeometry_1a5c6589aaf5ddfc75c0e141438666ae5c" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>wktTypeStr</name></member>
+      <member refid="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7aae0bffb31794a26e0f1e2f5f506cccb3" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>XY</name></member>
+      <member refid="classQgsAbstractGeometry_1a429cf06290bd0bdb2134a30c16d4d2a7ad3bbc17894009b36b9a9a6e3b41d0b2f" prot="public" virt="non-virtual"><scope>QgsAbstractGeometry</scope><name>YX</name></member>
+      <member refid="classQgsAbstractGeometry_1afbd59f1e4fbeb985adaefceb3c6b9b7e" prot="public" virt="virtual"><scope>QgsAbstractGeometry</scope><name>~QgsAbstractGeometry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

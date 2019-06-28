@@ -1,0 +1,552 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsRasterCalculator" kind="class" language="C++" prot="public">
+    <compoundname>QgsRasterCalculator</compoundname>
+    <includes refid="qgsrastercalculator_8h" local="no">qgsrastercalculator.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cc" prot="public" static="no">
+        <name>Result</name>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca97fedb354e8cbe86dd1f500711561230" prot="public">
+          <name>Success</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Calculation successful. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2ccaf3e163f9f5e0452b69a0f0c404c09173" prot="public">
+          <name>CreateOutputError</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Error creating output data file. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca18334124177bc084db6931a6aca75e41" prot="public">
+          <name>InputLayerError</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Error reading input layer. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca928cd66f1e01fac7947f24b750e86e69" prot="public">
+          <name>Canceled</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>User canceled calculation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca3c2a23fde2619f05f2c50e0b77cb45c4" prot="public">
+          <name>ParserError</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Error parsing formula. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca76982b394fa0c60aede412d6998cca59" prot="public">
+          <name>MemoryError</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Error allocating memory for result. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2ccaa56e94bd7edeeb21b272de3f25d9c908" prot="public">
+          <name>BandError</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Invalid band number for input. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Result of the calculation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="81" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsRasterCalculator_1a56ebec14aef7863cd8abdd3f6277cc75" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsRasterCalculator::mFormulaString</definition>
+        <argsstring></argsstring>
+        <name>mFormulaString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="158" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1a785f2eeb586600c0947883db841ab19d" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsRasterCalculator::mLastError</definition>
+        <argsstring></argsstring>
+        <name>mLastError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1ab6e8e101c5965214339e0d66affef907" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsRasterCalculator::mNumOutputColumns</definition>
+        <argsstring></argsstring>
+        <name>mNumOutputColumns</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Number of output columns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="167" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1af6992e68119fe977041ff3169409ac0b" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsRasterCalculator::mNumOutputRows</definition>
+        <argsstring></argsstring>
+        <name>mNumOutputRows</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Number of output rows. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="169" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1ae1c20220bed2df274b544015ddf76fd4" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsRasterCalculator::mOutputCrs</definition>
+        <argsstring></argsstring>
+        <name>mOutputCrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="164" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1a0828e2d1499016352ba6c0feb8a18c33" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsRasterCalculator::mOutputFile</definition>
+        <argsstring></argsstring>
+        <name>mOutputFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="159" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1a2b3bf594fa9c2b5e1a2c215dd688c022" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsRasterCalculator::mOutputFormat</definition>
+        <argsstring></argsstring>
+        <name>mOutputFormat</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="160" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1a43fa3b9e5152ee7212ef8c2ef6bf20fe" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsRasterCalculator::mOutputRectangle</definition>
+        <argsstring></argsstring>
+        <name>mOutputRectangle</name>
+        <briefdescription>
+<para>Output raster extent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="163" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsRasterCalculator_1a7aa679c0c0805704e4ebd319dc23b229" prot="private" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classQgsRasterCalculatorEntry" kindref="compound">QgsRasterCalculatorEntry</ref> &gt;</type>
+        <definition>QVector&lt;QgsRasterCalculatorEntry&gt; QgsRasterCalculator::mRasterEntries</definition>
+        <argsstring></argsstring>
+        <name>mRasterEntries</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="174" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsRasterCalculator_1a4b19dcbf0a5a1b0c92e4fc39bce118b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsRasterCalculator::QgsRasterCalculator</definition>
+        <argsstring>(const QString &amp;formulaString, const QString &amp;outputFile, const QString &amp;outputFormat, const QgsRectangle &amp;outputExtent, int nOutputColumns, int nOutputRows, const QVector&lt; QgsRasterCalculatorEntry &gt; &amp;rasterEntries)</argsstring>
+        <name>QgsRasterCalculator</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>formulaString</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>outputFile</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>outputFormat</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>outputExtent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nOutputColumns</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nOutputRows</declname>
+        </param>
+        <param>
+          <type>const QVector&lt; <ref refid="classQgsRasterCalculatorEntry" kindref="compound">QgsRasterCalculatorEntry</ref> &gt; &amp;</type>
+          <declname>rasterEntries</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsRasterCalculator" kindref="compound">QgsRasterCalculator</ref> constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>formulaString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>formula for raster calculation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output file path </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputFormat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output file format </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output extent. CRS for output is taken from first entry in rasterEntries. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nOutputColumns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of columns in output raster </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nOutputRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of rows in output raster </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rasterEntries</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of referenced raster layers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="102" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="39" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1a2d6223859ab758438290edc674ad0362" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsRasterCalculator::QgsRasterCalculator</definition>
+        <argsstring>(const QString &amp;formulaString, const QString &amp;outputFile, const QString &amp;outputFormat, const QgsRectangle &amp;outputExtent, const QgsCoordinateReferenceSystem &amp;outputCrs, int nOutputColumns, int nOutputRows, const QVector&lt; QgsRasterCalculatorEntry &gt; &amp;rasterEntries)</argsstring>
+        <name>QgsRasterCalculator</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>formulaString</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>outputFile</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>outputFormat</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>outputExtent</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>outputCrs</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nOutputColumns</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nOutputRows</declname>
+        </param>
+        <param>
+          <type>const QVector&lt; <ref refid="classQgsRasterCalculatorEntry" kindref="compound">QgsRasterCalculatorEntry</ref> &gt; &amp;</type>
+          <declname>rasterEntries</declname>
+        </param>
+        <briefdescription>
+<para><ref refid="classQgsRasterCalculator" kindref="compound">QgsRasterCalculator</ref> constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>formulaString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>formula for raster calculation </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputFile</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output file path </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputFormat</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output file format </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputExtent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output extent, CRS is specified by outputCrs parameter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>outputCrs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination CRS for output raster </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nOutputColumns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of columns in output raster </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>nOutputRows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>number of rows in output raster </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rasterEntries</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of referenced raster layers </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.10 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="117" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="53" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1a80da48de7e07cddaa8a8706c017e4b3c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsRasterCalculator::lastError</definition>
+        <argsstring>() const</argsstring>
+        <name>lastError</name>
+        <briefdescription>
+<para>Returns a description of the last error encountered. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="134" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="617" bodyend="620"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1a9ef2fb75583e8d78de7f69faacaa8d45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cc" kindref="member">Result</ref></type>
+        <definition>QgsRasterCalculator::Result QgsRasterCalculator::processCalculation</definition>
+        <argsstring>(QgsFeedback *feedback=nullptr)</argsstring>
+        <name>processCalculation</name>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Starts the calculation and writes a new raster. </para>        </briefdescription>
+        <detaileddescription>
+<para>The optional <emphasis>feedback</emphasis> argument can be used for progress reporting and cancelation support.</para><para><simplesect kind="return"><para><ref refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca97fedb354e8cbe86dd1f500711561230" kindref="member">QgsRasterCalculator::Success</ref> in case of success. If an error is encountered then a description of the error can be obtained by calling <ref refid="classQgsRasterCalculator_1a80da48de7e07cddaa8a8706c017e4b3c" kindref="member">lastError()</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="128" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="66" bodyend="312"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsRasterCalculator_1a29c419eb5c760a340d80769fcf165ba8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsRasterCalculator::QgsRasterCalculator</definition>
+        <argsstring>()=delete</argsstring>
+        <name>QgsRasterCalculator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="138" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1ad1939257b6899bc9cc4ac1dfeea37d83" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GDALDriverH</type>
+        <definition>GDALDriverH QgsRasterCalculator::openOutputDriver</definition>
+        <argsstring>()</argsstring>
+        <name>openOutputDriver</name>
+        <briefdescription>
+<para>Opens the output driver and tests if it supports the creation of a new dataset. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>nullptr on error and the driver handle on success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="143" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="571" bodyend="587"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1a94915846baa3496ce0d9c42ab8f3c56b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacegdal_1a43a0eb088ef4b44d4c631e17e24b35a5" kindref="member">gdal::dataset_unique_ptr</ref></type>
+        <definition>gdal::dataset_unique_ptr QgsRasterCalculator::openOutputFile</definition>
+        <argsstring>(GDALDriverH outputDriver)</argsstring>
+        <name>openOutputFile</name>
+        <param>
+          <type>GDALDriverH</type>
+          <declname>outputDriver</declname>
+        </param>
+        <briefdescription>
+<para>Opens the output file and sets the same geotransform and CRS as the input data. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the output dataset or nullptr in case of error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="148" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="589" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1af3e20eb0e35a36a7b5ec60f1c96950f8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsRasterCalculator::outputGeoTransform</definition>
+        <argsstring>(double *transform) const</argsstring>
+        <name>outputGeoTransform</name>
+        <param>
+          <type>double *</type>
+          <declname>transform</declname>
+        </param>
+        <briefdescription>
+<para>Sets gdal 6 parameters array from mOutputRectangle, mNumOutputColumns, mNumOutputRows. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>transform</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>double[6] array that receives the GDAL parameters </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="153" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.cpp" bodystart="607" bodyend="615"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsRasterCalculator_1ab7310436f9a2cf9538352e5aa556e5e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cc" kindref="member">Result</ref></type>
+        <definition>Result QgsRasterCalculator::processCalculationGPU</definition>
+        <argsstring>(std::unique_ptr&lt; QgsRasterCalcNode &gt; calcNode, QgsFeedback *feedback=nullptr)</argsstring>
+        <name>processCalculationGPU</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classQgsRasterCalcNode" kindref="compound">QgsRasterCalcNode</ref> &gt;</type>
+          <declname>calcNode</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Execute calculations on GPU. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="156" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Performs raster layer calculations. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/raster/qgsrastercalculator.h" bodystart="76" bodyend="175"/>
+    <listofallmembers>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2ccaa56e94bd7edeeb21b272de3f25d9c908" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>BandError</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca928cd66f1e01fac7947f24b750e86e69" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>Canceled</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2ccaf3e163f9f5e0452b69a0f0c404c09173" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>CreateOutputError</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca18334124177bc084db6931a6aca75e41" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>InputLayerError</name></member>
+      <member refid="classQgsRasterCalculator_1a80da48de7e07cddaa8a8706c017e4b3c" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>lastError</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca76982b394fa0c60aede412d6998cca59" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>MemoryError</name></member>
+      <member refid="classQgsRasterCalculator_1a56ebec14aef7863cd8abdd3f6277cc75" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mFormulaString</name></member>
+      <member refid="classQgsRasterCalculator_1a785f2eeb586600c0947883db841ab19d" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mLastError</name></member>
+      <member refid="classQgsRasterCalculator_1ab6e8e101c5965214339e0d66affef907" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mNumOutputColumns</name></member>
+      <member refid="classQgsRasterCalculator_1af6992e68119fe977041ff3169409ac0b" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mNumOutputRows</name></member>
+      <member refid="classQgsRasterCalculator_1ae1c20220bed2df274b544015ddf76fd4" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mOutputCrs</name></member>
+      <member refid="classQgsRasterCalculator_1a0828e2d1499016352ba6c0feb8a18c33" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mOutputFile</name></member>
+      <member refid="classQgsRasterCalculator_1a2b3bf594fa9c2b5e1a2c215dd688c022" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mOutputFormat</name></member>
+      <member refid="classQgsRasterCalculator_1a43fa3b9e5152ee7212ef8c2ef6bf20fe" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mOutputRectangle</name></member>
+      <member refid="classQgsRasterCalculator_1a7aa679c0c0805704e4ebd319dc23b229" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>mRasterEntries</name></member>
+      <member refid="classQgsRasterCalculator_1ad1939257b6899bc9cc4ac1dfeea37d83" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>openOutputDriver</name></member>
+      <member refid="classQgsRasterCalculator_1a94915846baa3496ce0d9c42ab8f3c56b" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>openOutputFile</name></member>
+      <member refid="classQgsRasterCalculator_1af3e20eb0e35a36a7b5ec60f1c96950f8" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>outputGeoTransform</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca3c2a23fde2619f05f2c50e0b77cb45c4" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>ParserError</name></member>
+      <member refid="classQgsRasterCalculator_1a9ef2fb75583e8d78de7f69faacaa8d45" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>processCalculation</name></member>
+      <member refid="classQgsRasterCalculator_1ab7310436f9a2cf9538352e5aa556e5e0" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>processCalculationGPU</name></member>
+      <member refid="classQgsRasterCalculator_1a4b19dcbf0a5a1b0c92e4fc39bce118b7" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>QgsRasterCalculator</name></member>
+      <member refid="classQgsRasterCalculator_1a2d6223859ab758438290edc674ad0362" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>QgsRasterCalculator</name></member>
+      <member refid="classQgsRasterCalculator_1a29c419eb5c760a340d80769fcf165ba8" prot="private" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>QgsRasterCalculator</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cc" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>Result</name></member>
+      <member refid="classQgsRasterCalculator_1abd4932102407a12b53036588893fa2cca97fedb354e8cbe86dd1f500711561230" prot="public" virt="non-virtual"><scope>QgsRasterCalculator</scope><name>Success</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

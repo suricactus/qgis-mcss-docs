@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsMapRendererJob class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsMapRendererJob <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for map rendering implementations.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-static-attribs">Public static variables</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>The API is designed in a way that rendering is done asynchronously, therefore the caller is not blocked while the rendering is in progress. Non-blocking operation is quite important because the rendering can take considerable amount of time.</p><p>Common use case: 0. prepare <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a> with rendering configuration (extent, layer, map size, ...)</p><ol><li>create <a href="classQgsMapRendererJob.html" class="m-doc">QgsMapRendererJob</a> subclass with <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a> instance</li><li>connect to job&#x27;s <a href="classQgsMapRendererJob.html#a8dbfbe2cc381f0eb6e721733838d3baf" class="m-doc">finished()</a> signal</li><li>call <a href="classQgsMapRendererJob.html#aaf608b4d83cf01b54b1c4edc2767797f" class="m-doc">start()</a>. Map rendering will start in background, the function immediately returns</li><li>at some point, slot connected to <a href="classQgsMapRendererJob.html#a8dbfbe2cc381f0eb6e721733838d3baf" class="m-doc">finished()</a> signal is called, map rendering is done</li></ol><p>It is possible to cancel the rendering job while it is active by calling <a href="classQgsMapRendererJob.html#addc1d79009fc9d9c2fef969bd16ae202" class="m-doc">cancel()</a> function.</p><p>The following subclasses are available:</p><ul><li><a href="classQgsMapRendererSequentialJob.html" class="m-doc">QgsMapRendererSequentialJob</a> - renders map in one background thread to an image</li><li><a href="classQgsMapRendererParallelJob.html" class="m-doc">QgsMapRendererParallelJob</a> - renders map in multiple background threads to an image</li><li><a href="classQgsMapRendererCustomPainterJob.html" class="m-doc">QgsMapRendererCustomPainterJob</a> - renders map with given QPainter in one background thread</li></ul><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.4</p></aside>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsMapRendererCustomPainterJob.html" class="m-doc">QgsMapRendererCustomPainterJob</a>
+            </dt>
+            <dd>Job implementation that renders everything sequentially using a custom painter.</dd>
+            <dt>
+              class <a href="classQgsMapRendererQImageJob.html" class="m-doc">QgsMapRendererQImageJob</a>
+            </dt>
+            <dd>Intermediate base class adding functionality that allows client to query the rendered image.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-attribs">
+          <h2><a href="#pub-static-attribs">Public static variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              static const QString <a href="#ac0aa9c7bbfc8ac7534bdce5411c8f20b" class="m-doc">LABEL_CACHE_ID</a>
+            </dt>
+            <dd><a href="classQgsMapRendererCache.html" class="m-doc">QgsMapRendererCache</a> ID string for cached label image.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#addc1d79009fc9d9c2fef969bd16ae202" class="m-doc">cancel</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Stop the rendering job - does not return until the job has terminated.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af23b49b96b730e3e152a061c0a0b5b0c" class="m-doc">cancelWithoutBlocking</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Triggers cancelation of the rendering job without blocking.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a48f9c4b3f3dcb7ff97b365d6348555ac" class="m-doc-self" name="a48f9c4b3f3dcb7ff97b365d6348555ac">errors</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsMapRendererJob.html#aba5d442302353e17c8d047a5fd1fea81" class="m-doc">Errors</a></span>
+            </dt>
+            <dd>List of errors that happened during the rendering job - available when the rendering has been finished.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3ea0ac01831a6595716e5d754bf3972a" class="m-doc">featureFilterProvider</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsFeatureFilterProvider.html" class="m-doc">QgsFeatureFilterProvider</a>*</span>
+            </dt>
+            <dd>Returns the feature filter provider used by the <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a> of each LayerRenderJob.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acf442921229508c51a9ee0a8591da18f" class="m-doc-self" name="acf442921229508c51a9ee0a8591da18f">isActive</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Tell whether the rendering job is currently running in background.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a74d8e9ae45cfee9411c50c610cb6e180" class="m-doc">mapSettings</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns map settings with which this job was started.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a30ce2a0b74dec50d0af4fd57de10c409" class="m-doc">perLayerRenderingTime</a>(</span><span class="m-doc-wrap">) const -&gt; QHash&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*, int&gt;</span>
+            </dt>
+            <dd>Returns the render time (in ms) per layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aae3497b9bc29533a599dfe19f1ab638b" class="m-doc">renderingTime</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Returns the total time it took to finish the job (in milliseconds).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a261bcafcbab8a01563b550f42a69bdc5" class="m-doc">setCache</a>(</span><span class="m-doc-wrap"><a href="classQgsMapRendererCache.html" class="m-doc">QgsMapRendererCache</a>* cache)</span>
+            </dt>
+            <dd>Assign a cache to be used for reading and storing rendered images of individual layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad7d7d641a210b4303715c4b376c00d88" class="m-doc">setFeatureFilterProvider</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureFilterProvider.html" class="m-doc">QgsFeatureFilterProvider</a>* f)</span>
+            </dt>
+            <dd>Set the feature filter provider used by the <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a> of each LayerRenderJob.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aaf608b4d83cf01b54b1c4edc2767797f" class="m-doc">start</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Start the rendering job and immediately return.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2f2a8c5be5a00d3af70ecde9838ce4ad" class="m-doc">takeLabelingResults</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsLabelingResults.html" class="m-doc">QgsLabelingResults</a>* <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Gets pointer to internal labeling engine (in order to get access to the results).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a33841600f1e29cbf9b9d1fe395fd7bc6" class="m-doc">usedCachedLabels</a>(</span><span class="m-doc-wrap">) const -&gt; bool <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Returns true if the render job was able to use a cached labeling solution.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a119b78850de345e55da6064417f8c66a" class="m-doc-self" name="a119b78850de345e55da6064417f8c66a">waitForFinished</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Block until the job has finished.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8dbfbe2cc381f0eb6e721733838d3baf" class="m-doc-self" name="a8dbfbe2cc381f0eb6e721733838d3baf">finished</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>emitted when asynchronous rendering is finished (or canceled).</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a740c499eaa85174b33110541c06d732c" class="m-doc">renderingLayersFinished</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the layers are rendered.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ae748f8fe18d5347523de086ff442f94a" class="m-doc">composeImage</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp; settings,
+              const LayerRenderJobs&amp; jobs,
+              const LabelRenderJob&amp; labelJob) -&gt; QImage</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#acc0c629673745fa7b0398c3da30ed007" class="m-doc">drawLabeling</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp; settings,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; renderContext,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2,
+              QPainter* painter) -&gt; Q_DECL_DEPRECATED void <span class="m-label m-danger">deprecated</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a55a97752c55938f1f6c309bdf2724c9c" class="m-doc">drawLabeling</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; renderContext,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2,
+              QPainter* painter)</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aee9b81a8029cb8f99ca2aede1abd2985" class="m-doc">cleanupJobs</a>(</span><span class="m-doc-wrap">LayerRenderJobs&amp; jobs)</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aebaea9c7ae158dd85c884864cdcf3e5b" class="m-doc">cleanupLabelJob</a>(</span><span class="m-doc-wrap">LabelRenderJob&amp; job)</span>
+            </dt>
+            <dd>Handles clean up tasks for a label job, including deletion of images and storing cached label results.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9c3e9add2b29edf2a536f2202e5aa1f4" class="m-doc">logRenderingTime</a>(</span><span class="m-doc-wrap">const LayerRenderJobs&amp; jobs,
+              const LabelRenderJob&amp; labelJob)</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a59033afd08961af59537fef9c5d4838d" class="m-doc">prepareJobs</a>(</span><span class="m-doc-wrap">QPainter* painter,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2) -&gt; LayerRenderJobs</span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af911d10e4cf3eaeb0fc258070644d03d" class="m-doc">prepareLabelCache</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Prepares the cache for storing the result of labeling.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae83676f1131603d6728cfc9778814f7a" class="m-doc">prepareLabelingJob</a>(</span><span class="m-doc-wrap">QPainter* painter,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2,
+              bool canUseLabelCache = true) -&gt; LabelRenderJob</span>
+            </dt>
+            <dd>Prepares a labeling job.</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QHash&lt;<a href="qgsmaplayer_8h.html#a20864e6cf415152d2053e97b2c4db774" class="m-doc">QgsWeakMapLayerPointer</a>, int&gt; <a href="#ac5a057e9f5232487ef63084297e39c49" class="m-doc-self" name="ac5a057e9f5232487ef63084297e39c49">mPerLayerRenderingTime</a>
+            </dt>
+            <dd>Render time (in ms) per layer, by layer ID.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="addc1d79009fc9d9c2fef969bd16ae202"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#addc1d79009fc9d9c2fef969bd16ae202" class="m-doc-self">cancel</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Stop the rendering job - does not return until the job has terminated.</p>
+<p>Does nothing if the rendering is not active.</p>
+          </div></section>
+          <section class="m-doc-details" id="af23b49b96b730e3e152a061c0a0b5b0c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af23b49b96b730e3e152a061c0a0b5b0c" class="m-doc-self">cancelWithoutBlocking</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Triggers cancelation of the rendering job without blocking.</p>
+<p>The render job will continue to operate until it is able to cancel, at which stage the <a href="classQgsMapRendererJob.html#a8dbfbe2cc381f0eb6e721733838d3baf" class="m-doc">finished()</a> signal will be emitted. Does nothing if the rendering is not active.</p>
+          </div></section>
+          <section class="m-doc-details" id="a3ea0ac01831a6595716e5d754bf3972a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsFeatureFilterProvider.html" class="m-doc">QgsFeatureFilterProvider</a>* QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3ea0ac01831a6595716e5d754bf3972a" class="m-doc-self">featureFilterProvider</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the feature filter provider used by the <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a> of each LayerRenderJob.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a74d8e9ae45cfee9411c50c610cb6e180"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp; QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a74d8e9ae45cfee9411c50c610cb6e180" class="m-doc-self">mapSettings</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns map settings with which this job was started.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a> instance with render settings</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a30ce2a0b74dec50d0af4fd57de10c409"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QHash&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*, int&gt; QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a30ce2a0b74dec50d0af4fd57de10c409" class="m-doc-self">perLayerRenderingTime</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the render time (in ms) per layer.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Not available in Python bindings.</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aae3497b9bc29533a599dfe19f1ab638b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aae3497b9bc29533a599dfe19f1ab638b" class="m-doc-self">renderingTime</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the total time it took to finish the job (in milliseconds).</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapRendererJob.html#a30ce2a0b74dec50d0af4fd57de10c409" class="m-doc">perLayerRenderingTime()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a261bcafcbab8a01563b550f42a69bdc5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a261bcafcbab8a01563b550f42a69bdc5" class="m-doc-self">setCache</a>(</span><span class="m-doc-wrap"><a href="classQgsMapRendererCache.html" class="m-doc">QgsMapRendererCache</a>* cache)</span></span>
+            </h3>
+            <p>Assign a cache to be used for reading and storing rendered images of individual layers.</p>
+<p>Does not take ownership of the object.</p>
+          </div></section>
+          <section class="m-doc-details" id="ad7d7d641a210b4303715c4b376c00d88"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad7d7d641a210b4303715c4b376c00d88" class="m-doc-self">setFeatureFilterProvider</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureFilterProvider.html" class="m-doc">QgsFeatureFilterProvider</a>* f)</span></span>
+            </h3>
+            <p>Set the feature filter provider used by the <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a> of each LayerRenderJob.</p>
+<p>Ownership is not transferred and the provider must not be deleted before the render job.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aaf608b4d83cf01b54b1c4edc2767797f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aaf608b4d83cf01b54b1c4edc2767797f" class="m-doc-self">start</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Start the rendering job and immediately return.</p>
+<p>Does nothing if the rendering is already in progress.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2f2a8c5be5a00d3af70ecde9838ce4ad"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsLabelingResults.html" class="m-doc">QgsLabelingResults</a>* QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2f2a8c5be5a00d3af70ecde9838ce4ad" class="m-doc-self">takeLabelingResults</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Gets pointer to internal labeling engine (in order to get access to the results).</p>
+<p>This should not be used if cached labeling was redrawn - see <a href="classQgsMapRendererJob.html#a33841600f1e29cbf9b9d1fe395fd7bc6" class="m-doc">usedCachedLabels()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapRendererJob.html#a33841600f1e29cbf9b9d1fe395fd7bc6" class="m-doc">usedCachedLabels()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a33841600f1e29cbf9b9d1fe395fd7bc6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33841600f1e29cbf9b9d1fe395fd7bc6" class="m-doc-self">usedCachedLabels</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Returns true if the render job was able to use a cached labeling solution.</p>
+<p>If so, any previously stored labeling results (see <a href="classQgsMapRendererJob.html#a2f2a8c5be5a00d3af70ecde9838ce4ad" class="m-doc">takeLabelingResults()</a>) should be retained.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapRendererJob.html#a2f2a8c5be5a00d3af70ecde9838ce4ad" class="m-doc">takeLabelingResults()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a740c499eaa85174b33110541c06d732c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a740c499eaa85174b33110541c06d732c" class="m-doc-self">renderingLayersFinished</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the layers are rendered.</p>
+<p>Rendering labels is not yet done. If the fully rendered layer including labels is required use <a href="classQgsMapRendererJob.html#a8dbfbe2cc381f0eb6e721733838d3baf" class="m-doc">finished()</a> instead.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae748f8fe18d5347523de086ff442f94a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QImage QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae748f8fe18d5347523de086ff442f94a" class="m-doc-self">composeImage</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp; settings,
+              const LayerRenderJobs&amp; jobs,
+              const LabelRenderJob&amp; labelJob) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acc0c629673745fa7b0398c3da30ed007"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static Q_DECL_DEPRECATED void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acc0c629673745fa7b0398c3da30ed007" class="m-doc-self">drawLabeling</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a>&amp; settings,
+              <a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; renderContext,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2,
+              QPainter* painter) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-danger"><h4><a href="deprecated.html#_deprecated000007" class="m-doc">Deprecated</a></h4><p>Will be removed in QGIS 4.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a55a97752c55938f1f6c309bdf2724c9c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a55a97752c55938f1f6c309bdf2724c9c" class="m-doc-self">drawLabeling</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html" class="m-doc">QgsRenderContext</a>&amp; renderContext,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2,
+              QPainter* painter) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aee9b81a8029cb8f99ca2aede1abd2985"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aee9b81a8029cb8f99ca2aede1abd2985" class="m-doc-self">cleanupJobs</a>(</span><span class="m-doc-wrap">LayerRenderJobs&amp; jobs) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aebaea9c7ae158dd85c884864cdcf3e5b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aebaea9c7ae158dd85c884864cdcf3e5b" class="m-doc-self">cleanupLabelJob</a>(</span><span class="m-doc-wrap">LabelRenderJob&amp; job) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Handles clean up tasks for a label job, including deletion of images and storing cached label results.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9c3e9add2b29edf2a536f2202e5aa1f4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9c3e9add2b29edf2a536f2202e5aa1f4" class="m-doc-self">logRenderingTime</a>(</span><span class="m-doc-wrap">const LayerRenderJobs&amp; jobs,
+              const LabelRenderJob&amp; labelJob) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a59033afd08961af59537fef9c5d4838d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">LayerRenderJobs QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a59033afd08961af59537fef9c5d4838d" class="m-doc-self">prepareJobs</a>(</span><span class="m-doc-wrap">QPainter* painter,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af911d10e4cf3eaeb0fc258070644d03d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af911d10e4cf3eaeb0fc258070644d03d" class="m-doc-self">prepareLabelCache</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Prepares the cache for storing the result of labeling.</p>
+<p>Returns false if the render cannot use cached labels and should not cache the result.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae83676f1131603d6728cfc9778814f7a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">LabelRenderJob QgsMapRendererJob::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae83676f1131603d6728cfc9778814f7a" class="m-doc-self">prepareLabelingJob</a>(</span><span class="m-doc-wrap">QPainter* painter,
+              <a href="classQgsLabelingEngine.html" class="m-doc">QgsLabelingEngine</a>* labelingEngine2,
+              bool canUseLabelCache = true) <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Prepares a labeling job.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+        </section>
+        <section>
+          <h2>Variable documentation</h2>
+          <section class="m-doc-details" id="ac0aa9c7bbfc8ac7534bdce5411c8f20b"><div>
+            <h3>
+              static const QString QgsMapRendererJob::<wbr /><a href="#ac0aa9c7bbfc8ac7534bdce5411c8f20b" class="m-doc-self">LABEL_CACHE_ID</a>
+            </h3>
+            <p><a href="classQgsMapRendererCache.html" class="m-doc">QgsMapRendererCache</a> ID string for cached label image.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

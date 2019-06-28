@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsAttributeTableModel class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsAttributeTableModel <span class="m-thin">class</span>
+        </h1>
+        <p>A model backed by a <a href="classQgsVectorLayerCache.html" class="m-doc">QgsVectorLayerCache</a> which is able to provide feature/attribute information to a QAbstractItemView.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pri-methods">Private functions</a></li>
+                <li><a href="#pri-slots">Private slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Is able to generate editor widgets for its QModelIndexes as well. Is mostly referred to as &quot;master model&quot; within this doc and the source.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="http://doc.qt.digia.com/qt/model-view-programming.html">Qt Model View Programming</a></p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ad2a1fab62639c671c9982af13091a67d" class="m-doc">Role</a> { </span><span class="m-doc-wrap"><a href="#ad2a1fab62639c671c9982af13091a67da76b9b70607c444433ab6423d21e7260a" class="m-doc">FeatureIdRole</a> = Qt::UserRole,
+              <a href="#ad2a1fab62639c671c9982af13091a67da86a026e37b2d6772402685944780876a" class="m-doc">FieldIndexRole</a>,
+              <a href="#ad2a1fab62639c671c9982af13091a67daba53b0acf3d9be7a4012bbcf8be031ea" class="m-doc">UserRole</a>,
+              <a href="#ad2a1fab62639c671c9982af13091a67da2de5132520d529e15983dc89db67a382" class="m-doc">SortRole</a> }</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a42ca0669fdd35da9fd999c1733a963a3" class="m-doc">QgsAttributeTableModel</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayerCache.html" class="m-doc">QgsVectorLayerCache</a>* layerCache,
+              QObject* parent = nullptr)</span>
+            </dt>
+            <dd>Constructor.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abef36278dcb039e7f752ba859cdbf655" class="m-doc">columnCount</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; parent = QModelIndex()) const -&gt; int <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the number of columns.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#afefcad574a309828dd185f5251c66c85" class="m-doc">data</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index,
+              int role) const -&gt; QVariant <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns data on the given index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acd6f952bfb5020c1343a5e411379eb15" class="m-doc">editorContext</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>&amp;</span>
+            </dt>
+            <dd>Returns the context in which this table is shown.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afa4f31d6248d25000a3427aa82a31974" class="m-doc-self" name="afa4f31d6248d25000a3427aa82a31974">executeAction</a>(</span><span class="m-doc-wrap">QUuid action,
+              const QModelIndex&amp; idx) const</span>
+            </dt>
+            <dd>Execute an action.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9a0cac7e4a909847e3a9cd751e1f2682" class="m-doc-self" name="a9a0cac7e4a909847e3a9cd751e1f2682">executeMapLayerAction</a>(</span><span class="m-doc-wrap"><a href="classQgsMapLayerAction.html" class="m-doc">QgsMapLayerAction</a>* action,
+              const QModelIndex&amp; idx) const</span>
+            </dt>
+            <dd>Execute a <a href="classQgsMapLayerAction.html" class="m-doc">QgsMapLayerAction</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a94fd03b5111f7e13732a10ce8712e6d3" class="m-doc">extraColumns</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Empty extra columns to announce from this model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2095bdf8c6db04f331794675064eb67f" class="m-doc">feature</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; idx) const -&gt; <a href="classQgsFeature.html" class="m-doc">QgsFeature</a></span>
+            </dt>
+            <dd>Returns the feature attributes at given model index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aee333c263d188bb1d30ec2ae14930b0a" class="m-doc-self" name="aee333c263d188bb1d30ec2ae14930b0a">fieldCol</a>(</span><span class="m-doc-wrap">int idx) const -&gt; int</span>
+            </dt>
+            <dd>Gets column from field index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a42a5b142eba8fb6ac6bc1a2629c60b2b" class="m-doc-self" name="a42a5b142eba8fb6ac6bc1a2629c60b2b">fieldIdx</a>(</span><span class="m-doc-wrap">int col) const -&gt; int</span>
+            </dt>
+            <dd>Gets field index from column.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1f022b03946c770e3e3261451aa2d2fd" class="m-doc">flags</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index) const -&gt; Qt::ItemFlags <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns item flags for the index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac097b848ad90f439b4b45cc58e460761" class="m-doc">headerData</a>(</span><span class="m-doc-wrap">int section,
+              Qt::Orientation orientation,
+              int role = Qt::DisplayRole) const -&gt; QVariant <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns header data.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aceb78d102423dd02413b087f12bedf61" class="m-doc">idToRow</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id) const -&gt; int</span>
+            </dt>
+            <dd>Maps feature id to table row.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2f15d938f6654d6e10c45c82a0890f2e" class="m-doc">layer</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>*</span>
+            </dt>
+            <dd>Returns the layer this model uses as backend.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a831514428e1194cdd6892886779826d8" class="m-doc-self" name="a831514428e1194cdd6892886779826d8">layerCache</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayerCache.html" class="m-doc">QgsVectorLayerCache</a>*</span>
+            </dt>
+            <dd>Returns the layer cache this model uses as backend.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae20bc730a9c204b4660b864c2f379409" class="m-doc">prefetchColumnData</a>(</span><span class="m-doc-wrap">int column)</span>
+            </dt>
+            <dd>Caches the entire data for one column.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac8287eb15651cc3fdd5b1bd657181f54" class="m-doc">prefetchSortData</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              unsigned long cacheIndex = 0)</span>
+            </dt>
+            <dd>Prefetches the entire data for an <em>expression</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aee8f14e932b89bc475a85fad68205363" class="m-doc">reload</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index1,
+              const QModelIndex&amp; index2)</span>
+            </dt>
+            <dd>Reloads the model data between indices.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1edc1e39d4afbfd3b58757909bb8709c" class="m-doc-self" name="a1edc1e39d4afbfd3b58757909bb8709c">removeRows</a>(</span><span class="m-doc-wrap">int row,
+              int count,
+              const QModelIndex&amp; parent = QModelIndex()) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Remove rows.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0279d5ec993b18c8e9eb615f6dd29152" class="m-doc-self" name="a0279d5ec993b18c8e9eb615f6dd29152">request</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp;</span>
+            </dt>
+            <dd>Gets the the feature request.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2f1210ea375d1ae38a011ef5a5ca3d50" class="m-doc">resetModel</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Resets the model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6bbd3e21cfcd129d701e6f108c97239b" class="m-doc">rowCount</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; parent = QModelIndex()) const -&gt; int <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Returns the number of rows.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acea38988f202682ec3789a19593df558" class="m-doc">rowToId</a>(</span><span class="m-doc-wrap">int row) const -&gt; <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a></span>
+            </dt>
+            <dd>Maps row to feature id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a597d68e55ad9de00f89c23a9408bf6ee" class="m-doc">setData</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index,
+              const QVariant&amp; value,
+              int role = Qt::EditRole) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Updates data on given index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a801fe282694dac2b0f16f64819bb0708" class="m-doc">setEditorContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>&amp; context)</span>
+            </dt>
+            <dd>Sets the context in which this table is shown.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae0bb2176c75a500c20f6af1da9b28869" class="m-doc">setExtraColumns</a>(</span><span class="m-doc-wrap">int extraColumns)</span>
+            </dt>
+            <dd>Empty extra columns to announce from this model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a58c0a42dffdf6e3ebb38745086f851d9" class="m-doc">setRequest</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; request)</span>
+            </dt>
+            <dd>Set a request that will be used to fill this attribute table model.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a33f9a5ec04078f3d2b65255f2b514ad1" class="m-doc">sortCacheExpression</a>(</span><span class="m-doc-wrap">unsigned long cacheIndex = 0) const -&gt; QString</span>
+            </dt>
+            <dd>The expression which was used to fill the sorting cache at index <em>cacheIndex</em>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a467ca46a9bfd3c0cd2a5f4b481769732" class="m-doc">swapRows</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> a,
+              <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> b)</span>
+            </dt>
+            <dd>Swaps two rows.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4d2ef9c6b8840ba8881cb211f0f649c3" class="m-doc-self" name="a4d2ef9c6b8840ba8881cb211f0f649c3">modelChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Model has been changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a565783776b7b559b5405508ada32e350" class="m-doc">progress</a>(</span><span class="m-doc-wrap">int i,
+              bool&amp; cancel)</span>
+            </dt>
+            <dd></dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3383b2cc34bd3be3705018ca0140bd51" class="m-doc">fieldConditionalStyleChanged</a>(</span><span class="m-doc-wrap">const QString&amp; fieldName)</span>
+            </dt>
+            <dd>Handles updating the model when the conditional style for a field changes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad167d59451e9f3c3a1da6f5b28e53e9d" class="m-doc-self" name="ad167d59451e9f3c3a1da6f5b28e53e9d">loadLayer</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Loads the layer into the model Preferably to be called, before using this model as source for any other proxy model.</dd>
+          </dl>
+        </section>
+        <section id="pri-methods">
+          <h2><a href="#pri-methods">Private functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1c5c7459bff6688c820c7c1686778171" class="m-doc-self" name="a1c5c7459bff6688c820c7c1686778171">loadAttributes</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets mFieldCount, mAttributes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ada75b869d285e8e43d29554a12ce58a1" class="m-doc">loadFeatureAtId</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) const -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Load feature fid into local cache (mFeat)</dd>
+          </dl>
+        </section>
+        <section id="pri-slots">
+          <h2><a href="#pri-slots">Private slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a85c96c6a9e3c2ff17b23de34abe529bc" class="m-doc-self" name="a85c96c6a9e3c2ff17b23de34abe529bc">attributeDeleted</a>(</span><span class="m-doc-wrap">int idx) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Called whenever a column is removed;.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a64130f1a6cc483cabeb973c0dd859d63" class="m-doc">attributeValueChanged</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              int idx,
+              const QVariant&amp; value) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Launched when attribute value has been changed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a74a00f4eee7a8a36ac2cf8b5bc7a599a" class="m-doc-self" name="a74a00f4eee7a8a36ac2cf8b5bc7a599a">editCommandEnded</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Gets called when an edit command ends This will synchronize all fields which have been changed since the last edit command in one single go.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afd0a58bf9a33ca79b3d5c74572a1160c" class="m-doc">featureAdded</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              bool resettingModel = false) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Launched when a feature has been added.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa3249ef0ae02b9c2c7c0d03221e7cb7f" class="m-doc">featuresDeleted</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Launched when features have been deleted.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a6cfa80eb8d44a0873e3844a3611db321" class="m-doc-self" name="a6cfa80eb8d44a0873e3844a3611db321">layerDeleted</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Launched when layer has been deleted.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a85cc0d66069f316c02bdfefa923a72ab" class="m-doc-self" name="a85cc0d66069f316c02bdfefa923a72ab">updatedFields</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Launched whenever the number of fields has changed.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="ad2a1fab62639c671c9982af13091a67d"><div>
+            <h3>
+              enum QgsAttributeTableModel::<wbr /><a href="#ad2a1fab62639c671c9982af13091a67d" class="m-doc-self">Role</a>
+            </h3>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#ad2a1fab62639c671c9982af13091a67da76b9b70607c444433ab6423d21e7260a" class="m-doc-self" name="ad2a1fab62639c671c9982af13091a67da76b9b70607c444433ab6423d21e7260a">FeatureIdRole</a></td>
+                  <td>
+                  <p>Get the feature id of the feature in this row.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ad2a1fab62639c671c9982af13091a67da86a026e37b2d6772402685944780876a" class="m-doc-self" name="ad2a1fab62639c671c9982af13091a67da86a026e37b2d6772402685944780876a">FieldIndexRole</a></td>
+                  <td>
+                  <p>Get the field index of this column.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ad2a1fab62639c671c9982af13091a67daba53b0acf3d9be7a4012bbcf8be031ea" class="m-doc-self" name="ad2a1fab62639c671c9982af13091a67daba53b0acf3d9be7a4012bbcf8be031ea">UserRole</a></td>
+                  <td>
+                  <p>Start further roles starting from this role.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#ad2a1fab62639c671c9982af13091a67da2de5132520d529e15983dc89db67a382" class="m-doc-self" name="ad2a1fab62639c671c9982af13091a67da2de5132520d529e15983dc89db67a382">SortRole</a></td>
+                  <td>
+                  <p>Roles used for sorting start here.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a42ca0669fdd35da9fd999c1733a963a3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a42ca0669fdd35da9fd999c1733a963a3" class="m-doc-self">QgsAttributeTableModel</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayerCache.html" class="m-doc">QgsVectorLayerCache</a>* layerCache,
+              QObject* parent = nullptr)</span></span>
+            </h3>
+            <p>Constructor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layerCache</td>
+                  <td>A layer cache to use as backend</td>
+                </tr>
+                <tr>
+                  <td>parent</td>
+                  <td>The parent QObject (owner)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="abef36278dcb039e7f752ba859cdbf655"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abef36278dcb039e7f752ba859cdbf655" class="m-doc-self">columnCount</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; parent = QModelIndex()) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the number of columns.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parent</td>
+                  <td>parent index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="afefcad574a309828dd185f5251c66c85"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afefcad574a309828dd185f5251c66c85" class="m-doc-self">data</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index,
+              int role) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns data on the given index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>model index</td>
+                </tr>
+                <tr>
+                  <td>role</td>
+                  <td>data role</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="acd6f952bfb5020c1343a5e411379eb15"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>&amp; QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acd6f952bfb5020c1343a5e411379eb15" class="m-doc-self">editorContext</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the context in which this table is shown.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The context</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Will be forwarded to any editor widget created when editing data on this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="a94fd03b5111f7e13732a10ce8712e6d3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a94fd03b5111f7e13732a10ce8712e6d3" class="m-doc-self">extraColumns</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Empty extra columns to announce from this model.</p>
+<p>Any extra columns need to be implemented by proxy models in front of this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="a2095bdf8c6db04f331794675064eb67f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a> QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2095bdf8c6db04f331794675064eb67f" class="m-doc-self">feature</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; idx) const</span></span>
+            </h3>
+            <p>Returns the feature attributes at given model index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>feature attributes at given model index</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a1f022b03946c770e3e3261451aa2d2fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Qt::ItemFlags QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1f022b03946c770e3e3261451aa2d2fd" class="m-doc-self">flags</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns item flags for the index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>model index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac097b848ad90f439b4b45cc58e460761"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QVariant QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac097b848ad90f439b4b45cc58e460761" class="m-doc-self">headerData</a>(</span><span class="m-doc-wrap">int section,
+              Qt::Orientation orientation,
+              int role = Qt::DisplayRole) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns header data.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">section</td>
+                  <td>required section</td>
+                </tr>
+                <tr>
+                  <td>orientation</td>
+                  <td>horizontal or vertical orientation</td>
+                </tr>
+                <tr>
+                  <td>role</td>
+                  <td>data role</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aceb78d102423dd02413b087f12bedf61"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aceb78d102423dd02413b087f12bedf61" class="m-doc-self">idToRow</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> id) const</span></span>
+            </h3>
+            <p>Maps feature id to table row.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td>feature id</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2f15d938f6654d6e10c45c82a0890f2e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2f15d938f6654d6e10c45c82a0890f2e" class="m-doc-self">layer</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the layer this model uses as backend.</p>
+<p>Retrieved from the layer cache.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae20bc730a9c204b4660b864c2f379409"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae20bc730a9c204b4660b864c2f379409" class="m-doc-self">prefetchColumnData</a>(</span><span class="m-doc-wrap">int column)</span></span>
+            </h3>
+            <p>Caches the entire data for one column.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">column</td>
+                  <td>The column index of the field to catch</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This should be called prior to sorting, so the data does not have to be fetched for every single comparison. Specify -1 as column to invalidate the cache</p>
+          </div></section>
+          <section class="m-doc-details" id="ac8287eb15651cc3fdd5b1bd657181f54"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac8287eb15651cc3fdd5b1bd657181f54" class="m-doc-self">prefetchSortData</a>(</span><span class="m-doc-wrap">const QString&amp; expression,
+              unsigned long cacheIndex = 0)</span></span>
+            </h3>
+            <p>Prefetches the entire data for an <em>expression</em>.</p>
+<p>Based on this cached information the sorting can later be done in a performant way. A <em>cacheIndex</em> can be specified if multiple caches should be filled. In this case, the caches will be available as <code><a href="classQgsAttributeTableModel.html#ad2a1fab62639c671c9982af13091a67da2de5132520d529e15983dc89db67a382" class="m-doc">QgsAttributeTableModel::<wbr />SortRole</a> + cacheIndex</code>.</p>
+          </div></section>
+          <section class="m-doc-details" id="aee8f14e932b89bc475a85fad68205363"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aee8f14e932b89bc475a85fad68205363" class="m-doc-self">reload</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index1,
+              const QModelIndex&amp; index2)</span></span>
+            </h3>
+            <p>Reloads the model data between indices.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index1</td>
+                  <td>start index</td>
+                </tr>
+                <tr>
+                  <td>index2</td>
+                  <td>end index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2f1210ea375d1ae38a011ef5a5ca3d50"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2f1210ea375d1ae38a011ef5a5ca3d50" class="m-doc-self">resetModel</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Resets the model.</p>
+<p>Alias to <a href="classQgsAttributeTableModel.html#ad167d59451e9f3c3a1da6f5b28e53e9d" class="m-doc">loadLayer()</a></p>
+          </div></section>
+          <section class="m-doc-details" id="a6bbd3e21cfcd129d701e6f108c97239b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6bbd3e21cfcd129d701e6f108c97239b" class="m-doc-self">rowCount</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; parent = QModelIndex()) const <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Returns the number of rows.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parent</td>
+                  <td>parent index</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="acea38988f202682ec3789a19593df558"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acea38988f202682ec3789a19593df558" class="m-doc-self">rowToId</a>(</span><span class="m-doc-wrap">int row) const</span></span>
+            </h3>
+            <p>Maps row to feature id.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">row</td>
+                  <td>row number</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a597d68e55ad9de00f89c23a9408bf6ee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a597d68e55ad9de00f89c23a9408bf6ee" class="m-doc-self">setData</a>(</span><span class="m-doc-wrap">const QModelIndex&amp; index,
+              const QVariant&amp; value,
+              int role = Qt::EditRole) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Updates data on given index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>model index</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>new data value</td>
+                </tr>
+                <tr>
+                  <td>role</td>
+                  <td>data role</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a801fe282694dac2b0f16f64819bb0708"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a801fe282694dac2b0f16f64819bb0708" class="m-doc-self">setEditorContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsAttributeEditorContext.html" class="m-doc">QgsAttributeEditorContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Sets the context in which this table is shown.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>The context</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Will be forwarded to any editor widget created when editing data on this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae0bb2176c75a500c20f6af1da9b28869"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae0bb2176c75a500c20f6af1da9b28869" class="m-doc-self">setExtraColumns</a>(</span><span class="m-doc-wrap">int extraColumns)</span></span>
+            </h3>
+            <p>Empty extra columns to announce from this model.</p>
+<p>Any extra columns need to be implemented by proxy models in front of this model.</p>
+          </div></section>
+          <section class="m-doc-details" id="a58c0a42dffdf6e3ebb38745086f851d9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a58c0a42dffdf6e3ebb38745086f851d9" class="m-doc-self">setRequest</a>(</span><span class="m-doc-wrap">const <a href="classQgsFeatureRequest.html" class="m-doc">QgsFeatureRequest</a>&amp; request)</span></span>
+            </h3>
+            <p>Set a request that will be used to fill this attribute table model.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">request</td>
+                  <td>The request to use to fill this table model.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>In contrast to a filter, the request will constrain the data shown without the possibility to dynamically adjust it.</p>
+          </div></section>
+          <section class="m-doc-details" id="a33f9a5ec04078f3d2b65255f2b514ad1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33f9a5ec04078f3d2b65255f2b514ad1" class="m-doc-self">sortCacheExpression</a>(</span><span class="m-doc-wrap">unsigned long cacheIndex = 0) const</span></span>
+            </h3>
+            <p>The expression which was used to fill the sorting cache at index <em>cacheIndex</em>.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsAttributeTableModel.html#ac8287eb15651cc3fdd5b1bd657181f54" class="m-doc">prefetchSortData</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a467ca46a9bfd3c0cd2a5f4b481769732"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a467ca46a9bfd3c0cd2a5f4b481769732" class="m-doc-self">swapRows</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> a,
+              <a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> b)</span></span>
+            </h3>
+            <p>Swaps two rows.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">a</td>
+                  <td>first row</td>
+                </tr>
+                <tr>
+                  <td>b</td>
+                  <td>second row</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a565783776b7b559b5405508ada32e350"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a565783776b7b559b5405508ada32e350" class="m-doc-self">progress</a>(</span><span class="m-doc-wrap">int i,
+              bool&amp; cancel) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3383b2cc34bd3be3705018ca0140bd51"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3383b2cc34bd3be3705018ca0140bd51" class="m-doc-self">fieldConditionalStyleChanged</a>(</span><span class="m-doc-wrap">const QString&amp; fieldName) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Handles updating the model when the conditional style for a field changes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fieldName</td>
+                  <td>name of field whose conditional style has changed</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ada75b869d285e8e43d29554a12ce58a1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ada75b869d285e8e43d29554a12ce58a1" class="m-doc-self">loadFeatureAtId</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) const <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
+            </h3>
+            <p>Load feature fid into local cache (mFeat)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>feature id</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>feature exists</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a64130f1a6cc483cabeb973c0dd859d63"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a64130f1a6cc483cabeb973c0dd859d63" class="m-doc-self">attributeValueChanged</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              int idx,
+              const QVariant&amp; value) <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private slot</span></span></span>
+            </h3>
+            <p>Launched when attribute value has been changed.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>feature id</td>
+                </tr>
+                <tr>
+                  <td>idx</td>
+                  <td>attribute index</td>
+                </tr>
+                <tr>
+                  <td>value</td>
+                  <td>new value</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="afd0a58bf9a33ca79b3d5c74572a1160c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afd0a58bf9a33ca79b3d5c74572a1160c" class="m-doc-self">featureAdded</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              bool resettingModel = false) <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private slot</span></span></span>
+            </h3>
+            <p>Launched when a feature has been added.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>feature id</td>
+                </tr>
+                <tr>
+                  <td>resettingModel</td>
+                  <td>set to true if model is in the process of being reset and the normal begin/EndInsertRows calls should not be made</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aa3249ef0ae02b9c2c7c0d03221e7cb7f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAttributeTableModel::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa3249ef0ae02b9c2c7c0d03221e7cb7f" class="m-doc-self">featuresDeleted</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private slot</span></span></span>
+            </h3>
+            <p>Launched when features have been deleted.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fids</td>
+                  <td>feature ids</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

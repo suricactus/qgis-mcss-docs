@@ -1,0 +1,1509 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsPointDistanceRenderer" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsPointDistanceRenderer</compoundname>
+    <basecompoundref refid="classQgsFeatureRenderer" prot="public" virt="non-virtual">QgsFeatureRenderer</basecompoundref>
+    <derivedcompoundref refid="classQgsPointClusterRenderer" prot="public" virt="non-virtual">QgsPointClusterRenderer</derivedcompoundref>
+    <derivedcompoundref refid="classQgsPointDisplacementRenderer" prot="public" virt="non-virtual">QgsPointDisplacementRenderer</derivedcompoundref>
+    <includes refid="qgspointdistancerenderer_8h" local="no">qgspointdistancerenderer.h</includes>
+    <innerclass refid="structQgsPointDistanceRenderer_1_1GroupedFeature" prot="public">QgsPointDistanceRenderer::GroupedFeature</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" prot="public" static="no">
+        <type>QList&lt; <ref refid="structQgsPointDistanceRenderer_1_1GroupedFeature" kindref="compound">QgsPointDistanceRenderer::GroupedFeature</ref> &gt;</type>
+        <definition>typedef QList&lt; QgsPointDistanceRenderer::GroupedFeature &gt; QgsPointDistanceRenderer::ClusteredGroup</definition>
+        <argsstring></argsstring>
+        <name>ClusteredGroup</name>
+        <briefdescription>
+<para>A group of clustered points (ie features within the distance tolerance). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a2ee12aaa5485ddfd7f540245dac6120b" prot="protected" static="no" mutable="no">
+        <type>QList&lt; <ref refid="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" kindref="member">ClusteredGroup</ref> &gt;</type>
+        <definition>QList&lt;ClusteredGroup&gt; QgsPointDistanceRenderer::mClusteredGroups</definition>
+        <argsstring></argsstring>
+        <name>mClusteredGroups</name>
+        <briefdescription>
+<para>Groups of features that are considered clustered together. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="258" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1aada1eaf5e12ad26babbc56ee1f3e6184" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsPointDistanceRenderer::mDrawLabels</definition>
+        <argsstring></argsstring>
+        <name>mDrawLabels</name>
+        <briefdescription>
+<para>Whether labels should be drawn for points. This is set internally from <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> depending on scale denominator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="253" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a369ffd9c120df0362acc42cc55bdf93c" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; <ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref>, int &gt;</type>
+        <definition>QMap&lt;QgsFeatureId, int&gt; QgsPointDistanceRenderer::mGroupIndex</definition>
+        <argsstring></argsstring>
+        <name>mGroupIndex</name>
+        <briefdescription>
+<para>Mapping of feature ID to the feature&apos;s group index. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="261" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a07893f01debf0034469bd7a0e6ec8c6a" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; <ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref>, <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt;</type>
+        <definition>QMap&lt;QgsFeatureId, QgsPointXY &gt; QgsPointDistanceRenderer::mGroupLocations</definition>
+        <argsstring></argsstring>
+        <name>mGroupLocations</name>
+        <briefdescription>
+<para>Mapping of feature ID to approximate group location. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="264" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a9a5aa2fefc52fda1461b47e9c9113a11" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsPointDistanceRenderer::mLabelAttributeName</definition>
+        <argsstring></argsstring>
+        <name>mLabelAttributeName</name>
+        <briefdescription>
+<para>Attribute name for labeling. An empty string indicates that no labels should be rendered. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="236" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a2343bbf5d58611b90b02e6207751de98" prot="protected" static="no" mutable="no">
+        <type>QColor</type>
+        <definition>QColor QgsPointDistanceRenderer::mLabelColor</definition>
+        <argsstring></argsstring>
+        <name>mLabelColor</name>
+        <briefdescription>
+<para>Label text color. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="251" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1ab6ed37e6963421853a5b1eac36df8c49" prot="protected" static="no" mutable="no">
+        <type>QFont</type>
+        <definition>QFont QgsPointDistanceRenderer::mLabelFont</definition>
+        <argsstring></argsstring>
+        <name>mLabelFont</name>
+        <briefdescription>
+<para>Label font. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="249" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a18307df6ec6176ca3e2220d7cb54f62c" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsPointDistanceRenderer::mLabelIndex</definition>
+        <argsstring></argsstring>
+        <name>mLabelIndex</name>
+        <briefdescription>
+<para>Label attribute index (or -1 if none). This index is not stored, it is requested in the <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> method. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="239" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a0f0bb396b4c4b6576734d950b01be1fa" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsPointDistanceRenderer::mMinLabelScale</definition>
+        <argsstring></argsstring>
+        <name>mMinLabelScale</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Maximum scale denominator for label display. A zero value indicates no scale limitation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="255" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1abcce91ce06cde61ff581023541069244" prot="protected" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsFeatureRenderer &gt; QgsPointDistanceRenderer::mRenderer</definition>
+        <argsstring></argsstring>
+        <name>mRenderer</name>
+        <briefdescription>
+<para>Embedded base renderer. This can be used for rendering individual, isolated points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="233" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a1c36aef7cdbafe20932674ce23a45182" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsSpatialIndex" kindref="compound">QgsSpatialIndex</ref> *</type>
+        <definition>QgsSpatialIndex* QgsPointDistanceRenderer::mSpatialIndex</definition>
+        <argsstring></argsstring>
+        <name>mSpatialIndex</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+<para>Spatial index for fast lookup of nearby points. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="267" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="267" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1aa7c335d374961ae9d6f178411b5e076c" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsPointDistanceRenderer::mTolerance</definition>
+        <argsstring></argsstring>
+        <name>mTolerance</name>
+        <briefdescription>
+<para>Distance tolerance. Points that are closer together than this distance are considered clustered. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="242" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1a2b52ddfa4d89eedcdd125df33289443a" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsMapUnitScale" kindref="compound">QgsMapUnitScale</ref></type>
+        <definition>QgsMapUnitScale QgsPointDistanceRenderer::mToleranceMapUnitScale</definition>
+        <argsstring></argsstring>
+        <name>mToleranceMapUnitScale</name>
+        <briefdescription>
+<para>Map unit scale for distance tolerance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="246" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPointDistanceRenderer_1abe5852bbe9a3446a7661f8c1a5718abe" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+        <definition>QgsUnitTypes::RenderUnit QgsPointDistanceRenderer::mToleranceUnit</definition>
+        <argsstring></argsstring>
+        <name>mToleranceUnit</name>
+        <briefdescription>
+<para>Unit for distance tolerance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="244" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a472fbbca61116a3019fd9ceba96cef91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsPointDistanceRenderer::QgsPointDistanceRenderer</definition>
+        <argsstring>(const QString &amp;rendererName, const QString &amp;labelAttributeName=QString())</argsstring>
+        <name>QgsPointDistanceRenderer</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>rendererName</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>labelAttributeName</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsPointDistanceRenderer" kindref="compound">QgsPointDistanceRenderer</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rendererName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of renderer for registry </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>labelAttributeName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional attribute for labeling points </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="84" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="30" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a8ae8d6e2151b3ebb4038fec2d2bccc35" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QgsFeatureRenderer::Capabilities</type>
+        <definition>QgsFeatureRenderer::Capabilities QgsPointDistanceRenderer::capabilities</definition>
+        <argsstring>() override</argsstring>
+        <name>capabilities</name>
+        <reimplements refid="classQgsFeatureRenderer_1a981b574dd6813bcc3cd849822af8929b">capabilities</reimplements>
+        <briefdescription>
+<para>Returns details about internals of this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. if you only want to deal with visible features:</para><para><programlisting><codeline><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">not</highlight><highlight class="normal"><sp/>renderer.capabilities().testFlag(QgsFeatureRenderer.Filter)<sp/></highlight><highlight class="keywordflow">or</highlight><highlight class="normal"><sp/>renderer.willRenderFeature(feature,<sp/>context):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>deal_with_my_feature()</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">else</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>skip_the_curren_feature()</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="90" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="226" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a9e640d995b9622d546ffd7bde8f996b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::checkLegendSymbolItem</definition>
+        <argsstring>(const QString &amp;key, bool state) override</argsstring>
+        <name>checkLegendSymbolItem</name>
+        <reimplements refid="classQgsFeatureRenderer_1aa007f92400dd9dbbc5766e1101e48851">checkLegendSymbolItem</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>item in symbology was checked </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.5 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="106" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="191" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a98311bbda29286aa294be4329f9f80d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+        <definition>const QgsFeatureRenderer * QgsPointDistanceRenderer::embeddedRenderer</definition>
+        <argsstring>() const override</argsstring>
+        <name>embeddedRenderer</name>
+        <reimplements refid="classQgsFeatureRenderer_1ae6e208c5af06c7ac126b512d607574c4">embeddedRenderer</reimplements>
+        <briefdescription>
+<para>Returns the current embedded renderer (subrenderer) for this feature renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation does not use subrenderers and will always return null. <simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a8901ece37e232a987d2ea1368212c3f0" kindref="member">setEmbeddedRenderer()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="102" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="162" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a2d18996d098b56feb36fa7f7392b3d27" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsPointDistanceRenderer::filter</definition>
+        <argsstring>(const QgsFields &amp;fields=QgsFields()) override</argsstring>
+        <name>filter</name>
+        <reimplements refid="classQgsFeatureRenderer_1a3d293f3099396715ec4b0c3773ac9ed9">filter</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+          <defval><ref refid="classQgsFields" kindref="compound">QgsFields</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>If a renderer does not require all the features this method may be overridden and return an expression used as where clause. </para>        </briefdescription>
+        <detaileddescription>
+<para>This will be called once after <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> and before the first call to <ref refid="classQgsPointDistanceRenderer_1a4c19bfd037e8129bfbae17ea9c694f91" kindref="member">renderFeature()</ref>. By default this returns a null string and all features will be requested. You do not need to specify the extent in here, this is taken care of separately and will be combined with a filter returned from this method.</para><para><simplesect kind="return"><para>An expression used as where clause </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="107" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="199" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1af3104b826fd056d705c840d95b13c294" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPointDistanceRenderer::filterNeedsGeometry</definition>
+        <argsstring>() const override</argsstring>
+        <name>filterNeedsGeometry</name>
+        <reimplements refid="classQgsFeatureRenderer_1aad2474510673bc573a8f15517d9d0ce7">filterNeedsGeometry</reimplements>
+        <briefdescription>
+<para>Returns true if this renderer requires the geometry to apply the filter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="89" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="221" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a685b56edfd8adc9ac61251496b160530" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPointDistanceRenderer::labelAttributeName</definition>
+        <argsstring>() const</argsstring>
+        <name>labelAttributeName</name>
+        <briefdescription>
+<para>Returns the attribute name used for labeling points, or an empty string if no labeling will be done by the renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1aa5c011b3bfe7229163d4faf3266ef66b" kindref="member">setLabelAttributeName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a5c0d22f4b2f5469f964b0b1986c41dee" kindref="member">labelFont()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a3734f90b9497f916500f08aef4028442" kindref="member">minimumLabelScale()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a12aa530ce83f84f7ee731c10206ef9fa" kindref="member">labelColor()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="127" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a12aa530ce83f84f7ee731c10206ef9fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QColor</type>
+        <definition>QColor QgsPointDistanceRenderer::labelColor</definition>
+        <argsstring>() const</argsstring>
+        <name>labelColor</name>
+        <briefdescription>
+<para>Returns the color used for for labeling points. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a083475b5ce9d5c985938b96d8b779d27" kindref="member">setLabelColor()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a685b56edfd8adc9ac61251496b160530" kindref="member">labelAttributeName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a5c0d22f4b2f5469f964b0b1986c41dee" kindref="member">labelFont()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="177" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="177" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a5c0d22f4b2f5469f964b0b1986c41dee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QFont</type>
+        <definition>QFont QgsPointDistanceRenderer::labelFont</definition>
+        <argsstring>() const</argsstring>
+        <name>labelFont</name>
+        <briefdescription>
+<para>Returns the font used for labeling points. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a3355e8e7e5e63e82cb53b897e3b51a5b" kindref="member">setLabelFont()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a685b56edfd8adc9ac61251496b160530" kindref="member">labelAttributeName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a12aa530ce83f84f7ee731c10206ef9fa" kindref="member">labelColor()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="144" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="144" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1af908f79b61d1cc9cde609092e0c7d5aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSet&lt; QString &gt;</type>
+        <definition>QSet&lt; QString &gt; QgsPointDistanceRenderer::legendKeysForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const override</argsstring>
+        <name>legendKeysForFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1a717c6d365c6e22402d6d95df1b56c25a">legendKeysForFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns legend keys matching a specified feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="96" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="276" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a1b3712893cf6809961989aeed169cadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPointDistanceRenderer::legendSymbolItemChecked</definition>
+        <argsstring>(const QString &amp;key) override</argsstring>
+        <name>legendSymbolItemChecked</name>
+        <reimplements refid="classQgsFeatureRenderer_1a39211a310945623959640a0c7d16b4bc">legendSymbolItemChecked</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>items of symbology items in legend is checked </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.5 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="183" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a56d4f412198829d7965822a54a4e3f34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgslegendsymbolitem_8h_1a407af583ecc2cfb135af16d9596bdaee" kindref="member">QgsLegendSymbolList</ref></type>
+        <definition>QgsLegendSymbolList QgsPointDistanceRenderer::legendSymbolItems</definition>
+        <argsstring>() const override</argsstring>
+        <name>legendSymbolItems</name>
+        <reimplements refid="classQgsFeatureRenderer_1a21cbef5245fd485a2e2a4a79f4f12fb6">legendSymbolItems</reimplements>
+        <briefdescription>
+<para>Returns a list of symbology items for the legend. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="343" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a7ccc10234def276202ae9db0d7b78e0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPointDistanceRenderer::legendSymbolItemsCheckable</definition>
+        <argsstring>() const override</argsstring>
+        <name>legendSymbolItemsCheckable</name>
+        <reimplements refid="classQgsFeatureRenderer_1a31a44087be8b1cfc8e494879442dfb41">legendSymbolItemsCheckable</reimplements>
+        <briefdescription>
+<para>items of symbology items in legend should be checkable </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.5 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="175" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a3734f90b9497f916500f08aef4028442" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsPointDistanceRenderer::minimumLabelScale</definition>
+        <argsstring>() const</argsstring>
+        <name>minimumLabelScale</name>
+        <briefdescription>
+<para>Returns the minimum map scale (i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>most &quot;zoomed out&quot;) at which points should be labeled by the renderer. The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. <simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a4c0ddf98adc358a4f59501ce77dd04e2" kindref="member">setMinimumLabelScale()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a685b56edfd8adc9ac61251496b160530" kindref="member">labelAttributeName()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="160" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1ac26a81e31d524f2d8355517a89adb5fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+        <definition>QgsSymbol * QgsPointDistanceRenderer::originalSymbolForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const override</argsstring>
+        <name>originalSymbolForFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1ac6d0b1c48d738ee4f072fba72d546c0c">originalSymbolForFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns symbol for feature. </para>        </briefdescription>
+        <detaileddescription>
+<para>The difference compared to <ref refid="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad" kindref="member">symbolForFeature()</ref> is that it returns original symbol which can be used as an identifier for renderer&apos;s rule - the former may return a temporary replacement of a symbol for use in rendering. <simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="93" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="253" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a7e4d41f5aca124903b071913646bd81b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsrenderer_8h_1a9e5c0f5f88a8fd455ad8ef92c3e96f1f" kindref="member">QgsSymbolList</ref></type>
+        <definition>QgsSymbolList QgsPointDistanceRenderer::originalSymbolsForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const override</argsstring>
+        <name>originalSymbolsForFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1afe8da3c1fe313d782f8c7164df01aec9">originalSymbolsForFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Equivalent of <ref refid="classQgsPointDistanceRenderer_1a7e4d41f5aca124903b071913646bd81b" kindref="member">originalSymbolsForFeature()</ref> call extended to support renderers that may use more symbols per feature - similar to <ref refid="classQgsPointDistanceRenderer_1aa583263cda0c4a1e6e939b0ba80450c7" kindref="member">symbolsForFeature()</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="95" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="269" bodyend="274"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a4c19bfd037e8129bfbae17ea9c694f91" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPointDistanceRenderer::renderFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context, int layer=-1, bool selected=false, bool drawVertexMarker=false) override</argsstring>
+        <name>renderFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1a7f3398e1ba6247bf642eeb8d21a8acf3">renderFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>layer</declname>
+          <defval>-1</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>selected</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>drawVertexMarker</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Render a feature using this renderer in the given context. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be called between <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> and <ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref> calls. Default implementation renders a symbol as determined by <ref refid="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad" kindref="member">symbolForFeature()</ref> call. Returns true if the feature has been returned (this is used for example to determine whether the feature may be labelled).</para><para>If layer is not -1, the renderer should draw only a particula layer from symbols (in order to support symbol level rendering).</para><para><simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="87" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="48" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a8901ece37e232a987d2ea1368212c3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setEmbeddedRenderer</definition>
+        <argsstring>(QgsFeatureRenderer *r) override</argsstring>
+        <name>setEmbeddedRenderer</name>
+        <reimplements refid="classQgsFeatureRenderer_1a49bf7257e9e5639e46f83c25d99d653e">setEmbeddedRenderer</reimplements>
+        <param>
+          <type><ref refid="classQgsFeatureRenderer" kindref="compound">QgsFeatureRenderer</ref> *</type>
+          <declname>subRenderer</declname>
+        </param>
+        <briefdescription>
+<para>Sets an embedded renderer (subrenderer) for this feature renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>The base class implementation does nothing with subrenderers, but individual derived classes can use these to modify their behavior. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>subRenderer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the embedded renderer. Ownership will be transferred. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a98311bbda29286aa294be4329f9f80d8" kindref="member">embeddedRenderer()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="101" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1aa5c011b3bfe7229163d4faf3266ef66b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setLabelAttributeName</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>setLabelAttributeName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Sets the attribute name for labeling points. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>attribute name, or empty string to avoid labeling features by the renderer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a685b56edfd8adc9ac61251496b160530" kindref="member">labelAttributeName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a3355e8e7e5e63e82cb53b897e3b51a5b" kindref="member">setLabelFont()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a083475b5ce9d5c985938b96d8b779d27" kindref="member">setLabelColor()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a4c0ddf98adc358a4f59501ce77dd04e2" kindref="member">setMinimumLabelScale()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="117" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="117" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a083475b5ce9d5c985938b96d8b779d27" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setLabelColor</definition>
+        <argsstring>(const QColor &amp;color)</argsstring>
+        <name>setLabelColor</name>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Sets the color to use for for labeling points. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>label color </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a12aa530ce83f84f7ee731c10206ef9fa" kindref="member">labelColor()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1aa5c011b3bfe7229163d4faf3266ef66b" kindref="member">setLabelAttributeName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a3355e8e7e5e63e82cb53b897e3b51a5b" kindref="member">setLabelFont()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="169" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="169" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a3355e8e7e5e63e82cb53b897e3b51a5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setLabelFont</definition>
+        <argsstring>(const QFont &amp;font)</argsstring>
+        <name>setLabelFont</name>
+        <param>
+          <type>const QFont &amp;</type>
+          <declname>font</declname>
+        </param>
+        <briefdescription>
+<para>Sets the font used for labeling points. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>font</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>label font </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a5c0d22f4b2f5469f964b0b1986c41dee" kindref="member">labelFont()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1aa5c011b3bfe7229163d4faf3266ef66b" kindref="member">setLabelAttributeName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a083475b5ce9d5c985938b96d8b779d27" kindref="member">setLabelColor()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="136" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="136" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1ad78273e724c91e41c58f9e3c34ac282c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setLegendSymbolItem</definition>
+        <argsstring>(const QString &amp;key, QgsSymbol *symbol) override</argsstring>
+        <name>setLegendSymbolItem</name>
+        <reimplements refid="classQgsFeatureRenderer_1a499bf07e27cb21cd9b6340daa686fa59">setLegendSymbolItem</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+<para>Sets the symbol to be used for a legend symbol item. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>rule key for legend symbol </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbol</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new symbol for legend item. Ownership is transferred to renderer. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="103" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="167" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a4c0ddf98adc358a4f59501ce77dd04e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setMinimumLabelScale</definition>
+        <argsstring>(double scale)</argsstring>
+        <name>setMinimumLabelScale</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Sets the minimum map <emphasis>scale</emphasis> (i.e. </para>        </briefdescription>
+        <detaileddescription>
+<para>most &quot;zoomed out&quot;) at which points should be labeled by the renderer. The <emphasis>scale</emphasis> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. <simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a3734f90b9497f916500f08aef4028442" kindref="member">minimumLabelScale()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1aa5c011b3bfe7229163d4faf3266ef66b" kindref="member">setLabelAttributeName()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="152" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1add6307157715f87048f2b4c4b7dda267" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setTolerance</definition>
+        <argsstring>(double distance)</argsstring>
+        <name>setTolerance</name>
+        <param>
+          <type>double</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Sets the tolerance distance for grouping points. </para>        </briefdescription>
+        <detaileddescription>
+<para>Units are specified using <ref refid="classQgsPointDistanceRenderer_1a94dbd6f05752e1902a1deaaba9093dbf" kindref="member">setToleranceUnit()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>distance</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tolerance distance </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a511a93eec6ca1ebd6abdb52d404fa230" kindref="member">tolerance()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a94dbd6f05752e1902a1deaaba9093dbf" kindref="member">setToleranceUnit()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="186" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="186" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1ad43491c2016db097d499549cd3f45d84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setToleranceMapUnitScale</definition>
+        <argsstring>(const QgsMapUnitScale &amp;scale)</argsstring>
+        <name>setToleranceMapUnitScale</name>
+        <param>
+          <type>const <ref refid="classQgsMapUnitScale" kindref="compound">QgsMapUnitScale</ref> &amp;</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Sets the map unit scale object for the distance tolerance. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only used if the <ref refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" kindref="member">toleranceUnit()</ref> is set to <ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adfaf57b44fb236b466b09b64acf3da19a89" kindref="member">QgsUnitTypes::RenderMapUnits</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>scale for distance tolerance </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a7480767bd3129e9aab621f0d32f9f390" kindref="member">toleranceMapUnitScale()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a94dbd6f05752e1902a1deaaba9093dbf" kindref="member">setToleranceUnit()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="220" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="220" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a94dbd6f05752e1902a1deaaba9093dbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::setToleranceUnit</definition>
+        <argsstring>(QgsUnitTypes::RenderUnit unit)</argsstring>
+        <name>setToleranceUnit</name>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+          <declname>unit</declname>
+        </param>
+        <briefdescription>
+<para>Sets the units for the tolerance distance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>unit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>tolerance distance units </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1add6307157715f87048f2b4c4b7dda267" kindref="member">setTolerance()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" kindref="member">toleranceUnit()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="203" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="203" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::startRender</definition>
+        <argsstring>(QgsRenderContext &amp;context, const QgsFields &amp;fields) override</argsstring>
+        <name>startRender</name>
+        <reimplements refid="classQgsFeatureRenderer_1af01839c584bf5fc58e259adaa318c0bd">startRender</reimplements>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <briefdescription>
+<para>Must be called when a new render cycle is started. </para>        </briefdescription>
+        <detaileddescription>
+<para>A call to <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> must always be followed by a corresponding call to <ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref> after all features have been rendered.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional information passed to the renderer about the job which will be rendered </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fields</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The fields available for rendering</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref></para></simplesect>
+<simplesect kind="warning"><para>This method is not thread safe. Before calling <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> in a non-main thread, the renderer should instead be cloned and <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref>/stopRender() called on the clone. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="98" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="293" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::stopRender</definition>
+        <argsstring>(QgsRenderContext &amp;context) override</argsstring>
+        <name>stopRender</name>
+        <reimplements refid="classQgsFeatureRenderer_1a61ff1d057f11ca5e260e913dc37fe85f">stopRender</reimplements>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Must be called when a render cycle has finished, to allow the renderer to clean up. </para>        </briefdescription>
+        <detaileddescription>
+<para>Calls to <ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref> must always be preceded by a call to <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref>.</para><para><simplesect kind="warning"><para>This method is not thread safe. Before calling <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> in a non-main thread, the renderer should instead be cloned and <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref>/stopRender() called on the clone.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="99" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="323" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+        <definition>QgsSymbol * QgsPointDistanceRenderer::symbolForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const override</argsstring>
+        <name>symbolForFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1a79919f0fef618d71973ac3d4ff8c6525">symbolForFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>To be overridden. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be called between <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> and <ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref> calls. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>feature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>feature </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>returns pointer to symbol or 0 if symbol was not found </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="92" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="244" bodyend="251"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a1d07a0d1b016f231de03cd5f585bcaf2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsrenderer_8h_1a9e5c0f5f88a8fd455ad8ef92c3e96f1f" kindref="member">QgsSymbolList</ref></type>
+        <definition>QgsSymbolList QgsPointDistanceRenderer::symbols</definition>
+        <argsstring>(QgsRenderContext &amp;context) const override</argsstring>
+        <name>symbols</name>
+        <reimplements refid="classQgsFeatureRenderer_1a5f3e784718999bba182e46d2bff4d6c1">symbols</reimplements>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns list of symbols used by the renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="91" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="235" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1aa583263cda0c4a1e6e939b0ba80450c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="qgsrenderer_8h_1a9e5c0f5f88a8fd455ad8ef92c3e96f1f" kindref="member">QgsSymbolList</ref></type>
+        <definition>QgsSymbolList QgsPointDistanceRenderer::symbolsForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const override</argsstring>
+        <name>symbolsForFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1a5933b6c08051c983cf65d874ac7b4b69">symbolsForFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns list of symbols used for rendering the feature. </para>        </briefdescription>
+        <detaileddescription>
+<para>For renderers that do not support MoreSymbolsPerFeature it is more efficient to use <ref refid="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad" kindref="member">symbolForFeature()</ref> <simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="260" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a511a93eec6ca1ebd6abdb52d404fa230" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsPointDistanceRenderer::tolerance</definition>
+        <argsstring>() const</argsstring>
+        <name>tolerance</name>
+        <briefdescription>
+<para>Returns the tolerance distance for grouping points. </para>        </briefdescription>
+        <detaileddescription>
+<para>Units are retrieved using <ref refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" kindref="member">toleranceUnit()</ref>. <simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1add6307157715f87048f2b4c4b7dda267" kindref="member">setTolerance()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" kindref="member">toleranceUnit()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="194" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="194" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a7480767bd3129e9aab621f0d32f9f390" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="classQgsMapUnitScale" kindref="compound">QgsMapUnitScale</ref> &amp;</type>
+        <definition>const QgsMapUnitScale&amp; QgsPointDistanceRenderer::toleranceMapUnitScale</definition>
+        <argsstring>() const</argsstring>
+        <name>toleranceMapUnitScale</name>
+        <briefdescription>
+<para>Returns the map unit scale object for the distance tolerance. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is only used if the <ref refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" kindref="member">toleranceUnit()</ref> is set to <ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adfaf57b44fb236b466b09b64acf3da19a89" kindref="member">QgsUnitTypes::RenderMapUnits</ref>. <simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1ad43491c2016db097d499549cd3f45d84" kindref="member">setToleranceMapUnitScale()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" kindref="member">toleranceUnit()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="228" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="228" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+        <definition>QgsUnitTypes::RenderUnit QgsPointDistanceRenderer::toleranceUnit</definition>
+        <argsstring>() const</argsstring>
+        <name>toleranceUnit</name>
+        <briefdescription>
+<para>Returns the units for the tolerance distance. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a511a93eec6ca1ebd6abdb52d404fa230" kindref="member">tolerance()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPointDistanceRenderer_1a94dbd6f05752e1902a1deaaba9093dbf" kindref="member">setToleranceUnit()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="211" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a160bc75d4076d0da0dcb23a3827fcecf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::toSld</definition>
+        <argsstring>(QDomDocument &amp;doc, QDomElement &amp;element, const QgsStringMap &amp;props=QgsStringMap()) const override</argsstring>
+        <name>toSld</name>
+        <reimplements refid="classQgsFeatureRenderer_1a84d6afd0e56bbca290789d726bb05117">toSld</reimplements>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>const <ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref> &amp;</type>
+          <declname>props</declname>
+          <defval><ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>used from subclasses to create SLD Rule elements following SLD v1.1 specs </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="86" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1aa95ca179e5cec362540221b13736a146" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QSet&lt; QString &gt;</type>
+        <definition>QSet&lt; QString &gt; QgsPointDistanceRenderer::usedAttributes</definition>
+        <argsstring>(const QgsRenderContext &amp;context) const override</argsstring>
+        <name>usedAttributes</name>
+        <reimplements refid="classQgsFeatureRenderer_1aaf8af921f929ad0ac9c947d87ec70ca6">usedAttributes</reimplements>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of attributes required by this renderer. </para>        </briefdescription>
+        <detaileddescription>
+<para>Attributes not listed in here may not have been requested from the provider at rendering time.</para><para><simplesect kind="return"><para>A set of attributes </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="88" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="207" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1af2713e66e8e4c24c0201c363e652c73e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPointDistanceRenderer::willRenderFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context) const override</argsstring>
+        <name>willRenderFeature</name>
+        <reimplements refid="classQgsFeatureRenderer_1aceb8a0f58f803a6a535f8998588600da">willRenderFeature</reimplements>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns whether the renderer will render a feature or not. </para>        </briefdescription>
+        <detaileddescription>
+<para>Must be called between <ref refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" kindref="member">startRender()</ref> and <ref refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" kindref="member">stopRender()</ref> calls. Default implementation uses <ref refid="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad" kindref="member">symbolForFeature()</ref>. <simplesect kind="since"><para>QGIS 2.12 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="97" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="283" bodyend="290"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1aa0df020b4e337557e7e0451c13661619" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::drawLabels</definition>
+        <argsstring>(QPointF centerPoint, QgsSymbolRenderContext &amp;context, const QList&lt; QPointF &gt; &amp;labelShifts, const ClusteredGroup &amp;group)</argsstring>
+        <name>drawLabels</name>
+        <param>
+          <type>QPointF</type>
+          <declname>centerPoint</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbolRenderContext" kindref="compound">QgsSymbolRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const QList&lt; QPointF &gt; &amp;</type>
+          <declname>labelShifts</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" kindref="member">ClusteredGroup</ref> &amp;</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Renders the labels for a group. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>centerPoint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>center point of group </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>labelShifts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>displacement for individual label positions </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group of clustered features to label </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>may not be available in Python bindings on some platforms </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="277" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="384" bodyend="426"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a8d351e0b9ad20b9c3ba5386f8dd66beb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsExpressionContextScope" kindref="compound">QgsExpressionContextScope</ref> *</type>
+        <definition>QgsExpressionContextScope * QgsPointDistanceRenderer::createGroupScope</definition>
+        <argsstring>(const ClusteredGroup &amp;group) const</argsstring>
+        <name>createGroupScope</name>
+        <param>
+          <type>const <ref refid="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" kindref="member">ClusteredGroup</ref> &amp;</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Creates an expression context scope for a clustered group, with variables reflecting the group&apos;s properties. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>clustered group </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>new expression context scope </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="313" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="428" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1ab9e9eb4159e31358cf65f4e6de1fc778" prot="private" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsPointDistanceRenderer::drawGroup</definition>
+        <argsstring>(QPointF centerPoint, QgsRenderContext &amp;context, const ClusteredGroup &amp;group)=0SIP_FORCE</argsstring>
+        <name>drawGroup</name>
+        <param>
+          <type>QPointF</type>
+          <declname>centerPoint</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" kindref="member">ClusteredGroup</ref> &amp;</type>
+          <declname>group</declname>
+        </param>
+        <briefdescription>
+<para>Draws a group of clustered points. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>centerPoint</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>central point (geographic centroid) of all points contained within the cluster </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>group</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>contents of group </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="287" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a3e2b491259ef5ce62f2e5bf271578331" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::drawGroup</definition>
+        <argsstring>(const ClusteredGroup &amp;group, QgsRenderContext &amp;context)</argsstring>
+        <name>drawGroup</name>
+        <param>
+          <type>const <ref refid="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" kindref="member">ClusteredGroup</ref> &amp;</type>
+          <declname>group</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Internal group rendering helper. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="299" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="139" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a33bf3ce4a4d4159f1299a0f3b012f58b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMarkerSymbol" kindref="compound">QgsMarkerSymbol</ref> *</type>
+        <definition>QgsMarkerSymbol * QgsPointDistanceRenderer::firstSymbolForFeature</definition>
+        <argsstring>(const QgsFeature &amp;feature, QgsRenderContext &amp;context)</argsstring>
+        <name>firstSymbolForFeature</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns first symbol from the embedded renderer for a feature or nullptr if none. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>feature</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source feature </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>target render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="306" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="475" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a8a7d2ee53e1e9aa411ec7af5a273ebb7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsPointDistanceRenderer::getLabel</definition>
+        <argsstring>(const QgsFeature &amp;feature) const</argsstring>
+        <name>getLabel</name>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <briefdescription>
+<para>Returns the label text for a feature (using mLabelAttributeName as attribute field) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="296" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="373" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a08cde61472b016cef4ddec38ecc0942d" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPointDistanceRenderer::printGroupInfo</definition>
+        <argsstring>() const</argsstring>
+        <name>printGroupInfo</name>
+        <briefdescription>
+<para>Debugging function to check the entries in the clustered groups. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="293" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="357" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPointDistanceRenderer_1a9d81748fad0c8492163b139c789b9619" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsPointDistanceRenderer::searchRect</definition>
+        <argsstring>(const QgsPointXY &amp;p, double distance) const</argsstring>
+        <name>searchRect</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>Creates a search rectangle with specified distance tolerance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="290" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.cpp" bodystart="352" bodyend="355"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An abstract base class for distance based point renderers (e.g., clusterer and displacement renderers). </para>    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classQgsPointDistanceRenderer" kindref="compound">QgsPointDistanceRenderer</ref> handles calculation of point clusters using a distance based threshold. Subclasses must implement drawGroup() to handle the rendering of individual point clusters in the desired style. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6587">
+        <label>QgsPointDistanceRenderer</label>
+        <link refid="classQgsPointDistanceRenderer"/>
+        <childnode refid="6588" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6588">
+        <label>QgsFeatureRenderer</label>
+        <link refid="classQgsFeatureRenderer"/>
+      </node>
+      <node id="6589">
+        <label>QgsPointClusterRenderer</label>
+        <link refid="classQgsPointClusterRenderer"/>
+        <childnode refid="6587" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6590">
+        <label>QgsPointDisplacementRenderer</label>
+        <link refid="classQgsPointDisplacementRenderer"/>
+        <childnode refid="6587" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6591">
+        <label>QgsPointDistanceRenderer</label>
+        <link refid="classQgsPointDistanceRenderer"/>
+        <childnode refid="6592" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6596" relation="usage">
+          <edgelabel>mSpatialIndex</edgelabel>
+        </childnode>
+        <childnode refid="6598" relation="usage">
+          <edgelabel>mToleranceMapUnitScale</edgelabel>
+        </childnode>
+      </node>
+      <node id="6594">
+        <label>QList&lt; QgsFeatureRequest::OrderByClause &gt;</label>
+      </node>
+      <node id="6598">
+        <label>QgsMapUnitScale</label>
+        <link refid="classQgsMapUnitScale"/>
+      </node>
+      <node id="6597">
+        <label>QgsFeatureSink</label>
+        <link refid="classQgsFeatureSink"/>
+      </node>
+      <node id="6596">
+        <label>QgsSpatialIndex</label>
+        <link refid="classQgsSpatialIndex"/>
+        <childnode refid="6597" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6592">
+        <label>QgsFeatureRenderer</label>
+        <link refid="classQgsFeatureRenderer"/>
+        <childnode refid="6593" relation="usage">
+          <edgelabel>mOrderBy</edgelabel>
+        </childnode>
+        <childnode refid="6595" relation="usage">
+          <edgelabel>mPaintEffect</edgelabel>
+        </childnode>
+      </node>
+      <node id="6595">
+        <label>QgsPaintEffect</label>
+        <link refid="classQgsPaintEffect"/>
+      </node>
+      <node id="6593">
+        <label>QgsFeatureRequest::OrderBy</label>
+        <link refid="classQgsFeatureRequest_1_1OrderBy"/>
+        <childnode refid="6594" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" line="39" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/symbology/qgspointdistancerenderer.h" bodystart="38" bodyend="315"/>
+    <listofallmembers>
+      <member refid="classQgsFeatureRenderer_1a201626990c3b54690dad2de7e6401d2f" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>_getPoint</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a8ae8d6e2151b3ebb4038fec2d2bccc35" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>capabilities</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>Capability</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a9e640d995b9622d546ffd7bde8f996b8" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>checkLegendSymbolItem</name></member>
+      <member refid="classQgsFeatureRenderer_1a1dc475663007d2a26f8e4480fd51ba9b" prot="public" virt="pure-virtual"><scope>QgsPointDistanceRenderer</scope><name>clone</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aeb42336bd18a1b0b02a4640f20665977" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>ClusteredGroup</name></member>
+      <member refid="classQgsFeatureRenderer_1ab25638a4e46eeb34e063d8199c762d47" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>convertSymbolRotation</name></member>
+      <member refid="classQgsFeatureRenderer_1a396b23d7a9678c90c31bd5173eb70132" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>convertSymbolSizeScale</name></member>
+      <member refid="classQgsFeatureRenderer_1a7f2f02e0303669da209392112b5c6494" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>copyRendererData</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a8d351e0b9ad20b9c3ba5386f8dd66beb" prot="private" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>createGroupScope</name></member>
+      <member refid="classQgsFeatureRenderer_1a23ae7f4634cbd7df5e3cd06080b40119" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>defaultRenderer</name></member>
+      <member refid="classQgsPointDistanceRenderer_1ab9e9eb4159e31358cf65f4e6de1fc778" prot="private" virt="pure-virtual"><scope>QgsPointDistanceRenderer</scope><name>drawGroup</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a3e2b491259ef5ce62f2e5bf271578331" prot="private" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>drawGroup</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aa0df020b4e337557e7e0451c13661619" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>drawLabels</name></member>
+      <member refid="classQgsFeatureRenderer_1a905c0574eb38e9be79210d9ffb5001d9" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>dump</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a98311bbda29286aa294be4329f9f80d8" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>embeddedRenderer</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151ac421b4212b3fe37ac685edf9cc92110f" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>Filter</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a2d18996d098b56feb36fa7f7392b3d27" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>filter</name></member>
+      <member refid="classQgsPointDistanceRenderer_1af3104b826fd056d705c840d95b13c294" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>filterNeedsGeometry</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a33bf3ce4a4d4159f1299a0f3b012f58b" prot="private" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>firstSymbolForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a4d4d81f72e6866366a1acdcce8ead139" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>forceRasterRender</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a8a7d2ee53e1e9aa411ec7af5a273ebb7" prot="private" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>getLabel</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a685b56edfd8adc9ac61251496b160530" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>labelAttributeName</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a12aa530ce83f84f7ee731c10206ef9fa" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>labelColor</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a5c0d22f4b2f5469f964b0b1986c41dee" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>labelFont</name></member>
+      <member refid="classQgsFeatureRenderer_1a6d9ba0a28df86dc5917bc8627117a7c0" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>legendClassificationAttribute</name></member>
+      <member refid="classQgsPointDistanceRenderer_1af908f79b61d1cc9cde609092e0c7d5aa" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>legendKeysForFeature</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a1b3712893cf6809961989aeed169cadf" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>legendSymbolItemChecked</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a56d4f412198829d7965822a54a4e3f34" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>legendSymbolItems</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a7ccc10234def276202ae9db0d7b78e0d" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>legendSymbolItemsCheckable</name></member>
+      <member refid="classQgsFeatureRenderer_1ab9dd42567b1f71b19a276133e5ec5f01" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>load</name></member>
+      <member refid="classQgsFeatureRenderer_1a86927ac5c7b347c9cf62e8fa9464e8af" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>loadSld</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a2ee12aaa5485ddfd7f540245dac6120b" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mClusteredGroups</name></member>
+      <member refid="classQgsFeatureRenderer_1a461119578a07fb73cd8e90bd50cca94e" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mCurrentVertexMarkerSize</name></member>
+      <member refid="classQgsFeatureRenderer_1ac3a0c2c2f0eb0f9c04abb44d9cce7c85" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mCurrentVertexMarkerType</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aada1eaf5e12ad26babbc56ee1f3e6184" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mDrawLabels</name></member>
+      <member refid="classQgsFeatureRenderer_1a2a274f78941c4f6110c9a798928029ac" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mForceRaster</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a369ffd9c120df0362acc42cc55bdf93c" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mGroupIndex</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a07893f01debf0034469bd7a0e6ec8c6a" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mGroupLocations</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a3734f90b9497f916500f08aef4028442" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>minimumLabelScale</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a9a5aa2fefc52fda1461b47e9c9113a11" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mLabelAttributeName</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a2343bbf5d58611b90b02e6207751de98" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mLabelColor</name></member>
+      <member refid="classQgsPointDistanceRenderer_1ab6ed37e6963421853a5b1eac36df8c49" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mLabelFont</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a18307df6ec6176ca3e2220d7cb54f62c" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mLabelIndex</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a0f0bb396b4c4b6576734d950b01be1fa" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mMinLabelScale</name></member>
+      <member refid="classQgsFeatureRenderer_1a32974686f90c5010a197ff8b9b544975" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>modifyRequestExtent</name></member>
+      <member refid="classQgsFeatureRenderer_1ac3c95f48b0233a3b56643c4602b0c43c" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mOrderBy</name></member>
+      <member refid="classQgsFeatureRenderer_1ad77073a562a38dd4868124a83d9df065" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mOrderByEnabled</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a032dbbe9c457924a27f1f2ae4c6c6531" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>MoreSymbolsPerFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a71a42b5fb97eeda8b4604e4a3e59f5e3" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mPaintEffect</name></member>
+      <member refid="classQgsPointDistanceRenderer_1abcce91ce06cde61ff581023541069244" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mRenderer</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a1c36aef7cdbafe20932674ce23a45182" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mSpatialIndex</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aa7c335d374961ae9d6f178411b5e076c" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mTolerance</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a2b52ddfa4d89eedcdd125df33289443a" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mToleranceMapUnitScale</name></member>
+      <member refid="classQgsPointDistanceRenderer_1abe5852bbe9a3446a7661f8c1a5718abe" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mToleranceUnit</name></member>
+      <member refid="classQgsFeatureRenderer_1ad320f00920e002ede32001884ce15b00" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mType</name></member>
+      <member refid="classQgsFeatureRenderer_1ab8931a4c40fb66fb9f2017591d3a59fd" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>mUsingSymbolLevels</name></member>
+      <member refid="classQgsFeatureRenderer_1afb510f7efd25a4d9bf6c1a5f5efda23f" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>orderBy</name></member>
+      <member refid="classQgsFeatureRenderer_1aabdeeb957a7b269701440929f5b26c2b" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>orderByEnabled</name></member>
+      <member refid="classQgsPointDistanceRenderer_1ac26a81e31d524f2d8355517a89adb5fb" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>originalSymbolForFeature</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a7e4d41f5aca124903b071913646bd81b" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>originalSymbolsForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a40ea35ba46863f1d1d17054a1ef9f0fc" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>paintEffect</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a08cde61472b016cef4ddec38ecc0942d" prot="private" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>printGroupInfo</name></member>
+      <member refid="classQgsFeatureRenderer_1a5641de1f5e0cdc08003fa2d0a52be2f9" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>QgsFeatureRenderer</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a472fbbca61116a3019fd9ceba96cef91" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>QgsPointDistanceRenderer</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a4c19bfd037e8129bfbae17ea9c694f91" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>renderFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1adaadfad7ce3b5d772dddcd0aabd9272c" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>renderFeatureWithSymbol</name></member>
+      <member refid="classQgsFeatureRenderer_1ae47fb7698b274d144822bbab7b4e7847" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>renderVertexMarker</name></member>
+      <member refid="classQgsFeatureRenderer_1ae6440861a23b16f61a725e10fc44a771" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>renderVertexMarkerPolygon</name></member>
+      <member refid="classQgsFeatureRenderer_1a0532e04a04464ebe4f5ef0fc71023da6" prot="protected" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>renderVertexMarkerPolyline</name></member>
+      <member refid="classQgsFeatureRenderer_1a840dd8edae9546c287254ae97c137ac6" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>save</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a9570a82adc24b246ae40596fdc8af6d2" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>ScaleDependent</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a9d81748fad0c8492163b139c789b9619" prot="private" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>searchRect</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a8901ece37e232a987d2ea1368212c3f0" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>setEmbeddedRenderer</name></member>
+      <member refid="classQgsFeatureRenderer_1a5ca82668c01b2377dfd09b54b3020793" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setForceRasterRender</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aa5c011b3bfe7229163d4faf3266ef66b" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setLabelAttributeName</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a083475b5ce9d5c985938b96d8b779d27" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setLabelColor</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a3355e8e7e5e63e82cb53b897e3b51a5b" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setLabelFont</name></member>
+      <member refid="classQgsPointDistanceRenderer_1ad78273e724c91e41c58f9e3c34ac282c" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>setLegendSymbolItem</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a4c0ddf98adc358a4f59501ce77dd04e2" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setMinimumLabelScale</name></member>
+      <member refid="classQgsFeatureRenderer_1a006eebdce2c5758fe82b44d1fc4537e2" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setOrderBy</name></member>
+      <member refid="classQgsFeatureRenderer_1a2f822400abdbabda8d3297a12928677e" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setOrderByEnabled</name></member>
+      <member refid="classQgsFeatureRenderer_1a46afb1e8bf35166215d61475860e910d" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setPaintEffect</name></member>
+      <member refid="classQgsPointDistanceRenderer_1add6307157715f87048f2b4c4b7dda267" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setTolerance</name></member>
+      <member refid="classQgsPointDistanceRenderer_1ad43491c2016db097d499549cd3f45d84" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setToleranceMapUnitScale</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a94dbd6f05752e1902a1deaaba9093dbf" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setToleranceUnit</name></member>
+      <member refid="classQgsFeatureRenderer_1a99e2476044ca7ba7dafdf2798c9edfd0" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setUsingSymbolLevels</name></member>
+      <member refid="classQgsFeatureRenderer_1a708c80d56d903e447dbef31838f78ad6" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>setVertexMarkerAppearance</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a7fe789803d4623cb9001371cceb6b64c" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>startRender</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a4ee5d8d6d73543f93a8c4533537dbcba" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>stopRender</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a52eed1acc2d00abbb8dd4a5d1433cdad" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>symbolForFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1aa33cca89be2cf805acfe309f491b7151a9c0b2e9b38c8cfa909e20f9aa241da26" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>SymbolLevels</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a1d07a0d1b016f231de03cd5f585bcaf2" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>symbols</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aa583263cda0c4a1e6e939b0ba80450c7" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>symbolsForFeature</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a511a93eec6ca1ebd6abdb52d404fa230" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>tolerance</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a7480767bd3129e9aab621f0d32f9f390" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>toleranceMapUnitScale</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a2cf9a726dab233737d4eaf636ae9a428" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>toleranceUnit</name></member>
+      <member refid="classQgsPointDistanceRenderer_1a160bc75d4076d0da0dcb23a3827fcecf" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>toSld</name></member>
+      <member refid="classQgsFeatureRenderer_1a7a3f1cbc41fce537ebdbbe93ce25af2d" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>type</name></member>
+      <member refid="classQgsPointDistanceRenderer_1aa95ca179e5cec362540221b13736a146" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>usedAttributes</name></member>
+      <member refid="classQgsFeatureRenderer_1a903fb339ff145d9345fa54fafa2c50e2" prot="public" virt="non-virtual"><scope>QgsPointDistanceRenderer</scope><name>usingSymbolLevels</name></member>
+      <member refid="classQgsPointDistanceRenderer_1af2713e66e8e4c24c0201c363e652c73e" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>willRenderFeature</name></member>
+      <member refid="classQgsFeatureRenderer_1a09711cbff0ad082a5bd1617bf504db3f" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>writeSld</name></member>
+      <member refid="classQgsFeatureRenderer_1a99e8aa22931295440692221602e50ac6" prot="public" virt="virtual"><scope>QgsPointDistanceRenderer</scope><name>~QgsFeatureRenderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

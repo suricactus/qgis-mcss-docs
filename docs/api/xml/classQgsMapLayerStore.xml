@@ -1,0 +1,738 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsMapLayerStore" kind="class" language="C++" prot="public">
+    <compoundname>QgsMapLayerStore</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="qgsmaplayerstore_8h" local="no">qgsmaplayerstore.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsMapLayerStore_1a455c01521024bd77fa2ba30fd3e0ed98" prot="private" static="no" mutable="no">
+        <type>QMap&lt; QString, <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> * &gt;</type>
+        <definition>QMap&lt;QString, QgsMapLayer *&gt; QgsMapLayerStore::mMapLayers</definition>
+        <argsstring></argsstring>
+        <name>mMapLayers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="360" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" bodystart="360" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsMapLayerStore_1a5ad7b6852d78f98b07754acf2eaa35d2" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsMapLayerStore::QgsMapLayerStore</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>QgsMapLayerStore</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsMapLayerStore" kindref="compound">QgsMapLayerStore</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="44" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a480f8ba3c778b919af6052a86fa015e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsMapLayerStore::~QgsMapLayerStore</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsMapLayerStore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="46" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1adba844ac49b9aa24b231133355a01dd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>QgsMapLayer * QgsMapLayerStore::addMapLayer</definition>
+        <argsstring>(QgsMapLayer *layer, bool takeOwnership=true)</argsstring>
+        <name>addMapLayer</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>takeOwnership</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Add a <emphasis>layer</emphasis> to the store. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the layer is transferred to the store.</para><para>The <ref refid="classQgsMapLayerStore_1ad211d585366d19abdb47e2dc62ba2600" kindref="member">layersAdded()</ref> and <ref refid="classQgsMapLayerStore_1aa955a85622d686b7f3f2fced17a28666" kindref="member">layerWasAdded()</ref> signals will always be emitted. If you are adding multiple layers at once, you should use <ref refid="classQgsMapLayerStore_1a9b4e65bb406b0074b6c5e2f543950519" kindref="member">addMapLayers()</ref> instead.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A layer to add to the store </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>takeOwnership</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ownership will be transferred to the layer store. If you specify false here you have take care of deleting the layers yourself. Not available in Python.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>nullptr if unable to add layer, otherwise pointer to newly added layer</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9b4e65bb406b0074b6c5e2f543950519" kindref="member">addMapLayers</ref></para></simplesect>
+<simplesect kind="note"><para>Use <ref refid="classQgsMapLayerStore_1a9b4e65bb406b0074b6c5e2f543950519" kindref="member">addMapLayers()</ref> if adding more than one layer at a time. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9b4e65bb406b0074b6c5e2f543950519" kindref="member">addMapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="98" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a9b4e65bb406b0074b6c5e2f543950519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> * &gt;</type>
+        <definition>QList&lt; QgsMapLayer * &gt; QgsMapLayerStore::addMapLayers</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;layers, bool takeOwnership=true)</argsstring>
+        <name>addMapLayers</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>takeOwnership</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Add a list of <emphasis>layers</emphasis> to the store. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the layers is transferred to the store.</para><para>The <ref refid="classQgsMapLayerStore_1ad211d585366d19abdb47e2dc62ba2600" kindref="member">layersAdded()</ref> and <ref refid="classQgsMapLayerStore_1aa955a85622d686b7f3f2fced17a28666" kindref="member">layerWasAdded()</ref> signals will always be emitted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of layer which should be added to the store. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>takeOwnership</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ownership will be transferred to the layer store. If you specify false here you have take care of deleting the layers yourself. Not available in Python.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>a list of the map layers that were added successfully. If a layer already exists in the store, it will not be part of the returned list.</para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1adba844ac49b9aa24b231133355a01dd3" kindref="member">addMapLayer()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="158" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="67" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a29b0b3155420187e7c1d8286c060166a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsMapLayerStore::count</definition>
+        <argsstring>() const</argsstring>
+        <name>count</name>
+        <briefdescription>
+<para>Returns the number of layers contained in the store. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="51" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a8c7bd59d68727435a9db5afd5fbeff18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>QVector&lt; T &gt;</type>
+        <definition>QVector&lt;T&gt; QgsMapLayerStore::layers</definition>
+        <argsstring>() const</argsstring>
+        <name>layers</name>
+        <briefdescription>
+<para>Returns a list of registered map layers with a specified layer type. </para>        </briefdescription>
+        <detaileddescription>
+<para>Example: <verbatim>QVector&lt;QgsVectorLayer*&gt; vectorLayers = store-&gt;layers&lt;QgsVectorLayer*&gt;();
+</verbatim></para><para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a34759a88bd396ad4ab5c913cd53cc4f0" kindref="member">mapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="124" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" bodystart="124" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1ad1561d077a29b1f8f29004fb07dad86c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>QgsMapLayer * QgsMapLayerStore::mapLayer</definition>
+        <argsstring>(const QString &amp;id) const</argsstring>
+        <name>mapLayer</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a pointer to a layer by layer <emphasis>id</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of layer to retrieve </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>matching layer, or nullptr if no matching layer found </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ab54d38a85beae45ba8a9aa1a8b7be36f" kindref="member">mapLayersByName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a34759a88bd396ad4ab5c913cd53cc4f0" kindref="member">mapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="83" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a34759a88bd396ad4ab5c913cd53cc4f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QMap&lt; QString, <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> * &gt;</type>
+        <definition>QMap&lt; QString, QgsMapLayer * &gt; QgsMapLayerStore::mapLayers</definition>
+        <argsstring>() const</argsstring>
+        <name>mapLayers</name>
+        <briefdescription>
+<para>Returns a map of all layers by layer ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ad1561d077a29b1f8f29004fb07dad86c" kindref="member">mapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ab54d38a85beae45ba8a9aa1a8b7be36f" kindref="member">mapLayersByName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a8c7bd59d68727435a9db5afd5fbeff18" kindref="member">layers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="225" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1ab54d38a85beae45ba8a9aa1a8b7be36f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> * &gt;</type>
+        <definition>QList&lt; QgsMapLayer * &gt; QgsMapLayerStore::mapLayersByName</definition>
+        <argsstring>(const QString &amp;name) const</argsstring>
+        <name>mapLayersByName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a list of matching layers by layer <emphasis>name</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of layers to match </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of matching layers </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ad1561d077a29b1f8f29004fb07dad86c" kindref="member">mapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a34759a88bd396ad4ab5c913cd53cc4f0" kindref="member">mapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="92" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="54" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a3cd935ccdb3a0500cd0048754c01deba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::removeAllMapLayers</definition>
+        <argsstring>()</argsstring>
+        <name>removeAllMapLayers</name>
+        <briefdescription>
+<para>Removes all registered layers. </para>        </briefdescription>
+        <detaileddescription>
+<para>These layers will also be deleted.</para><para><simplesect kind="note"><para>Calling this method will cause the removeAll() signal to be emitted. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a77dc7320fe6c84d1f9cdd9e892c5ab42" kindref="member">removeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ac8514f22b7fa976445555578f02ce73c" kindref="member">removeMapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="260" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="188" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a77dc7320fe6c84d1f9cdd9e892c5ab42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::removeMapLayer</definition>
+        <argsstring>(const QString &amp;id)</argsstring>
+        <name>removeMapLayer</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Remove a layer from the store by layer <emphasis>id</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The specified layer will be removed from the store. The layer will also be deleted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of the layer to remove</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9f443bdb9ecbd2288231ef0065b6283c" kindref="member">takeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ac8514f22b7fa976445555578f02ce73c" kindref="member">removeMapLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a3cd935ccdb3a0500cd0048754c01deba" kindref="member">removeAllMapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="228" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="156" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a7a3fcf2978846927285ad47ed47b586b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::removeMapLayer</definition>
+        <argsstring>(QgsMapLayer *layer)</argsstring>
+        <name>removeMapLayer</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Remove a <emphasis>layer</emphasis> from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para>The specified layer will be removed from the store. The layer will also be deleted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layer to remove. Null pointers are ignored.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9f443bdb9ecbd2288231ef0065b6283c" kindref="member">takeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ac8514f22b7fa976445555578f02ce73c" kindref="member">removeMapLayers()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a3cd935ccdb3a0500cd0048754c01deba" kindref="member">removeAllMapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="242" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="161" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1ac8514f22b7fa976445555578f02ce73c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::removeMapLayers</definition>
+        <argsstring>(const QStringList &amp;layerIds)</argsstring>
+        <name>removeMapLayers</name>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerIds</declname>
+        </param>
+        <briefdescription>
+<para>Remove a set of layers from the store by layer ID. </para>        </briefdescription>
+        <detaileddescription>
+<para>The specified layers will be removed from the store. These layers will also be deleted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerIds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of IDs of the layers to remove</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9f443bdb9ecbd2288231ef0065b6283c" kindref="member">takeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a77dc7320fe6c84d1f9cdd9e892c5ab42" kindref="member">removeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a3cd935ccdb3a0500cd0048754c01deba" kindref="member">removeAllMapLayers()</ref> </para></simplesect>
+<simplesect kind="note"><para>available in Python bindings as removeMapLayersById. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="199" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="105" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a10a0ac629f482f204657dd0024754a54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::removeMapLayers</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;layers)</argsstring>
+        <name>removeMapLayers</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+<para>Remove a set of <emphasis>layers</emphasis> from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para>The specified layers will be removed from the store. These layers will also be deleted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of layers to remove. Null pointers are ignored.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9f443bdb9ecbd2288231ef0065b6283c" kindref="member">takeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a77dc7320fe6c84d1f9cdd9e892c5ab42" kindref="member">removeMapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a3cd935ccdb3a0500cd0048754c01deba" kindref="member">removeAllMapLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="214" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="116" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a9f443bdb9ecbd2288231ef0065b6283c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+        <definition>QgsMapLayer * QgsMapLayerStore::takeMapLayer</definition>
+        <argsstring>(QgsMapLayer *layer)</argsstring>
+        <name>takeMapLayer</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Takes a <emphasis>layer</emphasis> from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the layer was owned by the store, the layer will be returned without deleting it. The caller takes ownership of the layer and is responsible for deleting it. <simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a77dc7320fe6c84d1f9cdd9e892c5ab42" kindref="member">removeMapLayer()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="250" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="167" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1ae460bd3b0aac106bc0966669c8f07414" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::transferLayersFromStore</definition>
+        <argsstring>(QgsMapLayerStore *other)</argsstring>
+        <name>transferLayersFromStore</name>
+        <param>
+          <type><ref refid="classQgsMapLayerStore" kindref="compound">QgsMapLayerStore</ref> *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Transfers all the map layers contained within another map layer store and adds them to this store. </para>        </briefdescription>
+        <detaileddescription>
+<para>Note that <emphasis>other</emphasis> and this store must have the same thread affinity. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="267" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="197" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1a68cff4ff80fb5d9caf3e85bffe998146" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsMapLayerStore::validCount</definition>
+        <argsstring>() const</argsstring>
+        <name>validCount</name>
+        <briefdescription>
+<para>Returns the number of valid layers contained in the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="57" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="37" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsMapLayerStore_1ac94ab9564a646074e0c60e772cf3bc3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QMap&lt; QString, <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> * &gt;</type>
+        <definition>QMap&lt; QString, QgsMapLayer * &gt; QgsMapLayerStore::validMapLayers</definition>
+        <argsstring>() const</argsstring>
+        <name>validMapLayers</name>
+        <briefdescription>
+<para>Returns a map of all valid layers by layer ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ad1561d077a29b1f8f29004fb07dad86c" kindref="member">mapLayer()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ab54d38a85beae45ba8a9aa1a8b7be36f" kindref="member">mapLayersByName()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a8c7bd59d68727435a9db5afd5fbeff18" kindref="member">layers()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="109" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="230" bodyend="239"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a889ce52c9860f9051f6dcdbeb53e9b5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::allLayersRemoved</definition>
+        <argsstring>()</argsstring>
+        <name>allLayersRemoved</name>
+        <briefdescription>
+<para>Emitted when all layers are removed, before <ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> and <ref refid="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" kindref="member">layerWillBeRemoved()</ref> signals are emitted. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> and <ref refid="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" kindref="member">layerWillBeRemoved()</ref> signals will still be emitted following this signal. You can use this signal to do easy (and fast) cleanup. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="335" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a9c55338029f41ead20de0fde7571c5a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layerRemoved</definition>
+        <argsstring>(const QString &amp;layerId)</argsstring>
+        <name>layerRemoved</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <briefdescription>
+<para>Emitted after a layer was removed from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the layer removed.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Consider using <ref refid="classQgsMapLayerStore_1a85b1af8f527fd17f21c798c83d233e96" kindref="member">layersRemoved()</ref> instead </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" kindref="member">layerWillBeRemoved()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="327" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1ad211d585366d19abdb47e2dc62ba2600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layersAdded</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;layers)</argsstring>
+        <name>layersAdded</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when one or more layers were added to the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of layers which have been added.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1aa955a85622d686b7f3f2fced17a28666" kindref="member">layerWasAdded()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="344" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a85b1af8f527fd17f21c798c83d233e96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layersRemoved</definition>
+        <argsstring>(const QStringList &amp;layerIds)</argsstring>
+        <name>layersRemoved</name>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerIds</declname>
+        </param>
+        <briefdescription>
+<para>Emitted after one or more layers were removed from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerIds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of IDs of the layers which were removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="317" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layersWillBeRemoved</definition>
+        <argsstring>(const QStringList &amp;layerIds)</argsstring>
+        <name>layersWillBeRemoved</name>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>layerIds</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when one or more layers are about to be removed from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerIds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of IDs for the layers which are to be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" kindref="member">layerWillBeRemoved()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a85b1af8f527fd17f21c798c83d233e96" kindref="member">layersRemoved()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="278" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a0e5466b5babbc37e4892264fb7c7fede" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layersWillBeRemoved</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;layers)</argsstring>
+        <name>layersWillBeRemoved</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when one or more layers are about to be removed from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A list of layers which are to be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" kindref="member">layerWillBeRemoved()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a85b1af8f527fd17f21c798c83d233e96" kindref="member">layersRemoved()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="287" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1aa955a85622d686b7f3f2fced17a28666" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layerWasAdded</definition>
+        <argsstring>(QgsMapLayer *layer)</argsstring>
+        <name>layerWasAdded</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when a <emphasis>layer</emphasis> was added to the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Consider using <ref refid="classQgsMapLayerStore_1ad211d585366d19abdb47e2dc62ba2600" kindref="member">layersAdded()</ref> instead </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1ad211d585366d19abdb47e2dc62ba2600" kindref="member">layersAdded()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="352" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layerWillBeRemoved</definition>
+        <argsstring>(const QString &amp;layerId)</argsstring>
+        <name>layerWillBeRemoved</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when a layer is about to be removed from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the layer to be removed.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Consider using <ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> instead. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9c55338029f41ead20de0fde7571c5a0" kindref="member">layerRemoved()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="298" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsMapLayerStore_1a02e0622396d64e9b5dc882631daa1151" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::layerWillBeRemoved</definition>
+        <argsstring>(QgsMapLayer *layer)</argsstring>
+        <name>layerWillBeRemoved</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when a layer is about to be removed from the store. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The layer to be removed.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Consider using <ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> instead. </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" kindref="member">layersWillBeRemoved()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsMapLayerStore_1a9c55338029f41ead20de0fde7571c5a0" kindref="member">layerRemoved()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="309" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classQgsMapLayerStore_1a38761c37afb2d681b9cefd317d9b8baa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsMapLayerStore::onMapLayerDeleted</definition>
+        <argsstring>(QObject *obj)</argsstring>
+        <name>onMapLayerDeleted</name>
+        <param>
+          <type>QObject *</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="356" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.cpp" bodystart="214" bodyend="223"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A storage object for map layers, in which the layers are owned by the store and have their lifetime bound to the store. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5470">
+        <label>QObject</label>
+      </node>
+      <node id="5469">
+        <label>QgsMapLayerStore</label>
+        <link refid="classQgsMapLayerStore"/>
+        <childnode refid="5470" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5472">
+        <label>QObject</label>
+      </node>
+      <node id="5471">
+        <label>QgsMapLayerStore</label>
+        <link refid="classQgsMapLayerStore"/>
+        <childnode refid="5472" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" line="36" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsmaplayerstore.h" bodystart="35" bodyend="362"/>
+    <listofallmembers>
+      <member refid="classQgsMapLayerStore_1adba844ac49b9aa24b231133355a01dd3" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>addMapLayer</name></member>
+      <member refid="classQgsMapLayerStore_1a9b4e65bb406b0074b6c5e2f543950519" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>addMapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1a889ce52c9860f9051f6dcdbeb53e9b5b" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>allLayersRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1a29b0b3155420187e7c1d8286c060166a" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>count</name></member>
+      <member refid="classQgsMapLayerStore_1a9c55338029f41ead20de0fde7571c5a0" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layerRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1a8c7bd59d68727435a9db5afd5fbeff18" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layers</name></member>
+      <member refid="classQgsMapLayerStore_1ad211d585366d19abdb47e2dc62ba2600" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layersAdded</name></member>
+      <member refid="classQgsMapLayerStore_1a85b1af8f527fd17f21c798c83d233e96" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layersRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1a601241ebf4c412baa1f886faa8de1fef" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layersWillBeRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1a0e5466b5babbc37e4892264fb7c7fede" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layersWillBeRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1aa955a85622d686b7f3f2fced17a28666" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layerWasAdded</name></member>
+      <member refid="classQgsMapLayerStore_1a7cb679aa2dc3166069a922f8a7594a6e" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layerWillBeRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1a02e0622396d64e9b5dc882631daa1151" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>layerWillBeRemoved</name></member>
+      <member refid="classQgsMapLayerStore_1ad1561d077a29b1f8f29004fb07dad86c" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>mapLayer</name></member>
+      <member refid="classQgsMapLayerStore_1a34759a88bd396ad4ab5c913cd53cc4f0" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>mapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1ab54d38a85beae45ba8a9aa1a8b7be36f" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>mapLayersByName</name></member>
+      <member refid="classQgsMapLayerStore_1a455c01521024bd77fa2ba30fd3e0ed98" prot="private" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>mMapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1a38761c37afb2d681b9cefd317d9b8baa" prot="private" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>onMapLayerDeleted</name></member>
+      <member refid="classQgsMapLayerStore_1a5ad7b6852d78f98b07754acf2eaa35d2" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>QgsMapLayerStore</name></member>
+      <member refid="classQgsMapLayerStore_1a3cd935ccdb3a0500cd0048754c01deba" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>removeAllMapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1a77dc7320fe6c84d1f9cdd9e892c5ab42" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>removeMapLayer</name></member>
+      <member refid="classQgsMapLayerStore_1a7a3fcf2978846927285ad47ed47b586b" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>removeMapLayer</name></member>
+      <member refid="classQgsMapLayerStore_1ac8514f22b7fa976445555578f02ce73c" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>removeMapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1a10a0ac629f482f204657dd0024754a54" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>removeMapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1a9f443bdb9ecbd2288231ef0065b6283c" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>takeMapLayer</name></member>
+      <member refid="classQgsMapLayerStore_1ae460bd3b0aac106bc0966669c8f07414" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>transferLayersFromStore</name></member>
+      <member refid="classQgsMapLayerStore_1a68cff4ff80fb5d9caf3e85bffe998146" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>validCount</name></member>
+      <member refid="classQgsMapLayerStore_1ac94ab9564a646074e0c60e772cf3bc3d" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>validMapLayers</name></member>
+      <member refid="classQgsMapLayerStore_1a480f8ba3c778b919af6052a86fa015e6" prot="public" virt="non-virtual"><scope>QgsMapLayerStore</scope><name>~QgsMapLayerStore</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

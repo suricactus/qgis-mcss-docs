@@ -1,0 +1,815 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsTracer" kind="class" language="C++" prot="public">
+    <compoundname>QgsTracer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <derivedcompoundref refid="classQgsMapCanvasTracer" prot="public" virt="non-virtual">QgsMapCanvasTracer</derivedcompoundref>
+    <includes refid="qgstracer_8h" local="no">qgstracer.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017" prot="public" static="no">
+        <name>PathError</name>
+        <enumvalue id="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017abe45625012acdd72e104344f03a31a7a" prot="public">
+          <name>ErrNone</name>
+          <briefdescription>
+<para>No error. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017ac3d82e33af22b963fa82e0102730a348" prot="public">
+          <name>ErrTooManyFeatures</name>
+          <briefdescription>
+<para>Max feature count threshold was reached while reading features. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017a8f989c28799eff8ba2baf7c7140fdfbc" prot="public">
+          <name>ErrPoint1</name>
+          <briefdescription>
+<para>Start point cannot be joined to the graph. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017a87172c076cde1403ec223836e750fd2e" prot="public">
+          <name>ErrPoint2</name>
+          <briefdescription>
+<para>End point cannot be joined to the graph. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017a2432b2d0cd6be7dd6891eddb0625de0c" prot="public">
+          <name>ErrNoPath</name>
+          <briefdescription>
+<para>Points are not connected in the graph. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Possible errors that may happen when calling <ref refid="classQgsTracer_1a5cd2f7ba30d12fdefe1babce9afc57b2" kindref="member">findShortestPath()</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="133" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="132" bodyend="139"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsTracer_1a5f8db8b93b8e732947b91b92f13e9ccc" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsTracer::mCRS</definition>
+        <argsstring></argsstring>
+        <name>mCRS</name>
+        <briefdescription>
+<para>Destination CRS in which graph is built and tracing done. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a966a99ae1c66241ac0c56ec409e8b2db" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsTracer::mExtent</definition>
+        <argsstring></argsstring>
+        <name>mExtent</name>
+        <briefdescription>
+<para>Extent for graph building (empty extent means no limit) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="188" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a2e2ed85d511e488e760345f030433832" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="structQgsTracerGraph" kindref="compound">QgsTracerGraph</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; QgsTracerGraph &gt; QgsTracer::mGraph</definition>
+        <argsstring></argsstring>
+        <name>mGraph</name>
+        <briefdescription>
+<para>Graph data structure for path searching. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="178" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a74cd0c2f29730c49ff3316bf330a8f97" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsTracer::mHasTopologyProblem</definition>
+        <argsstring></argsstring>
+        <name>mHasTopologyProblem</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>A flag indicating that there was an error during graph creation due to noding exception, indicating some input data topology problems. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="209" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a8298f95ae75b2a9db958775e57f89568" prot="private" static="no" mutable="no">
+        <type>QList&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> * &gt;</type>
+        <definition>QList&lt;QgsVectorLayer *&gt; QgsTracer::mLayers</definition>
+        <argsstring></argsstring>
+        <name>mLayers</name>
+        <briefdescription>
+<para>Input layers for the graph building. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="180" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a4c19b45ca526854193df813d08f6ac9e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsTracer::mMaxFeatureCount</definition>
+        <argsstring></argsstring>
+        <name>mMaxFeatureCount</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Limit of how many features can be in the graph (0 means no limit). </para>        </briefdescription>
+        <detaileddescription>
+<para>This is to avoid possibly long graph preparation for complicated layers </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="203" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a5aa56497ff55abe05a348d82555ce00d" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsTracer::mOffset</definition>
+        <argsstring></argsstring>
+        <name>mOffset</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Offset in map units that should be applied to the traced paths. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="191" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a382362ca74d6b1b576be96b67ebe6a8f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsTracer::mOffsetJoinStyle</definition>
+        <argsstring></argsstring>
+        <name>mOffsetJoinStyle</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+<para>Offset parameter: Join style (1 = round, 2 = miter, 3 = bevel) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="195" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1ae5283e4da397d7dc78d15b57c2cd24e8" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsTracer::mOffsetMiterLimit</definition>
+        <argsstring></argsstring>
+        <name>mOffsetMiterLimit</name>
+        <initializer>= 5.</initializer>
+        <briefdescription>
+<para>Offset parameter: Limit for miter join style. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a3d5b74ced046c04ebf581b5794d6848d" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsTracer::mOffsetSegments</definition>
+        <argsstring></argsstring>
+        <name>mOffsetSegments</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>Offset parameter: Number of segments (approximation of circle quarter) when using round join style. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="193" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1a62bf65697ca91d63a5eda16e4c0f60e3" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;QgsRenderContext&gt; QgsTracer::mRenderContext</definition>
+        <argsstring></argsstring>
+        <name>mRenderContext</name>
+        <briefdescription>
+<para>Render context. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="186" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTracer_1ab7a67f5b3a9fb124ea793b8602074dbe" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref></type>
+        <definition>QgsCoordinateTransformContext QgsTracer::mTransformContext</definition>
+        <argsstring></argsstring>
+        <name>mTransformContext</name>
+        <briefdescription>
+<para>Coordinate transform context. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="184" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsTracer_1a8a718263a601b20a4a2be0c46225b16f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsTracer::QgsTracer</definition>
+        <argsstring>()</argsstring>
+        <name>QgsTracer</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsTracer" kindref="compound">QgsTracer</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a970c05f85a42a2d42d1bea3532197ebb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsTracer::~QgsTracer</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsTracer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="587" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1ae972009b2310f713e7e8632099a1261b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsTracer::destinationCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationCrs</name>
+        <briefdescription>
+<para>Returns the CRS used for tracing. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTracer_1afb326b0d881d7f517c08ec90396fba86" kindref="member">setDestinationCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="63" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a8e7ca7bf42f849aa1d0b7eae9296007c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsTracer::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <briefdescription>
+<para>Gets extent to which graph&apos;s features will be limited (empty extent means no limit) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="78" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a5cd2f7ba30d12fdefe1babce9afc57b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVector&lt; <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &gt;</type>
+        <definition>QVector&lt; QgsPointXY &gt; QgsTracer::findShortestPath</definition>
+        <argsstring>(const QgsPointXY &amp;p1, const QgsPointXY &amp;p2, PathError *error=nullptr)</argsstring>
+        <name>findShortestPath</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017" kindref="member">PathError</ref> *</type>
+          <declname>error</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Given two points, find the shortest path and return points on the way. </para>        </briefdescription>
+        <detaileddescription>
+<para>The optional &quot;error&quot; argument may receive error code (PathError enum) if it is not null <simplesect kind="return"><para>array of points - trace of linestrings of other features (empty array one error) </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="146" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="726" bodyend="791"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a3516a43145831901d3380eebd6c039c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTracer::hasTopologyProblem</definition>
+        <argsstring>() const</argsstring>
+        <name>hasTopologyProblem</name>
+        <briefdescription>
+<para>Whether there was an error during graph creation due to noding exception, indicating some input data topology problems. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="129" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1ac83491d1e7954d41c113fe7872b1fb52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTracer::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+<para>Build the internal data structures. </para>        </briefdescription>
+        <detaileddescription>
+<para>This may take some time depending on how big the input layers are. It is not necessary to call this method explicitly - it will be called by <ref refid="classQgsTracer_1a5cd2f7ba30d12fdefe1babce9afc57b2" kindref="member">findShortestPath()</ref> if necessary. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="119" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="665" bodyend="674"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1af43d99a517d8ff0e9e484cb7e69bb52f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTracer::isInitialized</definition>
+        <argsstring>() const</argsstring>
+        <name>isInitialized</name>
+        <briefdescription>
+<para>Whether the internal data structures have been initialized. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="122" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="122" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a51e2857c0e99e8baea576b0950d0073c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTracer::isPointSnapped</definition>
+        <argsstring>(const QgsPointXY &amp;pt)</argsstring>
+        <name>isPointSnapped</name>
+        <param>
+          <type>const <ref refid="classQgsPointXY" kindref="compound">QgsPointXY</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <briefdescription>
+<para>Find out whether the point is snapped to a vertex or edge (i.e. it can be used for tracing start/stop) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="149" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="793" bodyend="805"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1ab9950da04c0941e8ea65feead4a076dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> * &gt;</type>
+        <definition>QList&lt;QgsVectorLayer *&gt; QgsTracer::layers</definition>
+        <argsstring>() const</argsstring>
+        <name>layers</name>
+        <briefdescription>
+<para>Gets layers used for tracing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="55" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a95e831eb6d67ad8cea149fc5abade15f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsTracer::maxFeatureCount</definition>
+        <argsstring>() const</argsstring>
+        <name>maxFeatureCount</name>
+        <briefdescription>
+<para>Gets maximum possible number of features in graph. If the number is exceeded, graph is not created. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="109" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1ab2d1add51b5761a14cd1c37541441115" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsTracer::offset</definition>
+        <argsstring>() const</argsstring>
+        <name>offset</name>
+        <briefdescription>
+<para>Gets offset in map units that should be applied to the traced paths returned from <ref refid="classQgsTracer_1a5cd2f7ba30d12fdefe1babce9afc57b2" kindref="member">findShortestPath()</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Positive offset for right side, negative offset for left side. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="87" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1ac6ecb7040218472fa4043ca412bfc19d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::offsetParameters</definition>
+        <argsstring>(int &amp;quadSegments, int &amp;joinStyle, double &amp;miterLimit)</argsstring>
+        <name>offsetParameters</name>
+        <param>
+          <type>int &amp;</type>
+          <declname>quadSegments</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>joinStyle</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>miterLimit</declname>
+        </param>
+        <briefdescription>
+<para>Gets extra parameters for offset curve algorithm (used when offset is non-zero) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="651" bodyend="656"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1afb326b0d881d7f517c08ec90396fba86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setDestinationCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;crs, const QgsCoordinateTransformContext &amp;context)</argsstring>
+        <name>setDestinationCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransformContext" kindref="compound">QgsCoordinateTransformContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>crs</emphasis> and transform <emphasis>context</emphasis> used for tracing. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTracer_1ae972009b2310f713e7e8632099a1261b" kindref="member">destinationCrs()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="69" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="624" bodyend="629"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a4f40ce0f7a8316c93d34c0e4564efc36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setExtent</definition>
+        <argsstring>(const QgsRectangle &amp;extent)</argsstring>
+        <name>setExtent</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>extent</declname>
+        </param>
+        <briefdescription>
+<para>Sets extent to which graph&apos;s features will be limited (empty extent means no limit) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="80" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="637" bodyend="644"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a6d9a633d13c394265391e9b45963a6d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setLayers</definition>
+        <argsstring>(const QList&lt; QgsVectorLayer *&gt; &amp;layers)</argsstring>
+        <name>setLayers</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+<para>Sets layers used for tracing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="57" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="592" bodyend="622"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a0336e83882a6b91118d6e22786939c93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setMaxFeatureCount</definition>
+        <argsstring>(int count)</argsstring>
+        <name>setMaxFeatureCount</name>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Gets maximum possible number of features in graph. If the number is exceeded, graph is not created. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a6d6f464b0cf44a485697066bd6cbfd14" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setOffset</definition>
+        <argsstring>(double offset)</argsstring>
+        <name>setOffset</name>
+        <param>
+          <type>double</type>
+          <declname>offset</declname>
+        </param>
+        <briefdescription>
+<para>Set offset in map units that should be applied to the traced paths returned from <ref refid="classQgsTracer_1a5cd2f7ba30d12fdefe1babce9afc57b2" kindref="member">findShortestPath()</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Positive offset for right side, negative offset for left side. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="94" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="646" bodyend="649"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1ac9c8ac510a7c870b4075a09a691ad43c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setOffsetParameters</definition>
+        <argsstring>(int quadSegments, int joinStyle, double miterLimit)</argsstring>
+        <name>setOffsetParameters</name>
+        <param>
+          <type>int</type>
+          <declname>quadSegments</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>joinStyle</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>miterLimit</declname>
+        </param>
+        <briefdescription>
+<para>Set extra parameters for offset curve algorithm (used when offset is non-zero) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="106" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="658" bodyend="663"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTracer_1a183132114fc07d7d85a91c49fb594c7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::setRenderContext</definition>
+        <argsstring>(const QgsRenderContext *renderContext)</argsstring>
+        <name>setRenderContext</name>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> *</type>
+          <declname>renderContext</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>renderContext</emphasis> used for tracing only on visible features. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="75" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="631" bodyend="635"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsTracer_1aef806df1e32d95a44f86e892bc16a5c0" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsTracer::configure</definition>
+        <argsstring>()</argsstring>
+        <name>configure</name>
+        <reimplementedby refid="classQgsMapCanvasTracer_1ad769aabb22017f9c96665062dc685259">configure</reimplementedby>
+        <briefdescription>
+<para>Allows derived classes to setup the settings just before the tracer is initialized. </para>        </briefdescription>
+        <detaileddescription>
+<para>This allows the configuration to be set in a lazy way only when it is really necessary. Default implementation does nothing. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="158" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="158" bodyend="158"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-slot">
+      <memberdef kind="slot" id="classQgsTracer_1ae7df9b5112ae618ec3c787fa72e2c425" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::invalidateGraph</definition>
+        <argsstring>()</argsstring>
+        <name>invalidateGraph</name>
+        <briefdescription>
+<para>Destroy the existing graph structure if any (de-initialize) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="162" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="677" bodyend="680"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsTracer_1afda6c70c89ec09ddff3010f42b63d099" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTracer::initGraph</definition>
+        <argsstring>()</argsstring>
+        <name>initGraph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="165" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="460" bodyend="585"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classQgsTracer_1a528fa8076cc2edc327f226804efb5d0d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onAttributeValueChanged</definition>
+        <argsstring>(QgsFeatureId fid, int idx, const QVariant &amp;value)</argsstring>
+        <name>onAttributeValueChanged</name>
+        <param>
+          <type><ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref></type>
+          <declname>fid</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="701" bodyend="707"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTracer_1a4e4165ae5cab8c512b067d766d5b5561" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onDataChanged</definition>
+        <argsstring>()</argsstring>
+        <name>onDataChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="172" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="709" bodyend="712"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTracer_1a0b2eb6743bda396704bae364b272bb1c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onFeatureAdded</definition>
+        <argsstring>(QgsFeatureId fid)</argsstring>
+        <name>onFeatureAdded</name>
+        <param>
+          <type><ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref></type>
+          <declname>fid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="168" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="682" bodyend="686"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTracer_1a220372e047bcc89eb643e905a2b0f6d6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onFeatureDeleted</definition>
+        <argsstring>(QgsFeatureId fid)</argsstring>
+        <name>onFeatureDeleted</name>
+        <param>
+          <type><ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref></type>
+          <declname>fid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="169" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="688" bodyend="692"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTracer_1a95f1f7e1c674fda26f48178e69dcd02d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onGeometryChanged</definition>
+        <argsstring>(QgsFeatureId fid, const QgsGeometry &amp;geom)</argsstring>
+        <name>onGeometryChanged</name>
+        <param>
+          <type><ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref></type>
+          <declname>fid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsGeometry" kindref="compound">QgsGeometry</ref> &amp;</type>
+          <declname>geom</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="170" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="694" bodyend="699"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTracer_1a558653ccda83db32f078bef9e12b9c72" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onLayerDestroyed</definition>
+        <argsstring>(QObject *obj)</argsstring>
+        <name>onLayerDestroyed</name>
+        <param>
+          <type>QObject *</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="174" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="719" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTracer_1a78d299eb687b1642666748f3a5c5607b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTracer::onStyleChanged</definition>
+        <argsstring>()</argsstring>
+        <name>onStyleChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.cpp" bodystart="714" bodyend="717"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Utility class that construct a planar graph from the input vector layers and provides shortest path search for tracing of existing features. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9087">
+        <label>QObject</label>
+      </node>
+      <node id="9086">
+        <label>QgsTracer</label>
+        <link refid="classQgsTracer"/>
+        <childnode refid="9087" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9088">
+        <label>QgsMapCanvasTracer</label>
+        <link refid="classQgsMapCanvasTracer"/>
+        <childnode refid="9086" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9090">
+        <label>QObject</label>
+      </node>
+      <node id="9089">
+        <label>QgsTracer</label>
+        <link refid="classQgsTracer"/>
+        <childnode refid="9090" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" line="44" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstracer.h" bodystart="43" bodyend="210"/>
+    <listofallmembers>
+      <member refid="classQgsTracer_1aef806df1e32d95a44f86e892bc16a5c0" prot="protected" virt="virtual"><scope>QgsTracer</scope><name>configure</name></member>
+      <member refid="classQgsTracer_1ae972009b2310f713e7e8632099a1261b" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>destinationCrs</name></member>
+      <member refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017abe45625012acdd72e104344f03a31a7a" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>ErrNone</name></member>
+      <member refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017a2432b2d0cd6be7dd6891eddb0625de0c" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>ErrNoPath</name></member>
+      <member refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017a8f989c28799eff8ba2baf7c7140fdfbc" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>ErrPoint1</name></member>
+      <member refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017a87172c076cde1403ec223836e750fd2e" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>ErrPoint2</name></member>
+      <member refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017ac3d82e33af22b963fa82e0102730a348" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>ErrTooManyFeatures</name></member>
+      <member refid="classQgsTracer_1a8e7ca7bf42f849aa1d0b7eae9296007c" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>extent</name></member>
+      <member refid="classQgsTracer_1a5cd2f7ba30d12fdefe1babce9afc57b2" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>findShortestPath</name></member>
+      <member refid="classQgsTracer_1a3516a43145831901d3380eebd6c039c4" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>hasTopologyProblem</name></member>
+      <member refid="classQgsTracer_1ac83491d1e7954d41c113fe7872b1fb52" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>init</name></member>
+      <member refid="classQgsTracer_1afda6c70c89ec09ddff3010f42b63d099" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>initGraph</name></member>
+      <member refid="classQgsTracer_1ae7df9b5112ae618ec3c787fa72e2c425" prot="protected" virt="non-virtual"><scope>QgsTracer</scope><name>invalidateGraph</name></member>
+      <member refid="classQgsTracer_1af43d99a517d8ff0e9e484cb7e69bb52f" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>isInitialized</name></member>
+      <member refid="classQgsTracer_1a51e2857c0e99e8baea576b0950d0073c" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>isPointSnapped</name></member>
+      <member refid="classQgsTracer_1ab9950da04c0941e8ea65feead4a076dc" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>layers</name></member>
+      <member refid="classQgsTracer_1a95e831eb6d67ad8cea149fc5abade15f" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>maxFeatureCount</name></member>
+      <member refid="classQgsTracer_1a5f8db8b93b8e732947b91b92f13e9ccc" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mCRS</name></member>
+      <member refid="classQgsTracer_1a966a99ae1c66241ac0c56ec409e8b2db" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mExtent</name></member>
+      <member refid="classQgsTracer_1a2e2ed85d511e488e760345f030433832" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mGraph</name></member>
+      <member refid="classQgsTracer_1a74cd0c2f29730c49ff3316bf330a8f97" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mHasTopologyProblem</name></member>
+      <member refid="classQgsTracer_1a8298f95ae75b2a9db958775e57f89568" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mLayers</name></member>
+      <member refid="classQgsTracer_1a4c19b45ca526854193df813d08f6ac9e" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mMaxFeatureCount</name></member>
+      <member refid="classQgsTracer_1a5aa56497ff55abe05a348d82555ce00d" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mOffset</name></member>
+      <member refid="classQgsTracer_1a382362ca74d6b1b576be96b67ebe6a8f" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mOffsetJoinStyle</name></member>
+      <member refid="classQgsTracer_1ae5283e4da397d7dc78d15b57c2cd24e8" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mOffsetMiterLimit</name></member>
+      <member refid="classQgsTracer_1a3d5b74ced046c04ebf581b5794d6848d" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mOffsetSegments</name></member>
+      <member refid="classQgsTracer_1a62bf65697ca91d63a5eda16e4c0f60e3" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mRenderContext</name></member>
+      <member refid="classQgsTracer_1ab7a67f5b3a9fb124ea793b8602074dbe" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>mTransformContext</name></member>
+      <member refid="classQgsTracer_1ab2d1add51b5761a14cd1c37541441115" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>offset</name></member>
+      <member refid="classQgsTracer_1ac6ecb7040218472fa4043ca412bfc19d" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>offsetParameters</name></member>
+      <member refid="classQgsTracer_1a528fa8076cc2edc327f226804efb5d0d" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onAttributeValueChanged</name></member>
+      <member refid="classQgsTracer_1a4e4165ae5cab8c512b067d766d5b5561" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onDataChanged</name></member>
+      <member refid="classQgsTracer_1a0b2eb6743bda396704bae364b272bb1c" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onFeatureAdded</name></member>
+      <member refid="classQgsTracer_1a220372e047bcc89eb643e905a2b0f6d6" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onFeatureDeleted</name></member>
+      <member refid="classQgsTracer_1a95f1f7e1c674fda26f48178e69dcd02d" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onGeometryChanged</name></member>
+      <member refid="classQgsTracer_1a558653ccda83db32f078bef9e12b9c72" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onLayerDestroyed</name></member>
+      <member refid="classQgsTracer_1a78d299eb687b1642666748f3a5c5607b" prot="private" virt="non-virtual"><scope>QgsTracer</scope><name>onStyleChanged</name></member>
+      <member refid="classQgsTracer_1a6c9cabb58eb3c0bfbd83e52962b80017" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>PathError</name></member>
+      <member refid="classQgsTracer_1a8a718263a601b20a4a2be0c46225b16f" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>QgsTracer</name></member>
+      <member refid="classQgsTracer_1afb326b0d881d7f517c08ec90396fba86" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setDestinationCrs</name></member>
+      <member refid="classQgsTracer_1a4f40ce0f7a8316c93d34c0e4564efc36" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setExtent</name></member>
+      <member refid="classQgsTracer_1a6d9a633d13c394265391e9b45963a6d6" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setLayers</name></member>
+      <member refid="classQgsTracer_1a0336e83882a6b91118d6e22786939c93" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setMaxFeatureCount</name></member>
+      <member refid="classQgsTracer_1a6d6f464b0cf44a485697066bd6cbfd14" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setOffset</name></member>
+      <member refid="classQgsTracer_1ac9c8ac510a7c870b4075a09a691ad43c" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setOffsetParameters</name></member>
+      <member refid="classQgsTracer_1a183132114fc07d7d85a91c49fb594c7f" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>setRenderContext</name></member>
+      <member refid="classQgsTracer_1a970c05f85a42a2d42d1bea3532197ebb" prot="public" virt="non-virtual"><scope>QgsTracer</scope><name>~QgsTracer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

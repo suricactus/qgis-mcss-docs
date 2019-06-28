@@ -1,0 +1,2488 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsDxfExport" kind="class" language="C++" prot="public">
+    <compoundname>QgsDxfExport</compoundname>
+    <includes refid="qgsdxfexport_8h" local="no">qgsdxfexport.h</includes>
+    <innerclass refid="structQgsDxfExport_1_1DxfLayer" prot="public">QgsDxfExport::DxfLayer</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsDxfExport_1a3b02c2e45102ddbad349fc556994d2b6" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsDxfExport_1a3b02c2e45102ddbad349fc556994d2b6ad967c98663200fdd000e5ebf2ae2bf80" prot="public">
+          <name>FlagNoMText</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Export text as TEXT elements. If not set, text will be exported as MTEXT elements. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Export flags. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="89" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40" prot="public" static="no">
+        <name>SymbologyExport</name>
+        <enumvalue id="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a89de557086730cd36e2d90da2104eb92" prot="public">
+          <name>NoSymbology</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Export only data. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a3db75428c560d987ace7a4f30894ee62" prot="public">
+          <name>FeatureSymbology</name>
+          <briefdescription>
+<para>Keeps the number of features and export symbology per feature (using the first symbol level) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a766594942ad171477a893b534656d51c" prot="public">
+          <name>SymbolLayerSymbology</name>
+          <briefdescription>
+<para>Exports one feature per symbol layer (considering symbol levels) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="80" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsDxfExport_1a25ec5dba3f337bccf9e8bf2fbf66085c" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsDxfExport::mBlockCounter</definition>
+        <argsstring></argsstring>
+        <name>mBlockCounter</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="447" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="447" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1aed171780424fecf01ac5572a05315eb5" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::mBlockHandle</definition>
+        <argsstring></argsstring>
+        <name>mBlockHandle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="502" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="502" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a1f0ab95c7a19346f2ee051a7d3305a06" prot="private" static="no" mutable="no">
+        <type>QHash&lt; QString, int &gt;</type>
+        <definition>QHash&lt;QString, int&gt; QgsDxfExport::mBlockHandles</definition>
+        <argsstring></argsstring>
+        <name>mBlockHandles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="501" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1abe95653e0b188ecab729144eb87f3dc8" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsDxfExport::mCrs</definition>
+        <argsstring></argsstring>
+        <name>mCrs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="506" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="506" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a76d6060510191a293b4c83bdb7af0bf2" prot="private" static="no" mutable="no">
+        <type>QMap&lt; QString, QMap&lt; <ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref>, QString &gt; &gt;</type>
+        <definition>QMap&lt; QString, QMap&lt;QgsFeatureId, QString&gt; &gt; QgsDxfExport::mDxfLayerNames</definition>
+        <argsstring></argsstring>
+        <name>mDxfLayerNames</name>
+        <briefdescription>
+<para>DXF layer name for each label feature. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="505" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="505" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1ad3e8c925eba50118fc3b17f82576f6f9" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsDxfExport::mExtent</definition>
+        <argsstring></argsstring>
+        <name>mExtent</name>
+        <briefdescription>
+<para>Extent for export, only intersecting features are exported. If the extent is an empty rectangle, all features are exported. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="433" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a68dc3b742ec5d02d96729a51d9da48dc" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsDxfExport::mFactor</definition>
+        <argsstring></argsstring>
+        <name>mFactor</name>
+        <initializer>= 1.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="509" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="509" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1aa6bbec88bd3192bfc6c641cacbf537c3" prot="private" static="no" mutable="no">
+        <type>QgsDxfExport::Flags</type>
+        <definition>QgsDxfExport::Flags QgsDxfExport::mFlags</definition>
+        <argsstring></argsstring>
+        <name>mFlags</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="512" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="512" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a22d77f624efc507959e06de5f9764ed5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsDxfExport::mForce2d</definition>
+        <argsstring></argsstring>
+        <name>mForce2d</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="510" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="510" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a48c2d61fe9ce52d9e02b948778525e41" prot="private" static="no" mutable="no">
+        <type>QHash&lt; QString, int &gt;</type>
+        <definition>QHash&lt;QString, int&gt; QgsDxfExport::mLayerNameAttribute</definition>
+        <argsstring></argsstring>
+        <name>mLayerNameAttribute</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="508" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a20860232cd80482a2f2adec77a7d0944" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsDxfExport::mLayerTitleAsName</definition>
+        <argsstring></argsstring>
+        <name>mLayerTitleAsName</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="438" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="438" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1ae52a7fa33baccc85b57454e0e339eed8" prot="private" static="no" mutable="no">
+        <type>QHash&lt; const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *, QString &gt;</type>
+        <definition>QHash&lt; const QgsSymbolLayer *, QString &gt; QgsDxfExport::mLineStyles</definition>
+        <argsstring></argsstring>
+        <name>mLineStyles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="449" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="449" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a92a24e48bde52fede3176679b208d967" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref></type>
+        <definition>QgsMapSettings QgsDxfExport::mMapSettings</definition>
+        <argsstring></argsstring>
+        <name>mMapSettings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="507" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="507" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a4b89229f180bea1ba27bb51763ad87de" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50d" kindref="member">QgsUnitTypes::DistanceUnit</ref></type>
+        <definition>QgsUnitTypes::DistanceUnit QgsDxfExport::mMapUnits</definition>
+        <argsstring></argsstring>
+        <name>mMapUnits</name>
+        <initializer>= <ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50da0c409a69a5ab55af7765ec7a6b8d574b" kindref="member">QgsUnitTypes::DistanceMeters</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="437" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="437" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1aac25b87afaecd259dfb5eb10c7b0ecbe" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsDxfExport::mNextHandleId</definition>
+        <argsstring></argsstring>
+        <name>mNextHandleId</name>
+        <initializer>= <ref refid="qgsdxfexport_8h_1a214649f2e40159c9a481b06d5b8c3aeb" kindref="member">DXF_HANDSEED</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="446" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="446" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a1466b417ad20dafd0be9fda1db440415" prot="private" static="no" mutable="no">
+        <type>QHash&lt; const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *, QString &gt;</type>
+        <definition>QHash&lt; const QgsSymbolLayer *, QString &gt; QgsDxfExport::mPointSymbolBlocks</definition>
+        <argsstring></argsstring>
+        <name>mPointSymbolBlocks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="450" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="450" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1a1f45e83b0039d0b6027d3d23a726b2b9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsDxfExport::mSymbolLayerCounter</definition>
+        <argsstring></argsstring>
+        <name>mSymbolLayerCounter</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="445" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="445" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1ad75074afe26b1b44103c7b0e00d74d17" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40" kindref="member">SymbologyExport</ref></type>
+        <definition>SymbologyExport QgsDxfExport::mSymbologyExport</definition>
+        <argsstring></argsstring>
+        <name>mSymbologyExport</name>
+        <initializer>= <ref refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a89de557086730cd36e2d90da2104eb92" kindref="member">NoSymbology</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="436" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="436" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1ab2dc806eef019a20b2016a4599133762" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsDxfExport::mSymbologyScale</definition>
+        <argsstring></argsstring>
+        <name>mSymbologyScale</name>
+        <initializer>= 1.0</initializer>
+        <briefdescription>
+<para>Scale for symbology export (used if symbols units are mm) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="435" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1af8f93287ee82952806e228ffb2f436fa" prot="private" static="no" mutable="no">
+        <type>QTextStream</type>
+        <definition>QTextStream QgsDxfExport::mTextStream</definition>
+        <argsstring></argsstring>
+        <name>mTextStream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="440" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="440" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classQgsDxfExport_1ab8d9a7da96a963262128089144d5f32e" prot="private" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char * QgsDxfExport::DXF_ENCODINGS</definition>
+        <argsstring>[][2]</argsstring>
+        <name>DXF_ENCODINGS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="443" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDxfExport_1ab13f2c049096bcef11b9199756faef63" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int QgsDxfExport::sDxfColors</definition>
+        <argsstring>[][3]</argsstring>
+        <name>sDxfColors</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="442" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="442" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsDxfExport_1a05e7b0a7b441e80b7e42cc337401bf01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsDxfExport::QgsDxfExport</definition>
+        <argsstring>()=default</argsstring>
+        <name>QgsDxfExport</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsDxfExport" kindref="compound">QgsDxfExport</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="97" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a65b7e97f2b01bfeb0a5613119e3e4897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsDxfExport::QgsDxfExport</definition>
+        <argsstring>(const QgsDxfExport &amp;dxfExport)</argsstring>
+        <name>QgsDxfExport</name>
+        <param>
+          <type>const <ref refid="classQgsDxfExport" kindref="compound">QgsDxfExport</ref> &amp;</type>
+          <declname>dxfExport</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="98" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="366" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a700780127af97a8dd53e4dba25405bbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::addLayers</definition>
+        <argsstring>(const QList&lt; QgsDxfExport::DxfLayer &gt; &amp;layers)</argsstring>
+        <name>addLayers</name>
+        <param>
+          <type>const QList&lt; <ref refid="structQgsDxfExport_1_1DxfLayer" kindref="compound">QgsDxfExport::DxfLayer</ref> &gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+<para>Add layers to export. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>list of layers and corresponding attribute indexes that determine the layer name (-1 for original layer name or title) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1aff36f6e706b2061f5b1c28a02733f2b1" kindref="member">setLayerTitleAsName</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="403" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ae0a9a85766968fceabcc95b73b747107" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::clipValueToMapUnitScale</definition>
+        <argsstring>(double &amp;value, const QgsMapUnitScale &amp;scale, double pixelToMMFactor) const</argsstring>
+        <name>clipValueToMapUnitScale</name>
+        <param>
+          <type>double &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsMapUnitScale" kindref="compound">QgsMapUnitScale</ref> &amp;</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>pixelToMMFactor</declname>
+        </param>
+        <briefdescription>
+<para>Clips value to scale minimum/maximum. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value to clip </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the scale dependent minimum/maximum values </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pixelToMMFactor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pixels per mm </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="402" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4014" bodyend="4044"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a529281de51722740fc01bc5f3c202859" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref></type>
+        <definition>QgsCoordinateReferenceSystem QgsDxfExport::destinationCrs</definition>
+        <argsstring>() const</argsstring>
+        <name>destinationCrs</name>
+        <briefdescription>
+<para>Returns the destination CRS, or an invalid CRS if no reprojection will be done. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDxfExport_1a6805710968184510e2585ef4d5fb0daa" kindref="member">setDestinationCrs()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="170" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4564" bodyend="4567"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a6c56242376411259841d6b64355958e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::drawLabel</definition>
+        <argsstring>(const QString &amp;layerId, QgsRenderContext &amp;context, pal::LabelPosition *label, const QgsPalLayerSettings &amp;settings)</argsstring>
+        <name>drawLabel</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="classpal_1_1LabelPosition" kindref="compound">pal::LabelPosition</ref> *</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPalLayerSettings" kindref="compound">QgsPalLayerSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Output the label. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of the layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>label</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position of label </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>settings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>label settings </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="421" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4403" bodyend="4547"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a3601fe104f4b239c52d509b425753f74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsDxfExport::extent</definition>
+        <argsstring>() const</argsstring>
+        <name>extent</name>
+        <briefdescription>
+<para>Gets extent of area to export. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>area to export </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1ab950354bb2c980dc8dff828a7b30f52b" kindref="member">setExtent</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="196" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="196" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ac4ac9959c79d05e613ee851acc1ada98" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QgsDxfExport::Flags</type>
+        <definition>QgsDxfExport::Flags QgsDxfExport::flags</definition>
+        <argsstring>() const</argsstring>
+        <name>flags</name>
+        <briefdescription>
+<para>Returns the export flags. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDxfExport_1a357ea1e94582e4b2296b6bf34d587f22" kindref="member">setFlags()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="119" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="398" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a80e3ce252405dbde1d0de54d8eb72d58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsDxfExport::force2d</definition>
+        <argsstring>()</argsstring>
+        <name>force2d</name>
+        <briefdescription>
+<para>Retrieve whether the output should be forced to 2d. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>flag </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1a0720b524c900a0817fba68428550ef6f" kindref="member">setForce2d</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="225" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="225" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a317a49e3928964484417d891752074f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::layerName</definition>
+        <argsstring>(const QString &amp;id, const QgsFeature &amp;f) const</argsstring>
+        <name>layerName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>Gets layer name for feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>layer id of layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>feature of layer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>layer name for feature </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="239" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4344" bodyend="4358"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1af25203215a853b639a1caa3413e080e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::layerName</definition>
+        <argsstring>(QgsVectorLayer *vl) const</argsstring>
+        <name>layerName</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>vl</declname>
+        </param>
+        <briefdescription>
+<para>Gets name for layer respecting the use layer title as layer name mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>vl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the vector layer </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>name of layer </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1aff36f6e706b2061f5b1c28a02733f2b1" kindref="member">setLayerTitleAsName</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="247" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4397" bodyend="4401"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a29f15a11a84667226d1e6548a77c6989" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsDxfExport::layerTitleAsName</definition>
+        <argsstring>()</argsstring>
+        <name>layerTitleAsName</name>
+        <briefdescription>
+<para>Retrieve whether layer title (where set) instead of name shall be use. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>flag </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1aff36f6e706b2061f5b1c28a02733f2b1" kindref="member">setLayerTitleAsName</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="211" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a4fcf34ed981e53912a97eafaf3d61bb8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50d" kindref="member">QgsUnitTypes::DistanceUnit</ref></type>
+        <definition>QgsUnitTypes::DistanceUnit QgsDxfExport::mapUnits</definition>
+        <argsstring>() const</argsstring>
+        <name>mapUnits</name>
+        <briefdescription>
+<para>Retrieve map units. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>unit </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="559" bodyend="562"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1abd904ac371c6be4da43aaf1350d1178d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsDxfExport" kindref="compound">QgsDxfExport</ref> &amp;</type>
+        <definition>QgsDxfExport &amp; QgsDxfExport::operator=</definition>
+        <argsstring>(const QgsDxfExport &amp;dxfExport)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classQgsDxfExport" kindref="compound">QgsDxfExport</ref> &amp;</type>
+          <declname>dxfExport</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="99" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="371" bodyend="386"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ac443790cdfc0a56d9b75d772c356943a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::registerDxfLayer</definition>
+        <argsstring>(const QString &amp;layerId, QgsFeatureId fid, const QString &amp;layer)</argsstring>
+        <name>registerDxfLayer</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layerId</declname>
+        </param>
+        <param>
+          <type><ref refid="qgsfeatureid_8h_1a857d022277fb1026d921b0ec9bdb7ce5" kindref="member">QgsFeatureId</ref></type>
+          <declname>fid</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Register name of layer for feature. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of layer </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of feature </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>dxf layer of feature </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="429" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4550" bodyend="4556"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a6805710968184510e2585ef4d5fb0daa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setDestinationCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;crs)</argsstring>
+        <name>setDestinationCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <briefdescription>
+<para>Set destination CRS. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDxfExport_1a529281de51722740fc01bc5f3c202859" kindref="member">destinationCrs()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="163" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4558" bodyend="4562"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ab950354bb2c980dc8dff828a7b30f52b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setExtent</definition>
+        <argsstring>(const QgsRectangle &amp;r)</argsstring>
+        <name>setExtent</name>
+        <param>
+          <type>const <ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Set extent of area to export. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>r</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>area to export </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="189" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="189" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a357ea1e94582e4b2296b6bf34d587f22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setFlags</definition>
+        <argsstring>(QgsDxfExport::Flags flags)</argsstring>
+        <name>setFlags</name>
+        <param>
+          <type>QgsDxfExport::Flags</type>
+          <declname>flags</declname>
+        </param>
+        <briefdescription>
+<para>Sets the export flags. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDxfExport_1ac4ac9959c79d05e613ee851acc1ada98" kindref="member">flags()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="112" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="393" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a0720b524c900a0817fba68428550ef6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setForce2d</definition>
+        <argsstring>(bool force2d)</argsstring>
+        <name>setForce2d</name>
+        <param>
+          <type>bool</type>
+          <declname>force2d</declname>
+        </param>
+        <briefdescription>
+<para>Force 2d output (eg. </para>        </briefdescription>
+        <detaileddescription>
+<para>to support linewidth in polylines) <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>force2d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>flag </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1a80e3ce252405dbde1d0de54d8eb72d58" kindref="member">force2d</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="218" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="218" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aff36f6e706b2061f5b1c28a02733f2b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setLayerTitleAsName</definition>
+        <argsstring>(bool layerTitleAsName)</argsstring>
+        <name>setLayerTitleAsName</name>
+        <param>
+          <type>bool</type>
+          <declname>layerTitleAsName</declname>
+        </param>
+        <briefdescription>
+<para>Enable use of title (where set) instead of layer name, when attribute index of corresponding layer index is -1. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>layerTitleAsName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>flag </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1a700780127af97a8dd53e4dba25405bbf" kindref="member">addLayers</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="204" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="204" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aee3f219e69258030b0ad4bda94e92f9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setMapSettings</definition>
+        <argsstring>(const QgsMapSettings &amp;settings)</argsstring>
+        <name>setMapSettings</name>
+        <param>
+          <type>const <ref refid="classQgsMapSettings" kindref="compound">QgsMapSettings</ref> &amp;</type>
+          <declname>settings</declname>
+        </param>
+        <briefdescription>
+<para>Set map settings and assign layer name attributes. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>settings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>map settings to apply </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="105" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="388" bodyend="391"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a19d61e74baeeb51bb258213e2947f4da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setSymbologyExport</definition>
+        <argsstring>(QgsDxfExport::SymbologyExport e)</argsstring>
+        <name>setSymbologyExport</name>
+        <param>
+          <type><ref refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40" kindref="member">QgsDxfExport::SymbologyExport</ref></type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Set symbology export mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mode </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="176" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="176" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a80c70c3805a5176767a91b4e6bbffa60" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::setSymbologyScale</definition>
+        <argsstring>(double scale)</argsstring>
+        <name>setSymbologyScale</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <briefdescription>
+<para>Set reference <emphasis>scale</emphasis> for output. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>scale</emphasis> value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. <simplesect kind="see"><para><ref refid="classQgsDxfExport_1ac935d2bff5578ed1ba7e5d3629aca81b" kindref="member">symbologyScale()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="142" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="142" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1adccabd767f5a88cbc1c85f5ab6968388" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40" kindref="member">QgsDxfExport::SymbologyExport</ref></type>
+        <definition>QgsDxfExport::SymbologyExport QgsDxfExport::symbologyExport</definition>
+        <argsstring>() const</argsstring>
+        <name>symbologyExport</name>
+        <briefdescription>
+<para>Gets symbology export mode. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>mode </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsDxfExport_1a19d61e74baeeb51bb258213e2947f4da" kindref="member">setSymbologyExport</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="183" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="183" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ac935d2bff5578ed1ba7e5d3629aca81b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsDxfExport::symbologyScale</definition>
+        <argsstring>() const</argsstring>
+        <name>symbologyScale</name>
+        <briefdescription>
+<para>Returns the reference scale for output. </para>        </briefdescription>
+        <detaileddescription>
+<para>The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map. <simplesect kind="see"><para><ref refid="classQgsDxfExport_1a80c70c3805a5176767a91b4e6bbffa60" kindref="member">setSymbologyScale()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a0e242e8f833f7e71831abb2066fb8360" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeCircle</definition>
+        <argsstring>(const QString &amp;layer, const QColor &amp;color, const QgsPoint &amp;pt, double radius, const QString &amp;lineStyleName, double width)</argsstring>
+        <name>writeCircle</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>lineStyleName</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>width</declname>
+        </param>
+        <briefdescription>
+<para>Write circle (as polyline) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>available in Python bindings as writeCircleV2 </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="371" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3634" bodyend="3654"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a75856d909e55f1b38d66975f53d3165d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeDouble</definition>
+        <argsstring>(double d)</argsstring>
+        <name>writeDouble</name>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Write a floating point value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>floating point value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="307" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="485" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a0227fde1d05d0094f44d9d4772df5a81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeFilledCircle</definition>
+        <argsstring>(const QString &amp;layer, const QColor &amp;color, const QgsPoint &amp;pt, double radius)</argsstring>
+        <name>writeFilledCircle</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+<para>Write filled circle (as hatch) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>available in Python bindings as writePointV2 </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="364" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3597" bodyend="3632"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a2627c787028e1f31f475aa4d32f6e68c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeGroup</definition>
+        <argsstring>(int code, int i)</argsstring>
+        <name>writeGroup</name>
+        <param>
+          <type>int</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Write a tuple of group code and integer value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>available in Python bindings as writeGroupInt </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="255" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="420" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ad7ce1ec56e86cab9d4622240ee69bf6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeGroup</definition>
+        <argsstring>(int code, double d)</argsstring>
+        <name>writeGroup</name>
+        <param>
+          <type>int</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+<para>Write a group code with a floating point value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>floating point value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>available in Python bindings as writeGroupDouble </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="263" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="426" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ad7ce5e213da700f2a274f977b4f3fd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeGroup</definition>
+        <argsstring>(int code, const QString &amp;s)</argsstring>
+        <name>writeGroup</name>
+        <param>
+          <type>int</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Write a group code with a string value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="270" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="432" bodyend="436"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a40abf1c0e7b4a5932be76232de61a552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeGroup</definition>
+        <argsstring>(int code, const QgsPoint &amp;p)</argsstring>
+        <name>writeGroup</name>
+        <param>
+          <type>int</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+<para>Write a group code with a point. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>point value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>available in Python bindings as writeGroupPointV2 </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="279" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="438" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a5c129287fa30e83721d5bf618149ff67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeGroup</definition>
+        <argsstring>(const QColor &amp;color, int exactMatch=62, int rgbCode=420, int transparencyCode=440)</argsstring>
+        <name>writeGroup</name>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>exactMatch</declname>
+          <defval>62</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>rgbCode</declname>
+          <defval>420</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>transparencyCode</declname>
+          <defval>440</defval>
+        </param>
+        <briefdescription>
+<para>Write a group code with color value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>exactMatch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code to use if the color has an exact match in the dxf palette </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rgbCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code to use if the color doesn&apos;t have an exact match or has a transparency component </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>transparencyCode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code to use for transparency component </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>available in Python bindings as writeGroupPoint </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="289" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="446" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1af09a8ac4bd951a851f03b34010057662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeGroupCode</definition>
+        <argsstring>(int code)</argsstring>
+        <name>writeGroupCode</name>
+        <param>
+          <type>int</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+<para>Write a group code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="295" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="475" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a51d6a176155fe494e8473cf0e4a46e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDxfExport::writeHandle</definition>
+        <argsstring>(int code=5, int handle=0)</argsstring>
+        <name>writeHandle</name>
+        <param>
+          <type>int</type>
+          <declname>code</declname>
+          <defval>5</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>handle</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write a tuple of group code and a handle. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>group code to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>handle to use (0 generates a new handle) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the used handle </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="321" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="608" bodyend="617"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a3cc94ffdef136315b2f8e1e67fce3dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeInt</definition>
+        <argsstring>(int i)</argsstring>
+        <name>writeInt</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+<para>Write an integer value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>integer value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="301" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="480" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a1a12b7c9d4bce5203d18035b18baf4b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeLine</definition>
+        <argsstring>(const QgsPoint &amp;pt1, const QgsPoint &amp;pt2, const QString &amp;layer, const QString &amp;lineStyleName, const QColor &amp;color, double width=-1)</argsstring>
+        <name>writeLine</name>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt2</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>lineStyleName</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>width</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Write line (as a polyline) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="350" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3581" bodyend="3584"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a48e7f26633c690a967ec6ee27f51d403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeMText</definition>
+        <argsstring>(const QString &amp;layer, const QString &amp;text, const QgsPoint &amp;pt, double width, double angle, const QColor &amp;color)</argsstring>
+        <name>writeMText</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Write mtext (MTEXT) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>available in Python bindings as writeMTextV2 </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="385" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3672" bodyend="3708"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ab91dab1b4a4080c1bf3d51d182bdaed7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writePoint</definition>
+        <argsstring>(const QString &amp;layer, const QColor &amp;color, const QgsPoint &amp;pt)</argsstring>
+        <name>writePoint</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <briefdescription>
+<para>Write point. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>available in Python bindings as writePointV2 </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="357" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3586" bodyend="3595"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a831cc2a07998661c3c750c4519b2197a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writePolygon</definition>
+        <argsstring>(const QgsRingSequence &amp;polygon, const QString &amp;layer, const QString &amp;hatchPattern, const QColor &amp;color)</argsstring>
+        <name>writePolygon</name>
+        <param>
+          <type>const <ref refid="qgsabstractgeometry_8h_1a634539f147c34b093ae14831036960df" kindref="member">QgsRingSequence</ref> &amp;</type>
+          <declname>polygon</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>hatchPattern</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Draw dxf filled polygon (HATCH) </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>polygon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>polygon </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>layer name to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hatchPattern</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>hatchPattern to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color to use </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="344" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3542" bodyend="3579"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ae486ca7387136668de43b18327f1a820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writePolyline</definition>
+        <argsstring>(const QgsPointSequence &amp;line, const QString &amp;layer, const QString &amp;lineStyleName, const QColor &amp;color, double width=-1)</argsstring>
+        <name>writePolyline</name>
+        <param>
+          <type>const <ref refid="qgsabstractgeometry_8h_1a998c0c2a807f73c4412fdab61e278f21" kindref="member">QgsPointSequence</ref> &amp;</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>lineStyleName</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>width</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Draw dxf primitives (LWPOLYLINE) </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>polyline </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>layer name to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lineStyleName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>line type to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color to use </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>line width to use </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="333" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3471" bodyend="3540"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a7f6742643016d7e62fb501a7c4c01eeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeString</definition>
+        <argsstring>(const QString &amp;s)</argsstring>
+        <name>writeString</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Write a string value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>s</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="313" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="493" bodyend="496"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a7433ccc569713ce887afee1678ae755c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeText</definition>
+        <argsstring>(const QString &amp;layer, const QString &amp;text, const QgsPoint &amp;pt, double size, double angle, const QColor &amp;color)</argsstring>
+        <name>writeText</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Write text (TEXT) </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>available in Python bindings as writeTextV2 </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.15 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="378" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3656" bodyend="3670"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a0e599e2a3993c9769eac0578c3f522d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDxfExport::writeToFile</definition>
+        <argsstring>(QIODevice *d, const QString &amp;codec)</argsstring>
+        <name>writeToFile</name>
+        <param>
+          <type>QIODevice *</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>codec</declname>
+        </param>
+        <briefdescription>
+<para>Export to a dxf file in the given encoding. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>device </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>codec</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>encoding </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, 1 on invalid device, 2 when devices is not writable </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="134" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="498" bodyend="557"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsDxfExport_1ab4742c338cd315031cd4217cdc8e2f74" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDxfExport::closestColorMatch</definition>
+        <argsstring>(QRgb color)</argsstring>
+        <name>closestColorMatch</name>
+        <param>
+          <type>QRgb</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Gets DXF palette index of nearest entry for given color. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="231" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3945" bodyend="3961"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aae2883334a2232c7ae578e95fb4aa651" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::dxfEncoding</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>dxfEncoding</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns DXF encoding for Qt encoding. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="408" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4360" bodyend="4379"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a7114b88d24525eb5cd296e884996f72c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::dxfLayerName</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>dxfLayerName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Returns cleaned layer name for use in DXF. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="405" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4301" bodyend="4331"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aeb7aedb3f2ee844ac3d968b575911b45" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsDxfExport::encodings</definition>
+        <argsstring>()</argsstring>
+        <name>encodings</name>
+        <briefdescription>
+<para>Returns list of available DXF encodings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="411" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4381" bodyend="4395"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a1f11e6e7e498a1e98862f717873874e5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsDxfExport::mapUnitScaleFactor</definition>
+        <argsstring>(double scale, QgsUnitTypes::RenderUnit symbolUnits, QgsUnitTypes::DistanceUnit mapUnits, double mapUnitsPerPixel=1.0)</argsstring>
+        <name>mapUnitScaleFactor</name>
+        <param>
+          <type>double</type>
+          <declname>scale</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+          <declname>symbolUnits</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1a0602e8a06afd37c267e9e532bb27f50d" kindref="member">QgsUnitTypes::DistanceUnit</ref></type>
+          <declname>mapUnits</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>mapUnitsPerPixel</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+<para>Returns scale factor for conversion to map units. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>scale</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the map scale denominator </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbolUnits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the symbol output units </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mapUnits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the map units </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mapUnitsPerPixel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Map units per pixel </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="394" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3997" bodyend="4012"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsDxfExport_1a35507bc0ebcbbe657b213f1a3574940a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::addFeature</definition>
+        <argsstring>(QgsSymbolRenderContext &amp;ctx, const QgsCoordinateTransform &amp;ct, const QString &amp;layer, const QgsSymbolLayer *symbolLayer, const QgsSymbol *symbol)</argsstring>
+        <name>addFeature</name>
+        <param>
+          <type><ref refid="classQgsSymbolRenderContext" kindref="compound">QgsSymbolRenderContext</ref> &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>symbolLayer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="478" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3710" bodyend="3915"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a5d86a9597e2980c7e9211c7936c5c824" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::addGeometryGeneratorSymbolLayer</definition>
+        <argsstring>(QgsSymbolRenderContext &amp;ctx, const QgsCoordinateTransform &amp;ct, const QString &amp;layer, QgsSymbolLayer *symbolLayer, bool allSymbolLayers)</argsstring>
+        <name>addGeometryGeneratorSymbolLayer</name>
+        <param>
+          <type><ref refid="classQgsSymbolRenderContext" kindref="compound">QgsSymbolRenderContext</ref> &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>ct</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>symbolLayer</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allSymbolLayers</declname>
+        </param>
+        <briefdescription>
+<para>Writes geometry generator symbol layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the symbol render context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ct</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the coordinate transform </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>layer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the layer name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbolLayer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the symbollayer to write to the dxf file </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>allSymbolLayers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if true, all symbol layers of the subsymbol are written. If false, only the first one is written </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="476" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4204" bodyend="4242"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aa523dde5ea278224e08836e10196a553" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsDxfExport::dashSeparatorSize</definition>
+        <argsstring>() const</argsstring>
+        <name>dashSeparatorSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="496" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4271" bodyend="4275"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a16bf4fc1ba0683dfc2b65a53bb6824ef" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsDxfExport::dashSize</definition>
+        <argsstring>() const</argsstring>
+        <name>dashSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="494" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4259" bodyend="4263"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a23c3aff22c8357edc82f26a34ea0a028" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsDxfExport::dotSize</definition>
+        <argsstring>() const</argsstring>
+        <name>dotSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="495" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4265" bodyend="4269"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aee4308f70d9304358660e4f8d452f3a0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::endSection</definition>
+        <argsstring>()</argsstring>
+        <name>endSection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="461" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3418" bodyend="3421"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aff67d49a4dcdf46a7efbbf38a9687aa5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsDxfExport::layerIsScaleBasedVisible</definition>
+        <argsstring>(const QgsMapLayer *layer) const</argsstring>
+        <name>layerIsScaleBasedVisible</name>
+        <param>
+          <type>const <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="499" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4333" bodyend="4342"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a99fda33eb53b153a1038673d9251d31d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::lineStyleFromSymbolLayer</definition>
+        <argsstring>(const QgsSymbolLayer *symbolLayer)</argsstring>
+        <name>lineStyleFromSymbolLayer</name>
+        <param>
+          <type>const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>symbolLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="482" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3925" bodyend="3943"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ae7f6efd4bdd2160a891ac7f649f46e30" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref></type>
+        <definition>QgsRenderContext QgsDxfExport::renderContext</definition>
+        <argsstring>() const</argsstring>
+        <name>renderContext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="489" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3990" bodyend="3995"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a552136821670836d12213b9c23eff16c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsDxfExport::sizeToMapUnits</definition>
+        <argsstring>(double s) const</argsstring>
+        <name>sizeToMapUnits</name>
+        <param>
+          <type>double</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="497" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4277" bodyend="4281"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a9d75d78cea4aff868eddb67c65d58b0b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::startSection</definition>
+        <argsstring>()</argsstring>
+        <name>startSection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="460" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3413" bodyend="3416"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1af150abd05a057abb1d7daa54a5f432fc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; QPair&lt; <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *, <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *&gt; &gt;</type>
+        <definition>QList&lt; QPair&lt; QgsSymbolLayer *, QgsSymbol *&gt; &gt; QgsDxfExport::symbolLayers</definition>
+        <argsstring>(QgsRenderContext &amp;context)</argsstring>
+        <name>symbolLayers</name>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="491" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4046" bodyend="4084"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a6189e9c57aa1615a19c62661f6c7f88c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeBlocks</definition>
+        <argsstring>()</argsstring>
+        <name>writeBlocks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="455" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="860" bodyend="946"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a604d3c408b5625aa8075b27b013c6a09" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeDefaultLinetypes</definition>
+        <argsstring>()</argsstring>
+        <name>writeDefaultLinetypes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="464" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4086" bodyend="4133"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aed06d07dc8bff99db8307d02a5d323f3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeEndFile</definition>
+        <argsstring>()</argsstring>
+        <name>writeEndFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="458" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="1246" bodyend="3411"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ae8022bdb76d9d39fe2370ca491c11f9a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeEntities</definition>
+        <argsstring>()</argsstring>
+        <name>writeEntities</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="456" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="949" bodyend="1146"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1adffaf66cfc8f525a1930b17cc0895b34" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeEntitiesSymbolLevels</definition>
+        <argsstring>(QgsVectorLayer *layer)</argsstring>
+        <name>writeEntitiesSymbolLevels</name>
+        <param>
+          <type><ref refid="classQgsVectorLayer" kindref="compound">QgsVectorLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="457" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="1148" bodyend="1244"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a173384e343c88324f27aab09b50a3a19" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeHeader</definition>
+        <argsstring>(const QString &amp;codepage)</argsstring>
+        <name>writeHeader</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>codepage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="453" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="564" bodyend="606"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a5732fd3429f447b3463ec6b795e8b2da" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeLinetype</definition>
+        <argsstring>(const QString &amp;styleName, const QVector&lt; qreal &gt; &amp;pattern, QgsUnitTypes::RenderUnit u)</argsstring>
+        <name>writeLinetype</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>styleName</declname>
+        </param>
+        <param>
+          <type>const QVector&lt; qreal &gt; &amp;</type>
+          <declname>pattern</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsUnitTypes_1ae04d6633d29996dbc2ab07e737a04adf" kindref="member">QgsUnitTypes::RenderUnit</ref></type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="466" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4170" bodyend="4202"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a45359baac2fc9a106efb4a29e6fffe61" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writePoint</definition>
+        <argsstring>(const QgsPoint &amp;pt, const QString &amp;layer, const QColor &amp;color, QgsSymbolRenderContext &amp;ctx, const QgsSymbolLayer *symbolLayer, const QgsSymbol *symbol, double angle)</argsstring>
+        <name>writePoint</name>
+        <param>
+          <type>const <ref refid="classQgsPoint" kindref="compound">QgsPoint</ref> &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>layer</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbolRenderContext" kindref="compound">QgsSymbolRenderContext</ref> &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>symbolLayer</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>angle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="463" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3423" bodyend="3469"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ac9812a21e98925b2bdf540b829bac8f4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeSymbolLayerLinetype</definition>
+        <argsstring>(const QgsSymbolLayer *symbolLayer)</argsstring>
+        <name>writeSymbolLayerLinetype</name>
+        <param>
+          <type>const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>symbolLayer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="465" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4135" bodyend="4150"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1ac8def86359513c3ec42b1be777573d29" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDxfExport::writeTables</definition>
+        <argsstring>()</argsstring>
+        <name>writeTables</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="454" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="619" bodyend="858"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsDxfExport_1a75b3dd0a8857ec4579fc32b14308a9fe" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDxfExport::color_distance</definition>
+        <argsstring>(QRgb p1, int index)</argsstring>
+        <name>color_distance</name>
+        <param>
+          <type>QRgb</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="485" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3963" bodyend="3983"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1af55741b6fba0257970a58d402c68456a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QColor</type>
+        <definition>QColor QgsDxfExport::colorFromSymbolLayer</definition>
+        <argsstring>(const QgsSymbolLayer *symbolLayer, QgsSymbolRenderContext &amp;ctx)</argsstring>
+        <name>colorFromSymbolLayer</name>
+        <param>
+          <type>const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>symbolLayer</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsSymbolRenderContext" kindref="compound">QgsSymbolRenderContext</ref> &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="481" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3917" bodyend="3923"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a1d1f173d89a243d7f41b38f83fcea7ad" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QRgb</type>
+        <definition>QRgb QgsDxfExport::createRgbEntry</definition>
+        <argsstring>(qreal r, qreal g, qreal b)</argsstring>
+        <name>createRgbEntry</name>
+        <param>
+          <type>qreal</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>qreal</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>qreal</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="486" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="3985" bodyend="3988"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a12e4ac6b577a7abb704788ed4fc461bd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsDxfExport::hasDataDefinedProperties</definition>
+        <argsstring>(const QgsSymbolLayer *sl, const QgsSymbol *symbol)</argsstring>
+        <name>hasDataDefinedProperties</name>
+        <param>
+          <type>const <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *</type>
+          <declname>sl</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *</type>
+          <declname>symbol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="493" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4244" bodyend="4257"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1aab55e022cbf5a782acb088b6038a5092" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDxfExport::lineNameFromPenStyle</definition>
+        <argsstring>(Qt::PenStyle style)</argsstring>
+        <name>lineNameFromPenStyle</name>
+        <param>
+          <type>Qt::PenStyle</type>
+          <declname>style</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="498" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4283" bodyend="4299"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDxfExport_1a760400c9187496acf14cf416f0d04317" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDxfExport::nLineTypes</definition>
+        <argsstring>(const QList&lt; QPair&lt; QgsSymbolLayer *, QgsSymbol *&gt; &gt; &amp;symbolLayers)</argsstring>
+        <name>nLineTypes</name>
+        <param>
+          <type>const QList&lt; QPair&lt; <ref refid="classQgsSymbolLayer" kindref="compound">QgsSymbolLayer</ref> *, <ref refid="classQgsSymbol" kindref="compound">QgsSymbol</ref> *&gt; &gt; &amp;</type>
+          <declname>symbolLayers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="492" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.cpp" bodystart="4152" bodyend="4168"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" line="52" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/dxf/qgsdxfexport.h" bodystart="51" bodyend="514"/>
+    <listofallmembers>
+      <member refid="classQgsDxfExport_1a35507bc0ebcbbe657b213f1a3574940a" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>addFeature</name></member>
+      <member refid="classQgsDxfExport_1a5d86a9597e2980c7e9211c7936c5c824" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>addGeometryGeneratorSymbolLayer</name></member>
+      <member refid="classQgsDxfExport_1a700780127af97a8dd53e4dba25405bbf" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>addLayers</name></member>
+      <member refid="classQgsDxfExport_1ae0a9a85766968fceabcc95b73b747107" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>clipValueToMapUnitScale</name></member>
+      <member refid="classQgsDxfExport_1ab4742c338cd315031cd4217cdc8e2f74" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>closestColorMatch</name></member>
+      <member refid="classQgsDxfExport_1a75b3dd0a8857ec4579fc32b14308a9fe" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>color_distance</name></member>
+      <member refid="classQgsDxfExport_1af55741b6fba0257970a58d402c68456a" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>colorFromSymbolLayer</name></member>
+      <member refid="classQgsDxfExport_1a1d1f173d89a243d7f41b38f83fcea7ad" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>createRgbEntry</name></member>
+      <member refid="classQgsDxfExport_1aa523dde5ea278224e08836e10196a553" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>dashSeparatorSize</name></member>
+      <member refid="classQgsDxfExport_1a16bf4fc1ba0683dfc2b65a53bb6824ef" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>dashSize</name></member>
+      <member refid="classQgsDxfExport_1a529281de51722740fc01bc5f3c202859" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>destinationCrs</name></member>
+      <member refid="classQgsDxfExport_1a23c3aff22c8357edc82f26a34ea0a028" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>dotSize</name></member>
+      <member refid="classQgsDxfExport_1a6c56242376411259841d6b64355958e1" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>drawLabel</name></member>
+      <member refid="classQgsDxfExport_1ab8d9a7da96a963262128089144d5f32e" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>DXF_ENCODINGS</name></member>
+      <member refid="classQgsDxfExport_1aae2883334a2232c7ae578e95fb4aa651" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>dxfEncoding</name></member>
+      <member refid="classQgsDxfExport_1a7114b88d24525eb5cd296e884996f72c" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>dxfLayerName</name></member>
+      <member refid="classQgsDxfExport_1aeb7aedb3f2ee844ac3d968b575911b45" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>encodings</name></member>
+      <member refid="classQgsDxfExport_1aee4308f70d9304358660e4f8d452f3a0" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>endSection</name></member>
+      <member refid="classQgsDxfExport_1a3601fe104f4b239c52d509b425753f74" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>extent</name></member>
+      <member refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a3db75428c560d987ace7a4f30894ee62" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>FeatureSymbology</name></member>
+      <member refid="classQgsDxfExport_1a3b02c2e45102ddbad349fc556994d2b6" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>Flag</name></member>
+      <member refid="classQgsDxfExport_1a3b02c2e45102ddbad349fc556994d2b6ad967c98663200fdd000e5ebf2ae2bf80" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>FlagNoMText</name></member>
+      <member refid="classQgsDxfExport_1ac4ac9959c79d05e613ee851acc1ada98" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>flags</name></member>
+      <member refid="classQgsDxfExport_1a80e3ce252405dbde1d0de54d8eb72d58" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>force2d</name></member>
+      <member refid="classQgsDxfExport_1a12e4ac6b577a7abb704788ed4fc461bd" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>hasDataDefinedProperties</name></member>
+      <member refid="classQgsDxfExport_1aff67d49a4dcdf46a7efbbf38a9687aa5" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>layerIsScaleBasedVisible</name></member>
+      <member refid="classQgsDxfExport_1a317a49e3928964484417d891752074f6" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>layerName</name></member>
+      <member refid="classQgsDxfExport_1af25203215a853b639a1caa3413e080e1" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>layerName</name></member>
+      <member refid="classQgsDxfExport_1a29f15a11a84667226d1e6548a77c6989" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>layerTitleAsName</name></member>
+      <member refid="classQgsDxfExport_1aab55e022cbf5a782acb088b6038a5092" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>lineNameFromPenStyle</name></member>
+      <member refid="classQgsDxfExport_1a99fda33eb53b153a1038673d9251d31d" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>lineStyleFromSymbolLayer</name></member>
+      <member refid="classQgsDxfExport_1a4fcf34ed981e53912a97eafaf3d61bb8" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>mapUnits</name></member>
+      <member refid="classQgsDxfExport_1a1f11e6e7e498a1e98862f717873874e5" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>mapUnitScaleFactor</name></member>
+      <member refid="classQgsDxfExport_1a25ec5dba3f337bccf9e8bf2fbf66085c" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mBlockCounter</name></member>
+      <member refid="classQgsDxfExport_1aed171780424fecf01ac5572a05315eb5" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mBlockHandle</name></member>
+      <member refid="classQgsDxfExport_1a1f0ab95c7a19346f2ee051a7d3305a06" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mBlockHandles</name></member>
+      <member refid="classQgsDxfExport_1abe95653e0b188ecab729144eb87f3dc8" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mCrs</name></member>
+      <member refid="classQgsDxfExport_1a76d6060510191a293b4c83bdb7af0bf2" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mDxfLayerNames</name></member>
+      <member refid="classQgsDxfExport_1ad3e8c925eba50118fc3b17f82576f6f9" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mExtent</name></member>
+      <member refid="classQgsDxfExport_1a68dc3b742ec5d02d96729a51d9da48dc" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mFactor</name></member>
+      <member refid="classQgsDxfExport_1aa6bbec88bd3192bfc6c641cacbf537c3" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mFlags</name></member>
+      <member refid="classQgsDxfExport_1a22d77f624efc507959e06de5f9764ed5" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mForce2d</name></member>
+      <member refid="classQgsDxfExport_1a48c2d61fe9ce52d9e02b948778525e41" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mLayerNameAttribute</name></member>
+      <member refid="classQgsDxfExport_1a20860232cd80482a2f2adec77a7d0944" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mLayerTitleAsName</name></member>
+      <member refid="classQgsDxfExport_1ae52a7fa33baccc85b57454e0e339eed8" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mLineStyles</name></member>
+      <member refid="classQgsDxfExport_1a92a24e48bde52fede3176679b208d967" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mMapSettings</name></member>
+      <member refid="classQgsDxfExport_1a4b89229f180bea1ba27bb51763ad87de" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mMapUnits</name></member>
+      <member refid="classQgsDxfExport_1aac25b87afaecd259dfb5eb10c7b0ecbe" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mNextHandleId</name></member>
+      <member refid="classQgsDxfExport_1a1466b417ad20dafd0be9fda1db440415" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mPointSymbolBlocks</name></member>
+      <member refid="classQgsDxfExport_1a1f45e83b0039d0b6027d3d23a726b2b9" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mSymbolLayerCounter</name></member>
+      <member refid="classQgsDxfExport_1ad75074afe26b1b44103c7b0e00d74d17" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mSymbologyExport</name></member>
+      <member refid="classQgsDxfExport_1ab2dc806eef019a20b2016a4599133762" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mSymbologyScale</name></member>
+      <member refid="classQgsDxfExport_1af8f93287ee82952806e228ffb2f436fa" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>mTextStream</name></member>
+      <member refid="classQgsDxfExport_1a760400c9187496acf14cf416f0d04317" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>nLineTypes</name></member>
+      <member refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a89de557086730cd36e2d90da2104eb92" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>NoSymbology</name></member>
+      <member refid="classQgsDxfExport_1abd904ac371c6be4da43aaf1350d1178d" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>operator=</name></member>
+      <member refid="classQgsDxfExport_1a05e7b0a7b441e80b7e42cc337401bf01" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>QgsDxfExport</name></member>
+      <member refid="classQgsDxfExport_1a65b7e97f2b01bfeb0a5613119e3e4897" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>QgsDxfExport</name></member>
+      <member refid="classQgsDxfExport_1ac443790cdfc0a56d9b75d772c356943a" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>registerDxfLayer</name></member>
+      <member refid="classQgsDxfExport_1ae7f6efd4bdd2160a891ac7f649f46e30" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>renderContext</name></member>
+      <member refid="classQgsDxfExport_1ab13f2c049096bcef11b9199756faef63" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>sDxfColors</name></member>
+      <member refid="classQgsDxfExport_1a6805710968184510e2585ef4d5fb0daa" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setDestinationCrs</name></member>
+      <member refid="classQgsDxfExport_1ab950354bb2c980dc8dff828a7b30f52b" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setExtent</name></member>
+      <member refid="classQgsDxfExport_1a357ea1e94582e4b2296b6bf34d587f22" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setFlags</name></member>
+      <member refid="classQgsDxfExport_1a0720b524c900a0817fba68428550ef6f" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setForce2d</name></member>
+      <member refid="classQgsDxfExport_1aff36f6e706b2061f5b1c28a02733f2b1" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setLayerTitleAsName</name></member>
+      <member refid="classQgsDxfExport_1aee3f219e69258030b0ad4bda94e92f9f" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setMapSettings</name></member>
+      <member refid="classQgsDxfExport_1a19d61e74baeeb51bb258213e2947f4da" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setSymbologyExport</name></member>
+      <member refid="classQgsDxfExport_1a80c70c3805a5176767a91b4e6bbffa60" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>setSymbologyScale</name></member>
+      <member refid="classQgsDxfExport_1a552136821670836d12213b9c23eff16c" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>sizeToMapUnits</name></member>
+      <member refid="classQgsDxfExport_1a9d75d78cea4aff868eddb67c65d58b0b" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>startSection</name></member>
+      <member refid="classQgsDxfExport_1af150abd05a057abb1d7daa54a5f432fc" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>symbolLayers</name></member>
+      <member refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40a766594942ad171477a893b534656d51c" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>SymbolLayerSymbology</name></member>
+      <member refid="classQgsDxfExport_1a0a9d5aea69ac33a990e5e712e81c5a40" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>SymbologyExport</name></member>
+      <member refid="classQgsDxfExport_1adccabd767f5a88cbc1c85f5ab6968388" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>symbologyExport</name></member>
+      <member refid="classQgsDxfExport_1ac935d2bff5578ed1ba7e5d3629aca81b" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>symbologyScale</name></member>
+      <member refid="classQgsDxfExport_1a6189e9c57aa1615a19c62661f6c7f88c" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeBlocks</name></member>
+      <member refid="classQgsDxfExport_1a0e242e8f833f7e71831abb2066fb8360" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeCircle</name></member>
+      <member refid="classQgsDxfExport_1a604d3c408b5625aa8075b27b013c6a09" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeDefaultLinetypes</name></member>
+      <member refid="classQgsDxfExport_1a75856d909e55f1b38d66975f53d3165d" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeDouble</name></member>
+      <member refid="classQgsDxfExport_1aed06d07dc8bff99db8307d02a5d323f3" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeEndFile</name></member>
+      <member refid="classQgsDxfExport_1ae8022bdb76d9d39fe2370ca491c11f9a" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeEntities</name></member>
+      <member refid="classQgsDxfExport_1adffaf66cfc8f525a1930b17cc0895b34" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeEntitiesSymbolLevels</name></member>
+      <member refid="classQgsDxfExport_1a0227fde1d05d0094f44d9d4772df5a81" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeFilledCircle</name></member>
+      <member refid="classQgsDxfExport_1a2627c787028e1f31f475aa4d32f6e68c" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeGroup</name></member>
+      <member refid="classQgsDxfExport_1ad7ce1ec56e86cab9d4622240ee69bf6b" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeGroup</name></member>
+      <member refid="classQgsDxfExport_1ad7ce5e213da700f2a274f977b4f3fd95" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeGroup</name></member>
+      <member refid="classQgsDxfExport_1a40abf1c0e7b4a5932be76232de61a552" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeGroup</name></member>
+      <member refid="classQgsDxfExport_1a5c129287fa30e83721d5bf618149ff67" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeGroup</name></member>
+      <member refid="classQgsDxfExport_1af09a8ac4bd951a851f03b34010057662" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeGroupCode</name></member>
+      <member refid="classQgsDxfExport_1a51d6a176155fe494e8473cf0e4a46e88" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeHandle</name></member>
+      <member refid="classQgsDxfExport_1a173384e343c88324f27aab09b50a3a19" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeHeader</name></member>
+      <member refid="classQgsDxfExport_1a3cc94ffdef136315b2f8e1e67fce3dd6" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeInt</name></member>
+      <member refid="classQgsDxfExport_1a1a12b7c9d4bce5203d18035b18baf4b0" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeLine</name></member>
+      <member refid="classQgsDxfExport_1a5732fd3429f447b3463ec6b795e8b2da" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeLinetype</name></member>
+      <member refid="classQgsDxfExport_1a48e7f26633c690a967ec6ee27f51d403" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeMText</name></member>
+      <member refid="classQgsDxfExport_1ab91dab1b4a4080c1bf3d51d182bdaed7" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writePoint</name></member>
+      <member refid="classQgsDxfExport_1a45359baac2fc9a106efb4a29e6fffe61" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writePoint</name></member>
+      <member refid="classQgsDxfExport_1a831cc2a07998661c3c750c4519b2197a" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writePolygon</name></member>
+      <member refid="classQgsDxfExport_1ae486ca7387136668de43b18327f1a820" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writePolyline</name></member>
+      <member refid="classQgsDxfExport_1a7f6742643016d7e62fb501a7c4c01eeb" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeString</name></member>
+      <member refid="classQgsDxfExport_1ac9812a21e98925b2bdf540b829bac8f4" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeSymbolLayerLinetype</name></member>
+      <member refid="classQgsDxfExport_1ac8def86359513c3ec42b1be777573d29" prot="private" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeTables</name></member>
+      <member refid="classQgsDxfExport_1a7433ccc569713ce887afee1678ae755c" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeText</name></member>
+      <member refid="classQgsDxfExport_1a0e599e2a3993c9769eac0578c3f522d1" prot="public" virt="non-virtual"><scope>QgsDxfExport</scope><name>writeToFile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsColorButton class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsColorButton <span class="m-thin">class</span>
+        </h1>
+        <p>A cross platform button subclass for selecting colors.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>Will open a color chooser dialog when clicked. Offers live updates to button from color chooser dialog. An attached drop-down menu allows for copying and pasting colors, picking colors from the screen, and selecting colors from color swatch grids.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.5</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a2b938c9d70f14f4bae116c1a02b54fc1" class="m-doc">Behavior</a> { </span><span class="m-doc-wrap"><a href="#a2b938c9d70f14f4bae116c1a02b54fc1a39fcc9f2f449e092f1fd964aa1d638c3" class="m-doc">ShowDialog</a> = 0,
+              <a href="#a2b938c9d70f14f4bae116c1a02b54fc1a46db50de9d075cab3f4486edb554c213" class="m-doc">SignalOnly</a> }</span>
+            </dt>
+            <dd>Specifies the behavior when the button is clicked.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a36c873f3c092d3882d253cb82bb67105" class="m-doc">createMenuIcon</a>(</span><span class="m-doc-wrap">const QColor&amp; color,
+              bool showChecks = true) -&gt; QPixmap</span>
+            </dt>
+            <dd>Creates an icon for displaying a <em>color</em> in a drop-down menu.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a33c2035c5b568dcbbe6f183e6b97c7b2" class="m-doc">QgsColorButton</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr,
+              const QString&amp; cdt = QString(),
+              <a href="classQgsColorSchemeRegistry.html" class="m-doc">QgsColorSchemeRegistry</a>* registry = nullptr)</span>
+            </dt>
+            <dd>Construct a new color ramp button.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a253a7ca2a7011994064400e20dfc4866" class="m-doc">allowOpacity</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether opacity modification (transparency) is permitted for the color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a700487023c35160fb3bc4eccc7b6b063" class="m-doc">behavior</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsColorButton.html#a2b938c9d70f14f4bae116c1a02b54fc1" class="m-doc">Behavior</a></span>
+            </dt>
+            <dd>Returns the behavior for when the button is clicked.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a95c7ad1bc5d2b1d07b5c5b7c3ea7c24b" class="m-doc">color</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Returns the currently selected color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5fd2a65ebd839ce0c51dd7f088350173" class="m-doc">colorDialogTitle</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the title for the color chooser dialog window.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab4c453632cccabaecd55ab1c46530b1e" class="m-doc">colorSchemeRegistry</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classQgsColorSchemeRegistry.html" class="m-doc">QgsColorSchemeRegistry</a>*</span>
+            </dt>
+            <dd>Returns the color scheme registry for the button, which controls the color swatch grids that are shown in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a602f579292d0bddb6d8418e42b605835" class="m-doc">context</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the context string for the color button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a975f073b8f20cdf28eb4e6754b8b7a00" class="m-doc">defaultColor</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Returns the default color for the button, which is shown in the button&#x27;s drop-down menu for the &quot;default color&quot; option.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#accecec0822f97ca219bcce285fdb5e72" class="m-doc">isNull</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the current color is null.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adc313680a6dea178b9fcd5809b64426c" class="m-doc">noColorString</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the string used for the &quot;no color&quot; option in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4a2e888fc28f0a0e1b9ee89a9d8516d5" class="m-doc">setAllowOpacity</a>(</span><span class="m-doc-wrap">bool allowOpacity)</span>
+            </dt>
+            <dd>Sets whether opacity modification (transparency) is permitted for the color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3a617045269825f611b944ad021a9036" class="m-doc">setBehavior</a>(</span><span class="m-doc-wrap"><a href="classQgsColorButton.html#a2b938c9d70f14f4bae116c1a02b54fc1" class="m-doc">Behavior</a> behavior)</span>
+            </dt>
+            <dd>Sets the behavior for when the button is clicked.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a3e10e27a31ba29fe05bbf037072b277c" class="m-doc">setColorDialogTitle</a>(</span><span class="m-doc-wrap">const QString&amp; title)</span>
+            </dt>
+            <dd>Set the title for the color chooser dialog window.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1a9db8fa49f6fbc064f6abcfd023ff5d" class="m-doc">setColorSchemeRegistry</a>(</span><span class="m-doc-wrap"><a href="classQgsColorSchemeRegistry.html" class="m-doc">QgsColorSchemeRegistry</a>* registry)</span>
+            </dt>
+            <dd>Sets the color scheme registry for the button, which controls the color swatch grids that are shown in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5697a9b6c7e4fbfdd7a2095f56b29f7b" class="m-doc">setContext</a>(</span><span class="m-doc-wrap">const QString&amp; context)</span>
+            </dt>
+            <dd>Sets the context string for the color button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a06c927ca29f6fab39aa1fb292855d07b" class="m-doc">setDefaultColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets the default color for the button, which is shown in the button&#x27;s drop-down menu for the &quot;default color&quot; option.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a21b82e9daa47895b57f2e2532ac67425" class="m-doc">setNoColorString</a>(</span><span class="m-doc-wrap">const QString&amp; noColorString)</span>
+            </dt>
+            <dd>Sets the string to use for the &quot;no color&quot; option in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2fce6357db9875e0b0ef81af07a25c4c" class="m-doc">setShowMenu</a>(</span><span class="m-doc-wrap">bool showMenu)</span>
+            </dt>
+            <dd>Sets whether the drop-down menu should be shown for the button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a82024da92e34c9359cea5760ef952c11" class="m-doc">setShowNoColor</a>(</span><span class="m-doc-wrap">const bool showNoColorOption)</span>
+            </dt>
+            <dd>Sets whether the &quot;no color&quot; option should be shown in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab84d139560cb7885e91d757590657bd1" class="m-doc">setShowNull</a>(</span><span class="m-doc-wrap">bool showNull)</span>
+            </dt>
+            <dd>Sets whether a set to null (clear) option is shown in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a065c9198dd910fee8eca8bbad738173f" class="m-doc">showMenu</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the drop-down menu is shown for the button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0400997ec58ce16f9707480c3841046b" class="m-doc">showNoColor</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the &quot;no color&quot; option is shown in the button&#x27;s drop-down menu.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae1e71db3f3e58605db82d50d2162ef3c" class="m-doc">showNull</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns whether the set to null (clear) option is shown in the button&#x27;s drop-down menu.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1bb8169c973e9aeece88365656e5ca53" class="m-doc">colorChanged</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Is emitted whenever a new color is set for the button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a81e03ebf8dc71e6157dbaa8382b154ef" class="m-doc">colorClicked</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Emitted when the button is clicked, if the button&#x27;s behavior is set to SignalOnly.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a551dda4340645f69343ec5dea10ec4ed" class="m-doc-self" name="a551dda4340645f69343ec5dea10ec4ed">activatePicker</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Activates the color picker tool, which allows for sampling a color from anywhere on the screen.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1d852e29a9f51caa4e723d5746f28b5c" class="m-doc">copyColor</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Copies the current color to the clipboard.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae84e282bd1d5ed8e0818d7718855e4c0" class="m-doc">pasteColor</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Pastes a color from the clipboard to the color button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a227b7d0dc0bf3102bf7c095cc7ff54ee" class="m-doc">setButtonBackground</a>(</span><span class="m-doc-wrap">const QColor&amp; color = QColor())</span>
+            </dt>
+            <dd>Sets the background pixmap for the button based upon color and transparency.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aebd6dd9c9704efe32ee57abd9157f246" class="m-doc">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets the current color for the button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a76671aecf05908f9d3213df6f8f44c47" class="m-doc">setToDefaultColor</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Sets color to the button&#x27;s default color, if set.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4fa875ef1e63decb9d2428843591ecde" class="m-doc">setToNoColor</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Sets color to a totally transparent color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aa38a0b2f115a957f8f01c075aa93f83b" class="m-doc">setToNull</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Sets color to null.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a292733b4ff6a514c4f0b36b7f4ce6489" class="m-doc-self" name="a292733b4ff6a514c4f0b36b7f4ce6489">transparentBackground</a>(</span><span class="m-doc-wrap">) -&gt; const QPixmap&amp;</span>
+            </dt>
+            <dd>Returns a checkboard pattern pixmap for use as a background to transparent colors.</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9b5d3be21d093e37f28b9cebd51e31c5" class="m-doc-self" name="a9b5d3be21d093e37f28b9cebd51e31c5">dragEnterEvent</a>(</span><span class="m-doc-wrap">QDragEnterEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to accept dragged colors.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a197533fdc566afbc376f5528cd9f6815" class="m-doc-self" name="a197533fdc566afbc376f5528cd9f6815">dragLeaveEvent</a>(</span><span class="m-doc-wrap">QDragLeaveEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to reset button appearance after drag leave.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a28ec1f365f3fa08489783801a7837225" class="m-doc-self" name="a28ec1f365f3fa08489783801a7837225">dropEvent</a>(</span><span class="m-doc-wrap">QDropEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to accept dropped colors.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#acd91e10d67ddec4b29b1a93ed84b758a" class="m-doc-self" name="acd91e10d67ddec4b29b1a93ed84b758a">keyPressEvent</a>(</span><span class="m-doc-wrap">QKeyEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to allow canceling color pick via keypress, and sample via space bar press.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5c195969550c14e985807381a4b050fc" class="m-doc-self" name="a5c195969550c14e985807381a4b050fc">mouseMoveEvent</a>(</span><span class="m-doc-wrap">QMouseEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to allow dragging colors from button.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a23589c65455d5c75dedd86510bb103d8" class="m-doc-self" name="a23589c65455d5c75dedd86510bb103d8">mousePressEvent</a>(</span><span class="m-doc-wrap">QMouseEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to detect right mouse button clicks on the color button and allow dragging colors.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a187bf4627406d81566bb6f44a2cefaed" class="m-doc-self" name="a187bf4627406d81566bb6f44a2cefaed">mouseReleaseEvent</a>(</span><span class="m-doc-wrap">QMouseEvent* e) <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to allow color picking.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a2b938c9d70f14f4bae116c1a02b54fc1"><div>
+            <h3>
+              enum QgsColorButton::<wbr /><a href="#a2b938c9d70f14f4bae116c1a02b54fc1" class="m-doc-self">Behavior</a>
+            </h3>
+            <p>Specifies the behavior when the button is clicked.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a2b938c9d70f14f4bae116c1a02b54fc1a39fcc9f2f449e092f1fd964aa1d638c3" class="m-doc-self" name="a2b938c9d70f14f4bae116c1a02b54fc1a39fcc9f2f449e092f1fd964aa1d638c3">ShowDialog</a></td>
+                  <td>
+                  <p>Show a color picker dialog when clicked.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a2b938c9d70f14f4bae116c1a02b54fc1a46db50de9d075cab3f4486edb554c213" class="m-doc-self" name="a2b938c9d70f14f4bae116c1a02b54fc1a46db50de9d075cab3f4486edb554c213">SignalOnly</a></td>
+                  <td>
+                  <p>Emit colorClicked signal only, no dialog.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a36c873f3c092d3882d253cb82bb67105"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QPixmap QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a36c873f3c092d3882d253cb82bb67105" class="m-doc-self">createMenuIcon</a>(</span><span class="m-doc-wrap">const QColor&amp; color,
+              bool showChecks = true)</span></span>
+            </h3>
+            <p>Creates an icon for displaying a <em>color</em> in a drop-down menu.</p>
+<p>If <em>showChecks</em> set to true, then a checkboard pattern will be shown behind semi-transparent colors.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a33c2035c5b568dcbbe6f183e6b97c7b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33c2035c5b568dcbbe6f183e6b97c7b2" class="m-doc-self">QgsColorButton</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr,
+              const QString&amp; cdt = QString(),
+              <a href="classQgsColorSchemeRegistry.html" class="m-doc">QgsColorSchemeRegistry</a>* registry = nullptr)</span></span>
+            </h3>
+            <p>Construct a new color ramp button.</p>
+<p>Use <em>parent</em> to attach a parent QWidget to the dialog. Use <em>cdt</em> string to define the title to show in the color ramp dialog Use a color scheme <em>registry</em> for color swatch grids to show in the drop-down menu. If not specified, the button will use the global color scheme registry instead</p>
+          </div></section>
+          <section class="m-doc-details" id="a253a7ca2a7011994064400e20dfc4866"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a253a7ca2a7011994064400e20dfc4866" class="m-doc-self">allowOpacity</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether opacity modification (transparency) is permitted for the color.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if opacity modification is allowed</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a4a2e888fc28f0a0e1b9ee89a9d8516d5" class="m-doc">setAllowOpacity()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a700487023c35160fb3bc4eccc7b6b063"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsColorButton.html#a2b938c9d70f14f4bae116c1a02b54fc1" class="m-doc">Behavior</a> QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a700487023c35160fb3bc4eccc7b6b063" class="m-doc-self">behavior</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the behavior for when the button is clicked.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>behavior when button is clicked</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a3a617045269825f611b944ad021a9036" class="m-doc">setBehavior</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a95c7ad1bc5d2b1d07b5c5b7c3ea7c24b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a95c7ad1bc5d2b1d07b5c5b7c3ea7c24b" class="m-doc-self">color</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the currently selected color.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>currently selected color</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#aebd6dd9c9704efe32ee57abd9157f246" class="m-doc">setColor</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5fd2a65ebd839ce0c51dd7f088350173"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5fd2a65ebd839ce0c51dd7f088350173" class="m-doc-self">colorDialogTitle</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the title for the color chooser dialog window.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>title for the color chooser dialog</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a3e10e27a31ba29fe05bbf037072b277c" class="m-doc">setColorDialogTitle</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab4c453632cccabaecd55ab1c46530b1e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsColorSchemeRegistry.html" class="m-doc">QgsColorSchemeRegistry</a>* QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab4c453632cccabaecd55ab1c46530b1e" class="m-doc-self">colorSchemeRegistry</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Returns the color scheme registry for the button, which controls the color swatch grids that are shown in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>color scheme registry for the button. If returned value is 0 then all color swatch grids are hidden from the button&#x27;s drop-down menu.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a1a9db8fa49f6fbc064f6abcfd023ff5d" class="m-doc">setColorSchemeRegistry</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a602f579292d0bddb6d8418e42b605835"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a602f579292d0bddb6d8418e42b605835" class="m-doc-self">context</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the context string for the color button.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>context string for the color button&#x27;s color swatch grids</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The context string is passed to all color swatch grids shown in the button&#x27;s drop-down menu, to allow them to customize their display colors based on the context.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a5697a9b6c7e4fbfdd7a2095f56b29f7b" class="m-doc">setContext</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a975f073b8f20cdf28eb4e6754b8b7a00"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QColor QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a975f073b8f20cdf28eb4e6754b8b7a00" class="m-doc-self">defaultColor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the default color for the button, which is shown in the button&#x27;s drop-down menu for the &quot;default color&quot; option.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>default color for the button. Returns an invalid QColor if the default color option is disabled.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a06c927ca29f6fab39aa1fb292855d07b" class="m-doc">setDefaultColor</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="accecec0822f97ca219bcce285fdb5e72"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#accecec0822f97ca219bcce285fdb5e72" class="m-doc-self">isNull</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the current color is null.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ab84d139560cb7885e91d757590657bd1" class="m-doc">setShowNull()</a></p><p><a href="classQgsColorButton.html#ae1e71db3f3e58605db82d50d2162ef3c" class="m-doc">showNull()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adc313680a6dea178b9fcd5809b64426c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adc313680a6dea178b9fcd5809b64426c" class="m-doc-self">noColorString</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the string used for the &quot;no color&quot; option in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>string used for the &quot;no color&quot; menu option</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a21b82e9daa47895b57f2e2532ac67425" class="m-doc">setNoColorString</a></p><p><a href="classQgsColorButton.html#a10ee12944d4745027edf5d92f9e32eff" class="m-doc">showNoColor</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>The &quot;no color&quot; option is only shown if the color button is set to show an alpha channel in the color dialog</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4a2e888fc28f0a0e1b9ee89a9d8516d5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4a2e888fc28f0a0e1b9ee89a9d8516d5" class="m-doc-self">setAllowOpacity</a>(</span><span class="m-doc-wrap">bool allowOpacity)</span></span>
+            </h3>
+            <p>Sets whether opacity modification (transparency) is permitted for the color.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">allowOpacity</td>
+                  <td>set to true to allow opacity modification</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Defaults to false.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ae12a0b7432fdf8aa7d02b3601c70be4d" class="m-doc">allowOpacity()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3a617045269825f611b944ad021a9036"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3a617045269825f611b944ad021a9036" class="m-doc-self">setBehavior</a>(</span><span class="m-doc-wrap"><a href="classQgsColorButton.html#a2b938c9d70f14f4bae116c1a02b54fc1" class="m-doc">Behavior</a> behavior)</span></span>
+            </h3>
+            <p>Sets the behavior for when the button is clicked.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">behavior</td>
+                  <td>behavior when button is clicked</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The default behavior is to show a color picker dialog.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a01825c04d81af2b2f8c447792eb75b53" class="m-doc">behavior</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3e10e27a31ba29fe05bbf037072b277c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3e10e27a31ba29fe05bbf037072b277c" class="m-doc-self">setColorDialogTitle</a>(</span><span class="m-doc-wrap">const QString&amp; title)</span></span>
+            </h3>
+            <p>Set the title for the color chooser dialog window.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">title</td>
+                  <td>Title for the color chooser dialog</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a8d8ac39fb7a0daeaf0967b04765518b3" class="m-doc">colorDialogTitle</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1a9db8fa49f6fbc064f6abcfd023ff5d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1a9db8fa49f6fbc064f6abcfd023ff5d" class="m-doc-self">setColorSchemeRegistry</a>(</span><span class="m-doc-wrap"><a href="classQgsColorSchemeRegistry.html" class="m-doc">QgsColorSchemeRegistry</a>* registry)</span></span>
+            </h3>
+            <p>Sets the color scheme registry for the button, which controls the color swatch grids that are shown in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">registry</td>
+                  <td>color scheme registry for the button. Set to 0 to hide all color swatch grids from the button&#x27;s drop-down menu.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ab4c453632cccabaecd55ab1c46530b1e" class="m-doc">colorSchemeRegistry</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5697a9b6c7e4fbfdd7a2095f56b29f7b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5697a9b6c7e4fbfdd7a2095f56b29f7b" class="m-doc-self">setContext</a>(</span><span class="m-doc-wrap">const QString&amp; context)</span></span>
+            </h3>
+            <p>Sets the context string for the color button.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">context</td>
+                  <td>context string for the color button&#x27;s color swatch grids</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The context string is passed to all color swatch grids shown in the button&#x27;s drop-down menu, to allow them to customize their display colors based on the context.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#aace3495ce5b8cebb3e9329740bd1f69c" class="m-doc">context</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a06c927ca29f6fab39aa1fb292855d07b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a06c927ca29f6fab39aa1fb292855d07b" class="m-doc-self">setDefaultColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span></span>
+            </h3>
+            <p>Sets the default color for the button, which is shown in the button&#x27;s drop-down menu for the &quot;default color&quot; option.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>default color for the button. Set to an invalid QColor to disable the default color option.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ab031f1cc49c115687be5445b3225fc0c" class="m-doc">defaultColor</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a21b82e9daa47895b57f2e2532ac67425"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a21b82e9daa47895b57f2e2532ac67425" class="m-doc-self">setNoColorString</a>(</span><span class="m-doc-wrap">const QString&amp; noColorString)</span></span>
+            </h3>
+            <p>Sets the string to use for the &quot;no color&quot; option in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">noColorString</td>
+                  <td>string to use for the &quot;no color&quot; menu option</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a24a578ceae2b589e5faf48c79d2229f4" class="m-doc">noColorString</a></p><p><a href="classQgsColorButton.html#a82024da92e34c9359cea5760ef952c11" class="m-doc">setShowNoColor</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>The &quot;no color&quot; option is only shown if the color button is set to show an alpha channel in the color dialog</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2fce6357db9875e0b0ef81af07a25c4c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2fce6357db9875e0b0ef81af07a25c4c" class="m-doc-self">setShowMenu</a>(</span><span class="m-doc-wrap">bool showMenu)</span></span>
+            </h3>
+            <p>Sets whether the drop-down menu should be shown for the button.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">showMenu</td>
+                  <td>set to false to hide the drop-down menu</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The default behavior is to show the menu.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a68744b3bf34ea17dd8d650f93866c214" class="m-doc">showMenu</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a82024da92e34c9359cea5760ef952c11"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a82024da92e34c9359cea5760ef952c11" class="m-doc-self">setShowNoColor</a>(</span><span class="m-doc-wrap">const bool showNoColorOption)</span></span>
+            </h3>
+            <p>Sets whether the &quot;no color&quot; option should be shown in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">showNoColorOption</td>
+                  <td>set to true to show the no color option. This is disabled by default.</td>
+                </tr>
+              </tbody>
+            </table>
+<p>If selected, the &quot;no color&quot; option sets the color button&#x27;s color to a totally transparent color.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a10ee12944d4745027edf5d92f9e32eff" class="m-doc">showNoColor</a></p><p><a href="classQgsColorButton.html#a21b82e9daa47895b57f2e2532ac67425" class="m-doc">setNoColorString</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>The &quot;no color&quot; option is only shown if the color button is set to show an alpha channel in the color dialog</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab84d139560cb7885e91d757590657bd1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab84d139560cb7885e91d757590657bd1" class="m-doc-self">setShowNull</a>(</span><span class="m-doc-wrap">bool showNull)</span></span>
+            </h3>
+            <p>Sets whether a set to null (clear) option is shown in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">showNull</td>
+                  <td>set to true to show a null option</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ae1e71db3f3e58605db82d50d2162ef3c" class="m-doc">showNull()</a></p><p><a href="classQgsColorButton.html#accecec0822f97ca219bcce285fdb5e72" class="m-doc">isNull()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a065c9198dd910fee8eca8bbad738173f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a065c9198dd910fee8eca8bbad738173f" class="m-doc-self">showMenu</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the drop-down menu is shown for the button.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if drop-down menu is shown</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a2fce6357db9875e0b0ef81af07a25c4c" class="m-doc">setShowMenu</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0400997ec58ce16f9707480c3841046b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0400997ec58ce16f9707480c3841046b" class="m-doc-self">showNoColor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the &quot;no color&quot; option is shown in the button&#x27;s drop-down menu.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if the no color option is shown.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If selected, the &quot;no color&quot; option sets the color button&#x27;s color to a totally transparent color.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a82024da92e34c9359cea5760ef952c11" class="m-doc">setShowNoColor</a></p><p><a href="classQgsColorButton.html#a24a578ceae2b589e5faf48c79d2229f4" class="m-doc">noColorString</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>The &quot;no color&quot; option is only shown if the color button is set to show an alpha channel in the color dialog</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae1e71db3f3e58605db82d50d2162ef3c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae1e71db3f3e58605db82d50d2162ef3c" class="m-doc-self">showNull</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns whether the set to null (clear) option is shown in the button&#x27;s drop-down menu.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ab84d139560cb7885e91d757590657bd1" class="m-doc">setShowNull()</a></p><p><a href="classQgsColorButton.html#accecec0822f97ca219bcce285fdb5e72" class="m-doc">isNull()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1bb8169c973e9aeece88365656e5ca53"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1bb8169c973e9aeece88365656e5ca53" class="m-doc-self">colorChanged</a>(</span><span class="m-doc-wrap">const QColor&amp; color) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Is emitted whenever a new color is set for the button.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>New color</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The color is always valid. In case the new color is the same no signal is emitted, to avoid infinite loops.</p>
+          </div></section>
+          <section class="m-doc-details" id="a81e03ebf8dc71e6157dbaa8382b154ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a81e03ebf8dc71e6157dbaa8382b154ef" class="m-doc-self">colorClicked</a>(</span><span class="m-doc-wrap">const QColor&amp; color) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the button is clicked, if the button&#x27;s behavior is set to SignalOnly.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>button color</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a3a617045269825f611b944ad021a9036" class="m-doc">setBehavior</a></p><p><a href="classQgsColorButton.html#a01825c04d81af2b2f8c447792eb75b53" class="m-doc">behavior</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1d852e29a9f51caa4e723d5746f28b5c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1d852e29a9f51caa4e723d5746f28b5c" class="m-doc-self">copyColor</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Copies the current color to the clipboard.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#ae84e282bd1d5ed8e0818d7718855e4c0" class="m-doc">pasteColor</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae84e282bd1d5ed8e0818d7718855e4c0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae84e282bd1d5ed8e0818d7718855e4c0" class="m-doc-self">pasteColor</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Pastes a color from the clipboard to the color button.</p>
+<p>If clipboard does not contain a valid color or string representation of a color, then no change is applied.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a1d852e29a9f51caa4e723d5746f28b5c" class="m-doc">copyColor</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a227b7d0dc0bf3102bf7c095cc7ff54ee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a227b7d0dc0bf3102bf7c095cc7ff54ee" class="m-doc-self">setButtonBackground</a>(</span><span class="m-doc-wrap">const QColor&amp; color = QColor()) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets the background pixmap for the button based upon color and transparency.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>Color for button background. If no color is specified, the button&#x27;s current color will be used</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Call directly to update background after adding/removing QColorDialog::ShowAlphaChannel option but the color has not changed, i.e. <a href="classQgsColorButton.html#aebd6dd9c9704efe32ee57abd9157f246" class="m-doc">setColor()</a> wouldn&#x27;t update button and you want the button to retain the set color&#x27;s alpha component regardless</p>
+          </div></section>
+          <section class="m-doc-details" id="aebd6dd9c9704efe32ee57abd9157f246"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aebd6dd9c9704efe32ee57abd9157f246" class="m-doc-self">setColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets the current color for the button.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">color</td>
+                  <td>new color for the button</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Will emit a colorChanged signal if the color is different to the previous color.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a6bc146996c80023b251bb0543c15facc" class="m-doc">color</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a76671aecf05908f9d3213df6f8f44c47"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a76671aecf05908f9d3213df6f8f44c47" class="m-doc-self">setToDefaultColor</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets color to the button&#x27;s default color, if set.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a06c927ca29f6fab39aa1fb292855d07b" class="m-doc">setDefaultColor</a></p><p><a href="classQgsColorButton.html#ab031f1cc49c115687be5445b3225fc0c" class="m-doc">defaultColor</a></p><p><a href="classQgsColorButton.html#aa38a0b2f115a957f8f01c075aa93f83b" class="m-doc">setToNull()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a4fa875ef1e63decb9d2428843591ecde"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4fa875ef1e63decb9d2428843591ecde" class="m-doc-self">setToNoColor</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets color to a totally transparent color.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>If the color button is not set to show an opacity channel in the color dialog then the color will not be changed.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#aa38a0b2f115a957f8f01c075aa93f83b" class="m-doc">setToNull()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa38a0b2f115a957f8f01c075aa93f83b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsColorButton::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa38a0b2f115a957f8f01c075aa93f83b" class="m-doc-self">setToNull</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Sets color to null.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsColorButton.html#a76671aecf05908f9d3213df6f8f44c47" class="m-doc">setToDefaultColor()</a></p><p><a href="classQgsColorButton.html#a4fa875ef1e63decb9d2428843591ecde" class="m-doc">setToNoColor()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsSqlExpressionCompiler" kind="class" language="C++" prot="public">
+    <compoundname>QgsSqlExpressionCompiler</compoundname>
+    <includes refid="qgssqlexpressioncompiler_8h" local="no">qgssqlexpressioncompiler.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14" prot="public" static="no">
+        <name>Flag</name>
+        <enumvalue id="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a76426ae04a26a9364821d01d77e1fd27" prot="public">
+          <name>CaseInsensitiveStringMatch</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Provider performs case-insensitive string matching for all strings. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a0c194c13539ab9fa31886a21dd79ddd7" prot="public">
+          <name>LikeIsCaseInsensitive</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Provider treats LIKE as case-insensitive. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a7b7b94b4d442d284ff536470739aa79f" prot="public">
+          <name>NoNullInBooleanLogic</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>Provider does not support using NULL with boolean logic, e.g., &quot;(...) OR NULL&quot;. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a231a023d33d3531b0653acdf8a2fdc7d" prot="public">
+          <name>NoUnaryMinus</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+<para>Provider does not unary minus, e.g., &quot; -( 100 * 2 ) = ...&quot;. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14ad9f541312d2b386936f896986d306fa6" prot="public">
+          <name>IntegerDivisionResultsInInteger</name>
+          <initializer>= 1 &lt;&lt; 4</initializer>
+          <briefdescription>
+<para>Dividing int by int results in int on provider. Subclass must implement the <ref refid="classQgsSqlExpressionCompiler_1adc4a40edceddbc8a3ec19b6d8c04909c" kindref="member">castToReal()</ref> function to allow compilation of division. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Enumeration of flags for how provider handles SQL clauses. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="57" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" bodystart="56" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24" prot="public" static="no">
+        <name>Result</name>
+        <enumvalue id="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24ae6804befd0fe21995f5e3c6bb9adcebc" prot="public">
+          <name>None</name>
+          <briefdescription>
+<para>No expression. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24a92df8c44ec84f83c1a0d3f3f160d5b8b" prot="public">
+          <name>Complete</name>
+          <briefdescription>
+<para>Expression was successfully compiled and can be completely delegated to provider. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24ad4980a6bc53c002f9f97abb30e3d96d7" prot="public">
+          <name>Partial</name>
+          <briefdescription>
+<para>Expression was partially compiled, but provider will return extra records and results must be double-checked using QGIS&apos; expression engine. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24a3cea9db05cf9b980b54a07323427c9b0" prot="public">
+          <name>Fail</name>
+          <briefdescription>
+<para>Provider cannot handle expression. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Possible results from expression compilation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="46" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" bodystart="45" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsSqlExpressionCompiler_1a37822988dcb5dce1e26c6a84f1335e69" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsFields" kindref="compound">QgsFields</ref></type>
+        <definition>QgsFields QgsSqlExpressionCompiler::mFields</definition>
+        <argsstring></argsstring>
+        <name>mFields</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="177" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsSqlExpressionCompiler_1a2117be1d633f96e6a7b45950fe94b0d1" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::mResult</definition>
+        <argsstring></argsstring>
+        <name>mResult</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="176" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsSqlExpressionCompiler_1aa4f102d94c1fa5e18c0a36966d7d5fc2" prot="private" static="no" mutable="no">
+        <type>Flags</type>
+        <definition>Flags QgsSqlExpressionCompiler::mFlags</definition>
+        <argsstring></argsstring>
+        <name>mFlags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="181" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a64f6931c92467dfe5cdb9679aca5d467" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsSqlExpressionCompiler::QgsSqlExpressionCompiler</definition>
+        <argsstring>(const QgsFields &amp;fields, QgsSqlExpressionCompiler::Flags flags=Flags())</argsstring>
+        <name>QgsSqlExpressionCompiler</name>
+        <param>
+          <type>const <ref refid="classQgsFields" kindref="compound">QgsFields</ref> &amp;</type>
+          <declname>fields</declname>
+        </param>
+        <param>
+          <type>QgsSqlExpressionCompiler::Flags</type>
+          <declname>flags</declname>
+          <defval>Flags()</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for expression compiler. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fields</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>fields from provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>flags</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>flags which control how expression is compiled </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="71" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a799c5fa64ea0b1e31376df0b2702e68a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsSqlExpressionCompiler::~QgsSqlExpressionCompiler</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsSqlExpressionCompiler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a45316f9303057de7eac438d5ab58debd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24" kindref="member">Result</ref></type>
+        <definition>QgsSqlExpressionCompiler::Result QgsSqlExpressionCompiler::compile</definition>
+        <argsstring>(const QgsExpression *exp)</argsstring>
+        <name>compile</name>
+        <param>
+          <type>const <ref refid="classQgsExpression" kindref="compound">QgsExpression</ref> *</type>
+          <declname>exp</declname>
+        </param>
+        <briefdescription>
+<para>Compiles an expression and returns the result of the compilation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="28" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1afb79295f0c6ced83f0de5156c5f86936" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsSqlExpressionCompiler::opIsStringComparison</definition>
+        <argsstring>(QgsExpressionNodeBinaryOperator::BinaryOperator op)</argsstring>
+        <name>opIsStringComparison</name>
+        <param>
+          <type><ref refid="classQgsExpressionNodeBinaryOperator_1af4d5bcb0f671d5853c536277b8b1d62b" kindref="member">QgsExpressionNodeBinaryOperator::BinaryOperator</ref></type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if <emphasis>op</emphasis> is one of. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>LIKE</para></listitem><listitem><para>ILIKE</para></listitem><listitem><para>NOT LIKE</para></listitem><listitem><para>NOT ILIKE</para></listitem><listitem><para>~ (regexp)</para></listitem></itemizedlist>
+</para><para>In such cases the left operator will be cast to string to behave equal to QGIS own expression engine.</para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="98" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="41" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a7b3a189dc32280857f4d5b308fd17c5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::result</definition>
+        <argsstring>()</argsstring>
+        <name>result</name>
+        <briefdescription>
+<para>Returns the compiled expression string for use by the provider. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a9e4d516571120226f272441d1aa610ef" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::castToInt</definition>
+        <argsstring>(const QString &amp;value) const</argsstring>
+        <name>castToInt</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Casts a value to a integer result. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses must reimplement this to cast a numeric value to a integer type value so that integer division results in a integer value result instead of real. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="174" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="435" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1adc4a40edceddbc8a3ec19b6d8c04909c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::castToReal</definition>
+        <argsstring>(const QString &amp;value) const</argsstring>
+        <name>castToReal</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Casts a value to a real result. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses which indicate the IntegerDivisionResultsInInteger flag must reimplement this to cast a numeric value to a real type value so that division results in a real value result instead of integer. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="424" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a9bfa1eca748452772550ca9b913ee4f2" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::castToText</definition>
+        <argsstring>(const QString &amp;value) const</argsstring>
+        <name>castToText</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Casts a value to a text result. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses that support casting to text may implement this function to get equal behavior to the QGIS expression engine when string comparison operators are applied on non-string data.</para><para>Example: <verbatim>579 LIKE &apos;5%&apos;
+</verbatim></para><para>which on a postgres database needs to be <verbatim>579::text LIKE &apos;5%&apos;
+</verbatim></para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="167" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="430" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a17a7314d91e6487465d8a6c6b26b1d4f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24" kindref="member">Result</ref></type>
+        <definition>QgsSqlExpressionCompiler::Result QgsSqlExpressionCompiler::compileNode</definition>
+        <argsstring>(const QgsExpressionNode *node, QString &amp;str)</argsstring>
+        <name>compileNode</name>
+        <param>
+          <type>const <ref refid="classQgsExpressionNode" kindref="compound">QgsExpressionNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Compiles an expression node and returns the result of the compilation. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>expression node to compile </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string representing compiled node should be stored in this parameter </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>result of node compilation </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="125" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="89" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1aa90f583f106e6b7e2d2cd1eb0f551889" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::quotedIdentifier</definition>
+        <argsstring>(const QString &amp;identifier)</argsstring>
+        <name>quotedIdentifier</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>identifier</declname>
+        </param>
+        <briefdescription>
+<para>Returns a quoted column identifier, in the format expected by the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes should override this if special handling of column identifiers is required. <simplesect kind="see"><para><ref refid="classQgsSqlExpressionCompiler_1a8a8576870339551a1c519dbf5279d176" kindref="member">quotedValue()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="108" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="53" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a8a8576870339551a1c519dbf5279d176" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::quotedValue</definition>
+        <argsstring>(const QVariant &amp;value, bool &amp;ok)</argsstring>
+        <name>quotedValue</name>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>ok</declname>
+        </param>
+        <briefdescription>
+<para>Returns a quoted attribute value, in the format expected by the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes should override this if special handling of attribute values is required. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>value to quote </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ok</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>wil be set to true if value can be compiled </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsSqlExpressionCompiler_1aa90f583f106e6b7e2d2cd1eb0f551889" kindref="member">quotedIdentifier()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="117" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="61" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1a5660eeb4ae402cd3651988bea12d7511" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsSqlExpressionCompiler::sqlArgumentsFromFunctionName</definition>
+        <argsstring>(const QString &amp;fnName, const QStringList &amp;fnArgs) const</argsstring>
+        <name>sqlArgumentsFromFunctionName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fnName</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>fnArgs</declname>
+        </param>
+        <briefdescription>
+<para>Returns the Arguments for SQL function for the expression function. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes should override this to help compile functions <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fnName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>expression function name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fnArgs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>arguments from expression </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the arguments updated for SQL Function </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="142" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="418" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1aca75a6a0f8824cc4462e5aacff653104" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsSqlExpressionCompiler::sqlFunctionFromFunctionName</definition>
+        <argsstring>(const QString &amp;fnName) const</argsstring>
+        <name>sqlFunctionFromFunctionName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>fnName</declname>
+        </param>
+        <briefdescription>
+<para>Returns the SQL function for the expression function. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes should override this to help compile functions <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fnName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>expression function name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the SQL function name </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="133" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="412" bodyend="416"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsSqlExpressionCompiler_1ab724f0c989e5e7dc3eb6df693857578f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsSqlExpressionCompiler::nodeIsNullLiteral</definition>
+        <argsstring>(const QgsExpressionNode *node) const</argsstring>
+        <name>nodeIsNullLiteral</name>
+        <param>
+          <type>const <ref refid="classQgsExpressionNode" kindref="compound">QgsExpressionNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="183" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.cpp" bodystart="441" bodyend="448"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generic expression compiler for translation to provider specific SQL WHERE clauses. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class is designed to be overridden by providers to take advantage of expression compilation, so that feature requests can take advantage of the provider&apos;s native filtering support. <simplesect kind="note"><para>Not part of stable API, may change in future versions of QGIS </para></simplesect>
+<simplesect kind="note"><para>Not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="8542">
+        <label>QgsFields</label>
+        <link refid="classQgsFields"/>
+      </node>
+      <node id="8541">
+        <label>QgsSqlExpressionCompiler</label>
+        <link refid="classQgsSqlExpressionCompiler"/>
+        <childnode refid="8542" relation="usage">
+          <edgelabel>mFields</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" line="41" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgssqlexpressioncompiler.h" bodystart="40" bodyend="185"/>
+    <listofallmembers>
+      <member refid="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a76426ae04a26a9364821d01d77e1fd27" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>CaseInsensitiveStringMatch</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a9e4d516571120226f272441d1aa610ef" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>castToInt</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1adc4a40edceddbc8a3ec19b6d8c04909c" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>castToReal</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a9bfa1eca748452772550ca9b913ee4f2" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>castToText</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a45316f9303057de7eac438d5ab58debd" prot="public" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>compile</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a17a7314d91e6487465d8a6c6b26b1d4f" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>compileNode</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24a92df8c44ec84f83c1a0d3f3f160d5b8b" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>Complete</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24a3cea9db05cf9b980b54a07323427c9b0" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>Fail</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>Flag</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14ad9f541312d2b386936f896986d306fa6" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>IntegerDivisionResultsInInteger</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a0c194c13539ab9fa31886a21dd79ddd7" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>LikeIsCaseInsensitive</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a37822988dcb5dce1e26c6a84f1335e69" prot="protected" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>mFields</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aa4f102d94c1fa5e18c0a36966d7d5fc2" prot="private" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>mFlags</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a2117be1d633f96e6a7b45950fe94b0d1" prot="protected" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>mResult</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1ab724f0c989e5e7dc3eb6df693857578f" prot="private" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>nodeIsNullLiteral</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24ae6804befd0fe21995f5e3c6bb9adcebc" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>None</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a7b7b94b4d442d284ff536470739aa79f" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>NoNullInBooleanLogic</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aff84c546240a592cbc3a563abfbbbc14a231a023d33d3531b0653acdf8a2fdc7d" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>NoUnaryMinus</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1afb79295f0c6ced83f0de5156c5f86936" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>opIsStringComparison</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24ad4980a6bc53c002f9f97abb30e3d96d7" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>Partial</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a64f6931c92467dfe5cdb9679aca5d467" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>QgsSqlExpressionCompiler</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aa90f583f106e6b7e2d2cd1eb0f551889" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>quotedIdentifier</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a8a8576870339551a1c519dbf5279d176" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>quotedValue</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a5177a38c1f4d3f50c48d8e28d1f40d24" prot="public" virt="non-virtual"><scope>QgsSqlExpressionCompiler</scope><name>Result</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a7b3a189dc32280857f4d5b308fd17c5a" prot="public" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>result</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a5660eeb4ae402cd3651988bea12d7511" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>sqlArgumentsFromFunctionName</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1aca75a6a0f8824cc4462e5aacff653104" prot="protected" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>sqlFunctionFromFunctionName</name></member>
+      <member refid="classQgsSqlExpressionCompiler_1a799c5fa64ea0b1e31376df0b2702e68a" prot="public" virt="virtual"><scope>QgsSqlExpressionCompiler</scope><name>~QgsSqlExpressionCompiler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,723 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsAbstractFeatureIterator" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsAbstractFeatureIterator</compoundname>
+    <derivedcompoundref refid="classQgsAbstractFeatureIteratorFromSource" prot="public" virt="non-virtual">QgsAbstractFeatureIteratorFromSource&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classQgsAbstractFeatureIteratorFromSource" prot="public" virt="non-virtual">QgsAbstractFeatureIteratorFromSource&lt; QgsVectorLayerFeatureSource &gt;</derivedcompoundref>
+    <derivedcompoundref refid="classQgsCachedFeatureIterator" prot="public" virt="non-virtual">QgsCachedFeatureIterator</derivedcompoundref>
+    <derivedcompoundref refid="classQgsCachedFeatureWriterIterator" prot="public" virt="non-virtual">QgsCachedFeatureWriterIterator</derivedcompoundref>
+    <includes refid="qgsfeatureiterator_8h" local="no">qgsfeatureiterator.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1" prot="public" static="no">
+        <name>CompileStatus</name>
+        <enumvalue id="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1aa2dc63f4e2c078e7492d466e4ad30a32" prot="public">
+          <name>NoCompilation</name>
+          <briefdescription>
+<para>Expression could not be compiled or not attempt was made to compile expression. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1a5fc0935bc506364b9759ae6a795f8524" prot="public">
+          <name>PartiallyCompiled</name>
+          <briefdescription>
+<para>Expression was partially compiled, but extra checks need to be applied to features. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1a6f7124546753bbbbf2286f9546a9a50a" prot="public">
+          <name>Compiled</name>
+          <briefdescription>
+<para>Expression was fully compiled and delegated to data provider source. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Status of expression compilation for filter expression requests. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="34" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="33" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1acdb3ea323159a91b2faa510e342d734b" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::mClosed</definition>
+        <argsstring></argsstring>
+        <name>mClosed</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>Sets to true, as soon as the iterator is closed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1a57b30eb37a3d9d4f761cbd0da716c33a" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::mCompileFailed</definition>
+        <argsstring></argsstring>
+        <name>mCompileFailed</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="184" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1ad6d023ce753f5cb7ef250f7648db4a6c" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1" kindref="member">CompileStatus</ref></type>
+        <definition>CompileStatus QgsAbstractFeatureIterator::mCompileStatus</definition>
+        <argsstring></argsstring>
+        <name>mCompileStatus</name>
+        <initializer>= <ref refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1aa2dc63f4e2c078e7492d466e4ad30a32" kindref="member">NoCompilation</ref></initializer>
+        <briefdescription>
+<para>Status of compilation of filter expression. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1aa1df07ac9597c8bdd095a90b647f2be3" prot="protected" static="no" mutable="no">
+        <type>long</type>
+        <definition>long QgsAbstractFeatureIterator::mFetchedCount</definition>
+        <argsstring></argsstring>
+        <name>mFetchedCount</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>Number of features already fetched by iterator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="179" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1a7c3909e7ea851afad57069d8e65ce0a1" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsFeatureRequest" kindref="compound">QgsFeatureRequest</ref></type>
+        <definition>QgsFeatureRequest QgsAbstractFeatureIterator::mRequest</definition>
+        <argsstring></argsstring>
+        <name>mRequest</name>
+        <briefdescription>
+<para>A copy of the feature request. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="153" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1ac627cb6db878ebf2f17f5fd89bfef991" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::mValid</definition>
+        <argsstring></argsstring>
+        <name>mValid</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+<para>An invalid state of a feature iterator indicates that there was a problem with even getting it up and running. </para>        </briefdescription>
+        <detaileddescription>
+<para>This should be set to false by subclasses if they have problems connecting to the provider. Do NOT set this to false when the feature iterator closes or has no features but we are sure, that it&apos;s just an empty dataset. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1a234110a391b20e12bc8051c1664421a0" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::mZombie</definition>
+        <argsstring></argsstring>
+        <name>mZombie</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+<para>A feature iterator may be closed already but still be serving features from the cache. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is done when we serve features which have been pre-fetched and the order by has been locally sorted. In such a scenario, all resources have been released (mClosed is true) but the deads are still alive. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="165" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1abc230e0d8a5a09471c7853c7dd2e3832" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int QgsAbstractFeatureIterator::refs</definition>
+        <argsstring></argsstring>
+        <name>refs</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+<para>reference counting (to allow seamless copying of <ref refid="classQgsFeatureIterator" kindref="compound">QgsFeatureIterator</ref> instances) TODO QGIS3: make this private </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsAbstractFeatureIterator_1a18f25d3c54512cedcad13f322086575e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsFeatureIterator</definition>
+        <argsstring></argsstring>
+        <name>QgsFeatureIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="176" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1a6e5e2cedd2da78cc79df712857941d95" prot="private" static="no" mutable="no">
+        <type>QList&lt; <ref refid="classQgsIndexedFeature" kindref="compound">QgsIndexedFeature</ref> &gt;</type>
+        <definition>QList&lt;QgsIndexedFeature&gt; QgsAbstractFeatureIterator::mCachedFeatures</definition>
+        <argsstring></argsstring>
+        <name>mCachedFeatures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="201" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1a62e2b0beca3ae9190c88324ce0c7b0c7" prot="private" static="no" mutable="no">
+        <type>QList&lt; <ref refid="classQgsIndexedFeature" kindref="compound">QgsIndexedFeature</ref> &gt;::ConstIterator</type>
+        <definition>QList&lt;QgsIndexedFeature&gt;::ConstIterator QgsAbstractFeatureIterator::mFeatureIterator</definition>
+        <argsstring></argsstring>
+        <name>mFeatureIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="202" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsAbstractFeatureIterator_1aa6b13d8f87f27cbb0de1d66f24cd0267" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::mUseCachedFeatures</definition>
+        <argsstring></argsstring>
+        <name>mUseCachedFeatures</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="200" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a815e8e35925d31ec616d3cac87991b3a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsAbstractFeatureIterator::QgsAbstractFeatureIterator</definition>
+        <argsstring>(const QgsFeatureRequest &amp;request)</argsstring>
+        <name>QgsAbstractFeatureIterator</name>
+        <param>
+          <type>const <ref refid="classQgsFeatureRequest" kindref="compound">QgsFeatureRequest</ref> &amp;</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+<para>base class constructor - stores the iteration parameters </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="41" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a69201486ba07e4a52113cb8927e423f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual QgsAbstractFeatureIterator::~QgsAbstractFeatureIterator</definition>
+        <argsstring>()=default</argsstring>
+        <name>~QgsAbstractFeatureIterator</name>
+        <briefdescription>
+<para>destructor makes sure that the iterator is closed properly </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a41dcf36261afa7fea14fc845e2cb6650" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractFeatureIterator::close</definition>
+        <argsstring>()=0</argsstring>
+        <name>close</name>
+        <reimplementedby refid="classQgsCachedFeatureIterator_1a2a52b68c1d370a4d42aa82bae257d1c8">close</reimplementedby>
+        <reimplementedby refid="classQgsCachedFeatureWriterIterator_1a4ce61acdcedb6ad82ea779eccb3dcb6e">close</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1a584540f77356b51a40e39e1150753614">close</reimplementedby>
+        <briefdescription>
+<para>end of iterating: free the resources / lock </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1aa2cf26d6c4d3f286c5474124ae2971bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::compileFailed</definition>
+        <argsstring>() const</argsstring>
+        <name>compileFailed</name>
+        <briefdescription>
+<para>Indicator if there was an error when sending the compiled query to the server. </para>        </briefdescription>
+        <detaileddescription>
+<para>This indicates that there is something wrong with the expression compiler.</para><para><simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="92" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a93ffb09e91e51a2ec8b568bbef093f69" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1" kindref="member">CompileStatus</ref></type>
+        <definition>CompileStatus QgsAbstractFeatureIterator::compileStatus</definition>
+        <argsstring>() const</argsstring>
+        <name>compileStatus</name>
+        <briefdescription>
+<para>Returns the status of expression compilation for filter expression requests. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="69" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1aaacd65e2f61b2653d527f0633e06fef4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractFeatureIterator::isValid</definition>
+        <argsstring>() const</argsstring>
+        <name>isValid</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1abf924a0c8a42ff6631a3ebcca0aea8d8">isValid</reimplementedby>
+        <briefdescription>
+<para>Returns if this iterator is valid. </para>        </briefdescription>
+        <detaileddescription>
+<para>An invalid feature iterator is not able to provide a reliable source for data. If an iterator is invalid, either give up or try to send the request again (preferably after a timeout to give the system some time to stay responsive).</para><para>If you want to check if the iterator successfully completed, better use <ref refid="classQgsFeatureIterator_1a2b225197b23259d809f7ee513da755c1" kindref="member">QgsFeatureIterator::isClosed()</ref>.</para><para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="81" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1abefca23dd7c22b0e8cb86d4a074440c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::nextFeature</definition>
+        <argsstring>(QgsFeature &amp;f)</argsstring>
+        <name>nextFeature</name>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>fetch next feature, return true on success </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="47" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="27" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a0294271daf8c85e87a04acac27e72237" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractFeatureIterator::rewind</definition>
+        <argsstring>()=0</argsstring>
+        <name>rewind</name>
+        <reimplementedby refid="classQgsCachedFeatureIterator_1a641c5f42c343fc422937e93f2f556ba9">rewind</reimplementedby>
+        <reimplementedby refid="classQgsCachedFeatureWriterIterator_1aefdd6cdde418734bb036c71d7cee088b">rewind</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1ac645ff7427d7cfbf4df99a8073663be0">rewind</reimplementedby>
+        <briefdescription>
+<para>reset the iterator to the starting position </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a33330f15081aef9107d852ec9e9ac69e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsAbstractFeatureIterator::setInterruptionChecker</definition>
+        <argsstring>(QgsFeedback *interruptionChecker)</argsstring>
+        <name>setInterruptionChecker</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1a4cec735e0128a432b08110c247d0fe1d">setInterruptionChecker</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>interruptionChecker</declname>
+        </param>
+        <briefdescription>
+<para>Attach an object that can be queried regularly by the iterator to check if it must stopped. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is mostly useful for iterators where a single <ref refid="classQgsAbstractFeatureIterator_1abefca23dd7c22b0e8cb86d4a074440c6" kindref="member">nextFeature()</ref>/fetchFeature() iteration might be very long. A typical use case is the WFS provider. When <ref refid="classQgsAbstractFeatureIterator_1abefca23dd7c22b0e8cb86d4a074440c6" kindref="member">nextFeature()</ref>/fetchFeature() is reasonably fast, it is not necessary to implement this method. The default implementation does nothing. <simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.16 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="63" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="219" bodyend="221"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a62cf3e2c7bec85e66c6d91f06ff5c02d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractFeatureIterator::deref</definition>
+        <argsstring>()</argsstring>
+        <name>deref</name>
+        <briefdescription>
+<para>Remove reference, delete if refs == 0. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="175" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="143" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a3d59f41424cc121a45133cd75d192548" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsAbstractFeatureIterator::fetchFeature</definition>
+        <argsstring>(QgsFeature &amp;f)=0</argsstring>
+        <name>fetchFeature</name>
+        <reimplementedby refid="classQgsCachedFeatureIterator_1a01a5df5ef5aede310576d7d621f2b41c">fetchFeature</reimplementedby>
+        <reimplementedby refid="classQgsCachedFeatureWriterIterator_1a444a3a247f98f3ff1849fd71cc4fe0cc">fetchFeature</reimplementedby>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1aa87fe325b9146378d9e88954f9653dbf">fetchFeature</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>If you write a feature iterator for your provider, this is the method you need to implement!! </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feature to write to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if a feature was written to f </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="103" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a7768154048583a428e8cf3b73fc953ce" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsRectangle" kindref="compound">QgsRectangle</ref></type>
+        <definition>QgsRectangle QgsAbstractFeatureIterator::filterRectToSourceCrs</definition>
+        <argsstring>(const QgsCoordinateTransform &amp;transform) const SIP_THROW(QgsCsException)</argsstring>
+        <name>filterRectToSourceCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <briefdescription>
+<para>Returns a rectangle representing the original request&apos;s <ref refid="classQgsFeatureRequest_1ad705b1f58332544500b01959f60144b2" kindref="member">QgsFeatureRequest::filterRect()</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>transform</emphasis> is a valid coordinate transform, the return rectangle will represent the requested filterRect() transformed to the source&apos;s coordinate reference system. Iterators should call this method and use the returned rectangle for filtering features to ensure that any <ref refid="classQgsFeatureRequest_1aa97dec19d1e0078e4edb242610d29740" kindref="member">QgsFeatureRequest::destinationCrs()</ref> set on the request is respected. Will throw a <ref refid="classQgsCsException" kindref="compound">QgsCsException</ref> if the rect cannot be transformed from the destination CRS. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="118" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a2aa04f7f58719a1630316d9cc2e801bf" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractFeatureIterator::geometryToDestinationCrs</definition>
+        <argsstring>(QgsFeature &amp;feature, const QgsCoordinateTransform &amp;transform) const</argsstring>
+        <name>geometryToDestinationCrs</name>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>feature</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsCoordinateTransform" kindref="compound">QgsCoordinateTransform</ref> &amp;</type>
+          <declname>transform</declname>
+        </param>
+        <briefdescription>
+<para>Transforms <emphasis>feature&apos;s</emphasis> geometry according to the specified coordinate <emphasis>transform</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>If <emphasis>feature</emphasis> has no geometry or <emphasis>transform</emphasis> is invalid then calling this method has no effect and will be shortcut. Iterators should call this method before returning features to ensure that any <ref refid="classQgsFeatureRequest_1aa97dec19d1e0078e4edb242610d29740" kindref="member">QgsFeatureRequest::destinationCrs()</ref> set on the request is respected. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="138" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="95" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1adf8180eb7d82a22bf49d0bb53aebf8f9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::nextFeatureFilterExpression</definition>
+        <argsstring>(QgsFeature &amp;f)</argsstring>
+        <name>nextFeatureFilterExpression</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1a5f4380afce4c593658984afae613a443">nextFeatureFilterExpression</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>By default, the iterator will fetch all features and check if the feature matches the expression. </para>        </briefdescription>
+        <detaileddescription>
+<para>If you have a more sophisticated metodology (SQL request for the features...) and you check for the expression in your fetchFeature method, you can just redirect this call to fetchFeature so the default check will be omitted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feature to write to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if a feature was written to f </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="115" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="74" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a246c7353396189b232d7634b341a38e0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::nextFeatureFilterFids</definition>
+        <argsstring>(QgsFeature &amp;f)</argsstring>
+        <name>nextFeatureFilterFids</name>
+        <reimplementedby refid="classQgsCachedFeatureIterator_1abb927b3ef0b55aedbccfda15dd6bfd9f">nextFeatureFilterFids</reimplementedby>
+        <param>
+          <type><ref refid="classQgsFeature" kindref="compound">QgsFeature</ref> &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+<para>By default, the iterator will fetch all features and check if the id is in the request. </para>        </briefdescription>
+        <detaileddescription>
+<para>If you have a more sophisticated metodology (SQL request for the features...) and you are sure, that any feature you return from fetchFeature will match if the request was FilterFids you can just redirect this call to fetchFeature so the default check will be omitted.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>f</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feature to write to </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if a feature was written to f </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="128" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="85" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a48be2858147058a50d9c0c052e403b43" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::prepareSimplification</definition>
+        <argsstring>(const QgsSimplifyMethod &amp;simplifyMethod)</argsstring>
+        <name>prepareSimplification</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1aa08f6918585a254b81c0d728295c3f60">prepareSimplification</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsSimplifyMethod" kindref="compound">QgsSimplifyMethod</ref> &amp;</type>
+          <declname>simplifyMethod</declname>
+        </param>
+        <briefdescription>
+<para>Setup the simplification of geometries to fetch using the specified simplify method. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="187" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="155" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1ad1007a87c2cc4711fcadc1bfd951da22" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractFeatureIterator::ref</definition>
+        <argsstring>()</argsstring>
+        <name>ref</name>
+        <briefdescription>
+<para>Add reference. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="126" bodyend="141"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a8f3c5174648c9840eb367692586066dd" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::prepareOrderBy</definition>
+        <argsstring>(const QList&lt; QgsFeatureRequest::OrderByClause &gt; &amp;orderBys)</argsstring>
+        <name>prepareOrderBy</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1a2aba2b55518414d089f304753e9710db">prepareOrderBy</reimplementedby>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsFeatureRequest_1_1OrderByClause" kindref="compound">QgsFeatureRequest::OrderByClause</ref> &gt; &amp;</type>
+          <declname>orderBys</declname>
+        </param>
+        <briefdescription>
+<para>Should be overwritten by providers which implement an own order by strategy If the own order by strategy is successful, return true, if not, return false and a local order by will be triggered instead. </para>        </briefdescription>
+        <detaileddescription>
+<para>By default returns false</para><para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="215" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="213" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1a86c9be8c3c0d19c8203e6c70a0effa8f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsAbstractFeatureIterator::providerCanSimplify</definition>
+        <argsstring>(QgsSimplifyMethod::MethodType methodType) const</argsstring>
+        <name>providerCanSimplify</name>
+        <reimplementedby refid="classQgsVectorLayerFeatureIterator_1a7cb37b8160fd6ac15347c4164ea2cda4">providerCanSimplify</reimplementedby>
+        <param>
+          <type><ref refid="classQgsSimplifyMethod_1aef86aea87a031e76768523d3cf07a305" kindref="member">QgsSimplifyMethod::MethodType</ref></type>
+          <declname>methodType</declname>
+        </param>
+        <briefdescription>
+<para>returns whether the iterator supports simplify geometries on provider side </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="205" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="207" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsAbstractFeatureIterator_1ad53b1163d211d740ab7af075ee2779b2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsAbstractFeatureIterator::setupOrderBy</definition>
+        <argsstring>(const QList&lt; QgsFeatureRequest::OrderByClause &gt; &amp;orderBys)</argsstring>
+        <name>setupOrderBy</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsFeatureRequest_1_1OrderByClause" kindref="compound">QgsFeatureRequest::OrderByClause</ref> &gt; &amp;</type>
+          <declname>orderBys</declname>
+        </param>
+        <briefdescription>
+<para>Setup the orderby. </para>        </briefdescription>
+        <detaileddescription>
+<para>Internally calls prepareOrderBy and if false is returned will cache all features and order them with local expression evaluation.</para><para><simplesect kind="since"><para>QGIS 2.14 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="223" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.cpp" bodystart="161" bodyend="205"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Internal feature iterator to be implemented within data providers. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="977">
+        <label>QgsCachedFeatureWriterIterator</label>
+        <link refid="classQgsCachedFeatureWriterIterator"/>
+        <childnode refid="972" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="974">
+        <label>QgsAbstractFeatureIteratorFromSource&lt; QgsVectorLayerFeatureSource &gt;</label>
+        <link refid="classQgsAbstractFeatureIteratorFromSource"/>
+        <childnode refid="972" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="976">
+        <label>QgsCachedFeatureIterator</label>
+        <link refid="classQgsCachedFeatureIterator"/>
+        <childnode refid="972" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="975">
+        <label>QgsVectorLayerFeatureIterator</label>
+        <link refid="classQgsVectorLayerFeatureIterator"/>
+        <childnode refid="974" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="973">
+        <label>QgsAbstractFeatureIteratorFromSource&lt; T &gt;</label>
+        <link refid="classQgsAbstractFeatureIteratorFromSource"/>
+        <childnode refid="972" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="972">
+        <label>QgsAbstractFeatureIterator</label>
+        <link refid="classQgsAbstractFeatureIterator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="984">
+        <label>QgsCoordinateTransformContext</label>
+        <link refid="classQgsCoordinateTransformContext"/>
+      </node>
+      <node id="981">
+        <label>QList&lt; QgsFeatureRequest::OrderByClause &gt;</label>
+      </node>
+      <node id="979">
+        <label>QgsFeatureRequest</label>
+        <link refid="classQgsFeatureRequest"/>
+        <childnode refid="980" relation="usage">
+          <edgelabel>mOrderBy</edgelabel>
+        </childnode>
+        <childnode refid="982" relation="usage">
+          <edgelabel>mFilterRect</edgelabel>
+        </childnode>
+        <childnode refid="983" relation="usage">
+          <edgelabel>mCrs</edgelabel>
+        </childnode>
+        <childnode refid="984" relation="usage">
+          <edgelabel>mTransformContext</edgelabel>
+        </childnode>
+        <childnode refid="985" relation="usage">
+          <edgelabel>mSimplifyMethod</edgelabel>
+        </childnode>
+        <childnode refid="986" relation="usage">
+          <edgelabel>mExpressionContext</edgelabel>
+        </childnode>
+      </node>
+      <node id="982">
+        <label>QgsRectangle</label>
+        <link refid="classQgsRectangle"/>
+      </node>
+      <node id="983">
+        <label>QgsCoordinateReferenceSystem</label>
+        <link refid="classQgsCoordinateReferenceSystem"/>
+      </node>
+      <node id="986">
+        <label>QgsExpressionContext</label>
+        <link refid="classQgsExpressionContext"/>
+      </node>
+      <node id="985">
+        <label>QgsSimplifyMethod</label>
+        <link refid="classQgsSimplifyMethod"/>
+      </node>
+      <node id="980">
+        <label>QgsFeatureRequest::OrderBy</label>
+        <link refid="classQgsFeatureRequest_1_1OrderBy"/>
+        <childnode refid="981" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="978">
+        <label>QgsAbstractFeatureIterator</label>
+        <link refid="classQgsAbstractFeatureIterator"/>
+        <childnode refid="979" relation="usage">
+          <edgelabel>mRequest</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" line="29" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsfeatureiterator.h" bodystart="28" bodyend="224"/>
+    <listofallmembers>
+      <member refid="classQgsAbstractFeatureIterator_1a41dcf36261afa7fea14fc845e2cb6650" prot="public" virt="pure-virtual"><scope>QgsAbstractFeatureIterator</scope><name>close</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1a6f7124546753bbbbf2286f9546a9a50a" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>Compiled</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1aa2cf26d6c4d3f286c5474124ae2971bf" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>compileFailed</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>CompileStatus</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a93ffb09e91e51a2ec8b568bbef093f69" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>compileStatus</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a62cf3e2c7bec85e66c6d91f06ff5c02d" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>deref</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a3d59f41424cc121a45133cd75d192548" prot="protected" virt="pure-virtual"><scope>QgsAbstractFeatureIterator</scope><name>fetchFeature</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a7768154048583a428e8cf3b73fc953ce" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>filterRectToSourceCrs</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a2aa04f7f58719a1630316d9cc2e801bf" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>geometryToDestinationCrs</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1aaacd65e2f61b2653d527f0633e06fef4" prot="public" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>isValid</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a6e5e2cedd2da78cc79df712857941d95" prot="private" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mCachedFeatures</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1acdb3ea323159a91b2faa510e342d734b" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mClosed</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a57b30eb37a3d9d4f761cbd0da716c33a" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mCompileFailed</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1ad6d023ce753f5cb7ef250f7648db4a6c" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mCompileStatus</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a62e2b0beca3ae9190c88324ce0c7b0c7" prot="private" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mFeatureIterator</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1aa1df07ac9597c8bdd095a90b647f2be3" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mFetchedCount</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a7c3909e7ea851afad57069d8e65ce0a1" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mRequest</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1aa6b13d8f87f27cbb0de1d66f24cd0267" prot="private" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mUseCachedFeatures</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1ac627cb6db878ebf2f17f5fd89bfef991" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mValid</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a234110a391b20e12bc8051c1664421a0" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>mZombie</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1abefca23dd7c22b0e8cb86d4a074440c6" prot="public" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>nextFeature</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1adf8180eb7d82a22bf49d0bb53aebf8f9" prot="protected" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>nextFeatureFilterExpression</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a246c7353396189b232d7634b341a38e0" prot="protected" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>nextFeatureFilterFids</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1aa2dc63f4e2c078e7492d466e4ad30a32" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>NoCompilation</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a4fe8e918ee59b5096192794cea72e7c1a5fc0935bc506364b9759ae6a795f8524" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>PartiallyCompiled</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a8f3c5174648c9840eb367692586066dd" prot="private" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>prepareOrderBy</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a48be2858147058a50d9c0c052e403b43" prot="protected" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>prepareSimplification</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a86c9be8c3c0d19c8203e6c70a0effa8f" prot="private" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>providerCanSimplify</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a815e8e35925d31ec616d3cac87991b3a" prot="public" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>QgsAbstractFeatureIterator</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a18f25d3c54512cedcad13f322086575e" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>QgsFeatureIterator</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1ad1007a87c2cc4711fcadc1bfd951da22" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>ref</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1abc230e0d8a5a09471c7853c7dd2e3832" prot="protected" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>refs</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a0294271daf8c85e87a04acac27e72237" prot="public" virt="pure-virtual"><scope>QgsAbstractFeatureIterator</scope><name>rewind</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a33330f15081aef9107d852ec9e9ac69e" prot="public" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>setInterruptionChecker</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1ad53b1163d211d740ab7af075ee2779b2" prot="private" virt="non-virtual"><scope>QgsAbstractFeatureIterator</scope><name>setupOrderBy</name></member>
+      <member refid="classQgsAbstractFeatureIterator_1a69201486ba07e4a52113cb8927e423f6" prot="public" virt="virtual"><scope>QgsAbstractFeatureIterator</scope><name>~QgsAbstractFeatureIterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

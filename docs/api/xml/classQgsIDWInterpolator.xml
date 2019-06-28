@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsIDWInterpolator" kind="class" language="C++" prot="public">
+    <compoundname>QgsIDWInterpolator</compoundname>
+    <basecompoundref refid="classQgsInterpolator" prot="public" virt="non-virtual">QgsInterpolator</basecompoundref>
+    <includes refid="qgsidwinterpolator_8h" local="no">qgsidwinterpolator.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsIDWInterpolator_1a759e6127ead773dfb7b78c5a1eb607c5" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double QgsIDWInterpolator::mDistanceCoefficient</definition>
+        <argsstring></argsstring>
+        <name>mDistanceCoefficient</name>
+        <initializer>= 2.0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="67" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsIDWInterpolator_1ad6bec38b13ce5f2b074109d0388d7755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsIDWInterpolator::QgsIDWInterpolator</definition>
+        <argsstring>(const QList&lt; QgsInterpolator::LayerData &gt; &amp;layerData)</argsstring>
+        <name>QgsIDWInterpolator</name>
+        <param>
+          <type>const QList&lt; <ref refid="structQgsInterpolator_1_1LayerData" kindref="compound">QgsInterpolator::LayerData</ref> &gt; &amp;</type>
+          <declname>layerData</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsIDWInterpolator" kindref="compound">QgsIDWInterpolator</ref>, with the specified <emphasis>layerData</emphasis> sources. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="36" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.cpp" bodystart="23" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsIDWInterpolator_1a67426aa714cb0e92c29e35cff0a7ac4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsIDWInterpolator::distanceCoefficient</definition>
+        <argsstring>() const</argsstring>
+        <name>distanceCoefficient</name>
+        <briefdescription>
+<para>Returns the distance coefficient, the parameter that sets how the values are weighted with distance. </para>        </briefdescription>
+        <detaileddescription>
+<para>Smaller values mean sharper peaks at the data points. The default is a coefficient of 2.</para><para>Point values are weighted by 1 / ( distance ^ coefficient ).</para><para><simplesect kind="see"><para><ref refid="classQgsIDWInterpolator_1a6cc1e95c9d54828d0e0c0db0e7dd3749" kindref="member">setDistanceCoefficient()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="61" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsIDWInterpolator_1a03e1196cb938301d83585cea7d2d0487" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int QgsIDWInterpolator::interpolatePoint</definition>
+        <argsstring>(double x, double y, double &amp;result, QgsFeedback *feedback=nullptr) override</argsstring>
+        <name>interpolatePoint</name>
+        <reimplements refid="classQgsInterpolator_1a47e25bc2a4c807f453b84e49c6e2efa5">interpolatePoint</reimplements>
+        <param>
+          <type>double</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>double &amp;</type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsFeedback" kindref="compound">QgsFeedback</ref> *</type>
+          <declname>feedback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Calculates interpolation value for map coordinates x, y. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x-coordinate (in map units) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y-coordinate (in map units) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>interpolation result </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>feedback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional feedback object for progress and cancelation support </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 in case of success </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="38" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.cpp" bodystart="27" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsIDWInterpolator_1a6cc1e95c9d54828d0e0c0db0e7dd3749" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsIDWInterpolator::setDistanceCoefficient</definition>
+        <argsstring>(double coefficient)</argsstring>
+        <name>setDistanceCoefficient</name>
+        <param>
+          <type>double</type>
+          <declname>coefficient</declname>
+        </param>
+        <briefdescription>
+<para>Sets the distance <emphasis>coefficient</emphasis>, the parameter that sets how the values are weighted with distance. </para>        </briefdescription>
+        <detaileddescription>
+<para>Smaller values mean sharper peaks at the data points.</para><para>Point values are weighted by 1 / ( distance ^ coefficient ).</para><para><simplesect kind="see"><para><ref refid="classQgsIDWInterpolator_1a67426aa714cb0e92c29e35cff0a7ac4a" kindref="member">distanceCoefficient()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="49" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsIDWInterpolator_1a908fe89cf19cb8585b946485041e631b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsIDWInterpolator::QgsIDWInterpolator</definition>
+        <argsstring>()=delete</argsstring>
+        <name>QgsIDWInterpolator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="65" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Inverse distance weight interpolator. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4011">
+        <label>QgsIDWInterpolator</label>
+        <link refid="classQgsIDWInterpolator"/>
+        <childnode refid="4012" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4012">
+        <label>QgsInterpolator</label>
+        <link refid="classQgsInterpolator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4013">
+        <label>QgsIDWInterpolator</label>
+        <link refid="classQgsIDWInterpolator"/>
+        <childnode refid="4014" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4014">
+        <label>QgsInterpolator</label>
+        <link refid="classQgsInterpolator"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" line="30" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/analysis/interpolation/qgsidwinterpolator.h" bodystart="29" bodyend="68"/>
+    <listofallmembers>
+      <member refid="classQgsInterpolator_1adef2f968df30d8e85a5bb0be5f45ac6e" prot="protected" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>cacheBaseData</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa324afd5a619df8958bfff3f2e3289758" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>Canceled</name></member>
+      <member refid="classQgsIDWInterpolator_1a67426aa714cb0e92c29e35cff0a7ac4a" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>distanceCoefficient</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa7d85115db62d2cbcfc768fabf79a87c0" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>FeatureGeometryError</name></member>
+      <member refid="classQgsIDWInterpolator_1a03e1196cb938301d83585cea7d2d0487" prot="public" virt="virtual"><scope>QgsIDWInterpolator</scope><name>interpolatePoint</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa7b162519a18fa2dd61b0d5af099365bd" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>InvalidSource</name></member>
+      <member refid="classQgsInterpolator_1af0ee867d9dc40805134bde9765ed6385" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>layerData</name></member>
+      <member refid="classQgsInterpolator_1a411f9dc053ae1bc59ce5ca9c037603eb" prot="protected" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>mCachedBaseData</name></member>
+      <member refid="classQgsInterpolator_1a941255f6794f230b7d291704a75e6736" prot="protected" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>mDataIsCached</name></member>
+      <member refid="classQgsIDWInterpolator_1a759e6127ead773dfb7b78c5a1eb607c5" prot="private" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>mDistanceCoefficient</name></member>
+      <member refid="classQgsInterpolator_1aa7e64d65a55b618efb1ec28dde21bb4a" prot="protected" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>mLayerData</name></member>
+      <member refid="classQgsIDWInterpolator_1ad6bec38b13ce5f2b074109d0388d7755" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>QgsIDWInterpolator</name></member>
+      <member refid="classQgsIDWInterpolator_1a908fe89cf19cb8585b946485041e631b" prot="private" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>QgsIDWInterpolator</name></member>
+      <member refid="classQgsInterpolator_1a6b3f437af483abfbb35034732459b879" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>QgsInterpolator</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551fa" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>Result</name></member>
+      <member refid="classQgsIDWInterpolator_1a6cc1e95c9d54828d0e0c0db0e7dd3749" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>setDistanceCoefficient</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa94cd195b74c463cd188f613bc7a496d4" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>SourceBreakLines</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa0c6b723179740b22324d2621da3b229f" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>SourcePoints</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2fa1fce0ff37a48abdc35379e3eef0bd8e7" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>SourceStructureLines</name></member>
+      <member refid="classQgsInterpolator_1a8e8d0a3f66caf3cbf844ddf8baf67f2f" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>SourceType</name></member>
+      <member refid="classQgsInterpolator_1a7aab4d165c2262fd4d8dc0bdf0d551faa8c784e7ce64e090777d53ba05426e497" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>Success</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435a49f995262573144295a46328ef8157ce" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>ValueAttribute</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435a03d7a5a246b14b6847699ca4bc428edc" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>ValueM</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>ValueSource</name></member>
+      <member refid="classQgsInterpolator_1a556ac915aa8abb0130d98e0aad598435aafd5f05a706024c82dfc82782becc5bb" prot="public" virt="non-virtual"><scope>QgsIDWInterpolator</scope><name>ValueZ</name></member>
+      <member refid="classQgsInterpolator_1aaa9ca49fc1a21fa212817df8a7ab2550" prot="public" virt="virtual"><scope>QgsIDWInterpolator</scope><name>~QgsInterpolator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

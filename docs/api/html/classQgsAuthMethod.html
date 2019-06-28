@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsAuthMethod class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsAuthMethod <span class="m-thin">class</span>
+        </h1>
+        <p>Abstract base class for authentication method plugins.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-static-methods">Protected static functions</a></li>
+                <li><a href="#pro-methods">Protected functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#af9a8193dd5b038c61c4bf2fc419baf41" class="m-doc">Expansion</a> { </span><span class="m-doc-wrap"><a href="#af9a8193dd5b038c61c4bf2fc419baf41a30916eb7d2019863af295676013ddb13" class="m-doc">NetworkRequest</a> = 0x1,
+              <a href="#af9a8193dd5b038c61c4bf2fc419baf41a56ea02d37fa167ac3037363c8466416f" class="m-doc">NetworkReply</a> = 0x2,
+              <a href="#af9a8193dd5b038c61c4bf2fc419baf41ad889818bee77c878f40aae02a3435e17" class="m-doc">DataSourceUri</a> = 0x4,
+              <a href="#af9a8193dd5b038c61c4bf2fc419baf41a08e155ed95baaa14b3c35344d0a5834d" class="m-doc">GenericDataSourceUri</a> = 0x8,
+              <a href="#af9a8193dd5b038c61c4bf2fc419baf41ab468cbe538e9b2e7752d62aee638e0db" class="m-doc">NetworkProxy</a> = 0x16,
+              <a href="#af9a8193dd5b038c61c4bf2fc419baf41a6b2e80f43af01651d57c4e028ad3ba5d" class="m-doc">All</a> = NetworkRequest | NetworkReply | DataSourceUri | GenericDataSourceUri | NetworkProxy }</span>
+            </dt>
+            <dd>Flags that represent the update points (where authentication configurations are expanded) supported by an authentication method.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#ab0ffff8485b304a1ca82165dcb9c0257" class="m-doc">QgsAuthMethod</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">protected</span> <span class="m-label m-flat m-info">explicit</span> </span>
+            </dt>
+            <dd>Construct a default authentication method.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9db1fe41d612b618c3f9ac7ee0e46f24" class="m-doc">clearCachedConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Clear any cached configuration.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a024c86a980c01c456dfe325830a3e78f" class="m-doc-self" name="a024c86a980c01c456dfe325830a3e78f">description</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>A non-translated short description representing the auth method for use in debug output and About dialog.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a737a909495dba1b9cee6eb828962cef9" class="m-doc-self" name="a737a909495dba1b9cee6eb828962cef9">displayDescription</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Translatable display version of the &#x27;<a href="classQgsAuthMethod.html#a024c86a980c01c456dfe325830a3e78f" class="m-doc">description()</a>&#x27;.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acd08b7cc17d4813f42201b36a5af4157" class="m-doc-self" name="acd08b7cc17d4813f42201b36a5af4157">key</a>(</span><span class="m-doc-wrap">) const -&gt; QString <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>A non-translated short name representing the auth method.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a98433ba711150ccdf50924124052210a" class="m-doc-self" name="a98433ba711150ccdf50924124052210a">supportedDataProviders</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>The data providers that the method supports, allowing for filtering out authcfgs that are not applicable to a given provider, or where the updating code is not currently implemented.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a60592f6ae990208856d0aab4f2372236" class="m-doc">supportedExpansions</a>(</span><span class="m-doc-wrap">) const -&gt; QgsAuthMethod::Expansions</span>
+            </dt>
+            <dd>Flags that represent the update points (where authentication configurations are expanded) supported by an authentication method.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab86912f3b78a78549b59518143d3167e" class="m-doc">updateDataSourceUriItems</a>(</span><span class="m-doc-wrap">QStringList&amp; connectionItems,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Update data source connection items with authentication components.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aac6caef7b9ea90364358576ac667a86c" class="m-doc">updateMethodConfig</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; mconfig) <span class="m-label m-flat m-warning">pure virtual</span></span>
+            </dt>
+            <dd>Update an authentication configuration in place.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1a0f16f3bba2c72e17a7ead788cf3f1e" class="m-doc">updateNetworkProxy</a>(</span><span class="m-doc-wrap">QNetworkProxy&amp; proxy,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Update proxy settings with authentication components.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab6c1292f108ae86a9701f70929971759" class="m-doc">updateNetworkReply</a>(</span><span class="m-doc-wrap">QNetworkReply* reply,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Update a network reply with authentication components.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2c7c4298b2071ff9619cc6efd7d8c955" class="m-doc">updateNetworkRequest</a>(</span><span class="m-doc-wrap">QNetworkRequest&amp; request,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) -&gt; bool <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Update a network request with authentication components.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0ae7976e18ae61cc4c5db7f8f21eeff2" class="m-doc-self" name="a0ae7976e18ae61cc4c5db7f8f21eeff2">version</a>(</span><span class="m-doc-wrap">) const -&gt; int</span>
+            </dt>
+            <dd>Increment this if method is significantly updated, allow updater code to be written for previously stored authcfg.</dd>
+          </dl>
+        </section>
+        <section id="pro-static-methods">
+          <h2><a href="#pro-static-methods">Protected static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac5b4653bbd279e68c95a92f0bf295667" class="m-doc-self" name="ac5b4653bbd279e68c95a92f0bf295667">authMethodTag</a>(</span><span class="m-doc-wrap">) -&gt; QString</span>
+            </dt>
+            <dd>Tag signifying that this is an authentcation method (e.g. for use as title in message log panel output)</dd>
+          </dl>
+        </section>
+        <section id="pro-methods">
+          <h2><a href="#pro-methods">Protected functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af6fd036eea2a2df0ecfa43a9b7e00bff" class="m-doc-self" name="af6fd036eea2a2df0ecfa43a9b7e00bff">setDataProviders</a>(</span><span class="m-doc-wrap">const QStringList&amp; dataproviders)</span>
+            </dt>
+            <dd>Sets list of data providers this auth method supports.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8e193fb71d69a061329bb3e240dda4fc" class="m-doc-self" name="a8e193fb71d69a061329bb3e240dda4fc">setExpansions</a>(</span><span class="m-doc-wrap">QgsAuthMethod::Expansions expansions)</span>
+            </dt>
+            <dd>Sets the support expansions (points in providers where the authentication is injected) of the auth method.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab3702a873b21a6f940a9ca46a379e807" class="m-doc-self" name="ab3702a873b21a6f940a9ca46a379e807">setVersion</a>(</span><span class="m-doc-wrap">int version)</span>
+            </dt>
+            <dd>Sets the version of the auth method (useful for future upgrading)</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="af9a8193dd5b038c61c4bf2fc419baf41"><div>
+            <h3>
+              enum QgsAuthMethod::<wbr /><a href="#af9a8193dd5b038c61c4bf2fc419baf41" class="m-doc-self">Expansion</a>
+            </h3>
+            <p>Flags that represent the update points (where authentication configurations are expanded) supported by an authentication method.</p>
+<p>These equate to the &#x27;update*()&#x27; virtual functions below, and allow for update point code to skip calling an unused update by a method, because the base virtual function will always return true, giving a false impression an update occurred.</p><aside class="m-note m-info"><h4>Note</h4><p>When adding an &#x27;update&#x27; member function, also add the corresponding Expansion flag.</p><p>These flags will be added to as new update points are added</p></aside>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ab0ffff8485b304a1ca82165dcb9c0257"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab0ffff8485b304a1ca82165dcb9c0257" class="m-doc-self">QgsAuthMethod</a>(</span><span class="m-doc-wrap">) <span class="m-label m-info">explicit</span>  <span class="m-label m-warning">protected</span></span></span>
+            </h3>
+            <p>Construct a default authentication method.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Non-public since this is an abstract base class</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9db1fe41d612b618c3f9ac7ee0e46f24"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9db1fe41d612b618c3f9ac7ee0e46f24" class="m-doc-self">clearCachedConfig</a>(</span><span class="m-doc-wrap">const QString&amp; authcfg) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Clear any cached configuration.</p>
+<p>Called when the <a href="classQgsAuthManager.html" class="m-doc">QgsAuthManager</a> deletes an authentication configuration (authcfg).</p><aside class="m-note m-info"><h4>Note</h4><p>It is highly recommended that a cache of authentication components (per requested authcfg) be implemented, to avoid excessive queries on the auth database. Such a cache could be as simple as a QHash or QMap of authcfg -&gt; <a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>. See &#x27;Basic&#x27; auth method plugin for example.</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a60592f6ae990208856d0aab4f2372236"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QgsAuthMethod::Expansions QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60592f6ae990208856d0aab4f2372236" class="m-doc-self">supportedExpansions</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Flags that represent the update points (where authentication configurations are expanded) supported by an authentication method.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>These should directly correlate to existing &#x27;update*()&#x27; member functions</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab86912f3b78a78549b59518143d3167e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab86912f3b78a78549b59518143d3167e" class="m-doc-self">updateDataSourceUriItems</a>(</span><span class="m-doc-wrap">QStringList&amp; connectionItems,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Update data source connection items with authentication components.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">connectionItems</td>
+                  <td>QStringlist of &#x27;key=value&#x27; pairs, as utilized in <a href="classQgsDataSourceUri.html#a5a1c09bffc1ed473221e6beccf9d4f17" class="m-doc">QgsDataSourceUri::<wbr />connectionInfo()</a></td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Authentication configuration ID</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Textual key for a data provider, e.g. &#x27;postgres&#x27;, that allows for custom updater code specific to the provider</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether the update succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="aac6caef7b9ea90364358576ac667a86c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aac6caef7b9ea90364358576ac667a86c" class="m-doc-self">updateMethodConfig</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthMethodConfig.html" class="m-doc">QgsAuthMethodConfig</a>&amp; mconfig) <span class="m-label m-warning">pure virtual</span></span></span>
+            </h3>
+            <p>Update an authentication configuration in place.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Useful for updating previously stored authcfgs, when an authentication method has been significantly updated</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1a0f16f3bba2c72e17a7ead788cf3f1e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1a0f16f3bba2c72e17a7ead788cf3f1e" class="m-doc-self">updateNetworkProxy</a>(</span><span class="m-doc-wrap">QNetworkProxy&amp; proxy,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Update proxy settings with authentication components.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">proxy</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Authentication configuration ID</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Textual key for a data provider, e.g. &#x27;proxy&#x27;, that allows for custom updater code specific to the provider</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether the update succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ab6c1292f108ae86a9701f70929971759"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab6c1292f108ae86a9701f70929971759" class="m-doc-self">updateNetworkReply</a>(</span><span class="m-doc-wrap">QNetworkReply* reply,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Update a network reply with authentication components.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">reply</td>
+                  <td>The network reply object to update</td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Authentication configuration ID</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Textual key for a data provider, e.g. &#x27;postgres&#x27;, that allows for custom updater code specific to the provider</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether the update succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2c7c4298b2071ff9619cc6efd7d8c955"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsAuthMethod::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2c7c4298b2071ff9619cc6efd7d8c955" class="m-doc-self">updateNetworkRequest</a>(</span><span class="m-doc-wrap">QNetworkRequest&amp; request,
+              const QString&amp; authcfg,
+              const QString&amp; dataprovider = QString()) <span class="m-label m-warning">virtual</span></span></span>
+            </h3>
+            <p>Update a network request with authentication components.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">request</td>
+                  <td>The network request to update</td>
+                </tr>
+                <tr>
+                  <td>authcfg</td>
+                  <td>Authentication configuration ID</td>
+                </tr>
+                <tr>
+                  <td>dataprovider</td>
+                  <td>Textual key for a data provider, e.g. &#x27;postgres&#x27;, that allows for custom updater code specific to the provider</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Whether the update succeeded</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsVectorLayerJoinBuffer class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsVectorLayerJoinBuffer <span class="m-thin">class</span>
+        </h1>
+        <p>Manages joined fields for a vector layer.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#base-classes">Base classes</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="base-classes">
+          <h2><a href="#base-classes">Base classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsFeatureSink.html" class="m-doc">QgsFeatureSink</a>
+            </dt>
+            <dd>An interface for objects which accept features via addFeature(s) methods.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa7a65a15683c796803cfc3c9d8f00b30" class="m-doc">joinSubsetIndices</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* joinLayer,
+              const QStringList&amp; joinFieldsSubset) -&gt; QVector&lt;int&gt;</span>
+            </dt>
+            <dd>Returns a vector of indices for use in join based on field names from the layer.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8ee57e96762f345b0a2a2476efd02094" class="m-doc">addFeatures</a>(</span><span class="m-doc-wrap"><a href="qgsfeature_8h.html#ae0f922f3469155bc17dfc96729f1c1cc" class="m-doc">QgsFeatureList</a>&amp; features,
+              QgsFeatureSink::Flags flags = nullptr) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Adds a list of features in joined layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a14cd1156317f630c4632fb7dc29e8607" class="m-doc">addJoin</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>&amp; joinInfo) -&gt; bool</span>
+            </dt>
+            <dd>Joins another vector layer to this layer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5d929a9fa25e330c6ea63201770c0e23" class="m-doc">changeAttributeValue</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              int field,
+              const QVariant&amp; newValue,
+              const QVariant&amp; oldValue = QVariant()) -&gt; bool</span>
+            </dt>
+            <dd>Changes attribute value in joined layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a749c1ad1cd53b4df71893975b84753b2" class="m-doc">changeAttributeValues</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              const <a href="qgsattributes_8h.html#a54fb9a5ab4cfae301a0415ce490f08c8" class="m-doc">QgsAttributeMap</a>&amp; newValues,
+              const <a href="qgsattributes_8h.html#a54fb9a5ab4cfae301a0415ce490f08c8" class="m-doc">QgsAttributeMap</a>&amp; oldValues = <a href="qgsattributes_8h.html#a54fb9a5ab4cfae301a0415ce490f08c8" class="m-doc">QgsAttributeMap</a>()) -&gt; bool</span>
+            </dt>
+            <dd>Changes attributes&#x27; values in joined layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7df2bf9bd723114286e172cdba801258" class="m-doc">clone</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsVectorLayerJoinBuffer.html" class="m-doc">QgsVectorLayerJoinBuffer</a>*</span>
+            </dt>
+            <dd>Create a copy of the join buffer.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a73d7246d0c0f24cdfc3092b266169523" class="m-doc-self" name="a73d7246d0c0f24cdfc3092b266169523">containsJoins</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Quick way to test if there is any join at all.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a998bbf31b3e7587c6b4aaaefdf4dfac2" class="m-doc-self" name="a998bbf31b3e7587c6b4aaaefdf4dfac2">createJoinCaches</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Calls cacheJoinLayer() for all vector joins.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5c98b255ff0191de7ca6fba61a9e7a98" class="m-doc">deleteFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) const -&gt; bool</span>
+            </dt>
+            <dd>Deletes a feature from joined layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac4b5a9785f214f66b435b5cc2df53b8c" class="m-doc">deleteFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) const -&gt; bool</span>
+            </dt>
+            <dd>Deletes a list of features from joined layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ae5b95d43bce5a508a9bb9394c383d69b" class="m-doc">isAuxiliaryJoin</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>&amp; info) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the join information is about auxiliary layer, false otherwise.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#acd61f138aecc0b32698ab562ed5a411a" class="m-doc">joinedFeatureOf</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* info,
+              const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) const -&gt; <a href="classQgsFeature.html" class="m-doc">QgsFeature</a></span>
+            </dt>
+            <dd>Returns the joined feature corresponding to the feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a59e15a7d8ae853cc30487ca9fd4ee05b" class="m-doc">joinedFieldsOffset</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* info,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields) -&gt; int</span>
+            </dt>
+            <dd>Find out what is the first index of the join within fields.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5d2d7b224ee47fc1f23b873421ca4113" class="m-doc">joinForFieldIndex</a>(</span><span class="m-doc-wrap">int index,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              int&amp; sourceFieldIndex) const -&gt; const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>*</span>
+            </dt>
+            <dd>Finds the vector join for a layer field index.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ab7b12f11184b90db8b1373987055ef" class="m-doc">joinsWhereFieldIsId</a>(</span><span class="m-doc-wrap">const <a href="classQgsField.html" class="m-doc">QgsField</a>&amp; field) const -&gt; QList&lt;const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>*&gt;</span>
+            </dt>
+            <dd>Returns joins where the field of a target layer is considered as an id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2aa648eadee12f7446be4846818e5495" class="m-doc">readXml</a>(</span><span class="m-doc-wrap">const QDomNode&amp; layer_node)</span>
+            </dt>
+            <dd>Reads joins from project file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7345aa24a56f7902cedb4dc9fb041aa3" class="m-doc">removeJoin</a>(</span><span class="m-doc-wrap">const QString&amp; joinLayerId) -&gt; bool</span>
+            </dt>
+            <dd>Removes a vector layer join.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a006503164b8b1dd461b470dd7eb08a45" class="m-doc">resolveReferences</a>(</span><span class="m-doc-wrap"><a href="classQgsProject.html" class="m-doc">QgsProject</a>* project)</span>
+            </dt>
+            <dd>Resolves layer IDs of joined layers using given project&#x27;s available layers.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1389117175596041de38f96d792f6889" class="m-doc">targetedFeatureOf</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* info,
+              const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) const -&gt; <a href="classQgsFeature.html" class="m-doc">QgsFeature</a></span>
+            </dt>
+            <dd>Returns the targeted feature corresponding to the joined feature.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9b26f293d725256d990c72943c7644c6" class="m-doc">updateFields</a>(</span><span class="m-doc-wrap"><a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields)</span>
+            </dt>
+            <dd>Updates field map with joined attributes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a4417e923c171112f8ec3b4b4f06df109" class="m-doc-self" name="a4417e923c171112f8ec3b4b4f06df109">writeXml</a>(</span><span class="m-doc-wrap">QDomNode&amp; layer_node,
+              QDomDocument&amp; document) const</span>
+            </dt>
+            <dd>Saves mVectorJoins to xml under the layer node.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a960e37fa241d15967eda4c4fc914d58c" class="m-doc">joinedFieldsChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted whenever the list of joined fields changes (e.g.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="aa7a65a15683c796803cfc3c9d8f00b30"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QVector&lt;int&gt; QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa7a65a15683c796803cfc3c9d8f00b30" class="m-doc-self">joinSubsetIndices</a>(</span><span class="m-doc-wrap"><a href="classQgsVectorLayer.html" class="m-doc">QgsVectorLayer</a>* joinLayer,
+              const QStringList&amp; joinFieldsSubset)</span></span>
+            </h3>
+            <p>Returns a vector of indices for use in join based on field names from the layer.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8ee57e96762f345b0a2a2476efd02094"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8ee57e96762f345b0a2a2476efd02094" class="m-doc-self">addFeatures</a>(</span><span class="m-doc-wrap"><a href="qgsfeature_8h.html#ae0f922f3469155bc17dfc96729f1c1cc" class="m-doc">QgsFeatureList</a>&amp; features,
+              QgsFeatureSink::Flags flags = nullptr) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Adds a list of features in joined layers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">features</td>
+                  <td>The list of features added in the target layer</td>
+                </tr>
+                <tr>
+                  <td>flags</td>
+                  <td>Unused parameter</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if an error happened, true otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Features given in parameter are those added in target layer. If a corresponding joined feature yet exists in a joined layer, then this feature is just updated. Note that if a corresponding joined feature has only empty fields, then it&#x27;s not created nor added.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a14cd1156317f630c4632fb7dc29e8607"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a14cd1156317f630c4632fb7dc29e8607" class="m-doc-self">addJoin</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>&amp; joinInfo)</span></span>
+            </h3>
+            <p>Joins another vector layer to this layer.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">joinInfo</td>
+                  <td>join object containing join layer id, target and source field</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>(since 2.6) whether the join was successfully added</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5d929a9fa25e330c6ea63201770c0e23"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d929a9fa25e330c6ea63201770c0e23" class="m-doc-self">changeAttributeValue</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              int field,
+              const QVariant&amp; newValue,
+              const QVariant&amp; oldValue = QVariant())</span></span>
+            </h3>
+            <p>Changes attribute value in joined layers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The feature id</td>
+                </tr>
+                <tr>
+                  <td>field</td>
+                  <td>The field to update</td>
+                </tr>
+                <tr>
+                  <td>newValue</td>
+                  <td>The new value of the attribute</td>
+                </tr>
+                <tr>
+                  <td>oldValue</td>
+                  <td>The old value of the attribute</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if an error happened, true otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The feature id given in parameter is the one added in target layer. If the corresponding joined feature does not exist in a joined layer, then it&#x27;s automatically created if its fields are not empty.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a749c1ad1cd53b4df71893975b84753b2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a749c1ad1cd53b4df71893975b84753b2" class="m-doc-self">changeAttributeValues</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid,
+              const <a href="qgsattributes_8h.html#a54fb9a5ab4cfae301a0415ce490f08c8" class="m-doc">QgsAttributeMap</a>&amp; newValues,
+              const <a href="qgsattributes_8h.html#a54fb9a5ab4cfae301a0415ce490f08c8" class="m-doc">QgsAttributeMap</a>&amp; oldValues = <a href="qgsattributes_8h.html#a54fb9a5ab4cfae301a0415ce490f08c8" class="m-doc">QgsAttributeMap</a>())</span></span>
+            </h3>
+            <p>Changes attributes&#x27; values in joined layers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The feature id</td>
+                </tr>
+                <tr>
+                  <td>newValues</td>
+                  <td>The new values for attributes</td>
+                </tr>
+                <tr>
+                  <td>oldValues</td>
+                  <td>The old values for attributes</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if an error happened, true otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The feature id given in parameter is the one added in target layer. If the corresponding joined feature does not exist in a joined layer, then it&#x27;s automatically created if its fields are not empty.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7df2bf9bd723114286e172cdba801258"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsVectorLayerJoinBuffer.html" class="m-doc">QgsVectorLayerJoinBuffer</a>* QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7df2bf9bd723114286e172cdba801258" class="m-doc-self">clone</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Create a copy of the join buffer.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5c98b255ff0191de7ca6fba61a9e7a98"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5c98b255ff0191de7ca6fba61a9e7a98" class="m-doc-self">deleteFeature</a>(</span><span class="m-doc-wrap"><a href="qgsfeatureid_8h.html#a857d022277fb1026d921b0ec9bdb7ce5" class="m-doc">QgsFeatureId</a> fid) const</span></span>
+            </h3>
+            <p>Deletes a feature from joined layers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fid</td>
+                  <td>The feature id from the target layer to delete</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if an error happened, true otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>The feature id given in parameter is the one coming from the target layer.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac4b5a9785f214f66b435b5cc2df53b8c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac4b5a9785f214f66b435b5cc2df53b8c" class="m-doc-self">deleteFeatures</a>(</span><span class="m-doc-wrap">const <a href="qgsfeatureid_8h.html#a443917048a2ef75006fdeba30f1549f3" class="m-doc">QgsFeatureIds</a>&amp; fids) const</span></span>
+            </h3>
+            <p>Deletes a list of features from joined layers.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fids</td>
+                  <td>Feature ids from the target layer to delete</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if an error happened, true otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Feature ids given in a parameter are those coming from the target layer.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ae5b95d43bce5a508a9bb9394c383d69b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae5b95d43bce5a508a9bb9394c383d69b" class="m-doc-self">isAuxiliaryJoin</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>&amp; info) const</span></span>
+            </h3>
+            <p>Returns true if the join information is about auxiliary layer, false otherwise.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">info</td>
+                  <td>The join information</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>true if the join information is about auxiliary layer, false otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="acd61f138aecc0b32698ab562ed5a411a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a> QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acd61f138aecc0b32698ab562ed5a411a" class="m-doc-self">joinedFeatureOf</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* info,
+              const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) const</span></span>
+            </h3>
+            <p>Returns the joined feature corresponding to the feature.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">info</td>
+                  <td>the vector join information</td>
+                </tr>
+                <tr>
+                  <td>feature</td>
+                  <td>the feature of the target layer</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a59e15a7d8ae853cc30487ca9fd4ee05b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a59e15a7d8ae853cc30487ca9fd4ee05b" class="m-doc-self">joinedFieldsOffset</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* info,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields)</span></span>
+            </h3>
+            <p>Find out what is the first index of the join within fields.</p>
+<p>Returns -1 if join is not present</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5d2d7b224ee47fc1f23b873421ca4113"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d2d7b224ee47fc1f23b873421ca4113" class="m-doc-self">joinForFieldIndex</a>(</span><span class="m-doc-wrap">int index,
+              const <a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields,
+              int&amp; sourceFieldIndex) const</span></span>
+            </h3>
+            <p>Finds the vector join for a layer field index.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>this layers attribute index</td>
+                </tr>
+                <tr>
+                  <td>fields</td>
+                  <td>fields of the vector layer (including joined fields)</td>
+                </tr>
+                <tr>
+                  <td>sourceFieldIndex</td>
+                  <td>Output: field&#x27;s index in source layer</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>the vector layer join info</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6ab7b12f11184b90db8b1373987055ef"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>*&gt; QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6ab7b12f11184b90db8b1373987055ef" class="m-doc-self">joinsWhereFieldIsId</a>(</span><span class="m-doc-wrap">const <a href="classQgsField.html" class="m-doc">QgsField</a>&amp; field) const</span></span>
+            </h3>
+            <p>Returns joins where the field of a target layer is considered as an id.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">field</td>
+                  <td>the field of a target layer</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a list of vector joins</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2aa648eadee12f7446be4846818e5495"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2aa648eadee12f7446be4846818e5495" class="m-doc-self">readXml</a>(</span><span class="m-doc-wrap">const QDomNode&amp; layer_node)</span></span>
+            </h3>
+            <p>Reads joins from project file.</p>
+<p>Does not resolve layer IDs to layers - call <a href="classQgsVectorLayerJoinBuffer.html#a006503164b8b1dd461b470dd7eb08a45" class="m-doc">resolveReferences()</a> afterwards</p>
+          </div></section>
+          <section class="m-doc-details" id="a7345aa24a56f7902cedb4dc9fb041aa3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7345aa24a56f7902cedb4dc9fb041aa3" class="m-doc-self">removeJoin</a>(</span><span class="m-doc-wrap">const QString&amp; joinLayerId)</span></span>
+            </h3>
+            <p>Removes a vector layer join.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if join was found and successfully removed</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a006503164b8b1dd461b470dd7eb08a45"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a006503164b8b1dd461b470dd7eb08a45" class="m-doc-self">resolveReferences</a>(</span><span class="m-doc-wrap"><a href="classQgsProject.html" class="m-doc">QgsProject</a>* project)</span></span>
+            </h3>
+            <p>Resolves layer IDs of joined layers using given project&#x27;s available layers.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1389117175596041de38f96d792f6889"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFeature.html" class="m-doc">QgsFeature</a> QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1389117175596041de38f96d792f6889" class="m-doc-self">targetedFeatureOf</a>(</span><span class="m-doc-wrap">const <a href="classQgsVectorLayerJoinInfo.html" class="m-doc">QgsVectorLayerJoinInfo</a>* info,
+              const <a href="classQgsFeature.html" class="m-doc">QgsFeature</a>&amp; feature) const</span></span>
+            </h3>
+            <p>Returns the targeted feature corresponding to the joined feature.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">info</td>
+                  <td>the vector join information</td>
+                </tr>
+                <tr>
+                  <td>feature</td>
+                  <td>the feature of the joined layer</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9b26f293d725256d990c72943c7644c6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9b26f293d725256d990c72943c7644c6" class="m-doc-self">updateFields</a>(</span><span class="m-doc-wrap"><a href="classQgsFields.html" class="m-doc">QgsFields</a>&amp; fields)</span></span>
+            </h3>
+            <p>Updates field map with joined attributes.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">fields</td>
+                  <td>map to append joined attributes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a960e37fa241d15967eda4c4fc914d58c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsVectorLayerJoinBuffer::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a960e37fa241d15967eda4c4fc914d58c" class="m-doc-self">joinedFieldsChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted whenever the list of joined fields changes (e.g.</p>
+<p>added join or joined layer&#x27;s fields change)</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.6</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

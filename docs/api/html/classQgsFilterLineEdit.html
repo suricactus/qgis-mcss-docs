@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsFilterLineEdit class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsFilterLineEdit <span class="m-thin">class</span>
+        </h1>
+        <p>QLineEdit subclass with built in support for clearing the widget&#x27;s value and handling custom null value representations.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#derived-classes">Derived classes</a></li>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#signals">Signals</a></li>
+                <li><a href="#pub-slots">Public slots</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>When using <a href="classQgsFilterLineEdit.html" class="m-doc">QgsFilterLineEdit</a> the <a href="classQgsFilterLineEdit.html#a5881b13a6a8fc630f32c80fa525dcfb5" class="m-doc">value()</a>, <a href="classQgsFilterLineEdit.html#a58128a75af9ced17ac96e41adfaaf3b6" class="m-doc">setValue()</a> and <a href="classQgsFilterLineEdit.html#a312b3b955a1ace811e8c529f810af0df" class="m-doc">clearValue()</a> methods should be used instead of QLineEdit&#x27;s text(), setText() and clear() methods, and the <a href="classQgsFilterLineEdit.html#afe960aaf228297e1b99b8f5b3ac5b999" class="m-doc">valueChanged()</a> signal should be used instead of textChanged().</p>
+        <section id="derived-classes">
+          <h2><a href="#derived-classes">Derived classes</a></h2>
+          <dl class="m-doc">
+            <dt>
+              class <a href="classQgsFieldValuesLineEdit.html" class="m-doc">QgsFieldValuesLineEdit</a>
+            </dt>
+            <dd>A line edit with an autocompleter which takes unique values from a vector layer&#x27;s fields.</dd>
+          </dl>
+        </section>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a37688d1aa678a6cb45d05f77c17b5e94" class="m-doc">ClearMode</a> { </span><span class="m-doc-wrap"><a href="#a37688d1aa678a6cb45d05f77c17b5e94a35a126aa119b5db5892751f3bac7241d" class="m-doc">ClearToNull</a> = 0,
+              <a href="#a37688d1aa678a6cb45d05f77c17b5e94a9db74c72daa6d9f69ddfe58d51a4e0bc" class="m-doc">ClearToDefault</a> }</span>
+            </dt>
+            <dd>Behavior when clearing value of widget.</dd>
+          </dl>
+        </section>
+        <section id="typeless-methods">
+          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="#a7ba35c433282b87e4a21f556beda45e8" class="m-doc">QgsFilterLineEdit</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr,
+              const QString&amp; nullValue = QString())</span>
+            </dt>
+            <dd>Constructor for <a href="classQgsFilterLineEdit.html" class="m-doc">QgsFilterLineEdit</a>.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2321e4c5a09e966c4012b8a7b013c484" class="m-doc">clearMode</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsFilterLineEdit.html#a37688d1aa678a6cb45d05f77c17b5e94" class="m-doc">ClearMode</a></span>
+            </dt>
+            <dd>Returns the clear mode for the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a87e85fa209c18ede7b67d3061abe0fc8" class="m-doc">defaultValue</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the default value for the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af97ab9c4267aa8ec311588cc5de5139a" class="m-doc">event</a>(</span><span class="m-doc-wrap">QEvent* event) -&gt; bool <span class="m-label m-flat m-warning">override</span></span>
+            </dt>
+            <dd>Reimplemented to enable/disable the clear action depending on read-only status.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3820c203ecd0d05723138cf4cbb03d9e" class="m-doc">isNull</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Determine if the current text represents null.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3c3f56f0e5a8e29eb69c397af710ad4f" class="m-doc">nullValue</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the string used for representating null values in the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5e2e98dcb1111b1e3b8c279c42e5d8a5" class="m-doc">selectOnFocus</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Will select all text when this widget receives the focus.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afd81e53ea645bc357166d46e5306bc02" class="m-doc">setClearMode</a>(</span><span class="m-doc-wrap"><a href="classQgsFilterLineEdit.html#a37688d1aa678a6cb45d05f77c17b5e94" class="m-doc">ClearMode</a> mode)</span>
+            </dt>
+            <dd>Sets the clear mode for the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac7bd2383aeb8745e82d4b8aec8ddf3bf" class="m-doc">setDefaultValue</a>(</span><span class="m-doc-wrap">const QString&amp; defaultValue)</span>
+            </dt>
+            <dd>Sets the default value for the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a9a9a50f208d123afc047f20a16e8d475" class="m-doc">setNullValue</a>(</span><span class="m-doc-wrap">const QString&amp; nullValue)</span>
+            </dt>
+            <dd>Sets the string representation for null values in the widget.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8712596a49619befa3b3e353c654fc3f" class="m-doc">setSelectOnFocus</a>(</span><span class="m-doc-wrap">bool selectOnFocus)</span>
+            </dt>
+            <dd>Will select all text when this widget receives the focus.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7177f2c32f8664e2d7d27e3e4c3e5d3a" class="m-doc">setShowClearButton</a>(</span><span class="m-doc-wrap">bool visible)</span>
+            </dt>
+            <dd>Sets whether the widget&#x27;s clear button is visible.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a69fe24bd1646f66aff0611b4533f4a8b" class="m-doc">setShowSearchIcon</a>(</span><span class="m-doc-wrap">bool visible)</span>
+            </dt>
+            <dd>Define if a search icon shall be shown on the left of the image when no text is entered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#adfa8cb722a93f8970707c99ce4753f38" class="m-doc">setShowSpinner</a>(</span><span class="m-doc-wrap">bool showSpinner)</span>
+            </dt>
+            <dd>Show a spinner icon.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a58128a75af9ced17ac96e41adfaaf3b6" class="m-doc">setValue</a>(</span><span class="m-doc-wrap">const QString&amp; value)</span>
+            </dt>
+            <dd>Sets the current text for the widget with support for handling null values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a300aa5e8fbabf1dc6085409338c64295" class="m-doc">showClearButton</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns true if the widget&#x27;s clear button is visible.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3524b3fbc28908b6576bd944cc766cb4" class="m-doc">showSearchIcon</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Returns if a search icon shall be shown on the left of the image when no text is entered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a51af186d62a25ee4bf3c08288730d999" class="m-doc">showSpinner</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Show a spinner icon.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#accddbd5d79a98dce2046492f1c820e8d" class="m-doc">value</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns the text of this edit with support for handling null values.</dd>
+          </dl>
+        </section>
+        <section id="signals">
+          <h2><a href="#signals">Signals</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab49c48cc6490fad1c80dcad899c23d5c" class="m-doc">cleared</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Emitted when the widget is cleared.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1e87a0ef1a4004ea620e5fe04d103ed8" class="m-doc">selectOnFocusChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Will select all text when this widget receives the focus.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1fdf65e5bb66b83648a7b6635560327e" class="m-doc">showSpinnerChanged</a>(</span><span class="m-doc-wrap">)</span>
+            </dt>
+            <dd>Show a spinner icon.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#afe960aaf228297e1b99b8f5b3ac5b999" class="m-doc">valueChanged</a>(</span><span class="m-doc-wrap">const QString&amp; value)</span>
+            </dt>
+            <dd>Same as textChanged() but with support for null values.</dd>
+          </dl>
+        </section>
+        <section id="pub-slots">
+          <h2><a href="#pub-slots">Public slots</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a312b3b955a1ace811e8c529f810af0df" class="m-doc">clearValue</a>(</span><span class="m-doc-wrap">) <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Clears the widget and resets it to the null value.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a37688d1aa678a6cb45d05f77c17b5e94"><div>
+            <h3>
+              enum QgsFilterLineEdit::<wbr /><a href="#a37688d1aa678a6cb45d05f77c17b5e94" class="m-doc-self">ClearMode</a>
+            </h3>
+            <p>Behavior when clearing value of widget.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a37688d1aa678a6cb45d05f77c17b5e94a35a126aa119b5db5892751f3bac7241d" class="m-doc-self" name="a37688d1aa678a6cb45d05f77c17b5e94a35a126aa119b5db5892751f3bac7241d">ClearToNull</a></td>
+                  <td>
+                  <p>Reset value to null.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a37688d1aa678a6cb45d05f77c17b5e94a9db74c72daa6d9f69ddfe58d51a4e0bc" class="m-doc-self" name="a37688d1aa678a6cb45d05f77c17b5e94a9db74c72daa6d9f69ddfe58d51a4e0bc">ClearToDefault</a></td>
+                  <td>
+                  <p>Reset value to default value (see <a href="classQgsFilterLineEdit.html#ae7f2af287b20e2bf9527fb77b57e4a2f" class="m-doc">defaultValue()</a> )</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a7ba35c433282b87e4a21f556beda45e8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7ba35c433282b87e4a21f556beda45e8" class="m-doc-self">QgsFilterLineEdit</a>(</span><span class="m-doc-wrap">QWidget* parent = nullptr,
+              const QString&amp; nullValue = QString())</span></span>
+            </h3>
+            <p>Constructor for <a href="classQgsFilterLineEdit.html" class="m-doc">QgsFilterLineEdit</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">parent</td>
+                  <td>parent widget</td>
+                </tr>
+                <tr>
+                  <td>nullValue</td>
+                  <td>string for representing null values</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a2321e4c5a09e966c4012b8a7b013c484"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsFilterLineEdit.html#a37688d1aa678a6cb45d05f77c17b5e94" class="m-doc">ClearMode</a> QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2321e4c5a09e966c4012b8a7b013c484" class="m-doc-self">clearMode</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the clear mode for the widget.</p>
+<p>The clear mode defines the behavior of the widget when its value is cleared. This defaults to ClearToNull.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#afd81e53ea645bc357166d46e5306bc02" class="m-doc">setClearMode()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a87e85fa209c18ede7b67d3061abe0fc8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a87e85fa209c18ede7b67d3061abe0fc8" class="m-doc-self">defaultValue</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the default value for the widget.</p>
+<p>The default value is a value which the widget will be reset to if it is cleared and the <a href="classQgsFilterLineEdit.html#a968afae3f5351a22c2c04d1b7e0ee5c5" class="m-doc">clearMode()</a> is equal to ClearToDefault.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#ac7bd2383aeb8745e82d4b8aec8ddf3bf" class="m-doc">setDefaultValue()</a></p><p><a href="classQgsFilterLineEdit.html#a968afae3f5351a22c2c04d1b7e0ee5c5" class="m-doc">clearMode()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="af97ab9c4267aa8ec311588cc5de5139a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af97ab9c4267aa8ec311588cc5de5139a" class="m-doc-self">event</a>(</span><span class="m-doc-wrap">QEvent* event) <span class="m-label m-warning">override</span></span></span>
+            </h3>
+            <p>Reimplemented to enable/disable the clear action depending on read-only status.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0.1</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3820c203ecd0d05723138cf4cbb03d9e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3820c203ecd0d05723138cf4cbb03d9e" class="m-doc-self">isNull</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Determine if the current text represents null.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if the widget&#x27;s value is null.</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3c3f56f0e5a8e29eb69c397af710ad4f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3c3f56f0e5a8e29eb69c397af710ad4f" class="m-doc-self">nullValue</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the string used for representating null values in the widget.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a9a9a50f208d123afc047f20a16e8d475" class="m-doc">setNullValue()</a></p><p><a href="classQgsFilterLineEdit.html#a3820c203ecd0d05723138cf4cbb03d9e" class="m-doc">isNull()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5e2e98dcb1111b1e3b8c279c42e5d8a5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5e2e98dcb1111b1e3b8c279c42e5d8a5" class="m-doc-self">selectOnFocus</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Will select all text when this widget receives the focus.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afd81e53ea645bc357166d46e5306bc02"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afd81e53ea645bc357166d46e5306bc02" class="m-doc-self">setClearMode</a>(</span><span class="m-doc-wrap"><a href="classQgsFilterLineEdit.html#a37688d1aa678a6cb45d05f77c17b5e94" class="m-doc">ClearMode</a> mode)</span></span>
+            </h3>
+            <p>Sets the clear mode for the widget.</p>
+<p>The clear mode defines the behavior of the widget when its value is cleared. This defaults to ClearToNull.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a968afae3f5351a22c2c04d1b7e0ee5c5" class="m-doc">clearMode()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac7bd2383aeb8745e82d4b8aec8ddf3bf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac7bd2383aeb8745e82d4b8aec8ddf3bf" class="m-doc-self">setDefaultValue</a>(</span><span class="m-doc-wrap">const QString&amp; defaultValue)</span></span>
+            </h3>
+            <p>Sets the default value for the widget.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">defaultValue</td>
+                  <td>default value</td>
+                </tr>
+              </tbody>
+            </table>
+<p>The default value is a value which the widget will be reset to if it is cleared and the <a href="classQgsFilterLineEdit.html#a968afae3f5351a22c2c04d1b7e0ee5c5" class="m-doc">clearMode()</a> is equal to ClearToDefault.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#ae7f2af287b20e2bf9527fb77b57e4a2f" class="m-doc">defaultValue()</a></p><p><a href="classQgsFilterLineEdit.html#a968afae3f5351a22c2c04d1b7e0ee5c5" class="m-doc">clearMode()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a9a9a50f208d123afc047f20a16e8d475"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9a9a50f208d123afc047f20a16e8d475" class="m-doc-self">setNullValue</a>(</span><span class="m-doc-wrap">const QString&amp; nullValue)</span></span>
+            </h3>
+            <p>Sets the string representation for null values in the widget.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">nullValue</td>
+                  <td>string to show when widget&#x27;s value is null</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This does not affect the values returned for null values by <a href="classQgsFilterLineEdit.html#a5881b13a6a8fc630f32c80fa525dcfb5" class="m-doc">value()</a>, rather it only affects the text that is shown to users when the widget&#x27;s value is null.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8712596a49619befa3b3e353c654fc3f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8712596a49619befa3b3e353c654fc3f" class="m-doc-self">setSelectOnFocus</a>(</span><span class="m-doc-wrap">bool selectOnFocus)</span></span>
+            </h3>
+            <p>Will select all text when this widget receives the focus.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7177f2c32f8664e2d7d27e3e4c3e5d3a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7177f2c32f8664e2d7d27e3e4c3e5d3a" class="m-doc-self">setShowClearButton</a>(</span><span class="m-doc-wrap">bool visible)</span></span>
+            </h3>
+            <p>Sets whether the widget&#x27;s clear button is visible.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">visible</td>
+                  <td>set to false to hide the clear button</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a657bcd1354f0f3d41b82faecbc4c939e" class="m-doc">showClearButton()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a69fe24bd1646f66aff0611b4533f4a8b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69fe24bd1646f66aff0611b4533f4a8b" class="m-doc-self">setShowSearchIcon</a>(</span><span class="m-doc-wrap">bool visible)</span></span>
+            </h3>
+            <p>Define if a search icon shall be shown on the left of the image when no text is entered.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">visible</td>
+                  <td>set to false to hide the search icon</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="adfa8cb722a93f8970707c99ce4753f38"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adfa8cb722a93f8970707c99ce4753f38" class="m-doc-self">setShowSpinner</a>(</span><span class="m-doc-wrap">bool showSpinner)</span></span>
+            </h3>
+            <p>Show a spinner icon.</p>
+<p>This can be used for search boxes to indicate that something is going on in the background.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a58128a75af9ced17ac96e41adfaaf3b6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a58128a75af9ced17ac96e41adfaaf3b6" class="m-doc-self">setValue</a>(</span><span class="m-doc-wrap">const QString&amp; value)</span></span>
+            </h3>
+            <p>Sets the current text for the widget with support for handling null values.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td>The text to set. If a null string is provided, the text shown in the widget will be set to the current <a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a>.</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a5881b13a6a8fc630f32c80fa525dcfb5" class="m-doc">value()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a300aa5e8fbabf1dc6085409338c64295"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a300aa5e8fbabf1dc6085409338c64295" class="m-doc-self">showClearButton</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns true if the widget&#x27;s clear button is visible.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a7177f2c32f8664e2d7d27e3e4c3e5d3a" class="m-doc">setShowClearButton()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3524b3fbc28908b6576bd944cc766cb4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3524b3fbc28908b6576bd944cc766cb4" class="m-doc-self">showSearchIcon</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns if a search icon shall be shown on the left of the image when no text is entered.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a51af186d62a25ee4bf3c08288730d999"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a51af186d62a25ee4bf3c08288730d999" class="m-doc-self">showSpinner</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Show a spinner icon.</p>
+<p>This can be used for search boxes to indicate that something is going on in the background.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="accddbd5d79a98dce2046492f1c820e8d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#accddbd5d79a98dce2046492f1c820e8d" class="m-doc-self">value</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the text of this edit with support for handling null values.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>Current text (or null string if it matches the <a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a> property )</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>If the text in the widget matches the current <a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a> then the returned value will be a null string.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a58128a75af9ced17ac96e41adfaaf3b6" class="m-doc">setValue()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab49c48cc6490fad1c80dcad899c23d5c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab49c48cc6490fad1c80dcad899c23d5c" class="m-doc-self">cleared</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Emitted when the widget is cleared.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#a312b3b955a1ace811e8c529f810af0df" class="m-doc">clearValue()</a></p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1e87a0ef1a4004ea620e5fe04d103ed8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1e87a0ef1a4004ea620e5fe04d103ed8" class="m-doc-self">selectOnFocusChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Will select all text when this widget receives the focus.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1fdf65e5bb66b83648a7b6635560327e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1fdf65e5bb66b83648a7b6635560327e" class="m-doc-self">showSpinnerChanged</a>(</span><span class="m-doc-wrap">) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Show a spinner icon.</p>
+<p>This can be used for search boxes to indicate that something is going on in the background.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="afe960aaf228297e1b99b8f5b3ac5b999"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afe960aaf228297e1b99b8f5b3ac5b999" class="m-doc-self">valueChanged</a>(</span><span class="m-doc-wrap">const QString&amp; value) <span class="m-label m-success">signal</span></span></span>
+            </h3>
+            <p>Same as textChanged() but with support for null values.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">value</td>
+                  <td>The current text or null string if it matches the <a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a> property.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a312b3b955a1ace811e8c529f810af0df"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsFilterLineEdit::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a312b3b955a1ace811e8c529f810af0df" class="m-doc-self">clearValue</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span> <span class="m-label m-success">public slot</span></span></span>
+            </h3>
+            <p>Clears the widget and resets it to the null value.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsFilterLineEdit.html#ab2280c3b7bcf2ae8ea3a2d833e46a2dc" class="m-doc">nullValue()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

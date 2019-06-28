@@ -1,0 +1,911 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsPaintEffect" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsPaintEffect</compoundname>
+    <derivedcompoundref refid="classQgsBlurEffect" prot="public" virt="non-virtual">QgsBlurEffect</derivedcompoundref>
+    <derivedcompoundref refid="classQgsColorEffect" prot="public" virt="non-virtual">QgsColorEffect</derivedcompoundref>
+    <derivedcompoundref refid="classQgsDrawSourceEffect" prot="public" virt="non-virtual">QgsDrawSourceEffect</derivedcompoundref>
+    <derivedcompoundref refid="classQgsEffectStack" prot="public" virt="non-virtual">QgsEffectStack</derivedcompoundref>
+    <derivedcompoundref refid="classQgsGlowEffect" prot="public" virt="non-virtual">QgsGlowEffect</derivedcompoundref>
+    <derivedcompoundref refid="classQgsShadowEffect" prot="public" virt="non-virtual">QgsShadowEffect</derivedcompoundref>
+    <derivedcompoundref refid="classQgsTransformEffect" prot="public" virt="non-virtual">QgsTransformEffect</derivedcompoundref>
+    <includes refid="qgspainteffect_8h" local="no">qgspainteffect.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982" prot="public" static="no">
+        <name>DrawMode</name>
+        <enumvalue id="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a55e2fe67bb81e4bf22ac0934e9469327" prot="public">
+          <name>Modifier</name>
+          <briefdescription>
+<para>The result of the effect is not rendered, but is passed on to following effects in the stack. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a4daa726e138125db565a732921d12b00" prot="public">
+          <name>Render</name>
+          <briefdescription>
+<para>The result of the effect is rendered on the destination, but does not affect subsequent effects in the stack. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a7d76ef7c905d15d8aca171036debede0" prot="public">
+          <name>ModifyAndRender</name>
+          <briefdescription>
+<para>The result of the effect is both rendered and passed on to subsequent effects in the stack. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Drawing modes for effects. </para>        </briefdescription>
+        <detaileddescription>
+<para>These modes are used only when effects are drawn as part of an effects stack <simplesect kind="see"><para><ref refid="classQgsEffectStack" kindref="compound">QgsEffectStack</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="103" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsPaintEffect_1a0ddd50bdc3a4acc1a38eefcc399f90d1" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982" kindref="member">DrawMode</ref></type>
+        <definition>DrawMode QgsPaintEffect::mDrawMode</definition>
+        <argsstring></argsstring>
+        <name>mDrawMode</name>
+        <initializer>= <ref refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a7d76ef7c905d15d8aca171036debede0" kindref="member">ModifyAndRender</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="225" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1a8d694eb8de92e467cadec65068b04132" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsPaintEffect::mEnabled</definition>
+        <argsstring></argsstring>
+        <name>mEnabled</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="224" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1a019d53bdb605614a22bb0292269fca08" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsPaintEffect::requiresQPainterDpiFix</definition>
+        <argsstring></argsstring>
+        <name>requiresQPainterDpiFix</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="226" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsPaintEffect_1a931502f2f4908ee1d4b90e8341f10730" prot="private" static="no" mutable="no">
+        <type>QPainter *</type>
+        <definition>QPainter* QgsPaintEffect::mEffectPainter</definition>
+        <argsstring></argsstring>
+        <name>mEffectPainter</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="303" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1a84e0b9719c24962914efc5acb9bcbb1c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsPaintEffect::mOwnsImage</definition>
+        <argsstring></argsstring>
+        <name>mOwnsImage</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="300" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1a2ac04f6a3f6495c9548edb4ca154aab9" prot="private" static="no" mutable="no">
+        <type>const QPicture *</type>
+        <definition>const QPicture* QgsPaintEffect::mPicture</definition>
+        <argsstring></argsstring>
+        <name>mPicture</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="298" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1a812f2400392765763839cd3025542260" prot="private" static="no" mutable="no">
+        <type>QPainter *</type>
+        <definition>QPainter* QgsPaintEffect::mPrevPainter</definition>
+        <argsstring></argsstring>
+        <name>mPrevPainter</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="302" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1a394a4755d5b9f3afcbb25e7fbb87a5d0" prot="private" static="no" mutable="no">
+        <type>QImage *</type>
+        <definition>QImage* QgsPaintEffect::mSourceImage</definition>
+        <argsstring></argsstring>
+        <name>mSourceImage</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="299" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsPaintEffect_1aa9641df02639c339cc5f141260d72913" prot="private" static="no" mutable="no">
+        <type>QPicture *</type>
+        <definition>QPicture* QgsPaintEffect::mTempPicture</definition>
+        <argsstring></argsstring>
+        <name>mTempPicture</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="304" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsPaintEffect_1a81a2be60ead92144d65e361e2866c695" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsEffectStack</definition>
+        <argsstring></argsstring>
+        <name>QgsEffectStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="308" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsPaintEffect_1a017fc678352720c740de3362c3e18442" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsPaintEffect::QgsPaintEffect</definition>
+        <argsstring>()=default</argsstring>
+        <name>QgsPaintEffect</name>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1acf2609cfb85f04e9b6441b84cf9b0163" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsPaintEffect::QgsPaintEffect</definition>
+        <argsstring>(const QgsPaintEffect &amp;other)</argsstring>
+        <name>QgsPaintEffect</name>
+        <param>
+          <type>const <ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="115" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="27" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a93b7a8e5f2fb3aa8658a20c5374917d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>QgsPaintEffect::~QgsPaintEffect</definition>
+        <argsstring>()</argsstring>
+        <name>~QgsPaintEffect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="116" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="34" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a425bfa8d03538b48923fb1fd74d573d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::begin</definition>
+        <argsstring>(QgsRenderContext &amp;context)</argsstring>
+        <name>begin</name>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Begins intercepting paint operations to a render context. </para>        </briefdescription>
+        <detaileddescription>
+<para>When the corresponding <ref refid="classQgsPaintEffect_1a99d751b7346141fecb2d32c2964b947f" kindref="member">end()</ref> member is called all intercepted paint operations will be drawn to the render context after being modified by the effect. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a99d751b7346141fecb2d32c2964b947f" kindref="member">end</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a8c72a0ad77d041425eb8333adcb7d2ff" kindref="member">render</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="182" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="117" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a7b2b7697df9bff751b9bbbcccccfdc88" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref> *</type>
+        <definition>virtual QgsPaintEffect* QgsPaintEffect::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <reimplementedby refid="classQgsColorEffect_1a501f7aa0601e91b42decf29eeba75a05">clone</reimplementedby>
+        <reimplementedby refid="classQgsTransformEffect_1a564e985188538b5b0ae319b3532c8e22">clone</reimplementedby>
+        <reimplementedby refid="classQgsBlurEffect_1a013c09a1b8b81f745b3eae3960fa369e">clone</reimplementedby>
+        <reimplementedby refid="classQgsEffectStack_1aabe31f2fa394570d39c8c7a8ce8bd198">clone</reimplementedby>
+        <reimplementedby refid="classQgsDropShadowEffect_1aec21c81e91e8f5075f019b64ec99efb1">clone</reimplementedby>
+        <reimplementedby refid="classQgsInnerShadowEffect_1ad68f748903e010bdc93fd332145e1616">clone</reimplementedby>
+        <reimplementedby refid="classQgsOuterGlowEffect_1a87c46b965817d3843e50c98dfff29d81">clone</reimplementedby>
+        <reimplementedby refid="classQgsInnerGlowEffect_1a1eeda6fdcf603e5cef337ce8ddb963b4">clone</reimplementedby>
+        <reimplementedby refid="classQgsDrawSourceEffect_1a87d173470d652e188ff49b24fa954306">clone</reimplementedby>
+        <briefdescription>
+<para>Duplicates an effect by creating a deep copy of the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>clone of paint effect </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="128" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a8ec1443e5c5ff1212add50a713b1700c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982" kindref="member">DrawMode</ref></type>
+        <definition>DrawMode QgsPaintEffect::drawMode</definition>
+        <argsstring>() const</argsstring>
+        <name>drawMode</name>
+        <briefdescription>
+<para>Returns the draw mode for the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para>This property only has an effect if the paint effect is used in a <ref refid="classQgsEffectStack" kindref="compound">QgsEffectStack</ref>. <simplesect kind="return"><para>draw mode for effect </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a0e0eba1cbbc19e2ae1c54715e91d9921" kindref="member">setDrawMode</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="212" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="212" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1aab11df83128d9bb53a90d76fca211986" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsPaintEffect::enabled</definition>
+        <argsstring>() const</argsstring>
+        <name>enabled</name>
+        <briefdescription>
+<para>Returns whether the effect is enabled. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if effect is enabled </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a27eb0c4c8b423968a510f9b1c227644b" kindref="member">setEnabled</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="197" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a99d751b7346141fecb2d32c2964b947f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::end</definition>
+        <argsstring>(QgsRenderContext &amp;context)</argsstring>
+        <name>end</name>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Ends interception of paint operations to a render context, and draws the result to the render context after being modified by the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a425bfa8d03538b48923fb1fd74d573d5" kindref="member">begin</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="190" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="132" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a442466a24f26991098292419cce2b407" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref></type>
+        <definition>virtual QgsStringMap QgsPaintEffect::properties</definition>
+        <argsstring>() const =0</argsstring>
+        <name>properties</name>
+        <reimplementedby refid="classQgsShadowEffect_1ab8c7a0fe606e25fa9619764e231c23e1">properties</reimplementedby>
+        <reimplementedby refid="classQgsColorEffect_1a1ef74ee45e61ab83315aa76e418794c8">properties</reimplementedby>
+        <reimplementedby refid="classQgsTransformEffect_1a98d450756b66301ab2c8f7395b197a43">properties</reimplementedby>
+        <reimplementedby refid="classQgsGlowEffect_1ac620b4cc87691ac3e28e47923662d819">properties</reimplementedby>
+        <reimplementedby refid="classQgsBlurEffect_1a5460e97ca897e578f029c0f0ad7cbce8">properties</reimplementedby>
+        <reimplementedby refid="classQgsEffectStack_1a65dcc8a7bf30fc327895c6b1db0e28f7">properties</reimplementedby>
+        <reimplementedby refid="classQgsDrawSourceEffect_1a5879e42a824074b86adc621c3ea7916b">properties</reimplementedby>
+        <briefdescription>
+<para>Returns the properties describing the paint effect encoded in a string format. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>string map of properties, in the form property key, value </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a7c11b9321444d5069f741cd5f6bf8614" kindref="member">readProperties</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a3183a56cb881bf2c6fa30e119ec9109a" kindref="member">saveProperties</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="137" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a7c11b9321444d5069f741cd5f6bf8614" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsPaintEffect::readProperties</definition>
+        <argsstring>(const QgsStringMap &amp;props)=0</argsstring>
+        <name>readProperties</name>
+        <reimplementedby refid="classQgsShadowEffect_1aa9702f1d991132ad2ca6a6d479787994">readProperties</reimplementedby>
+        <reimplementedby refid="classQgsColorEffect_1a8f3cf8cebfbf1458d5f9bcf5ef103102">readProperties</reimplementedby>
+        <reimplementedby refid="classQgsTransformEffect_1a34389efed1137983f87f34715595fcf2">readProperties</reimplementedby>
+        <reimplementedby refid="classQgsGlowEffect_1a593dfd4e3e6c78b7cf13390528976ba9">readProperties</reimplementedby>
+        <reimplementedby refid="classQgsBlurEffect_1a3d711cb220adb598c6f95045721f956f">readProperties</reimplementedby>
+        <reimplementedby refid="classQgsEffectStack_1a66880305c5f5ad6ade1942e13effa872">readProperties</reimplementedby>
+        <reimplementedby refid="classQgsDrawSourceEffect_1a74697642ed8411ce09ba906fbf49a679">readProperties</reimplementedby>
+        <param>
+          <type>const <ref refid="qgis_8h_1ab13d4e9821da606b92748097c691b9dd" kindref="member">QgsStringMap</ref> &amp;</type>
+          <declname>props</declname>
+        </param>
+        <briefdescription>
+<para>Reads a string map of an effect&apos;s properties and restores the effect to the state described by the properties map. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>props</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>effect properties encoded in a string map </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a442466a24f26991098292419cce2b407" kindref="member">properties</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="145" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a1958ff32795826542e58642e8bcdd99c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPaintEffect::readProperties</definition>
+        <argsstring>(const QDomElement &amp;element)</argsstring>
+        <name>readProperties</name>
+        <reimplementedby refid="classQgsEffectStack_1a68766d95e8593c18fbb726a5a7de340b">readProperties</reimplementedby>
+        <param>
+          <type>const QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>Restores the effect to the state described by a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>DOM element describing an effect&apos;s state </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if read was successful </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a3183a56cb881bf2c6fa30e119ec9109a" kindref="member">saveProperties</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="164" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="77" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a8c72a0ad77d041425eb8333adcb7d2ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::render</definition>
+        <argsstring>(QPicture &amp;picture, QgsRenderContext &amp;context)</argsstring>
+        <name>render</name>
+        <param>
+          <type>QPicture &amp;</type>
+          <declname>picture</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Renders a picture using the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>picture</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source QPicture to render </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a425bfa8d03538b48923fb1fd74d573d5" kindref="member">begin</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="172" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="107" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a3183a56cb881bf2c6fa30e119ec9109a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsPaintEffect::saveProperties</definition>
+        <argsstring>(QDomDocument &amp;doc, QDomElement &amp;element) const</argsstring>
+        <name>saveProperties</name>
+        <reimplementedby refid="classQgsEffectStack_1a359d5f46438e216cd60d31d3163f3852">saveProperties</reimplementedby>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>doc</declname>
+        </param>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+<para>Saves the current state of the effect to a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para>The default behavior is to save the properties string map returned by <ref refid="classQgsPaintEffect_1a442466a24f26991098292419cce2b407" kindref="member">properties()</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>doc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination DOM document </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>element</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination DOM element </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if save was successful </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a7c11b9321444d5069f741cd5f6bf8614" kindref="member">readProperties</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="54" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a0e0eba1cbbc19e2ae1c54715e91d9921" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::setDrawMode</definition>
+        <argsstring>(DrawMode drawMode)</argsstring>
+        <name>setDrawMode</name>
+        <param>
+          <type><ref refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982" kindref="member">DrawMode</ref></type>
+          <declname>drawMode</declname>
+        </param>
+        <briefdescription>
+<para>Sets the draw mode for the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para>This property only has an effect if the paint effect is used in a <ref refid="classQgsEffectStack" kindref="compound">QgsEffectStack</ref>. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>drawMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>draw mode for effect </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a8ec1443e5c5ff1212add50a713b1700c" kindref="member">drawMode</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="220" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a27eb0c4c8b423968a510f9b1c227644b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::setEnabled</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>setEnabled</name>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Sets whether the effect is enabled. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to false to disable the effect </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1aab11df83128d9bb53a90d76fca211986" kindref="member">enabled</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="204" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1af814e71abb9cf4674c74d088296b6bbf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsPaintEffect::type</definition>
+        <argsstring>() const =0</argsstring>
+        <name>type</name>
+        <reimplementedby refid="classQgsColorEffect_1a3e5720b80de4903c0b37a33202a9acbd">type</reimplementedby>
+        <reimplementedby refid="classQgsTransformEffect_1aaefa570734b3c34643e734cb8da339bf">type</reimplementedby>
+        <reimplementedby refid="classQgsBlurEffect_1aaf0026ae57e50997b41d85395ba1d3b1">type</reimplementedby>
+        <reimplementedby refid="classQgsEffectStack_1a47e13409eacf0e24dec65e51de5a9234">type</reimplementedby>
+        <reimplementedby refid="classQgsDropShadowEffect_1a9cad8a60c7df291430fe1afc3ff82d78">type</reimplementedby>
+        <reimplementedby refid="classQgsInnerShadowEffect_1a4e452221220529fcbb921542c7abc3da">type</reimplementedby>
+        <reimplementedby refid="classQgsOuterGlowEffect_1a0a4943dce52f7a4e84e60c1dd8f4371b">type</reimplementedby>
+        <reimplementedby refid="classQgsInnerGlowEffect_1ab93a4f4851ce3a553e58f3818af337e8">type</reimplementedby>
+        <reimplementedby refid="classQgsDrawSourceEffect_1ac1a8789440fc91189d6705962f481002">type</reimplementedby>
+        <briefdescription>
+<para>Returns the effect type. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>unique string representation of the effect type </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="122" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsPaintEffect_1acefb25d50d01507f2d664a79c773390a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QRectF</type>
+        <definition>QRectF QgsPaintEffect::boundingRect</definition>
+        <argsstring>(const QRectF &amp;rect, const QgsRenderContext &amp;context) const</argsstring>
+        <name>boundingRect</name>
+        <reimplementedby refid="classQgsBlurEffect_1a53c4f85d89f90a9991601bff0755517a">boundingRect</reimplementedby>
+        <reimplementedby refid="classQgsShadowEffect_1aa47f2ce0d94d70aa3f3a82e52cedbe95">boundingRect</reimplementedby>
+        <reimplementedby refid="classQgsGlowEffect_1ae6ca6ba2c2a14325112855aa5b063bab">boundingRect</reimplementedby>
+        <reimplementedby refid="classQgsTransformEffect_1ac811adcaae2dd21902808a4978c76609">boundingRect</reimplementedby>
+        <param>
+          <type>const QRectF &amp;</type>
+          <declname>rect</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns the bounding rect required for drawing the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para>This method can be used to expand the bounding rect of a source picture to account for offset or blurring effects. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rect</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>original source bounding rect </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>modified bounding rect </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1afad6072b9380a1c2270ba121816462ea" kindref="member">sourceAsImage</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="286" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="203" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1af5539f4985268b89f836c1c30827b96c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void QgsPaintEffect::draw</definition>
+        <argsstring>(QgsRenderContext &amp;context)=0</argsstring>
+        <name>draw</name>
+        <reimplementedby refid="classQgsBlurEffect_1a2b42839abfdce9a1bd378ccc800fe795">draw</reimplementedby>
+        <reimplementedby refid="classQgsEffectStack_1a375259581126a8e0f3ae7e9706b3a8ec">draw</reimplementedby>
+        <reimplementedby refid="classQgsShadowEffect_1a920a7e0317ed10649070b9a57c47e038">draw</reimplementedby>
+        <reimplementedby refid="classQgsColorEffect_1abb7682dcd05a88f6468bf789c3619464">draw</reimplementedby>
+        <reimplementedby refid="classQgsGlowEffect_1a2daebb997d6ee711f10b2a9c7990082b">draw</reimplementedby>
+        <reimplementedby refid="classQgsTransformEffect_1ab4c4aeb59821b295f6095f7ab99cbfd3">draw</reimplementedby>
+        <reimplementedby refid="classQgsDrawSourceEffect_1a718acf0732f72a9cbfccc9fc9460e64d">draw</reimplementedby>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Handles drawing of the effect&apos;s result on to the specified render context. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes must reimplement this method to apply any transformations to the source QPicture and draw the result using the context&apos;s painter. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a33a7179181f0cafed64ee16ec0042e5d" kindref="member">drawSource</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="235" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a33a7179181f0cafed64ee16ec0042e5d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::drawSource</definition>
+        <argsstring>(QPainter &amp;painter)</argsstring>
+        <name>drawSource</name>
+        <param>
+          <type>QPainter &amp;</type>
+          <declname>painter</declname>
+        </param>
+        <briefdescription>
+<para>Draws the source QPicture onto the specified painter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Handles scaling of the picture to account for the destination painter&apos;s DPI. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>painter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination painter </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a533441986048341f85a7aa100bc75b34" kindref="member">source</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1afad6072b9380a1c2270ba121816462ea" kindref="member">sourceAsImage</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="244" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="158" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1ad5e1ae12d59feeb077a2175cb54ba48f" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsPaintEffect::fixQPictureDpi</definition>
+        <argsstring>(QPainter *painter) const</argsstring>
+        <name>fixQPictureDpi</name>
+        <param>
+          <type>QPainter *</type>
+          <declname>painter</declname>
+        </param>
+        <briefdescription>
+<para>Applies a workaround to a QPainter to avoid an issue with incorrect scaling when drawing QPictures. </para>        </briefdescription>
+        <detaileddescription>
+<para>This may need to be called by derived classes prior to rendering results onto a painter. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>painter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination painter </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="294" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="209" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a87b6fdf7089eea8917b226779d7d4766" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QPointF</type>
+        <definition>QPointF QgsPaintEffect::imageOffset</definition>
+        <argsstring>(const QgsRenderContext &amp;context) const</argsstring>
+        <name>imageOffset</name>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns the offset which should be used when drawing the source image on to a destination render context. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>destination render context </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>point offset for image top left corner </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1afad6072b9380a1c2270ba121816462ea" kindref="member">sourceAsImage</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="275" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="198" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1a533441986048341f85a7aa100bc75b34" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const QPicture *</type>
+        <definition>const QPicture* QgsPaintEffect::source</definition>
+        <argsstring>() const</argsstring>
+        <name>source</name>
+        <briefdescription>
+<para>Returns the source QPicture. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="classQgsPaintEffect_1af5539f4985268b89f836c1c30827b96c" kindref="member">draw()</ref> member can utilize this when drawing the effect. <simplesect kind="return"><para>source QPicture </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a33a7179181f0cafed64ee16ec0042e5d" kindref="member">drawSource</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1afad6072b9380a1c2270ba121816462ea" kindref="member">sourceAsImage</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="253" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="253" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsPaintEffect_1afad6072b9380a1c2270ba121816462ea" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage *</type>
+        <definition>QImage * QgsPaintEffect::sourceAsImage</definition>
+        <argsstring>(QgsRenderContext &amp;context)</argsstring>
+        <name>sourceAsImage</name>
+        <param>
+          <type><ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Returns the source QPicture rendered to a new QImage. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="classQgsPaintEffect_1af5539f4985268b89f836c1c30827b96c" kindref="member">draw()</ref> member can utilize this when drawing the effect. The image will be padded or cropped from the original source QPicture by the results of the <ref refid="classQgsPaintEffect_1acefb25d50d01507f2d664a79c773390a" kindref="member">boundingRect()</ref> method. The result is cached to speed up subsequent calls to sourceAsImage. <simplesect kind="return"><para>source QPicture rendered to an image </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a33a7179181f0cafed64ee16ec0042e5d" kindref="member">drawSource</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a533441986048341f85a7aa100bc75b34" kindref="member">source</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1a87b6fdf7089eea8917b226779d7d4766" kindref="member">imageOffset</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsPaintEffect_1acefb25d50d01507f2d664a79c773390a" kindref="member">boundingRect</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="266" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="173" bodyend="196"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsPaintEffect_1aca64106a67e4b3775b77324abd8e8caa" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QRectF</type>
+        <definition>QRectF QgsPaintEffect::imageBoundingRect</definition>
+        <argsstring>(const QgsRenderContext &amp;context) const</argsstring>
+        <name>imageBoundingRect</name>
+        <param>
+          <type>const <ref refid="classQgsRenderContext" kindref="compound">QgsRenderContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="306" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.cpp" bodystart="219" bodyend="222"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for visual effects which can be applied to QPicture drawings. </para>    </briefdescription>
+    <detaileddescription>
+<para><ref refid="classQgsPaintEffect" kindref="compound">QgsPaintEffect</ref> objects can be used to modify QPicture drawings prior to rendering them with a QPainter operation. There are two methods for drawing using an effect, either drawing a picture directly, or by intercepting drawing operations to a render context.</para><para>To directly draw a picture, use the <ref refid="classQgsPaintEffect_1a8c72a0ad77d041425eb8333adcb7d2ff" kindref="member">render()</ref> method with a source QPicture and destination render context.</para><para>Intercepting drawing operations to a render context is achieved by first calling the <ref refid="classQgsPaintEffect_1a425bfa8d03538b48923fb1fd74d573d5" kindref="member">begin()</ref> method, passing a render context. Any drawing operations performed on the render context will not directly affect the context&apos;s paint device. When the drawing operations have been completed, call the <ref refid="classQgsPaintEffect_1a99d751b7346141fecb2d32c2964b947f" kindref="member">end()</ref> method. This will perform the paint effect on the intercepted drawing operations and render the result to the render context&apos;s paint device.</para><para><simplesect kind="see"><para><ref refid="classQgsPaintEffectRegistry" kindref="compound">QgsPaintEffectRegistry</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.9 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6336">
+        <label>QgsShadowEffect</label>
+        <link refid="classQgsShadowEffect"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6335">
+        <label>QgsOuterGlowEffect</label>
+        <link refid="classQgsOuterGlowEffect"/>
+        <childnode refid="6333" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6334">
+        <label>QgsInnerGlowEffect</label>
+        <link refid="classQgsInnerGlowEffect"/>
+        <childnode refid="6333" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6332">
+        <label>QgsEffectStack</label>
+        <link refid="classQgsEffectStack"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6328">
+        <label>QgsPaintEffect</label>
+        <link refid="classQgsPaintEffect"/>
+      </node>
+      <node id="6330">
+        <label>QgsColorEffect</label>
+        <link refid="classQgsColorEffect"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6329">
+        <label>QgsBlurEffect</label>
+        <link refid="classQgsBlurEffect"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6337">
+        <label>QgsDropShadowEffect</label>
+        <link refid="classQgsDropShadowEffect"/>
+        <childnode refid="6336" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6333">
+        <label>QgsGlowEffect</label>
+        <link refid="classQgsGlowEffect"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6339">
+        <label>QgsTransformEffect</label>
+        <link refid="classQgsTransformEffect"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6331">
+        <label>QgsDrawSourceEffect</label>
+        <link refid="classQgsDrawSourceEffect"/>
+        <childnode refid="6328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6338">
+        <label>QgsInnerShadowEffect</label>
+        <link refid="classQgsInnerShadowEffect"/>
+        <childnode refid="6336" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" line="53" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgspainteffect.h" bodystart="52" bodyend="310"/>
+    <listofallmembers>
+      <member refid="classQgsPaintEffect_1a425bfa8d03538b48923fb1fd74d573d5" prot="public" virt="virtual"><scope>QgsPaintEffect</scope><name>begin</name></member>
+      <member refid="classQgsPaintEffect_1acefb25d50d01507f2d664a79c773390a" prot="protected" virt="virtual"><scope>QgsPaintEffect</scope><name>boundingRect</name></member>
+      <member refid="classQgsPaintEffect_1a7b2b7697df9bff751b9bbbcccccfdc88" prot="public" virt="pure-virtual"><scope>QgsPaintEffect</scope><name>clone</name></member>
+      <member refid="classQgsPaintEffect_1af5539f4985268b89f836c1c30827b96c" prot="protected" virt="pure-virtual"><scope>QgsPaintEffect</scope><name>draw</name></member>
+      <member refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>DrawMode</name></member>
+      <member refid="classQgsPaintEffect_1a8ec1443e5c5ff1212add50a713b1700c" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>drawMode</name></member>
+      <member refid="classQgsPaintEffect_1a33a7179181f0cafed64ee16ec0042e5d" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>drawSource</name></member>
+      <member refid="classQgsPaintEffect_1aab11df83128d9bb53a90d76fca211986" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>enabled</name></member>
+      <member refid="classQgsPaintEffect_1a99d751b7346141fecb2d32c2964b947f" prot="public" virt="virtual"><scope>QgsPaintEffect</scope><name>end</name></member>
+      <member refid="classQgsPaintEffect_1ad5e1ae12d59feeb077a2175cb54ba48f" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>fixQPictureDpi</name></member>
+      <member refid="classQgsPaintEffect_1aca64106a67e4b3775b77324abd8e8caa" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>imageBoundingRect</name></member>
+      <member refid="classQgsPaintEffect_1a87b6fdf7089eea8917b226779d7d4766" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>imageOffset</name></member>
+      <member refid="classQgsPaintEffect_1a0ddd50bdc3a4acc1a38eefcc399f90d1" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mDrawMode</name></member>
+      <member refid="classQgsPaintEffect_1a931502f2f4908ee1d4b90e8341f10730" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mEffectPainter</name></member>
+      <member refid="classQgsPaintEffect_1a8d694eb8de92e467cadec65068b04132" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mEnabled</name></member>
+      <member refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a55e2fe67bb81e4bf22ac0934e9469327" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>Modifier</name></member>
+      <member refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a7d76ef7c905d15d8aca171036debede0" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>ModifyAndRender</name></member>
+      <member refid="classQgsPaintEffect_1a84e0b9719c24962914efc5acb9bcbb1c" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mOwnsImage</name></member>
+      <member refid="classQgsPaintEffect_1a2ac04f6a3f6495c9548edb4ca154aab9" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mPicture</name></member>
+      <member refid="classQgsPaintEffect_1a812f2400392765763839cd3025542260" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mPrevPainter</name></member>
+      <member refid="classQgsPaintEffect_1a394a4755d5b9f3afcbb25e7fbb87a5d0" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mSourceImage</name></member>
+      <member refid="classQgsPaintEffect_1aa9641df02639c339cc5f141260d72913" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>mTempPicture</name></member>
+      <member refid="classQgsPaintEffect_1a442466a24f26991098292419cce2b407" prot="public" virt="pure-virtual"><scope>QgsPaintEffect</scope><name>properties</name></member>
+      <member refid="classQgsPaintEffect_1a81a2be60ead92144d65e361e2866c695" prot="private" virt="non-virtual"><scope>QgsPaintEffect</scope><name>QgsEffectStack</name></member>
+      <member refid="classQgsPaintEffect_1a017fc678352720c740de3362c3e18442" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>QgsPaintEffect</name></member>
+      <member refid="classQgsPaintEffect_1acf2609cfb85f04e9b6441b84cf9b0163" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>QgsPaintEffect</name></member>
+      <member refid="classQgsPaintEffect_1a7c11b9321444d5069f741cd5f6bf8614" prot="public" virt="pure-virtual"><scope>QgsPaintEffect</scope><name>readProperties</name></member>
+      <member refid="classQgsPaintEffect_1a1958ff32795826542e58642e8bcdd99c" prot="public" virt="virtual"><scope>QgsPaintEffect</scope><name>readProperties</name></member>
+      <member refid="classQgsPaintEffect_1aef41c2d12d4241a4f80e00fbc56b0982a4daa726e138125db565a732921d12b00" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>Render</name></member>
+      <member refid="classQgsPaintEffect_1a8c72a0ad77d041425eb8333adcb7d2ff" prot="public" virt="virtual"><scope>QgsPaintEffect</scope><name>render</name></member>
+      <member refid="classQgsPaintEffect_1a019d53bdb605614a22bb0292269fca08" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>requiresQPainterDpiFix</name></member>
+      <member refid="classQgsPaintEffect_1a3183a56cb881bf2c6fa30e119ec9109a" prot="public" virt="virtual"><scope>QgsPaintEffect</scope><name>saveProperties</name></member>
+      <member refid="classQgsPaintEffect_1a0e0eba1cbbc19e2ae1c54715e91d9921" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>setDrawMode</name></member>
+      <member refid="classQgsPaintEffect_1a27eb0c4c8b423968a510f9b1c227644b" prot="public" virt="non-virtual"><scope>QgsPaintEffect</scope><name>setEnabled</name></member>
+      <member refid="classQgsPaintEffect_1a533441986048341f85a7aa100bc75b34" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>source</name></member>
+      <member refid="classQgsPaintEffect_1afad6072b9380a1c2270ba121816462ea" prot="protected" virt="non-virtual"><scope>QgsPaintEffect</scope><name>sourceAsImage</name></member>
+      <member refid="classQgsPaintEffect_1af814e71abb9cf4674c74d088296b6bbf" prot="public" virt="pure-virtual"><scope>QgsPaintEffect</scope><name>type</name></member>
+      <member refid="classQgsPaintEffect_1a93b7a8e5f2fb3aa8658a20c5374917d8" prot="public" virt="virtual"><scope>QgsPaintEffect</scope><name>~QgsPaintEffect</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

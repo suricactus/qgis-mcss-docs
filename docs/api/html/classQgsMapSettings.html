@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsMapSettings class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsMapSettings <span class="m-thin">class</span>
+        </h1>
+        <p>The <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a> class contains configuration for rendering of the map.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-methods">Public functions</a></li>
+                <li><a href="#pro-attribs">Protected variables</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+<p>The rendering itself is done by <a href="classQgsMapRendererJob.html" class="m-doc">QgsMapRendererJob</a> subclasses.</p><p>In order to set up <a href="classQgsMapSettings.html" class="m-doc">QgsMapSettings</a> instance, it is necessary to set at least few members: extent, output size and layers.</p><p>Some systems use high DPI scaling that is an alternative to the traditional DPI scaling. The operating system provides Qt with a scaling ratio and it scales window, event, and desktop geometry. The Cocoa platform plugin sets the scaling ratio as QWindow::devicePixelRatio(). To properly render the map on such systems, the map settings device pixel ratio shall be set accordingly.</p><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.4</p></aside>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a4185f13de667ef7a3ea0f109bb4b42fe" class="m-doc">Flag</a> { </span><span class="m-doc-wrap"><a href="#a4185f13de667ef7a3ea0f109bb4b42fea77997fe96172859429a7532032276a5f" class="m-doc">Antialiasing</a> = 0x01,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42feac93fb1ae98213a476b72dd43eca7ad6e" class="m-doc">DrawEditingInfo</a> = 0x02,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42feaebc658c0b4b3b1711723d8952a08a0d7" class="m-doc">ForceVectorOutput</a> = 0x04,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42fea995a29510a21dd193e989bf2953a1389" class="m-doc">UseAdvancedEffects</a> = 0x08,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42feaf0361c2cf3b8a47f152ccafa2214f8f1" class="m-doc">DrawLabeling</a> = 0x10,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42fea282380b939b3f192255e6ab991fc4ac5" class="m-doc">UseRenderingOptimization</a> = 0x20,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42feaa52cb4466eac2670c9d2667a629fec4d" class="m-doc">DrawSelection</a> = 0x40,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42fea7b436d2206e90654fccdd20ed28e632d" class="m-doc">DrawSymbolBounds</a> = 0x80,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42feadb2173a2f56efdf92d2feaa0ace1cd9b" class="m-doc">RenderMapTile</a> = 0x100,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42fea0d0924e583cdc32b5638d0f08ee5883a" class="m-doc">RenderPartialOutput</a> = 0x200,
+              <a href="#a4185f13de667ef7a3ea0f109bb4b42feaca5938fb4e3284193692e8fb8fd26eb9" class="m-doc">RenderPreviewJob</a> = 0x400 }</span>
+            </dt>
+            <dd>Enumeration of flags that adjust the way the map is rendered.</dd>
+          </dl>
+        </section>
+        <section id="pub-methods">
+          <h2><a href="#pub-methods">Public functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a5fc15c27d1e482426ad46d0bc8c87df3" class="m-doc-self" name="a5fc15c27d1e482426ad46d0bc8c87df3">backgroundColor</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Gets the background color of the map.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a60d324ce266fc45bed7fbc96ba5cb2cc" class="m-doc">customRenderFlags</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Gets custom rendering flags.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#af3ee8eaf56340f2b72bb160b2534a04e" class="m-doc-self" name="af3ee8eaf56340f2b72bb160b2534a04e">destinationCrs</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a></span>
+            </dt>
+            <dd>returns CRS of destination coordinate reference system</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0118e62f4bd2182a7b628687883f8174" class="m-doc">deviceOutputSize</a>(</span><span class="m-doc-wrap">) const -&gt; QSize</span>
+            </dt>
+            <dd>Returns the device output size of the map canvas This is equivalent to the output size multiplicated by the device pixel ratio.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ef7be5a21b5e4fb2cdfc47e46a8e3c5" class="m-doc">devicePixelRatio</a>(</span><span class="m-doc-wrap">) const -&gt; float</span>
+            </dt>
+            <dd>Returns device pixel ratio Common values are 1 for normal-dpi displays and 2 for high-dpi &quot;retina&quot; displays.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#abc4e5d29e0b184b738310f203a33c8ee" class="m-doc">ellipsoid</a>(</span><span class="m-doc-wrap">) const -&gt; QString</span>
+            </dt>
+            <dd>Returns ellipsoid&#x27;s acronym.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6284392feb1a98fdac12f21313131912" class="m-doc">expressionContext</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a>&amp;</span>
+            </dt>
+            <dd>Gets the expression context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a740b1fdeafefc378ffb58d0bb7c570ee" class="m-doc">extent</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns geographical coordinates of the rectangle that should be rendered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#accf8059d52031cbbdf909f1864722acb" class="m-doc-self" name="accf8059d52031cbbdf909f1864722acb">flags</a>(</span><span class="m-doc-wrap">) const -&gt; Flags</span>
+            </dt>
+            <dd>Returns combination of flags used for rendering.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab57ad3ecb13808adb5cc52df254bf6ef" class="m-doc-self" name="ab57ad3ecb13808adb5cc52df254bf6ef">fullExtent</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>returns current extent of layer set</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adbb527442fed04e360b0e8a732d1bb80" class="m-doc-self" name="adbb527442fed04e360b0e8a732d1bb80">hasValidSettings</a>(</span><span class="m-doc-wrap">) const -&gt; bool</span>
+            </dt>
+            <dd>Check whether the map settings are valid and can be used for rendering.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a799c52b898731cd53ffca600d527d2c2" class="m-doc">labelBlockingRegions</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsLabelBlockingRegion.html" class="m-doc">QgsLabelBlockingRegion</a>&gt;</span>
+            </dt>
+            <dd>Returns the list of regions to avoid placing labels within.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a523a09fdd1ac52c20a050459f46b5c7a" class="m-doc">labelBoundaryGeometry</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a></span>
+            </dt>
+            <dd>Returns the label boundary geometry, which restricts where in the rendered map labels are permitted to be placed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac937fe3eb2774c6ea410f7e60700777e" class="m-doc">labelingEngineSettings</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsLabelingEngineSettings.html" class="m-doc">QgsLabelingEngineSettings</a>&amp;</span>
+            </dt>
+            <dd>Returns the global configuration of the labeling engine.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3760f8ae782f149de89ad1cd035f2680" class="m-doc">layerExtentToOutputExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> extent) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>transform bounding box from layer&#x27;s CRS to output CRS</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a40546626099555559e9fcb898c1cbfb5" class="m-doc-self" name="a40546626099555559e9fcb898c1cbfb5">layerIds</a>(</span><span class="m-doc-wrap">) const -&gt; QStringList</span>
+            </dt>
+            <dd>Gets list of layer IDs for map rendering The layers are stored in the reverse order of how they are rendered (layer with index 0 will be on top)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac44aac25ea00d124a7ba36dc270d0d8c" class="m-doc-self" name="ac44aac25ea00d124a7ba36dc270d0d8c">layers</a>(</span><span class="m-doc-wrap">) const -&gt; QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;</span>
+            </dt>
+            <dd>Gets list of layers for map rendering The layers are stored in the reverse order of how they are rendered (layer with index 0 will be on top)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad5b21400def97245575e98257d9572bf" class="m-doc">layerStyleOverrides</a>(</span><span class="m-doc-wrap">) const -&gt; QMap&lt;QString, QString&gt;</span>
+            </dt>
+            <dd>Gets map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0739b0932966de5fa6060e4a437d3a0e" class="m-doc">layerToMapCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> point) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>transform point coordinates from layer&#x27;s CRS to output CRS</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#adafbf35883b42f11d44ef3de1a1aedc8" class="m-doc">layerToMapCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> rect) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>transform rectangle from layer&#x27;s CRS to output CRS</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a83ee7cf8583ece5436f804a952db5d09" class="m-doc">layerToMapUnits</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; referenceExtent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>()) const -&gt; double</span>
+            </dt>
+            <dd>Computes an <em>estimated</em> conversion factor between layer and map units: layerUnits * layerToMapUnits = mapUnits.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a34fe24129dea8620ecf623a60ad7d343" class="m-doc">layerTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer) const -&gt; <a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a></span>
+            </dt>
+            <dd>Returns the coordinate transform from layer&#x27;s CRS to destination CRS.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a462eeaa5f1bdb39b9ba3b7930cefe3a5" class="m-doc">magnificationFactor</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the magnification factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aeab946f60b7a5644ccc62495a6717206" class="m-doc">mapToLayerCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> point) const -&gt; <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a></span>
+            </dt>
+            <dd>transform point coordinates from output CRS to layer&#x27;s CRS</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a0508242984fae210f70a750f6bd37ec7" class="m-doc">mapToLayerCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> rect) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>transform rectangle from output CRS to layer&#x27;s CRS</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a8bd7bda6ca679aed92deaf4fc7d86793" class="m-doc-self" name="a8bd7bda6ca679aed92deaf4fc7d86793">mapUnits</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsUnitTypes.html#a0602e8a06afd37c267e9e532bb27f50d" class="m-doc">QgsUnitTypes::<wbr />DistanceUnit</a></span>
+            </dt>
+            <dd>Gets units of map&#x27;s geographical coordinates - used for scale calculation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a6ac140b933184ef6740e5aeaac89e25c" class="m-doc-self" name="a6ac140b933184ef6740e5aeaac89e25c">mapUnitsPerPixel</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the distance in geographical coordinates that equals to one pixel in the map.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#accb242e66cc5d2c21a5266956cbd489d" class="m-doc">outputDpi</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns DPI used for conversion between real world units (e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ab46f1360d32f16f23aa1d0a4f4706e58" class="m-doc">outputExtentToLayerExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> extent) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>transform bounding box from output CRS to layer&#x27;s CRS</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a82caf02500c32d8ae00dba454c355036" class="m-doc-self" name="a82caf02500c32d8ae00dba454c355036">outputImageFormat</a>(</span><span class="m-doc-wrap">) const -&gt; QImage::Format</span>
+            </dt>
+            <dd>format of internal QImage, default QImage::Format_ARGB32_Premultiplied</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a73da4f11859995fe92a7e28d2a64530c" class="m-doc-self" name="a73da4f11859995fe92a7e28d2a64530c">outputSize</a>(</span><span class="m-doc-wrap">) const -&gt; QSize</span>
+            </dt>
+            <dd>Returns the size of the resulting map image.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a68841064afd58d445ab478563be2fd12" class="m-doc">pathResolver</a>(</span><span class="m-doc-wrap">) const -&gt; const <a href="classQgsPathResolver.html" class="m-doc">QgsPathResolver</a>&amp;</span>
+            </dt>
+            <dd>Returns the path resolver for conversion between relative and absolute paths during rendering operations, e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ad8588f8a609232d388442c38ff8b1317" class="m-doc">rotation</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the rotation of the resulting map image, in degrees clockwise.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a24e262c80b54fc44e6bdb90ca4b62020" class="m-doc">scale</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Returns the calculated map scale.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a315ed70c1997e0747fba1d481fdc9765" class="m-doc-self" name="a315ed70c1997e0747fba1d481fdc9765">segmentationTolerance</a>(</span><span class="m-doc-wrap">) const -&gt; double</span>
+            </dt>
+            <dd>Gets the segmentation tolerance applied when rendering curved geometries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9ff814ebe3ea001429b1576e1e88a5cd" class="m-doc-self" name="a9ff814ebe3ea001429b1576e1e88a5cd">segmentationToleranceType</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsAbstractGeometry.html#a0ad4bdf6c9a37daa3be14cb41fc38d96" class="m-doc">QgsAbstractGeometry::<wbr />SegmentationToleranceType</a></span>
+            </dt>
+            <dd>Gets segmentation tolerance type (maximum angle or maximum difference between curve and approximation)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a9b380cb976d5ae18a5f18f85807a823d" class="m-doc-self" name="a9b380cb976d5ae18a5f18f85807a823d">selectionColor</a>(</span><span class="m-doc-wrap">) const -&gt; QColor</span>
+            </dt>
+            <dd>Gets color that is used for drawing of selected vector features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aeee4d7cba827a833373a092681f556d8" class="m-doc-self" name="aeee4d7cba827a833373a092681f556d8">setBackgroundColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets the background color of the map.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a57380a0f05ce29fd3fa1c7b0ffa702c7" class="m-doc">setCustomRenderFlags</a>(</span><span class="m-doc-wrap">const QString&amp; customRenderFlags)</span>
+            </dt>
+            <dd>Sets the custom rendering flags.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af94f602a07aebe58130dff48ff03ab7e" class="m-doc-self" name="af94f602a07aebe58130dff48ff03ab7e">setDestinationCrs</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateReferenceSystem.html" class="m-doc">QgsCoordinateReferenceSystem</a>&amp; crs)</span>
+            </dt>
+            <dd>sets destination coordinate reference system</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a5aa72bba64f903de324a965d0e28a6c2" class="m-doc">setDevicePixelRatio</a>(</span><span class="m-doc-wrap">float dpr)</span>
+            </dt>
+            <dd>Sets the device pixel ratio Common values are 1 for normal-dpi displays and 2 for high-dpi &quot;retina&quot; displays.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a392a080e4646729931605df58f4a5503" class="m-doc">setEllipsoid</a>(</span><span class="m-doc-wrap">const QString&amp; ellipsoid) -&gt; bool</span>
+            </dt>
+            <dd>Sets the <em>ellipsoid</em> by its acronym.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a8978462764820b292eb260635764c305" class="m-doc">setExpressionContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a>&amp; context)</span>
+            </dt>
+            <dd>Sets the expression context.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a800e955c228a5850ae968fe1461a2951" class="m-doc">setExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rect,
+              bool magnified = true)</span>
+            </dt>
+            <dd>Set coordinates of the rectangle which should be rendered.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae02c2ce003e3cd8e6fe10a837363ff19" class="m-doc-self" name="ae02c2ce003e3cd8e6fe10a837363ff19">setFlag</a>(</span><span class="m-doc-wrap"><a href="classQgsMapSettings.html#a4185f13de667ef7a3ea0f109bb4b42fe" class="m-doc">Flag</a> flag,
+              bool on = true)</span>
+            </dt>
+            <dd>Enable or disable a particular flag (other flags are not affected)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae9d2dfaab423e9ae2b94e912c56fb5cf" class="m-doc-self" name="ae9d2dfaab423e9ae2b94e912c56fb5cf">setFlags</a>(</span><span class="m-doc-wrap">QgsMapSettings::Flags flags)</span>
+            </dt>
+            <dd>Sets combination of flags that will be used for rendering.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae22f93b6f2d79c43c22ae326296ab298" class="m-doc">setLabelBlockingRegions</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLabelBlockingRegion.html" class="m-doc">QgsLabelBlockingRegion</a>&gt;&amp; regions)</span>
+            </dt>
+            <dd>Sets a list of <em>regions</em> to avoid placing labels within.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ad099578b96c99b10e0b7f26f53e815cd" class="m-doc">setLabelBoundaryGeometry</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; boundary)</span>
+            </dt>
+            <dd>Sets the label <em>boundary</em> geometry, which restricts where in the rendered map labels are permitted to be placed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#aab8be674f02573b225990d9c17e1ac79" class="m-doc">setLabelingEngineSettings</a>(</span><span class="m-doc-wrap">const <a href="classQgsLabelingEngineSettings.html" class="m-doc">QgsLabelingEngineSettings</a>&amp; settings)</span>
+            </dt>
+            <dd>Sets the global configuration of the labeling engine.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a2bd2b940e1db7812d638da28caabd62a" class="m-doc">setLayers</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;&amp; layers)</span>
+            </dt>
+            <dd>Set list of layers for map rendering.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7d05b4f69c4b6a5a070fb0d1f56b0229" class="m-doc">setLayerStyleOverrides</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, QString&gt;&amp; overrides)</span>
+            </dt>
+            <dd>Set map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a34a2ca01ce388a99f7ca05b8a07ebef6" class="m-doc">setMagnificationFactor</a>(</span><span class="m-doc-wrap">double factor)</span>
+            </dt>
+            <dd>Set the magnification factor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a61ec445a6c8c48cbfd27c012b204dc06" class="m-doc-self" name="a61ec445a6c8c48cbfd27c012b204dc06">setOutputDpi</a>(</span><span class="m-doc-wrap">double dpi)</span>
+            </dt>
+            <dd>Sets DPI used for conversion between real world units (e.g. mm) and pixels.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a68287ee273a38ab79af63189532abf50" class="m-doc-self" name="a68287ee273a38ab79af63189532abf50">setOutputImageFormat</a>(</span><span class="m-doc-wrap">QImage::Format format)</span>
+            </dt>
+            <dd>sets format of internal QImage</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ae41d3e17953076f4bc3a4329535f4e37" class="m-doc-self" name="ae41d3e17953076f4bc3a4329535f4e37">setOutputSize</a>(</span><span class="m-doc-wrap">QSize size)</span>
+            </dt>
+            <dd>Sets the size of the resulting map image.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ac4530d6d80e685805483f164f18ca270" class="m-doc">setPathResolver</a>(</span><span class="m-doc-wrap">const <a href="classQgsPathResolver.html" class="m-doc">QgsPathResolver</a>&amp; resolver)</span>
+            </dt>
+            <dd>Sets the path <em>resolver</em> for conversion between relative and absolute paths during rendering operations, e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#abbb62190f3b1a2e67c76db7c0b95c7e5" class="m-doc">setRotation</a>(</span><span class="m-doc-wrap">double rotation)</span>
+            </dt>
+            <dd>Sets the <em>rotation</em> of the resulting map image, in degrees clockwise.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a7afca7fd9996b8fedddc54c18fa0c8b3" class="m-doc">setSegmentationTolerance</a>(</span><span class="m-doc-wrap">double tolerance)</span>
+            </dt>
+            <dd>Sets the segmentation tolerance applied when rendering curved geometries.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#af1a5c27b7e0eedc06b92680e671a1859" class="m-doc">setSegmentationToleranceType</a>(</span><span class="m-doc-wrap"><a href="classQgsAbstractGeometry.html#a0ad4bdf6c9a37daa3be14cb41fc38d96" class="m-doc">QgsAbstractGeometry::<wbr />SegmentationToleranceType</a> type)</span>
+            </dt>
+            <dd>Sets segmentation tolerance type (maximum angle or maximum difference between curve and approximation)</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a1c3432e5fe5da77a4b93ed599f218adc" class="m-doc-self" name="a1c3432e5fe5da77a4b93ed599f218adc">setSelectionColor</a>(</span><span class="m-doc-wrap">const QColor&amp; color)</span>
+            </dt>
+            <dd>Sets color that is used for drawing of selected vector features.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#a04a58684e217590b5dd11961e1014d8f" class="m-doc">setTextRenderFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a> format)</span>
+            </dt>
+            <dd>Sets the text render <em>format</em>, which dictates how text is rendered (e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void <a href="#ab671a05648f77b262f8d695a6d545722" class="m-doc">setTransformContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span>
+            </dt>
+            <dd>Sets the coordinate transform <em>context</em>, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a3c07c4f801695b8a55dd846f6d8cef97" class="m-doc-self" name="a3c07c4f801695b8a55dd846f6d8cef97">testFlag</a>(</span><span class="m-doc-wrap"><a href="classQgsMapSettings.html#a4185f13de667ef7a3ea0f109bb4b42fe" class="m-doc">Flag</a> flag) const -&gt; bool</span>
+            </dt>
+            <dd>Check whether a particular flag is enabled.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a2b4997f6d409d8e44fb7b6c62ff807c9" class="m-doc">textRenderFormat</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a></span>
+            </dt>
+            <dd>Returns the text render format, which dictates how text is rendered (e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#affb60efa8bd1431e31ad0f0b995ad221" class="m-doc">transformContext</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a></span>
+            </dt>
+            <dd>Returns the coordinate transform context, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#aa8e91ef1d4612834c2165b7fd511e4bf" class="m-doc-self" name="aa8e91ef1d4612834c2165b7fd511e4bf">visibleExtent</a>(</span><span class="m-doc-wrap">) const -&gt; <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a></span>
+            </dt>
+            <dd>Returns the actual extent derived from requested extent that takes takes output image size into account.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a1f29ca686c641eede2fa844c91a211fe" class="m-doc">visiblePolygon</a>(</span><span class="m-doc-wrap">) const -&gt; QPolygonF</span>
+            </dt>
+            <dd>Returns the visible area as a polygon (may be rotated)</dd>
+          </dl>
+        </section>
+        <section id="pro-attribs">
+          <h2><a href="#pro-attribs">Protected variables</a></h2>
+          <dl class="m-doc">
+            <dt>
+              QString <a href="#a5adcc3a5943742a381f82dc175e1c18e" class="m-doc-self" name="a5adcc3a5943742a381f82dc175e1c18e">mEllipsoid</a>
+            </dt>
+            <dd>ellipsoid acronym (from table tbl_ellipsoids)</dd>
+            <dt>
+              <a href="qgsmaplayer_8h.html#ad2fc812c37392fdf54ae85f5044f917f" class="m-doc">QgsWeakMapLayerPointerList</a> <a href="#adcd48bcf47ceb07bfc3fd449fdcdfb2b" class="m-doc-self" name="adcd48bcf47ceb07bfc3fd449fdcdfb2b">mLayers</a>
+            </dt>
+            <dd>list of layers to be rendered (stored as weak pointers)</dd>
+            <dt>
+              bool <a href="#a60793318440d7aab9a9827f18034d61f" class="m-doc-self" name="a60793318440d7aab9a9827f18034d61f">mValid</a>
+            </dt>
+            <dd>Whether the actual settings are valid (set in <a href="classQgsMapSettings.html#a36494492e21ee9809f7f6787d4b09a75" class="m-doc">updateDerived()</a>)</dd>
+            <dt>
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> <a href="#a1d1590d90d969ddfb876b9fbbe93dbf4" class="m-doc-self" name="a1d1590d90d969ddfb876b9fbbe93dbf4">mVisibleExtent</a>
+            </dt>
+            <dd>Extent with some additional white space that matches the output aspect ratio.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Enum documentation</h2>
+          <section class="m-doc-details" id="a4185f13de667ef7a3ea0f109bb4b42fe"><div>
+            <h3>
+              enum QgsMapSettings::<wbr /><a href="#a4185f13de667ef7a3ea0f109bb4b42fe" class="m-doc-self">Flag</a>
+            </h3>
+            <p>Enumeration of flags that adjust the way the map is rendered.</p>
+            <table class="m-table m-fullwidth m-flat m-doc">
+              <thead><tr><th style="width: 1%">Enumerators</th><th></th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42fea77997fe96172859429a7532032276a5f" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42fea77997fe96172859429a7532032276a5f">Antialiasing</a></td>
+                  <td>
+                  <p>Enable anti-aliasing for map rendering.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42feac93fb1ae98213a476b72dd43eca7ad6e" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42feac93fb1ae98213a476b72dd43eca7ad6e">DrawEditingInfo</a></td>
+                  <td>
+                  <p>Enable drawing of vertex markers for layers in editing mode.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42feaebc658c0b4b3b1711723d8952a08a0d7" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42feaebc658c0b4b3b1711723d8952a08a0d7">ForceVectorOutput</a></td>
+                  <td>
+                  <p>Vector graphics should not be cached and drawn as raster images.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42fea995a29510a21dd193e989bf2953a1389" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42fea995a29510a21dd193e989bf2953a1389">UseAdvancedEffects</a></td>
+                  <td>
+                  <p>Enable layer opacity and blending effects.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42feaf0361c2cf3b8a47f152ccafa2214f8f1" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42feaf0361c2cf3b8a47f152ccafa2214f8f1">DrawLabeling</a></td>
+                  <td>
+                  <p>Enable drawing of labels on top of the map.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42fea282380b939b3f192255e6ab991fc4ac5" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42fea282380b939b3f192255e6ab991fc4ac5">UseRenderingOptimization</a></td>
+                  <td>
+                  <p>Enable vector simplification and other rendering optimizations.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42feaa52cb4466eac2670c9d2667a629fec4d" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42feaa52cb4466eac2670c9d2667a629fec4d">DrawSelection</a></td>
+                  <td>
+                  <p>Whether vector selections should be shown in the rendered map.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42fea7b436d2206e90654fccdd20ed28e632d" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42fea7b436d2206e90654fccdd20ed28e632d">DrawSymbolBounds</a></td>
+                  <td>
+                  <p>Draw bounds of symbols (for debugging/testing)</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42feadb2173a2f56efdf92d2feaa0ace1cd9b" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42feadb2173a2f56efdf92d2feaa0ace1cd9b">RenderMapTile</a></td>
+                  <td>
+                  <p>Draw map such that there are no problems between adjacent tiles.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42fea0d0924e583cdc32b5638d0f08ee5883a" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42fea0d0924e583cdc32b5638d0f08ee5883a">RenderPartialOutput</a></td>
+                  <td>
+                  <p>Whether to make extra effort to update map image with partially rendered layers (better for interactive map canvas). Added in QGIS 3.0.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href="#a4185f13de667ef7a3ea0f109bb4b42feaca5938fb4e3284193692e8fb8fd26eb9" class="m-doc-self" name="a4185f13de667ef7a3ea0f109bb4b42feaca5938fb4e3284193692e8fb8fd26eb9">RenderPreviewJob</a></td>
+                  <td>
+                  <p>Render is a &#x27;canvas preview&#x27; render, and shortcuts should be taken to ensure fast rendering.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a60d324ce266fc45bed7fbc96ba5cb2cc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60d324ce266fc45bed7fbc96ba5cb2cc" class="m-doc-self">customRenderFlags</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets custom rendering flags.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>custom flags strings, separated by &#x27;;&#x27;</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Layers might honour these to alter their rendering.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a57380a0f05ce29fd3fa1c7b0ffa702c7" class="m-doc">setCustomRenderFlags()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0118e62f4bd2182a7b628687883f8174"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QSize QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0118e62f4bd2182a7b628687883f8174" class="m-doc-self">deviceOutputSize</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the device output size of the map canvas This is equivalent to the output size multiplicated by the device pixel ratio.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6ef7be5a21b5e4fb2cdfc47e46a8e3c5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">float QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6ef7be5a21b5e4fb2cdfc47e46a8e3c5" class="m-doc-self">devicePixelRatio</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns device pixel ratio Common values are 1 for normal-dpi displays and 2 for high-dpi &quot;retina&quot; displays.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abc4e5d29e0b184b738310f203a33c8ee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QString QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc4e5d29e0b184b738310f203a33c8ee" class="m-doc-self">ellipsoid</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns ellipsoid&#x27;s acronym.</p>
+<p>Calculations will only use the ellipsoid if a valid ellipsoid has been set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a392a080e4646729931605df58f4a5503" class="m-doc">setEllipsoid()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a6284392feb1a98fdac12f21313131912"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a>&amp; QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6284392feb1a98fdac12f21313131912" class="m-doc-self">expressionContext</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets the expression context.</p>
+<p>This context should be used for all expression evaluation associated with this map settings.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a8978462764820b292eb260635764c305" class="m-doc">setExpressionContext()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a740b1fdeafefc378ffb58d0bb7c570ee"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a740b1fdeafefc378ffb58d0bb7c570ee" class="m-doc-self">extent</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns geographical coordinates of the rectangle that should be rendered.</p>
+<p>The actual visible extent used for rendering could be slightly different since the given extent may be expanded in order to fit the aspect ratio of output size. Use <a href="classQgsMapSettings.html#aa8e91ef1d4612834c2165b7fd511e4bf" class="m-doc">visibleExtent()</a> to get the resulting extent.</p>
+          </div></section>
+          <section class="m-doc-details" id="a799c52b898731cd53ffca600d527d2c2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QList&lt;<a href="classQgsLabelBlockingRegion.html" class="m-doc">QgsLabelBlockingRegion</a>&gt; QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a799c52b898731cd53ffca600d527d2c2" class="m-doc-self">labelBlockingRegions</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the list of regions to avoid placing labels within.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ae22f93b6f2d79c43c22ae326296ab298" class="m-doc">setLabelBlockingRegions()</a></p><p><a href="classQgsMapSettings.html#a523a09fdd1ac52c20a050459f46b5c7a" class="m-doc">labelBoundaryGeometry()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a523a09fdd1ac52c20a050459f46b5c7a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a523a09fdd1ac52c20a050459f46b5c7a" class="m-doc-self">labelBoundaryGeometry</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the label boundary geometry, which restricts where in the rendered map labels are permitted to be placed.</p>
+<p>By default this is a null geometry, which indicates that labels can be placed anywhere within the map&#x27;s <a href="classQgsMapSettings.html#a1f29ca686c641eede2fa844c91a211fe" class="m-doc">visiblePolygon()</a>.</p><p>The geometry is specified using the map&#x27;s <a href="classQgsMapSettings.html#af3ee8eaf56340f2b72bb160b2534a04e" class="m-doc">destinationCrs()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ad099578b96c99b10e0b7f26f53e815cd" class="m-doc">setLabelBoundaryGeometry()</a></p><p><a href="classQgsMapSettings.html#a799c52b898731cd53ffca600d527d2c2" class="m-doc">labelBlockingRegions()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac937fe3eb2774c6ea410f7e60700777e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsLabelingEngineSettings.html" class="m-doc">QgsLabelingEngineSettings</a>&amp; QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac937fe3eb2774c6ea410f7e60700777e" class="m-doc-self">labelingEngineSettings</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the global configuration of the labeling engine.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#aab8be674f02573b225990d9c17e1ac79" class="m-doc">setLabelingEngineSettings()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a3760f8ae782f149de89ad1cd035f2680"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3760f8ae782f149de89ad1cd035f2680" class="m-doc-self">layerExtentToOutputExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> extent) const</span></span>
+            </h3>
+            <p>transform bounding box from layer&#x27;s CRS to output CRS</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>a bounding box (aligned rectangle) containing the transformed extent</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#adafbf35883b42f11d44ef3de1a1aedc8" class="m-doc">layerToMapCoordinates( const QgsMapLayer *, QgsRectangle ) const</a>if you want to transform a rectangle</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad5b21400def97245575e98257d9572bf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QMap&lt;QString, QString&gt; QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad5b21400def97245575e98257d9572bf" class="m-doc-self">layerStyleOverrides</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Gets map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0739b0932966de5fa6060e4a437d3a0e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0739b0932966de5fa6060e4a437d3a0e" class="m-doc-self">layerToMapCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> point) const</span></span>
+            </h3>
+            <p>transform point coordinates from layer&#x27;s CRS to output CRS</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the transformed point</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="adafbf35883b42f11d44ef3de1a1aedc8"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adafbf35883b42f11d44ef3de1a1aedc8" class="m-doc-self">layerToMapCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> rect) const</span></span>
+            </h3>
+            <p>transform rectangle from layer&#x27;s CRS to output CRS</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the transformed rectangle</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a3760f8ae782f149de89ad1cd035f2680" class="m-doc">layerExtentToOutputExtent()</a> if you want to transform a bounding box</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a83ee7cf8583ece5436f804a952db5d09"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a83ee7cf8583ece5436f804a952db5d09" class="m-doc-self">layerToMapUnits</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; referenceExtent = <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>()) const</span></span>
+            </h3>
+            <p>Computes an <em>estimated</em> conversion factor between layer and map units: layerUnits * layerToMapUnits = mapUnits.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">layer</td>
+                  <td>The layer</td>
+                </tr>
+                <tr>
+                  <td>referenceExtent</td>
+                  <td>A reference extent based on which to perform the computation. If not specified, the layer extent is used</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a34fe24129dea8620ecf623a60ad7d343"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateTransform.html" class="m-doc">QgsCoordinateTransform</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a34fe24129dea8620ecf623a60ad7d343" class="m-doc-self">layerTransform</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer) const</span></span>
+            </h3>
+            <p>Returns the coordinate transform from layer&#x27;s CRS to destination CRS.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>transform - may be invalid if the transform is not needed</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a462eeaa5f1bdb39b9ba3b7930cefe3a5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a462eeaa5f1bdb39b9ba3b7930cefe3a5" class="m-doc-self">magnificationFactor</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the magnification factor.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a34a2ca01ce388a99f7ca05b8a07ebef6" class="m-doc">setMagnificationFactor()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aeab946f60b7a5644ccc62495a6717206"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aeab946f60b7a5644ccc62495a6717206" class="m-doc-self">mapToLayerCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsPointXY.html" class="m-doc">QgsPointXY</a> point) const</span></span>
+            </h3>
+            <p>transform point coordinates from output CRS to layer&#x27;s CRS</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the transformed point</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a0508242984fae210f70a750f6bd37ec7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0508242984fae210f70a750f6bd37ec7" class="m-doc-self">mapToLayerCoordinates</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> rect) const</span></span>
+            </h3>
+            <p>transform rectangle from output CRS to layer&#x27;s CRS</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>the transformed rectangle</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ab46f1360d32f16f23aa1d0a4f4706e58" class="m-doc">outputExtentToLayerExtent()</a> if you want to transform a bounding box</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="accb242e66cc5d2c21a5266956cbd489d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#accb242e66cc5d2c21a5266956cbd489d" class="m-doc-self">outputDpi</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns DPI used for conversion between real world units (e.g.</p>
+<p>mm) and pixels Default value is 96</p>
+          </div></section>
+          <section class="m-doc-details" id="ab46f1360d32f16f23aa1d0a4f4706e58"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab46f1360d32f16f23aa1d0a4f4706e58" class="m-doc-self">outputExtentToLayerExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>* layer,
+              <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a> extent) const</span></span>
+            </h3>
+            <p>transform bounding box from output CRS to layer&#x27;s CRS</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>a bounding box (aligned rectangle) containing the transformed extent</td>
+                </tr>
+              </tfoot>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a0508242984fae210f70a750f6bd37ec7" class="m-doc">mapToLayerCoordinates( const QgsMapLayer *, QgsRectangle ) const</a>if you want to transform a rectangle</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a68841064afd58d445ab478563be2fd12"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">const <a href="classQgsPathResolver.html" class="m-doc">QgsPathResolver</a>&amp; QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68841064afd58d445ab478563be2fd12" class="m-doc-self">pathResolver</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the path resolver for conversion between relative and absolute paths during rendering operations, e.g.</p>
+<p>for resolving relative symbol paths.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ac4530d6d80e685805483f164f18ca270" class="m-doc">setPathResolver()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad8588f8a609232d388442c38ff8b1317"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad8588f8a609232d388442c38ff8b1317" class="m-doc-self">rotation</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the rotation of the resulting map image, in degrees clockwise.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#abbb62190f3b1a2e67c76db7c0b95c7e5" class="m-doc">setRotation()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a24e262c80b54fc44e6bdb90ca4b62020"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a24e262c80b54fc44e6bdb90ca4b62020" class="m-doc-self">scale</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the calculated map scale.</p>
+<p>The scale value indicates the scale denominator, e.g. 1000.0 for a 1:1000 map.</p>
+          </div></section>
+          <section class="m-doc-details" id="a57380a0f05ce29fd3fa1c7b0ffa702c7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a57380a0f05ce29fd3fa1c7b0ffa702c7" class="m-doc-self">setCustomRenderFlags</a>(</span><span class="m-doc-wrap">const QString&amp; customRenderFlags)</span></span>
+            </h3>
+            <p>Sets the custom rendering flags.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">customRenderFlags</td>
+                  <td>custom flags strings, separated by &#x27;;&#x27;</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Layers might honour these to alter their rendering.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a60d324ce266fc45bed7fbc96ba5cb2cc" class="m-doc">customRenderFlags()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5aa72bba64f903de324a965d0e28a6c2"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5aa72bba64f903de324a965d0e28a6c2" class="m-doc-self">setDevicePixelRatio</a>(</span><span class="m-doc-wrap">float dpr)</span></span>
+            </h3>
+            <p>Sets the device pixel ratio Common values are 1 for normal-dpi displays and 2 for high-dpi &quot;retina&quot; displays.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a392a080e4646729931605df58f4a5503"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a392a080e4646729931605df58f4a5503" class="m-doc-self">setEllipsoid</a>(</span><span class="m-doc-wrap">const QString&amp; ellipsoid)</span></span>
+            </h3>
+            <p>Sets the <em>ellipsoid</em> by its acronym.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>true if ellipsoid was successfully set</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Known ellipsoid acronyms can be retrieved using <a href="classQgsEllipsoidUtils.html#aceb3f98ed69ed54fc9693ce552243655" class="m-doc">QgsEllipsoidUtils::<wbr />acronyms()</a>. Calculations will only use the ellipsoid if a valid ellipsoid has been set.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#abc4e5d29e0b184b738310f203a33c8ee" class="m-doc">ellipsoid()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a8978462764820b292eb260635764c305"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8978462764820b292eb260635764c305" class="m-doc-self">setExpressionContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsExpressionContext.html" class="m-doc">QgsExpressionContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Sets the expression context.</p>
+<p>This context is used for all expression evaluation associated with this map settings.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a6284392feb1a98fdac12f21313131912" class="m-doc">expressionContext()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.12</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a800e955c228a5850ae968fe1461a2951"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a800e955c228a5850ae968fe1461a2951" class="m-doc-self">setExtent</a>(</span><span class="m-doc-wrap">const <a href="classQgsRectangle.html" class="m-doc">QgsRectangle</a>&amp; rect,
+              bool magnified = true)</span></span>
+            </h3>
+            <p>Set coordinates of the rectangle which should be rendered.</p>
+<p>The actual visible extent used for rendering could be slightly different since the given extent may be expanded in order to fit the aspect ratio of output size. Use <a href="classQgsMapSettings.html#aa8e91ef1d4612834c2165b7fd511e4bf" class="m-doc">visibleExtent()</a> to get the resulting extent.</p>
+          </div></section>
+          <section class="m-doc-details" id="ae22f93b6f2d79c43c22ae326296ab298"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ae22f93b6f2d79c43c22ae326296ab298" class="m-doc-self">setLabelBlockingRegions</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsLabelBlockingRegion.html" class="m-doc">QgsLabelBlockingRegion</a>&gt;&amp; regions)</span></span>
+            </h3>
+            <p>Sets a list of <em>regions</em> to avoid placing labels within.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a799c52b898731cd53ffca600d527d2c2" class="m-doc">labelBlockingRegions()</a></p><p><a href="classQgsMapSettings.html#ad099578b96c99b10e0b7f26f53e815cd" class="m-doc">setLabelBoundaryGeometry()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad099578b96c99b10e0b7f26f53e815cd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad099578b96c99b10e0b7f26f53e815cd" class="m-doc-self">setLabelBoundaryGeometry</a>(</span><span class="m-doc-wrap">const <a href="classQgsGeometry.html" class="m-doc">QgsGeometry</a>&amp; boundary)</span></span>
+            </h3>
+            <p>Sets the label <em>boundary</em> geometry, which restricts where in the rendered map labels are permitted to be placed.</p>
+<p>A null <em>boundary</em> geometry (the default) indicates that labels can be placed anywhere within the map&#x27;s <a href="classQgsMapSettings.html#a1f29ca686c641eede2fa844c91a211fe" class="m-doc">visiblePolygon()</a>.</p><p>The geometry is specified using the map&#x27;s <a href="classQgsMapSettings.html#af3ee8eaf56340f2b72bb160b2534a04e" class="m-doc">destinationCrs()</a>.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a523a09fdd1ac52c20a050459f46b5c7a" class="m-doc">labelBoundaryGeometry()</a></p><p><a href="classQgsMapSettings.html#ae22f93b6f2d79c43c22ae326296ab298" class="m-doc">setLabelBlockingRegions()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.6</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aab8be674f02573b225990d9c17e1ac79"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aab8be674f02573b225990d9c17e1ac79" class="m-doc-self">setLabelingEngineSettings</a>(</span><span class="m-doc-wrap">const <a href="classQgsLabelingEngineSettings.html" class="m-doc">QgsLabelingEngineSettings</a>&amp; settings)</span></span>
+            </h3>
+            <p>Sets the global configuration of the labeling engine.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>Calling this method will reset the <a href="classQgsMapSettings.html#a2b4997f6d409d8e44fb7b6c62ff807c9" class="m-doc">textRenderFormat()</a> to match the default text render format from the label engine <em>settings</em>.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ac937fe3eb2774c6ea410f7e60700777e" class="m-doc">labelingEngineSettings()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2bd2b940e1db7812d638da28caabd62a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2bd2b940e1db7812d638da28caabd62a" class="m-doc-self">setLayers</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsMapLayer.html" class="m-doc">QgsMapLayer</a>*&gt;&amp; layers)</span></span>
+            </h3>
+            <p>Set list of layers for map rendering.</p>
+<p>The layers must be registered in <a href="classQgsProject.html" class="m-doc">QgsProject</a>. The layers are stored in the reverse order of how they are rendered (layer with index 0 will be on top)</p><aside class="m-note m-info"><h4>Note</h4><p>Any non-spatial layers will be automatically stripped from the list (since they cannot be rendered!).</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7d05b4f69c4b6a5a070fb0d1f56b0229"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7d05b4f69c4b6a5a070fb0d1f56b0229" class="m-doc-self">setLayerStyleOverrides</a>(</span><span class="m-doc-wrap">const QMap&lt;QString, QString&gt;&amp; overrides)</span></span>
+            </h3>
+            <p>Set map of map layer style overrides (key: layer ID, value: style name) where a different style should be used instead of the current one.</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a34a2ca01ce388a99f7ca05b8a07ebef6"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a34a2ca01ce388a99f7ca05b8a07ebef6" class="m-doc-self">setMagnificationFactor</a>(</span><span class="m-doc-wrap">double factor)</span></span>
+            </h3>
+            <p>Set the magnification factor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">factor</td>
+                  <td>the factor of magnification</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a462eeaa5f1bdb39b9ba3b7930cefe3a5" class="m-doc">magnificationFactor()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.16</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ac4530d6d80e685805483f164f18ca270"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac4530d6d80e685805483f164f18ca270" class="m-doc-self">setPathResolver</a>(</span><span class="m-doc-wrap">const <a href="classQgsPathResolver.html" class="m-doc">QgsPathResolver</a>&amp; resolver)</span></span>
+            </h3>
+            <p>Sets the path <em>resolver</em> for conversion between relative and absolute paths during rendering operations, e.g.</p>
+<p>for resolving relative symbol paths.</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a68841064afd58d445ab478563be2fd12" class="m-doc">pathResolver()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="abbb62190f3b1a2e67c76db7c0b95c7e5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abbb62190f3b1a2e67c76db7c0b95c7e5" class="m-doc-self">setRotation</a>(</span><span class="m-doc-wrap">double rotation)</span></span>
+            </h3>
+            <p>Sets the <em>rotation</em> of the resulting map image, in degrees clockwise.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ad8588f8a609232d388442c38ff8b1317" class="m-doc">rotation()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a7afca7fd9996b8fedddc54c18fa0c8b3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7afca7fd9996b8fedddc54c18fa0c8b3" class="m-doc-self">setSegmentationTolerance</a>(</span><span class="m-doc-wrap">double tolerance)</span></span>
+            </h3>
+            <p>Sets the segmentation tolerance applied when rendering curved geometries.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">tolerance</td>
+                  <td>the segmentation tolerance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af1a5c27b7e0eedc06b92680e671a1859"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af1a5c27b7e0eedc06b92680e671a1859" class="m-doc-self">setSegmentationToleranceType</a>(</span><span class="m-doc-wrap"><a href="classQgsAbstractGeometry.html#a0ad4bdf6c9a37daa3be14cb41fc38d96" class="m-doc">QgsAbstractGeometry::<wbr />SegmentationToleranceType</a> type)</span></span>
+            </h3>
+            <p>Sets segmentation tolerance type (maximum angle or maximum difference between curve and approximation)</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">type</td>
+                  <td>the segmentation tolerance typename</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a04a58684e217590b5dd11961e1014d8f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a04a58684e217590b5dd11961e1014d8f" class="m-doc-self">setTextRenderFormat</a>(</span><span class="m-doc-wrap"><a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a> format)</span></span>
+            </h3>
+            <p>Sets the text render <em>format</em>, which dictates how text is rendered (e.g.</p>
+<p>as paths or real text objects).</p><aside class="m-note m-danger"><h4>Warning</h4><p>Calling the <a href="classQgsMapSettings.html#aab8be674f02573b225990d9c17e1ac79" class="m-doc">setLabelingEngineSettings()</a> method will reset the text render format to match the default text render format from the label engine settings.</p></aside><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a2b4997f6d409d8e44fb7b6c62ff807c9" class="m-doc">textRenderFormat()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4.3</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ab671a05648f77b262f8d695a6d545722"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab671a05648f77b262f8d695a6d545722" class="m-doc-self">setTransformContext</a>(</span><span class="m-doc-wrap">const <a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a>&amp; context)</span></span>
+            </h3>
+            <p>Sets the coordinate transform <em>context</em>, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#affb60efa8bd1431e31ad0f0b995ad221" class="m-doc">transformContext()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2b4997f6d409d8e44fb7b6c62ff807c9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsRenderContext.html#a277497ffc44f5a454cfa1c6062adfd22" class="m-doc">QgsRenderContext::<wbr />TextRenderFormat</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2b4997f6d409d8e44fb7b6c62ff807c9" class="m-doc-self">textRenderFormat</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the text render format, which dictates how text is rendered (e.g.</p>
+<p>as paths or real text objects).</p><aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#a04a58684e217590b5dd11961e1014d8f" class="m-doc">setTextRenderFormat()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.4.3</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="affb60efa8bd1431e31ad0f0b995ad221"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="classQgsCoordinateTransformContext.html" class="m-doc">QgsCoordinateTransformContext</a> QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#affb60efa8bd1431e31ad0f0b995ad221" class="m-doc-self">transformContext</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the coordinate transform context, which stores various information regarding which datum transforms should be used when transforming points from a source to destination coordinate reference system.</p>
+<aside class="m-note m-default"><h4>See also</h4><p><a href="classQgsMapSettings.html#ab671a05648f77b262f8d695a6d545722" class="m-doc">setTransformContext()</a></p></aside><aside class="m-note m-default"><h4>Since</h4><p>QGIS 3.0</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a1f29ca686c641eede2fa844c91a211fe"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">QPolygonF QgsMapSettings::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1f29ca686c641eede2fa844c91a211fe" class="m-doc-self">visiblePolygon</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Returns the visible area as a polygon (may be rotated)</p>
+<aside class="m-note m-default"><h4>Since</h4><p>QGIS 2.8</p></aside>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

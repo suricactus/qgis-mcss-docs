@@ -1,0 +1,905 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsTaskManager" kind="class" language="C++" prot="public">
+    <compoundname>QgsTaskManager</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="qgstaskmanager_8h" local="no">qgstaskmanager.h</includes>
+    <innerclass refid="structQgsTaskManager_1_1TaskDefinition" prot="public">QgsTaskManager::TaskDefinition</innerclass>
+    <innerclass refid="structQgsTaskManager_1_1TaskInfo" prot="private">QgsTaskManager::TaskInfo</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsTaskManager_1af190c892d4ded0ded4c7f2766db775c3" prot="private" static="no" mutable="no">
+        <type>QSet&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> *&gt;</type>
+        <definition>QSet&lt; QgsTask * &gt; QgsTaskManager::mActiveTasks</definition>
+        <argsstring></argsstring>
+        <name>mActiveTasks</name>
+        <briefdescription>
+<para>List of active (queued or running) tasks. Includes subtasks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="588" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="588" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1aa5784e28c271ffeac10ff40b3de03dd9" prot="private" static="no" mutable="no">
+        <type>QMap&lt; long, <ref refid="qgsmaplayer_8h_1ad2fc812c37392fdf54ae85f5044f917f" kindref="member">QgsWeakMapLayerPointerList</ref> &gt;</type>
+        <definition>QMap&lt; long, QgsWeakMapLayerPointerList &gt; QgsTaskManager::mLayerDependencies</definition>
+        <argsstring></argsstring>
+        <name>mLayerDependencies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="582" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="582" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1a5bb914d779c5db90e1ef95afbb94c895" prot="private" static="no" mutable="no">
+        <type>long</type>
+        <definition>long QgsTaskManager::mNextTaskId</definition>
+        <argsstring></argsstring>
+        <name>mNextTaskId</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Tracks the next unique task ID. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="585" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="585" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1adc4f456528b562fde6331afc3f46ed15" prot="private" static="no" mutable="no">
+        <type>QSet&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> *&gt;</type>
+        <definition>QSet&lt; QgsTask * &gt; QgsTaskManager::mParentTasks</definition>
+        <argsstring></argsstring>
+        <name>mParentTasks</name>
+        <briefdescription>
+<para>List of parent tasks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="590" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="590" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1a73ab8e0435590ac0e4334b01aad7c7ee" prot="private" static="no" mutable="no">
+        <type>QSet&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> *&gt;</type>
+        <definition>QSet&lt; QgsTask * &gt; QgsTaskManager::mPendingDeletion</definition>
+        <argsstring></argsstring>
+        <name>mPendingDeletion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="594" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="594" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1ab7617437b89ee848f1344077f4c0bd92" prot="private" static="no" mutable="no">
+        <type>QSet&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> *&gt;</type>
+        <definition>QSet&lt; QgsTask * &gt; QgsTaskManager::mSubTasks</definition>
+        <argsstring></argsstring>
+        <name>mSubTasks</name>
+        <briefdescription>
+<para>List of subtasks. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="592" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="592" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1a5134c0448311d88262acc6578cd935a9" prot="private" static="no" mutable="no">
+        <type>QMap&lt; long, <ref refid="qgstaskmanager_8h_1aca25b7c15b64f8170f669436fef001db" kindref="member">QgsTaskList</ref> &gt;</type>
+        <definition>QMap&lt; long, QgsTaskList &gt; QgsTaskManager::mTaskDependencies</definition>
+        <argsstring></argsstring>
+        <name>mTaskDependencies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="581" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="581" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1a98d26ca64f1477fc7fe09a3afc8a1dfb" prot="private" static="no" mutable="yes">
+        <type>QMutex *</type>
+        <definition>QMutex* QgsTaskManager::mTaskMutex</definition>
+        <argsstring></argsstring>
+        <name>mTaskMutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="578" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="578" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsTaskManager_1a299092037332e8d34c305868fb0f7d2a" prot="private" static="no" mutable="no">
+        <type>QMap&lt; long, TaskInfo &gt;</type>
+        <definition>QMap&lt; long, TaskInfo &gt; QgsTaskManager::mTasks</definition>
+        <argsstring></argsstring>
+        <name>mTasks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="580" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="580" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsTaskManager_1a4b5139a1246bdc950c0fb2aaa1765cfd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TestQgsTaskManager</definition>
+        <argsstring></argsstring>
+        <name>TestQgsTaskManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="621" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="621" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsTaskManager_1a66950a967025070419f760c0724287cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsTaskManager::QgsTaskManager</definition>
+        <argsstring>(QObject *parent=nullptr)</argsstring>
+        <name>QgsTaskManager</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for <ref refid="classQgsTaskManager" kindref="compound">QgsTaskManager</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>parent QObject </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="380" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="362" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a9d7386fc7bffffa11190a5c85e4247d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsTaskManager::~QgsTaskManager</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsTaskManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="382" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="370" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a64bedaee34a2c316876c5940e3491847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> *&gt;</type>
+        <definition>QList&lt; QgsTask * &gt; QgsTaskManager::activeTasks</definition>
+        <argsstring>() const</argsstring>
+        <name>activeTasks</name>
+        <briefdescription>
+<para>Returns a list of the active (queued or running) tasks. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTaskManager_1a64a88d7ab0e070bee6561177c4089af2" kindref="member">countActiveTasks()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="488" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="613" bodyend="619"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1ae69d07f3127f3cb9a07d6ba601bb7f31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long QgsTaskManager::addTask</definition>
+        <argsstring>(QgsTask *task, int priority=0)</argsstring>
+        <name>addTask</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Adds a task to the manager. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the task is transferred to the manager, and the task manager will be responsible for starting the task. The priority argument can be used to control the run queue&apos;s order of execution, with larger numbers taking precedence over lower priority numbers. <simplesect kind="return"><para>unique task ID, or 0 if task could not be added </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="419" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="389" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a1d91cec12f369d16eb20c0aa6d2b2fae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long QgsTaskManager::addTask</definition>
+        <argsstring>(const TaskDefinition &amp;task, int priority=0)</argsstring>
+        <name>addTask</name>
+        <param>
+          <type>const <ref refid="structQgsTaskManager_1_1TaskDefinition" kindref="compound">TaskDefinition</ref> &amp;</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Adds a task to the manager, using a full task definition (including dependency handling). </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the task is transferred to the manager, and the task manager will be responsible for starting the task. The priority argument can be used to control the run queue&apos;s order of execution, with larger numbers taking precedence over lower priority numbers. <simplesect kind="return"><para>unique task ID, or 0 if task could not be added </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="429" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="394" bodyend="400"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1ab91c2acc29ff2bc9351056e2b839c7bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::cancelAll</definition>
+        <argsstring>()</argsstring>
+        <name>cancelAll</name>
+        <briefdescription>
+<para>Instructs all tasks tracked by the manager to terminate. </para>        </briefdescription>
+        <detaileddescription>
+<para>Individual tasks may take some time to cancel, or may totally ignore this instruction. Calling this does not block but will instead signal the tasks to cancel and then return immediately. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="458" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="504" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a7aa2916da27e66e2614d42c2d25a206b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsTaskManager::count</definition>
+        <argsstring>() const</argsstring>
+        <name>count</name>
+        <briefdescription>
+<para>Returns the number of tasks tracked by the manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="444" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="481" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a64a88d7ab0e070bee6561177c4089af2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsTaskManager::countActiveTasks</definition>
+        <argsstring>() const</argsstring>
+        <name>countActiveTasks</name>
+        <briefdescription>
+<para>Returns the number of active (queued or running) tasks. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTaskManager_1a64bedaee34a2c316876c5940e3491847" kindref="member">activeTasks()</ref> </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsTaskManager_1ad4cdd862da71f6330437b594c61231d1" kindref="member">countActiveTasksChanged()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="495" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="621" bodyend="626"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1abb8468f143dbe1ca861b0d777690a201" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QSet&lt; long &gt;</type>
+        <definition>QSet&lt; long &gt; QgsTaskManager::dependencies</definition>
+        <argsstring>(long taskId) const</argsstring>
+        <name>dependencies</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Returns the set of task IDs on which a task is dependent. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>not available in Python bindings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="467" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="536" bodyend="543"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1ab073e1f8bbf3e7342741d907500b6e09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTaskManager::dependenciesSatisfied</definition>
+        <argsstring>(long taskId) const</argsstring>
+        <name>dependenciesSatisfied</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if all dependencies for the specified task are satisfied. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="461" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="517" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1adcb580febaff6ae69e4bd49fb490bffd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt;</type>
+        <definition>QList&lt; QgsMapLayer * &gt; QgsTaskManager::dependentLayers</definition>
+        <argsstring>(long taskId) const</argsstring>
+        <name>dependentLayers</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of layers on which as task is dependent. </para>        </briefdescription>
+        <detaileddescription>
+<para>The task will automatically be canceled if any of these layers are above to be removed. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>task ID </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of layers </para></simplesect>
+<simplesect kind="see"><para><ref refid="classQgsTaskManager_1a7f183c4997bd90e8c0356ac9c9558f94" kindref="member">tasksDependentOnLayer()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="476" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="590" bodyend="594"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1abbf8aef0f97e7ef258dee62de936b02f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+        <definition>QgsTask * QgsTaskManager::task</definition>
+        <argsstring>(long id) const</argsstring>
+        <name>task</name>
+        <param>
+          <type>long</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Returns the task with matching ID. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>task ID </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>task if found, or nullptr </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="436" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="466" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a72ffa7f724e8dcf67167243ec4237910" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long QgsTaskManager::taskId</definition>
+        <argsstring>(QgsTask *task) const</argsstring>
+        <name>taskId</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Returns the unique task ID corresponding to a task managed by the class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>task to find </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>task ID, or -1 if task not found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="451" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="487" bodyend="502"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a1d56df49269082adc6a19a1c3621e20f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> * &gt;</type>
+        <definition>QList&lt; QgsTask * &gt; QgsTaskManager::tasks</definition>
+        <argsstring>() const</argsstring>
+        <name>tasks</name>
+        <briefdescription>
+<para>Returns all tasks tracked by the manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="441" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="475" bodyend="479"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a7f183c4997bd90e8c0356ac9c9558f94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classQgsTask" kindref="compound">QgsTask</ref> *&gt;</type>
+        <definition>QList&lt; QgsTask * &gt; QgsTaskManager::tasksDependentOnLayer</definition>
+        <argsstring>(QgsMapLayer *layer) const</argsstring>
+        <name>tasksDependentOnLayer</name>
+        <param>
+          <type><ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *</type>
+          <declname>layer</declname>
+        </param>
+        <briefdescription>
+<para>Returns a list of tasks which depend on a layer. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTaskManager_1adcb580febaff6ae69e4bd49fb490bffd" kindref="member">dependentLayers()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="482" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="596" bodyend="611"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="classQgsTaskManager_1acb19c8bef45f4a7535f0bb58aabe6d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::triggerTask</definition>
+        <argsstring>(QgsTask *task)</argsstring>
+        <name>triggerTask</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Triggers a task, e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>as a result of a GUI interaction. <simplesect kind="see"><para><ref refid="classQgsTaskManager_1af3a43dd0a79b7fc5ba0381d1bb881560" kindref="member">taskTriggered()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="503" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="628" bodyend="632"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsTaskManager_1a81862db46e44ab4c99360d800d9c2bae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::allTasksFinished</definition>
+        <argsstring>()</argsstring>
+        <name>allTasksFinished</name>
+        <briefdescription>
+<para>Emitted when all tasks are complete. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTaskManager_1ad4cdd862da71f6330437b594c61231d1" kindref="member">countActiveTasksChanged()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="544" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1ad4cdd862da71f6330437b594c61231d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::countActiveTasksChanged</definition>
+        <argsstring>(int count)</argsstring>
+        <name>countActiveTasksChanged</name>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when the number of active tasks changes. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsTaskManager_1a64a88d7ab0e070bee6561177c4089af2" kindref="member">countActiveTasks()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="550" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1a208f8ed1dd8d332d609e13dd7e39a67c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::finalTaskProgressChanged</definition>
+        <argsstring>(double progress)</argsstring>
+        <name>finalTaskProgressChanged</name>
+        <param>
+          <type>double</type>
+          <declname>progress</declname>
+        </param>
+        <briefdescription>
+<para>Will be emitted when only a single task remains to complete and that task has reported a progress change. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>progress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>percent of progress, from 0.0 - 100.0 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="519" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1ac38b2f4feef2ff490cc3bd8f898b09cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::progressChanged</definition>
+        <argsstring>(long taskId, double progress)</argsstring>
+        <name>progressChanged</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>progress</declname>
+        </param>
+        <briefdescription>
+<para>Will be emitted when a task reports a progress change. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of task </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>progress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>percent of progress, from 0.0 - 100.0 </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="512" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1a2699df93e6dddb7a8b45272878d12590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::statusChanged</definition>
+        <argsstring>(long taskId, int status)</argsstring>
+        <name>statusChanged</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Will be emitted when a task reports a status change. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of task </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new task status </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="526" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1a6f99b3eeaa5b94bc731b3e8b5271d43f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::taskAboutToBeDeleted</definition>
+        <argsstring>(long taskId)</argsstring>
+        <name>taskAboutToBeDeleted</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when a task is about to be deleted. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of task </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="538" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1a3d629313993eb42f4b9ee817dd54b7e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::taskAdded</definition>
+        <argsstring>(long taskId)</argsstring>
+        <name>taskAdded</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when a new task has been added to the manager. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ID of task </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="532" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsTaskManager_1af3a43dd0a79b7fc5ba0381d1bb881560" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::taskTriggered</definition>
+        <argsstring>(QgsTask *task)</argsstring>
+        <name>taskTriggered</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Emitted when a <emphasis>task</emphasis> is triggered. </para>        </briefdescription>
+        <detaileddescription>
+<para>This occurs when a user clicks on the task from the QGIS GUI, and can be used to show detailed progress reports or re-open a related dialog. <simplesect kind="see"><para><ref refid="classQgsTaskManager_1acb19c8bef45f4a7535f0bb58aabe6d7a" kindref="member">triggerTask()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="558" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classQgsTaskManager_1a6947bff95d2d09f0ed5bcb0b34302d3e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::layersWillBeRemoved</definition>
+        <argsstring>(const QList&lt; QgsMapLayer *&gt; &amp;layers)</argsstring>
+        <name>layersWillBeRemoved</name>
+        <param>
+          <type>const QList&lt; <ref refid="classQgsMapLayer" kindref="compound">QgsMapLayer</ref> *&gt; &amp;</type>
+          <declname>layers</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="564" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="696" bodyend="724"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTaskManager_1a70e8a6958c2454e8c1f17bdab6338b12" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::taskProgressChanged</definition>
+        <argsstring>(double progress)</argsstring>
+        <name>taskProgressChanged</name>
+        <param>
+          <type>double</type>
+          <declname>progress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="562" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="634" bodyend="649"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsTaskManager_1a28516bc24d02181842b08462d9c110ee" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::taskStatusChanged</definition>
+        <argsstring>(int status)</argsstring>
+        <name>taskStatusChanged</name>
+        <param>
+          <type>int</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="563" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="651" bodyend="694"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsTaskManager_1a385c89de78a96edfd043af72bcc3b7a9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>long</type>
+        <definition>long QgsTaskManager::addTaskPrivate</definition>
+        <argsstring>(QgsTask *task, QgsTaskList dependencies, bool isSubTask, int priority)</argsstring>
+        <name>addTaskPrivate</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type><ref refid="qgstaskmanager_8h_1aca25b7c15b64f8170f669436fef001db" kindref="member">QgsTaskList</ref></type>
+          <declname>dependencies</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isSubTask</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="596" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="403" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a475f21f3267b4850e639b730e22c7ef1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::cancelDependentTasks</definition>
+        <argsstring>(long taskId)</argsstring>
+        <name>cancelDependentTasks</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Recursively cancel dependent tasks. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>taskId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>id of terminated task to cancel any other tasks which are dependent on </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="614" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="823" bodyend="847"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a80a19737fe8f72c9b9bba308add570d6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTaskManager::cleanupAndDeleteTask</definition>
+        <argsstring>(QgsTask *task)</argsstring>
+        <name>cleanupAndDeleteTask</name>
+        <param>
+          <type><ref refid="classQgsTask" kindref="compound">QgsTask</ref> *</type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="601" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="727" bodyend="786"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1ad97fb645ca7219935492a7f706072f8d" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTaskManager::hasCircularDependencies</definition>
+        <argsstring>(long taskId) const</argsstring>
+        <name>hasCircularDependencies</name>
+        <param>
+          <type>long</type>
+          <declname>taskId</declname>
+        </param>
+        <briefdescription>
+<para>Will return true if the specified task has circular dependencies. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="619" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="584" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1ae6fbc796b3931744089bcb10c52dc508" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsTaskManager::processQueue</definition>
+        <argsstring>()</argsstring>
+        <name>processQueue</name>
+        <briefdescription>
+<para>Process the queue of outstanding jobs and starts up any which are ready to go. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="607" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="788" bodyend="821"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsTaskManager_1a04ec3fda54c241c7d2f0ee891ad652c4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsTaskManager::resolveDependencies</definition>
+        <argsstring>(long firstTaskId, long currentTaskId, QSet&lt; long &gt; &amp;results) const</argsstring>
+        <name>resolveDependencies</name>
+        <param>
+          <type>long</type>
+          <declname>firstTaskId</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>currentTaskId</declname>
+        </param>
+        <param>
+          <type>QSet&lt; long &gt; &amp;</type>
+          <declname>results</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="616" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.cpp" bodystart="545" bodyend="582"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Task manager for managing a set of long-running <ref refid="classQgsTask" kindref="compound">QgsTask</ref> tasks. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class can be created directly, or accessed via <ref refid="classQgsApplication_1a95c931f5ade757c0ba0a9a5d4828db84" kindref="member">QgsApplication::taskManager()</ref>. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8936">
+        <label>QObject</label>
+      </node>
+      <node id="8935">
+        <label>QgsTaskManager</label>
+        <link refid="classQgsTaskManager"/>
+        <childnode refid="8936" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8938">
+        <label>QObject</label>
+      </node>
+      <node id="8937">
+        <label>QgsTaskManager</label>
+        <link refid="classQgsTaskManager"/>
+        <childnode refid="8938" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" line="371" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgstaskmanager.h" bodystart="370" bodyend="622"/>
+    <listofallmembers>
+      <member refid="classQgsTaskManager_1a64bedaee34a2c316876c5940e3491847" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>activeTasks</name></member>
+      <member refid="classQgsTaskManager_1ae69d07f3127f3cb9a07d6ba601bb7f31" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>addTask</name></member>
+      <member refid="classQgsTaskManager_1a1d91cec12f369d16eb20c0aa6d2b2fae" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>addTask</name></member>
+      <member refid="classQgsTaskManager_1a385c89de78a96edfd043af72bcc3b7a9" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>addTaskPrivate</name></member>
+      <member refid="classQgsTaskManager_1a81862db46e44ab4c99360d800d9c2bae" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>allTasksFinished</name></member>
+      <member refid="classQgsTaskManager_1ab91c2acc29ff2bc9351056e2b839c7bb" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>cancelAll</name></member>
+      <member refid="classQgsTaskManager_1a475f21f3267b4850e639b730e22c7ef1" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>cancelDependentTasks</name></member>
+      <member refid="classQgsTaskManager_1a80a19737fe8f72c9b9bba308add570d6" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>cleanupAndDeleteTask</name></member>
+      <member refid="classQgsTaskManager_1a7aa2916da27e66e2614d42c2d25a206b" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>count</name></member>
+      <member refid="classQgsTaskManager_1a64a88d7ab0e070bee6561177c4089af2" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>countActiveTasks</name></member>
+      <member refid="classQgsTaskManager_1ad4cdd862da71f6330437b594c61231d1" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>countActiveTasksChanged</name></member>
+      <member refid="classQgsTaskManager_1abb8468f143dbe1ca861b0d777690a201" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>dependencies</name></member>
+      <member refid="classQgsTaskManager_1ab073e1f8bbf3e7342741d907500b6e09" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>dependenciesSatisfied</name></member>
+      <member refid="classQgsTaskManager_1adcb580febaff6ae69e4bd49fb490bffd" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>dependentLayers</name></member>
+      <member refid="classQgsTaskManager_1a208f8ed1dd8d332d609e13dd7e39a67c" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>finalTaskProgressChanged</name></member>
+      <member refid="classQgsTaskManager_1ad97fb645ca7219935492a7f706072f8d" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>hasCircularDependencies</name></member>
+      <member refid="classQgsTaskManager_1a6947bff95d2d09f0ed5bcb0b34302d3e" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>layersWillBeRemoved</name></member>
+      <member refid="classQgsTaskManager_1af190c892d4ded0ded4c7f2766db775c3" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mActiveTasks</name></member>
+      <member refid="classQgsTaskManager_1aa5784e28c271ffeac10ff40b3de03dd9" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mLayerDependencies</name></member>
+      <member refid="classQgsTaskManager_1a5bb914d779c5db90e1ef95afbb94c895" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mNextTaskId</name></member>
+      <member refid="classQgsTaskManager_1adc4f456528b562fde6331afc3f46ed15" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mParentTasks</name></member>
+      <member refid="classQgsTaskManager_1a73ab8e0435590ac0e4334b01aad7c7ee" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mPendingDeletion</name></member>
+      <member refid="classQgsTaskManager_1ab7617437b89ee848f1344077f4c0bd92" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mSubTasks</name></member>
+      <member refid="classQgsTaskManager_1a5134c0448311d88262acc6578cd935a9" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mTaskDependencies</name></member>
+      <member refid="classQgsTaskManager_1a98d26ca64f1477fc7fe09a3afc8a1dfb" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mTaskMutex</name></member>
+      <member refid="classQgsTaskManager_1a299092037332e8d34c305868fb0f7d2a" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>mTasks</name></member>
+      <member refid="classQgsTaskManager_1ae6fbc796b3931744089bcb10c52dc508" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>processQueue</name></member>
+      <member refid="classQgsTaskManager_1ac38b2f4feef2ff490cc3bd8f898b09cf" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>progressChanged</name></member>
+      <member refid="classQgsTaskManager_1a66950a967025070419f760c0724287cb" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>QgsTaskManager</name></member>
+      <member refid="classQgsTaskManager_1a04ec3fda54c241c7d2f0ee891ad652c4" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>resolveDependencies</name></member>
+      <member refid="classQgsTaskManager_1a2699df93e6dddb7a8b45272878d12590" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>statusChanged</name></member>
+      <member refid="classQgsTaskManager_1abbf8aef0f97e7ef258dee62de936b02f" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>task</name></member>
+      <member refid="classQgsTaskManager_1a6f99b3eeaa5b94bc731b3e8b5271d43f" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>taskAboutToBeDeleted</name></member>
+      <member refid="classQgsTaskManager_1a3d629313993eb42f4b9ee817dd54b7e4" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>taskAdded</name></member>
+      <member refid="classQgsTaskManager_1a72ffa7f724e8dcf67167243ec4237910" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>taskId</name></member>
+      <member refid="classQgsTaskManager_1a70e8a6958c2454e8c1f17bdab6338b12" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>taskProgressChanged</name></member>
+      <member refid="classQgsTaskManager_1a1d56df49269082adc6a19a1c3621e20f" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>tasks</name></member>
+      <member refid="classQgsTaskManager_1a7f183c4997bd90e8c0356ac9c9558f94" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>tasksDependentOnLayer</name></member>
+      <member refid="classQgsTaskManager_1a28516bc24d02181842b08462d9c110ee" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>taskStatusChanged</name></member>
+      <member refid="classQgsTaskManager_1af3a43dd0a79b7fc5ba0381d1bb881560" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>taskTriggered</name></member>
+      <member refid="classQgsTaskManager_1a4b5139a1246bdc950c0fb2aaa1765cfd" prot="private" virt="non-virtual"><scope>QgsTaskManager</scope><name>TestQgsTaskManager</name></member>
+      <member refid="classQgsTaskManager_1acb19c8bef45f4a7535f0bb58aabe6d7a" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>triggerTask</name></member>
+      <member refid="classQgsTaskManager_1a9d7386fc7bffffa11190a5c85e4247d3" prot="public" virt="non-virtual"><scope>QgsTaskManager</scope><name>~QgsTaskManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

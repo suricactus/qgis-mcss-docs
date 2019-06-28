@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsLayoutSerializableObject" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>QgsLayoutSerializableObject</compoundname>
+    <basecompoundref refid="classQgsLayoutUndoObjectInterface" prot="public" virt="non-virtual">QgsLayoutUndoObjectInterface</basecompoundref>
+    <derivedcompoundref refid="classQgsLayoutAtlas" prot="public" virt="non-virtual">QgsLayoutAtlas</derivedcompoundref>
+    <derivedcompoundref refid="classQgsLayoutGridSettings" prot="public" virt="non-virtual">QgsLayoutGridSettings</derivedcompoundref>
+    <derivedcompoundref refid="classQgsLayoutGuideCollection" prot="public" virt="non-virtual">QgsLayoutGuideCollection</derivedcompoundref>
+    <derivedcompoundref refid="classQgsLayoutPageCollection" prot="public" virt="non-virtual">QgsLayoutPageCollection</derivedcompoundref>
+    <derivedcompoundref refid="classQgsLayoutSnapper" prot="public" virt="non-virtual">QgsLayoutSnapper</derivedcompoundref>
+    <includes refid="qgslayoutserializableobject_8h" local="no">qgslayoutserializableobject.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classQgsLayoutSerializableObject_1a112498370da135f4e21b2fea46e4cba6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class QgsLayoutSerializableObjectUndoCommand</definition>
+        <argsstring></argsstring>
+        <name>QgsLayoutSerializableObjectUndoCommand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="67" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsLayoutSerializableObject_1afb3595fbe321528140fbb89e595b8a33" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsAbstractLayoutUndoCommand" kindref="compound">QgsAbstractLayoutUndoCommand</ref> *</type>
+        <definition>QgsAbstractLayoutUndoCommand * QgsLayoutSerializableObject::createCommand</definition>
+        <argsstring>(const QString &amp;text, int id, QUndoCommand *parent=nullptr) override</argsstring>
+        <name>createCommand</name>
+        <reimplements refid="classQgsLayoutUndoObjectInterface_1af226ed133a64ff5a3dfdcc3cd2c047d6">createCommand</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>QUndoCommand *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new layout undo command with the specified <emphasis>text</emphasis> and <emphasis>parent</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>id</emphasis> argument can be used to specify an id number for the source event - this is used to determine whether QUndoCommand command compression can apply to the command. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="63" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.cpp" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutSerializableObject_1ad61a9b233aff2cc7a814dfe2ac1bef0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classQgsLayout" kindref="compound">QgsLayout</ref> *</type>
+        <definition>virtual QgsLayout* QgsLayoutSerializableObject::layout</definition>
+        <argsstring>()=0</argsstring>
+        <name>layout</name>
+        <reimplementedby refid="classQgsLayoutSnapper_1a9fb66e7a2ef5bdd3cf20f7846b137c52">layout</reimplementedby>
+        <reimplementedby refid="classQgsLayoutAtlas_1a76db768efceaae6bd45ae45106f30d64">layout</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGridSettings_1a0acdafa0b8bb6278ff656ed7b731f9b0">layout</reimplementedby>
+        <reimplementedby refid="classQgsLayoutPageCollection_1a5ebbd519fb2215ba12d68895dd43571e">layout</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGuideCollection_1a170c973bb3bc8ccc7e541a5dcde6f7d6">layout</reimplementedby>
+        <briefdescription>
+<para>Returns the layout the object belongs to. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="49" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutSerializableObject_1a0f157beca8624a4efb8c0ddaed735d35" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsLayoutSerializableObject::readXml</definition>
+        <argsstring>(const QDomElement &amp;element, const QDomDocument &amp;document, const QgsReadWriteContext &amp;context)=0</argsstring>
+        <name>readXml</name>
+        <reimplementedby refid="classQgsLayoutAtlas_1aa86e5479e4cdc0cee8cb9e3945627206">readXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGridSettings_1ac23781d4ca3e0b1804b48aba202dbe18">readXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutSnapper_1a515090dcc2cf4286ab07b4ca45bd3f5f">readXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGuideCollection_1a252601e1fc4f409d395f704130f351de">readXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutPageCollection_1a1f4576a146c802a0cf96f6a672b1d965">readXml</reimplementedby>
+        <param>
+          <type>const QDomElement &amp;</type>
+          <declname>element</declname>
+        </param>
+        <param>
+          <type>const QDomDocument &amp;</type>
+          <declname>document</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Sets the objects&apos;s state from a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para><emphasis>element</emphasis> is the DOM node corresponding to the object. <simplesect kind="see"><para><ref refid="classQgsLayoutSerializableObject_1a039ee23e7b56bdd11624777cd89a2bf8" kindref="member">writeXml()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="61" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutSerializableObject_1a4817e104c1af6330219b88a6bd320794" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString QgsLayoutSerializableObject::stringType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>stringType</name>
+        <reimplementedby refid="classQgsLayoutSnapper_1a0d26a3c7fa90520e06310fc71defd38c">stringType</reimplementedby>
+        <reimplementedby refid="classQgsLayoutAtlas_1afe23b370d92f51f5d7a044c968eab457">stringType</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGridSettings_1af45712894be4446e09663e4985f1b724">stringType</reimplementedby>
+        <reimplementedby refid="classQgsLayoutPageCollection_1ac9aa1d441102a602fa9f27aaf98088e2">stringType</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGuideCollection_1a151c42ca5cd50a4623216ce59e3c0acd">stringType</reimplementedby>
+        <briefdescription>
+<para>Returns the object type as a string. </para>        </briefdescription>
+        <detaileddescription>
+<para>This string must be a unique, single word, character only representation of the item type, eg &quot;LayoutScaleBar&quot; </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="44" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsLayoutSerializableObject_1a039ee23e7b56bdd11624777cd89a2bf8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsLayoutSerializableObject::writeXml</definition>
+        <argsstring>(QDomElement &amp;parentElement, QDomDocument &amp;document, const QgsReadWriteContext &amp;context) const =0</argsstring>
+        <name>writeXml</name>
+        <reimplementedby refid="classQgsLayoutAtlas_1a210f89386f5e052d6a33ee7dab886c6e">writeXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGridSettings_1aaa3316f718a0840d8a24140eb6c51432">writeXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutSnapper_1acb009e7309059c208f2e37586544c868">writeXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutGuideCollection_1a0337abe5a7c7f6c5136506dfff49b328">writeXml</reimplementedby>
+        <reimplementedby refid="classQgsLayoutPageCollection_1a5d608de25961b7f864972d41f0eeaeef">writeXml</reimplementedby>
+        <param>
+          <type>QDomElement &amp;</type>
+          <declname>parentElement</declname>
+        </param>
+        <param>
+          <type>QDomDocument &amp;</type>
+          <declname>document</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classQgsReadWriteContext" kindref="compound">QgsReadWriteContext</ref> &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Stores the objects&apos;s state in a DOM element. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <emphasis>parentElement</emphasis> should refer to the parent layout&apos;s DOM element. <simplesect kind="see"><para><ref refid="classQgsLayoutSerializableObject_1a0f157beca8624a4efb8c0ddaed735d35" kindref="member">readXml()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="55" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An interface for layout objects which can be stored and read from DOM elements. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="4955">
+        <label>QgsLayoutGuideCollection</label>
+        <link refid="classQgsLayoutGuideCollection"/>
+        <childnode refid="4951" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4953">
+        <label>QgsLayoutAtlas</label>
+        <link refid="classQgsLayoutAtlas"/>
+        <childnode refid="4951" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4956">
+        <label>QgsLayoutPageCollection</label>
+        <link refid="classQgsLayoutPageCollection"/>
+        <childnode refid="4951" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4952">
+        <label>QgsLayoutUndoObjectInterface</label>
+        <link refid="classQgsLayoutUndoObjectInterface"/>
+      </node>
+      <node id="4954">
+        <label>QgsLayoutGridSettings</label>
+        <link refid="classQgsLayoutGridSettings"/>
+        <childnode refid="4951" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4951">
+        <label>QgsLayoutSerializableObject</label>
+        <link refid="classQgsLayoutSerializableObject"/>
+        <childnode refid="4952" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4957">
+        <label>QgsLayoutSnapper</label>
+        <link refid="classQgsLayoutSnapper"/>
+        <childnode refid="4951" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4959">
+        <label>QgsLayoutUndoObjectInterface</label>
+        <link refid="classQgsLayoutUndoObjectInterface"/>
+      </node>
+      <node id="4958">
+        <label>QgsLayoutSerializableObject</label>
+        <link refid="classQgsLayoutSerializableObject"/>
+        <childnode refid="4959" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" line="36" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/layout/qgslayoutserializableobject.h" bodystart="35" bodyend="69"/>
+    <listofallmembers>
+      <member refid="classQgsLayoutSerializableObject_1afb3595fbe321528140fbb89e595b8a33" prot="public" virt="virtual"><scope>QgsLayoutSerializableObject</scope><name>createCommand</name></member>
+      <member refid="classQgsLayoutSerializableObject_1ad61a9b233aff2cc7a814dfe2ac1bef0d" prot="public" virt="pure-virtual"><scope>QgsLayoutSerializableObject</scope><name>layout</name></member>
+      <member refid="classQgsLayoutSerializableObject_1a112498370da135f4e21b2fea46e4cba6" prot="private" virt="non-virtual"><scope>QgsLayoutSerializableObject</scope><name>QgsLayoutSerializableObjectUndoCommand</name></member>
+      <member refid="classQgsLayoutSerializableObject_1a0f157beca8624a4efb8c0ddaed735d35" prot="public" virt="pure-virtual"><scope>QgsLayoutSerializableObject</scope><name>readXml</name></member>
+      <member refid="classQgsLayoutSerializableObject_1a4817e104c1af6330219b88a6bd320794" prot="public" virt="pure-virtual"><scope>QgsLayoutSerializableObject</scope><name>stringType</name></member>
+      <member refid="classQgsLayoutSerializableObject_1a039ee23e7b56bdd11624777cd89a2bf8" prot="public" virt="pure-virtual"><scope>QgsLayoutSerializableObject</scope><name>writeXml</name></member>
+      <member refid="classQgsLayoutUndoObjectInterface_1a65997dbe0478c0b59dd0a7895c25672d" prot="public" virt="virtual"><scope>QgsLayoutSerializableObject</scope><name>~QgsLayoutUndoObjectInterface</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

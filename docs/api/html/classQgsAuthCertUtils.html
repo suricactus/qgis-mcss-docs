@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QgsAuthCertUtils class | QGIS API Documentation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="icon" href="favicon-dark.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22272e" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m">QGIS API Documentation</a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="pages.html">Pages</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="namespaces.html">Namespaces</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li><a href="https://github.com/QGIS/QGIS">GitHub</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <path d="m6 0c-3.3144 0-6 2.6856-6 6 0 3.3144 2.6856 6 6 6 1.4858 0 2.8463-0.54083 3.8945-1.4355-0.0164 0.33797 0.14734 0.75854 0.5 1.1504l3.2227 3.7891c0.55185 0.6139 1.4517 0.66544 2.002 0.11524 0.55022-0.55022 0.49866-1.4501-0.11524-2.002l-3.7891-3.2246c-0.39184-0.35266-0.81242-0.51469-1.1504-0.5 0.89472-1.0482 1.4355-2.4088 1.4355-3.8945 0-3.3128-2.6856-5.998-6-5.998zm0 1.5625a4.4375 4.4375 0 0 1 4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375 4.4375 4.4375 4.4375 0 0 1-4.4375-4.4375 4.4375 4.4375 0 0 1 4.4375-4.4375z"/>
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          QgsAuthCertUtils <span class="m-thin">class</span>
+        </h1>
+        <p>Utilities for working with certificates and keys.</p>
+        <div class="m-block m-default">
+          <h3>Contents</h3>
+          <ul>
+            <li>
+              Reference
+              <ul>
+                <li><a href="#pub-types">Public types</a></li>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <section id="pub-types">
+          <h2><a href="#pub-types">Public types</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#abe90cccf324e3bd5c7f81691140375dd" class="m-doc-self" name="abe90cccf324e3bd5c7f81691140375dd">CaCertSource</a> { </span><span class="m-doc-wrap"><a href="#abe90cccf324e3bd5c7f81691140375ddad49c8b852dcd6bbec85e73466f91766f" class="m-doc">SystemRoot</a> = 0,
+              <a href="#abe90cccf324e3bd5c7f81691140375ddaf93573fbac9d47ce86174add2d629d5e" class="m-doc">FromFile</a> = 1,
+              <a href="#abe90cccf324e3bd5c7f81691140375dda52c86bb5a8080b0c9263e473b7d9a888" class="m-doc">InDatabase</a> = 2,
+              <a href="#abe90cccf324e3bd5c7f81691140375dda03a78a0213b569f008f3ba913a6c9194" class="m-doc">Connection</a> = 3 }</span>
+            </dt>
+            <dd>Type of CA certificate source.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a245baf0d84d532415adba1518bff7371" class="m-doc-self" name="a245baf0d84d532415adba1518bff7371">CertTrustPolicy</a> { </span><span class="m-doc-wrap"><a href="#a245baf0d84d532415adba1518bff7371acdfae79e764aa28175aba1af1c813a44" class="m-doc">DefaultTrust</a> = 0,
+              <a href="#a245baf0d84d532415adba1518bff7371a61ab01103aee838ab3df35b0d56f547c" class="m-doc">Trusted</a> = 1,
+              <a href="#a245baf0d84d532415adba1518bff7371a1eb7b3429862d0c79080d69445b30acb" class="m-doc">Untrusted</a> = 2,
+              <a href="#a245baf0d84d532415adba1518bff7371a7b2701924cf6c9d1754629942902d320" class="m-doc">NoPolicy</a> = 3 }</span>
+            </dt>
+            <dd>Type of certificate trust policy.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#ab5152748d33625a50f6140968348441d" class="m-doc-self" name="ab5152748d33625a50f6140968348441d">CertUsageType</a> { </span><span class="m-doc-wrap"><a href="#ab5152748d33625a50f6140968348441da56e9bc3bd8ccd5fb3f8d82723db7d70b" class="m-doc">UndeterminedUsage</a> = 0,
+              <a href="#ab5152748d33625a50f6140968348441da28003122de2a6d9f2ab3fa241d6efc8d" class="m-doc">AnyOrUnspecifiedUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441dadb1d63565a06e7b6f9b2fa0937ccca75" class="m-doc">CertAuthorityUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441dadfaf0a4a3f1deeb262adcdd5ecec5803" class="m-doc">CertIssuerUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441dacccda0119f3eca7ba3966e8ac47a5eda" class="m-doc">TlsServerUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441dab7bbc9be6a6c9e785bfa0be0faf43c7e" class="m-doc">TlsServerEvUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441da63936dc3cdd57dc5bcf47a12033d9cd1" class="m-doc">TlsClientUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441daa9496f8f2dedcbb74775b35f08a275bb" class="m-doc">CodeSigningUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441da2b9fa844681a557b0bc0e90ba7bc97bb" class="m-doc">EmailProtectionUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441dad6867785394257d9bb37fe33e0dd8aee" class="m-doc">TimeStampingUsage</a>,
+              <a href="#ab5152748d33625a50f6140968348441daf922d8831822db3011daa12d3b8bef7e" class="m-doc">CRLSigningUsage</a> }</span>
+            </dt>
+            <dd>Type of certificate usage.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">enum <a href="#a70b01a1834c9ce9d5b549ee9f1fb12cf" class="m-doc-self" name="a70b01a1834c9ce9d5b549ee9f1fb12cf">ConstraintGroup</a> { </span><span class="m-doc-wrap"><a href="#a70b01a1834c9ce9d5b549ee9f1fb12cfa555a8a7526965c3e47c25c26e271850a" class="m-doc">KeyUsage</a> = 0,
+              <a href="#a70b01a1834c9ce9d5b549ee9f1fb12cfa3291a7e4696933958bb6e544813ac5fc" class="m-doc">ExtendedKeyUsage</a> = 1 }</span>
+            </dt>
+            <dd>Type of certificate key group.</dd>
+          </dl>
+        </section>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a9b60d458a0085eb7d3be49e891a28de7" class="m-doc-self" name="a9b60d458a0085eb7d3be49e891a28de7">casFromFile</a>(</span><span class="m-doc-wrap">const QString&amp; certspath) -&gt; QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>Returns a list of concatenated CAs from a PEM or DER formatted file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a4aaa3f19c881ed1ee82428b9c2ca6952" class="m-doc">casMerge</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; bundle1,
+              const QList&lt;QSslCertificate&gt;&amp; bundle2) -&gt; QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>casMerge merges two certificate bundles in a single one removing duplicates, the certificates from the <em>bundle2</em> are appended to <em>bundle1</em> if not already there</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a80db11dd909408dac031a3e6db84cca9" class="m-doc">casRemoveSelfSigned</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; caList) -&gt; QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>casRemoveSelfSigned remove self-signed CA certificates from <em>caList</em></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a2781a4ccfc51cbb78353405dc838e344" class="m-doc-self" name="a2781a4ccfc51cbb78353405dc838e344">certFromFile</a>(</span><span class="m-doc-wrap">const QString&amp; certpath) -&gt; QSslCertificate</span>
+            </dt>
+            <dd>Returns the first cert from a PEM or DER formatted file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a61f6a45ac9651f157bd80bb1fe1e2a4a" class="m-doc-self" name="a61f6a45ac9651f157bd80bb1fe1e2a4a">certificateIsAuthority</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Gets whether a certificate is an Authority.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a804e7ef202efaba3d411f9367f5b4008" class="m-doc-self" name="a804e7ef202efaba3d411f9367f5b4008">certificateIsAuthorityOrIssuer</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Gets whether a certificate is an Authority or can at least sign other certificates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a825f5bf88b68a43f8b9203faa6d14920" class="m-doc-self" name="a825f5bf88b68a43f8b9203faa6d14920">certificateIsIssuer</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Gets whether a certificate can sign other certificates.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a93804e12c26c578824074732840856d7" class="m-doc-self" name="a93804e12c26c578824074732840856d7">certificateIsSslClient</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Gets whether a certificate is probably used for a client identity.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a972bf42397ede51bf0d82a8e2ca21ea2" class="m-doc-self" name="a972bf42397ede51bf0d82a8e2ca21ea2">certificateIsSslServer</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>Gets whether a certificate is probably used for a SSL server.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0fdc4b741e51733b29ff60054b8cc125" class="m-doc-self" name="a0fdc4b741e51733b29ff60054b8cc125">certificateUsageTypes</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; QList&lt;<a href="classQgsAuthCertUtils.html#ab5152748d33625a50f6140968348441d" class="m-doc">QgsAuthCertUtils::<wbr />CertUsageType</a>&gt;</span>
+            </dt>
+            <dd>Try to determine the certificates usage types.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a16620dbd0cce1f5376bda70e3aa579fd" class="m-doc">certificateUsageTypeString</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthCertUtils.html#ab5152748d33625a50f6140968348441d" class="m-doc">QgsAuthCertUtils::<wbr />CertUsageType</a> usagetype) -&gt; QString</span>
+            </dt>
+            <dd>Certificate usage type strings per enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aa9c721886de725572019df6ec482d993" class="m-doc">certIsCurrent</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>certIsCurrent checks if <em>cert</em> is viable for its not before and not after dates</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5d80a3c4e51240d12e7b30cd4f0890a0" class="m-doc">certIsViable</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; bool</span>
+            </dt>
+            <dd>certIsViable checks for viability errors of <em>cert</em> and whether it is NULL</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a6006a28b31c4ae2f2f58a8727dea79d4" class="m-doc">certKeyBundleToPem</a>(</span><span class="m-doc-wrap">const QString&amp; certpath,
+              const QString&amp; keypath,
+              const QString&amp; keypass = QString(),
+              bool reencrypt = true) -&gt; QStringList</span>
+            </dt>
+            <dd>Returns list of certificate, private key and algorithm (as PEM text) from file path components.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a7a419d79cf4d21caf313a1892c64f74d" class="m-doc-self" name="a7a419d79cf4d21caf313a1892c64f74d">certsFromFile</a>(</span><span class="m-doc-wrap">const QString&amp; certspath) -&gt; QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>Returns a list of concatenated certs from a PEM or DER formatted file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a9c3cbaccac44ffd7883a500ebf7c845b" class="m-doc-self" name="a9c3cbaccac44ffd7883a500ebf7c845b">certsFromString</a>(</span><span class="m-doc-wrap">const QString&amp; pemtext) -&gt; QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>Returns a list of concatenated certs from a PEM Base64 text block.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a152a1d7f76e61d9e9caee9dbe646f107" class="m-doc">certsGroupedByOrg</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs) -&gt; QMap&lt;QString, QList&lt;QSslCertificate&gt;&gt;</span>
+            </dt>
+            <dd>Map certificates to their oraganization.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5a9589a5cfc3f8578a5c5ed10a6e30e1" class="m-doc">certsToPemText</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs) -&gt; QByteArray</span>
+            </dt>
+            <dd>certsToPemText dump a list of QSslCertificates to PEM text</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#affa1f6b8954b67f407f8cd78ab25fb76" class="m-doc">certViabilityErrors</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; QList&lt;QSslError&gt;</span>
+            </dt>
+            <dd>certViabilityErrors checks basic characteristics (validity dates, blacklisting, etc.) of given <em>cert</em></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a084547c0569b050312bff9f72844034f" class="m-doc">fileData</a>(</span><span class="m-doc-wrap">const QString&amp; path) -&gt; QByteArray</span>
+            </dt>
+            <dd>Returns data from a local file via a read-only operation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#accfcb812574b479ee8f20cb0c8fbe009" class="m-doc">getCaSourceName</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthCertUtils.html#abe90cccf324e3bd5c7f81691140375dd" class="m-doc">QgsAuthCertUtils::<wbr />CaCertSource</a> source,
+              bool single = false) -&gt; QString</span>
+            </dt>
+            <dd>Gets the general name for CA source enum type.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#af489448758b237628cf0a67c427ed03c" class="m-doc">getCertDistinguishedName</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; qcert,
+              const QCA::Certificate&amp; acert = QCA::Certificate(),
+              bool issuer = false) -&gt; QString</span>
+            </dt>
+            <dd>Gets combined distinguished name for certificate.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a1ea0bce656b5c6e5978a967ed201c765" class="m-doc-self" name="a1ea0bce656b5c6e5978a967ed201c765">getCertTrustName</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthCertUtils.html#a245baf0d84d532415adba1518bff7371" class="m-doc">QgsAuthCertUtils::<wbr />CertTrustPolicy</a> trust) -&gt; QString</span>
+            </dt>
+            <dd>Gets the general name for certificate trust.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a61767370e1d5d5a2e87193aecc16d9aa" class="m-doc-self" name="a61767370e1d5d5a2e87193aecc16d9aa">getColonDelimited</a>(</span><span class="m-doc-wrap">const QString&amp; txt) -&gt; QString</span>
+            </dt>
+            <dd>Gets string with colon delimiters every 2 characters.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a5cd9c87c780de657dd72ed2886e380e0" class="m-doc-self" name="a5cd9c87c780de657dd72ed2886e380e0">getSslProtocolName</a>(</span><span class="m-doc-wrap">QSsl::SslProtocol protocol) -&gt; QString</span>
+            </dt>
+            <dd>SSL Protocol name strings per enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a95a831125902ad0426a60ca9c2e0cb59" class="m-doc">keyFromFile</a>(</span><span class="m-doc-wrap">const QString&amp; keypath,
+              const QString&amp; keypass = QString(),
+              QString* algtype = nullptr) -&gt; QSslKey</span>
+            </dt>
+            <dd>Returns non-encrypted key from a PEM or DER formatted file.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a3c8a249d8342929ac22985e3e844f9c0" class="m-doc-self" name="a3c8a249d8342929ac22985e3e844f9c0">mapDigestToCerts</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs) -&gt; QMap&lt;QString, QSslCertificate&gt;</span>
+            </dt>
+            <dd>Map certificate sha1 to certificate as simple cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ad50f8df6822e222b43f71cae741b7a85" class="m-doc-self" name="ad50f8df6822e222b43f71cae741b7a85">mapDigestToSslConfigs</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;&amp; configs) -&gt; QMap&lt;QString, <a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;</span>
+            </dt>
+            <dd>Map SSL custom configs&#x27; certificate sha1 to custom config as simple cache.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#acf87e6e1bf6812600bf2e7041a7cb96e" class="m-doc">pemIsPkcs8</a>(</span><span class="m-doc-wrap">const QString&amp; keyPemTxt) -&gt; bool</span>
+            </dt>
+            <dd>Determine if the PEM-encoded text of a key is PKCS#8 format.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ace4ce0331465828e8eb0e8099affb06c" class="m-doc">pemTextToTempFile</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              const QByteArray&amp; pemtext) -&gt; QString</span>
+            </dt>
+            <dd>Write a temporary file for a PEM text of cert/key/CAs bundle component.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ac1d183ba837ef614b379985f0dde7d88" class="m-doc">pkcs12BundleCas</a>(</span><span class="m-doc-wrap">const QString&amp; bundlepath,
+              const QString&amp; bundlepass = QString()) -&gt; QList&lt;QSslCertificate&gt;</span>
+            </dt>
+            <dd>Returns list of CA certificates (as QSslCertificate) for a PKCS#12 bundle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a72937c0e1b2bcb20e04c6a9ec49a4366" class="m-doc">pkcs12BundleToPem</a>(</span><span class="m-doc-wrap">const QString&amp; bundlepath,
+              const QString&amp; bundlepass = QString(),
+              bool reencrypt = true) -&gt; QStringList</span>
+            </dt>
+            <dd>Returns list of certificate, private key and algorithm (as PEM text) for a PKCS#12 bundle.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#acb480f364903aba53ecee7f17571defc" class="m-doc">qcaKeyBundle</a>(</span><span class="m-doc-wrap">const QString&amp; path,
+              const QString&amp; pass) -&gt; QCA::KeyBundle</span>
+            </dt>
+            <dd>PKI key/cert bundle from file path, e.g.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a2962d18262cda4b823d2643002460c7e" class="m-doc">qcaKnownConstraint</a>(</span><span class="m-doc-wrap">QCA::ConstraintTypeKnown constraint) -&gt; QString</span>
+            </dt>
+            <dd>Certificate well-known constraint strings per enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a11d4fbb80afe731d222e7184a8b61015" class="m-doc">qcaSignatureAlgorithm</a>(</span><span class="m-doc-wrap">QCA::SignatureAlgorithm algorithm) -&gt; QString</span>
+            </dt>
+            <dd>Certificate signature algorithm strings per enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a0368f502332634f4b27e0967738a0705" class="m-doc">qcaValidityMessage</a>(</span><span class="m-doc-wrap">QCA::Validity validity) -&gt; QString</span>
+            </dt>
+            <dd>Certificate validity check messages per enum.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a21dca118cb02e62a12ea6dd06e5f7d77" class="m-doc">qtCertsToQcaCollection</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs) -&gt; QCA::CertificateCollection</span>
+            </dt>
+            <dd>Convert a QList of QSslCertificate to a QCA::CertificateCollection.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a12b78fe6f22c96790e3b20c357d46168" class="m-doc">qtCertToQcaCert</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert) -&gt; QCA::Certificate</span>
+            </dt>
+            <dd>Convert a QSslCertificate to a QCA::Certificate.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a11e1b2b2c9538948503b70a23bc313dc" class="m-doc-self" name="a11e1b2b2c9538948503b70a23bc313dc">resolvedCertName</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert,
+              bool issuer = false) -&gt; QString</span>
+            </dt>
+            <dd>Gets the general name via RFC 5280 resolution.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a21a2226262fa5b14de308a5a40b750d4" class="m-doc">shaHexForCert</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert,
+              bool formatted = false) -&gt; QString</span>
+            </dt>
+            <dd>Gets the sha1 hash for certificate.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a7808536527d2af8e162da8c6c382c647" class="m-doc">sslConfigsGroupedByOrg</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;&amp; configs) -&gt; QMap&lt;QString, QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;&gt;</span>
+            </dt>
+            <dd>Map SSL custom configs&#x27; certificates to their oraganization.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a02e114e5382af5cfd5dd7e9a93810abd" class="m-doc-self" name="a02e114e5382af5cfd5dd7e9a93810abd">sslErrorEnumString</a>(</span><span class="m-doc-wrap">QSslError::SslError errenum) -&gt; QString</span>
+            </dt>
+            <dd>Gets short strings describing an SSL error.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#aded924e7f75d6e374b5a9de81238d478" class="m-doc">sslErrorEnumStrings</a>(</span><span class="m-doc-wrap">) -&gt; QList&lt;QPair&lt;QSslError::SslError, QString&gt;&gt;</span>
+            </dt>
+            <dd>Gets short strings describing SSL errors.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#ad87fa6f35b409b3bedb3833819d43dec" class="m-doc">validateCertChain</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certificateChain,
+              const QString&amp; hostName = QString(),
+              bool trustRootCa = false) -&gt; QList&lt;QSslError&gt;</span>
+            </dt>
+            <dd>validateCertChain validates the given <em>certificateChain</em></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#afa9cc61136ec0cebe5cb7e9fbcfc5650" class="m-doc">validatePKIBundle</a>(</span><span class="m-doc-wrap"><a href="classQgsPkiBundle.html" class="m-doc">QgsPkiBundle</a>&amp; bundle,
+              bool useIntermediates = true,
+              bool trustRootCa = false) -&gt; QStringList</span>
+            </dt>
+            <dd>validatePKIBundle validate the PKI bundle by checking the certificate chain, the expiration and effective dates, optionally trusts the root CA</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a4aaa3f19c881ed1ee82428b9c2ca6952"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;QSslCertificate&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4aaa3f19c881ed1ee82428b9c2ca6952" class="m-doc-self">casMerge</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; bundle1,
+              const QList&lt;QSslCertificate&gt;&amp; bundle2)</span></span>
+            </h3>
+            <p>casMerge merges two certificate bundles in a single one removing duplicates, the certificates from the <em>bundle2</em> are appended to <em>bundle1</em> if not already there</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bundle1</td>
+                  <td>first bundle</td>
+                </tr>
+                <tr>
+                  <td>bundle2</td>
+                  <td>second bundle</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a list of unique certificates</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a80db11dd909408dac031a3e6db84cca9"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;QSslCertificate&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a80db11dd909408dac031a3e6db84cca9" class="m-doc-self">casRemoveSelfSigned</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; caList)</span></span>
+            </h3>
+            <p>casRemoveSelfSigned remove self-signed CA certificates from <em>caList</em></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">caList</td>
+                  <td>list of CA certificates</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a list of non self-signed certificates</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a16620dbd0cce1f5376bda70e3aa579fd"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a16620dbd0cce1f5376bda70e3aa579fd" class="m-doc-self">certificateUsageTypeString</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthCertUtils.html#ab5152748d33625a50f6140968348441d" class="m-doc">QgsAuthCertUtils::<wbr />CertUsageType</a> usagetype)</span></span>
+            </h3>
+            <p>Certificate usage type strings per enum.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aa9c721886de725572019df6ec482d993"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa9c721886de725572019df6ec482d993" class="m-doc-self">certIsCurrent</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert)</span></span>
+            </h3>
+            <p>certIsCurrent checks if <em>cert</em> is viable for its not before and not after dates</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cert</td>
+                  <td>certificate to be checked</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a5d80a3c4e51240d12e7b30cd4f0890a0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5d80a3c4e51240d12e7b30cd4f0890a0" class="m-doc-self">certIsViable</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert)</span></span>
+            </h3>
+            <p>certIsViable checks for viability errors of <em>cert</em> and whether it is NULL</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cert</td>
+                  <td>certificate to be checked</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>false if cert is NULL or has viability errors</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a6006a28b31c4ae2f2f58a8727dea79d4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6006a28b31c4ae2f2f58a8727dea79d4" class="m-doc-self">certKeyBundleToPem</a>(</span><span class="m-doc-wrap">const QString&amp; certpath,
+              const QString&amp; keypath,
+              const QString&amp; keypass = QString(),
+              bool reencrypt = true)</span></span>
+            </h3>
+            <p>Returns list of certificate, private key and algorithm (as PEM text) from file path components.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">certpath</td>
+                  <td>File path to certificate</td>
+                </tr>
+                <tr>
+                  <td>keypath</td>
+                  <td>File path to private key</td>
+                </tr>
+                <tr>
+                  <td>keypass</td>
+                  <td>Passphrase for private key</td>
+                </tr>
+                <tr>
+                  <td>reencrypt</td>
+                  <td>Whether to re-encrypt the private key with the passphrase</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>certificate, private key, key&#x27;s algorithm type</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a152a1d7f76e61d9e9caee9dbe646f107"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QMap&lt;QString, QList&lt;QSslCertificate&gt;&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a152a1d7f76e61d9e9caee9dbe646f107" class="m-doc-self">certsGroupedByOrg</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs)</span></span>
+            </h3>
+            <p>Map certificates to their oraganization.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a5a9589a5cfc3f8578a5c5ed10a6e30e1"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QByteArray QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5a9589a5cfc3f8578a5c5ed10a6e30e1" class="m-doc-self">certsToPemText</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs)</span></span>
+            </h3>
+            <p>certsToPemText dump a list of QSslCertificates to PEM text</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">certs</td>
+                  <td>list of certs</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a byte array of concatenated certificates as PEM text</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="affa1f6b8954b67f407f8cd78ab25fb76"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;QSslError&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#affa1f6b8954b67f407f8cd78ab25fb76" class="m-doc-self">certViabilityErrors</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert)</span></span>
+            </h3>
+            <p>certViabilityErrors checks basic characteristics (validity dates, blacklisting, etc.) of given <em>cert</em></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cert</td>
+                  <td>certificate to be checked</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>list of QSslError (will return NO ERRORS if a null QSslCertificate is passed)</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a084547c0569b050312bff9f72844034f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QByteArray QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a084547c0569b050312bff9f72844034f" class="m-doc-self">fileData</a>(</span><span class="m-doc-wrap">const QString&amp; path)</span></span>
+            </h3>
+            <p>Returns data from a local file via a read-only operation.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">path</td>
+                  <td>Path to file to read</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>All data contained in file or empty contents if file does not exist</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="accfcb812574b479ee8f20cb0c8fbe009"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#accfcb812574b479ee8f20cb0c8fbe009" class="m-doc-self">getCaSourceName</a>(</span><span class="m-doc-wrap"><a href="classQgsAuthCertUtils.html#abe90cccf324e3bd5c7f81691140375dd" class="m-doc">QgsAuthCertUtils::<wbr />CaCertSource</a> source,
+              bool single = false)</span></span>
+            </h3>
+            <p>Gets the general name for CA source enum type.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">source</td>
+                  <td>The enum source type for the CA</td>
+                </tr>
+                <tr>
+                  <td>single</td>
+                  <td>Whether to return singular or plural description</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="af489448758b237628cf0a67c427ed03c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af489448758b237628cf0a67c427ed03c" class="m-doc-self">getCertDistinguishedName</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; qcert,
+              const QCA::Certificate&amp; acert = QCA::Certificate(),
+              bool issuer = false)</span></span>
+            </h3>
+            <p>Gets combined distinguished name for certificate.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">qcert</td>
+                  <td>Qt SSL cert object</td>
+                </tr>
+                <tr>
+                  <td>acert</td>
+                  <td><a href="namespaceQCA.html" class="m-doc">QCA</a> SSL cert object to add more info to the output</td>
+                </tr>
+                <tr>
+                  <td>issuer</td>
+                  <td>Whether to return cert&#x27;s subject or issuer combined name</td>
+                </tr>
+              </tbody>
+            </table>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a95a831125902ad0426a60ca9c2e0cb59"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QSslKey QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a95a831125902ad0426a60ca9c2e0cb59" class="m-doc-self">keyFromFile</a>(</span><span class="m-doc-wrap">const QString&amp; keypath,
+              const QString&amp; keypass = QString(),
+              QString* algtype = nullptr)</span></span>
+            </h3>
+            <p>Returns non-encrypted key from a PEM or DER formatted file.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">keypath</td>
+                  <td>File path to private key</td>
+                </tr>
+                <tr>
+                  <td>keypass</td>
+                  <td>Passphrase for private key</td>
+                </tr>
+                <tr>
+                  <td>algtype</td>
+                  <td>QString to set with resolved algorithm type</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="acf87e6e1bf6812600bf2e7041a7cb96e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static bool QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acf87e6e1bf6812600bf2e7041a7cb96e" class="m-doc-self">pemIsPkcs8</a>(</span><span class="m-doc-wrap">const QString&amp; keyPemTxt)</span></span>
+            </h3>
+            <p>Determine if the PEM-encoded text of a key is PKCS#8 format.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">keyPemTxt</td>
+                  <td>PEM-encoded text</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>True if PKCS#8, otherwise false</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ace4ce0331465828e8eb0e8099affb06c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ace4ce0331465828e8eb0e8099affb06c" class="m-doc-self">pemTextToTempFile</a>(</span><span class="m-doc-wrap">const QString&amp; name,
+              const QByteArray&amp; pemtext)</span></span>
+            </h3>
+            <p>Write a temporary file for a PEM text of cert/key/CAs bundle component.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">name</td>
+                  <td>Name of file</td>
+                </tr>
+                <tr>
+                  <td>pemtext</td>
+                  <td>Component content as PEM text</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>File path to temporary file</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ac1d183ba837ef614b379985f0dde7d88"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;QSslCertificate&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac1d183ba837ef614b379985f0dde7d88" class="m-doc-self">pkcs12BundleCas</a>(</span><span class="m-doc-wrap">const QString&amp; bundlepath,
+              const QString&amp; bundlepass = QString())</span></span>
+            </h3>
+            <p>Returns list of CA certificates (as QSslCertificate) for a PKCS#12 bundle.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bundlepath</td>
+                  <td>File path to the PKCS bundle</td>
+                </tr>
+                <tr>
+                  <td>bundlepass</td>
+                  <td>Passphrase for bundle</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>list of certificate</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a72937c0e1b2bcb20e04c6a9ec49a4366"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a72937c0e1b2bcb20e04c6a9ec49a4366" class="m-doc-self">pkcs12BundleToPem</a>(</span><span class="m-doc-wrap">const QString&amp; bundlepath,
+              const QString&amp; bundlepass = QString(),
+              bool reencrypt = true)</span></span>
+            </h3>
+            <p>Returns list of certificate, private key and algorithm (as PEM text) for a PKCS#12 bundle.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bundlepath</td>
+                  <td>File path to the PKCS bundle</td>
+                </tr>
+                <tr>
+                  <td>bundlepass</td>
+                  <td>Passphrase for bundle</td>
+                </tr>
+                <tr>
+                  <td>reencrypt</td>
+                  <td>Whether to re-encrypt the private key with the passphrase</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>certificate, private key, key&#x27;s algorithm type</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="acb480f364903aba53ecee7f17571defc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QCA::KeyBundle QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acb480f364903aba53ecee7f17571defc" class="m-doc-self">qcaKeyBundle</a>(</span><span class="m-doc-wrap">const QString&amp; path,
+              const QString&amp; pass)</span></span>
+            </h3>
+            <p>PKI key/cert bundle from file path, e.g.</p>
+<p>from .p12 or pfx files.</p><aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a2962d18262cda4b823d2643002460c7e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2962d18262cda4b823d2643002460c7e" class="m-doc-self">qcaKnownConstraint</a>(</span><span class="m-doc-wrap">QCA::ConstraintTypeKnown constraint)</span></span>
+            </h3>
+            <p>Certificate well-known constraint strings per enum.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a11d4fbb80afe731d222e7184a8b61015"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a11d4fbb80afe731d222e7184a8b61015" class="m-doc-self">qcaSignatureAlgorithm</a>(</span><span class="m-doc-wrap">QCA::SignatureAlgorithm algorithm)</span></span>
+            </h3>
+            <p>Certificate signature algorithm strings per enum.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a0368f502332634f4b27e0967738a0705"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0368f502332634f4b27e0967738a0705" class="m-doc-self">qcaValidityMessage</a>(</span><span class="m-doc-wrap">QCA::Validity validity)</span></span>
+            </h3>
+            <p>Certificate validity check messages per enum.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a21dca118cb02e62a12ea6dd06e5f7d77"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QCA::CertificateCollection QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a21dca118cb02e62a12ea6dd06e5f7d77" class="m-doc-self">qtCertsToQcaCollection</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certs)</span></span>
+            </h3>
+            <p>Convert a QList of QSslCertificate to a QCA::CertificateCollection.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a12b78fe6f22c96790e3b20c357d46168"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QCA::Certificate QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a12b78fe6f22c96790e3b20c357d46168" class="m-doc-self">qtCertToQcaCert</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert)</span></span>
+            </h3>
+            <p>Convert a QSslCertificate to a QCA::Certificate.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="a21a2226262fa5b14de308a5a40b750d4"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QString QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a21a2226262fa5b14de308a5a40b750d4" class="m-doc-self">shaHexForCert</a>(</span><span class="m-doc-wrap">const QSslCertificate&amp; cert,
+              bool formatted = false)</span></span>
+            </h3>
+            <p>Gets the sha1 hash for certificate.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">cert</td>
+                  <td>Qt SSL certificate to generate hash from</td>
+                </tr>
+                <tr>
+                  <td>formatted</td>
+                  <td>Whether to colon-delimit the hash</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="a7808536527d2af8e162da8c6c382c647"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QMap&lt;QString, QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7808536527d2af8e162da8c6c382c647" class="m-doc-self">sslConfigsGroupedByOrg</a>(</span><span class="m-doc-wrap">const QList&lt;<a href="classQgsAuthConfigSslServer.html" class="m-doc">QgsAuthConfigSslServer</a>&gt;&amp; configs)</span></span>
+            </h3>
+            <p>Map SSL custom configs&#x27; certificates to their oraganization.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="aded924e7f75d6e374b5a9de81238d478"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;QPair&lt;QSslError::SslError, QString&gt;&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aded924e7f75d6e374b5a9de81238d478" class="m-doc-self">sslErrorEnumStrings</a>(</span><span class="m-doc-wrap">)</span></span>
+            </h3>
+            <p>Gets short strings describing SSL errors.</p>
+<aside class="m-note m-info"><h4>Note</h4><p>not available in Python bindings</p></aside>
+          </div></section>
+          <section class="m-doc-details" id="ad87fa6f35b409b3bedb3833819d43dec"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QList&lt;QSslError&gt; QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ad87fa6f35b409b3bedb3833819d43dec" class="m-doc-self">validateCertChain</a>(</span><span class="m-doc-wrap">const QList&lt;QSslCertificate&gt;&amp; certificateChain,
+              const QString&amp; hostName = QString(),
+              bool trustRootCa = false)</span></span>
+            </h3>
+            <p>validateCertChain validates the given <em>certificateChain</em></p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">certificateChain</td>
+                  <td>list of certificates to be checked, with leaf first and with optional root CA last</td>
+                </tr>
+                <tr>
+                  <td>hostName</td>
+                  <td>(optional) name of the host to be verified</td>
+                </tr>
+                <tr>
+                  <td>trustRootCa</td>
+                  <td>if true the CA will be added to the trusted CAs for this validation check</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>list of QSslError, if the list is empty then the cert chain is valid</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="afa9cc61136ec0cebe5cb7e9fbcfc5650"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static QStringList QgsAuthCertUtils::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afa9cc61136ec0cebe5cb7e9fbcfc5650" class="m-doc-self">validatePKIBundle</a>(</span><span class="m-doc-wrap"><a href="classQgsPkiBundle.html" class="m-doc">QgsPkiBundle</a>&amp; bundle,
+              bool useIntermediates = true,
+              bool trustRootCa = false)</span></span>
+            </h3>
+            <p>validatePKIBundle validate the PKI bundle by checking the certificate chain, the expiration and effective dates, optionally trusts the root CA</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">bundle</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>useIntermediates</td>
+                  <td>if true the intermediate certs are also checked</td>
+                </tr>
+                <tr>
+                  <td>trustRootCa</td>
+                  <td>if true the CA will be added to the trusted CAs for this validation check (if useIntermediates is false) this option is ignored and set to false</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>a list of error strings, if the list is empty then the PKI bundle is valid</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+        </section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search.js"></script>
+<script src="searchdata.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>QGIS API Documentation. Created by <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

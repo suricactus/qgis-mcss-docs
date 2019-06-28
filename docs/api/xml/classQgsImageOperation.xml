@@ -1,0 +1,993 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsImageOperation" kind="class" language="C++" prot="public">
+    <compoundname>QgsImageOperation</compoundname>
+    <includes refid="qgsimageoperation_8h" local="no">qgsimageoperation.h</includes>
+    <innerclass refid="classQgsImageOperation_1_1BrightnessContrastPixelOperation" prot="private">QgsImageOperation::BrightnessContrastPixelOperation</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1ConvertToArrayPixelOperation" prot="private">QgsImageOperation::ConvertToArrayPixelOperation</innerclass>
+    <innerclass refid="structQgsImageOperation_1_1DistanceTransformProperties" prot="public">QgsImageOperation::DistanceTransformProperties</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1FlipLineOperation" prot="private">QgsImageOperation::FlipLineOperation</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1GaussianBlurOperation" prot="private">QgsImageOperation::GaussianBlurOperation</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1GrayscalePixelOperation" prot="private">QgsImageOperation::GrayscalePixelOperation</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1HueSaturationPixelOperation" prot="private">QgsImageOperation::HueSaturationPixelOperation</innerclass>
+    <innerclass refid="structQgsImageOperation_1_1ImageBlock" prot="private">QgsImageOperation::ImageBlock</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1MultiplyOpacityPixelOperation" prot="private">QgsImageOperation::MultiplyOpacityPixelOperation</innerclass>
+    <innerclass refid="structQgsImageOperation_1_1ProcessBlockUsingLineOperation" prot="private">QgsImageOperation::ProcessBlockUsingLineOperation</innerclass>
+    <innerclass refid="structQgsImageOperation_1_1ProcessBlockUsingPixelOperation" prot="private">QgsImageOperation::ProcessBlockUsingPixelOperation</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1ShadeFromArrayOperation" prot="private">QgsImageOperation::ShadeFromArrayOperation</innerclass>
+    <innerclass refid="classQgsImageOperation_1_1StackBlurLineOperation" prot="private">QgsImageOperation::StackBlurLineOperation</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04f" prot="public" static="no">
+        <name>FlipType</name>
+        <enumvalue id="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04fa216fb3f7dd16a64afb4e47b798f2b02c" prot="public">
+          <name>FlipHorizontal</name>
+          <briefdescription>
+<para>Flip the image horizontally. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04fa9936c7573e4438cd7ddad4799e66e184" prot="public">
+          <name>FlipVertical</name>
+          <briefdescription>
+<para>Flip the image vertically. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Flip operation types. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="64" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" bodystart="63" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9" prot="public" static="no">
+        <name>GrayscaleMode</name>
+        <enumvalue id="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a1ca33bd3e090726d43fdd1a541665725" prot="public">
+          <name>GrayscaleLightness</name>
+          <briefdescription>
+<para>Keep the lightness of the color, drops the saturation. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a93e6300656902d9a68f11509bfeee41d" prot="public">
+          <name>GrayscaleLuminosity</name>
+          <briefdescription>
+<para>Grayscale by perceptual luminosity (weighted sum of color RGB components) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9ac239732619f2760536989088d7cad4c6" prot="public">
+          <name>GrayscaleAverage</name>
+          <briefdescription>
+<para>Grayscale by taking average of color RGB components. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a504442bf8f68bb6699591c09269b068c" prot="public">
+          <name>GrayscaleOff</name>
+          <briefdescription>
+<para>No change. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Modes for converting a QImage to grayscale. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="53" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" bodystart="52" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classQgsImageOperation_1a68616b7ba082b0bd729df42f6c51e886" prot="private" static="no">
+        <name>LineOperationDirection</name>
+        <enumvalue id="classQgsImageOperation_1a68616b7ba082b0bd729df42f6c51e886a62f8f458ce8a80f414da02427e32a0bc" prot="private">
+          <name>ByRow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsImageOperation_1a68616b7ba082b0bd729df42f6c51e886a72c6f873720b5137bc41ee6b0e83959c" prot="private">
+          <name>ByColumn</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="207" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" bodystart="206" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsImageOperation_1ad015cc30c61394bc79f03c3b9ae21da4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::adjustBrightnessContrast</definition>
+        <argsstring>(QImage &amp;image, int brightness, double contrast)</argsstring>
+        <name>adjustBrightnessContrast</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>brightness</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>contrast</declname>
+        </param>
+        <briefdescription>
+<para>Alter the brightness or contrast of a QImage. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to alter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>brightness</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>brightness value, in the range -255 to 255. A brightness value of 0 indicates no change to brightness, a negative value will darken the image, and a positive value will brighten the image. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>contrast</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>contrast value. Must be a positive or zero value. A value of 1.0 indicates no change to the contrast, a value of 0 represents an image with 0 contrast, and a value &gt; 1.0 will increase the contrast of the image. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="86" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="245" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a678b4124f994edbba84c6b4d7c07811e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::adjustHueSaturation</definition>
+        <argsstring>(QImage &amp;image, double saturation, const QColor &amp;colorizeColor=QColor(), double colorizeStrength=1.0)</argsstring>
+        <name>adjustHueSaturation</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>saturation</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>colorizeColor</declname>
+          <defval>QColor()</defval>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>colorizeStrength</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+<para>Alter the hue or saturation of a QImage. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to alter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>saturation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>double between 0 and 2 inclusive, where 0 = desaturate and 1.0 = no change </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>colorizeColor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color to use for colorizing image. Set to an invalid QColor to disable colorization. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>colorizeStrength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>double between 0 and 1, where 0 = no colorization and 1.0 = full colorization </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="96" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="268" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a3be7f842a0ca35f93c9d47adfda3c265" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::convertToGrayscale</definition>
+        <argsstring>(QImage &amp;image, GrayscaleMode mode=GrayscaleLuminosity)</argsstring>
+        <name>convertToGrayscale</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9" kindref="member">GrayscaleMode</ref></type>
+          <declname>mode</declname>
+          <defval><ref refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a93e6300656902d9a68f11509bfeee41d" kindref="member">GrayscaleLuminosity</ref></defval>
+        </param>
+        <briefdescription>
+<para>Convert a QImage to a grayscale image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Alpha channel is preserved. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to convert </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>mode to use during grayscale conversion </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="74" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="185" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1aa8fc50e09c7b28103a2d91dd0287479a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage</type>
+        <definition>QImage QgsImageOperation::cropTransparent</definition>
+        <argsstring>(const QImage &amp;image, QSize minSize=QSize(), bool center=false)</argsstring>
+        <name>cropTransparent</name>
+        <param>
+          <type>const QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>QSize</type>
+          <declname>minSize</declname>
+          <defval>QSize()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>center</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Crop any transparent border from around an image. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source image </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum size for cropped image, if desired. If the cropped image is smaller than the minimum size, it will be centered in the returned image. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>cropped image will be centered on the center of the original image if set to true </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.9 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="201" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="902" bodyend="905"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a72a6299b8b52c7c5d7d5ddee95a6a1b1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::distanceTransform</definition>
+        <argsstring>(QImage &amp;image, const QgsImageOperation::DistanceTransformProperties &amp;properties)</argsstring>
+        <name>distanceTransform</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsImageOperation_1_1DistanceTransformProperties" kindref="compound">QgsImageOperation::DistanceTransformProperties</ref> &amp;</type>
+          <declname>properties</declname>
+        </param>
+        <briefdescription>
+<para>Performs a distance transform on the source image and shades the result using a color ramp. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to alter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>properties</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="structQgsImageOperation_1_1DistanceTransformProperties" kindref="compound">DistanceTransformProperties</ref> object with parameters for the distance transform operation </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="371" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a6493840445b625a8de0471a7585ea39a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::flipImage</definition>
+        <argsstring>(QImage &amp;image, FlipType type)</argsstring>
+        <name>flipImage</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04f" kindref="member">FlipType</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Flips an image horizontally or vertically. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to flip </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>type of flip to perform (horizontal or vertical) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="178" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="793" bodyend="797"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1af76c186f1b703ffdcfbbea98b15aa238" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QImage *</type>
+        <definition>QImage * QgsImageOperation::gaussianBlur</definition>
+        <argsstring>(QImage &amp;image, int radius)</argsstring>
+        <name>gaussianBlur</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+<para>Performs a gaussian blur on an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Gaussian blur is slower but results in a high quality blur. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to blur </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>blur radius in pixels </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>blurred image </para></simplesect>
+<simplesect kind="note"><para>for fastest operation, ensure the source image is ARGB32_Premultiplied </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="171" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="629" bodyend="672"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a450fe72a0a48beec3546a8e4b8cebcab" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::multiplyOpacity</definition>
+        <argsstring>(QImage &amp;image, double factor)</argsstring>
+        <name>multiplyOpacity</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>factor</declname>
+        </param>
+        <briefdescription>
+<para>Multiplies opacity of image pixel values by a factor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to alter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>factor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>factor to multiple pixel&apos;s opacity by </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="104" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="322" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a820d9c523b7d127b3e76ab3e5b89c7a2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QRect</type>
+        <definition>QRect QgsImageOperation::nonTransparentImageRect</definition>
+        <argsstring>(const QImage &amp;image, QSize minSize=QSize(), bool center=false)</argsstring>
+        <name>nonTransparentImageRect</name>
+        <param>
+          <type>const QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>QSize</type>
+          <declname>minSize</declname>
+          <defval>QSize()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>center</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Calculates the non-transparent region of an image. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>source image </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>minSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>minimum size for returned region, if desired. If the non-transparent region of the image is smaller than this minimum size, it will be centered in the returned rectangle. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>return rectangle will be centered on the center of the original image if set to true </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsImageOperation_1aa8fc50e09c7b28103a2d91dd0287479a" kindref="member">cropTransparent</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 2.9 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="190" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="799" bodyend="900"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a3dece3196248c0e843fda45806e37071" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::overlayColor</definition>
+        <argsstring>(QImage &amp;image, const QColor &amp;color)</argsstring>
+        <name>overlayColor</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>const QColor &amp;</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Overlays a color onto an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>This operation retains the alpha channel of the original image, but replaces all image pixel colors with the specified color. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to alter </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color to overlay (any alpha component of the color is ignored) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="112" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="356" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a4e5ff03b78f5a9de3d15c6020235cc3c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::stackBlur</definition>
+        <argsstring>(QImage &amp;image, int radius, bool alphaOnly=false)</argsstring>
+        <name>stackBlur</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>alphaOnly</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Performs a stack blur on an image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Stack blur represents a good balance between speed and blur quality. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QImage to blur </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>blur radius in pixels, maximum value of 16 </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>alphaOnly</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>set to true to blur only the alpha component of the image </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>for fastest operation, ensure the source image is ARGB32_Premultiplied if alphaOnly is set to false, or ARGB32 if alphaOnly is true </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="161" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="558" bodyend="599"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsImageOperation_1ad66cf5789ba3da992cc627b9daebe8b8" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsImageOperation::adjustColorComponent</definition>
+        <argsstring>(int colorComponent, int brightness, double contrastFactor)</argsstring>
+        <name>adjustColorComponent</name>
+        <param>
+          <type>int</type>
+          <declname>colorComponent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>brightness</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>contrastFactor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="345" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="261" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a8620338b75577d43b7b15692ced83ce0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double *</type>
+        <definition>double * QgsImageOperation::createGaussianKernel</definition>
+        <argsstring>(int radius)</argsstring>
+        <name>createGaussianKernel</name>
+        <param>
+          <type>int</type>
+          <declname>radius</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="431" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="761" bodyend="788"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1ae93e6879e696d40199c3a5dcb5a73457" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::distanceTransform1d</definition>
+        <argsstring>(double *f, int n, int *v, double *z, double *d)</argsstring>
+        <name>distanceTransform1d</name>
+        <param>
+          <type>double *</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="402" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="436" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1ade5f52ff00e3dd9eeb87f574da6069b2" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::distanceTransform2d</definition>
+        <argsstring>(double *im, int width, int height)</argsstring>
+        <name>distanceTransform2d</name>
+        <param>
+          <type>double *</type>
+          <declname>im</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="401" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="479" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a0917d4613d1ab11fcf13faad2901cfe1" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::grayscaleAverageOp</definition>
+        <argsstring>(QRgb &amp;rgb)</argsstring>
+        <name>grayscaleAverageOp</name>
+        <param>
+          <type>QRgb &amp;</type>
+          <declname>rgb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="304" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="236" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a19724622a401b9f0dc49484283fecd01" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::grayscaleLightnessOp</definition>
+        <argsstring>(QRgb &amp;rgb)</argsstring>
+        <name>grayscaleLightnessOp</name>
+        <param>
+          <type>QRgb &amp;</type>
+          <declname>rgb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="302" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="217" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a7ed481b68ae511d5453987a55e7664d2" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsImageOperation::grayscaleLuminosityOp</definition>
+        <argsstring>(QRgb &amp;rgb)</argsstring>
+        <name>grayscaleLuminosityOp</name>
+        <param>
+          <type>QRgb &amp;</type>
+          <declname>rgb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="303" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="230" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1aa0d77d788aebf27ca3a821f57feb51cd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double QgsImageOperation::maxValueInDistanceTransformArray</definition>
+        <argsstring>(const double *array, unsigned int size)</argsstring>
+        <name>maxValueInDistanceTransformArray</name>
+        <param>
+          <type>const double *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="403" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.cpp" bodystart="465" bodyend="476"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1acef4a033d354278c43184ab12c1ab163" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class BlockOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runBlockOperationInThreads</definition>
+        <argsstring>(QImage &amp;image, BlockOperation &amp;operation, LineOperationDirection direction)</argsstring>
+        <name>runBlockOperationInThreads</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>BlockOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <param>
+          <type>LineOperationDirection</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="211" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a5753f58cd3347e485971bef9ba9cb23c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename LineOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runLineOperation</definition>
+        <argsstring>(QImage &amp;image, LineOperation &amp;operation)</argsstring>
+        <name>runLineOperation</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>LineOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="251" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a1e67899350874d8724342a02a29408a3" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class LineOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runLineOperationOnWholeImage</definition>
+        <argsstring>(QImage &amp;image, LineOperation &amp;operation)</argsstring>
+        <name>runLineOperationOnWholeImage</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>LineOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="252" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a4c78f2c22e5638fe1e300838c98dcecc" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class PixelOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runPixelOperation</definition>
+        <argsstring>(QImage &amp;image, PixelOperation &amp;operation)</argsstring>
+        <name>runPixelOperation</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>PixelOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="225" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a8abfe8a3d08ba32b10f98e6b2de9ac4c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class PixelOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runPixelOperationOnWholeImage</definition>
+        <argsstring>(QImage &amp;image, PixelOperation &amp;operation)</argsstring>
+        <name>runPixelOperationOnWholeImage</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>PixelOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="226" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a1941b4f5277c7204b89cc74a0dc7a66c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename RectOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runRectOperation</definition>
+        <argsstring>(QImage &amp;image, RectOperation &amp;operation)</argsstring>
+        <name>runRectOperation</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>RectOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="221" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsImageOperation_1a9ece300ff24da26978ee6a38d1204819" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class RectOperation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>static void QgsImageOperation::runRectOperationOnWholeImage</definition>
+        <argsstring>(QImage &amp;image, RectOperation &amp;operation)</argsstring>
+        <name>runRectOperationOnWholeImage</name>
+        <param>
+          <type>QImage &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>RectOperation &amp;</type>
+          <declname>operation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="222" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Contains operations and filters which apply to QImages. </para>    </briefdescription>
+    <detaileddescription>
+<para>A set of optimised pixel manipulation operations and filters which can be applied to QImages. All operations only apply to ARGB32 format images, and it is left up to the calling procedure to ensure that any passed images are of the correct format.</para><para>Operations are written to either modify an image in place or return a new image, depending on which is faster for the particular operation.</para><para><simplesect kind="since"><para>QGIS 2.7 </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" line="45" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/effects/qgsimageoperation.h" bodystart="44" bodyend="480"/>
+    <listofallmembers>
+      <member refid="classQgsImageOperation_1ad015cc30c61394bc79f03c3b9ae21da4" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>adjustBrightnessContrast</name></member>
+      <member refid="classQgsImageOperation_1ad66cf5789ba3da992cc627b9daebe8b8" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>adjustColorComponent</name></member>
+      <member refid="classQgsImageOperation_1a678b4124f994edbba84c6b4d7c07811e" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>adjustHueSaturation</name></member>
+      <member refid="classQgsImageOperation_1a68616b7ba082b0bd729df42f6c51e886a72c6f873720b5137bc41ee6b0e83959c" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>ByColumn</name></member>
+      <member refid="classQgsImageOperation_1a68616b7ba082b0bd729df42f6c51e886a62f8f458ce8a80f414da02427e32a0bc" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>ByRow</name></member>
+      <member refid="classQgsImageOperation_1a3be7f842a0ca35f93c9d47adfda3c265" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>convertToGrayscale</name></member>
+      <member refid="classQgsImageOperation_1a8620338b75577d43b7b15692ced83ce0" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>createGaussianKernel</name></member>
+      <member refid="classQgsImageOperation_1aa8fc50e09c7b28103a2d91dd0287479a" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>cropTransparent</name></member>
+      <member refid="classQgsImageOperation_1a72a6299b8b52c7c5d7d5ddee95a6a1b1" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>distanceTransform</name></member>
+      <member refid="classQgsImageOperation_1ae93e6879e696d40199c3a5dcb5a73457" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>distanceTransform1d</name></member>
+      <member refid="classQgsImageOperation_1ade5f52ff00e3dd9eeb87f574da6069b2" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>distanceTransform2d</name></member>
+      <member refid="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04fa216fb3f7dd16a64afb4e47b798f2b02c" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>FlipHorizontal</name></member>
+      <member refid="classQgsImageOperation_1a6493840445b625a8de0471a7585ea39a" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>flipImage</name></member>
+      <member refid="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04f" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>FlipType</name></member>
+      <member refid="classQgsImageOperation_1a3155b8c66aebe52023e6ffd0d43fc04fa9936c7573e4438cd7ddad4799e66e184" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>FlipVertical</name></member>
+      <member refid="classQgsImageOperation_1af76c186f1b703ffdcfbbea98b15aa238" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>gaussianBlur</name></member>
+      <member refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9ac239732619f2760536989088d7cad4c6" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>GrayscaleAverage</name></member>
+      <member refid="classQgsImageOperation_1a0917d4613d1ab11fcf13faad2901cfe1" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>grayscaleAverageOp</name></member>
+      <member refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a1ca33bd3e090726d43fdd1a541665725" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>GrayscaleLightness</name></member>
+      <member refid="classQgsImageOperation_1a19724622a401b9f0dc49484283fecd01" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>grayscaleLightnessOp</name></member>
+      <member refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a93e6300656902d9a68f11509bfeee41d" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>GrayscaleLuminosity</name></member>
+      <member refid="classQgsImageOperation_1a7ed481b68ae511d5453987a55e7664d2" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>grayscaleLuminosityOp</name></member>
+      <member refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>GrayscaleMode</name></member>
+      <member refid="classQgsImageOperation_1adf71c78cc49218f83a183f43b8628ff9a504442bf8f68bb6699591c09269b068c" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>GrayscaleOff</name></member>
+      <member refid="classQgsImageOperation_1a68616b7ba082b0bd729df42f6c51e886" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>LineOperationDirection</name></member>
+      <member refid="classQgsImageOperation_1aa0d77d788aebf27ca3a821f57feb51cd" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>maxValueInDistanceTransformArray</name></member>
+      <member refid="classQgsImageOperation_1a450fe72a0a48beec3546a8e4b8cebcab" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>multiplyOpacity</name></member>
+      <member refid="classQgsImageOperation_1a820d9c523b7d127b3e76ab3e5b89c7a2" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>nonTransparentImageRect</name></member>
+      <member refid="classQgsImageOperation_1a3dece3196248c0e843fda45806e37071" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>overlayColor</name></member>
+      <member refid="classQgsImageOperation_1acef4a033d354278c43184ab12c1ab163" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runBlockOperationInThreads</name></member>
+      <member refid="classQgsImageOperation_1a5753f58cd3347e485971bef9ba9cb23c" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runLineOperation</name></member>
+      <member refid="classQgsImageOperation_1a1e67899350874d8724342a02a29408a3" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runLineOperationOnWholeImage</name></member>
+      <member refid="classQgsImageOperation_1a4c78f2c22e5638fe1e300838c98dcecc" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runPixelOperation</name></member>
+      <member refid="classQgsImageOperation_1a8abfe8a3d08ba32b10f98e6b2de9ac4c" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runPixelOperationOnWholeImage</name></member>
+      <member refid="classQgsImageOperation_1a1941b4f5277c7204b89cc74a0dc7a66c" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runRectOperation</name></member>
+      <member refid="classQgsImageOperation_1a9ece300ff24da26978ee6a38d1204819" prot="private" virt="non-virtual"><scope>QgsImageOperation</scope><name>runRectOperationOnWholeImage</name></member>
+      <member refid="classQgsImageOperation_1a4e5ff03b78f5a9de3d15c6020235cc3c" prot="public" virt="non-virtual"><scope>QgsImageOperation</scope><name>stackBlur</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

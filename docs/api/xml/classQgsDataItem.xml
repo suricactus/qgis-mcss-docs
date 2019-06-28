@@ -1,0 +1,1590 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsDataItem" kind="class" language="C++" prot="public">
+    <compoundname>QgsDataItem</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <derivedcompoundref refid="classQgsDataCollectionItem" prot="public" virt="non-virtual">QgsDataCollectionItem</derivedcompoundref>
+    <derivedcompoundref refid="classQgsErrorItem" prot="public" virt="non-virtual">QgsErrorItem</derivedcompoundref>
+    <derivedcompoundref refid="classQgsLayerItem" prot="public" virt="non-virtual">QgsLayerItem</derivedcompoundref>
+    <derivedcompoundref refid="classQgsProjectItem" prot="public" virt="non-virtual">QgsProjectItem</derivedcompoundref>
+    <includes refid="qgsdataitem_8h" local="no">qgsdataitem.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393" prot="public" static="no">
+        <name>Capability</name>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393a2d7cb627c338fc2628be05f2fd93b0d7" prot="public">
+          <name>NoCapabilities</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393aa17645e9631aa0129089e1f0d24c1198" prot="public">
+          <name>SetCrs</name>
+          <initializer>= 1 &lt;&lt; 0</initializer>
+          <briefdescription>
+<para>Can set CRS on layer or group of layers. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393a3af0d4f4182ac5c048c7298e99003ef6" prot="public">
+          <name>Fertile</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+<para>Can create children. Even items without this capability may have children, but cannot create them, it means that children are created by item ancestors. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ae804986488a5eaa4974c2011899f0fb6" prot="public">
+          <name>Fast</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+<para>CreateChildren() is fast enough to be run in main thread when refreshing items, most root items (wms,wfs,wcs,postgres...) are considered fast because they are reading data only from <ref refid="classQgsSettings" kindref="compound">QgsSettings</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ad3df64fcdd165ec2da6d5e24fb4c556d" prot="public">
+          <name>Collapse</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+<para>The collapse/expand status for this items children should be ignored in order to avoid undesired network connections (wms etc.) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ad5792573a5e4aac4bebe5bafb6d67da3" prot="public">
+          <name>Rename</name>
+          <initializer>= 1 &lt;&lt; 4</initializer>
+          <briefdescription>
+<para>Item can be renamed. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393aaca4c79d22d18b82b7667cf4c2169814" prot="public">
+          <name>Delete</name>
+          <initializer>= 1 &lt;&lt; 5</initializer>
+          <briefdescription>
+<para>Item can be deleted. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="208" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="207" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5" prot="public" static="no">
+        <name>State</name>
+        <enumvalue id="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5aef37b26f67623deaa9c516fde63d271e" prot="public">
+          <name>NotPopulated</name>
+          <briefdescription>
+<para>Children not yet created. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5a6b74658fe970acba690562c30c636cd1" prot="public">
+          <name>Populating</name>
+          <briefdescription>
+<para>Creating children in separate thread (populating or refreshing) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5a47a4a8f35c8cce802934e53779a71595" prot="public">
+          <name>Populated</name>
+          <briefdescription>
+<para>Children created. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="103" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="102" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a83f47b94e71586954edd4fb4ebd543c3" prot="public">
+          <name>Collection</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691ae9d4725060ca4a2a15eaa6068827af24" prot="public">
+          <name>Directory</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a95c3f542e64b5f6177fde3f7bd045ffb" prot="public">
+          <name>Layer</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691af1f1e30cf14c5444349946235bccef12" prot="public">
+          <name>Error</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a0e88bb1e8ef49dd5323064512c936b10" prot="public">
+          <name>Favorites</name>
+          <briefdescription>
+<para>Represents a favorite item. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a2b64cfbccb438c2433bff65517370098" prot="public">
+          <name>Project</name>
+          <briefdescription>
+<para>Represents a QGIS project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a02e8ae409a1505d56dee17935d62adca" prot="public">
+          <name>Custom</name>
+          <briefdescription>
+<para>Custom item type. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="77" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="76" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classQgsDataItem_1a1ff06917bfaed8d61ff52e27b1155339" prot="protected" static="no" mutable="no">
+        <type>Capabilities</type>
+        <definition>Capabilities QgsDataItem::mCapabilities</definition>
+        <argsstring></argsstring>
+        <name>mCapabilities</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="345" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a1b263213f91ee0bd438b23e417dd000b" prot="protected" static="no" mutable="no">
+        <type>QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> * &gt;</type>
+        <definition>QVector&lt;QgsDataItem *&gt; QgsDataItem::mChildren</definition>
+        <argsstring></argsstring>
+        <name>mChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="347" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="347" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a8aa9307154a6024a1d410fb70440125d" prot="protected" static="no" mutable="no">
+        <type>QIcon</type>
+        <definition>QIcon QgsDataItem::mIcon</definition>
+        <argsstring></argsstring>
+        <name>mIcon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="357" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="357" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a822bf05ac68b18b2100a333e68ef324b" prot="protected" static="no" mutable="no">
+        <type>QMap&lt; QString, QIcon &gt;</type>
+        <definition>QMap&lt;QString, QIcon&gt; QgsDataItem::mIconMap</definition>
+        <argsstring></argsstring>
+        <name>mIconMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="358" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="358" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a71686af3c05b7fc73ded4b01b1e2b0d8" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsDataItem::mIconName</definition>
+        <argsstring></argsstring>
+        <name>mIconName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="356" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="356" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a12857c4bc74b3c0cd8d8f9b59af4944b" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsDataItem::mName</definition>
+        <argsstring></argsstring>
+        <name>mName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="349" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="349" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1aa8d0762253b33ee59fcf94b55ac5c8b0" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+        <definition>QgsDataItem* QgsDataItem::mParent</definition>
+        <argsstring></argsstring>
+        <name>mParent</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="346" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a4ae5a460f647d58560bd3a123bd0ebf2" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsDataItem::mPath</definition>
+        <argsstring></argsstring>
+        <name>mPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="354" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a95c1fb44727920e357f0291be71baaff" prot="protected" static="no" mutable="no">
+        <type>QVariant</type>
+        <definition>QVariant QgsDataItem::mSortKey</definition>
+        <argsstring></argsstring>
+        <name>mSortKey</name>
+        <briefdescription>
+<para>Custom sort key. If invalid, <ref refid="classQgsDataItem_1aa8fde7c03776925b69381ad33dd0548d" kindref="member">name()</ref> will be used for sorting instead. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="361" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="361" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1af3911a6caeb2389cb5d8e6946bfaca94" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5" kindref="member">State</ref></type>
+        <definition>State QgsDataItem::mState</definition>
+        <argsstring></argsstring>
+        <name>mState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="348" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a0da4e152217f26a1e06b4e1163262950" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsDataItem::mToolTip</definition>
+        <argsstring></argsstring>
+        <name>mToolTip</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="355" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a38b0610e5a87ce8734542987b9b0ca75" prot="protected" static="no" mutable="no">
+        <type><ref refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691" kindref="member">Type</ref></type>
+        <definition>Type QgsDataItem::mType</definition>
+        <argsstring></argsstring>
+        <name>mType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="344" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsDataItem_1a31051efb353574425dfcad7bf6690a05" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool QgsDataItem::mDeferredDelete</definition>
+        <argsstring></argsstring>
+        <name>mDeferredDelete</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="418" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="418" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsDataItem_1a4e559764be4728c0455b42e5fb2a6fd0" prot="private" static="no" mutable="no">
+        <type>QFutureWatcher&lt; QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> * &gt; &gt; *</type>
+        <definition>QFutureWatcher&lt; QVector &lt;QgsDataItem *&gt; &gt;* QgsDataItem::mFutureWatcher</definition>
+        <argsstring></argsstring>
+        <name>mFutureWatcher</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="419" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="419" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classQgsDataItem_1afb5d81b3206bca1f71fcd2662174df9c" prot="private" static="yes" mutable="no">
+        <type><ref refid="classQgsAnimatedIcon" kindref="compound">QgsAnimatedIcon</ref> *</type>
+        <definition>QgsAnimatedIcon * QgsDataItem::sPopulatingIcon</definition>
+        <argsstring></argsstring>
+        <name>sPopulatingIcon</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="421" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="421" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsDataItem_1a424ebfc14c3bb63ac8d0f4b6696ad56f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsDataItem::QgsDataItem</definition>
+        <argsstring>(QgsDataItem::Type type, QgsDataItem *parent, const QString &amp;name, const QString &amp;path)</argsstring>
+        <name>QgsDataItem</name>
+        <param>
+          <type><ref refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691" kindref="member">QgsDataItem::Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Create new data item. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="90" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="124" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1af580898105e8392da164667aee8ea799" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsDataItem::~QgsDataItem</definition>
+        <argsstring>() override</argsstring>
+        <name>~QgsDataItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="91" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="137" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ae7f3c8c0f7974622954c4946296d4b25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsDataItem::acceptDrop</definition>
+        <argsstring>()</argsstring>
+        <name>acceptDrop</name>
+        <briefdescription>
+<para>Returns whether the item accepts drag and dropped layers - e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>for importing a dataset to a provider. Subclasses should override this and <ref refid="classQgsDataItem_1a95e87790598a98567dced9fd1e3bd197" kindref="member">handleDrop()</ref> to accept dropped layers. <simplesect kind="see"><para><ref refid="classQgsDataItem_1a95e87790598a98567dced9fd1e3bd197" kindref="member">handleDrop()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="173" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="173" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a93c9a612126e43c1c5bd49e93099c883" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; QAction * &gt;</type>
+        <definition>QList&lt; QAction * &gt; QgsDataItem::actions</definition>
+        <argsstring>(QWidget *parent)</argsstring>
+        <name>actions</name>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+<para>Returns the list of actions available for this item. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually used for the popup menu on right-clicking the item. Subclasses should override this to provide actions.</para><para>Subclasses should ensure that ownership of created actions is correctly handled by parenting them to the specified parent widget. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="156" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="540" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ab69f9d4295379181a75f71de4e802914" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::addChildItem</definition>
+        <argsstring>(QgsDataItem *child, bool refresh=false)</argsstring>
+        <name>addChildItem</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>refresh</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Inserts a new child item. </para>        </briefdescription>
+        <detaileddescription>
+<para>The child will be inserted at a position using an alphabetical order based on mName. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>child</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child item to insert. Ownership is transferred, and item parent will be set and relevant connections made. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>refresh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>- set to true to refresh populated item, emitting relevant signals to the model </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsDataItem_1a1a18aa71da973648cf9b5e6d8e313591" kindref="member">deleteChildItem()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="126" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="458" bodyend="492"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a0e0e7d6b37181e42caddd5b93c3f9202" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>Capabilities</type>
+        <definition>virtual Capabilities QgsDataItem::capabilities2</definition>
+        <argsstring>() const</argsstring>
+        <name>capabilities2</name>
+        <briefdescription>
+<para>Returns the capabilities for the data item. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDataItem_1ab9202e38b7dbaa708f9850ac639d4ac2" kindref="member">setCapabilities()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="243" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="243" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a4c064e2032b1d78d01df996146a7e48a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> * &gt;</type>
+        <definition>QVector&lt;QgsDataItem *&gt; QgsDataItem::children</definition>
+        <argsstring>() const</argsstring>
+        <name>children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="270" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="270" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a7b8b9fc6f0532443fd068ad38e6ffba9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> * &gt;</type>
+        <definition>QVector&lt; QgsDataItem * &gt; QgsDataItem::createChildren</definition>
+        <argsstring>()</argsstring>
+        <name>createChildren</name>
+        <reimplementedby refid="classQgsDirectoryItem_1a25df5d1cda2ef8c59a61cd82aa30f91e">createChildren</reimplementedby>
+        <reimplementedby refid="classQgsFavoritesItem_1a959846b8c2b577071e805a5df2196a8d">createChildren</reimplementedby>
+        <reimplementedby refid="classQgsZipItem_1ae71da2549fc6dc839a9bf5adeefc1df4">createChildren</reimplementedby>
+        <briefdescription>
+<para>Create children. </para>        </briefdescription>
+        <detaileddescription>
+<para>Children are not expected to have parent set. This method MUST BE THREAD SAFE. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="100" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="244" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a1a18aa71da973648cf9b5e6d8e313591" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::deleteChildItem</definition>
+        <argsstring>(QgsDataItem *child)</argsstring>
+        <name>deleteChildItem</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+<para>Removes and deletes a child item, emitting relevant signals to the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>child</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child to remove. Item must exist as a current child. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="classQgsDataItem_1ab69f9d4295379181a75f71de4e802914" kindref="member">addChildItem()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="133" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="494" bodyend="503"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1afaecde431a0168cbab7179e4424e8873" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsDataItem::equal</definition>
+        <argsstring>(const QgsDataItem *other)</argsstring>
+        <name>equal</name>
+        <reimplementedby refid="classQgsLayerItem_1afa26a7112d7ba741b94c15ce4b00a1a2">equal</reimplementedby>
+        <reimplementedby refid="classQgsDirectoryItem_1a5b154c1c121e1878f1701dfdee324ac1">equal</reimplementedby>
+        <param>
+          <type>const <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if this item is equal to another item (by testing item type and path). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="145" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="534" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a38a3f6871ca17b47b83fb40f4bd8c8d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsDataItem::handleDoubleClick</definition>
+        <argsstring>()</argsstring>
+        <name>handleDoubleClick</name>
+        <briefdescription>
+<para>Called when a user double clicks on the item. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses should return true if they have implemented a double-click handler and do not want the default double-click behavior for items. <simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="188" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="546" bodyend="549"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a95e87790598a98567dced9fd1e3bd197" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsDataItem::handleDrop</definition>
+        <argsstring>(const QMimeData *, Qt::DropAction)</argsstring>
+        <name>handleDrop</name>
+        <param>
+          <type>const QMimeData *</type>
+        </param>
+        <param>
+          <type>Qt::DropAction</type>
+        </param>
+        <briefdescription>
+<para>Attempts to process the mime data dropped on this item. </para>        </briefdescription>
+        <detaileddescription>
+<para>Subclasses must override this and <ref refid="classQgsDataItem_1ae7f3c8c0f7974622954c4946296d4b25" kindref="member">acceptDrop()</ref> if they accept dropped layers. <simplesect kind="see"><para><ref refid="classQgsDataItem_1ae7f3c8c0f7974622954c4946296d4b25" kindref="member">acceptDrop()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="180" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a155b6605e11c66bfe1ca8100677bbced" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsDataItem::hasChildren</definition>
+        <argsstring>()</argsstring>
+        <name>hasChildren</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="93" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="435" bodyend="438"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a914473e22bf43ebfb76e15b9af05b5f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsDataItem::hasDragEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>hasDragEnabled</name>
+        <reimplementedby refid="classQgsLayerItem_1aab0a8724d6211c477d2bb41f5904e681">hasDragEnabled</reimplementedby>
+        <reimplementedby refid="classQgsProjectItem_1a7417872878ddf3c5c290dd7066ab494a">hasDragEnabled</reimplementedby>
+        <briefdescription>
+<para>Returns true if the item may be dragged. </para>        </briefdescription>
+        <detaileddescription>
+<para>Default implementation returns false. A draggable item has to implement <ref refid="classQgsDataItem_1aebec23bc319940023155e1f031ed3231" kindref="member">mimeUri()</ref> that will be used to pass data. <simplesect kind="see"><para><ref refid="classQgsDataItem_1aebec23bc319940023155e1f031ed3231" kindref="member">mimeUri()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="197" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="197" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1aac7f8c4af0790bc07fd68387136c0824" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QIcon</type>
+        <definition>QIcon QgsDataItem::icon</definition>
+        <argsstring>()</argsstring>
+        <name>icon</name>
+        <reimplementedby refid="classQgsDirectoryItem_1ae9e5cfc59f748fff275662908d279992">icon</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="271" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="222" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a1698a9d4afb8100513c498c71f3b5051" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; QMenu * &gt;</type>
+        <definition>QList&lt; QMenu * &gt; QgsDataItem::menus</definition>
+        <argsstring>(QWidget *parent)</argsstring>
+        <name>menus</name>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+<para>Returns the list of menus available for this item. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is usually used for the popup menu on right-clicking the item. Subclasses should override this to provide actions. Subclasses should ensure that ownership of created menus is correctly handled by parenting them to the specified parent widget. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>a parent widget of the menu </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>list of menus </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="166" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="592" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1aebec23bc319940023155e1f031ed3231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="structQgsMimeDataUtils_1_1Uri" kindref="compound">QgsMimeDataUtils::Uri</ref></type>
+        <definition>virtual QgsMimeDataUtils::Uri QgsDataItem::mimeUri</definition>
+        <argsstring>() const</argsstring>
+        <name>mimeUri</name>
+        <reimplementedby refid="classQgsLayerItem_1a588938a1f45de7466530f5275d0d94d8">mimeUri</reimplementedby>
+        <reimplementedby refid="classQgsProjectItem_1ad07f1a5f7c544bf3637e1934711fe4bf">mimeUri</reimplementedby>
+        <briefdescription>
+<para>Returns mime URI for the data item. </para>        </briefdescription>
+        <detaileddescription>
+<para>Items that return valid URI will be returned in mime data when dragging a selection from browser model. <simplesect kind="see"><para><ref refid="classQgsDataItem_1a914473e22bf43ebfb76e15b9af05b5f5" kindref="member">hasDragEnabled()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="205" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="205" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ad8835b9fb54fcf37807b9d569b5b2c5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::moveToThread</definition>
+        <argsstring>(QThread *targetThread)</argsstring>
+        <name>moveToThread</name>
+        <param>
+          <type>QThread *</type>
+          <declname>targetThread</declname>
+        </param>
+        <briefdescription>
+<para>Move object and all its descendants to thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="325" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="208" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1aa8fde7c03776925b69381ad33dd0548d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDataItem::name</definition>
+        <argsstring>() const</argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>Returns the name of the item (the displayed text for the item). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDataItem_1abded60c02228db1c8b78eae051796291" kindref="member">setName()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="278" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="278" bodyend="278"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a7b9127e9864ff5b7906d713ef05e008a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>QWidget *</type>
+        <definition>virtual QWidget* QgsDataItem::paramWidget</definition>
+        <argsstring>()</argsstring>
+        <name>paramWidget</name>
+        <reimplementedby refid="classQgsDirectoryItem_1a2cf6e037b6dad4675c611c8ca6f25483">paramWidget</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="147" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="147" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a65af3996908d4303e763855c1d120393" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+        <definition>QgsDataItem* QgsDataItem::parent</definition>
+        <argsstring>() const</argsstring>
+        <name>parent</name>
+        <briefdescription>
+<para>Gets item parent. </para>        </briefdescription>
+        <detaileddescription>
+<para><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> maintains its own items hierarchy, it does not use QObject hierarchy. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="264" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="264" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1aaaf9aa8ecb1fb69f66c0c32ca1d87adb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDataItem::path</definition>
+        <argsstring>() const</argsstring>
+        <name>path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="287" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="287" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a8b9daf39ababcb2c298fba82c0be07d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+        <definition>QgsDataItem * QgsDataItem::removeChildItem</definition>
+        <argsstring>(QgsDataItem *child)</argsstring>
+        <name>removeChildItem</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>child</declname>
+        </param>
+        <briefdescription>
+<para>Removes a child item and returns it without deleting it. </para>        </briefdescription>
+        <detaileddescription>
+<para>Emits relevant signals to model as required. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>child</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>child to remove </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pointer to the removed item or null if no such item was found </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="140" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="505" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a9caaa81b2cdf9780c4376d0ddec19130" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool QgsDataItem::rename</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>rename</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Sets a new <emphasis>name</emphasis> for the item, and returns true if the item was successfully renamed. </para>        </briefdescription>
+        <detaileddescription>
+<para>Items which implement this method should return the <ref refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ad5792573a5e4aac4bebe5bafb6d67da3" kindref="member">QgsDataItem::Rename</ref> capability.</para><para>The default implementation does nothing.</para><para><simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="234" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="551" bodyend="554"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ad73b159f65d8e0b57e5490d947dc22c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDataItem::rowCount</definition>
+        <argsstring>()</argsstring>
+        <name>rowCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="95" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="431" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ab9202e38b7dbaa708f9850ac639d4ac2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void QgsDataItem::setCapabilities</definition>
+        <argsstring>(Capabilities capabilities)</argsstring>
+        <name>setCapabilities</name>
+        <param>
+          <type>Capabilities</type>
+          <declname>capabilities</declname>
+        </param>
+        <briefdescription>
+<para>Sets the capabilities for the data item. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDataItem_1a0e0e7d6b37181e42caddd5b93c3f9202" kindref="member">capabilities2()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="250" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="250" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a44a13519fb064cd9aadec315649c1b44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool QgsDataItem::setCrs</definition>
+        <argsstring>(const QgsCoordinateReferenceSystem &amp;crs)</argsstring>
+        <name>setCrs</name>
+        <param>
+          <type>const <ref refid="classQgsCoordinateReferenceSystem" kindref="compound">QgsCoordinateReferenceSystem</ref> &amp;</type>
+          <declname>crs</declname>
+        </param>
+        <briefdescription>
+<para>Writes the selected crs into data source. </para>        </briefdescription>
+        <detaileddescription>
+<para>The original data source will be modified when calling this method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="223" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="223" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1adab301563287031ca97bd53dab672aa6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setIcon</definition>
+        <argsstring>(const QIcon &amp;icon)</argsstring>
+        <name>setIcon</name>
+        <param>
+          <type>const QIcon &amp;</type>
+          <declname>icon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="315" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="315" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1adef15035b873e8d8b928abefc35d5689" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setIconName</definition>
+        <argsstring>(const QString &amp;iconName)</argsstring>
+        <name>setIconName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>iconName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="316" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="316" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1abded60c02228db1c8b78eae051796291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setName</definition>
+        <argsstring>(const QString &amp;name)</argsstring>
+        <name>setName</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Sets the <emphasis>name</emphasis> of the item (the displayed text for the item). </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDataItem_1aa8fde7c03776925b69381ad33dd0548d" kindref="member">name()</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="285" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="238" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a4443a4cc224564ff4ea2a23647c55052" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setParent</definition>
+        <argsstring>(QgsDataItem *parent)</argsstring>
+        <name>setParent</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+<para>Set item parent and connect / disconnect parent to / from item signals. </para>        </briefdescription>
+        <detaileddescription>
+<para>It does not add itself to parents children (mChildren) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="269" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="440" bodyend="456"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ae3c409815b3587f9522b48cfc54be79c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setPath</definition>
+        <argsstring>(const QString &amp;path)</argsstring>
+        <name>setPath</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="288" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="288" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a0976392a5ebc035522b0cd9080e95b3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setSortKey</definition>
+        <argsstring>(const QVariant &amp;key)</argsstring>
+        <name>setSortKey</name>
+        <param>
+          <type>const QVariant &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Sets a custom sorting <emphasis>key</emphasis> for the item. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="classQgsDataItem_1a2933c014b1627eb0e911af3aa61b19e5" kindref="member">sortKey()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="309" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="169" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a88e0ed473ff726167953ad498e62449a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setState</definition>
+        <argsstring>(State state)</argsstring>
+        <name>setState</name>
+        <reimplementedby refid="classQgsDirectoryItem_1a10099bcffae314b64924417713c43ad8">setState</reimplementedby>
+        <param>
+          <type><ref refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5" kindref="member">State</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Set item state. </para>        </briefdescription>
+        <detaileddescription>
+<para>It also take care about starting/stopping loading icon animation. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.8 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="118" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="561" bodyend="590"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a332c9b4b3a2dd8102b23d4d864d9a496" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::setToolTip</definition>
+        <argsstring>(const QString &amp;msg)</argsstring>
+        <name>setToolTip</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="318" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="318" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a2933c014b1627eb0e911af3aa61b19e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QVariant</type>
+        <definition>QVariant QgsDataItem::sortKey</definition>
+        <argsstring>() const</argsstring>
+        <name>sortKey</name>
+        <reimplementedby refid="classQgsFavoritesItem_1a10f738c7afad20055f949d6e53c28581">sortKey</reimplementedby>
+        <briefdescription>
+<para>Returns the sorting key for the item. </para>        </briefdescription>
+        <detaileddescription>
+<para>By default <ref refid="classQgsDataItem_1aa8fde7c03776925b69381ad33dd0548d" kindref="member">name()</ref> is returned, but <ref refid="classQgsDataItem_1a0976392a5ebc035522b0cd9080e95b3b" kindref="member">setSortKey()</ref> can be used to set a custom sort key for the item.</para><para>Alternatively subclasses can override this method to return a custom sort key.</para><para><simplesect kind="see"><para><ref refid="classQgsDataItem_1a0976392a5ebc035522b0cd9080e95b3b" kindref="member">setSortKey()</ref> </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="302" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a90681360be3985e8cb768c21d5230383" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5" kindref="member">State</ref></type>
+        <definition>QgsDataItem::State QgsDataItem::state</definition>
+        <argsstring>() const</argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 2.8 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="111" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="556" bodyend="559"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ac9f68f628dc35b75cc002f1b1c9be6d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDataItem::toolTip</definition>
+        <argsstring>() const</argsstring>
+        <name>toolTip</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="319" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="319" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a47590d4edc0d1d74820a601757e84268" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691" kindref="member">Type</ref></type>
+        <definition>Type QgsDataItem::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="259" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="259" bodyend="259"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsDataItem_1a29dfa353f7008f1dd17581eed6feaaa0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::deleteLater</definition>
+        <argsstring>(QVector&lt; QgsDataItem *&gt; &amp;items)</argsstring>
+        <name>deleteLater</name>
+        <param>
+          <type>QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *&gt; &amp;</type>
+          <declname>items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="322" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="197" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1ae8b469e5c678552a57b7f99e0c3a7c55" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsDataItem::findItem</definition>
+        <argsstring>(QVector&lt; QgsDataItem *&gt; items, QgsDataItem *item)</argsstring>
+        <name>findItem</name>
+        <param>
+          <type>QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *&gt;</type>
+          <declname>items</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="255" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="522" bodyend="532"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a8d402aa3f0cc6a89ce225f4f06aaa4a2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsDataItem::pathComponent</definition>
+        <argsstring>(const QString &amp;component)</argsstring>
+        <name>pathComponent</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>component</declname>
+        </param>
+        <briefdescription>
+<para>Create path component replacing path separators. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="290" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="159" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classQgsDataItem_1a4139fa09d7cd54a02ed7d2beda94f06d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsDataItem::deferredDelete</definition>
+        <argsstring>()</argsstring>
+        <name>deferredDelete</name>
+        <briefdescription>
+<para>The item is scheduled to be deleted. </para>        </briefdescription>
+        <detaileddescription>
+<para>E.g. if <ref refid="classQgsDataItem_1a6bb7491484841a006fd387cfe66a510a" kindref="member">deleteLater()</ref> is called when item is in Populating state (<ref refid="classQgsDataItem_1a7b8b9fc6f0532443fd068ad38e6ffba9" kindref="member">createChildren()</ref> running in another thread), the <ref refid="classQgsDataItem_1a4139fa09d7cd54a02ed7d2beda94f06d" kindref="member">deferredDelete()</ref> returns true and item will be deleted once Populating finished. Items with slow reateChildren() (for example network or database based) may check during <ref refid="classQgsDataItem_1a7b8b9fc6f0532443fd068ad38e6ffba9" kindref="member">createChildren()</ref> if <ref refid="classQgsDataItem_1a4139fa09d7cd54a02ed7d2beda94f06d" kindref="member">deferredDelete()</ref> returns true and return from <ref refid="classQgsDataItem_1a7b8b9fc6f0532443fd068ad38e6ffba9" kindref="member">createChildren()</ref> immediately because result will be useless. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="342" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="342" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1aed4503c103e1ce6a60e68796bfa4d91a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::populate</definition>
+        <argsstring>(const QVector&lt; QgsDataItem *&gt; &amp;children)</argsstring>
+        <name>populate</name>
+        <param>
+          <type>const QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *&gt; &amp;</type>
+          <declname>children</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="328" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="323" bodyend="335"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsDataItem_1a952146e41f411c1a2185d86793c358c3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::refresh</definition>
+        <argsstring>(const QVector&lt; QgsDataItem *&gt; &amp;children)</argsstring>
+        <name>refresh</name>
+        <param>
+          <type>const QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *&gt; &amp;</type>
+          <declname>children</declname>
+        </param>
+        <briefdescription>
+<para>Refresh the items from a specified list of child items. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="333" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="387" bodyend="429"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="classQgsDataItem_1a869869ce00de5d7d516faa2cc5dd8932" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::childrenCreated</definition>
+        <argsstring>()</argsstring>
+        <name>childrenCreated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="387" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="295" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsDataItem_1a6bb7491484841a006fd387cfe66a510a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::deleteLater</definition>
+        <argsstring>()</argsstring>
+        <name>deleteLater</name>
+        <briefdescription>
+<para>Safely delete the item: </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>disconnects parent</para></listitem><listitem><para>unsets parent (but does not remove itself)</para></listitem><listitem><para>deletes all its descendants recursively</para></listitem><listitem><para>waits until Populating state (<ref refid="classQgsDataItem_1a7b8b9fc6f0532443fd068ad38e6ffba9" kindref="member">createChildren()</ref> in thread) finished without blocking main thread</para></listitem><listitem><para>calls QObject::deleteLater() </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="373" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="174" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsDataItem_1afe4d130bc8929e64905939bbf81135f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::depopulate</definition>
+        <argsstring>()</argsstring>
+        <name>depopulate</name>
+        <briefdescription>
+<para>Remove children recursively and set as not populated. This is used when refreshing collapsed items. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="380" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="337" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsDataItem_1acae80c5aba2f56444ac4ba277667264c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::populate</definition>
+        <argsstring>(bool foreground=false)</argsstring>
+        <name>populate</name>
+        <param>
+          <type>bool</type>
+          <declname>foreground</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="377" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="249" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsDataItem_1ac3b68236437fd95e1aa68afec116fef3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::refresh</definition>
+        <argsstring>()</argsstring>
+        <name>refresh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="382" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="350" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="slot" id="classQgsDataItem_1a9f1296e5fe02c453062e5d9a845a4bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::refreshConnections</definition>
+        <argsstring>()</argsstring>
+        <name>refreshConnections</name>
+        <briefdescription>
+<para>Refresh connections: update GUI and emit signal. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="385" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="373" bodyend="385"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classQgsDataItem_1aadadf8b73d63afe4d5afb9a45a67a346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::beginInsertItems</definition>
+        <argsstring>(QgsDataItem *parent, int first, int last)</argsstring>
+        <name>beginInsertItems</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="390" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsDataItem_1a5729b21251e0b87e35351cbe83223d68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::beginRemoveItems</definition>
+        <argsstring>(QgsDataItem *parent, int first, int last)</argsstring>
+        <name>beginRemoveItems</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>last</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="392" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsDataItem_1aa8e297d57158e5607e9377e20ac075b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::connectionsChanged</definition>
+        <argsstring>()</argsstring>
+        <name>connectionsChanged</name>
+        <briefdescription>
+<para>Emitted when the provider&apos;s connections of the child items have changed This signal is normally forwarded to the app in order to refresh the connection item in the provider dialogs and to refresh the connection items in the other open browsers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="403" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsDataItem_1a400f7b72769b9972c7971d091d134166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::dataChanged</definition>
+        <argsstring>(QgsDataItem *item)</argsstring>
+        <name>dataChanged</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="394" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsDataItem_1aeb5fee4ff826c79996fb3dbc4775d620" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::endInsertItems</definition>
+        <argsstring>()</argsstring>
+        <name>endInsertItems</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="391" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsDataItem_1a491868fd1673b8550aa37f29e1db60c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::endRemoveItems</definition>
+        <argsstring>()</argsstring>
+        <name>endRemoveItems</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="393" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classQgsDataItem_1ad4977083969099f13a4a0da298ce9181" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::stateChanged</definition>
+        <argsstring>(QgsDataItem *item, QgsDataItem::State oldState)</argsstring>
+        <name>stateChanged</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type><ref refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5" kindref="member">QgsDataItem::State</ref></type>
+          <declname>oldState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="395" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-slot">
+      <memberdef kind="slot" id="classQgsDataItem_1a9b30fe4632d25cfc9fe70109b024d187" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsDataItem::updateIcon</definition>
+        <argsstring>()</argsstring>
+        <name>updateIcon</name>
+        <briefdescription>
+<para>Will request a repaint of this icon. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="since"><para>QGIS 3.0 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="412" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="318" bodyend="321"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classQgsDataItem_1a676130320c9d270addd3ba1889be551b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVector&lt; <ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> * &gt;</type>
+        <definition>QVector&lt; QgsDataItem * &gt; QgsDataItem::runCreateChildren</definition>
+        <argsstring>(QgsDataItem *item)</argsstring>
+        <name>runCreateChildren</name>
+        <param>
+          <type><ref refid="classQgsDataItem" kindref="compound">QgsDataItem</ref> *</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="415" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.cpp" bodystart="275" bodyend="293"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for all items in the model. </para>    </briefdescription>
+    <detaileddescription>
+<para>Parent/children hierarchy is not based on QObject. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2212">
+        <label>QgsProjectItem</label>
+        <link refid="classQgsProjectItem"/>
+        <childnode refid="2204" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2205">
+        <label>QObject</label>
+      </node>
+      <node id="2208">
+        <label>QgsFavoritesItem</label>
+        <link refid="classQgsFavoritesItem"/>
+        <childnode refid="2206" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2211">
+        <label>QgsLayerItem</label>
+        <link refid="classQgsLayerItem"/>
+        <childnode refid="2204" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2207">
+        <label>QgsDirectoryItem</label>
+        <link refid="classQgsDirectoryItem"/>
+        <childnode refid="2206" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2210">
+        <label>QgsErrorItem</label>
+        <link refid="classQgsErrorItem"/>
+        <childnode refid="2204" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2206">
+        <label>QgsDataCollectionItem</label>
+        <link refid="classQgsDataCollectionItem"/>
+        <childnode refid="2204" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2204">
+        <label>QgsDataItem</label>
+        <link refid="classQgsDataItem"/>
+        <childnode refid="2205" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2209">
+        <label>QgsZipItem</label>
+        <link refid="classQgsZipItem"/>
+        <childnode refid="2206" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2214">
+        <label>QObject</label>
+      </node>
+      <node id="2213">
+        <label>QgsDataItem</label>
+        <link refid="classQgsDataItem"/>
+        <childnode refid="2214" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2213" relation="usage">
+          <edgelabel>mParent</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" line="50" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsdataitem.h" bodystart="49" bodyend="422"/>
+    <listofallmembers>
+      <member refid="classQgsDataItem_1ae7f3c8c0f7974622954c4946296d4b25" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>acceptDrop</name></member>
+      <member refid="classQgsDataItem_1a93c9a612126e43c1c5bd49e93099c883" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>actions</name></member>
+      <member refid="classQgsDataItem_1ab69f9d4295379181a75f71de4e802914" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>addChildItem</name></member>
+      <member refid="classQgsDataItem_1aadadf8b73d63afe4d5afb9a45a67a346" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>beginInsertItems</name></member>
+      <member refid="classQgsDataItem_1a5729b21251e0b87e35351cbe83223d68" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>beginRemoveItems</name></member>
+      <member refid="classQgsDataItem_1a0e0e7d6b37181e42caddd5b93c3f9202" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>capabilities2</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Capability</name></member>
+      <member refid="classQgsDataItem_1a4c064e2032b1d78d01df996146a7e48a" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>children</name></member>
+      <member refid="classQgsDataItem_1a869869ce00de5d7d516faa2cc5dd8932" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>childrenCreated</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ad3df64fcdd165ec2da6d5e24fb4c556d" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Collapse</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a83f47b94e71586954edd4fb4ebd543c3" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Collection</name></member>
+      <member refid="classQgsDataItem_1aa8e297d57158e5607e9377e20ac075b7" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>connectionsChanged</name></member>
+      <member refid="classQgsDataItem_1a7b8b9fc6f0532443fd068ad38e6ffba9" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>createChildren</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a02e8ae409a1505d56dee17935d62adca" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Custom</name></member>
+      <member refid="classQgsDataItem_1a400f7b72769b9972c7971d091d134166" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>dataChanged</name></member>
+      <member refid="classQgsDataItem_1a4139fa09d7cd54a02ed7d2beda94f06d" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>deferredDelete</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393aaca4c79d22d18b82b7667cf4c2169814" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Delete</name></member>
+      <member refid="classQgsDataItem_1a1a18aa71da973648cf9b5e6d8e313591" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>deleteChildItem</name></member>
+      <member refid="classQgsDataItem_1a29dfa353f7008f1dd17581eed6feaaa0" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>deleteLater</name></member>
+      <member refid="classQgsDataItem_1a6bb7491484841a006fd387cfe66a510a" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>deleteLater</name></member>
+      <member refid="classQgsDataItem_1afe4d130bc8929e64905939bbf81135f5" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>depopulate</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691ae9d4725060ca4a2a15eaa6068827af24" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Directory</name></member>
+      <member refid="classQgsDataItem_1aeb5fee4ff826c79996fb3dbc4775d620" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>endInsertItems</name></member>
+      <member refid="classQgsDataItem_1a491868fd1673b8550aa37f29e1db60c6" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>endRemoveItems</name></member>
+      <member refid="classQgsDataItem_1afaecde431a0168cbab7179e4424e8873" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>equal</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691af1f1e30cf14c5444349946235bccef12" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Error</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ae804986488a5eaa4974c2011899f0fb6" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Fast</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a0e88bb1e8ef49dd5323064512c936b10" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Favorites</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393a3af0d4f4182ac5c048c7298e99003ef6" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Fertile</name></member>
+      <member refid="classQgsDataItem_1ae8b469e5c678552a57b7f99e0c3a7c55" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>findItem</name></member>
+      <member refid="classQgsDataItem_1a38a3f6871ca17b47b83fb40f4bd8c8d2" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>handleDoubleClick</name></member>
+      <member refid="classQgsDataItem_1a95e87790598a98567dced9fd1e3bd197" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>handleDrop</name></member>
+      <member refid="classQgsDataItem_1a155b6605e11c66bfe1ca8100677bbced" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>hasChildren</name></member>
+      <member refid="classQgsDataItem_1a914473e22bf43ebfb76e15b9af05b5f5" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>hasDragEnabled</name></member>
+      <member refid="classQgsDataItem_1aac7f8c4af0790bc07fd68387136c0824" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>icon</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a95c3f542e64b5f6177fde3f7bd045ffb" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Layer</name></member>
+      <member refid="classQgsDataItem_1a1ff06917bfaed8d61ff52e27b1155339" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mCapabilities</name></member>
+      <member refid="classQgsDataItem_1a1b263213f91ee0bd438b23e417dd000b" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mChildren</name></member>
+      <member refid="classQgsDataItem_1a31051efb353574425dfcad7bf6690a05" prot="private" virt="non-virtual"><scope>QgsDataItem</scope><name>mDeferredDelete</name></member>
+      <member refid="classQgsDataItem_1a1698a9d4afb8100513c498c71f3b5051" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>menus</name></member>
+      <member refid="classQgsDataItem_1a4e559764be4728c0455b42e5fb2a6fd0" prot="private" virt="non-virtual"><scope>QgsDataItem</scope><name>mFutureWatcher</name></member>
+      <member refid="classQgsDataItem_1a8aa9307154a6024a1d410fb70440125d" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mIcon</name></member>
+      <member refid="classQgsDataItem_1a822bf05ac68b18b2100a333e68ef324b" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mIconMap</name></member>
+      <member refid="classQgsDataItem_1a71686af3c05b7fc73ded4b01b1e2b0d8" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mIconName</name></member>
+      <member refid="classQgsDataItem_1aebec23bc319940023155e1f031ed3231" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>mimeUri</name></member>
+      <member refid="classQgsDataItem_1a12857c4bc74b3c0cd8d8f9b59af4944b" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mName</name></member>
+      <member refid="classQgsDataItem_1ad8835b9fb54fcf37807b9d569b5b2c5a" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>moveToThread</name></member>
+      <member refid="classQgsDataItem_1aa8d0762253b33ee59fcf94b55ac5c8b0" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mParent</name></member>
+      <member refid="classQgsDataItem_1a4ae5a460f647d58560bd3a123bd0ebf2" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mPath</name></member>
+      <member refid="classQgsDataItem_1a95c1fb44727920e357f0291be71baaff" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mSortKey</name></member>
+      <member refid="classQgsDataItem_1af3911a6caeb2389cb5d8e6946bfaca94" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mState</name></member>
+      <member refid="classQgsDataItem_1a0da4e152217f26a1e06b4e1163262950" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mToolTip</name></member>
+      <member refid="classQgsDataItem_1a38b0610e5a87ce8734542987b9b0ca75" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>mType</name></member>
+      <member refid="classQgsDataItem_1aa8fde7c03776925b69381ad33dd0548d" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>name</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393a2d7cb627c338fc2628be05f2fd93b0d7" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>NoCapabilities</name></member>
+      <member refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5aef37b26f67623deaa9c516fde63d271e" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>NotPopulated</name></member>
+      <member refid="classQgsDataItem_1a7b9127e9864ff5b7906d713ef05e008a" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>paramWidget</name></member>
+      <member refid="classQgsDataItem_1a65af3996908d4303e763855c1d120393" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>parent</name></member>
+      <member refid="classQgsDataItem_1aaaf9aa8ecb1fb69f66c0c32ca1d87adb" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>path</name></member>
+      <member refid="classQgsDataItem_1a8d402aa3f0cc6a89ce225f4f06aaa4a2" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>pathComponent</name></member>
+      <member refid="classQgsDataItem_1aed4503c103e1ce6a60e68796bfa4d91a" prot="protected" virt="virtual"><scope>QgsDataItem</scope><name>populate</name></member>
+      <member refid="classQgsDataItem_1acae80c5aba2f56444ac4ba277667264c" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>populate</name></member>
+      <member refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5a47a4a8f35c8cce802934e53779a71595" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Populated</name></member>
+      <member refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5a6b74658fe970acba690562c30c636cd1" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Populating</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691a2b64cfbccb438c2433bff65517370098" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Project</name></member>
+      <member refid="classQgsDataItem_1a424ebfc14c3bb63ac8d0f4b6696ad56f" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>QgsDataItem</name></member>
+      <member refid="classQgsDataItem_1a952146e41f411c1a2185d86793c358c3" prot="protected" virt="virtual"><scope>QgsDataItem</scope><name>refresh</name></member>
+      <member refid="classQgsDataItem_1ac3b68236437fd95e1aa68afec116fef3" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>refresh</name></member>
+      <member refid="classQgsDataItem_1a9f1296e5fe02c453062e5d9a845a4bd1" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>refreshConnections</name></member>
+      <member refid="classQgsDataItem_1a8b9daf39ababcb2c298fba82c0be07d2" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>removeChildItem</name></member>
+      <member refid="classQgsDataItem_1a9caaa81b2cdf9780c4376d0ddec19130" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>rename</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393ad5792573a5e4aac4bebe5bafb6d67da3" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Rename</name></member>
+      <member refid="classQgsDataItem_1ad73b159f65d8e0b57e5490d947dc22c7" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>rowCount</name></member>
+      <member refid="classQgsDataItem_1a676130320c9d270addd3ba1889be551b" prot="private" virt="non-virtual"><scope>QgsDataItem</scope><name>runCreateChildren</name></member>
+      <member refid="classQgsDataItem_1ab9202e38b7dbaa708f9850ac639d4ac2" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>setCapabilities</name></member>
+      <member refid="classQgsDataItem_1a5425a382125cb6ed475a1114f5738393aa17645e9631aa0129089e1f0d24c1198" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>SetCrs</name></member>
+      <member refid="classQgsDataItem_1a44a13519fb064cd9aadec315649c1b44" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>setCrs</name></member>
+      <member refid="classQgsDataItem_1adab301563287031ca97bd53dab672aa6" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setIcon</name></member>
+      <member refid="classQgsDataItem_1adef15035b873e8d8b928abefc35d5689" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setIconName</name></member>
+      <member refid="classQgsDataItem_1abded60c02228db1c8b78eae051796291" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setName</name></member>
+      <member refid="classQgsDataItem_1a4443a4cc224564ff4ea2a23647c55052" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setParent</name></member>
+      <member refid="classQgsDataItem_1ae3c409815b3587f9522b48cfc54be79c" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setPath</name></member>
+      <member refid="classQgsDataItem_1a0976392a5ebc035522b0cd9080e95b3b" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setSortKey</name></member>
+      <member refid="classQgsDataItem_1a88e0ed473ff726167953ad498e62449a" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>setState</name></member>
+      <member refid="classQgsDataItem_1a332c9b4b3a2dd8102b23d4d864d9a496" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>setToolTip</name></member>
+      <member refid="classQgsDataItem_1a2933c014b1627eb0e911af3aa61b19e5" prot="public" virt="virtual"><scope>QgsDataItem</scope><name>sortKey</name></member>
+      <member refid="classQgsDataItem_1afb5d81b3206bca1f71fcd2662174df9c" prot="private" virt="non-virtual"><scope>QgsDataItem</scope><name>sPopulatingIcon</name></member>
+      <member refid="classQgsDataItem_1a1e8cf9ac9f3fe7c8f8b7c414b3874ae5" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>State</name></member>
+      <member refid="classQgsDataItem_1a90681360be3985e8cb768c21d5230383" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>state</name></member>
+      <member refid="classQgsDataItem_1ad4977083969099f13a4a0da298ce9181" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>stateChanged</name></member>
+      <member refid="classQgsDataItem_1ac9f68f628dc35b75cc002f1b1c9be6d0" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>toolTip</name></member>
+      <member refid="classQgsDataItem_1a47590d4edc0d1d74820a601757e84268" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>type</name></member>
+      <member refid="classQgsDataItem_1a954ea08c78e05ff4a38ebb551286e691" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>Type</name></member>
+      <member refid="classQgsDataItem_1a9b30fe4632d25cfc9fe70109b024d187" prot="protected" virt="non-virtual"><scope>QgsDataItem</scope><name>updateIcon</name></member>
+      <member refid="classQgsDataItem_1af580898105e8392da164667aee8ea799" prot="public" virt="non-virtual"><scope>QgsDataItem</scope><name>~QgsDataItem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

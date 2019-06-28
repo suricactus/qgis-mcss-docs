@@ -1,0 +1,744 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classQgsProviderRegistry" kind="class" language="C++" prot="public">
+    <compoundname>QgsProviderRegistry</compoundname>
+    <includes refid="qgsproviderregistry_8h" local="no">qgsproviderregistry.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classQgsProviderRegistry_1a10bfedcb0a63f6f6a99d6ce20d08bf08" prot="public" static="no">
+        <type>std::map&lt; QString, <ref refid="classQgsProviderMetadata" kindref="compound">QgsProviderMetadata</ref> * &gt;</type>
+        <definition>typedef std::map&lt;QString, QgsProviderMetadata *&gt; QgsProviderRegistry::Providers</definition>
+        <argsstring></argsstring>
+        <name>Providers</name>
+        <briefdescription>
+<para>Open the given vector data source. </para>        </briefdescription>
+        <detaileddescription>
+<para>Similar to open(QString const &amp;), except that the user specifies a data provider with which to open the data source instead of using the default data provider that QgsDataManager would figure out to use. This should be useful when (and if) there will exist more than one data provider that can handle a given data source. (E.g., use GDAL to open an SDTS file, or a different data provider that uses sdts++.)</para><para>Called by QgsDataManager::open().</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>could be a file, URI </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>provider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>is the key for the dataprovider used to open name </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>NULL if unable to open vector data source</para></simplesect>
+Temporarily always returns false until finished implementing.</para><para>Eventually would be nice if could make QgsDataManager smart enough to figure out whether the given name mapped to a vector, raster, or database source.Type for data provider metadata associative container </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="255" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="enum" id="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67" prot="public" static="no">
+        <name>WidgetMode</name>
+        <enumvalue id="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67a8c7214051cdf3c183902eeb7acbad12d" prot="public">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67a5873df93429708f3a5e559b06a6d74ff" prot="public">
+          <name>Embedded</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67af28836d918bef572f0e2cc35cfef3a57" prot="public">
+          <name>Manager</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Different ways a source select dialog can be used (embedded is for the data source manager dialog) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="62" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="61" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classQgsProviderRegistry_1acb3b07299636efa98823e9dadfb0ef19" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mDatabaseDrivers</definition>
+        <argsstring></argsstring>
+        <name>mDatabaseDrivers</name>
+        <briefdescription>
+<para>Available database drivers string for vector databases. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is a string of form: DriverNameToShow,DriverName;DriverNameToShow,DriverName;... </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="306" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1a7f0bfb96dbe279c9dc8f48b9aeeb55b0" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mDirectoryDrivers</definition>
+        <argsstring></argsstring>
+        <name>mDirectoryDrivers</name>
+        <briefdescription>
+<para>Available directory drivers string for vector databases This is a string of form: DriverNameToShow,DriverName;DriverNameToShow,DriverName;... </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="313" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1af27f3e2a182d5e742be8ea51e47b7a06" prot="private" static="no" mutable="no">
+        <type>QDir</type>
+        <definition>QDir QgsProviderRegistry::mLibraryDirectory</definition>
+        <argsstring></argsstring>
+        <name>mLibraryDirectory</name>
+        <briefdescription>
+<para>Directory in which provider plugins are installed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="272" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1ac657d6ff0e79cdb26810d5f00fff6778" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mMeshDatasetFileFilters</definition>
+        <argsstring></argsstring>
+        <name>mMeshDatasetFileFilters</name>
+        <briefdescription>
+<para>File filter string for raster files. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="298" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1af370cab66a2e318f5b18933d31ab86c6" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mMeshFileFilters</definition>
+        <argsstring></argsstring>
+        <name>mMeshFileFilters</name>
+        <briefdescription>
+<para>File filter string for raster files. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="293" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1aeae75d6bfa1138f0c09e212f801375ee" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mProtocolDrivers</definition>
+        <argsstring></argsstring>
+        <name>mProtocolDrivers</name>
+        <briefdescription>
+<para>Available protocol drivers string for vector databases. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is a string of form: DriverNameToShow,DriverName;DriverNameToShow,DriverName;... </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="321" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1a872a5d2718a1ad2354fc98a1bf63a9b9" prot="private" static="no" mutable="no">
+        <type><ref refid="classQgsProviderRegistry_1a10bfedcb0a63f6f6a99d6ce20d08bf08" kindref="member">Providers</ref></type>
+        <definition>Providers QgsProviderRegistry::mProviders</definition>
+        <argsstring></argsstring>
+        <name>mProviders</name>
+        <briefdescription>
+<para>Associative container of provider metadata handles. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="269" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="269" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1a5b5a57bc915d3e7ae41232608b09ca8c" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mRasterFileFilters</definition>
+        <argsstring></argsstring>
+        <name>mRasterFileFilters</name>
+        <briefdescription>
+<para>File filter string for raster files. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="288" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classQgsProviderRegistry_1a238ee252f2330f9e5ce995643e5a11f2" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::mVectorFileFilters</definition>
+        <argsstring></argsstring>
+        <name>mVectorFileFilters</name>
+        <briefdescription>
+<para>File filter string for vector files. </para>        </briefdescription>
+        <detaileddescription>
+<para>Built once when registry is constructed by appending strings returned from iteratively calling vectorFileFilter() for each visited data provider. The alternative would have been to do this each time fileVectorFilters was invoked; instead we only have to build it the one time. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="283" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classQgsProviderRegistry_1a60c16019b5073ee00c3e26141312bfb2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsProviderRegistry" kindref="compound">QgsProviderRegistry</ref> *</type>
+        <definition>QgsProviderRegistry * QgsProviderRegistry::instance</definition>
+        <argsstring>(const QString &amp;pluginPath=QString())</argsstring>
+        <name>instance</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>pluginPath</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Means of accessing canonical single instance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="69" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="54" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classQgsProviderRegistry_1a7d6cc6fbb8cfa2a8f7118a4fd584c70b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>QgsProviderRegistry::~QgsProviderRegistry</definition>
+        <argsstring>()</argsstring>
+        <name>~QgsProviderRegistry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="71" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="291" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a666ec1f97817cb0ff1a6964d1cc58526" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classQgsDataProvider" kindref="compound">QgsDataProvider</ref> *</type>
+        <definition>QgsDataProvider * QgsProviderRegistry::createProvider</definition>
+        <argsstring>(const QString &amp;providerKey, const QString &amp;dataSource, const QgsDataProvider::ProviderOptions &amp;options=QgsDataProvider::ProviderOptions())</argsstring>
+        <name>createProvider</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>dataSource</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structQgsDataProvider_1_1ProviderOptions" kindref="compound">QgsDataProvider::ProviderOptions</ref> &amp;</type>
+          <declname>options</declname>
+          <defval><ref refid="structQgsDataProvider_1_1ProviderOptions" kindref="compound">QgsDataProvider::ProviderOptions</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a new instance of a provider. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>providerKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>identifier of the provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dataSource</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>string containing data source for the provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>provider options </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>new instance of provider or NULL on error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="99" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="395" bodyend="459"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a8176626696b68045410afbd5c3f3c397" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QLibrary *</type>
+        <definition>QLibrary * QgsProviderRegistry::createProviderLibrary</definition>
+        <argsstring>(const QString &amp;providerKey) const</argsstring>
+        <name>createProviderLibrary</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <briefdescription>
+<para>Returns a new QLibrary for the specified <emphasis>providerKey</emphasis>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Ownership of the returned object is transferred to the caller and the caller is responsible for deleting it.</para><para>If the provider uses direct provider function pointers instead of a library nullptr will be returned. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="147" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="531" bodyend="547"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1afb61876eea3d664971966a8e4c6c0c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QWidget *</type>
+        <definition>QWidget * QgsProviderRegistry::createSelectionWidget</definition>
+        <argsstring>(const QString &amp;providerKey, QWidget *parent=nullptr, Qt::WindowFlags fl=Qt::WindowFlags(), QgsProviderRegistry::WidgetMode widgetMode=QgsProviderRegistry::WidgetMode::None)</argsstring>
+        <name>createSelectionWidget</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>Qt::WindowFlags</type>
+          <declname>fl</declname>
+          <defval>Qt::WindowFlags()</defval>
+        </param>
+        <param>
+          <type><ref refid="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67" kindref="member">QgsProviderRegistry::WidgetMode</ref></type>
+          <declname>widgetMode</declname>
+          <defval>QgsProviderRegistry::WidgetMode::None</defval>
+        </param>
+        <briefdescription>
+<para>Returns a new widget for selecting layers from a provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>Either the <emphasis>parent</emphasis> widget must be set or the caller becomes responsible for deleting the returned widget. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="125" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="497" bodyend="507"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a6bbbd608b7cda2a6e28acb3fe9ecdb01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::databaseDrivers</definition>
+        <argsstring>() const</argsstring>
+        <name>databaseDrivers</name>
+        <briefdescription>
+<para>Returns a string containing the available database drivers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="214" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="605" bodyend="608"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a25d53a41b52b7fe7b7d7ab534d6e8ed1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariantMap</type>
+        <definition>QVariantMap QgsProviderRegistry::decodeUri</definition>
+        <argsstring>(const QString &amp;providerKey, const QString &amp;uri)</argsstring>
+        <name>decodeUri</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>uri</declname>
+        </param>
+        <briefdescription>
+<para>Breaks a provider data source URI into its component paths (e.g. </para>        </briefdescription>
+        <detaileddescription>
+<para>file path, layer name). <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>providerKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>identifier of the provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uri</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>uri string </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>map containing components. Standard components include &quot;path&quot;, &quot;layerName&quot;, &quot;url&quot;. </para></simplesect>
+<simplesect kind="note"><para>this function may not be supported by all providers, an empty map will be returned in such case </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.4 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="118" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="461" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1ae2774e5df72140dd5ef81bdc2d76540a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::directoryDrivers</definition>
+        <argsstring>() const</argsstring>
+        <name>directoryDrivers</name>
+        <briefdescription>
+<para>Returns a string containing the available directory drivers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="216" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="610" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1ab87352a15b4a8f8a6e602c36d44ad53a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::fileMeshDatasetFilters</definition>
+        <argsstring>() const</argsstring>
+        <name>fileMeshDatasetFilters</name>
+        <briefdescription>
+<para>Returns mesh&apos;s dataset file filter string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a string suitable for a QFileDialog of mesh datasets file formats supported by all data providers.</para><para>This walks through all data providers appending calls to their fileMeshFilters to a string, which is then returned.</para><para><simplesect kind="see"><para><ref refid="classQgsProviderRegistry_1a9aafd432f8458e3a0cdfb0b258e080f6" kindref="member">fileMeshFilters()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="211" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="600" bodyend="603"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a9aafd432f8458e3a0cdfb0b258e080f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::fileMeshFilters</definition>
+        <argsstring>() const</argsstring>
+        <name>fileMeshFilters</name>
+        <briefdescription>
+<para>Returns mesh file filter string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a string suitable for a QFileDialog of mesh file formats supported by all data providers.</para><para>This walks through all data providers appending calls to their fileMeshFilters to a string, which is then returned.</para><para><simplesect kind="see"><para><ref refid="classQgsProviderRegistry_1ab87352a15b4a8f8a6e602c36d44ad53a" kindref="member">fileMeshDatasetFilters()</ref></para></simplesect>
+<simplesect kind="since"><para>QGIS 3.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="196" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="595" bodyend="598"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a9619a9f55ce53a0e776e94900440ef66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::fileRasterFilters</definition>
+        <argsstring>() const</argsstring>
+        <name>fileRasterFilters</name>
+        <briefdescription>
+<para>Returns raster file filter string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a string suitable for a QFileDialog of raster file formats supported by all data providers.</para><para>This walks through all data providers appending calls to their buildSupportedRasterFileFilter to a string, which is then returned.</para><para><simplesect kind="note"><para>This replaces QgsRasterLayer::buildSupportedRasterFileFilter() </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="181" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="590" bodyend="593"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a92dc062ff9d75df08d077a27aa36b76d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::fileVectorFilters</definition>
+        <argsstring>() const</argsstring>
+        <name>fileVectorFilters</name>
+        <briefdescription>
+<para>Returns vector file filter string. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a string suitable for a QFileDialog of vector file formats supported by all data providers.</para><para>This walks through all data providers appending calls to their fileVectorFilters to a string, which is then returned.</para><para><simplesect kind="note"><para></para></simplesect>
+It&apos;d be nice to eventually be raster/vector neutral. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="168" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="585" bodyend="588"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a1fa718045e3560cc54f241a8a2721d52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QFunctionPointer</type>
+        <definition>QFunctionPointer QgsProviderRegistry::function</definition>
+        <argsstring>(const QString &amp;providerKey, const QString &amp;functionName)</argsstring>
+        <name>function</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>functionName</declname>
+        </param>
+        <briefdescription>
+<para>Gets pointer to provider function. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>providerKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>identifier of the provider </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>functionName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>name of function </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>pointer to function or NULL on error. If the provider uses direct provider function pointers instead of a library nullptr will be returned. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="137" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="509" bodyend="529"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a6b3b7a6e1a244d4fdfcd4c44072bdddf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::library</definition>
+        <argsstring>(const QString &amp;providerKey) const</argsstring>
+        <name>library</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <briefdescription>
+<para>Returns path for the library of the provider. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the provider uses direct provider function pointers instead of a library an empty string will be returned. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="79" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="324" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1abc567c89d532f13cc31dbe5397c3f3be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QDir</type>
+        <definition>QDir QgsProviderRegistry::libraryDirectory</definition>
+        <argsstring>() const</argsstring>
+        <name>libraryDirectory</name>
+        <briefdescription>
+<para>Returns the library directory where plugins are found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="87" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="377" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a9edf0f30804e3b45dc5f470680130ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::pluginList</definition>
+        <argsstring>(bool asHtml=false) const</argsstring>
+        <name>pluginList</name>
+        <param>
+          <type>bool</type>
+          <declname>asHtml</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Returns list of provider plugins found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="82" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="337" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a641872c7b098c133f01a0e2fcdcac53d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString QgsProviderRegistry::protocolDrivers</definition>
+        <argsstring>() const</argsstring>
+        <name>protocolDrivers</name>
+        <briefdescription>
+<para>Returns a string containing the available protocol drivers. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="218" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="615" bodyend="618"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1aa8145ac173834838a51ee865890b66ee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int QgsProviderRegistry::providerCapabilities</definition>
+        <argsstring>(const QString &amp;providerKey) const</argsstring>
+        <name>providerCapabilities</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <briefdescription>
+<para>Returns the provider capabilities. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>providerKey</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>identifier of the provider </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>QGIS 2.6 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="108" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="477" bodyend="492"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1ab13891dbb3384877e1b866d7037180d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList QgsProviderRegistry::providerList</definition>
+        <argsstring>() const</argsstring>
+        <name>providerList</name>
+        <briefdescription>
+<para>Returns list of available providers by their keys. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="150" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="620" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a6ac0a8d049d4ab7c77f652533a1fd95c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classQgsProviderMetadata" kindref="compound">QgsProviderMetadata</ref> *</type>
+        <definition>const QgsProviderMetadata * QgsProviderRegistry::providerMetadata</definition>
+        <argsstring>(const QString &amp;providerKey) const</argsstring>
+        <name>providerMetadata</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>providerKey</declname>
+        </param>
+        <briefdescription>
+<para>Returns metadata of the provider or NULL if not found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="153" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="630" bodyend="633"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a4e9a4b60d05bd6b08d9d173c86f3d90e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProviderRegistry::registerGuis</definition>
+        <argsstring>(QWidget *widget)</argsstring>
+        <name>registerGuis</name>
+        <param>
+          <type>QWidget *</type>
+          <declname>widget</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="220" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="549" bodyend="562"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1ad9928b92eb28e9e3762311c57c88c291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool QgsProviderRegistry::registerProvider</definition>
+        <argsstring>(QgsProviderMetadata *providerMetadata)</argsstring>
+        <name>registerProvider</name>
+        <param>
+          <type><ref refid="classQgsProviderMetadata" kindref="compound">QgsProviderMetadata</ref> *</type>
+          <declname>providerMetadata</declname>
+        </param>
+        <briefdescription>
+<para>register a new vector data provider from its <emphasis>providerMetadata</emphasis> </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true on success, false if a provider with the same key was already registered </para></simplesect>
+<simplesect kind="note"><para>ownership of the <ref refid="classQgsProviderMetadata" kindref="compound">QgsProviderMetadata</ref> instance is transferred to the registry </para></simplesect>
+<simplesect kind="since"><para>QGIS 3.2 </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="228" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="564" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a2c014850814f6bd8e9582bf07eb3c391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProviderRegistry::setLibraryDirectory</definition>
+        <argsstring>(const QDir &amp;path)</argsstring>
+        <name>setLibraryDirectory</name>
+        <param>
+          <type>const QDir &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Sets library directory where to search for plugins. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="90" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="370" bodyend="375"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classQgsProviderRegistry_1ace127e75f46b9e14153fb43105c7e2d2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QgsProviderRegistry::QgsProviderRegistry</definition>
+        <argsstring>(const QString &amp;pluginPath)</argsstring>
+        <name>QgsProviderRegistry</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>pluginPath</declname>
+        </param>
+        <briefdescription>
+<para>Ctor private since <ref refid="classQgsProviderRegistry_1a60c16019b5073ee00c3e26141312bfb2" kindref="member">instance()</ref> creates it. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="259" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="70" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a30447fc457902696702d43b253f523b5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProviderRegistry::clean</definition>
+        <argsstring>()</argsstring>
+        <name>clean</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="266" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="265" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classQgsProviderRegistry_1a688c2d94f366055fa2bad9b5d4e67bf4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QgsProviderRegistry::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="265" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.cpp" bodystart="89" bodyend="259"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A registry / canonical manager of data providers. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is a Singleton class that manages data provider access.</para><para>Providers can be either loaded via libraries or native providers that are included in the core QGIS installation and accessed through function pointers.</para><para>Loaded providers may be restricted using QGIS_PROVIDER_FILE environment variable. QGIS_PROVIDER_FILE is regexp pattern applied to provider file name (not provider key). For example, if the variable is set to gdal|ogr|postgres it will load only providers gdal, ogr and postgres. </para>    </detaileddescription>
+    <location file="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" line="53" column="1" bodyfile="/home/suricactus/work/qgis/QGIS/src/core/qgsproviderregistry.h" bodystart="52" bodyend="323"/>
+    <listofallmembers>
+      <member refid="classQgsProviderRegistry_1a30447fc457902696702d43b253f523b5" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>clean</name></member>
+      <member refid="classQgsProviderRegistry_1a666ec1f97817cb0ff1a6964d1cc58526" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>createProvider</name></member>
+      <member refid="classQgsProviderRegistry_1a8176626696b68045410afbd5c3f3c397" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>createProviderLibrary</name></member>
+      <member refid="classQgsProviderRegistry_1afb61876eea3d664971966a8e4c6c0c06" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>createSelectionWidget</name></member>
+      <member refid="classQgsProviderRegistry_1a6bbbd608b7cda2a6e28acb3fe9ecdb01" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>databaseDrivers</name></member>
+      <member refid="classQgsProviderRegistry_1a25d53a41b52b7fe7b7d7ab534d6e8ed1" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>decodeUri</name></member>
+      <member refid="classQgsProviderRegistry_1ae2774e5df72140dd5ef81bdc2d76540a" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>directoryDrivers</name></member>
+      <member refid="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67a5873df93429708f3a5e559b06a6d74ff" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>Embedded</name></member>
+      <member refid="classQgsProviderRegistry_1ab87352a15b4a8f8a6e602c36d44ad53a" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>fileMeshDatasetFilters</name></member>
+      <member refid="classQgsProviderRegistry_1a9aafd432f8458e3a0cdfb0b258e080f6" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>fileMeshFilters</name></member>
+      <member refid="classQgsProviderRegistry_1a9619a9f55ce53a0e776e94900440ef66" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>fileRasterFilters</name></member>
+      <member refid="classQgsProviderRegistry_1a92dc062ff9d75df08d077a27aa36b76d" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>fileVectorFilters</name></member>
+      <member refid="classQgsProviderRegistry_1a1fa718045e3560cc54f241a8a2721d52" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>function</name></member>
+      <member refid="classQgsProviderRegistry_1a688c2d94f366055fa2bad9b5d4e67bf4" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>init</name></member>
+      <member refid="classQgsProviderRegistry_1a60c16019b5073ee00c3e26141312bfb2" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>instance</name></member>
+      <member refid="classQgsProviderRegistry_1a6b3b7a6e1a244d4fdfcd4c44072bdddf" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>library</name></member>
+      <member refid="classQgsProviderRegistry_1abc567c89d532f13cc31dbe5397c3f3be" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>libraryDirectory</name></member>
+      <member refid="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67af28836d918bef572f0e2cc35cfef3a57" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>Manager</name></member>
+      <member refid="classQgsProviderRegistry_1acb3b07299636efa98823e9dadfb0ef19" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mDatabaseDrivers</name></member>
+      <member refid="classQgsProviderRegistry_1a7f0bfb96dbe279c9dc8f48b9aeeb55b0" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mDirectoryDrivers</name></member>
+      <member refid="classQgsProviderRegistry_1af27f3e2a182d5e742be8ea51e47b7a06" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mLibraryDirectory</name></member>
+      <member refid="classQgsProviderRegistry_1ac657d6ff0e79cdb26810d5f00fff6778" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mMeshDatasetFileFilters</name></member>
+      <member refid="classQgsProviderRegistry_1af370cab66a2e318f5b18933d31ab86c6" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mMeshFileFilters</name></member>
+      <member refid="classQgsProviderRegistry_1aeae75d6bfa1138f0c09e212f801375ee" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mProtocolDrivers</name></member>
+      <member refid="classQgsProviderRegistry_1a872a5d2718a1ad2354fc98a1bf63a9b9" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mProviders</name></member>
+      <member refid="classQgsProviderRegistry_1a5b5a57bc915d3e7ae41232608b09ca8c" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mRasterFileFilters</name></member>
+      <member refid="classQgsProviderRegistry_1a238ee252f2330f9e5ce995643e5a11f2" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>mVectorFileFilters</name></member>
+      <member refid="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67a8c7214051cdf3c183902eeb7acbad12d" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>None</name></member>
+      <member refid="classQgsProviderRegistry_1a9edf0f30804e3b45dc5f470680130ac6" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>pluginList</name></member>
+      <member refid="classQgsProviderRegistry_1a641872c7b098c133f01a0e2fcdcac53d" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>protocolDrivers</name></member>
+      <member refid="classQgsProviderRegistry_1aa8145ac173834838a51ee865890b66ee" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>providerCapabilities</name></member>
+      <member refid="classQgsProviderRegistry_1ab13891dbb3384877e1b866d7037180d6" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>providerList</name></member>
+      <member refid="classQgsProviderRegistry_1a6ac0a8d049d4ab7c77f652533a1fd95c" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>providerMetadata</name></member>
+      <member refid="classQgsProviderRegistry_1a10bfedcb0a63f6f6a99d6ce20d08bf08" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>Providers</name></member>
+      <member refid="classQgsProviderRegistry_1ace127e75f46b9e14153fb43105c7e2d2" prot="private" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>QgsProviderRegistry</name></member>
+      <member refid="classQgsProviderRegistry_1a4e9a4b60d05bd6b08d9d173c86f3d90e" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>registerGuis</name></member>
+      <member refid="classQgsProviderRegistry_1ad9928b92eb28e9e3762311c57c88c291" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>registerProvider</name></member>
+      <member refid="classQgsProviderRegistry_1a2c014850814f6bd8e9582bf07eb3c391" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>setLibraryDirectory</name></member>
+      <member refid="classQgsProviderRegistry_1a61aa28b3e612e5529e4b47f745161b67" prot="public" virt="non-virtual"><scope>QgsProviderRegistry</scope><name>WidgetMode</name></member>
+      <member refid="classQgsProviderRegistry_1a7d6cc6fbb8cfa2a8f7118a4fd584c70b" prot="public" virt="virtual"><scope>QgsProviderRegistry</scope><name>~QgsProviderRegistry</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
